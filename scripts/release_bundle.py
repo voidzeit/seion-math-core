@@ -27,7 +27,12 @@ def zip_paths(target: Path, paths: list[Path]) -> None:
                 archive.write(path, path.relative_to(ROOT).as_posix())
             elif path.is_dir():
                 for child in path.rglob("*"):
-                    if child.is_file() and ".git" not in child.parts:
+                    if (
+                        child.is_file()
+                        and ".git" not in child.parts
+                        and "build" not in child.parts
+                        and not any(part.endswith(".egg-info") for part in child.parts)
+                    ):
                         archive.write(child, child.relative_to(ROOT).as_posix())
 
 
@@ -58,9 +63,37 @@ def main() -> int:
         return 1
     RELEASE.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source_pdf, RELEASE / "seion_math_core_paper.pdf")
-    source_paths = [ROOT / "src", ROOT / "tests", ROOT / "experiments", ROOT / "claims", ROOT / "docs", ROOT / "paper", ROOT / "pyproject.toml", ROOT / "uv.lock", ROOT / "README.md", ROOT / "scripts"]
+    source_paths = [
+        ROOT / "src",
+        ROOT / "tests",
+        ROOT / "experiments",
+        ROOT / "claims",
+        ROOT / "docs",
+        ROOT / "paper",
+        ROOT / "papers",
+        ROOT / "schemas",
+        ROOT / ".github",
+        ROOT / "pyproject.toml",
+        ROOT / "uv.lock",
+        ROOT / "README.md",
+        ROOT / "LICENSE",
+        ROOT / "CITATION.cff",
+        ROOT / "Makefile",
+        ROOT / "mkdocs.yml",
+        ROOT / ".pre-commit-config.yaml",
+        ROOT / "scripts",
+    ]
     zip_paths(RELEASE / "source_archive.zip", source_paths)
-    reproducibility_paths = [ROOT / "experiments", ROOT / "claims", ROOT / "paper" / "generated", ROOT / "artifacts" / "index", ROOT / "artifacts" / "system", ROOT / "artifacts" / "data"]
+    reproducibility_paths = [
+        ROOT / "experiments",
+        ROOT / "claims",
+        ROOT / "schemas",
+        ROOT / "paper" / "generated",
+        ROOT / "artifacts" / "figures",
+        ROOT / "artifacts" / "index",
+        ROOT / "artifacts" / "system",
+        ROOT / "artifacts" / "data",
+    ]
     zip_paths(RELEASE / "reproducibility_bundle.zip", reproducibility_paths)
     for name in ["run_index.csv", "claim_evidence_matrix.csv", "theorem_dependency_matrix.csv"]:
         source = ROOT / "artifacts" / "index" / name
@@ -82,4 +115,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
