@@ -29,6 +29,7 @@ from ..projectors.reduced_law import reduced_law
 from ..variational.optimizers import optimize_projector_closure
 from .artifact_hashes import hash_artifacts
 from .manifests import run_manifest, write_json
+from .matrix import run_canonical_matrix
 
 
 def _repo_root() -> Path:
@@ -237,12 +238,14 @@ def run_profile(profile: str, repo_root: str | Path | None = None, device: str =
     data_path.parent.mkdir(parents=True, exist_ok=True)
     data_path.write_text(json.dumps(acceleration, indent=2, default=_json) + "\n", encoding="utf-8")
     if profile in {"full", "extended"}:
-        # Record a compact canonical matrix without pretending every expensive
-        # research row has been run by this local smoke profile.
-        matrix_path = root / "experiments" / "matrices" / "canonical_run_matrix.yaml"
-        matrix = yaml.safe_load(matrix_path.read_text(encoding="utf-8")) if matrix_path.exists() else {}
-        result["matrix_rows_declared"] = len(matrix.get("runs", [])) if isinstance(matrix, dict) else 0
-        result["matrix_execution_note"] = "finite canonical rows executed by deterministic local runner; extended rows remain explicitly registered"
+        matrix_result = run_canonical_matrix(root, device=device, profile=profile)
+        result["matrix_rows_declared"] = matrix_result["rows_declared"]
+        result["matrix_rows_executed"] = matrix_result["rows_executed"]
+        result["matrix_rows"] = matrix_result["rows"]
+        result["matrix_all_mandatory_rows_passed"] = matrix_result["all_mandatory_rows_passed"]
+        result["matrix_execution_note"] = "all registered finite canonical rows executed by the deterministic matrix runner"
+        if not matrix_result["all_mandatory_rows_passed"]:
+            result["status"] = "FAILED_MATHEMATICAL_GATE"
     out = root / "artifacts" / "index" / f"profile_{profile}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")

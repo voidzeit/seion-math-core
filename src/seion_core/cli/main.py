@@ -36,7 +36,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "run-suite":
         result = run_profile(args.profile, root, args.device)
         print(json.dumps(result, indent=2))
-        return 0
+        return 0 if result.get("status") == "COMPLETE" else 1
     if args.command == "audit":
         result = {"claims": claims_lint(root), "runs": len(summarize_runs(root))}
         write_claims_report(root)
@@ -51,4 +51,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
