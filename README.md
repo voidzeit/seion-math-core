@@ -64,6 +64,25 @@ exact-reduction and spectral results are not claimed as novel, and the audit
 records the remaining novelty and author-metadata blockers in
 `papers/foundations_v2/RESEARCH_BLOCKED.md`.
 
+## Research v3: nodewise tree constants
+
+The v3 track studies finite typed multilinear composition trees only. Its
+canonical command executes the 15-stage base workflow, rebuilds both papers,
+renders every PDF page, audits all evidence, and exits nonzero when any strict
+publication gate remains unresolved:
+
+    .\scripts\run_tree_constants_v3_full.ps1
+
+Exit code 2 means the technical workflow completed but publication remains
+fail-closed; it is not an operational crash. The resource-gated optimizer grid
+is preserved as a complete resumable schedule:
+
+    .\scripts\run_tree_constants_v3_extended.ps1 -MaxTrajectories 4
+    .\scripts\resume_tree_constants_v3.ps1 -MaxTrajectories 4
+
+See docs/reproducibility/tree_constants_v3.md for artifact locations,
+epistemic statuses, exact commands, and hash verification.
+
 ## Scope
 
 The core package does not contain KGE, LLM compression, BIM, cosmology, trading, or a universal physical theory. Those are explicitly non-goals for this repository.

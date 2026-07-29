@@ -1,0 +1,74 @@
+# Universal homogeneous coefficients (k) and (k-1)
+
+## Theorem
+
+Let (T) be any finite typed ordered tree, with heterogeneous types, laws, and
+arities allowed.  Suppose every node law has operator norm at most (M), and
+every node closure map has norm at most (ho).  Let (k(T)) be the number of
+internal vertices and (L_T=\prod_\ell\lVert z_\ell\rVert).  Then
+
+\[
+\begin{aligned}
+E_T^{\rm amb}&\le k(T)\rho M^{k(T)-1}L_T,\\
+E_T^{\rm proj}&=E_T^{\rm red}
+  \le (k(T)-1)\rho M^{k(T)-1}L_T,\\
+E_T^{\rm normal}&\le k(T)\rho M^{k(T)-1}L_T.
+\end{aligned}
+\]
+
+For (k=0), all errors are zero.  For (k=1), the projected and reduced
+errors are exactly zero.
+
+## Proof
+
+For a subtree rooted at (v), let (k_v) be its internal-node count and
+(L_v) its leaf-norm product.  Orthogonal projection is contractive, so a
+first induction gives
+
+\[
+\lVert F_v\rVert,\lVert R_v\rVert\le M^{k_v}L_v.
+\]
+
+Assume the ambient claim for all children.  Multilinear telescoping, in any
+slot order, gives
+
+\[
+\lVert\mu_v(F_1,\ldots,F_a)-\mu_v(R_1,\ldots,R_a)\rVert
+\le M\sum_j\lVert F_j-R_j\rVert
+  \prod_{i<j}\lVert R_i\rVert\prod_{i>j}\lVert F_i\rVert.
+\]
+
+The (j)-th term is at most
+(k_{c_j}\rho M^{k_v-1}L_v).  Since
+(sum_jk_{c_j}=k_v-1), propagated child error contributes at most
+((k_v-1)\rho M^{k_v-1}L_v).  The local closure residual contributes at most
+
+\[
+\rho\prod_j\lVert R_j\rVert\le\rho M^{k_v-1}L_v.
+\]
+
+Their sum proves the ambient estimate.  For the projected error,
+
+\[
+P_v(F_v-R_v)
+=P_v\bigl(\mu_v(F_1,\ldots,F_a)-\mu_v(R_1,\ldots,R_a)\bigr),
+\]
+
+so the root residual is absent and only the (k_v-1) propagated terms remain.
+For the normal error, apply (I-P_v) and retain the local residual, obtaining
+coefficient (k_v).  Induction closes all three estimates. (square)
+
+## What this proves—and what it does not
+
+The coefficient (k-1) is therefore a universal upper bound, not a numerical
+conjecture.  This proof does **not** establish that (k) or (k-1) is attained
+for each fixed (eta=\rho/M>0), dimension, rank, topology, or repeated-law
+class.  Explicit rotation families give certified lower bounds and approach
+some uniform coefficients as (eta\downarrow0), but fixed-(eta) optimality
+remains an optimization problem.  Accordingly the registry does not label the
+fixed-(eta) constants `EXACT_OPTIMAL_CONSTANT`.
+
+For a five-input ternary associator (the difference of two two-node trees),
+the projected triangle certificate improves from (2+2=4) to (1+1=2).
+Whether cancellation lowers the best associator constant below two is kept
+separate.

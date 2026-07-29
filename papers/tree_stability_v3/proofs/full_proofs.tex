@@ -1,0 +1,274 @@
+\section{Full proof appendices}
+\label{app:proofs}
+
+This appendix records the complete finite-dimensional arguments used by the
+claim registry. No statement below depends on an optimizer, a conjecture, or
+a numerical plot.
+
+\subsection{Magnitude induction and exact root geometry}
+
+For a subtree rooted at \(v\), let \(k_v\) be its number of internal
+vertices and let \(L_v\) be the product of the reduced leaf norms below it.
+
+\begin{lemma}[Subtree magnitudes]
+\label{lem:magnitudes}
+If every node law has multilinear operator norm at most \(M\), then
+\[
+  \lVert F_v\rVert\le M^{k_v}L_v,
+  \qquad
+  \lVert R_v\rVert\le M^{k_v}L_v.
+\]
+\end{lemma}
+
+\begin{proof}
+At a leaf, \(F_v=R_v=Q_vz_v\), and \(Q_v\) is an isometry. Suppose the
+claim holds for the children \(c_1,\ldots,c_a\). Multilinearity and the
+definition of the operator norm give
+\[
+ \lVert F_v\rVert
+ \le M\prod_i \lVert F_{c_i}\rVert
+ \le M^{1+\sum_i k_{c_i}}\prod_iL_{c_i}
+ =M^{k_v}L_v.
+\]
+The same argument applies to
+\(R_v=P_v\mu_v(R_{c_1},\ldots,R_{c_a})\), because an orthogonal projector
+is contractive. Induction proves both claims.
+\end{proof}
+
+\begin{proposition}[Root-error orthogonality]
+\label{prop:rootgeometry}
+For every valid typed tree,
+\[
+ (E_T^{\rm amb})^2=(E_T^P)^2+(E_T^N)^2,
+ \qquad E_T^{\rm red}=E_T^P.
+\]
+\end{proposition}
+
+\begin{proof}
+At the root, write \(P=QQ^*\), \(F=F_T\), and
+\(R=R_T\in\operatorname{ran}P\). Then
+\[
+ F-R=(PF-R)+(I-P)F.
+\]
+The first summand belongs to \(\operatorname{ran}P\) and the second to its
+orthogonal complement. Pythagoras gives the first identity. Moreover,
+\[
+ Q^*F-Q^*R=Q^*(PF-R).
+\]
+The restriction of \(Q^*\) to \(\operatorname{ran}P\) is an isometry,
+which proves the second identity.
+\end{proof}
+
+\subsection{Exact subset expansion}
+
+\begin{theorem}[Local child-error expansion]
+\label{thm:subset-full}
+Let \(v\) have arity \(a\), children \(c_i\), recursively projected values
+\(R_i\), and errors \(D_i=F_i-R_i\). For
+\[
+ y_i^S=\begin{cases}D_i,&i\in S,\\R_i,&i\notin S,\end{cases}
+ \qquad
+ r_v=(I-P_v)\mu_v(P_{c_1}\,\cdot,\ldots,P_{c_a}\,\cdot),
+\]
+one has the exact identity
+\[
+ D_v=r_v(R_1,\ldots,R_a)
+ +\sum_{\varnothing\ne S\subseteq[a]}
+ \mu_v(y_1^S,\ldots,y_a^S).
+\]
+\end{theorem}
+
+\begin{proof}
+Since \(F_i=R_i+D_i\), repeated multilinearity yields
+\[
+ \mu_v(F_1,\ldots,F_a)
+ =\sum_{S\subseteq[a]}\mu_v(y_1^S,\ldots,y_a^S).
+\]
+The term indexed by the empty set is \(\mu_v(R_1,\ldots,R_a)\), while
+\(R_v=P_v\mu_v(R_1,\ldots,R_a)\). Subtracting \(R_v\) separates the
+empty-set term into its normal component \(r_v(R_1,\ldots,R_a)\); all
+nonempty terms remain unchanged. No inequality has been used.
+\end{proof}
+
+Applying \(P_v\) to Theorem~\ref{thm:subset-full} removes the local
+residual exactly. Applying \(I-P_v\) retains it. Decomposing each \(D_i\)
+into its projected and normal parts produces the three-state alphabet
+\(\{R,D^P,D^N\}\) used by the mixed-mask dynamic program.
+
+\subsection{Universal homogeneous constants}
+
+\begin{theorem}[Universal \(k\) and \(k-1\) estimates]
+\label{thm:homogeneous-full}
+Suppose \(\lVert\mu_v\rVert_{\rm op}\le M\) and
+\(\lVert r_v\rVert_{\rm op}\le\rho\) at every internal vertex. If \(T\)
+has \(k\) internal vertices and reduced leaf-norm product \(L_T\), then
+\[
+ E_T^{\rm amb}\le k\rho M^{k-1}L_T,
+ \quad
+ E_T^P=E_T^{\rm red}\le(k-1)\rho M^{k-1}L_T,
+ \quad
+ E_T^N\le k\rho M^{k-1}L_T.
+\]
+\end{theorem}
+
+\begin{proof}
+The claims are trivial for a leaf. At an internal vertex \(v\),
+multilinear telescoping in any fixed slot order gives
+\begin{align*}
+ &\lVert\mu_v(F_1,\ldots,F_a)-\mu_v(R_1,\ldots,R_a)\rVert\\
+ &\quad\le
+ M\sum_{j=1}^a \lVert F_j-R_j\rVert
+ \prod_{i<j}\lVert R_i\rVert
+ \prod_{i>j}\lVert F_i\rVert.
+\end{align*}
+Assume the ambient estimate for every child.
+Lemma~\ref{lem:magnitudes} shows that the \(j\)-th summand is at most
+\(k_{c_j}\rho M^{k_v-1}L_v\). Because
+\(\sum_j k_{c_j}=k_v-1\), the total propagated-child contribution is at
+most \((k_v-1)\rho M^{k_v-1}L_v\). The local residual is bounded by
+\[
+ \rho\prod_j\lVert R_j\rVert
+ \le \rho M^{k_v-1}L_v.
+\]
+Their sum proves the ambient estimate. For the projected error,
+\[
+ P_vD_v=P_v\bigl(\mu_v(F_1,\ldots,F_a)
+                  -\mu_v(R_1,\ldots,R_a)\bigr),
+\]
+so the root local residual is absent and only the coefficient \(k_v-1\)
+remains. Proposition~\ref{prop:rootgeometry} identifies the reduced error
+with this projected error. For the normal error, the local residual is
+retained, and the ambient argument gives coefficient \(k_v\). Induction
+closes the proof.
+\end{proof}
+
+\subsection{Optimal telescoping order}
+
+Let \(e_i,r_i,f_i,G_i\ge0\), set \(w_i=G_ie_i\), and for a permutation
+\(\pi\) define
+\[
+ C(\pi)=\sum_t w_{\pi_t}
+ \prod_{s<t}r_{\pi_s}\prod_{s>t}f_{\pi_s}.
+\]
+
+\begin{theorem}[Pair-exchange ordering]
+\label{thm:ordering-full}
+Put \(d_i=f_i-r_i\). A global minimizer of \(C\) is obtained by placing
+the slots with \(d_i>0\) first, then those with \(d_i=0\), then those with
+\(d_i<0\), and sorting each nonzero sign class by nondecreasing
+\(w_i/d_i\). Slots with \(w_i=d_i=0\) are indifferent.
+\end{theorem}
+
+\begin{proof}
+Consider adjacent slots \(i,j\). Prefix and suffix products are common to
+the two possible orders. Thus \(i\) before \(j\) is no worse precisely when
+\[
+ w_if_j+r_iw_j\le w_jf_i+r_jw_i
+ \quad\Longleftrightarrow\quad
+ w_id_j\le w_jd_i.
+\]
+If both \(d_i,d_j\) are nonzero and have the same sign, division by the
+positive product \(d_id_j\) gives \(w_i/d_i\le w_j/d_j\). If \(d_i>0\)
+and \(d_j<0\), the exchange inequality holds automatically, so every
+positive-denominator slot precedes every negative one. The cases with one
+zero denominator place the zero class between them. Repeatedly exchanging
+inverted adjacent pairs never increases \(C\) and terminates at the stated
+order. Every permutation can be transformed in this way, proving global
+optimality within the declared telescoping family.
+\end{proof}
+
+\subsection{Mixed-mask and path-sum certificates}
+
+\begin{theorem}[Sound dynamic program]
+\label{thm:dp-full}
+Assume certified bounds for every full, projected-output, and normal-output
+mixed block of each node law. The recursion retaining
+\(B_v^F,B_v^R,B_v^A,B_v^P,B_v^N\) and all non-all-\(R\) state vectors in
+\(\{R,D^P,D^N\}^{a_v}\) returns valid upper bounds. Its work is
+\[
+ O\!\left(|T|3^{a_{\max}}+|T|a_{\max}\log a_{\max}\right).
+\]
+\end{theorem}
+
+\begin{proof}
+At a leaf all five bounds are exact. At an internal node, expand by
+Theorem~\ref{thm:subset-full} and then split every child error orthogonally
+into its \(D^P\) and \(D^N\) parts. Every resulting term has one of three
+states in each slot. Multiplying the corresponding certified mixed-block
+norm by the child magnitude bounds and summing all state vectors except
+all \(R\) is a direct application of the operator-norm inequality. The
+local residual contributes
+\(\lambda_v=\rho_v\prod_iB_{c_i}^R\) only to full and normal output. Taking
+the minimum of independently valid upper bounds preserves validity.
+
+There are \(3^{a_v}-1\) nontrivial state vectors at node \(v\), while
+Theorem~\ref{thm:ordering-full} requires sorting \(a_v\) slots. Summing
+these costs over the internal vertices proves the complexity estimate.
+\end{proof}
+
+\begin{corollary}[Residual-source path sum]
+\label{cor:path-full}
+Fix a valid telescoping order at every ancestor. If \(h_{a,j}\) is the
+certified gain for propagating an error from child slot \(j\) through
+ancestor \(a\), then
+\[
+ B_{T,\rm path}^{\rm amb}
+ =\sum_{v\in\operatorname{Int}T}\lambda_v
+   \prod_{(a,j)\in\operatorname{path}(v,\operatorname{root})}h_{a,j}
+\]
+is valid. For projected-root error the root source is omitted and the last
+gain is a projected-output gain.
+\end{corollary}
+
+\begin{proof}
+The scalar nodewise recurrence is affine in each local source
+\(\lambda_v\). Repeated substitution sends that source through exactly the
+ancestor edges on its root path and multiplies their gains. Summing over
+all possible sources gives the formula. Projection annihilates the root
+normal source, which proves the projected variant.
+\end{proof}
+
+\subsection{Signed forests and representation perturbations}
+
+\begin{corollary}[Signed-forest triangle certificate]
+If \(\mathcal F=\sum_\alpha c_\alpha T_\alpha\) is a finite compatible
+signed forest, then the projected discrepancy is bounded by the sum of the
+per-tree projected certificates weighted by \(\lvert c_\alpha\rvert\).
+In particular, the two-term, two-node ternary associator has coefficient
+at most two.
+\end{corollary}
+
+\begin{proof}
+Apply Theorem~\ref{thm:homogeneous-full} to each tree and then the triangle
+inequality. Each two-node tree contributes \(k-1=1\), hence two signed
+terms contribute at most two. Syntactically identical trees may first be
+combined exactly.
+\end{proof}
+
+\begin{proposition}[Approximation plus projection]
+\label{prop:cp-full}
+Suppose \(\lVert\mu_v\rVert\le M\),
+\(\lVert\mu_v-\widehat\mu_v\rVert\le\delta\), and
+\(\lVert\widehat\mu_v\rVert\le M+\delta\). For a \(k\)-node homogeneous
+tree,
+\[
+ E_{\rm repr}\le k\delta(M+\delta)^{k-1}L,
+\]
+and a closure coefficient \(c\in\{k,k-1\}\) may be split as
+\[
+ c\rho(M+\delta)^{k-1}L
+ =c\rho M^{k-1}L
+ +c\rho\bigl[(M+\delta)^{k-1}-M^{k-1}\bigr]L.
+\]
+\end{proposition}
+
+\begin{proof}
+Insert the full ambient \(\widehat\mu\)-tree between the exact ambient tree
+and the recursively projected approximate tree. Multilinear telescoping
+over the \(k\) node-law replacements bounds each replacement by
+\(\delta(M+\delta)^{k-1}L\), giving the representation term. Apply
+Theorem~\ref{thm:homogeneous-full} to the approximate law and add and
+subtract \(c\rho M^{k-1}L\); the displayed closure and interaction terms
+are an algebraic partition of that valid upper bound. No equality with the
+observed total error is asserted.
+\end{proof}

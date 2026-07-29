@@ -1,0 +1,27 @@
+# V3 theorem dossier
+
+This directory is the proof authority for the finite typed-tree track.  The
+scope is finite-dimensional real or complex Hilbert spaces, orthogonal
+projectors, bounded multilinear laws, and finite ordered trees.  It does not
+assert a continuum, infinite-tree, tensor-identifiability, or physical result.
+
+The proof chain is:
+
+1. [`typed_model.md`](typed_model.md) fixes the four inequivalent errors and
+   their exact Hilbert-space relationships.
+2. [`exact_subset_expansion.md`](exact_subset_expansion.md) gives the exact
+   local identity before inequalities.
+3. [`homogeneous_constants.md`](homogeneous_constants.md) proves the universal
+   ambient coefficient (k) and projected-root coefficient (k-1).
+4. [`telescoping_order.md`](telescoping_order.md) proves the optimal replacement
+   order for the declared scalar telescoping certificate.
+5. [`nodewise_certificates.md`](nodewise_certificates.md) derives the mixed-mask
+   dynamic program and residual path sum.
+6. [`signed_forests.md`](signed_forests.md) states what cancellation is and is
+   not captured for polynomial identities.
+7. [`cp_projection_budget.md`](cp_projection_budget.md) separates representation
+   and closure error.
+
+The proofs are mathematically marked `PROVED_UNDER_ASSUMPTIONS`; governance
+approval remains pending independent human review.  Sharpness at a fixed
+(eta=ho/M>0) is not inferred from the upper bounds.

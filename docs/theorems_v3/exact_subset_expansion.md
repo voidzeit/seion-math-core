@@ -1,0 +1,37 @@
+# Exact local subset expansion
+
+Fix an internal vertex (v), write (P=P_{\tau(v)}), and abbreviate
+(R_i=R_{c_i}), (F_i=F_{c_i}), and (Delta_i=F_i-R_i).  Multilinearity gives
+
+\[
+\mu_v(F_1,\ldots,F_a)
+=\sum_{S\subseteq\{1,\ldots,a\}}
+  \mu_v(y_1^S,\ldots,y_a^S),
+\quad
+y_i^S=\begin{cases}\Delta_i&i\in S,\\R_i&i\notin S.\end{cases}
+\]
+
+Because (R_v=P\mu_v(R_1,\ldots,R_a)), subtraction yields the exact identity
+
+\[
+\boxed{
+\Delta_v
+=r_v(R_1,\ldots,R_a)
++\sum_{\varnothing\ne S\subseteq[a]}
+  \mu_v(y_1^S,\ldots,y_a^S),
+}
+\]
+
+where (r_v=(I-P)\mu_v(P\cdot,\ldots,P\cdot)).  The first term is the local
+normal residual.  Cardinality-one subsets are propagated child errors;
+larger subsets are genuine branch-interaction terms.  Applying (P) removes
+the local residual exactly, whereas applying (I-P) retains it:
+
+\[
+P\Delta_v=\sum_{S\ne\varnothing}P\mu_v(y^S),\qquad
+(I-P)\Delta_v=r_v(R)+(I-P)\sum_{S\ne\varnothing}\mu_v(y^S).
+\]
+
+No triangle inequality has been used.  The (2^a-1) terms are generated and
+reconstructed numerically by `error_expansion.py`; symbolic tests verify the
+term count and numerical tests compare the identity to direct contraction.

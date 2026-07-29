@@ -1,0 +1,108 @@
+version: 3
+track: nodewise_tree_constants
+governance_note: >-
+  Mathematical proofs and deterministic checks are present, but AI output does
+  not constitute official theorem approval; independent human review is pending.
+theorems:
+  - id: THM_V3_ROOT_ERROR_ORTHOGONALITY
+    title: Exact orthogonal decomposition of the four named root errors
+    statement: "E_amb^2 = E_proj^2 + E_normal^2 and E_red = E_proj."
+    scope: [finite typed Hilbert spaces, orthogonal projectors, arbitrary finite typed trees]
+    dependencies: [DEF_V3_TYPED_TREE_EVALUATIONS]
+    proof_location: docs/theorems_v3/typed_model.md
+    implementation: src/seion_core/research_v3/projected_evaluation.py
+    tests: [tests/research_v3/unit/test_evaluation.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    novelty_status: STANDARD_MULTILINEAR_BOUND
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V3_EXACT_SUBSET_EXPANSION
+    title: Exact local child-error subset expansion
+    statement: >-
+      Delta_v equals the local normal residual plus one multilinear term for
+      every nonempty subset of erroneous child branches.
+    scope: [heterogeneous laws, heterogeneous types, heterogeneous arities]
+    dependencies: [DEF_V3_TYPED_TREE_EVALUATIONS]
+    proof_location: docs/theorems_v3/exact_subset_expansion.md
+    implementation: src/seion_core/research_v3/error_expansion.py
+    tests: [tests/research_v3/symbolic/test_error_expansion.py]
+    epistemic_status: PROVED
+    novelty_status: STANDARD_MULTILINEAR_BOUND
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V3_HOMOGENEOUS_AMBIENT_K
+    title: Universal ambient coefficient k
+    statement: "E_amb <= k rho M^(k-1) product_l ||z_l||."
+    scope: [heterogeneous laws, heterogeneous types, heterogeneous arities, uniform M and rho]
+    dependencies: [THM_V3_EXACT_SUBSET_EXPANSION]
+    proof_location: docs/theorems_v3/homogeneous_constants.md
+    implementation: src/seion_core/research_v3/certificates.py
+    tests: [tests/research_v3/certificates/test_certificates.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: OPEN_AT_FIXED_ETA
+    novelty_status: STANDARD_MULTILINEAR_BOUND
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V3_PROJECTED_ROOT_K_MINUS_ONE
+    title: Projected-root coefficient k minus one
+    statement: "E_proj = E_red <= (k-1) rho M^(k-1) product_l ||z_l||."
+    scope: [heterogeneous laws, heterogeneous types, heterogeneous arities, uniform M and rho]
+    dependencies: [THM_V3_EXACT_SUBSET_EXPANSION, THM_V3_ROOT_ERROR_ORTHOGONALITY]
+    proof_location: docs/theorems_v3/homogeneous_constants.md
+    implementation: src/seion_core/research_v3/certificates.py
+    tests:
+      - tests/research_v3/certificates/test_certificates.py
+      - tests/research_v3/regression/test_projected_k_minus_one.py
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: CERTIFIED_UPPER_BOUND_NOT_FIXED_ETA_OPTIMALITY
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V3_OPTIMAL_TELESCOPING_ORDER
+    title: Optimal ordering of the scalar multilinear telescoping certificate
+    statement: >-
+      Adjacent exchange is governed by w_i(f_j-r_j)<=w_j(f_i-r_i); a
+      sign-partitioned increasing ratio order globally minimizes the certificate.
+    scope: [nonnegative error, magnitude, and gain summaries; arbitrary finite arity]
+    dependencies: []
+    proof_location: docs/theorems_v3/telescoping_order.md
+    implementation: src/seion_core/research_v3/telescoping_order.py
+    tests: [tests/research_v3/property/test_telescoping_order.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    novelty_status: KNOWN_BOUND_NEW_SPECIALIZATION
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V3_NODEWISE_MIXED_CERTIFICATE
+    title: Mixed-mask dynamic-programming certificate
+    statement: >-
+      B^F, B^R, B^A, B^P, and B^N are certified in
+      O(|T|3^a_max+|T|a_max log a_max) from nodewise summaries.
+    scope: [heterogeneous laws, types, arities, nodewise norms and residuals]
+    dependencies: [THM_V3_EXACT_SUBSET_EXPANSION, THM_V3_OPTIMAL_TELESCOPING_ORDER]
+    proof_location: docs/theorems_v3/nodewise_certificates.md
+    implementation: src/seion_core/research_v3/certificates.py
+    tests: [tests/research_v3/certificates/test_certificates.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V3_NODEWISE_PATH_SUM
+    title: Residual-source path-sum certificate
+    statement: >-
+      Every local residual contributes its magnitude times ordered propagation
+      gains along its root path; the root source is absent for projected error.
+    scope: [heterogeneous laws, types, arities, certified local gains]
+    dependencies: [THM_V3_OPTIMAL_TELESCOPING_ORDER]
+    proof_location: docs/theorems_v3/nodewise_certificates.md
+    implementation: src/seion_core/research_v3/certificates.py
+    tests: [tests/research_v3/certificates/test_certificates.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: COR_V3_PROJECTED_TERNARY_ASSOCIATOR_TWO
+    title: Projected ternary associator triangle coefficient two
+    statement: >-
+      The projected difference of two five-input, two-node ternary insertion
+      trees is bounded by 2 rho M times the five leaf norm product.
+    scope: [same law and projector conventions in both terms]
+    dependencies: [THM_V3_PROJECTED_ROOT_K_MINUS_ONE]
+    proof_location: docs/theorems_v3/signed_forests.md
+    implementation: src/seion_core/research_v3/polynomial_forests.py
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: OPEN
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW

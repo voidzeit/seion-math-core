@@ -1,0 +1,45 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+\definecolor{seionblue}{HTML}{0072B2}
+\definecolor{seiongreen}{HTML}{009E73}
+\definecolor{seionorange}{HTML}{E69F00}
+\definecolor{seionred}{HTML}{D55E00}
+\definecolor{seiongray}{HTML}{6B7280}
+\tikzset{
+  box/.style={draw,rounded corners=2pt,minimum width=23mm,minimum height=8mm,align=center,fill=white,line width=.8pt},
+  flow/.style={-{Stealth[length=2mm]},line width=.8pt,seiongray},
+  law/.style={circle,draw=seionblue,fill=white,minimum size=8mm,line width=1pt},
+  leaf/.style={box,draw=seionorange,minimum width=14mm},
+  projector/.style={box,draw=seiongreen},
+  residual/.style={box,draw=seionred,fill=seionred!5}
+}
+\begin{document}
+\begin{tikzpicture}[font=\small,node distance=8mm and 14mm]
+  \node[law] (root) {$\mu_v$};
+  \node[law,below left=11mm and 15mm of root] (child) {$\mu_u$};
+  \node[leaf,below left=10mm and 5mm of child] (x1) {$z_1:W_\alpha$};
+  \node[leaf,below right=10mm and 5mm of child] (x2) {$z_2:W_\beta$};
+  \node[leaf,below right=11mm and 15mm of root] (x3) {$z_3:W_\gamma$};
+  \draw[flow] (x1) -- node[left] {$Q_\alpha$} (child);
+  \draw[flow] (x2) -- node[right] {$Q_\beta$} (child);
+  \draw[flow] (child) -- node[above left] {$F_u$} (root);
+  \draw[flow] (x3) -- node[right] {$Q_\gamma$} (root);
+
+  \node[box,draw=seionblue,right=28mm of root] (ambient) {$F_v=\mu_v(F_u,Q_\gamma z_3)$\\ambient evaluation};
+  \node[projector,below=9mm of ambient] (recursive) {$R_v=P_\delta\mu_v(R_u,Q_\gamma z_3)$\\recursive projection};
+  \node[residual,below=9mm of recursive] (local) {$r_v=(I-P_\delta)\mu_v(R_u,Q_\gamma z_3)$\\local normal residual};
+  \draw[flow,seionblue] (root) -- (ambient);
+  \draw[flow,seiongreen] (root.east) .. controls +(17mm,-8mm) and +(-17mm,8mm) .. (recursive.west);
+  \draw[flow,seionred] (recursive) -- (local);
+
+  \node[box,draw=seiongray,above=8mm of ambient] (signature)
+    {$\mu_v:V_\delta\!\times V_\gamma\to V_\delta$\quad
+     $P_\tau=Q_\tau Q_\tau^*$};
+  \draw[flow,dashed] (signature) -- (ambient);
+  \begin{scope}[on background layer]
+    \node[draw=seiongray!55,dashed,rounded corners=3pt,fit=(root)(child)(x1)(x2)(x3),inner sep=5mm,label={[seiongray]above:typed ordered tree}] {};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

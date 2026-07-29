@@ -1,0 +1,770 @@
+\documentclass[11pt]{amsart}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs,tabularx}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\graphicspath{{figures/}}
+\sisetup{detect-all,group-separator={,},group-minimum-digits=4}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={Nodewise Error Certificates for Recursively Projected N-Ary Composition Trees},
+  pdfauthor={Eliuth Chavero Jasso},
+  pdfsubject={Finite-dimensional multilinear tree error certificates under recursive orthogonal projection},
+  pdfkeywords={multilinear tree, recursive projection, closure residual, nodewise certificate, operad, interval certification}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\Int}{\operatorname{Int}}
+\newcommand{\op}{\operatorname{op}}
+\newcommand{\cF}{\mathcal F}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\Types}{\mathfrak T}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+
+\input{generated_results}
+\input{figures/captions}
+
+\title[Nodewise tree error certificates]{Nodewise Error Certificates for Recursively Projected \texorpdfstring{\(N\)}{N}-Ary Composition Trees}
+\author{Eliuth Chavero Jasso}
+\address{Independent Researcher, Apizaco, Tlaxcala, Mexico}
+\thanks{Research draft. Contact email and ORCID are intentionally omitted pending author verification. Mathematical approval and novelty review remain pending independent human review.}
+\date{29 July 2026}
+
+\begin{document}
+
+\begin{abstract}
+We study the worst-case discrepancy between ambient evaluation and recursive orthogonal projection on a finite typed tree of multilinear laws, with local law norm at most \(M\), closure residual at most \(\rho\), and \(k\) internal vertices.  An exact child-error subset expansion yields the universal bounds \(E^{\rm amb}\le k\rho M^{k-1}L\) and \(E^P=E^{\rm red}\le(k-1)\rho M^{k-1}L\), together with mixed-block dynamic-programming and residual path-sum certificates.  A pair-exchange argument gives the globally optimal slot order within the declared scalar telescoping family.  A gated planar-rotation construction matches the ambient coefficient in registered cells, but does not establish fixed-positive-\(\eta=\rho/M\) sharpness of the projected coefficient \(k-1\).  Directed interval calculations certify \VThreeExactCells{} small cells globally; across the full gap registry the maximum unresolved absolute and relative gaps are \VThreeMaxAbsoluteGap{} and \VThreeMaxRelativeGap{}.  The finite base study contains \VThreeScientificInstances{} scientific instances, \VThreeTreeOccurrences{} enumerated tree occurrences, and \VThreeLeakageMasks{} exhaustive leakage masks, with CPU/GPU difference at most \VThreeMaxParity{}.  The main limitations are that theorem-level novelty is not established, the extended adversarial grid is resource-gated, and most fixed-\(\eta\) constants remain open; the release status is therefore \VThreeReleaseStatus{}.
+\end{abstract}
+
+\subjclass[2020]{15A69, 17A42, 18M60, 65G50, 65F35}
+\keywords{multilinear tree, recursive projection, closure residual, nodewise certificate, operad, interval certification, tensor approximation}
+\maketitle
+
+\section{Introduction}
+
+Finite compositions of multilinear operations occur in nonassociative
+identities, colored-operad syntax, hierarchical tensor calculations, and
+structure-preserving reduction.  A common computational operation is to
+project the output of every internal node back to a selected subspace.  Even
+when every local projection defect is small, nested composition can amplify
+or cancel those defects in a topology-dependent way.  A global norm product
+is safe but can obscure the source, direction, and interaction order of the
+error.
+
+This paper fixes a finite typed ordered tree and asks a precise optimization
+question: among laws, compatible orthogonal projectors, and unit reduced leaf
+data satisfying declared local norm and closure constraints, what is the best
+constant controlling ambient, projected-root, normal-root, or reduced-coordinate
+error?  We separate four logically distinct tasks: proving universal upper
+bounds, constructing admissible lower examples, certifying small global
+optima, and searching larger instances empirically.  The last task is never
+used as a proof.
+
+The strongest universal result is the difference between \(k\) and \(k-1\).
+The ambient and normal errors may include a new residual at the root, whereas
+the projected and reduced root errors cannot.  This removes exactly one
+source in a homogeneous tree.  The coefficient is a theorem-level upper
+bound; its fixed-\(\eta\) optimality is not inferred from the form of the
+proof.
+
+\section{Contributions and epistemic status}
+
+The contributions are mapped one-to-one to registry entries and evidence:
+
+\begin{enumerate}[leftmargin=*]
+\item an exact local subset expansion and exact orthogonal relationship among
+the four named root errors (Theorem~\ref{thm:subset} and
+Proposition~\ref{prop:root});
+\item universal \(k\) and \(k-1\) homogeneous coefficients valid for
+heterogeneous types, laws, and arities under uniform \(M,\rho\)
+(Theorem~\ref{thm:homogeneous});
+\item a mixed-state dynamic program, residual path sums, and a globally
+optimal ordering theorem within the scalar telescoping family
+(Theorems~\ref{thm:dp} and~\ref{thm:order});
+\item certified explicit lower constructions, exact small symbolic cases,
+and independent empirical searches with explicit optimality gaps; and
+\item a deduplicated finite experiment and artifact protocol that tests sound
+bounds, topology effects, signed forests, CP/projection separation, precision,
+and CPU/GPU parity.
+\end{enumerate}
+
+The exact expansion and ambient coefficient are conservative specializations
+of standard multilinear analysis.  The projected-root, mixed-mask, and
+path-sum formulations were not located verbatim in the bounded prior-art
+search, but absence from that search is not novelty evidence.  Every candidate
+novelty claim therefore remains \texttt{NOVELTY\_NOT\_ESTABLISHED} and every
+theorem remains \texttt{PENDING\_HUMAN\_REVIEW}.
+
+\section{Prior art}
+
+Typed tree composition is standard in colored operads
+\cite{Yau2016,LodayVallette2012}.  Filippov's (n)-Lie identity and the
+Akivis--Sabinin landscape motivate signed nonassociative forests
+\cite{Filippov1985,MostovoyPerezIzquierdoShestakov2014}.  Approximate
+multiplicativity in Banach algebras studies stability of maps under different
+global hypotheses \cite{Johnson1988}; it is adjacent to, but does not directly
+solve, the fixed-tree recursive projection problem.
+
+Forward and backward error analysis already make composition order and local
+perturbation propagation central \cite{Higham2002}.  Layered Lipschitz
+certificates and sound abstract interpretation likewise demonstrate that
+architecture-aware summaries can improve naive products
+\cite{CombettesPesquet2020,GehrEtAl2018}.  These are strong prior-art reasons
+not to claim that a dynamic program is intrinsically new.
+
+Hierarchical tensor formats use dimension trees and topology-adaptive
+approximation \cite{HackbuschKuhn2009,BallaniGrasedyck2014}.  Their principal
+error is representation or rank truncation, while the present principal error
+is a normal closure defect created at every algebraic node.  CP approximation,
+factor nonuniqueness, and identifiability are kept separate
+\cite{KoldaBader2009,Kruskal1977}.  Projection-based structure-preserving
+model reduction supplies further adjacent precedent \cite{EggerEtAl2018}.
+
+Validated interval arithmetic and moment/SOS methods provide global
+certification tools when their hypotheses and solver statuses are verified
+\cite{MooreKearfottCloud2009,Lasserre2001}.  V3 uses directed interval
+recursion and exact symbolic elimination in selected low-dimensional cases;
+it does not label an imported SDP interface as a certificate merely because
+the package imports.
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Prior-art overlap matrix generated from the v3 registry.  A bounded search cannot establish novelty.}
+\label{tab:prior}
+\resizebox{\textwidth}{!}{\input{tables/prior_art_matrix}}
+\end{table}
+
+\section{Typed composition trees}
+
+Let \(\Types\) be a finite set of types.  For each \(\tau\in\Types\), let
+\(V_\tau\) and \(W_\tau\) be finite-dimensional real or complex Hilbert
+spaces, let \(Q_\tau:W_\tau\to V_\tau\) be an isometry, and put
+\(P_\tau=Q_\tau Q_\tau^*\).  An internal vertex \(v\) of arity \(a_v\)
+carries a bounded law
+
+\[
+ \mu_v:\prod_{j=1}^{a_v}V_{\tau(v,j)}\longrightarrow V_{\tau(v)}.
+\]
+
+Each ordered child edge must match its declared input type.  Type-invalid
+trees have no numerical semantics and are rejected before contraction.
+
+\begin{table}[t]
+\centering\small
+\caption{Typed notation generated from the implementation contract.}
+\label{tab:notation}
+\input{tables/typed_notation}
+\end{table}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig01_typed_tree_semantics}
+\caption{\FigCaptionOne}
+\label{fig:semantics}
+\end{figure}
+
+\section{Ambient and recursively projected evaluations}
+
+For reduced leaf data \(z_\ell\in W_{\tau(\ell)}\), define
+
+\[
+ F_\ell=R_\ell=Q_{\tau(\ell)}z_\ell,
+ \quad
+ F_v=\mu_v(F_{c_1},\ldots,F_{c_{a_v}}),
+ \quad
+ R_v=P_{\tau(v)}\mu_v(R_{c_1},\ldots,R_{c_{a_v}}).
+\]
+
+At the root, write \(F=F_T\), \(R=R_T\), and \(P=P_{\tau(T)}\).  The four
+errors are
+
+\[
+ E_T^{\rm amb}=\norm{F-R},\quad
+ E_T^P=\norm{PF-R},\quad
+ E_T^N=\norm{(I-P)F},\quad
+ E_T^{\rm red}=\norm{Q^*F-Q^*R}.
+\]
+
+\begin{proposition}[Exact root geometry]
+\label{prop:root}
+For every valid typed tree,
+
+\[
+ (E_T^{\rm amb})^2=(E_T^P)^2+(E_T^N)^2,
+ \qquad E_T^{\rm red}=E_T^P.
+\]
+\end{proposition}
+
+The proof is the orthogonal decomposition
+\(F-R=(PF-R)+(I-P)F\); Appendix~\ref{app:proofs} records the complete
+argument.  Orthogonality is essential and is tested independently in the
+reference and vectorized evaluators.
+
+\section{Exact local error decomposition}
+
+At a node \(v\), abbreviate \(F_i=F_{c_i}\), \(R_i=R_{c_i}\), and
+\(D_i=F_i-R_i\).  Define
+
+\[
+ r_v=(I-P_v)\mu_v(P_{c_1}\cdot,\ldots,P_{c_a}\cdot).
+\]
+
+\begin{theorem}[Exact child-error subset expansion]
+\label{thm:subset}
+For \(y_i^S=D_i\) if \(i\in S\) and \(y_i^S=R_i\) otherwise,
+
+\[
+ D_v=r_v(R_1,\ldots,R_a)
+ +\sum_{\varnothing\ne S\subseteq[a]}
+ \mu_v(y_1^S,\ldots,y_a^S).
+\]
+\end{theorem}
+
+The term indexed by \(S\) records exactly which child branches carry an
+error.  Singleton subsets are first-order propagated errors; larger subsets
+are genuine branch interactions.  Applying \(P_v\) removes the local
+residual exactly but not the propagated interactions.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig02_exact_node_decomposition}
+\caption{\FigCaptionTwo}
+\label{fig:decomposition}
+\end{figure}
+
+\section{Dynamic-programming certificates}
+
+For each node, the implementation stores \(B_v^F,B_v^R,B_v^A,B_v^P,B_v^N\)
+and certified mixed-block norms.  Splitting each child error as
+\(D_i=D_i^P+D_i^N\) creates three slot states: recursively projected \(R\),
+projected error \(D^P\), and normal error \(D^N\).  Every state vector other
+than all \(R\) is bounded separately.
+
+\begin{theorem}[Sound mixed-mask recursion]
+\label{thm:dp}
+The three-state recursion returns valid full, projected, and normal root
+certificates.  Its complexity is
+
+\[
+ O\!\left(|T|3^{a_{\max}}+|T|a_{\max}\log a_{\max}\right),
+\]
+
+and is linear in \(|T|\) for the declared arities two through four.
+\end{theorem}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Generated nodewise formulas.  Each row is an upper-bound contract, not an equality with observed error.}
+\label{tab:formulas}
+\resizebox{\textwidth}{!}{\input{tables/nodewise_formulas}}
+\end{table}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Block-D certificate hierarchy.  Entries are median ratios to the homogeneous ambient certificate on the same instances.}
+\label{tab:hierarchy}
+\resizebox{\textwidth}{!}{\input{tables/bound_hierarchy}}
+\end{table}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig03_bound_hierarchy}
+\caption{\FigCaptionThree}
+\label{fig:hierarchy}
+\end{figure}
+
+\section{Optimal telescoping order}
+
+For a single multilinear replacement, let \(e_i\) bound the slot error,
+\(r_i,f_i\) the projected and ambient child magnitudes, and \(G_i\) a
+slot-specific gain.  Set \(w_i=G_ie_i\) and
+
+\[
+ C(\pi)=\sum_t w_{\pi_t}
+ \prod_{s<t}r_{\pi_s}\prod_{s>t}f_{\pi_s}.
+\]
+
+\begin{theorem}[Globally optimal order within the scalar family]
+\label{thm:order}
+Put \(d_i=f_i-r_i\).  Sort positive \(d_i\), then zero \(d_i\), then
+negative \(d_i\), and within each nonzero sign class sort \(w_i/d_i\)
+increasingly.  The resulting permutation globally minimizes \(C(\pi)\).
+\end{theorem}
+
+The adjacent exchange condition is
+\(w_i(f_j-r_j)\le w_j(f_i-r_i)\).  Exhaustive property tests compare the
+sorting rule against every permutation through arity seven, including zero
+and negative denominators.  The theorem optimizes this scalar telescoping
+family only.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.9\textwidth]{fig10_optimal_telescoping_order}
+\caption{\FigCaptionTen}
+\label{fig:order}
+\end{figure}
+
+\section{Homogeneous universal bounds}
+
+Let \(k(T)\) be the number of internal vertices and
+\(L_T=\prod_\ell\norm{z_\ell}\).  Assume every node law has norm at most
+\(M\) and every closure map has norm at most \(\rho\).
+
+\begin{theorem}[Universal coefficients]
+\label{thm:homogeneous}
+For every finite valid typed tree,
+
+\[
+ E_T^{\rm amb}\le k\rho M^{k-1}L_T,
+ \qquad
+ E_T^N\le k\rho M^{k-1}L_T,
+\]
+
+and
+
+\[
+ E_T^P=E_T^{\rm red}\le(k-1)\rho M^{k-1}L_T.
+\]
+\end{theorem}
+
+The proof is an induction on the tree.  Propagated child errors contribute
+\(\sum_i k_{c_i}=k-1\), and the new root residual contributes one additional
+unit only to ambient and normal error.
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Registered homogeneous ambient constants from block B.  Lower values are interval-enclosed construction ratios.}
+\label{tab:ambient}
+\resizebox{.97\textwidth}{!}{\input{tables/homogeneous_ambient_constants}}
+\end{table}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.96\textwidth]{fig06_k_vs_k_minus_one}
+\caption{\FigCaptionSix}
+\label{fig:kminusone}
+\end{figure}
+
+\section{Projected-root improvement}
+
+The coefficient \(k-1\) is not a heuristic correction.  The root local
+residual belongs to the normal space and is annihilated by \(P\).  In
+particular, a one-node tree has \(E_T^P=E_T^{\rm red}=0\), even when its
+ambient error is nonzero.  For a five-input ternary associator represented
+as two signed two-node trees, the immediate triangle coefficient is therefore
+\(1+1=2\), not the ambient \(2+2=4\).
+
+This proof establishes a universal upper.  It does not establish that \(k-1\)
+is the best coefficient at every fixed \(\eta=\rho/M>0\), dimension, rank,
+topology, or repeated-law class.
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Registered homogeneous projected-root constants.  Small-\(\eta\) explicit lower constructions may remain far below the proved upper.}
+\label{tab:projected}
+\resizebox{\textwidth}{!}{\input{tables/homogeneous_projected_constants}}
+\end{table}
+
+\section{Nodewise path-sum bounds}
+
+Fix a valid telescoping order at each ancestor.  If a source residual at
+node \(v\) has magnitude bound
+\(\lambda_v=\rho_v\prod_iB_{c_i}^R\), and \(h_{a,j}\) is the certified gain
+for propagating child \(j\) through ancestor \(a\), then
+
+\[
+ B_{T,\rm path}^{\rm amb}
+ =\sum_{v\in\Int T}\lambda_v
+ \prod_{(a,j)\in\operatorname{path}(v,\operatorname{root})}h_{a,j}.
+\]
+
+For projected-root error, the root source is absent and the final edge uses
+a projected-output gain.  The artifact schema records every source
+contribution so that the total can be independently reconstructed.
+
+\section{Sharpness constructions}
+
+The principal explicit family acts on a two-dimensional tangent/normal plane.
+For \(0\le\eta\le1\), let
+
+\[
+ T_\eta=\begin{bmatrix}
+ \sqrt{1-\eta^2}&-\eta\\
+ \eta&\sqrt{1-\eta^2}
+ \end{bmatrix}.
+\]
+
+The first slot is rotated by \(T_\eta\), while all remaining slots gate on
+their first coordinate.  The multilinear operator norm is one and the local
+closure norm is exactly \(\eta\).  Embedding this plane into larger ambient
+dimensions preserves the lower value.  Directed interval recursion encloses
+the resulting normalized tree error.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.92\textwidth]{fig11_extremizer_geometry}
+\caption{\FigCaptionEleven}
+\label{fig:extremizer}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.86\textwidth]{fig05_sharpness_profile}
+\caption{\FigCaptionFive}
+\label{fig:sharpness}
+\end{figure}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Best registered explicit construction cells by error type.}
+\label{tab:extremizers}
+\resizebox{\textwidth}{!}{\input{tables/extremizer_constructions}}
+\end{table}
+
+\section{Signed polynomial expressions}
+
+A compatible signed forest is
+\(\cF=\sum_\alpha c_\alpha T_\alpha\).  The unconditional certificate is
+the coefficient-weighted sum of per-tree bounds.  V3 first combines
+syntactically identical terms exactly, represents shared subtrees as an
+expression DAG, and then evaluates the whole signed expression during
+adversarial search.  Only the first operation is an unconditional symbolic
+cancellation theorem; adversarial values are lower bounds.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.9\textwidth]{fig13_signed_polynomial_cancellation}
+\caption{\FigCaptionThirteen}
+\label{fig:signed}
+\end{figure}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Associator and signed-expression constants generated from block G.}
+\label{tab:signed}
+\resizebox{\textwidth}{!}{\input{tables/signed_expression_constants}}
+\end{table}
+
+\section{Certified small-case optimization}
+
+An explicit attained value is a rigorous lower bound only after its
+admissibility is checked.  Directed interval arithmetic encloses the
+gated-rotation recursion.  For selected univariate quadratic reductions, an
+independent exact symbolic routine enumerates the endpoints and stationary
+points on \([-1,1]\) and retains the exact nonnegativity witness.  An SDP
+package import is recorded only as availability; no solver status is promoted
+to a certificate without validation.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.86\textwidth]{fig12_certified_optimality_gaps}
+\caption{\FigCaptionTwelve}
+\label{fig:gaps}
+\end{figure}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Exact and certified small cases selected from block A.}
+\label{tab:small}
+\resizebox{\textwidth}{!}{\input{tables/exact_small_constants}}
+\end{table}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Optimality-gap registry aggregated by named error.}
+\label{tab:gaps}
+\resizebox{\textwidth}{!}{\input{tables/optimality_gaps}}
+\end{table}
+
+\section{Adversarial numerical search}
+
+The empirical interface provides two independent optimizer families:
+automatic-differentiation search with Adam followed by L-BFGS, and
+derivative-free differential evolution.  Inputs and tensors are normalized
+after each admissibility update.  Every trajectory, failed status, and
+independent disagreement is retained.  Optimizers can improve a lower bound;
+they cannot certify that no better point exists.
+
+The pilot run used two seeds and two gradient restarts plus an independent
+derivative-free recheck.  The requested extended schedule contains
+\VThreeExtendedTrajectories{} trajectories and remains resource-gated; its
+absence is a release blocker rather than an omitted detail.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.88\textwidth]{fig16_adversarial_convergence}
+\caption{\FigCaptionSixteen}
+\label{fig:optimization}
+\end{figure}
+
+\section{Granular experimental results}
+
+The base matrix contains blocks A--I: exact small cases, universal constant
+profiles, dimension/rank embeddings, nodewise certificate comparisons, typed
+controls, exhaustive leakage masks, signed forests, CP/projection budgets,
+and precision/device checks.  Repeated executions are not independent
+scientific instances.  The complete base has \VThreeScientificInstances{}
+unique cells; optimizer seeds and restarts that were not run are labeled
+pending rather than silently collapsed.
+
+\begin{table}[p]
+\centering\small
+\caption{Exhaustive ordered-tree enumeration statistics.  Cross-grammar hash reuse is intentional.}
+\label{tab:topology}
+\input{tables/topology_statistics}
+\end{table}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig04_universal_constant_atlas}
+\caption{\FigCaptionFour}
+\label{fig:atlas}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.86\textwidth]{fig07_topology_phase_diagram}
+\caption{\FigCaptionSeven}
+\label{fig:phase}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.96\textwidth]{fig08_node_contribution_map}
+\caption{\FigCaptionEight}
+\label{fig:contributions}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.86\textwidth]{fig09_residual_interactions}
+\caption{\FigCaptionNine}
+\label{fig:interactions}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.9\textwidth]{fig15_dimension_rank_phase}
+\caption{\FigCaptionFifteen}
+\label{fig:dimension}
+\end{figure}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Dimension/rank interaction.  The registered lower is an embedded dimension-two construction.}
+\label{tab:dimension}
+\resizebox{\textwidth}{!}{\input{tables/dimension_rank_interaction}}
+\end{table}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Precision and conditioning controls.}
+\label{tab:precision}
+\resizebox{\textwidth}{!}{\input{tables/precision_conditioning}}
+\end{table}
+
+\begin{table}[p]
+\centering\small
+\caption{CPU/GPU parity.  The tolerance is a validation threshold, not a theorem error.}
+\label{tab:parity}
+\resizebox{.82\textwidth}{!}{\input{tables/cpu_gpu_parity}}
+\end{table}
+
+\section{Counterexamples and negative controls}
+
+The assumptions are operational, not decorative.
+
+\begin{enumerate}[leftmargin=*]
+\item If \(P\) is oblique, Proposition~\ref{prop:root} can fail.  For
+\(P=\begin{bmatrix}1&1\\0&0\end{bmatrix}\) and \(D=(0,1)^\top\), the
+components \(PD=(1,0)^\top\) and \((I-P)D=(-1,1)^\top\) are not orthogonal.
+\item A type-invalid edge cannot be repaired by numerical broadcasting; all
+48 declared invalid block-E controls are rejected before evaluation.
+\item A one-node projected constant is exactly zero, disproving any formula
+that blindly assigns one local residual to projected-root error.
+\item Cancellation in a signed forest can make a triangle certificate strict;
+an empirical lower never reverses the upper-bound implication.
+\item Larger dimension contains the dimension-two construction, but this
+embedding alone does not show that additional coordinates improve the optimum.
+\end{enumerate}
+
+\begin{table}[p]
+\centering\small
+\caption{Failure and counterexample registry.  Open scientific questions are retained as blockers.}
+\label{tab:failures}
+\resizebox{.94\textwidth}{!}{\input{tables/failure_counterexample_registry}}
+\end{table}
+
+\section{Approximation plus projection}
+
+Let \(\widehat\mu_v\) approximate \(\mu_v\) with
+\(\delta_v=\norm{\mu_v-\widehat\mu_v}_{\op}\).  Inserting the ambient
+\(\widehat\mu\)-tree separates representation from recursive projection:
+
+\[
+ \norm{F_\mu-R_{\widehat\mu}}
+ \le\norm{F_\mu-F_{\widehat\mu}}
+    +\norm{F_{\widehat\mu}-R_{\widehat\mu}}.
+\]
+
+In the homogeneous \(k\)-node case, the transparent budget is
+
+\begin{align*}
+ E_{\rm repr}&\le k\delta(M+\delta)^{k-1}L,\\
+ E_{\rm closure,base}&\le c\rho M^{k-1}L,\\
+ E_{\rm interaction}&\le
+ c\rho\bigl[(M+\delta)^{k-1}-M^{k-1}\bigr]L,
+\end{align*}
+
+with \(c=k\) for ambient error and \(c=k-1\) for projected-root error.
+CP reconstruction error is not folded into \(\rho\).
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.86\textwidth]{fig14_cp_projection_budget}
+\caption{\FigCaptionFourteen}
+\label{fig:cp}
+\end{figure}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Generated CP plus projection budget.  Components sum to a theorem upper, not to observed error.}
+\label{tab:cp}
+\resizebox{\textwidth}{!}{\input{tables/cp_projection_budget}}
+\end{table}
+
+\section{Limitations}
+
+The principal limitations are mathematical rather than cosmetic.
+
+\begin{enumerate}[leftmargin=*]
+\item The fixed-\(\eta\) optimal constants are unknown for most projected,
+typed, repeated-law, and signed-forest families.
+\item The exact \(k-1\) formulation and mixed-mask specialization have not
+received an independent expert novelty review.
+\item Interval enclosures certify explicit constructions, not the global
+supremum unless an independent upper closes the gap.
+\item The base matrix retains every requested scientific axis, but the full
+seed/restart optimizer grid is pending under an explicit resource gate.
+\item Operator norms are exact only for declared special constructions;
+general dense and CP laws may use Frobenius upper bounds.
+\item All results are finite-dimensional.  No continuum, infinite-tree,
+measurability, or discretization-limit theorem is claimed.
+\end{enumerate}
+
+\section{Open problems}
+
+The central open questions are:
+
+\begin{enumerate}[leftmargin=*]
+\item determine the exact fixed-\(\eta\) projected constant
+\(C_T^P(\eta)\) for nontrivial topology families;
+\item decide whether dimension or projector rank can improve upon embedded
+planar constructions;
+\item obtain cancellation-aware certified constants for associator, FI, GJI,
+and Jacobiator forests;
+\item characterize when mixed-mask, path-sum, and optimized telescoping
+certificates dominate one another;
+\item replace Frobenius operator bounds by validated tensor spectral-norm
+certificates at useful scale; and
+\item complete an independent prior-art and proof audit sufficient to change
+the novelty status, if justified.
+\end{enumerate}
+
+\section{Conclusion}
+
+Recursive orthogonal projection on a typed multilinear tree has an exact local
+error algebra.  That algebra yields a sound source-resolved dynamic program,
+a closed-form optimal ordering within the scalar telescoping family, and the
+universal distinction between \(k\) ambient sources and \(k-1\) projected
+sources.  The finite evidence is broad enough to expose topology,
+interaction, precision, and representation effects, but not broad enough to
+resolve most fixed-\(\eta\) optima or theorem-level novelty.  The appropriate
+outcome is therefore a reproducible research draft with a fail-closed release
+gate.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig18_claim_evidence_dag}
+\caption{\FigCaptionEighteen}
+\label{fig:dag}
+\end{figure}
+
+\appendix
+\input{proofs/full_proofs}
+
+\section{Extremizer tables}
+\label{app:extremizers}
+
+The complete machine-readable extremizer registry stores the mathematical
+object hash, construction, interval lower, theorem upper, and gap for every
+block-A and block-B cell.  Table~\ref{tab:extremizers} is the compact body
+summary; Figures~\ref{fig:sharpness} and~\ref{fig:gaps} expose selected
+profiles.  The supplementary vector atlases under
+\texttt{figures/atlas\_fig04\_*} retain topology-resolved tiles without
+compressing them into an unreadable main panel.
+
+\section{Reproducibility appendix}
+\label{app:reproducibility}
+
+All calculations were executed inside the single repository.  The canonical
+base pipeline validates the budget, enumerates trees, runs exact and base
+blocks, aggregates scientific instances, builds generated tables and vector
+figures, compiles both manuscripts, renders every page, runs adversarial
+audits, and emits the strict release status.  Every run directory includes
+resolved configuration, command, environment, hardware, source commit,
+mathematical-object and input hashes, tensors, metrics, certificates, logs,
+and artifact hashes.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig17_computational_scaling}
+\caption{\FigCaptionSeventeen}
+\label{fig:scaling}
+\end{figure}
+
+\begin{table}[p]
+\centering\small
+\caption{Generated reproducibility manifest.  The displayed source commit is the development checkpoint and is replaced by the immutable v3 source commit for the canonical final rerun.}
+\label{tab:manifest}
+\resizebox{.96\textwidth}{!}{\input{tables/reproducibility_manifest}}
+\end{table}
+
+The software companion gives the API and command-level details.  The strict
+gate requires a clean immutable rerun, no unexplained bound violation, all
+four reviews at least acceptable as a preprint, visual PDF inspection, and
+an established novelty status.  Until those conditions hold, the presence of
+a compiled PDF is not a release authorization.
+
+\FloatBarrier
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

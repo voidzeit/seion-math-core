@@ -1,0 +1,292 @@
+\documentclass[11pt]{amsart}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{array,booktabs,tabularx}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+\graphicspath{{../tree_stability_v3/figures/}}
+\sisetup{detect-all,group-separator={,},group-minimum-digits=4}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={SEION Math Core v3: Typed Tree Certificates and Reproducible Experiments},
+  pdfauthor={Eliuth Chavero Jasso},
+  pdfsubject={Reproducible software and artifact protocol for finite typed multilinear tree certificates},
+  pdfkeywords={research software, typed tree, multilinear tensor, CUDA parity, interval arithmetic, reproducibility}
+}
+\input{../tree_stability_v3/generated_results}
+
+\title[Typed tree verification software]{SEION Math Core v3: A Reproducible Verification Suite for Typed Multilinear Tree Certificates}
+\author{Eliuth Chavero Jasso}
+\address{Independent Researcher, Apizaco, Tlaxcala, Mexico}
+\thanks{Software/reproducibility companion. Contact metadata and release authorization remain pending author and human-review gates.}
+\date{29 July 2026}
+
+\begin{document}
+
+\begin{abstract}
+This companion specifies the software and artifact protocol used to evaluate finite typed multilinear composition trees under recursive orthogonal projection.  The implementation separates explicit-coordinate and vectorized NumPy evaluators, a float64 CUDA evaluator, exact ordered-tree enumeration, dynamic-programming certificates, directed interval lower constructions, independent gradient and derivative-free search, signed forests, and CP/projection budgets.  The base registry contains \VThreeScientificInstances{} deduplicated scientific instances, \VThreeTreeOccurrences{} enumerated tree occurrences, and \VThreeLeakageMasks{} exhaustive leakage-mask evaluations; the maximum registered CPU/GPU difference is \VThreeMaxParity{}.  Every run records source, resolved configuration, mathematical-object and input hashes, tensors, hardware, environment, metrics, certificates, logs, and artifact hashes.  The companion documents a resource-gated extended optimizer grid rather than presenting unexecuted seeds as evidence.  It makes no mathematical novelty claim and does not substitute software completeness for independent theorem review.
+\end{abstract}
+
+\subjclass[2020]{68N30, 65Y05, 65G50, 15A69}
+\keywords{research software, multilinear tensor, typed tree, reproducibility, CUDA parity, interval arithmetic}
+\maketitle
+
+\section{Scope and separation from the mathematics paper}
+
+The mathematical manuscript proves finite error identities and upper bounds.
+This companion answers a different question: can the declared finite objects,
+certificates, experiments, figures, tables, and PDFs be regenerated from one
+repository with failures retained?  It describes interfaces and evidence
+contracts, not theorem novelty.  The strict status remains
+\VThreeReleaseStatus{} because novelty, human approval, and the extended
+optimizer grid are unresolved.
+
+\section{Repository architecture}
+
+\begin{center}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.55\textwidth}X@{}}
+\toprule
+path & role\\
+\midrule
+\path{src/seion_core/research_v3/types.py} & finite typed Hilbert spaces, isometries, and orthogonal projectors\\
+\path{src/seion_core/research_v3/typed_tree.py} & immutable leaves/nodes, validation, canonical serialization, and hashes\\
+\path{src/seion_core/research_v3/tree_enumeration.py} & exact ordered binary, ternary, quaternary, and mixed-arity enumeration\\
+\path{src/seion_core/research_v3/exact_evaluation.py} & explicit-coordinate and NumPy ambient evaluators\\
+\path{src/seion_core/research_v3/projected_evaluation.py} & recursive projection, named root errors, and Torch CPU/CUDA evaluator\\
+\path{src/seion_core/research_v3/certificates.py} & homogeneous, nodewise, mixed-mask, and path-sum certificates\\
+\path{src/seion_core/research_v3/telescoping_order.py} & pair-exchange cost and deterministic optimal ordering\\
+\path{src/seion_core/research_v3/interval_certification.py} & directed interval recursion for explicit lower constructions\\
+\path{src/seion_core/research_v3/adversarial_search.py} & Adam/L-BFGS and derivative-free empirical lower search\\
+\path{src/seion_core/research_v3/run_schema.py} & immutable-style run identity and mandatory artifact contract\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+All v3 additions remain under this repository.  Historical v1/v2 artifacts
+are not overwritten.
+
+\section{Typed tree API}
+
+A \texttt{TypedSpace} validates the ambient dimension, reduced dimension,
+isometry, and projector identities.  A \texttt{TypedLaw} carries an ordered
+input signature, output type, and dense tensor.  A \texttt{Leaf} carries a
+label and type; a \texttt{Node} carries a law identifier, output type, and
+ordered children.  Validation occurs before evaluation:
+
+\begin{enumerate}[leftmargin=*]
+\item every leaf label resolves to reduced input data of the declared size;
+\item every child output type equals the corresponding law input type;
+\item every law tensor shape agrees with its signature; and
+\item every isometry and projector passes dimension and orthogonality checks.
+\end{enumerate}
+
+Invalid edges are negative controls, not failed floating-point contractions.
+
+\section{Exhaustive enumerator}
+
+The enumerator uses exact recursive grammars with canonical ordered and
+unordered shape identifiers.  It records depth, leaf-depth statistics,
+imbalance, Strahler number, path-length sum, automorphism count, repeated
+subtrees, and expression-DAG compression.  Hash uniqueness is checked within
+each grammar; cross-grammar reuse is intentional when a mixed grammar contains
+a pure binary, ternary, or quaternary tree.
+
+\begin{table}[t]
+\centering
+\caption{Generated enumeration summary.}
+\input{../tree_stability_v3/tables/topology_statistics}
+\end{table}
+
+\section{Evaluation engines and parity}
+
+The coordinate reference evaluator applies each tensor with explicit index
+loops.  The independent NumPy path contracts modes through Einstein/tensordot
+operations.  Recursive projection is applied after every node law.  The
+Torch path disables TF32 and mixed precision for the float64/complex128 parity
+contract.
+
+Tests cover real and complex data, arities two through four, repeated leaves,
+invalid signatures, exact root identities, and CPU/GPU parity.  The benchmark
+uses an exactly invariant control so reference, NumPy, and CUDA semantics
+coincide.
+
+\begin{table}[t]
+\centering
+\caption{Generated CPU/GPU parity summary.}
+\resizebox{.84\textwidth}{!}{\input{../tree_stability_v3/tables/cpu_gpu_parity}}
+\end{table}
+
+\section{Certificate engine}
+
+At each node the engine carries full/projected magnitudes and
+ambient/projected/normal errors.  It can use:
+
+\begin{enumerate}[leftmargin=*]
+\item the homogeneous \(k\) and \(k-1\) certificates;
+\item a direct nodewise subset bound;
+\item full \(R,D^P,D^N\) mixed masks;
+\item arbitrary and theorem-optimal scalar telescoping orders; and
+\item a source-resolved path sum.
+\end{enumerate}
+
+The implementation takes a minimum only among independently valid upper
+bounds.  It never takes the minimum of an empirical lower and a certificate.
+
+\section{Certified and empirical optimizer interfaces}
+
+The interval interface encloses explicit construction values with directed
+arithmetic.  The exact symbolic small-case routine uses rational stationary
+point elimination and retains a nonnegativity witness.  The optional SOS
+status reports import and solver availability but creates no certificate
+without a validated relaxation status.
+
+The adversarial interface has two independent families: automatic
+differentiation with Adam followed by L-BFGS, and differential evolution.
+Optimization history records seed, restart, step, phase, attained ratio, and
+success.  All values remain \texttt{EMPIRICAL\_LOWER\_BOUND} unless paired
+with an independent rigorous upper that closes the gap.
+
+\section{Experiment matrix and resource gate}
+
+Blocks A--I execute the base mathematical cells.  Block J declares the
+extended seed/restart schedule.  The resolved budget found
+\VThreeExtendedTrajectories{} requested optimizer trajectories and an
+optimistic wall time of roughly sixteen hours, with a naive per-trajectory
+artifact layout producing hundreds of thousands of files.  The resource
+resolution preserves every scientific axis, executes rigorous uppers and
+explicit lowers for each base cell, retains the full requested schedule in a
+resumable extension, and blocks release while that extension is pending.
+
+This is a change in execution tier, not a silent reduction of the requested
+matrix.  Required seeds and executed seeds have separate fields.
+
+\section{Artifact schema}
+
+Every run directory contains at least:
+
+\begin{center}
+\small
+\begin{tabularx}{.96\textwidth}{@{}lX@{}}
+\toprule
+group & files\\
+\midrule
+identity & \texttt{config.yaml}, \texttt{resolved\_config.yaml}, \texttt{run\_manifest.json}, \texttt{command.txt}\\
+environment & \texttt{environment.json}, \texttt{hardware.json}, stdout/stderr logs\\
+mathematical object & \texttt{tree.json}, \texttt{tree.svg}, \texttt{type\_signature.json}, \texttt{law\_tensors.npz}\\
+evidence & local constants, reference metrics, optimization history, node contributions, final metrics, certificate\\
+integrity & summary and \texttt{artifact\_hashes.json}\\
+extremizer extension & best lower, certified upper, gap, tensor, inputs, and independent recheck\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The scientific-instance hash excludes seed and restart; the run identity does
+not.  This prevents repeated executions of the same mathematical cell from
+being counted as independent experiments.
+
+\section{Figures and generated tables}
+
+The figure builder creates \VThreeFigureCount{} main vector figures and eight
+supplementary topology atlases.  Mathematical diagrams are compiled from TikZ;
+large data plots use a centralized colorblind-safe Matplotlib style.  PDF is
+canonical and SVG is generated for documentation.  Each figure-manifest entry
+records source artifacts, hashes, metric, unique instance count, seed/restart
+status, uncertainty, theorem reference, supported conclusion, and unsupported
+conclusion.
+
+The table builder creates \VThreeTableCount{} mandatory LaTeX tables directly
+from Parquet/CSV indexes.  No experimental value is typed into either
+manuscript.
+
+\section{Computational scaling}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig17_computational_scaling}
+\caption{Registered reference/NumPy/CUDA scaling.  The 15 backend/size cells use five timing repeats and 15--30 calls per repeat.  Error bars are repeat min--max; the result is environment-specific and does not establish cross-hardware superiority.}
+\end{figure}
+
+The current hardware is an NVIDIA RTX PRO 5000 Blackwell Generation Laptop
+GPU with approximately 24 GiB device memory.  The registered invariant-control
+benchmark has exact reference/NumPy/CUDA parity and reports wall time,
+throughput, traced RAM, and allocated VRAM separately.  Timing results are not
+used in mathematical claims.
+
+\section{Reproduction commands}
+
+The public entry points are:
+
+\begin{verbatim}
+.\scripts\run_tree_constants_v3_smoke.ps1
+.\scripts\run_tree_constants_v3_exact.ps1
+.\scripts\run_tree_constants_v3_full.ps1
+.\scripts\run_tree_constants_v3_extended.ps1
+.\scripts\resume_tree_constants_v3.ps1
+.\scripts\build_tree_constants_v3_figures.ps1
+.\scripts\build_tree_constants_v3_paper.ps1
+.\scripts\audit_tree_constants_v3.ps1
+.\scripts\release_tree_constants_v3.ps1
+\end{verbatim}
+
+The canonical full command is intentionally fail-closed: it may regenerate
+all artifacts and PDFs successfully and still exit nonzero when novelty,
+human review, or the resource-gated extension remains unresolved.
+
+\section{PDF and release quality assurance}
+
+Both manuscripts are built by \texttt{latexmk} with nonstop interaction,
+halt-on-error, and file-line diagnostics.  The audit scans undefined
+references/citations, duplicate labels, missing figures, and critical
+overfull boxes; Poppler renders every page to PNG, a contact sheet is created,
+and the final PDF is hashed.  Four independent-role reviewer reports cover
+multilinear analysis, numerical certification, software reproducibility, and
+editorial/novelty risk.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig18_claim_evidence_dag}
+\caption{The claim/evidence DAG keeps proof, upper certificate, lower construction, empirical search, and release authorization in separate layers.}
+\end{figure}
+
+\begin{table}[p]
+\centering
+\caption{Generated reproducibility manifest.}
+\resizebox{.96\textwidth}{!}{\input{../tree_stability_v3/tables/reproducibility_manifest}}
+\end{table}
+
+\section{Limitations}
+
+The suite is finite-dimensional, the full optimizer extension is pending, and
+general dense tensor operator norms may use Frobenius upper bounds.  An
+immutable source commit can only be recorded after source generation and
+before the canonical rerun.  Most importantly, reproducibility and software
+coverage cannot establish theorem-level novelty or replace accountable human
+approval.
+
+\section{Conclusion}
+
+V3 separates typed syntax, exact evaluation, recursive projection, upper
+certification, lower construction, empirical search, aggregation,
+publication output, and release governance.  The base workflow is fully
+regenerable on the recorded environment.  Its conservative status is a
+feature of the artifact contract: unresolved mathematical and publication
+conditions remain visible and block release.
+
+\bibliographystyle{amsplain}
+\nocite{Higham2002,KoldaBader2009}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,104 @@
+version: 3
+scope: finite typed multilinear trees with recursive orthogonal projection
+search_date: 2026-07-29
+policy:
+  - Absence from a bounded search is not evidence of novelty.
+  - Standard operad semantics, telescoping, and norm products are not claimed as new.
+  - Software and exhaustive finite checks cannot establish theorem-level novelty.
+entries:
+  - id: PA_V3_COLORED_OPERADS
+    source: "Yau, Colored Operads"
+    source_url: https://doi.org/10.1090/gsm/170
+    established_result: Typed operations and rooted-tree partial composition are standard colored-operad semantics.
+    exact_overlap: The v3 type grammar and ordered tree model.
+    genuine_difference: Orthogonal projection defects and quantitative nodewise certificates are additional analytic data.
+    candidate_theorems: [THM_V3_EXACT_SUBSET_EXPANSION]
+    novelty_status: STANDARD_RESTRICTION_RESULT
+  - id: PA_V3_ALGEBRAIC_OPERADS
+    source: "Loday and Vallette, Algebraic Operads"
+    source_url: https://doi.org/10.1007/978-3-642-30362-3
+    established_result: Treewise composition and polynomial identities for algebras over operads.
+    exact_overlap: Signed forests and insertion-tree syntax.
+    genuine_difference: Quantitative normal leakage is not the monograph's central problem.
+    candidate_theorems: [COR_V3_PROJECTED_TERNARY_ASSOCIATOR_TWO]
+    novelty_status: KNOWN_BOUND_NEW_SPECIALIZATION
+  - id: PA_V3_APPROXIMATE_HOMOMORPHISMS
+    source: "Johnson, Approximately multiplicative maps between Banach algebras"
+    source_url: https://doi.org/10.1112/jlms/s2-37.2.294
+    established_result: Approximate multiplicativity can imply proximity to exact homomorphisms under Banach-algebra hypotheses.
+    exact_overlap: Quantitative stability language for algebraic structure.
+    genuine_difference: V3 propagates nodewise normal projection defects on a fixed finite tree rather than correcting a map globally.
+    candidate_theorems: [THM_V3_PROJECTED_ROOT_K_MINUS_ONE]
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: PA_V3_BACKWARD_ERROR
+    source: "Higham, Accuracy and Stability of Numerical Algorithms"
+    source_url: https://doi.org/10.1137/1.9780898718027
+    established_result: Compositional forward/backward error analysis and order-sensitive arithmetic bounds are standard.
+    exact_overlap: Local error propagation and evaluation-order comparisons.
+    genuine_difference: Exact multilinear projector residuals and typed tree topology.
+    candidate_theorems: [THM_V3_OPTIMAL_TELESCOPING_ORDER, THM_V3_NODEWISE_PATH_SUM]
+    novelty_status: KNOWN_BOUND_NEW_SPECIALIZATION
+  - id: PA_V3_LAYERED_LIPSCHITZ
+    source: "Combettes and Pesquet, Lipschitz Certificates for Layered Network Structures"
+    source_url: https://doi.org/10.1137/19M1272780
+    established_result: Architecture-sensitive composition can improve products of individual Lipschitz bounds.
+    exact_overlap: Dynamic propagation of local operator summaries.
+    genuine_difference: V3 uses multilinear branching, normal/projected blocks, and source residuals.
+    candidate_theorems: [THM_V3_NODEWISE_MIXED_CERTIFICATE]
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: PA_V3_ABSTRACT_INTERPRETATION
+    source: "Gehr et al., AI2"
+    source_url: https://doi.org/10.1109/SP.2018.00058
+    established_result: Sound compositional overapproximation through computational graphs.
+    exact_overlap: Nodewise abstract summaries and recursively propagated enclosures.
+    genuine_difference: No neural activation or robustness property; exact multilinear projector decomposition.
+    candidate_theorems: [THM_V3_NODEWISE_MIXED_CERTIFICATE]
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: PA_V3_HIERARCHICAL_TENSORS
+    source: "Hackbusch and Kuehn, A New Scheme for the Tensor Representation"
+    source_url: https://doi.org/10.1007/s00041-009-9094-9
+    established_result: Hierarchical tensor formats organize approximation by dimension trees.
+    exact_overlap: Topology-dependent finite tree calculations.
+    genuine_difference: V3 studies recursive projection of law outputs rather than rank truncation of one tensor.
+    candidate_theorems: [THM_V3_HOMOGENEOUS_AMBIENT_K]
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: PA_V3_TREE_ADAPTIVE_TENSORS
+    source: "Ballani and Grasedyck, Tree Adaptive Approximation in the Hierarchical Tensor Format"
+    source_url: https://doi.org/10.1137/130926328
+    established_result: Tree choice affects hierarchical tensor approximation and can be optimized computationally.
+    exact_overlap: Tree topology as an experimental factor.
+    genuine_difference: Constants concern closure and recursive projection, not hierarchical ranks.
+    candidate_theorems: [THM_V3_NODEWISE_PATH_SUM]
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: PA_V3_CP_TUCKER
+    source: "Kolda and Bader, Tensor Decompositions and Applications"
+    source_url: https://doi.org/10.1137/07070111X
+    established_result: CP/Tucker representation error and nonuniqueness are standard.
+    exact_overlap: Secondary CP representation budget.
+    genuine_difference: CP error is separated from closure error.
+    candidate_theorems: []
+    novelty_status: KNOWN_BOUND_NEW_SPECIALIZATION
+  - id: PA_V3_INTERVAL
+    source: "Moore, Kearfott, and Cloud, Introduction to Interval Analysis"
+    source_url: https://doi.org/10.1137/1.9780898717716
+    established_result: Directed interval arithmetic certifies finite enclosures.
+    exact_overlap: Small explicit lower-construction enclosures.
+    genuine_difference: Application to tree constant ratios only.
+    candidate_theorems: []
+    novelty_status: STANDARD_MULTILINEAR_BOUND
+  - id: PA_V3_SOS
+    source: "Lasserre, Global Optimization with Polynomials and the Problem of Moments"
+    source_url: https://doi.org/10.1137/S1052623400366802
+    established_result: Moment/SOS relaxations provide certified polynomial optimization bounds under stated conditions.
+    exact_overlap: Proposed small-case global certificates.
+    genuine_difference: V3 does not claim an SDP certificate unless solver and relaxation status are independently validated.
+    candidate_theorems: []
+    novelty_status: STANDARD_MULTILINEAR_BOUND
+  - id: PA_V3_STRUCTURE_PRESERVING_ROM
+    source: "Egger et al., Structure-Preserving Model Reduction"
+    source_url: https://doi.org/10.1137/17M1125303
+    established_result: Projection can preserve dynamical structure under compatibility conditions.
+    exact_overlap: Projection hypotheses and quantified loss of structure.
+    genuine_difference: Static finite multilinear composition trees and closure leakage.
+    candidate_theorems: [THM_V3_PROJECTED_ROOT_K_MINUS_ONE]
+    novelty_status: NOVELTY_NOT_ESTABLISHED

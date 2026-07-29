@@ -1,0 +1,111 @@
+version: 3
+title: Nodewise tree constants v3 complete declared matrix
+policy:
+  scientific_instance_excludes: [optimizer_restart, repeated_execution]
+  optimizer_variation_is_nested_within_instance: true
+  primary_precision: float64
+  complex_precision: complex128
+  certification_disallows: [tf32, mixed_precision]
+  stages: [exact, pilot, full, extended]
+  full_core_must_complete: true
+  extended_is_resumable: true
+  resource_gate_must_be_explicit: true
+blocks:
+  A_exact_sharpness_atlas:
+    stage: exact
+    arity: [2, 3]
+    internal_nodes: [1, 2, 3, 4]
+    shapes: all_ordered
+    dimensions: [2, 3]
+    projector_ranks: every_nontrivial
+    fields: [real]
+    eta: [1.0e-3, 1.0e-2, 1.0e-1, 0.5, 1.0]
+    errors: [ambient, projected_root, normal_root]
+    methods: [explicit_construction, interval, symbolic_polynomial]
+    required_outputs: [rigorous_lower, rigorous_upper, gap, extremizer, status]
+  B_homogeneous_sharpness:
+    stage: full
+    arity: [2, 3, 4]
+    internal_nodes: [2, 3, 4, 5, 6, 8, 12, 16, 24, 32]
+    topology: [left_comb, right_comb, maximally_balanced, minimally_balanced, random_ordered, high_strahler, low_strahler, repeated_subtree]
+    eta: [1.0e-8, 1.0e-7, 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 0.05, 0.1, 0.25, 0.5, 1.0]
+    dimension: [2]
+    projector_rank: [1]
+    optimizer_seeds: 20
+    restarts_per_seed: 8
+    initialization: [analytical_aligned_residual, random]
+  C_dimension_rank:
+    stage: full
+    arity: [2, 3, 4]
+    internal_nodes: [3, 6, 12, 24]
+    topology: [comb, balanced, random_ordered]
+    dimensions: [2, 4, 8, 16, 32, 64]
+    projector_rank_ratios: [0.125, 0.25, 0.5, 0.75]
+    eta: [1.0e-4, 1.0e-2, 0.1, 0.5]
+    seeds: 10
+  D_nodewise_heterogeneous:
+    stage: full
+    arity: [2, 3, 4]
+    internal_nodes: [3, 6, 12]
+    topology: [comb, balanced, random_ordered]
+    M_values: [0.5, 0.75, 1.0, 1.5, 2.0]
+    rho_over_M: [1.0e-4, 1.0e-2, 0.1, 0.5]
+    patterns: [uniform, root, leaves, deepest_path, alternating, random_log_uniform, one_dominant, two_branches]
+    seeds: 10
+    bound_families: [homogeneous, nodewise, path_sum, mixed_mask, optimized_order]
+  E_typed_heterogeneous:
+    stage: full
+    type_count: [2, 3, 4]
+    dimensions: heterogeneous_2_to_32
+    projector_ranks: heterogeneous_nontrivial
+    arities: [2, 3, 4, mixed]
+    distinct_laws_per_node_type: true
+    internal_nodes: [3, 6, 10, 16]
+    seeds: 10
+    invalid_type_controls: true
+  F_node_interactions:
+    stage: full
+    internal_nodes_exhaustive_masks: [1, 2, 3, 4, 5, 6, 7, 8]
+    topology: [comb, balanced, two_branch]
+    leakage_masks: all_2_power_k
+    larger_tree_method: designed_subset_sampling
+    outputs: [main_effects, pairwise_interactions, higher_interactions, shapley, alignment]
+  G_signed_identities:
+    stage: full
+    expressions: [five_input_ternary_associator, all_ternary_insertions, anchored_associator, jacobiator_variants, named_gji_variants, filippov_fundamental_identity, custom_signed_forests]
+    methods: [triangle, syntactic_cancellation, shared_dag, gradient_adversary, derivative_free, certified_small_case]
+    eta: [1.0e-4, 1.0e-2, 0.1, 0.5]
+    seeds: 20
+  H_cp_projection:
+    stage: full
+    dimensions: [16, 32, 64, 128]
+    cp_rank_fractions: [0.05, 0.1, 0.2, 0.4, 0.8]
+    internal_nodes: [2, 4, 8, 16]
+    topology: [comb, balanced]
+    eta: [1.0e-3, 1.0e-2, 0.1]
+    seeds: 10
+    metrics: [reconstruction, operator_output, recursive_representation, closure, total, theorem_budget, tightness]
+  I_precision:
+    stage: full
+    precisions: [float32, float64, complex64, complex128, arbitrary_precision, exact_rational]
+    real_complex_separated: true
+    cases: [small_exact, ill_conditioned, near_bound, optimizer_stability]
+    seeds: 10
+    metrics: [residual, backward_error, condition_estimate, optimizer_stability, violation_margin, cpu_gpu_parity]
+  J_performance:
+    stage: extended
+    hardware_target: RTX_PRO_5000_Blackwell_24GB
+    dimensions: [2, 4, 8, 16, 32, 64, 128]
+    arity: [2, 3, 4]
+    internal_nodes: [2, 4, 8, 16, 32]
+    batch_size: auto_vram_aware
+    dtype: [float32, float64, complex64, complex128]
+    cp_rank: [1, 2, 4, 8, 16]
+    number_of_trees: [1, 16, 128, 1024]
+    metrics: [wall_time, evaluations_per_second, peak_vram, peak_ram, gpu_utilization, launch_overhead, compilation_overhead, cpu_speedup, vectorized_cpu_speedup]
+enumeration:
+  binary_max_internal_nodes: 8
+  ternary_max_internal_nodes: 5
+  quaternary_max_internal_nodes: 4
+  mixed_arities: [2, 3, 4]
+  mixed_max_internal_nodes: 5
