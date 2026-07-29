@@ -1,0 +1,149 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "kind": "leaf",
+                                                  "label": 0,
+                                                  "type": "tau"
+                                                },
+                                                {
+                                                  "kind": "leaf",
+                                                  "label": 1,
+                                                  "type": "tau"
+                                                }
+                                              ],
+                                              "kind": "node",
+                                              "law_id": "mu_0",
+                                              "output_type": "tau"
+                                            },
+                                            {
+                                              "kind": "leaf",
+                                              "label": 2,
+                                              "type": "tau"
+                                            }
+                                          ],
+                                          "kind": "node",
+                                          "law_id": "mu_1",
+                                          "output_type": "tau"
+                                        },
+                                        {
+                                          "kind": "leaf",
+                                          "label": 3,
+                                          "type": "tau"
+                                        }
+                                      ],
+                                      "kind": "node",
+                                      "law_id": "mu_2",
+                                      "output_type": "tau"
+                                    },
+                                    {
+                                      "kind": "leaf",
+                                      "label": 4,
+                                      "type": "tau"
+                                    }
+                                  ],
+                                  "kind": "node",
+                                  "law_id": "mu_3",
+                                  "output_type": "tau"
+                                },
+                                {
+                                  "kind": "leaf",
+                                  "label": 5,
+                                  "type": "tau"
+                                }
+                              ],
+                              "kind": "node",
+                              "law_id": "mu_4",
+                              "output_type": "tau"
+                            },
+                            {
+                              "kind": "leaf",
+                              "label": 6,
+                              "type": "tau"
+                            }
+                          ],
+                          "kind": "node",
+                          "law_id": "mu_5",
+                          "output_type": "tau"
+                        },
+                        {
+                          "kind": "leaf",
+                          "label": 7,
+                          "type": "tau"
+                        }
+                      ],
+                      "kind": "node",
+                      "law_id": "mu_6",
+                      "output_type": "tau"
+                    },
+                    {
+                      "kind": "leaf",
+                      "label": 8,
+                      "type": "tau"
+                    }
+                  ],
+                  "kind": "node",
+                  "law_id": "mu_7",
+                  "output_type": "tau"
+                },
+                {
+                  "kind": "leaf",
+                  "label": 9,
+                  "type": "tau"
+                }
+              ],
+              "kind": "node",
+              "law_id": "mu_8",
+              "output_type": "tau"
+            },
+            {
+              "kind": "leaf",
+              "label": 10,
+              "type": "tau"
+            }
+          ],
+          "kind": "node",
+          "law_id": "mu_9",
+          "output_type": "tau"
+        },
+        {
+          "kind": "leaf",
+          "label": 11,
+          "type": "tau"
+        }
+      ],
+      "kind": "node",
+      "law_id": "mu_10",
+      "output_type": "tau"
+    },
+    {
+      "kind": "leaf",
+      "label": 12,
+      "type": "tau"
+    }
+  ],
+  "kind": "node",
+  "law_id": "mu_11",
+  "output_type": "tau"
+}

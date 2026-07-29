@@ -1,0 +1,13 @@
+block: SMOKE
+device: cpu+cuda
+instance_id: block-SMOKE-batch
+method: batched registered scientific instances
+parameters:
+  matrix: experiments\matrices\tree_constants_v3.yaml
+  resolved_matrix: experiments\matrices\tree_constants_v3_resolved.yaml
+  row_count: 1
+precision: float64/complex128/exact-as-declared
+resolved_config_hash: 252986538e4e7f46e18f7954bc27c32962d2655602087f2d75cf9201725f465b
+restarts: 0
+seed: null
+stage: pilot

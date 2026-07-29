@@ -1,0 +1,9 @@
+{
+  "block": "F",
+  "scientific_instances": 24,
+  "status": "COMPLETE",
+  "status_counts": {
+    "COMPLETE_ALL_LEAKAGE_MASKS": 24
+  },
+  "unique_instance_hashes": 24
+}

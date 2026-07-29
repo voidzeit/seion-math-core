@@ -36,3 +36,30 @@
 - [x] Pass the full Python test suite: 39 tests.
 - [x] Generate and audit separate v2 foundations/software PDFs, nine vector
   figure pairs, claim/evidence matrices, and adversarial review records.
+
+## V3 nodewise tree constants
+
+- [x] Freeze the pre-v3 state and create the dedicated
+  `research/nodewise-tree-constants-v3` branch.
+- [x] Implement the typed-tree mathematical kernel and all required exact,
+  projected, certificate, optimization, interval, SOS, signed-forest, and CP
+  modules.
+- [x] Enumerate the declared exact tree grammars and execute the complete A--I
+  base matrix with unique scientific-instance hashes.
+- [x] Generate the theorem/claim/prior-art registries, 18 vector figures,
+  scientific tables, two independent manuscripts, PDF renders, four
+  adversarial reviews, and strict release evidence.
+- [x] Execute the canonical 15-stage workflow from source commit `b718f4e` and
+  record the expected fail-closed publication result.
+- [ ] Resolve fixed-eta sharpness for the ambient `k` and projected-root
+  `k-1` coefficients, or state the strongest provable non-sharp result.
+- [ ] Obtain independent certification for every claimed small-case global
+  optimum.
+- [ ] Resume the resource-gated 460,800-trajectory optimizer schedule and
+  8,400-cell performance schedule only when the declared compute budget is
+  authorized.
+- [ ] Obtain independent human reviews from multilinear analysis, operads,
+  verified numerics, and scientific reproducibility specialists.
+- [ ] Establish theorem-level novelty through a comprehensive independent
+  literature review, or retain the output as a research draft/software
+  companion.

@@ -1,0 +1,5 @@
+{
+  "global_optimality_certified": false,
+  "resource_gate": "EXTENDED_PENDING_RESOURCE_GATE",
+  "status": "EMPIRICAL_LOWER_BOUND"
+}

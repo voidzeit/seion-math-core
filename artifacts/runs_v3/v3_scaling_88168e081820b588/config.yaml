@@ -1,0 +1,17 @@
+block: SCALING
+device: cpu+cuda
+instance_id: reference_numpy_cuda_scaling
+method: wall_clock_median_five_repeats
+parameters:
+  calls: 15--30
+  internal_nodes:
+  - 1
+  - 2
+  - 4
+  - 8
+  - 12
+  repeats: 5
+precision: float64
+restarts: 0
+seed: null
+stage: full

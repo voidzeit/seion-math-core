@@ -1,0 +1,14 @@
+{
+  "certified_upper_bound": 1.0,
+  "cpu_gpu_max_abs_error": 0.0,
+  "derivative_free_best_lower_bound": 0.9949874371066195,
+  "gpu_memory_bytes": 25650855936,
+  "gpu_name": "NVIDIA RTX PRO 5000 Blackwell Generation Laptop GPU",
+  "gradient_best_lower_bound": 0.994987437106618,
+  "optimality_status": "EMPIRICAL_LOWER_BOUND",
+  "optimizer_disagreement": 1.5543122344752192e-15,
+  "peak_vram_bytes": 67206656,
+  "scientific_instances": 1,
+  "status": "COMPLETE",
+  "wall_seconds": 2.1286307999980636
+}

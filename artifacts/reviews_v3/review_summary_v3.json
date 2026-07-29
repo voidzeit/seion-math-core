@@ -1,0 +1,36 @@
+{
+  "all_at_least_acceptable_as_preprint": false,
+  "generated_utc": "2026-07-29T18:13:27.284898+00:00",
+  "independent_human_reviews": 0,
+  "reviews": [
+    {
+      "human": false,
+      "id": "A",
+      "path": "artifacts\\reviews_v3\\reviewer_A_multilinear.md",
+      "recommendation": "MAJOR_REVISION",
+      "role": "multilinear analyst"
+    },
+    {
+      "human": false,
+      "id": "B",
+      "path": "artifacts\\reviews_v3\\reviewer_B_operad.md",
+      "recommendation": "MAJOR_REVISION",
+      "role": "operad and non-associative algebra specialist"
+    },
+    {
+      "human": false,
+      "id": "C",
+      "path": "artifacts\\reviews_v3\\reviewer_C_verified_numerics.md",
+      "recommendation": "MAJOR_REVISION",
+      "role": "optimization and verified numerics specialist"
+    },
+    {
+      "human": false,
+      "id": "D",
+      "path": "artifacts\\reviews_v3\\reviewer_D_visual_reproducibility.md",
+      "recommendation": "ACCEPTABLE_AS_RESEARCH_DRAFT",
+      "role": "scientific visualization and reproducibility specialist"
+    }
+  ],
+  "source_commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4"
+}

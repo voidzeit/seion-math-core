@@ -1,0 +1,885 @@
+{
+  "all_outputs_vector": true,
+  "default_matplotlib_style_used": false,
+  "figures": [
+    {
+      "caption_latex": "Typed ordered-tree semantics. Types determine the ambient spaces, isometries, projectors, and admissible node laws; ambient evaluation, recursive projection, and the local normal residual are distinct operations. This exact definitional diagram has no sampling uncertainty and supports no sharpness or novelty claim.",
+      "conclusion_not_supported": "numerical sharpness or theorem-level novelty",
+      "conclusion_supported": "the displayed definitions and dependency structure",
+      "metric": "structural semantics",
+      "name": "fig01_typed_tree_semantics",
+      "number": 1,
+      "outputs": {
+        "pdf": {
+          "bytes": 65756,
+          "path": "papers/tree_stability_v3/figures/fig01_typed_tree_semantics.pdf",
+          "sha256": "4d39fb384a5e1099f8de7fcc3ae8457f59ee479aa16173547cc8ea2f545b20cb"
+        },
+        "svg": {
+          "bytes": 184084,
+          "path": "papers/tree_stability_v3/figures/fig01_typed_tree_semantics.svg",
+          "sha256": "4518e30607c61d69b300e9ad435d999f3f0f03076e694e34fb04cf471e518a06"
+        }
+      },
+      "restarts": "not applicable",
+      "seeds": "not applicable",
+      "source_sha256": {
+        "docs/theorems_v3/typed_model.md": "3f04c57af524f5eb1e9927c864b8381dcad98304829f5e5f13af4bb6eb55ff1a",
+        "scripts/figures_v3/fig01_typed_tree_semantics.tex": "4b1c953362f7258ec7d3055956c6fc5e84de1dd0950bdcd219b65a1c70cf2ce6"
+      },
+      "sources": [
+        "scripts/figures_v3/fig01_typed_tree_semantics.tex",
+        "docs/theorems_v3/typed_model.md"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "typed tree definitions and exact decomposition theorem",
+      "title": "Typed tree semantics",
+      "uncertainty": "none; exact diagram",
+      "unique_instances": "definition/proof object"
+    },
+    {
+      "caption_latex": "Exact node-error decomposition. The local residual and every nonempty subset of propagated child errors appear in the multilinear identity, followed by the orthogonal tangent/normal split. This is a proof diagram with no statistical uncertainty; it does not establish optimal constants.",
+      "conclusion_not_supported": "numerical sharpness or theorem-level novelty",
+      "conclusion_supported": "the displayed definitions and dependency structure",
+      "metric": "structural semantics",
+      "name": "fig02_exact_node_decomposition",
+      "number": 2,
+      "outputs": {
+        "pdf": {
+          "bytes": 80660,
+          "path": "papers/tree_stability_v3/figures/fig02_exact_node_decomposition.pdf",
+          "sha256": "0e8c6e6ac0f1785adbbb275637da2bc1f853beb0aa3020ea94dac9ab24407639"
+        },
+        "svg": {
+          "bytes": 229431,
+          "path": "papers/tree_stability_v3/figures/fig02_exact_node_decomposition.svg",
+          "sha256": "fd153771de1b7ee7f288b3460d111293eec62d570b36169d87326ca50f4786c8"
+        }
+      },
+      "restarts": "not applicable",
+      "seeds": "not applicable",
+      "source_sha256": {
+        "docs/theorems_v3/exact_subset_expansion.md": "8c3612179ab34967cf8fd5452e7a0c9f4aea6baa15ca75dfc70fa243fd459ed0",
+        "scripts/figures_v3/fig02_exact_node_decomposition.tex": "9138b395df4eaf88b591602026a40de83516765a28e1725cd17304d31017b0a1"
+      },
+      "sources": [
+        "scripts/figures_v3/fig02_exact_node_decomposition.tex",
+        "docs/theorems_v3/exact_subset_expansion.md"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "typed tree definitions and exact decomposition theorem",
+      "title": "Exact node error decomposition",
+      "uncertainty": "none; exact diagram",
+      "unique_instances": "definition/proof object"
+    },
+    {
+      "caption_latex": "Bound hierarchy on block D (4,320 unique registered instances; declared seed count 10, no optimizer restarts). The metric is each sound certificate divided by the homogeneous ambient certificate; points are medians and bars are 10--90 percent instance quantiles, not seed uncertainty. The homogeneous theorem is the reference. The data support instancewise tightening for nonuniform local patterns, but do not prove any certificate globally optimal.",
+      "conclusion_not_supported": "global optimality of any certificate",
+      "conclusion_supported": "nodewise tightening on heterogeneous instances",
+      "metric": "certificate/homogeneous certificate",
+      "name": "fig03_bound_hierarchy",
+      "number": 3,
+      "outputs": {
+        "pdf": {
+          "bytes": 14686,
+          "path": "papers/tree_stability_v3/figures/fig03_bound_hierarchy.pdf",
+          "sha256": "556fa7c79bb9ef083c216997ac13b1675588ed781a2afb76fb94fb52fcaad25c"
+        },
+        "svg": {
+          "bytes": 55132,
+          "path": "papers/tree_stability_v3/figures/fig03_bound_hierarchy.svg",
+          "sha256": "33c107b4fa8774288470d019685ff561c2201229e824610600f43fe25a36d31d"
+        }
+      },
+      "restarts": 0,
+      "seeds": 10,
+      "source_sha256": {
+        "artifacts/research_v3/block_D.parquet": "23dce1e8a38733809e5d1d459aeaf5c4909f297590feee5748c99e98cdc8bd05"
+      },
+      "sources": [
+        "artifacts/research_v3/block_D.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "homogeneous k theorem",
+      "title": "Bound hierarchy",
+      "uncertainty": "10--90% variation across mathematical instances",
+      "unique_instances": 4320
+    },
+    {
+      "caption_latex": "Universal constant atlas from block B (240 dimension-two instances selected from 2,880; 20 seeds and eight restarts are specified for the pending extended search). Tile color is the best certified explicit lower divided by the homogeneous upper; text gives lower/upper and the maximizing topology prefix. Interval enclosure is used for the construction, with no sampling uncertainty. The atlas supports exact or near-matching cells where the ratio is one, but does not establish fixed-$\\eta$ optimality across the full matrix.",
+      "conclusion_not_supported": "fixed-eta global optimality",
+      "conclusion_supported": "matching cells for explicit constructions",
+      "metric": "certified lower/certified upper",
+      "name": "fig04_universal_constant_atlas",
+      "number": 4,
+      "outputs": {
+        "pdf": {
+          "bytes": 16228,
+          "path": "papers/tree_stability_v3/figures/fig04_universal_constant_atlas.pdf",
+          "sha256": "082661dd17d7ae36257b7ebef6a41640bb2c7a26610597f730807335f2e25464"
+        },
+        "svg": {
+          "bytes": 69589,
+          "path": "papers/tree_stability_v3/figures/fig04_universal_constant_atlas.svg",
+          "sha256": "7d8e61b68349ac5efcd1d07cf7401db54dbb6e1ec04b9d5592de22a4e5926daa"
+        }
+      },
+      "restarts": "8 specified; extended pending",
+      "seeds": "20 specified; extended pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "$k$ ambient and $k-1$ projected homogeneous bounds",
+      "title": "Universal constant atlas",
+      "uncertainty": "directed interval enclosure for construction; topology variation shown",
+      "unique_instances": 240
+    },
+    {
+      "caption_latex": "Supplementary topology-resolved block-B atlas for high strahler (30 instances).",
+      "conclusion_not_supported": "global optimality",
+      "conclusion_supported": "topology-resolved lower/upper comparison",
+      "metric": "certified lower/certified upper",
+      "name": "atlas_fig04_high-strahler",
+      "number": "S4-high-strahler",
+      "outputs": {
+        "pdf": {
+          "bytes": 16136,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_high-strahler.pdf",
+          "sha256": "7d353cf7a0ee4629848d83c71c527299e75dad45d81e1dd61662501e9106f28b"
+        },
+        "svg": {
+          "bytes": 70764,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_high-strahler.svg",
+          "sha256": "c650e2386c4d2d5ce4d6bbaf9c5b985d08519ae82cb5e89bd0cdc1d4c88d05ed"
+        }
+      },
+      "restarts": "8 specified; extended pending",
+      "seeds": "20 specified; extended pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": true,
+      "theoretical_reference": "homogeneous constants",
+      "title": "Supplementary constant atlas: high_strahler",
+      "uncertainty": "directed interval construction enclosure",
+      "unique_instances": 30
+    },
+    {
+      "caption_latex": "Supplementary topology-resolved block-B atlas for left comb (30 instances).",
+      "conclusion_not_supported": "global optimality",
+      "conclusion_supported": "topology-resolved lower/upper comparison",
+      "metric": "certified lower/certified upper",
+      "name": "atlas_fig04_left-comb",
+      "number": "S4-left-comb",
+      "outputs": {
+        "pdf": {
+          "bytes": 15694,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_left-comb.pdf",
+          "sha256": "eaa1b9355f498d6424bcd92ee75c6379bbf430714ccb02ced02903f6265ade20"
+        },
+        "svg": {
+          "bytes": 69576,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_left-comb.svg",
+          "sha256": "7538031b738d7e93f48c4090f8df2be402af86d7d2a862cc85c66d17a9c9f28d"
+        }
+      },
+      "restarts": "8 specified; extended pending",
+      "seeds": "20 specified; extended pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": true,
+      "theoretical_reference": "homogeneous constants",
+      "title": "Supplementary constant atlas: left_comb",
+      "uncertainty": "directed interval construction enclosure",
+      "unique_instances": 30
+    },
+    {
+      "caption_latex": "Supplementary topology-resolved block-B atlas for low strahler (30 instances).",
+      "conclusion_not_supported": "global optimality",
+      "conclusion_supported": "topology-resolved lower/upper comparison",
+      "metric": "certified lower/certified upper",
+      "name": "atlas_fig04_low-strahler",
+      "number": "S4-low-strahler",
+      "outputs": {
+        "pdf": {
+          "bytes": 15054,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_low-strahler.pdf",
+          "sha256": "8214fb3c3f79b5d0a241a7678b50649052cf0261b4480f00c598c896cacdafa3"
+        },
+        "svg": {
+          "bytes": 69588,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_low-strahler.svg",
+          "sha256": "309ed3ba271b1963fb1c85aee6ff031f3310aab640ba7a871126e1b51a51a950"
+        }
+      },
+      "restarts": "8 specified; extended pending",
+      "seeds": "20 specified; extended pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": true,
+      "theoretical_reference": "homogeneous constants",
+      "title": "Supplementary constant atlas: low_strahler",
+      "uncertainty": "directed interval construction enclosure",
+      "unique_instances": 30
+    },
+    {
+      "caption_latex": "Supplementary topology-resolved block-B atlas for maximally balanced (30 instances).",
+      "conclusion_not_supported": "global optimality",
+      "conclusion_supported": "topology-resolved lower/upper comparison",
+      "metric": "certified lower/certified upper",
+      "name": "atlas_fig04_maximally-balanced",
+      "number": "S4-maximally-balanced",
+      "outputs": {
+        "pdf": {
+          "bytes": 16075,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_maximally-balanced.pdf",
+          "sha256": "c16ef80d769dfc026137c8c3a73318d1531606d680d20f6a70a5ca4549bc7505"
+        },
+        "svg": {
+          "bytes": 70793,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_maximally-balanced.svg",
+          "sha256": "edde9debef8fb0938f10f2931627f13623cda1c31df2df6b507ee0a51e278ba9"
+        }
+      },
+      "restarts": "8 specified; extended pending",
+      "seeds": "20 specified; extended pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": true,
+      "theoretical_reference": "homogeneous constants",
+      "title": "Supplementary constant atlas: maximally_balanced",
+      "uncertainty": "directed interval construction enclosure",
+      "unique_instances": 30
+    },
+    {
+      "caption_latex": "Supplementary topology-resolved block-B atlas for minimally balanced (30 instances).",
+      "conclusion_not_supported": "global optimality",
+      "conclusion_supported": "topology-resolved lower/upper comparison",
+      "metric": "certified lower/certified upper",
+      "name": "atlas_fig04_minimally-balanced",
+      "number": "S4-minimally-balanced",
+      "outputs": {
+        "pdf": {
+          "bytes": 15945,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_minimally-balanced.pdf",
+          "sha256": "6c63ec0bbc1cdbc3aa8c9c533027cfa99576401b443d2c8430f6551d695b736d"
+        },
+        "svg": {
+          "bytes": 71478,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_minimally-balanced.svg",
+          "sha256": "d975bec9433d6cf7b0c4214327239f97e83cf2945d742304931b5f86b081984b"
+        }
+      },
+      "restarts": "8 specified; extended pending",
+      "seeds": "20 specified; extended pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": true,
+      "theoretical_reference": "homogeneous constants",
+      "title": "Supplementary constant atlas: minimally_balanced",
+      "uncertainty": "directed interval construction enclosure",
+      "unique_instances": 30
+    },
+    {
+      "caption_latex": "Supplementary topology-resolved block-B atlas for random ordered (30 instances).",
+      "conclusion_not_supported": "global optimality",
+      "conclusion_supported": "topology-resolved lower/upper comparison",
+      "metric": "certified lower/certified upper",
+      "name": "atlas_fig04_random-ordered",
+      "number": "S4-random-ordered",
+      "outputs": {
+        "pdf": {
+          "bytes": 15891,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_random-ordered.pdf",
+          "sha256": "31b19fe0cea0457b42264a3ab9942ca54807d404312b48745b0ad8682d1ec08a"
+        },
+        "svg": {
+          "bytes": 71168,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_random-ordered.svg",
+          "sha256": "23780a7940fabfd479152e6f0a27ca8ebafec839fec012d3d91c69c247cfa1e9"
+        }
+      },
+      "restarts": "8 specified; extended pending",
+      "seeds": "20 specified; extended pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": true,
+      "theoretical_reference": "homogeneous constants",
+      "title": "Supplementary constant atlas: random_ordered",
+      "uncertainty": "directed interval construction enclosure",
+      "unique_instances": 30
+    },
+    {
+      "caption_latex": "Supplementary topology-resolved block-B atlas for repeated subtree (30 instances).",
+      "conclusion_not_supported": "global optimality",
+      "conclusion_supported": "topology-resolved lower/upper comparison",
+      "metric": "certified lower/certified upper",
+      "name": "atlas_fig04_repeated-subtree",
+      "number": "S4-repeated-subtree",
+      "outputs": {
+        "pdf": {
+          "bytes": 15829,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_repeated-subtree.pdf",
+          "sha256": "e14d67d3fce12e6b6c0c478dda123ed69559001f0caaf1687cf7b2bb7aabdd88"
+        },
+        "svg": {
+          "bytes": 71160,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_repeated-subtree.svg",
+          "sha256": "b4f419e412d0e6d3c40dbeb9f15f6738dbbb5f799025ea9a4dc9a8ec31f8dba3"
+        }
+      },
+      "restarts": "8 specified; extended pending",
+      "seeds": "20 specified; extended pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": true,
+      "theoretical_reference": "homogeneous constants",
+      "title": "Supplementary constant atlas: repeated_subtree",
+      "uncertainty": "directed interval construction enclosure",
+      "unique_instances": 30
+    },
+    {
+      "caption_latex": "Supplementary topology-resolved block-B atlas for right comb (30 instances).",
+      "conclusion_not_supported": "global optimality",
+      "conclusion_supported": "topology-resolved lower/upper comparison",
+      "metric": "certified lower/certified upper",
+      "name": "atlas_fig04_right-comb",
+      "number": "S4-right-comb",
+      "outputs": {
+        "pdf": {
+          "bytes": 16012,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_right-comb.pdf",
+          "sha256": "8c09605f9f02ea1c1d2949cb339d482fa8e55bab4fd99722870b1819f98824f9"
+        },
+        "svg": {
+          "bytes": 71170,
+          "path": "papers/tree_stability_v3/figures/atlas_fig04_right-comb.svg",
+          "sha256": "809d8edb82bc020f692894df23984177d26f10f9b17643b606c55851e64970fa"
+        }
+      },
+      "restarts": "8 specified; extended pending",
+      "seeds": "20 specified; extended pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": true,
+      "theoretical_reference": "homogeneous constants",
+      "title": "Supplementary constant atlas: right_comb",
+      "uncertainty": "directed interval construction enclosure",
+      "unique_instances": 30
+    },
+    {
+      "caption_latex": "Sharpness profile from block B (96 unique binary eight-node instances; the requested 20 seeds and eight restarts remain extended). The metric is the interval-certified explicit projected error divided by $\\eta M^{{k-1}}$; the dashed reference is the proved $k-1=7$ upper. There is no statistical uncertainty in the explicit construction. The plot supports an admissible lower profile, not a globally optimal $C_T(\\eta)$.",
+      "conclusion_not_supported": "global C_T(eta) optimality",
+      "conclusion_supported": "eta-dependent explicit lower profiles",
+      "metric": "projected error/(eta M^(k-1))",
+      "name": "fig05_sharpness_profile",
+      "number": 5,
+      "outputs": {
+        "pdf": {
+          "bytes": 15010,
+          "path": "papers/tree_stability_v3/figures/fig05_sharpness_profile.pdf",
+          "sha256": "dc2dcac046db78fa7ef7e472adf0415069e2ad8c4ae937dcc56ad3666613a344"
+        },
+        "svg": {
+          "bytes": 49404,
+          "path": "papers/tree_stability_v3/figures/fig05_sharpness_profile.svg",
+          "sha256": "0c492fcc40417cf0646eaa097f30b31b839c691ea6b6d5d2e1a3f4b8658b4b73"
+        }
+      },
+      "restarts": "8 requested; not executed in base",
+      "seeds": "20 requested; not executed in base",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "$k-1$ projected theorem",
+      "title": "Sharpness profile",
+      "uncertainty": "interval enclosure only",
+      "unique_instances": 96
+    },
+    {
+      "caption_latex": "The $k$ versus $k-1$ theorem on 10 registered binary left-comb instances (block B, dimension two, smallest $\\eta$; interval-certified lower construction, no seed uncertainty). Ambient and projected errors are normalized by $\\eta M^{{k-1}}$ and compared with the proved universal coefficients. The ambient construction matches the linear coefficient in these cells, whereas the displayed small-$\\eta$ projected construction remains far below $k-1$; projected fixed-$\\eta$ sharpness and novelty remain unresolved.",
+      "conclusion_not_supported": "projected fixed-positive-eta optimality or novelty",
+      "conclusion_supported": "ambient matching on the selected construction and validity of both uppers",
+      "metric": "normalized ambient/projected constants",
+      "name": "fig06_k_vs_k_minus_one",
+      "number": 6,
+      "outputs": {
+        "pdf": {
+          "bytes": 14444,
+          "path": "papers/tree_stability_v3/figures/fig06_k_vs_k_minus_one.pdf",
+          "sha256": "c49c60202db43c07bdadddd24fbf01e9037388aba6413d3c3156d7f60747a71e"
+        },
+        "svg": {
+          "bytes": 34532,
+          "path": "papers/tree_stability_v3/figures/fig06_k_vs_k_minus_one.svg",
+          "sha256": "cf75d50fb76d5ccdc78f8b50a4f014a6e23b7b6a32b41c1fa7f43118d324c2ee"
+        }
+      },
+      "restarts": "not applicable",
+      "seeds": "not applicable to certified construction",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "$k$ and $k-1$ homogeneous theorems",
+      "title": "$k$ versus $k-1$ theorem",
+      "uncertainty": "directed interval enclosure",
+      "unique_instances": 10
+    },
+    {
+      "caption_latex": "Topology phase diagram from block B (240 unique $\\eta=0.1$ instances; requested optimizer seeds/restarts are pending). Depth and root path-length sum define the axes, color is imbalance, size is Strahler number, and a vermillion edge marks an explicit projected lower/upper ratio above 0.9. These are exact topology statistics with interval lower values. The plot supports topology-dependent certificate behavior, not a causal phase transition or universal extremal topology.",
+      "conclusion_not_supported": "causal phase transition or universal extremal topology",
+      "conclusion_supported": "association between tree invariants and observed sharpness",
+      "metric": "topology statistics and explicit projected lower/upper ratio",
+      "name": "fig07_topology_phase_diagram",
+      "number": 7,
+      "outputs": {
+        "pdf": {
+          "bytes": 17813,
+          "path": "papers/tree_stability_v3/figures/fig07_topology_phase_diagram.pdf",
+          "sha256": "80f4d028df6b7762e5d6d8f3e03599b8e4ccb6f81a913cb677a661040de3a7ab"
+        },
+        "svg": {
+          "bytes": 116528,
+          "path": "papers/tree_stability_v3/figures/fig07_topology_phase_diagram.svg",
+          "sha256": "1a480333c1a662221bbc01e2b035657d636087794be552bf63724b3b72dcc0b5"
+        }
+      },
+      "restarts": "optimizer grid pending",
+      "seeds": "optimizer grid pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_B.parquet": "661f5779ac68192e8b7b13fca1e3e760e8b6b83205267fc48ad275920860171d"
+      },
+      "sources": [
+        "artifacts/research_v3/block_B.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "$k-1$ projected upper",
+      "title": "Topology phase diagram",
+      "uncertainty": "none for topology; interval enclosure for lower construction",
+      "unique_instances": 240
+    },
+    {
+      "caption_latex": "Node contribution map for one balanced eight-node tree from block F (eight internal nodes, all $2^8=256$ leakage masks, no seed or restart sampling). The metric is projected root error: the tree labels show Shapley attribution and the lower panel compares single-node main effects with all-mask Shapley values; numerical efficiency residual is below $10^{{-12}}$. The exhaustive mask calculation supports attribution on this registered construction, not a unique physical causal interpretation.",
+      "conclusion_not_supported": "unique causal interpretation",
+      "conclusion_supported": "complete attribution for the selected construction",
+      "metric": "projected-error main effect and Shapley attribution",
+      "name": "fig08_node_contribution_map",
+      "number": 8,
+      "outputs": {
+        "pdf": {
+          "bytes": 13338,
+          "path": "papers/tree_stability_v3/figures/fig08_node_contribution_map.pdf",
+          "sha256": "c05284a02d889c2b4cb9fcc021c59cc8c45181cc29f02f5e3a3b2476e025ef74"
+        },
+        "svg": {
+          "bytes": 30376,
+          "path": "papers/tree_stability_v3/figures/fig08_node_contribution_map.svg",
+          "sha256": "fefbd13c5f97b6b9a58dfd36c3bcfa8f4643ec37004209c4586c16953675249c"
+        }
+      },
+      "restarts": "not applicable",
+      "seeds": "not applicable",
+      "source_sha256": {
+        "artifacts/index/node_contributions_v3.parquet": "1d00132047641f33e973a2f0a647ad5ab174472575b9d79a2bc2d8c4e74faaed",
+        "artifacts/research_v3/block_F_leakage_masks.parquet": "d2cc4cb46a908298d6965942acafcc3056d8e6b03883139e89ef129d1ed4dfbe"
+      },
+      "sources": [
+        "artifacts/index/node_contributions_v3.parquet",
+        "artifacts/research_v3/block_F_leakage_masks.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "exact subset expansion",
+      "title": "Node contribution map",
+      "uncertainty": "exhaustive 256-mask evaluation",
+      "unique_instances": 1
+    },
+    {
+      "caption_latex": "Residual interaction decomposition from all 1,530 block-F mask evaluations (24 trees, no seeds or optimizer restarts). For each tree, the exact set function of projected error is M\u00f6bius-inverted; bars show topology-median fractions of absolute coefficient mass from first-, second-, and higher-order subsets. The reference is the exact subset expansion. This supports nonadditive local-error interactions in the explicit construction, not sign-free additivity or universality.",
+      "conclusion_not_supported": "additivity or universal interaction fractions",
+      "conclusion_supported": "presence and order of mask interactions",
+      "metric": "absolute M\u00f6bius interaction mass by order",
+      "name": "fig09_residual_interactions",
+      "number": 9,
+      "outputs": {
+        "pdf": {
+          "bytes": 12724,
+          "path": "papers/tree_stability_v3/figures/fig09_residual_interactions.pdf",
+          "sha256": "d9c8a9dca726021a1d9dc5a7c522fd47641cb1046a5ed94bb673c780bd473a19"
+        },
+        "svg": {
+          "bytes": 22292,
+          "path": "papers/tree_stability_v3/figures/fig09_residual_interactions.svg",
+          "sha256": "ca368dfb9c6802bb2ed760e1180909b8618f80706c2f029456ae0bd0ecb2c139"
+        }
+      },
+      "restarts": "not applicable",
+      "seeds": "not applicable",
+      "source_sha256": {
+        "artifacts/research_v3/block_F_leakage_masks.parquet": "d2cc4cb46a908298d6965942acafcc3056d8e6b03883139e89ef129d1ed4dfbe"
+      },
+      "sources": [
+        "artifacts/research_v3/block_F_leakage_masks.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "exact local subset expansion",
+      "title": "Residual interaction decomposition",
+      "uncertainty": "median variation over three topology families",
+      "unique_instances": 24
+    },
+    {
+      "caption_latex": "Optimal telescoping order on all 4,320 block-D instances (declared seed count 10; no optimizer restart is used by the exact sorting rule). The metric is optimized-order certificate divided by the registered mixed-mask/reference-order certificate; boxes show median, quartiles, and 5--95 percent mathematical-instance variation. The pair-exchange theorem is the reference. The result supports never-worse and sometimes smaller certificates, but not optimality among all possible non-telescoping proof strategies.",
+      "conclusion_not_supported": "optimality among all proof strategies",
+      "conclusion_supported": "optimality within the declared telescoping family",
+      "metric": "optimized telescoping/mixed-mask reference certificate",
+      "name": "fig10_optimal_telescoping_order",
+      "number": 10,
+      "outputs": {
+        "pdf": {
+          "bytes": 12375,
+          "path": "papers/tree_stability_v3/figures/fig10_optimal_telescoping_order.pdf",
+          "sha256": "a0de7f3af7c288c8f204f2c2052cf0a14d047e09476efdd5061c65fc8ad0d211"
+        },
+        "svg": {
+          "bytes": 46180,
+          "path": "papers/tree_stability_v3/figures/fig10_optimal_telescoping_order.svg",
+          "sha256": "be1d9d82b8fc93413156dc9143c313a9696426b103280b6273d2dc496f69316f"
+        }
+      },
+      "restarts": 0,
+      "seeds": 10,
+      "source_sha256": {
+        "artifacts/research_v3/block_D.parquet": "23dce1e8a38733809e5d1d459aeaf5c4909f297590feee5748c99e98cdc8bd05"
+      },
+      "sources": [
+        "artifacts/research_v3/block_D.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "pair-exchange ordering theorem",
+      "title": "Optimal telescoping order",
+      "uncertainty": "5--95% mathematical-instance variation",
+      "unique_instances": 4320
+    },
+    {
+      "caption_latex": "Extremizer geometry from the registered v3 smoke run (one explicit rank-one gated-rotation tensor, four gradient trajectories and one derivative-free recheck). Panels (a,b) show the actual tangent and normal output tensor blocks; panel (c) summarizes the certified mechanism. Entries are exact stored inputs up to float64 representation, without statistical uncertainty. The figure supports admissibility and alignment of this lower construction, not uniqueness or global optimality.",
+      "conclusion_not_supported": "uniqueness or global optimality",
+      "conclusion_supported": "admissibility and local residual alignment",
+      "metric": "registered tensor entries and attained normalized lower",
+      "name": "fig11_extremizer_geometry",
+      "number": 11,
+      "outputs": {
+        "pdf": {
+          "bytes": 17062,
+          "path": "papers/tree_stability_v3/figures/fig11_extremizer_geometry.pdf",
+          "sha256": "e1bd56974ab810ea6d17cd25359e9465e4a92385e2b4bdd8bf949962b09dc4ea"
+        },
+        "svg": {
+          "bytes": 24412,
+          "path": "papers/tree_stability_v3/figures/fig11_extremizer_geometry.svg",
+          "sha256": "226a5042c84ea6da7666d2cad5f2e045213b46e6821ee570c12961eba4893d48"
+        }
+      },
+      "restarts": 2,
+      "seeds": 2,
+      "source_sha256": {
+        "artifacts/runs_v3/v3_smoke_df1adebd06634691/best_lower_bound.json": "c9fa16b466df870b887d2c02c2e5d6b918e3ca6d9235ecb3e6deea62c469b38c",
+        "artifacts/runs_v3/v3_smoke_df1adebd06634691/extremizer_tensor.npz": "5b00a05eeeeec3fd6ed9233a6605abd009ebd9c16cbaa5dba500a9916da55be3"
+      },
+      "sources": [
+        "artifacts/runs_v3/v3_smoke_df1adebd06634691/extremizer_tensor.npz",
+        "artifacts/runs_v3/v3_smoke_df1adebd06634691/best_lower_bound.json"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "gated planar-rotation construction",
+      "title": "Extremizer geometry",
+      "uncertainty": "independent optimizer disagreement recorded separately",
+      "unique_instances": 1
+    },
+    {
+      "caption_latex": "Certified optimality gaps for 36 block-A binary small cases at $\\eta=0.1$ (no random seeds or restarts). Horizontal intervals join the directed-interval explicit lower to the proved upper; green lower marks the 3 globally certified zero/small cases. The homogeneous $k$ and $k-1$ theorems are the references. Closed intervals establish only the marked exact cases; open intervals are reported as unresolved, not as numerical optima.",
+      "conclusion_not_supported": "optimality in nonclosed intervals",
+      "conclusion_supported": "global optimality in 3 marked cases",
+      "metric": "certified normalized lower and upper",
+      "name": "fig12_certified_optimality_gaps",
+      "number": 12,
+      "outputs": {
+        "pdf": {
+          "bytes": 10512,
+          "path": "papers/tree_stability_v3/figures/fig12_certified_optimality_gaps.pdf",
+          "sha256": "1227b541b9d55755cb3ac27da0e8d1e7a0791c8493fd038440c06bd9ec920c3d"
+        },
+        "svg": {
+          "bytes": 43250,
+          "path": "papers/tree_stability_v3/figures/fig12_certified_optimality_gaps.svg",
+          "sha256": "782680f9245919b14e273543448c49086481da239bcb8eb6e1751a2d4d8341d4"
+        }
+      },
+      "restarts": "not applicable",
+      "seeds": "not applicable",
+      "source_sha256": {
+        "artifacts/research_v3/block_A_exact_atlas.parquet": "f84beaeb82aa1e24386d12964af3a4ecb3f3244c90c24b0d907202144fc84843"
+      },
+      "sources": [
+        "artifacts/research_v3/block_A_exact_atlas.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "$k$ ambient and $k-1$ projected upper bounds",
+      "title": "Certified optimality gaps",
+      "uncertainty": "directed interval enclosure",
+      "unique_instances": 36
+    },
+    {
+      "caption_latex": "Signed-polynomial cancellation across 7 registered forest families and 28 block-G instances (20 optimizer seeds requested; the full restart grid is pending). The exact metric is the normalized signed-forest residual: triangle and syntactic-cancellation bars are certified uppers, while the orange bar is the largest registered explicit/adversarial lower over $\\eta$. The forest triangle theorem is the reference. The comparison supports improved bookkeeping in declared expressions, not globally sharp associator, FI, or GJI constants.",
+      "conclusion_not_supported": "globally sharp FI/GJI/associator constants",
+      "conclusion_supported": "cancellation-aware bookkeeping improvements",
+      "metric": "normalized signed-forest residual constant",
+      "name": "fig13_signed_polynomial_cancellation",
+      "number": 13,
+      "outputs": {
+        "pdf": {
+          "bytes": 9888,
+          "path": "papers/tree_stability_v3/figures/fig13_signed_polynomial_cancellation.pdf",
+          "sha256": "45c3a5304976584966ac95153a12b0aebd92e3bc15bf36aa4df654fa74a9c3ab"
+        },
+        "svg": {
+          "bytes": 18635,
+          "path": "papers/tree_stability_v3/figures/fig13_signed_polynomial_cancellation.svg",
+          "sha256": "b2c0d5cda521f725a11cd108784bd957f2a85ad861e5d1d5667d0907736efde7"
+        }
+      },
+      "restarts": "extended pending",
+      "seeds": "20 requested; pilot only",
+      "source_sha256": {
+        "artifacts/research_v3/block_G.parquet": "f46f98bb604af549a753050ef131206857d158ca80248f18919e86eb0f327b3c"
+      },
+      "sources": [
+        "artifacts/research_v3/block_G.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "signed-forest triangle upper",
+      "title": "Signed-polynomial cancellation",
+      "uncertainty": "variation over eta; empirical searches labeled lower only",
+      "unique_instances": 28
+    },
+    {
+      "caption_latex": "CP plus projection budget for 5 selected block-H instances (dimension 64, eight-node balanced tree, $\\eta=0.01$; ten seeds are declared for the extended empirical matrix). Bars are the separately proved representation, closure, and interaction upper terms; their stack is the definition of the theorem upper and does not assert equality with error. The layered CP/projection inequality is the reference. The figure supports budget separation, not tightness or CP identifiability.",
+      "conclusion_not_supported": "additive equality, tightness, or CP identifiability",
+      "conclusion_supported": "separation of error sources",
+      "metric": "representation/closure/interaction upper-bound components",
+      "name": "fig14_cp_projection_budget",
+      "number": 14,
+      "outputs": {
+        "pdf": {
+          "bytes": 11022,
+          "path": "papers/tree_stability_v3/figures/fig14_cp_projection_budget.pdf",
+          "sha256": "9f59f2df9771b14ef0dc1b25d8babc6aabd6efffc09b43a1d9ec0d40022a54de"
+        },
+        "svg": {
+          "bytes": 17528,
+          "path": "papers/tree_stability_v3/figures/fig14_cp_projection_budget.svg",
+          "sha256": "1d741432ccd2eed887d6d3b725e3c8b87cb49de32c0ea20d06607e0447638c9d"
+        }
+      },
+      "restarts": 0,
+      "seeds": "10 declared; analytic base",
+      "source_sha256": {
+        "artifacts/research_v3/block_H.parquet": "87f10fba330aa024b81d5c1f8dac4418ac229822d0cdc2cecde991d12c8e07cd"
+      },
+      "sources": [
+        "artifacts/research_v3/block_H.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "CP plus projection budget theorem",
+      "title": "CP plus projection error budget",
+      "uncertainty": "analytic bounds; no empirical uncertainty",
+      "unique_instances": 5
+    },
+    {
+      "caption_latex": "Dimension/rank phase diagram from 72 block-C instances (binary 24-node trees, $\\eta=0.1$; ten optimizer seeds requested but not executed in the analytic base). Each tile is the embedded dimension-two projected lower divided by the $k-1$ upper; values are interval-enclosed and have no seed uncertainty. The embedding theorem is the reference. The grid supports dimension-independent admissibility of the construction, but no certified improvement from extra dimensions or ranks.",
+      "conclusion_not_supported": "improvement from higher dimension/rank",
+      "conclusion_supported": "dimension-independent admissibility",
+      "metric": "embedded projected lower/certified upper",
+      "name": "fig15_dimension_rank_phase",
+      "number": 15,
+      "outputs": {
+        "pdf": {
+          "bytes": 14283,
+          "path": "papers/tree_stability_v3/figures/fig15_dimension_rank_phase.pdf",
+          "sha256": "7a54a0315cd84180e4b13bf00451b7ff8bb0811bdb210a341b3258bb8434f494"
+        },
+        "svg": {
+          "bytes": 33395,
+          "path": "papers/tree_stability_v3/figures/fig15_dimension_rank_phase.svg",
+          "sha256": "d304b3e6251ac6365317d434ec16722c4870ac27b0bd4c434f5cc3c8962d7adc"
+        }
+      },
+      "restarts": "extended pending",
+      "seeds": "10 requested; extended pending",
+      "source_sha256": {
+        "artifacts/research_v3/block_C.parquet": "698b51df27cd2e0fa4bff4f296daa076aa3ef0a6a1ec2340502b1d5f3f1eec5e"
+      },
+      "sources": [
+        "artifacts/research_v3/block_C.parquet"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "dimension embedding and $k-1$ upper",
+      "title": "Dimension/rank phase diagram",
+      "uncertainty": "interval enclosure; dimension/rank grid variation",
+      "unique_instances": 72
+    },
+    {
+      "caption_latex": "Adversarial optimization convergence for the registered smoke calibration (5 displayed trajectories: four Adam starts and one independent differential-evolution recheck; one mathematical instance). The metric is attained normalized lower divided by the certified upper; every recorded step and all searches are shown, with no confidence interval inferred from restarts. The upper certificate is the reference. Agreement near one supports a strong empirical lower for this instance, not a global optimizer certificate or completion of the 460,800-trajectory extended grid.",
+      "conclusion_not_supported": "global optimality or extended-grid completion",
+      "conclusion_supported": "independent empirical agreement on one instance",
+      "metric": "attained lower/certified upper",
+      "name": "fig16_adversarial_convergence",
+      "number": 16,
+      "outputs": {
+        "pdf": {
+          "bytes": 11539,
+          "path": "papers/tree_stability_v3/figures/fig16_adversarial_convergence.pdf",
+          "sha256": "024f9a3322a530b21a809c331b46f9b702f3cff6dfd0e99946693d9bdc1d3e4d"
+        },
+        "svg": {
+          "bytes": 22675,
+          "path": "papers/tree_stability_v3/figures/fig16_adversarial_convergence.svg",
+          "sha256": "8f33c2ec9e19571bbbe3cbb724b8c64bb0beea9ce7be98b2c8a793351f8c16d5"
+        }
+      },
+      "restarts": 2,
+      "seeds": 2,
+      "source_sha256": {
+        "artifacts/runs_v3/v3_smoke_df1adebd06634691/optimality_gap.json": "71bf295eb68265e1fa8b7a497b9d07794866fa6a38cda88c24f9177c69ccfcdc",
+        "artifacts/runs_v3/v3_smoke_df1adebd06634691/optimization_history.csv": "7a6ef2a1f5114209f07b798ecd33c04e17060da15fbf0d18d1e71eefd6b55ee7"
+      },
+      "sources": [
+        "artifacts/runs_v3/v3_smoke_df1adebd06634691/optimization_history.csv",
+        "artifacts/runs_v3/v3_smoke_df1adebd06634691/optimality_gap.json"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "certified smoke upper 1",
+      "title": "Adversarial optimization convergence",
+      "uncertainty": "all pilot trajectories shown; optimizer disagreement recorded",
+      "unique_instances": 1
+    },
+    {
+      "caption_latex": "Environment-specific scaling benchmark (15 registered backend/size cells; five timing repeats and 15--30 calls per repeat). Panels show median wall time with min--max repeat range, derived node throughput, and peak allocated VRAM for the coordinate reference, vectorized NumPy CPU, and CUDA evaluator; float64 outputs agree exactly in this invariant control. No asymptotic complexity or cross-hardware performance claim is supported.",
+      "conclusion_not_supported": "cross-hardware or asymptotic performance superiority",
+      "conclusion_supported": "local reference/CPU/GPU scaling and parity",
+      "metric": "median wall time, throughput, peak VRAM",
+      "name": "fig17_computational_scaling",
+      "number": 17,
+      "outputs": {
+        "pdf": {
+          "bytes": 19111,
+          "path": "papers/tree_stability_v3/figures/fig17_computational_scaling.pdf",
+          "sha256": "1681424909d8653b3eeae749c3c8057aae9e8f52f08f8a565efe42595a5d1375"
+        },
+        "svg": {
+          "bytes": 54886,
+          "path": "papers/tree_stability_v3/figures/fig17_computational_scaling.svg",
+          "sha256": "fdd76ae802ddb2286bf77b647d937e66da02a14a5e75eec6925572d992c52c0a"
+        }
+      },
+      "restarts": "five timing repeats",
+      "seeds": "not applicable",
+      "source_sha256": {
+        "artifacts/research_v3/computational_scaling.parquet": "d9c72e6a666033f83fecb2e44bae7d812fac49262bb2b2484f5f38c1a4a06b3b",
+        "artifacts/research_v3/computational_scaling_summary.json": "ea56900f2802983f6dc2b76b190e91916927323882ed8dd9846d2f95c7ffe5b7"
+      },
+      "sources": [
+        "artifacts/research_v3/computational_scaling.parquet",
+        "artifacts/research_v3/computational_scaling_summary.json"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "bounded-arity linear tree traversal",
+      "title": "Computational scaling",
+      "uncertainty": "min--max over five timing repeats",
+      "unique_instances": 15
+    },
+    {
+      "caption_latex": "Claim/evidence/extremizer dependency graph generated from the v3 theorem and evidence registries. Proved upper bounds, certified or empirical lower evidence, experiments, and unresolved novelty are separate epistemic layers. The graph supports traceability only; it does not turn a search result into a theorem or authorize release.",
+      "conclusion_not_supported": "numerical sharpness or theorem-level novelty",
+      "conclusion_supported": "the displayed definitions and dependency structure",
+      "metric": "structural semantics",
+      "name": "fig18_claim_evidence_dag",
+      "number": 18,
+      "outputs": {
+        "pdf": {
+          "bytes": 38843,
+          "path": "papers/tree_stability_v3/figures/fig18_claim_evidence_dag.pdf",
+          "sha256": "10bf6fb45db9265883f4406fabc7051478ecb8d109f974d4d0bacfb5cceaca78"
+        },
+        "svg": {
+          "bytes": 274117,
+          "path": "papers/tree_stability_v3/figures/fig18_claim_evidence_dag.svg",
+          "sha256": "b8e8f9c88ede26d80853878e128ec355950327d613d350bc92b5268e8796ef66"
+        }
+      },
+      "restarts": "not applicable",
+      "seeds": "not applicable",
+      "source_sha256": {
+        "artifacts/research_v3/full_execution_manifest.json": "267d3c3e121e384c42c3d329052157c64422c6fb8a8e8849322302f1967bc015",
+        "claims/claim_evidence_matrix_v3.csv": "ed144d9479e573be1e24380b6a2a9dae84f575f32084ca14c551b0bd08d18c83",
+        "claims/theorem_registry_v3.yaml": "e19e321ac851a3d474867526c8e1bb2377efe55901ac1a721547d4a504f188c5",
+        "scripts/figures_v3/fig18_claim_evidence_dag.tex": "775c81b3d5af6a952f739606a6ba0ade37534dc98eb2f7ba940cc55cb9fee6c0"
+      },
+      "sources": [
+        "scripts/figures_v3/fig18_claim_evidence_dag.tex",
+        "claims/theorem_registry_v3.yaml",
+        "claims/claim_evidence_matrix_v3.csv",
+        "artifacts/research_v3/full_execution_manifest.json"
+      ],
+      "supplementary": false,
+      "theoretical_reference": "typed tree definitions and exact decomposition theorem",
+      "title": "Claim/evidence/extremizer DAG",
+      "uncertainty": "none; exact diagram",
+      "unique_instances": "definition/proof object"
+    }
+  ],
+  "generator": "scripts/figures_v3/build.py",
+  "mandatory_figure_count": 18,
+  "supplementary_figure_count": 8
+}

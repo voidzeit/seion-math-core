@@ -1,0 +1,62 @@
+{
+  "documents": {
+    "mathematical_paper": {
+      "blank_pages": [],
+      "bytes": 790425,
+      "contact_sheets": [
+        "artifacts\\qa_v3\\contact_sheets\\mathematical_paper_01-16.png",
+        "artifacts\\qa_v3\\contact_sheets\\mathematical_paper_17-31.png"
+      ],
+      "metadata": {
+        "Author": "Eliuth Chavero Jasso",
+        "Keywords": "multilinear tree, recursive projection, closure residual, nodewise certificate, operad, interval certification",
+        "Subject": "Finite-dimensional multilinear tree error certificates under recursive orthogonal projection",
+        "Title": "Nodewise Error Certificates for Recursively Projected N-Ary Composition Trees"
+      },
+      "page_sizes": [
+        [
+          612.0,
+          792.0
+        ]
+      ],
+      "pages": 31,
+      "pdf": "papers\\tree_stability_v3\\build\\main.pdf",
+      "pdfinfo": "Title:           Nodewise Error Certificates for Recursively Projected N-Ary Composition Trees\nSubject:         Finite-dimensional multilinear tree error certificates under recursive orthogonal projection\nKeywords:        multilinear tree, recursive projection, closure residual, nodewise certificate, operad, interval certification\nAuthor:          Eliuth Chavero Jasso\nCreator:         LaTeX with hyperref\nProducer:        MiKTeX pdfTeX-1.40.29\nCreationDate:    Wed Jul 29 14:13:05 2026 Eastern Daylight Time\nModDate:         Wed Jul 29 14:13:05 2026 Eastern Daylight Time\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           31\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       790425 bytes\nOptimized:       no\nPDF version:     1.5\n",
+      "render_status": "PASS",
+      "rendered_pages": 31,
+      "sha256": "c67106c478e660741c1ac71d2fadc31ef270636141e36e5732896ce8533574eb",
+      "text_characters": 122062
+    },
+    "software_companion": {
+      "blank_pages": [],
+      "bytes": 258142,
+      "contact_sheets": [
+        "artifacts\\qa_v3\\contact_sheets\\software_companion_01-06.png"
+      ],
+      "metadata": {
+        "Author": "Eliuth Chavero Jasso",
+        "Keywords": "research software, typed tree, multilinear tensor, CUDA parity, interval arithmetic, reproducibility",
+        "Subject": "Reproducible software and artifact protocol for finite typed multilinear tree certificates",
+        "Title": "SEION Math Core v3: Typed Tree Certificates and Reproducible Experiments"
+      },
+      "page_sizes": [
+        [
+          612.0,
+          792.0
+        ]
+      ],
+      "pages": 6,
+      "pdf": "papers\\software_v3\\build\\main.pdf",
+      "pdfinfo": "Title:           SEION Math Core v3: Typed Tree Certificates and Reproducible Experiments\nSubject:         Reproducible software and artifact protocol for finite typed multilinear tree certificates\nKeywords:        research software, typed tree, multilinear tensor, CUDA parity, interval arithmetic, reproducibility\nAuthor:          Eliuth Chavero Jasso\nCreator:         LaTeX with hyperref\nProducer:        MiKTeX pdfTeX-1.40.29\nCreationDate:    Wed Jul 29 14:13:08 2026 Eastern Daylight Time\nModDate:         Wed Jul 29 14:13:08 2026 Eastern Daylight Time\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           6\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       258142 bytes\nOptimized:       no\nPDF version:     1.5\n",
+      "render_status": "PASS",
+      "rendered_pages": 6,
+      "sha256": "6a4bdce3b504bf244b9514c7bcc76aa5b0aa6d84f78cb96b41803405417837b3",
+      "text_characters": 20713
+    }
+  },
+  "generated_utc": "2026-07-29T18:13:10.199863+00:00",
+  "pdfinfo": "C:\\Users\\Eliuth Chavero\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\pdfinfo.exe",
+  "pdftoppm": "C:\\Users\\Eliuth Chavero\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\pdftoppm.exe",
+  "pdftotext": "C:\\Users\\Eliuth Chavero\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\pdftotext.exe",
+  "source_commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4"
+}

@@ -1,0 +1,29 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "kind": "leaf",
+          "label": 0,
+          "type": "tau"
+        },
+        {
+          "kind": "leaf",
+          "label": 1,
+          "type": "tau"
+        }
+      ],
+      "kind": "node",
+      "law_id": "mu",
+      "output_type": "tau"
+    },
+    {
+      "kind": "leaf",
+      "label": 2,
+      "type": "tau"
+    }
+  ],
+  "kind": "node",
+  "law_id": "mu",
+  "output_type": "tau"
+}

@@ -1,0 +1,15 @@
+{
+  "cross_grammar_hash_reuse_is_intentional": true,
+  "elapsed_seconds": 6.736886500031687,
+  "families": {
+    "binary": 2055,
+    "mixed_2_3_4": 78879,
+    "quaternary": 167,
+    "ternary": 344
+  },
+  "generated_utc": "2026-07-29T18:12:04.358812+00:00",
+  "hash_unique_within_each_grammar": true,
+  "rows": 81445,
+  "source_commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4",
+  "unique_mathematical_objects": 80870
+}

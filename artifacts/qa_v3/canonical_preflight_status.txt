@@ -1,0 +1,18 @@
+﻿ M .obsidian/workspace.json
+?? artifacts/index/bound_hierarchy_v3.csv
+?? artifacts/index/constants_atlas_v3.csv
+?? artifacts/index/extremizer_registry_v3.csv
+?? artifacts/index/failures_v3.csv
+?? artifacts/index/node_contributions_v3.parquet
+?? artifacts/index/optimality_gaps_v3.csv
+?? artifacts/index/scientific_instances_full_v3.csv
+?? artifacts/index/scientific_instances_full_v3.parquet
+?? artifacts/index/tree_instances_v3.csv
+?? artifacts/index/tree_instances_v3.parquet
+?? artifacts/qa_v3/
+?? artifacts/research_v3/
+?? artifacts/reviews_v3/
+?? artifacts/runs_v3/
+?? papers/tree_stability_v3/figures/
+?? papers/tree_stability_v3/generated_results.tex
+?? papers/tree_stability_v3/tables/

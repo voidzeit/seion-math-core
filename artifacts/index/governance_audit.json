@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "audited_at": "2026-07-29T15:51:36.839810+00:00",
+  "audited_at": "2026-07-29T18:16:11.200664+00:00",
   "status": "yellow",
-  "strict": false,
+  "strict": true,
   "git": {
-    "branch": "research/structure-preserving-reduction-v2",
-    "commit": "247de089a5fea826fa87f9b9e791c20a5a6fd1b6",
+    "branch": "research/nodewise-tree-constants-v3",
+    "commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4",
     "dirty": true
   },
   "required_files": {
@@ -19,17 +19,17 @@
     "status": "green"
   },
   "runs": {
-    "historical_run_count": 76,
+    "historical_run_count": 80,
     "unique_scientific_instance_count": 9,
     "duplicate_group_count": 8,
-    "duplicate_record_count": 67,
+    "duplicate_record_count": 71,
     "artifact_contract": {
-      "run_count": 76,
-      "contract_complete_count": 76,
+      "run_count": 80,
+      "contract_complete_count": 80,
       "contract_incomplete_count": 0,
       "missing_artifacts": {},
       "statuses": {
-        "COMPLETE": 74,
+        "COMPLETE": 78,
         "FAILED_RUNTIME": 2
       }
     }
@@ -38,7 +38,13 @@
     "B-0001",
     "B-0002",
     "B-0003",
-    "B-0004"
+    "B-0004",
+    "B-0005",
+    "B-0006",
+    "B-0007",
+    "B-0008",
+    "B-0009",
+    "B-0010"
   ],
   "issues": [
     {

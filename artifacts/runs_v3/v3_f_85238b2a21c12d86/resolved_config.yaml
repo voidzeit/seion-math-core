@@ -1,0 +1,13 @@
+block: F
+device: cpu+cuda
+instance_id: block-F-batch
+method: batched registered scientific instances
+parameters:
+  matrix: experiments\matrices\tree_constants_v3.yaml
+  resolved_matrix: experiments\matrices\tree_constants_v3_resolved.yaml
+  row_count: 24
+precision: float64/complex128/exact-as-declared
+resolved_config_hash: 2d85781157412a0f3419e36ce1944915dab21fbee45bf124a19d7f07a30225a8
+restarts: 0
+seed: null
+stage: full

@@ -32,6 +32,11 @@ ownership:
   claims: claims/
   experiments: experiments/
   run_artifacts: artifacts/runs/
+  v3_run_artifacts: artifacts/runs_v3/
+  v3_research_evidence: artifacts/research_v3/
+  v3_quality_evidence: artifacts/qa_v3/
   paper: paper/
+  v3_mathematical_paper: papers/tree_stability_v3/
+  v3_software_companion: papers/software_v3/
   durable_memory: .ai/
   governance_contracts: governance/

@@ -1,0 +1,218 @@
+{
+  "associator_constant": "projected triangle coefficient 2; sharpness open",
+  "base_wall_seconds": 20.619369499967434,
+  "branch": "research/nodewise-tree-constants-v3",
+  "certified_lower_bound_rows": 9945,
+  "certified_upper_bound_rows": 9945,
+  "commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4",
+  "cpu_gpu_parity": 1.922112502494855e-08,
+  "exact_atlas_rows": 4185,
+  "exact_cases_certified_global": 60,
+  "fi_gji_constants": [
+    {
+      "expression": "five_input_ternary_associator",
+      "observed_constant": 0.00010000000050247593,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "five_input_ternary_associator",
+      "observed_constant": 0.009999999999998899,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "five_input_ternary_associator",
+      "observed_constant": 0.10000000000000009,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "five_input_ternary_associator",
+      "observed_constant": 0.5,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "all_ternary_insertions",
+      "observed_constant": 0.00010000000050247593,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "all_ternary_insertions",
+      "observed_constant": 0.009999999999998899,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "all_ternary_insertions",
+      "observed_constant": 0.10000000000000009,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "all_ternary_insertions",
+      "observed_constant": 0.5,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "anchored_associator",
+      "observed_constant": 0.00010000000050247593,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "anchored_associator",
+      "observed_constant": 0.009999999999998899,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "anchored_associator",
+      "observed_constant": 0.10000000000000009,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "anchored_associator",
+      "observed_constant": 0.5,
+      "syntactic_cancellation_upper": 2.0,
+      "triangle_upper": 2.0
+    },
+    {
+      "expression": "jacobiator_variants",
+      "observed_constant": 0.0,
+      "syntactic_cancellation_upper": 3.0,
+      "triangle_upper": 3.0
+    },
+    {
+      "expression": "jacobiator_variants",
+      "observed_constant": 0.0,
+      "syntactic_cancellation_upper": 3.0,
+      "triangle_upper": 3.0
+    },
+    {
+      "expression": "jacobiator_variants",
+      "observed_constant": 0.0,
+      "syntactic_cancellation_upper": 3.0,
+      "triangle_upper": 3.0
+    },
+    {
+      "expression": "jacobiator_variants",
+      "observed_constant": 0.0,
+      "syntactic_cancellation_upper": 3.0,
+      "triangle_upper": 3.0
+    },
+    {
+      "expression": "named_gji_variants",
+      "observed_constant": 2.220446049250313e-12,
+      "syntactic_cancellation_upper": 6.0,
+      "triangle_upper": 6.0
+    },
+    {
+      "expression": "named_gji_variants",
+      "observed_constant": 2.220446049250313e-14,
+      "syntactic_cancellation_upper": 6.0,
+      "triangle_upper": 6.0
+    },
+    {
+      "expression": "named_gji_variants",
+      "observed_constant": 2.220446049250313e-15,
+      "syntactic_cancellation_upper": 6.0,
+      "triangle_upper": 6.0
+    },
+    {
+      "expression": "named_gji_variants",
+      "observed_constant": 0.0,
+      "syntactic_cancellation_upper": 6.0,
+      "triangle_upper": 6.0
+    },
+    {
+      "expression": "filippov_fundamental_identity",
+      "observed_constant": 9.99999993922529e-05,
+      "syntactic_cancellation_upper": 4.0,
+      "triangle_upper": 4.0
+    },
+    {
+      "expression": "filippov_fundamental_identity",
+      "observed_constant": 0.009999999999998899,
+      "syntactic_cancellation_upper": 4.0,
+      "triangle_upper": 4.0
+    },
+    {
+      "expression": "filippov_fundamental_identity",
+      "observed_constant": 0.10000000000000009,
+      "syntactic_cancellation_upper": 4.0,
+      "triangle_upper": 4.0
+    },
+    {
+      "expression": "filippov_fundamental_identity",
+      "observed_constant": 0.5,
+      "syntactic_cancellation_upper": 4.0,
+      "triangle_upper": 4.0
+    },
+    {
+      "expression": "custom_signed_forests",
+      "observed_constant": 0.00014999999908837935,
+      "syntactic_cancellation_upper": 2.5,
+      "triangle_upper": 2.5
+    },
+    {
+      "expression": "custom_signed_forests",
+      "observed_constant": 0.014999999999987246,
+      "syntactic_cancellation_upper": 2.5,
+      "triangle_upper": 2.5
+    },
+    {
+      "expression": "custom_signed_forests",
+      "observed_constant": 0.14999999999999902,
+      "syntactic_cancellation_upper": 2.5,
+      "triangle_upper": 2.5
+    },
+    {
+      "expression": "custom_signed_forests",
+      "observed_constant": 0.75,
+      "syntactic_cancellation_upper": 2.5,
+      "triangle_upper": 2.5
+    }
+  ],
+  "figures_generated": 18,
+  "generated_utc": "2026-07-29T18:13:56.026823+00:00",
+  "maximum_certified_relative_gap": 1.0,
+  "maximum_theorem_bound_ratio": 1.0,
+  "optimizer_trajectories_completed": 4,
+  "optimizer_trajectories_requested": 460800,
+  "paper_pages": {
+    "mathematical_paper": 31,
+    "software_companion": 6
+  },
+  "pdf_hashes": {
+    "mathematical_paper": "c67106c478e660741c1ac71d2fadc31ef270636141e36e5732896ce8533574eb",
+    "software_companion": "6a4bdce3b504bf244b9514c7bcc76aa5b0aa6d84f78cb96b41803405417837b3"
+  },
+  "peak_vram_bytes": 33757184,
+  "release_gate_result": "FAIL_CLOSED_NOVELTY",
+  "reviewer_recommendations": {
+    "A": "MAJOR_REVISION",
+    "B": "MAJOR_REVISION",
+    "C": "MAJOR_REVISION",
+    "D": "ACCEPTABLE_AS_RESEARCH_DRAFT"
+  },
+  "status_of_k": "CERTIFIED_UPPER_BOUND; fixed-eta sharpness open",
+  "status_of_k_minus_one": "PROVED_UNDER_ASSUMPTIONS; novelty and fixed-eta sharpness open",
+  "tests_passed": 69,
+  "tree_shapes_enumerated": 81445,
+  "unique_scientific_instances": 15493,
+  "unique_tree_hashes": 80870,
+  "unresolved_gate_count": 6,
+  "unresolved_mathematical_questions": [
+    "fixed-eta optimality of k",
+    "fixed-eta optimality of k-1",
+    "information-optimality of local-summary certificates",
+    "sharp cancellation-aware FI/GJI/associator constants",
+    "minimal extremizer dimension and type complexity"
+  ],
+  "worktree_status": "dirty"
+}

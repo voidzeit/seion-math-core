@@ -1,0 +1,12 @@
+{
+  "certified_lower_bounds": 4185,
+  "certified_upper_bounds": 4185,
+  "elapsed_seconds": 0.36353550001513213,
+  "exact_zero_projected_cases": 30,
+  "maximum_construction_to_upper_ratio": 1.0,
+  "maximum_relative_gap": 1.0,
+  "minimum_relative_gap": 0.0,
+  "scientific_instances": 4185,
+  "status": "COMPLETE",
+  "tree_shapes": 93
+}

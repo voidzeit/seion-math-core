@@ -1,0 +1,4 @@
+{
+  "results": "artifacts\\research_v3\\extended_optimizer_results_v3.parquet",
+  "schedule": "artifacts\\research_v3\\extended_optimizer_schedule_v3.parquet"
+}

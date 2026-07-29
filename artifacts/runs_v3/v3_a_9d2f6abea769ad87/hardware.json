@@ -1,0 +1,19 @@
+{
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "gpus": [
+    {
+      "capability": [
+        12,
+        0
+      ],
+      "index": 0,
+      "name": "NVIDIA RTX PRO 5000 Blackwell Generation Laptop GPU",
+      "total_memory_bytes": 25650855936
+    }
+  ],
+  "logical_cpu_count": 24,
+  "machine": "AMD64",
+  "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+  "ram_bytes": 136856682496
+}

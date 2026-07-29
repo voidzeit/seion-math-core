@@ -1,0 +1,9 @@
+{
+  "block": "C",
+  "scientific_instances": 3456,
+  "status": "COMPLETE",
+  "status_counts": {
+    "COMPLETE_BASE_INSTANCE": 3456
+  },
+  "unique_instance_hashes": 3456
+}

@@ -1,0 +1,90 @@
+{
+  "generated_results_macros": "papers/tree_stability_v3/generated_results.tex",
+  "generator": "scripts\\build_tree_constants_v3_tables.py",
+  "mandatory_table_count": 16,
+  "prior_art_csv": "artifacts/research_v3/prior_art_matrix.csv",
+  "source_artifacts": [
+    "artifacts/index/tree_instances_v3.parquet",
+    "artifacts/research_v3/block_A_exact_atlas.parquet",
+    "artifacts/research_v3/block_B.parquet",
+    "artifacts/research_v3/block_C.parquet",
+    "artifacts/research_v3/block_D.parquet",
+    "artifacts/research_v3/block_E.parquet",
+    "artifacts/research_v3/block_F.parquet",
+    "artifacts/research_v3/block_F_leakage_masks.parquet",
+    "artifacts/research_v3/block_G.parquet",
+    "artifacts/research_v3/block_H.parquet",
+    "artifacts/research_v3/block_I.parquet"
+  ],
+  "supplementary_table_count": 1,
+  "tables": [
+    {
+      "path": "papers/tree_stability_v3/tables/typed_notation.tex",
+      "sha256": "c024de4948837e4313da5857d6194f32d03a3238a3300984ff56d62631a10d4d"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/topology_statistics.tex",
+      "sha256": "ad63b2101652ed3e187fc1afb2af3adaa9c08796cc11b66725141341970543d3"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/exact_small_constants.tex",
+      "sha256": "a94df27c584f4e71d137538818bd52e7b6bf2866b8a4c50b8c0a83093f77b7d8"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/homogeneous_ambient_constants.tex",
+      "sha256": "90e4eed3eae7b9d211100e6e791c4dd1ca567dd219ed4aaffcf56ce261e74c60"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/homogeneous_projected_constants.tex",
+      "sha256": "a4a61849e6e23973cf7f804a5b7da4668c4fa332c45a33b71674bcdeb0f6c8f1"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/nodewise_formulas.tex",
+      "sha256": "f28a12cbd3395b03adaf7d9ccf2604c09d3fca348ce33b073bc9cc2090a5eea3"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/bound_hierarchy.tex",
+      "sha256": "b3fce496473f124772a4541a39b5dd66e243a365a6c9fa4dd405f150355ea59b"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/extremizer_constructions.tex",
+      "sha256": "945d79221d31d760e95e8cfaf76bfc244415c20ef5bb29c667f0ae12bfa93a9b"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/optimality_gaps.tex",
+      "sha256": "9acb8044125ecf9d55a4629a7624185200448dcbb648a70d66d306b9d8f1d660"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/signed_expression_constants.tex",
+      "sha256": "207997aed572d205daf92f161b29cc234c55addbc3596a8a0b1f2c4fcafb25bc"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/dimension_rank_interaction.tex",
+      "sha256": "11fc04132e4b9b8de08c5871570324ba438ff0f4dfb2befaf4e8910d2f19e90c"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/cp_projection_budget.tex",
+      "sha256": "d5ac132ca001c0310ebdff1c20f97988a253fdb5799c9290dc17a8a874044309"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/precision_conditioning.tex",
+      "sha256": "a064c813bcce5e93c4f2b82ca6c5ec83db339ee77c0df844e8095b521ef65093"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/cpu_gpu_parity.tex",
+      "sha256": "59a2f9f324143965b4262f8b1fb90a10e24144d28248b998ab0b4120ce3eb697"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/failure_counterexample_registry.tex",
+      "sha256": "358b892298e7bcbd513184425f8250590210c5b2528854faab697a783b41e742"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/reproducibility_manifest.tex",
+      "sha256": "18dfd492789c2679bd5b6c702954320faf444c01fd04af9cae12c5678ffe950c"
+    },
+    {
+      "path": "papers/tree_stability_v3/tables/prior_art_matrix.tex",
+      "sha256": "ef592b3f1359f312bee5600de8dcd187c6331d9e17263617bfa23b48685ba6ee"
+    }
+  ]
+}

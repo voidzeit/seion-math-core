@@ -1,0 +1,14 @@
+{
+  "epistemic_note": "This is a layout inspection record, not independent mathematical review or publication authorization.",
+  "generated_utc": "2026-07-29T18:13:47.762764+00:00",
+  "human_release_approval": false,
+  "inspector": "Codex visual inspection",
+  "notes": "Post-canonical inspection of all 37 rendered pages and the 18-figure contact sheet at source commit b718f4e5178590d1f8b6a090fb696545eb3bfcd4. Detailed prior-art page 11 was rechecked after ragged-right rebuild. No clipping, overlap, blank page, missing asset, illegible equation, or broken visual hierarchy observed. This is visual QA only, not human peer review or publication approval.",
+  "pdf_hashes": {
+    "mathematical_paper": "c67106c478e660741c1ac71d2fadc31ef270636141e36e5732896ce8533574eb",
+    "software_companion": "6a4bdce3b504bf244b9514c7bcc76aa5b0aa6d84f78cb96b41803405417837b3"
+  },
+  "scope": "all rendered pages in both contact-sheet sets",
+  "source_commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4",
+  "status": "PASS"
+}

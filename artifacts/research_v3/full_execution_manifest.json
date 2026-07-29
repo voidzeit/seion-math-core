@@ -1,0 +1,46 @@
+{
+  "block_counts": {
+    "A": 4185,
+    "B": 2880,
+    "C": 3456,
+    "D": 4320,
+    "E": 96,
+    "F": 24,
+    "G": 28,
+    "H": 480,
+    "I": 24
+  },
+  "blocks_complete": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I"
+  ],
+  "enumerated_tree_shapes": 81445,
+  "full_core_base_matrix_status": "COMPLETE",
+  "leakage_masks_executed": 1530,
+  "maximum_cpu_gpu_parity_error": 1.922112502494855e-08,
+  "maximum_lower_to_projected_upper_ratio": 1.0,
+  "optimizer_grid_status": "EXTENDED_PENDING_RESOURCE_GATE",
+  "optimizer_trajectories_executed_pilot": 5,
+  "optimizer_trajectories_requested_extended": 460800,
+  "release_impact": "fail closed on novelty, human review, and pending extended optimizer grid",
+  "run_dirs": {
+    "B": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs_v3\\v3_b_193c8f7077f24001",
+    "C": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs_v3\\v3_c_e196eda9fd80b2ad",
+    "D": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs_v3\\v3_d_304660bf79700d9f",
+    "E": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs_v3\\v3_e_0e05fcaf5c695ae3",
+    "F": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs_v3\\v3_f_85238b2a21c12d86",
+    "G": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs_v3\\v3_g_668704fd7d61be98",
+    "H": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs_v3\\v3_h_0af9e6a0a9074e22",
+    "I": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs_v3\\v3_i_4f9e3e2588d8b40f"
+  },
+  "scientific_instances": 15493,
+  "source_commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4",
+  "wall_seconds": 20.619369499967434
+}

@@ -1,0 +1,78 @@
+{
+  "certificate.json": {
+    "bytes": 84,
+    "sha256": "512dc80c45ebe24fe596498180cda61f9c2a86d7e2b57b60064058f2dc83b604"
+  },
+  "command.txt": {
+    "bytes": 47,
+    "sha256": "2ec02b9a4ae0013f9037ac5cc6e088ffd2414e8899897b402bf420034cb8929c"
+  },
+  "config.yaml": {
+    "bytes": 274,
+    "sha256": "bf0cad1b8ce8d1b5d68a036a5bbcd73eaba63e76a421bf1b4a5c7f8a1bafa05b"
+  },
+  "environment.json": {
+    "bytes": 568,
+    "sha256": "180b6a71cc17fa197b2260438d6a8a551c6062a6c601c0aec8122972f661467f"
+  },
+  "exact_or_reference_metrics.json": {
+    "bytes": 261,
+    "sha256": "f37473b71c712dc659fbf31f7a0d95b112b049f33053e7a81f428b6f066b497d"
+  },
+  "final_metrics.json": {
+    "bytes": 261,
+    "sha256": "f37473b71c712dc659fbf31f7a0d95b112b049f33053e7a81f428b6f066b497d"
+  },
+  "hardware.json": {
+    "bytes": 431,
+    "sha256": "f3cde80f0e0a01d69e4d276811f983d5f83c2d07973c11e374843e3f0a44e9a1"
+  },
+  "law_tensors.npz": {
+    "bytes": 216,
+    "sha256": "4da50f39556df86814df7085fbe5950478936c815d01724c27f8992a5e8d30c2"
+  },
+  "local_constants.json": {
+    "bytes": 54,
+    "sha256": "f31be430fc40e737275c8265a7798fac58f2069da8e7e59e72cbf5c6a4ceffc4"
+  },
+  "node_contributions.csv": {
+    "bytes": 3236,
+    "sha256": "de82747ed70626f4bbb68defbb6b695400766215765768ec890eaee5bfc95b7f"
+  },
+  "optimization_history.csv": {
+    "bytes": 7,
+    "sha256": "24526432f951ea86e61db71a2c7df058d690643d1792c6525c784823544d3c03"
+  },
+  "resolved_config.yaml": {
+    "bytes": 362,
+    "sha256": "89149319795854377815aecfb10092886040ada6a1e6e12b41ab580f7447e881"
+  },
+  "run_manifest.json": {
+    "bytes": 735,
+    "sha256": "c0c09b2ae44eac77cf64722d833932f0609de2581d02b1107d669af1c3fe5236"
+  },
+  "stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout.log": {
+    "bytes": 261,
+    "sha256": "666abe2228d3b4554aea500a32b97c4ee22bd005ac880563bdcba6dd74154a44"
+  },
+  "summary.md": {
+    "bytes": 292,
+    "sha256": "8f1419f1db035e292148d67f0cea221853348a61dbb3719768ccf5dd30904bae"
+  },
+  "tree.json": {
+    "bytes": 5522,
+    "sha256": "a8dafd6f51d3d1b73c4b8eeb257caa61d8247edd354291bf844261142fcd033c"
+  },
+  "tree.svg": {
+    "bytes": 465,
+    "sha256": "0e705b6e9cd4b09c028fcac9d0e47ba11c5abdabc6145d2e3f229a8ac19e8e71"
+  },
+  "type_signature.json": {
+    "bytes": 80,
+    "sha256": "5eae66a5f5347a82b013211bc6e9bfe2c767b474afcf596480f68c3dfb1d8ecc"
+  }
+}

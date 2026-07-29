@@ -1,0 +1,71 @@
+{
+  "assumptions": {
+    "artifact_average_bytes_for_naive_layout": 32768,
+    "flop_estimate_note": "dense optimizer FLOPs vary with arity, dimension, topology, and batching; wall estimate uses measured eight-node tree evaluation as an optimistic lower proxy",
+    "optimizer_steps_per_trajectory": 150
+  },
+  "calibration": {
+    "cpu_evaluations_per_second": 908.7187473847607,
+    "cpu_rotation_tree_evaluations": 200,
+    "cpu_seconds": 0.2200901000178419,
+    "gpu_calibration": "4096x32 float64 tanh-matmul",
+    "gpu_name": "NVIDIA RTX PRO 5000 Blackwell Generation Laptop GPU",
+    "gpu_seconds": 0.0019857999868690968,
+    "gpu_steps": 50,
+    "gpu_steps_per_second": 25178.769428250573
+  },
+  "enumerated_tree_shapes": 81445,
+  "enumeration": {
+    "binary": 2055,
+    "mixed": 78879,
+    "quaternary": 167,
+    "ternary": 344
+  },
+  "extended_scientific_instances": 8400,
+  "full_core_scientific_instances": 15493,
+  "generated_utc": "2026-07-29T18:11:55.942062+00:00",
+  "matrix": "experiments\\matrices\\tree_constants_v3.yaml",
+  "nested_execution_counts": {
+    "A_certification_method_calls": 12555,
+    "B_optimizer_trajectories": 460800,
+    "C_seed_evaluations": 34560,
+    "D_seed_evaluations": 43200,
+    "E_seed_evaluations": 480,
+    "F_leakage_mask_evaluations": 1530,
+    "G_seed_evaluations": 560,
+    "H_seed_evaluations": 4800,
+    "I_seed_evaluations": 240
+  },
+  "requested_optimizer_or_seed_evaluations": 558725,
+  "resource_gate": {
+    "criteria": {
+      "maximum_single_session_optimizer_hours": 8,
+      "maximum_small_file_count": 250000
+    },
+    "optimizer_wall_lower_estimate_seconds": 76063.13856616616,
+    "requested_naive_file_count": 402818,
+    "requested_naive_storage_bytes_at_32KiB_per_file": 13199540224,
+    "resolution": {
+      "artifact_packaging": "one complete run artifact set per block plus one immutable row per scientific instance",
+      "claim_language": "unexecuted optimizer trajectories remain explicitly pending and cannot support optimality",
+      "extended_resumable": "all requested seed/restart adversarial trajectories and performance block J",
+      "full_core": "all base mathematical instances; exhaustive trees; proved upper bounds; explicit lower constructions; selected independent optimizer calibration",
+      "scientific_axes_retained": true
+    },
+    "triggered": true
+  },
+  "schema_version": 3,
+  "scientific_instances_by_block": {
+    "A": 4185,
+    "B": 2880,
+    "C": 3456,
+    "D": 4320,
+    "E": 96,
+    "F": 24,
+    "G": 28,
+    "H": 480,
+    "I": 24,
+    "J": 8400
+  },
+  "source_commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4"
+}

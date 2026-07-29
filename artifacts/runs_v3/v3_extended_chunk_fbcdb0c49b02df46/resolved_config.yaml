@@ -1,0 +1,17 @@
+block: B_EXTENDED
+device: cuda_if_available
+instance_id: fbcdb0c49b02df466c736a4dbd0cfd3c478d5ab7c96adae5f1ac5485caeec87a
+method: bounded_resumable_Adam_LBFGS_chunk
+parameters:
+  adam_steps: 10
+  lbfgs_steps: 3
+  trajectory_ids:
+  - be3cdd5b180c3c3e7e575c25ec383c1b69ed079c18facac780f61d751cffd979
+  - 749ec1dea5425e9f50d810853f42883ec889e83e8b52a1f156b0031775793936
+  - 4614f7bbed1c5dc6a8e6f61634060a1940ac79e541541e32b7c83a1f69797a08
+  - e7ec4383e5b227f898ea1ea727df31cfb49eb719f5e79bae1e4780aba39245b5
+precision: float64
+resolved_config_hash: 3b84bfe28d46f58ade2a34a543bb7a74caa46aa25293a07df5a8bfc413415374
+restarts: 4
+seed: null
+stage: extended

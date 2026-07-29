@@ -83,3 +83,30 @@ changed paths, and limitations. Historical artifact runs remain under
   - Verified author email and ORCID metadata remain absent.
   - The foundations PDF is draft/not for submission; no submission approval is asserted.
   - Legacy historical runs and duplicates remain preserved; the worktree remains dirty and no commit was created.
+
+## 2026-07-29T18:13:56.026823+00:00 — Canonical v3 nodewise tree-constant execution
+
+- Command: `powershell -ExecutionPolicy Bypass -File scripts/run_tree_constants_v3_full.ps1`, followed by post-canonical visual signoff and `python scripts/tree_constants_v3_audit.py audit`.
+- Branch/commit: `research/nodewise-tree-constants-v3` / `b718f4e5178590d1f8b6a090fb696545eb3bfcd4`.
+- Outcome: **TECHNICAL_AUDIT_PASS; FAIL_CLOSED_NOVELTY**.
+- Validation: 69/69 tests passed including CUDA parity; 81,445 tree occurrences and 80,870 unique tree hashes enumerated; all A--I base blocks completed with 15,493 unique scientific instances and no duplicate scientific hashes; 1,530 leakage masks executed; 69 manifest outputs and 22 run artifacts hash-validated; theorem DAG has no cycles; maximum CPU/GPU absolute difference is `1.922112502494855e-08`; no negative theorem-bound margin was found.
+- Publications: mathematical paper 31 pages and software companion 6 pages; 18 principal vector figures and eight topology atlases; 16 mandatory and one supplementary table; all 37 pages and the figure contact sheet visually inspected with matching PDF hashes.
+- Release gate: 9/15 gates pass; result is `FAIL_CLOSED_NOVELTY`. The canonical command's nonzero terminal status is the mandated fail-closed publication status, not an interrupted pipeline.
+- Changed paths: `src/seion_core/research_v3/`, `tests/research_v3/`, `scripts/*tree_constants_v3*`, `scripts/figures_v3/`, `claims/*_v3.*`, `experiments/matrices/tree_constants_v3*`, `papers/tree_stability_v3/`, `papers/software_v3/`, `artifacts/*v3*`, and `.ai/`.
+- Limitations: fixed-eta sharpness and theorem-level novelty remain open; global certification is incomplete; only 4/460,800 extended optimizer trajectories and 0/8,400 extended performance cells are complete; there are no independent human reviews; the user-owned `.obsidian/workspace.json` change was preserved.
+
+## 2026-07-29T18:16:20.089306+00:00 — SEION nodewise tree constants v3 full execution
+
+- Command: `powershell -ExecutionPolicy Bypass -File scripts/run_tree_constants_v3_full.ps1`
+- Branch/commit: `research/nodewise-tree-constants-v3` / `b718f4e5178590d1f8b6a090fb696545eb3bfcd4`
+- Outcome: **TECHNICAL_AUDIT_PASS; FAIL_CLOSED_NOVELTY**
+- Summary: Implemented and canonically executed the self-contained v3 governance, memory, mathematics, experiments, visualization, paper, and software system.
+- Validation: 69 tests passed; 81445 tree occurrences; 80870 unique hashes; 15493 unique A-I instances; 37 PDF pages visually inspected; 9/15 release gates pass.
+- Changed files:
+  - `src/seion_core/research_v3`
+  - `papers/tree_stability_v3`
+  - `papers/software_v3`
+  - `artifacts/research_v3`
+- Limitations:
+  - Fixed-eta sharpness, theorem-level novelty, complete independent certification, the extended matrix, and independent human review remain unresolved.
+  - The pre-existing .obsidian/workspace.json change was preserved and no external repository was edited.

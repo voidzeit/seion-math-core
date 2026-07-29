@@ -1,0 +1,9 @@
+{
+  "block": "G",
+  "scientific_instances": 28,
+  "status": "COMPLETE",
+  "status_counts": {
+    "COMPLETE_REGISTERED_FOREST_EVALUATION": 28
+  },
+  "unique_instance_hashes": 28
+}

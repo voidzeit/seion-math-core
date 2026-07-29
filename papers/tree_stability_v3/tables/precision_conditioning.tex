@@ -1,0 +1,30 @@
+\begin{tabular}{@{}llSSSS@{}}
+\toprule
+precision & case & \multicolumn{1}{c}{max residual} & \multicolumn{1}{c}{backward error} & \multicolumn{1}{c}{condition est.} & \multicolumn{1}{c}{min bound margin} \\
+\midrule
+arbitrary\allowbreak\_precision & ill\allowbreak\_conditioned & \num{0} & \num{0} & \num{1.00e+08} & \num{3.00e-08} \\
+arbitrary\allowbreak\_precision & near\allowbreak\_bound & \num{0} & \num{0} & \num{1000.000} & \num{0.003} \\
+arbitrary\allowbreak\_precision & optimizer\allowbreak\_stability & \num{2.22e-16} & \num{2.09e-16} & \num{2.000} & \num{0.438} \\
+arbitrary\allowbreak\_precision & small\allowbreak\_exact & \num{0} & \num{0} & \num{10.000} & \num{0.241} \\
+complex128 & ill\allowbreak\_conditioned & \num{0} & \num{0} & \num{1.00e+08} & \num{3.00e-08} \\
+complex128 & near\allowbreak\_bound & \num{0} & \num{0} & \num{1000.000} & \num{0.003} \\
+complex128 & optimizer\allowbreak\_stability & \num{0} & \num{0} & \num{2.000} & \num{0.438} \\
+complex128 & small\allowbreak\_exact & \num{0} & \num{0} & \num{10.000} & \num{0.241} \\
+complex64 & ill\allowbreak\_conditioned & \num{0} & \num{0} & \num{1.00e+08} & \num{3.00e-08} \\
+complex64 & near\allowbreak\_bound & \num{8.48e-13} & \num{8.48e-13} & \num{1000.000} & \num{0.003} \\
+complex64 & optimizer\allowbreak\_stability & \num{4.04e-08} & \num{3.80e-08} & \num{2.000} & \num{0.438} \\
+complex64 & small\allowbreak\_exact & \num{6.99e-10} & \num{6.99e-10} & \num{10.000} & \num{0.241} \\
+exact\allowbreak\_rational & ill\allowbreak\_conditioned & \num{0} & \num{0} & \num{1.667} & \num{0.547} \\
+exact\allowbreak\_rational & near\allowbreak\_bound & \num{0} & \num{0} & \num{1.667} & \num{0.547} \\
+exact\allowbreak\_rational & optimizer\allowbreak\_stability & \num{0} & \num{0} & \num{1.667} & \num{0.547} \\
+exact\allowbreak\_rational & small\allowbreak\_exact & \num{0} & \num{0} & \num{1.667} & \num{0.547} \\
+float32 & ill\allowbreak\_conditioned & \num{0} & \num{0} & \num{1.00e+08} & \num{3.00e-08} \\
+float32 & near\allowbreak\_bound & \num{8.48e-13} & \num{8.48e-13} & \num{1000.000} & \num{0.003} \\
+float32 & optimizer\allowbreak\_stability & \num{4.04e-08} & \num{3.80e-08} & \num{2.000} & \num{0.438} \\
+float32 & small\allowbreak\_exact & \num{6.99e-10} & \num{6.99e-10} & \num{10.000} & \num{0.241} \\
+float64 & ill\allowbreak\_conditioned & \num{0} & \num{0} & \num{1.00e+08} & \num{3.00e-08} \\
+float64 & near\allowbreak\_bound & \num{0} & \num{0} & \num{1000.000} & \num{0.003} \\
+float64 & optimizer\allowbreak\_stability & \num{0} & \num{0} & \num{2.000} & \num{0.438} \\
+float64 & small\allowbreak\_exact & \num{0} & \num{0} & \num{10.000} & \num{0.241} \\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,10 @@
+{
+  "block": "E",
+  "scientific_instances": 96,
+  "status": "COMPLETE",
+  "status_counts": {
+    "COMPLETE_TYPE_VALIDATION": 48,
+    "VERIFIED_NEGATIVE_CONTROL": 48
+  },
+  "unique_instance_hashes": 96
+}

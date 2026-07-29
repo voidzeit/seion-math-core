@@ -67,6 +67,33 @@
   unique scientific instances, 60 bound checks passed, and five CPU/GPU
   parity rows with maximum absolute error `1.4210854715202004e-14`.
 
+## V3 postflight observation
+
+- Observed on **2026-07-29T18:13:56Z** from branch
+  `research/nodewise-tree-constants-v3` at immutable source commit
+  `b718f4e5178590d1f8b6a090fb696545eb3bfcd4`.
+- The v3 system implements typed ordered n-ary trees, exact and recursively
+  projected evaluation, nodewise and path-sum certificates, exact subset
+  expansions, telescoping-order optimization, signed forests, CP projection
+  budgets, interval/SOS adapters, adversarial search, resumable experiments,
+  artifact governance, and strict publication gates.
+- The canonical 15-stage run completed generation, testing, CUDA parity,
+  exact enumeration, the A--I base matrix, benchmark registration, vector
+  figures, scientific tables, both manuscripts, page rendering, adversarial
+  reviews, and technical audit. The technical audit passes.
+- Verified totals are 69 passing tests, 81,445 enumerated tree occurrences,
+  80,870 unique mathematical hashes, 15,493 deduplicated scientific
+  instances, 1,530 exhaustive leakage masks, 18 principal vector figures,
+  16 mandatory plus one supplementary table, and 37 visually inspected PDF
+  pages. No registered theorem-bound violation was observed.
+- Publication remains deliberately fail-closed (`FAIL_CLOSED_NOVELTY`, 9/15
+  gates passing). Fixed-eta sharpness, theorem-level novelty, complete
+  independent global certification, the resource-gated extended matrix, and
+  independent human review remain unresolved. The pre-existing user-owned
+  `.obsidian/workspace.json` modification is preserved and also keeps the
+  clean-worktree gate false.
+- Other repositories were used as inspiration only and were not edited.
+
 ## Update rule
 
 This file is updated only by a postflight that records the command, environment,

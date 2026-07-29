@@ -1,0 +1,114 @@
+{
+  "branch": "research/nodewise-tree-constants-v3",
+  "commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4",
+  "data": {
+    "block_counts": {
+      "A": 4185,
+      "B": 2880,
+      "C": 3456,
+      "D": 4320,
+      "E": 96,
+      "F": 24,
+      "G": 28,
+      "H": 480,
+      "I": 24
+    },
+    "duplicate_scientific_hashes": 0,
+    "expected_block_counts": {
+      "A": 4185,
+      "B": 2880,
+      "C": 3456,
+      "D": 4320,
+      "E": 96,
+      "F": 24,
+      "G": 28,
+      "H": 480,
+      "I": 24
+    },
+    "failure_rows": 0,
+    "leakage_masks": 1530,
+    "maximum_certified_relative_gap": 1.0,
+    "maximum_cpu_gpu_parity": 1.922112502494855e-08,
+    "maximum_near_optimal_relative_gap": 8.333334022836425e-11,
+    "negative_bound_violation_margins": {
+      "bound_violation_margin": 0
+    },
+    "pass": true,
+    "scientific_instances": 15493,
+    "tree_occurrences": 81445,
+    "unique_scientific_hashes": 15493,
+    "unique_tree_hashes": 80870
+  },
+  "dependency_audit": {
+    "cycles": [],
+    "pass": true,
+    "theorems": 8,
+    "unknown_dependencies": []
+  },
+  "generated_utc": "2026-07-29T18:13:55.606230+00:00",
+  "labels": {
+    "duplicates": [],
+    "label_count": 51,
+    "pass": true
+  },
+  "latex": {
+    "mathematical_paper": {
+      "critical_overfull_boxes": [],
+      "exists": true,
+      "missing_inputs": [],
+      "multiply_defined_labels": [],
+      "overfull_boxes_pt": [],
+      "pass": true,
+      "path": "papers\\tree_stability_v3\\build\\main.log",
+      "undefined_references_or_citations": []
+    },
+    "software_companion": {
+      "critical_overfull_boxes": [],
+      "exists": true,
+      "missing_inputs": [],
+      "multiply_defined_labels": [],
+      "overfull_boxes_pt": [],
+      "pass": true,
+      "path": "papers\\software_v3\\build\\main.log",
+      "undefined_references_or_citations": []
+    }
+  },
+  "manifest_integrity": {
+    "checked_outputs": 69,
+    "failures": [],
+    "pass": true
+  },
+  "missing_required_files": [],
+  "pass": true,
+  "pdf": {
+    "current_hashes": {
+      "mathematical_paper": "c67106c478e660741c1ac71d2fadc31ef270636141e36e5732896ce8533574eb",
+      "software_companion": "6a4bdce3b504bf244b9514c7bcc76aa5b0aa6d84f78cb96b41803405417837b3"
+    },
+    "manifest": "artifacts\\qa_v3\\pdf_manifest_v3.json",
+    "pass": true,
+    "rendered_hashes": {
+      "mathematical_paper": "c67106c478e660741c1ac71d2fadc31ef270636141e36e5732896ce8533574eb",
+      "software_companion": "6a4bdce3b504bf244b9514c7bcc76aa5b0aa6d84f78cb96b41803405417837b3"
+    },
+    "visual_inspection": "artifacts\\qa_v3\\visual_inspection_v3.json"
+  },
+  "pytest": {
+    "errors": 0,
+    "exists": true,
+    "failures": 0,
+    "pass": true,
+    "skipped": 0,
+    "tests": 69
+  },
+  "run_integrity": {
+    "failures": [],
+    "pass": true,
+    "source_commits": {
+      "b718f4e5178590d1f8b6a090fb696545eb3bfcd4": 11,
+      "cde6f3b345727e1d4cf9fb9ab50c8a5d05e20a26": 11
+    },
+    "validated_runs": 22
+  },
+  "schema_version": 3
+}

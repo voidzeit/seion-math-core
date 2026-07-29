@@ -1,0 +1,102 @@
+{
+  "best_lower_bound.json": {
+    "bytes": 75,
+    "sha256": "2115360facc65455ef20fc0362fd5f5d0f85f467b07c440d6311190746094a57"
+  },
+  "certificate.json": {
+    "bytes": 138,
+    "sha256": "101d99a036965bb35c7d2bd391007e6c713a7abbb102c97e35094d6ed2c55ed0"
+  },
+  "certified_upper_bound.json": {
+    "bytes": 60,
+    "sha256": "db01c98483184fdaa242c4b5d5c6f00a2a8be63f297f5a125c53eb80f9d07f43"
+  },
+  "command.txt": {
+    "bytes": 103,
+    "sha256": "077ec3b6d93368633593364535efac460c1eb50a7c0a1dc98a9fa4b253638b2e"
+  },
+  "config.yaml": {
+    "bytes": 579,
+    "sha256": "5ab2b5be973867d362dc4108d2e6f696e47f1a815a90047dfef9291a05ab765a"
+  },
+  "environment.json": {
+    "bytes": 546,
+    "sha256": "7557fb9f7d1410cd4d98a9c473396d3396d29a578ab96919ef7f7b2d4322193b"
+  },
+  "exact_or_reference_metrics.json": {
+    "bytes": 35,
+    "sha256": "ee3a5a1b9a579041b61a258e6a75da5d711bf3d335fc49bea73b4712d04d6e09"
+  },
+  "extremizer_inputs.npz": {
+    "bytes": 214,
+    "sha256": "09132e48b57aa9092de9416dad6bb8601c0559ed8204030eabf458b00309bba8"
+  },
+  "extremizer_tensor.npz": {
+    "bytes": 276,
+    "sha256": "5d641f8d398127035a459b2867a31b3da074abdb24fc9a10843fb3121afca09c"
+  },
+  "final_metrics.json": {
+    "bytes": 143,
+    "sha256": "d7aa977b0dfa9e35aa1e9813bdbe6f7a065a103656525f3eb14da49587164cd0"
+  },
+  "hardware.json": {
+    "bytes": 431,
+    "sha256": "f3cde80f0e0a01d69e4d276811f983d5f83c2d07973c11e374843e3f0a44e9a1"
+  },
+  "independent_recheck.json": {
+    "bytes": 165,
+    "sha256": "de3bb95888f71996d39378a10cc023bfb2276f6a99689e77da8a6601e0c9ad65"
+  },
+  "law_tensors.npz": {
+    "bytes": 286,
+    "sha256": "ffe919de4d4aae75d95c24afbc40b5f1193ad17f7bb2f38dc968984b78b49e81"
+  },
+  "local_constants.json": {
+    "bytes": 53,
+    "sha256": "84c5a9332c920046f46fe1638a6b3e501836901db7e40ee55447cc833811b263"
+  },
+  "node_contributions.csv": {
+    "bytes": 7,
+    "sha256": "24526432f951ea86e61db71a2c7df058d690643d1792c6525c784823544d3c03"
+  },
+  "optimality_gap.json": {
+    "bytes": 87,
+    "sha256": "1ff5f184f13e6b6fdd21e1b2a53c49c1d3f6f4dc0f04182245202df38aaf118f"
+  },
+  "optimization_history.csv": {
+    "bytes": 4500,
+    "sha256": "aa231413339bc58974670c480365e2490771e6c7e88d00c2233dd8a6fb33f431"
+  },
+  "resolved_config.yaml": {
+    "bytes": 667,
+    "sha256": "6a360e5ecae3696c75bdb4fd6a7462d53ca6bbfcc2d28e94c0a48b06c97d8aac"
+  },
+  "run_manifest.json": {
+    "bytes": 758,
+    "sha256": "2d774747eb62f82fbbf32f31fc8b136c29742ff6bf725883a1b658c571a8b140"
+  },
+  "stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "summary.md": {
+    "bytes": 304,
+    "sha256": "422b6f06743977abf2031b48d45a42f881966fadbdb890187e267948947b38f9"
+  },
+  "tree.json": {
+    "bytes": 483,
+    "sha256": "7beb6c9b56c818976ba3f6a4c121e41e27124135604fe574095d1f55e90bba6d"
+  },
+  "tree.svg": {
+    "bytes": 465,
+    "sha256": "6d10d33ed5fbb27e116673c67136d87b58b6cc575aca0a59ceb7921a1293ef87"
+  },
+  "type_signature.json": {
+    "bytes": 80,
+    "sha256": "5eae66a5f5347a82b013211bc6e9bfe2c767b474afcf596480f68c3dfb1d8ecc"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "epistemic_note": "Completed optimizer trajectories are empirical lower bounds only; pending trajectories cannot support optimality or release claims.",
+  "generated_utc": "2026-07-29T18:12:40.551467+00:00",
+  "optimizer": {
+    "completed_trajectories": 4,
+    "completion_fraction": 8.680555555555556e-06,
+    "failed_trajectories": 0,
+    "pending_trajectories": 460796,
+    "requested_trajectories": 460800,
+    "results": "artifacts\\research_v3\\extended_optimizer_results_v3.parquet",
+    "schedule": "artifacts\\research_v3\\extended_optimizer_schedule_v3.parquet"
+  },
+  "performance": {
+    "completed_extended_instances": 0,
+    "pending_extended_instances": 8400,
+    "registered_calibration_cells": 15,
+    "requested_scientific_instances": 8400,
+    "schedule": "artifacts\\research_v3\\extended_performance_schedule_v3.parquet"
+  },
+  "release_status": "EXTENDED_PENDING_RESOURCE_GATE",
+  "resource_gate": "TRIGGERED",
+  "schema_version": 3,
+  "source_commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4"
+}

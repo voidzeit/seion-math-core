@@ -1,0 +1,11 @@
+{
+  "backends": [
+    "numpy_cpu",
+    "reference_python",
+    "torch_cuda"
+  ],
+  "csv_sha256": "9cc76a20145b9783380c529a4c664fe9e8bca75d8a9761afe80f8bc518b32266",
+  "maximum_parity_error": 0.0,
+  "maximum_peak_vram_bytes": 33757184,
+  "rows": 15
+}

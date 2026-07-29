@@ -1,0 +1,9 @@
+{
+  "block": "H",
+  "scientific_instances": 480,
+  "status": "COMPLETE",
+  "status_counts": {
+    "COMPLETE_ANALYTIC_CP_BUDGET": 480
+  },
+  "unique_instance_hashes": 480
+}

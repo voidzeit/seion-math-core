@@ -1,0 +1,17 @@
+{
+  "block": "F",
+  "device": "cpu+cuda",
+  "generated_utc": "2026-07-29T17:04:22.328046+00:00",
+  "input_artifact_hash": "a564682fd72a1e668136713dd9098e7fb3c595b5b1db34cde943c81ff1089e4d",
+  "mathematical_object_hash": "771118e22e38c17b89fe5c2b9baa6acbc7633d8cd36ec18b1b27af704494ecb8",
+  "precision": "float64/complex128/exact-as-declared",
+  "resolved_config_hash": "2d85781157412a0f3419e36ce1944915dab21fbee45bf124a19d7f07a30225a8",
+  "restarts": 0,
+  "run_id": "v3_f_f7d0e64c0ed372c5",
+  "schema_version": 3,
+  "scientific_instance_hash": "6905eb001f5b7dbea4465519cd8e40a17fff7927db02a5d2dcab1e36020d9438",
+  "seed": null,
+  "source_commit": "cde6f3b345727e1d4cf9fb9ab50c8a5d05e20a26",
+  "stage": "full",
+  "status": "COMPLETE"
+}

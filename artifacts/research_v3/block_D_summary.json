@@ -1,0 +1,9 @@
+{
+  "block": "D",
+  "scientific_instances": 4320,
+  "status": "COMPLETE",
+  "status_counts": {
+    "COMPLETE_CERTIFICATE_INSTANCE": 4320
+  },
+  "unique_instance_hashes": 4320
+}

@@ -1,0 +1,7 @@
+{
+  "tau": {
+    "dimension": 2,
+    "field": "real",
+    "rank": 1
+  }
+}

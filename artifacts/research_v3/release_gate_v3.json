@@ -1,0 +1,161 @@
+{
+  "automation_can_approve_release": false,
+  "blockers": [
+    {
+      "evidence": "claims/theorem_registry_v3.yaml",
+      "id": 2,
+      "name": "every sharpness claim has a matching construction",
+      "pass": false
+    },
+    {
+      "evidence": "claims/prior_art_registry_v3.yaml",
+      "id": 4,
+      "name": "prior art establishes theorem-level novelty",
+      "pass": false
+    },
+    {
+      "evidence": "artifacts/research_v3/block_A_exact_atlas.parquet",
+      "id": 5,
+      "name": "all declared small-case global optima independently certified",
+      "pass": false
+    },
+    {
+      "evidence": "artifacts/research_v3/extended_progress_v3.json",
+      "id": 8,
+      "name": "all mandatory base and extended matrix blocks complete",
+      "pass": false
+    },
+    {
+      "evidence": "git status --porcelain",
+      "id": 11,
+      "name": "worktree clean for final rerun",
+      "pass": false
+    },
+    {
+      "evidence": "artifacts/reviews_v3/review_summary_v3.json",
+      "id": 14,
+      "name": "four reviewers are at least acceptable as preprint",
+      "pass": false
+    }
+  ],
+  "branch": "research/nodewise-tree-constants-v3",
+  "failed": 6,
+  "gates": [
+    {
+      "evidence": "claims/theorem_registry_v3.yaml",
+      "id": 1,
+      "name": "projected-root k-1 proved or refuted",
+      "pass": true
+    },
+    {
+      "evidence": "claims/theorem_registry_v3.yaml",
+      "id": 2,
+      "name": "every sharpness claim has a matching construction",
+      "pass": false
+    },
+    {
+      "evidence": "artifacts/index/optimality_gaps_v3.csv",
+      "id": 3,
+      "name": "near-optimal claims have certified declared gaps",
+      "pass": true
+    },
+    {
+      "evidence": "claims/prior_art_registry_v3.yaml",
+      "id": 4,
+      "name": "prior art establishes theorem-level novelty",
+      "pass": false
+    },
+    {
+      "evidence": "artifacts/research_v3/block_A_exact_atlas.parquet",
+      "id": 5,
+      "name": "all declared small-case global optima independently certified",
+      "pass": false
+    },
+    {
+      "evidence": "artifacts/research_v3/smoke_calibration.json",
+      "id": 6,
+      "name": "multiple optimizer families executed",
+      "pass": true
+    },
+    {
+      "evidence": "artifacts/index/tree_instances_v3.parquet",
+      "id": 7,
+      "name": "exact tree enumeration complete",
+      "pass": true
+    },
+    {
+      "evidence": "artifacts/research_v3/extended_progress_v3.json",
+      "id": 8,
+      "name": "all mandatory base and extended matrix blocks complete",
+      "pass": false
+    },
+    {
+      "evidence": "artifacts/index/failures_v3.csv",
+      "id": 9,
+      "name": "no unexplained theorem-bound violation",
+      "pass": true
+    },
+    {
+      "evidence": "artifacts/runs_v3",
+      "id": 10,
+      "name": "run artifacts carry immutable commit and input hashes",
+      "pass": true
+    },
+    {
+      "evidence": "git status --porcelain",
+      "id": 11,
+      "name": "worktree clean for final rerun",
+      "pass": false
+    },
+    {
+      "evidence": "artifacts/research_v3/block_I.parquet",
+      "id": 12,
+      "name": "CPU/GPU float64 parity passes",
+      "pass": true
+    },
+    {
+      "evidence": "artifacts/research_v3/figure_manifest_v3.json",
+      "id": 13,
+      "name": "every figure is registered and hash-valid",
+      "pass": true
+    },
+    {
+      "evidence": "artifacts/reviews_v3/review_summary_v3.json",
+      "id": 14,
+      "name": "four reviewers are at least acceptable as preprint",
+      "pass": false
+    },
+    {
+      "evidence": "artifacts/qa_v3",
+      "id": 15,
+      "name": "latexmk and page-by-page visual inspection pass",
+      "pass": true
+    }
+  ],
+  "generated_utc": "2026-07-29T18:13:55.926736+00:00",
+  "passed": 9,
+  "result": "FAIL_CLOSED_NOVELTY",
+  "schema_version": 3,
+  "source_commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4",
+  "submission_ready": false,
+  "worktree_porcelain": [
+    "M .obsidian/workspace.json",
+    "?? artifacts/index/bound_hierarchy_v3.csv",
+    "?? artifacts/index/constants_atlas_v3.csv",
+    "?? artifacts/index/extremizer_registry_v3.csv",
+    "?? artifacts/index/failures_v3.csv",
+    "?? artifacts/index/node_contributions_v3.parquet",
+    "?? artifacts/index/optimality_gaps_v3.csv",
+    "?? artifacts/index/scientific_instances_full_v3.csv",
+    "?? artifacts/index/scientific_instances_full_v3.parquet",
+    "?? artifacts/index/tree_instances_v3.csv",
+    "?? artifacts/index/tree_instances_v3.parquet",
+    "?? artifacts/qa_v3/",
+    "?? artifacts/research_v3/",
+    "?? artifacts/reviews_v3/",
+    "?? artifacts/runs_v3/",
+    "?? papers/tree_stability_v3/figures/",
+    "?? papers/tree_stability_v3/generated_results.tex",
+    "?? papers/tree_stability_v3/tables/"
+  ]
+}
