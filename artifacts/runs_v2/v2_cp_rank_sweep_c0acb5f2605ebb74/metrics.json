@@ -1,0 +1,9 @@
+{
+  "rank": 1,
+  "relative_frobenius_error": 0.9105093657606754,
+  "runtime_seconds": 0.007876100018620491,
+  "ram_peak_bytes": 8328,
+  "vram_peak_bytes": 0,
+  "convergence_status": "complete",
+  "failure_count": 0
+}

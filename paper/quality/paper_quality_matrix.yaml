@@ -71,4 +71,4 @@ dimensions:
   score: 3
   justification: Ready for a reproducible initial release, not a claim of final research
     completeness.
-release_ready_under_critical_gate: true
+release_ready_under_critical_gate: false

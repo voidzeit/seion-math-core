@@ -1,0 +1,23 @@
+version: 2
+scope: "Exact assumption-removal counterexamples for the v2 theorem ledger."
+counterexamples:
+  - id: CE_NO_INVARIANCE_BREAKS_COMPOSITION_V2
+    target: THM_EXACT_TYPED_REDUCTION_V2
+    removed_assumption: exact invariance of the selected subspace
+    construction: "On R^2 with W=span(e0), mu(e0,e0)=e1 and mu(e1,e0)=e0; the reduced binary law is zero but the ambient partial composition at (e0,e0,e0) equals e0."
+    exact_artifact: artifacts/counterexamples_v2/no_invariance_composition.json
+    test: tests/research_v2/test_theorem_examples.py
+    status: REFUTED_WITHOUT_HYPOTHESIS
+  - id: CE_NO_SPECTRAL_GAP_BREAKS_SNAPPING_CONTINUITY_V2
+    target: THM_SPECTRAL_SNAPPING_GAP_V2
+    removed_assumption: positive uniform spectral gap around the threshold
+    construction: "A_delta=diag(1/2-delta,1/2+delta) and E_delta=diag(2delta,-2delta) swap the snapped coordinate projectors while ||E_delta|| tends to zero."
+    exact_artifact: artifacts/counterexamples_v2/spectral_gap_sweep.json
+    test: tests/research_v2/test_theorem_examples.py
+    status: REFUTED_WITHOUT_HYPOTHESIS
+  - id: CE_LEGACY_DUPLICATE_RUNS_NOT_INDEPENDENT_V2
+    target: experimental_aggregation
+    removed_assumption: independent scientific instances
+    construction: "Historical run records share identical experiment/config/seed/precision/backend/device identities and must not be counted as independent observations."
+    exact_artifact: artifacts/research_audit/run_deduplication_report.csv
+    status: GOVERNANCE_COUNTEREXAMPLE

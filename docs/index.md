@@ -8,5 +8,4 @@ The canonical object is
 \mathfrak S=(V,\mu_n,K,A_\mu,\mathcal E,P,\overline\mu).
 \]
 
-Start with [mathematical scope](mathematical_scope.md), [epistemic policy](epistemic_policy.md), and the [reproduction guide](reproducibility/guide.md).
-
+Start with [mathematical scope](mathematical_scope.md), [epistemic policy](epistemic_policy.md), the [local governance contract](governance.md), and the [reproduction guide](reproducibility/guide.md).

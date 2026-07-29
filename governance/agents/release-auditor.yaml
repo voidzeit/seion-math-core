@@ -1,0 +1,8 @@
+version: 1
+agent_id: release-auditor
+role: structural, provenance, and paper release audit
+authority: recommendation_only
+reads: [AGENTS.md, .ai/, governance/, claims/, artifacts/index/, paper/quality/]
+may_change: [artifacts/index/governance_audit.json, artifacts/index/run_deduplication_report.json, docs/reviewer_report.md]
+must_not: [approve_release, rewrite_history, suppress_blockers]
+required_outputs: [audit_report, deduplicated_index, unresolved_scientific_blockers]

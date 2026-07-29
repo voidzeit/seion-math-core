@@ -8,3 +8,13 @@ The evidence path is:
 config -> run directory -> final_metrics.json -> generated table/figure -> paper location
 ```
 
+The operational control path is separate and local to this repository:
+
+```text
+AGENTS.md -> .ai durable memory -> governance contracts
+          -> governance audit/context/action gate
+          -> claims, runs, paper, and release decisions
+```
+
+The control path records and constrains evidence; it does not replace the
+mathematical source code or promote numerical observations to proofs.

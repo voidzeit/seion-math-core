@@ -1,0 +1,33 @@
+version: 1
+project_id: seion-math-core
+observed_at: 2026-07-29
+observed_by: Codex
+observation_command: "git rev-parse HEAD; git branch --show-current; git status --porcelain"
+git_commit: 247de089a5fea826fa87f9b9e791c20a5a6fd1b6
+branch: master
+worktree_state: dirty_before_governance_bootstrap
+purpose: >-
+  Canonical finite-dimensional environment for defining, proving, testing,
+  falsifying, numerically certifying, and documenting the SEION mathematical
+  nucleus.
+current_release: 0.1.0
+mathematical_scope:
+  primary: finite-dimensional typed n-ary laws and ternary composition defects
+  supporting: projectors, kernels, variational diagnostics, finite cohomology
+  excluded_from_core: [KGE, LLM compression, BIM, cosmology, trading, universal physics]
+research_tracks:
+  mathematical_research:
+    source: paper/main.tex
+    status: release_note_needing_stronger_central_theorem
+  software_reproducibility:
+    source: scripts/
+    status: executable_finite_dimensional_suite
+authority:
+  mathematical_status: claims/claims_registry.yaml
+  theorem_status: claims/theorem_registry.yaml
+  numerical_status: artifacts/runs/**/final_metrics.json
+  generated_provenance: artifacts/index/
+known_limitations:
+  - repeated rows in historical run indexes require deduplication before scientific aggregation
+  - current paper has modest theorem depth and must not be represented as a universal theory
+  - external author ORCID and contact metadata are not inferred

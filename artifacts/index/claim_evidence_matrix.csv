@@ -1,8 +1,8 @@
 claim_id,status,statement,evidence
 DEF_NARY_LAW_V1,definition,"A structural tensor K of shape (d_out,d_1,...,d_n) defines an n-linear map with explicit input and output dimensions.",src/seion_core/algebra/nary_law.py;tests/unit/test_nary_law.py
 DEF_ASSOCIATOR_CONVENTIONS_V1,definition,"The five-input, anchored binary, and operadic partial-composition objects are represented by separate functions and recorded conventions.",src/seion_core/algebra/ternary_law.py;tests/unit/test_associators.py
-THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1,proved,"For any bilinear product, [L_x,L_y]-L_[x,y] applied to z equals A(y,x,z)-A(x,y,z), with [x,y]=x circ y-y circ x.",d;o;c;s;/;t;h;e;o;r;e;m;s;/;c;u;r;v;a;t;u;r;e;_;a;s;s;o;c;i;a;t;o;r;.;m;d
-THM_COHOMOLOGY_DESCENT_FINITE_V1,proved_under_assumptions,"If a finite operator commutes with the differential, it preserves cycles and boundaries and therefore induces a map on the quotient cohomology space.",d;o;c;s;/;t;h;e;o;r;e;m;s;/;c;o;h;o;m;o;l;o;g;y;_;d;e;s;c;e;n;t;.;m;d
+THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1,proved,"For any bilinear product, [L_x,L_y]-L_[x,y] applied to z equals A(y,x,z)-A(x,y,z), with [x,y]=x circ y-y circ x.",docs/theorems/curvature_associator.md
+THM_COHOMOLOGY_DESCENT_FINITE_V1,proved_under_assumptions,"If a finite operator commutes with the differential, it preserves cycles and boundaries and therefore induces a map on the quotient cohomology space.",docs/theorems/cohomology_descent.md
 NUM_KNOWN_INVARIANT_CLOSURE_V1,numerically_verified,"For the declared block-supported example, the coordinate projector has zero closure leakage up to floating-point evaluation.",experiments/configs/finite_ternary_v1.yaml
 EMP_PROJECTOR_RECOVERY_V1,empirical,A small stochastic Stiefel search can reduce sampled closure leakage on some declared examples; no general recovery or superiority claim is made.,src/seion_core/variational/optimizers.py
 CONJ_CONTINUUM_LIMIT_V1,open,A sequence of finite laws may converge in a specified topology under uniform estimates; this repository does not prove a general theorem.,docs/open_problems/index.md

@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "run_id": "v2_cp_rank_sweep_5997cb7b0d0894af",
+  "experiment_id": "V2_CP_RANK_SWEEP",
+  "status": "complete",
+  "failure_reason": "",
+  "source_commit": "247de089a5fea826fa87f9b9e791c20a5a6fd1b6",
+  "worktree_dirty": true,
+  "implementation_version": "research_v2.1",
+  "resolved_config": {
+    "id": "V2_CP_RANK_SWEEP",
+    "purpose": "Dense baseline and CP rank/error/runtime trade-off",
+    "arity": 3,
+    "ambient_dimension": 3,
+    "ranks": [
+      1,
+      2,
+      3
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "rank": 3
+  },
+  "resolved_config_hash": "c9027993406236498f4d2c31a43cad45c30160cbd6c28291199a1efa8baf9183",
+  "mathematical_object_hash": "5cc228eeed88646f2cb85a20e394e0dbe3d25b31f5423ecd21642b114e1cd1d8",
+  "input_artifact_hash": "5cc228eeed88646f2cb85a20e394e0dbe3d25b31f5423ecd21642b114e1cd1d8",
+  "seed": 3,
+  "precision": "float64",
+  "backend": "numpy",
+  "device": "cpu",
+  "identity_key": {
+    "experiment_id": "V2_CP_RANK_SWEEP",
+    "resolved_config_hash": "c9027993406236498f4d2c31a43cad45c30160cbd6c28291199a1efa8baf9183",
+    "mathematical_object_hash": "5cc228eeed88646f2cb85a20e394e0dbe3d25b31f5423ecd21642b114e1cd1d8",
+    "input_artifact_hash": "5cc228eeed88646f2cb85a20e394e0dbe3d25b31f5423ecd21642b114e1cd1d8",
+    "seed": 3,
+    "precision": "float64",
+    "backend": "numpy",
+    "device": "cpu",
+    "implementation_version": "research_v2.1"
+  },
+  "metrics": {
+    "rank": 3,
+    "relative_frobenius_error": 0.7594054580640897,
+    "runtime_seconds": 0.024394200008828193,
+    "ram_peak_bytes": 8568,
+    "vram_peak_bytes": 0,
+    "convergence_status": "complete",
+    "failure_count": 0
+  }
+}

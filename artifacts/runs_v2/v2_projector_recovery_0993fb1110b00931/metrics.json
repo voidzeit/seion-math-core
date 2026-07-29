@@ -1,0 +1,11 @@
+{
+  "method": "pca",
+  "closure_leakage": 0.0012779201401875752,
+  "principal_angle_radians": 0.009989203512446254,
+  "projector_rank": 2,
+  "runtime_seconds": 0.005147999967448413,
+  "ram_peak_bytes": 6288,
+  "vram_peak_bytes": 0,
+  "convergence_status": "complete",
+  "failure_count": 0
+}

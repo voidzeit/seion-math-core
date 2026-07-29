@@ -1,0 +1,36 @@
+version: 1
+ai_advisory_only: true
+prohibited:
+  - delete_evidence
+  - rewrite_git_history
+  - push_main
+  - publish_official
+  - approve_theorem
+  - approve_compliance
+  - claim_numerical_proof
+risk_levels:
+  low:
+    minimum_authority: declared
+    human_approval: false
+  medium:
+    minimum_authority: observed
+    human_approval: false
+  high:
+    minimum_authority: verified
+    human_approval: true
+  critical:
+    minimum_authority: verified
+    human_approval: true
+special_rules:
+  paper_release:
+    minimum_authority: verified
+    human_approval: true
+    required_checks: [governance_audit, tests, paper_build, render_report, blocker_report]
+  claim_status_change:
+    minimum_authority: verified
+    human_approval: true
+    required_checks: [claim_registry, theorem_or_experiment_evidence, limitation_statement]
+  memory_update:
+    minimum_authority: observed
+    human_approval: false
+    required_checks: [source, observed_at, command_or_artifact, limitation]

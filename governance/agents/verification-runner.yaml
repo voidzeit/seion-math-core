@@ -1,0 +1,8 @@
+version: 1
+agent_id: verification-runner
+role: execute registered tests and experiments
+authority: observed_until_gates_pass
+reads: [AGENTS.md, .ai/, experiments/, schemas/]
+may_change: [artifacts/runs/, artifacts/index/, artifacts/system/]
+must_not: [edit_claim_status, delete_failed_runs, hand_type_paper_metrics]
+required_outputs: [command, exit_code, environment, run_manifest, metrics, certificate, hashes, limitations]

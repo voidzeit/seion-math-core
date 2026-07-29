@@ -1,0 +1,24 @@
+# Governance-aware reproducibility
+
+The reproducibility companion has two obligations:
+
+1. show that a declared computation ran under recorded conditions;
+2. prevent that execution fact from being misreported as a mathematical proof.
+
+The local controls are:
+
+```powershell
+python -m seion_core.cli.main governance audit --strict
+python -m seion_core.cli.main governance dedupe-runs --json
+python -m seion_core.cli.main audit
+```
+
+`governance audit` checks memory contracts, registry references, the run
+artifact contract, historical/unique run counts, and the paper quality flag. It
+also emits `artifacts/index/governance_audit.json` and a reviewer report. The
+deduplicator emits `artifacts/index/run_index_deduplicated.csv` and preserves
+`artifacts/index/run_index.csv` as historical execution history.
+
+The unique-run identity is `(experiment_id, resolved-config hash, seed,
+precision, backend, device)`. This is an operational identity, not a proof of
+statistical independence.

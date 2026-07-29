@@ -1,0 +1,10 @@
+experiment_id,representative_run_id,status,seed,precision,backend,device,duplicate_count,scientific_identity
+ALG_CP_RANK_ONE,20260729T124628790482Z-39cc0da820d9,COMPLETE,42,float64,numpy,cpu,6,experiment/config/seed/precision/backend/device
+ALG_DENSE_FLOAT64,20260729T124628579291Z-b2b1c5060a4f,COMPLETE,42,float64,numpy,cpu,6,experiment/config/seed/precision/backend/device
+ASSOC_FIVE_INPUT,20260729T124628982259Z-d607e0281a16,COMPLETE,42,float64,numpy,cpu,6,experiment/config/seed/precision/backend/device
+COHOMOLOGY_COMPATIBLE,20260729T124630001435Z-1aa650842d54,COMPLETE,42,float64,numpy,cpu,6,experiment/config/seed/precision/backend/device
+CURVATURE_STANDARD_IDENTITY,20260729T124629235715Z-04847c84fb47,COMPLETE,42,float64,numpy,cpu,6,experiment/config/seed/precision/backend/device
+PROJECTOR_VERTICAL_SLICE,20260729T124629541620Z-fe19e68153ff,COMPLETE,42,float64,auto,auto,5,experiment/config/seed/precision/backend/device
+PROJECTOR_VERTICAL_SLICE,20260729T115719588336Z-fe19e68153ff,FAILED_RUNTIME,42,float64,auto,cuda,1,experiment/config/seed/precision/backend/device
+SNAP_GAP,20260729T124629781190Z-1e476d23ba7e,COMPLETE,42,float64,numpy,cpu,6,experiment/config/seed/precision/backend/device
+finite_ternary_v1,20260729T154535Z-a36e269b3c99,COMPLETE,42,float64,numpy,auto,34,experiment/config/seed/precision/backend/device

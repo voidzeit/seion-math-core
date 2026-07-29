@@ -1,0 +1,11 @@
+{
+  "method": "closure_minimizing",
+  "closure_leakage": 0.019596379223620806,
+  "principal_angle_radians": 0.13697167307768382,
+  "projector_rank": 2,
+  "runtime_seconds": 0.0046657000202685595,
+  "ram_peak_bytes": 6288,
+  "vram_peak_bytes": 0,
+  "convergence_status": "complete",
+  "failure_count": 0
+}

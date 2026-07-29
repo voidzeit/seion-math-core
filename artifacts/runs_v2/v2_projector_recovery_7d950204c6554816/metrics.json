@@ -1,0 +1,11 @@
+{
+  "method": "spectral",
+  "closure_leakage": 0.009225027754794052,
+  "principal_angle_radians": 0.023571350815762122,
+  "projector_rank": 2,
+  "runtime_seconds": 0.00423590000718832,
+  "ram_peak_bytes": 6288,
+  "vram_peak_bytes": 0,
+  "convergence_status": "complete",
+  "failure_count": 0
+}

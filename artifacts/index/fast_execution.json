@@ -1,7 +1,7 @@
-{
-  "profile": "fast",
-  "started": "2026-07-29T11:40:07.1787100Z",
-  "finished": "2026-07-29T11:40:19.9554943Z",
-  "exit_code": 0,
-  "tests": "unit, symbolic, numerical"
+﻿{
+    "profile":  "fast",
+    "started":  "2026-07-29T12:46:03.4289074Z",
+    "finished":  "2026-07-29T12:46:16.4479468Z",
+    "exit_code":  0,
+    "tests":  "unit, symbolic, numerical"
 }

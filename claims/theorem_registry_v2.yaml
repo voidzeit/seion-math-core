@@ -1,0 +1,72 @@
+version: 2
+scope: "Finite-dimensional structure-preserving reduction research track."
+novelty_policy: "Standard consequences are registered as such; no submission-ready novelty claim is active."
+theorems:
+  - id: THM_EXACT_TYPED_REDUCTION_V2
+    title: Exact invariant reduction commutes with declared tree composition
+    statement: "For an isometric embedding Q and an exactly invariant subspace, Q times the reduced tree evaluation equals the ambient tree evaluation on lifted leaves."
+    assumptions:
+      - finite-dimensional Hilbert spaces
+      - Q*Q = I
+      - every law used at an internal node maps the selected subspaces into the selected output subspace
+      - declared slot order and compatible dimensions
+    proof_location: docs/theorems_v2/exact_reduction.md
+    implementation:
+      reference: src/seion_core/research_v2/reference.py
+      accelerated: src/seion_core/research_v2/accelerated.py
+    evidence:
+      tests: tests/research_v2/test_reference_parity.py
+      artifacts: artifacts/symbolic_v2/exact_invariant_reduction.json
+    epistemic_status: ESTABLISHED_KNOWN_RESULT
+    novelty_status: NOT_CLAIMED
+  - id: THM_OPERADIC_IDENTITY_INHERITANCE_V2
+    title: Exact inheritance of declared multilinear polynomial identities
+    statement: "Every finite signed polynomial in declared tree compositions vanishing for the ambient law vanishes for the exactly reduced law."
+    assumptions:
+      - assumptions of THM_EXACT_TYPED_REDUCTION_V2
+      - every term uses the same declared operations and convention
+    proof_location: docs/theorems_v2/polynomial_identities.md
+    implementation: src/seion_core/research_v2/reference.py
+    evidence: tests/research_v2/test_theorem_examples.py
+    epistemic_status: ESTABLISHED_KNOWN_RESULT
+    novelty_status: NOT_CLAIMED
+  - id: THM_APPROXIMATE_TREE_BOUND_V2
+    title: Explicit approximate-closure tree recurrence
+    statement: "For k internal nodes, ||F_T-R_T|| <= k rho M^(k-1) product leaf norms."
+    assumptions:
+      - finite-dimensional Hilbert space
+      - bounded n-linear law with operator norm M
+      - uniform closure residual rho for projected inputs
+      - every internal output is projected in the reduced evaluation
+    proof_location: docs/theorems_v2/approximate_closure.md
+    implementation: src/seion_core/research_v2/reference.py
+    evidence:
+      tests: tests/research_v2/test_theorem_examples.py
+      artifacts: artifacts/index/bound_tightness_v2.csv
+    epistemic_status: PROVED_AUXILIARY
+    novelty_status: NOT_ESTABLISHED
+  - id: THM_SPECTRAL_SNAPPING_GAP_V2
+    title: Threshold snapping stability under a positive gap
+    statement: "For Hermitian threshold snapping with gap gamma and ||E|| <= gamma/2, a conservative Davis-Kahan bound is min(1,4||E||/gamma)."
+    assumptions:
+      - Hermitian A and E
+      - threshold 1/2
+      - positive distance gamma from threshold spectrum
+      - spectral perturbation norm at most gamma/2
+    proof_location: docs/theorems_v2/spectral_snapping.md
+    implementation: src/seion_core/projectors/snapping.py
+    evidence:
+      tests: tests/research_v2/test_theorem_examples.py
+      artifacts: artifacts/counterexamples_v2/spectral_gap_sweep.json
+    epistemic_status: ESTABLISHED_KNOWN_RESULT
+    novelty_status: NOT_CLAIMED
+  - id: PROP_FINITE_COHOMOLOGY_DESCENT_V2
+    title: Finite commuting operator descends to cohomology
+    statement: "A degree-preserving operator commuting with a finite differential preserves cycles and boundaries and induces a map on quotient cohomology."
+    assumptions:
+      - finite-dimensional cochain spaces
+      - d squared equals zero
+      - exact commutation
+    proof_location: docs/theorems/cohomology_descent.md
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    novelty_status: SUPPORTING_ONLY

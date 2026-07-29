@@ -1,0 +1,99 @@
+{
+  "status": "exact_rational_example",
+  "field": "Q",
+  "tensor_nonzero_entries": [
+    {
+      "index": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "value": 1
+    },
+    {
+      "index": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "value": 3
+    },
+    {
+      "index": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "value": -2
+    }
+  ],
+  "q": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "reduced_tensor": [
+    [
+      [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          -2
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    ]
+  ],
+  "invariant_reduction_residual_frobenius": 0.0,
+  "claim": "Q reduced_mu = mu Q on W for the declared block-supported tensor"
+}

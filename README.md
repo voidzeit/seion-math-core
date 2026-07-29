@@ -31,7 +31,39 @@ The full local profile detects hardware and uses CUDA when available, but every 
 
 Claims are registered in `claims/` with statuses such as `definition`, `proved_under_assumptions`, `symbolically_verified`, `numerically_verified`, `conjecture`, `open`, and `refuted`. Generated figures and paper tables point back to run identifiers and `final_metrics.json` files.
 
+## Local governance, memory, and recovery
+
+The repository contains a self-contained governance and memory system. Read
+`AGENTS.md` first, then recover durable state from `.ai/`. Shared contracts live
+in `governance/`; executable controls live in `src/seion_core/governance/`.
+
+```powershell
+python -m seion_core.cli.main governance context --task "review the projector evidence"
+python -m seion_core.cli.main governance audit --strict
+python -m seion_core.cli.main governance dedupe-runs --json
+```
+
+The audit preserves historical runs and generates a derived unique-instance
+index at `artifacts/index/run_index_deduplicated.csv`. A green structural audit
+is not mathematical proof or release approval. The mathematical research paper
+and the reproducibility/software companion are governed as separate workstreams
+by `governance/RESEARCH_SOFTWARE_SPLIT.yaml`.
+
+## Research v2 track
+
+The structure-preserving-reduction track is isolated from the legacy 0.1
+release. Rebuild its registered runs, tables, vector figures, both manuscripts,
+rendered pages, and fail-closed audit with:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/build_research_v2.ps1
+```
+
+The v2 foundations draft is intentionally not submission-ready: its standard
+exact-reduction and spectral results are not claimed as novel, and the audit
+records the remaining novelty and author-metadata blockers in
+`papers/foundations_v2/RESEARCH_BLOCKED.md`.
+
 ## Scope
 
 The core package does not contain KGE, LLM compression, BIM, cosmology, trading, or a universal physical theory. Those are explicitly non-goals for this repository.
-

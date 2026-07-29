@@ -25,6 +25,8 @@ python scripts/run_multiscale_suite.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 python scripts/build_claims_report.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+python -m seion_core.cli.main governance audit --json
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $report = [ordered]@{
   profile = 'full'
@@ -36,4 +38,3 @@ $report = [ordered]@{
 }
 $report | ConvertTo-Json -Depth 6 | Set-Content -Encoding UTF8 (Join-Path $root 'artifacts/index/full_execution.json')
 exit 0
-

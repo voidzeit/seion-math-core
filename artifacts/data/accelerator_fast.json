@@ -10,9 +10,9 @@
     256,
     8
   ],
-  "elapsed_seconds": 0.008189799962565303,
+  "elapsed_seconds": 0.006524900032673031,
   "peak_gpu_memory_bytes": 0,
-  "process_peak_working_set_bytes": 546607104,
+  "process_peak_working_set_bytes": 546557952,
   "system_memory_total_bytes": 136856682496,
   "precision": "float64",
   "status": "CPU_FALLBACK"

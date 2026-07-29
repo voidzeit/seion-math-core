@@ -25,5 +25,5 @@ Fields Medal caliber is recorded as an aspirational rubric, not an award claim.
 | independent_readability | 4/5 | Repository documentation does not rely on prior conversation. |
 | release_readiness | 3/5 | Ready for a reproducible initial release, not a claim of final research completeness. |
 
-Critical-gate release-ready flag: **True**.
+Critical-gate release-ready flag: **False**.
 The flag is intentionally false when any critical dimension is below 4.

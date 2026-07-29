@@ -24,5 +24,6 @@ $report = [ordered]@{
 }
 New-Item -ItemType Directory -Force -Path (Join-Path $root 'artifacts/index') | Out-Null
 $report | ConvertTo-Json -Depth 6 | Set-Content -Encoding UTF8 (Join-Path $root 'artifacts/index/fast_execution.json')
+python -m seion_core.cli.main governance audit --json
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 exit 0
-

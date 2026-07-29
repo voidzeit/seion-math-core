@@ -1,0 +1,38 @@
+{
+  "status": "exact_counterexample",
+  "ambient_field": "Q",
+  "q": [
+    [
+      1
+    ],
+    [
+      0
+    ]
+  ],
+  "outer_nonzero_entries": [
+    {
+      "index": [
+        1,
+        0,
+        0
+      ],
+      "value": 1
+    },
+    {
+      "index": [
+        0,
+        1,
+        0
+      ],
+      "value": 1
+    }
+  ],
+  "reduced_composition_at_e0": [
+    0
+  ],
+  "ambient_composition_at_e0": [
+    1,
+    0
+  ],
+  "claim": "Without invariance, reduction need not commute with partial composition"
+}

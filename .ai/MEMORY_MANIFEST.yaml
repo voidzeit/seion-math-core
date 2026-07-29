@@ -1,0 +1,37 @@
+version: 1
+project_id: seion-math-core
+canonical_root: .ai
+memory_policy: governance/MEMORY_CONTRACT.yaml
+durable_files:
+  - .ai/CURRENT_STATE.md
+  - .ai/DECISIONS.md
+  - .ai/TASKS.md
+  - .ai/KNOWN_BLOCKERS.md
+  - .ai/RISK_REGISTER.md
+  - .ai/TEST_MATRIX.md
+  - .ai/RUN_HISTORY.md
+  - .ai/HANDOFF.md
+  - .ai/CONTEXT_RECOVERY.md
+  - .ai/WORKSTREAMS.md
+  - .ai/MEMORY_GOVERNANCE.md
+  - .ai/MEMORY_OWNERSHIP_MATRIX.md
+derived_directories:
+  - .ai/machine
+  - .ai/packs
+runtime_directories:
+  - .ai/runtime
+rules:
+  runtime_is_not_memory: true
+  generated_memory_must_be_rebuildable: true
+  historical_records_are_append_only: true
+  every_state_update_requires_provenance: true
+  ai_approval_is_not_official_approval: true
+ownership:
+  source_code: src/
+  tests: tests/
+  claims: claims/
+  experiments: experiments/
+  run_artifacts: artifacts/runs/
+  paper: paper/
+  durable_memory: .ai/
+  governance_contracts: governance/

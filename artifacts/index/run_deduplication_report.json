@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "generated_utc": "2026-07-29T15:51:36.838810+00:00",
+  "historical_run_count": 76,
+  "unique_scientific_instance_count": 9,
+  "duplicate_group_count": 8,
+  "duplicate_record_count": 67,
+  "status_counts_historical": {
+    "COMPLETE": 74,
+    "FAILED_RUNTIME": 2
+  },
+  "status_counts_unique": {
+    "COMPLETE": 8,
+    "FAILED_RUNTIME": 1
+  },
+  "incomplete_artifact_contract_runs": [],
+  "historical_index_preserved": true,
+  "output": "artifacts/index/run_index_deduplicated.csv",
+  "limitations": [
+    "Scientific identity is inferred from experiment, resolved-config hash, seed, precision, backend, and device.",
+    "Different seeds are separate instances; repeated attempts with the same identity are not.",
+    "This is a derived view and does not establish independence of the underlying data-generating process."
+  ]
+}

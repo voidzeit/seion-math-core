@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "run_id": "v2_spectral_gap_07b5ed5a233f2bb0",
+  "experiment_id": "V2_SPECTRAL_GAP",
+  "status": "complete",
+  "failure_reason": "",
+  "source_commit": "247de089a5fea826fa87f9b9e791c20a5a6fd1b6",
+  "worktree_dirty": true,
+  "implementation_version": "research_v2.1",
+  "resolved_config": {
+    "id": "V2_SPECTRAL_GAP",
+    "purpose": "Positive-gap snapping stability and no-gap rank-flip control",
+    "dimensions": [
+      4
+    ],
+    "gaps": [
+      0.5,
+      0.2,
+      0.1,
+      0.05
+    ],
+    "relative_perturbations": [
+      0.01,
+      0.1,
+      0.4
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "control": "no_gap"
+  },
+  "resolved_config_hash": "ff46eac223ecf67707083b7b91041cb67fbbc505ca43f0a2cacdc4634487717b",
+  "mathematical_object_hash": "f07c70508d7f118a382b40dc55677de64fb8f2d0b0c494f6242c267517a11fea",
+  "input_artifact_hash": "c1a09fa0a3d8d221469f90a8524b784c8978a78c00f0eaaa44e7f7eb19160860",
+  "seed": 3,
+  "precision": "float64",
+  "backend": "numpy",
+  "device": "cpu",
+  "identity_key": {
+    "experiment_id": "V2_SPECTRAL_GAP",
+    "resolved_config_hash": "ff46eac223ecf67707083b7b91041cb67fbbc505ca43f0a2cacdc4634487717b",
+    "mathematical_object_hash": "f07c70508d7f118a382b40dc55677de64fb8f2d0b0c494f6242c267517a11fea",
+    "input_artifact_hash": "c1a09fa0a3d8d221469f90a8524b784c8978a78c00f0eaaa44e7f7eb19160860",
+    "seed": 3,
+    "precision": "float64",
+    "backend": "numpy",
+    "device": "cpu",
+    "implementation_version": "research_v2.1"
+  },
+  "metrics": {
+    "control": "no_gap",
+    "gap": 1e-11,
+    "relative_perturbation": 1.0,
+    "perturbation_norm": 2e-11,
+    "snapped_projector_distance": 1.0,
+    "theoretical_bound": null,
+    "bound_respected": null,
+    "runtime_seconds": 0.0,
+    "ram_peak_bytes": 0,
+    "vram_peak_bytes": 0,
+    "convergence_status": "rank_flip_control",
+    "failure_count": 0
+  }
+}

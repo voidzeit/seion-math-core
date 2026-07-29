@@ -1,0 +1,366 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{mathtools}
+
+\geometry{margin=1in}
+\graphicspath{{figures/}}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black,pdftitle={Structure-Preserving Reduction of Finite-Dimensional N-Ary Laws},pdfauthor={Eliuth Chavero Jasso}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\op}{\operatorname{op}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\title[Structure-preserving reduction of finite-dimensional n-ary laws]{Structure-Preserving Reduction of Finite-Dimensional N-Ary Laws:\\
+Exact Functoriality, Associator Stability, and Projection Error Bounds}
+\author{Eliuth Chavero Jasso}
+\address{Independent Researcher, Apizaco, Tlaxcala, Mexico}
+\thanks{Submission metadata blocker: a verified author email address and ORCID were not supplied in the repository at the time of the v2 audit. This draft is not for submission.}
+\date{Research v2 draft, 29 July 2026}
+
+\begin{document}
+\begin{abstract}
+We study finite-dimensional reduction of a bounded \(n\)-linear law \(\mu\) along an isometric embedding \(Q:W\to V\), with \(P=QQ^*\). Under exact invariance of \(\ran P\), the reduced law \(\bar\mu=Q^*\mu(Q\cdot,\ldots,Q\cdot)\) commutes with every declared operadic partial composition and hence inherits every finite multilinear polynomial identity encoded by the same trees. Under approximate closure, with \(\rho=\|(I-P)\mu(P\cdot,\ldots,P\cdot)\|_{\op}\) and \(M=\|\mu\|_{\op}\), a tree with \(k\) internal nodes obeys the explicit certificate \(\|F_T-R_T\|\leq k\rho M^{k-1}\prod_\ell\|z_\ell\|\). The ternary five-input associator therefore has a conservative \(4M\rho\) defect bound. We also record a standard gap-dependent spectral-snapping estimate and an exact no-gap counterexample. Independent coordinate-loop and vectorized evaluators, five-seed registered experiments, dense/CP comparisons, and CPU/GPU parity checks validate the finite implementation. The exact reduction and spectral statements are deliberately classified as established consequences rather than novelty claims; the current evidence does not establish a genuinely new theorem, so the manuscript is released as a rigorous research draft with an explicit blocker.
+\end{abstract}
+
+\subjclass[2020]{15A69, 17A42, 18M60, 65F15, 65N35}
+\keywords{n-ary algebra, operadic composition, invariant subspace, tensor reduction, spectral projector, reproducible computation}
+
+\maketitle
+
+\section{Introduction}
+
+Finite-dimensional multilinear laws are a useful meeting point between nonassociative algebra, tensor computation, and projection-based reduction. A structural tensor can be evaluated directly, factorized in CP form, composed in declared slots, and tested against identities such as associator, generalized Jacobi, or Filippov-type residuals. The mathematical risk is that a coordinate reduction can preserve a convenient numerical score while silently changing the law or its composition convention.
+
+This paper isolates the reduction question. Let \(\mu:V^n\to V\) be a bounded \(n\)-linear law and let \(Q:W\to V\) be an isometry. The reduced operation is the pullback \(Q^*\mu(Q\cdot,\ldots,Q\cdot)\). Exact invariance is the condition that outputs from \(\ran Q\) remain in \(\ran Q\). Approximate invariance is measured by the normal component of the output. The resulting distinction is elementary but essential: exact tree identities commute, while approximate tree identities accumulate a residual at every internal node.
+
+The legacy release of this repository was a reproducible finite verification suite with modest formal claims. The present track reconstructs the theorem program, audits prior art, separates exact statements from numerical evidence, and refuses to turn a standard restriction argument into a novelty claim.
+
+\section{Contributions and epistemic status}
+
+The v2 contribution is fourfold:
+\begin{enumerate}[leftmargin=*]
+\item a typed exact-reduction theorem and its tree-induction proof;
+\item an explicit \(k\rho M^{k-1}\) approximate-closure certificate for projected tree evaluation;
+\item an implementation-level parity protocol comparing a coordinate reference evaluator with vectorized contractions;
+\item a registered evidence matrix with five seeds per principal family, assumption-removal counterexamples, and a fail-closed novelty judgment.
+\end{enumerate}
+
+The exact reduction and polynomial inheritance statements are classified as established known results. The spectral-snapping estimate is a conservative consequence of Davis--Kahan perturbation theory. The tree recurrence is proved as an auxiliary finite-dimensional result, but its elementary induction is not presented as a major novelty. The current paper therefore does not claim submission readiness.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig01_canonical_pipeline}
+\caption{Canonical mathematical pipeline. Exact reduction uses invariance; approximate reduction carries a closure residual and a spectral-gap condition. The figure is structural, not a quantitative result.}
+\label{fig:pipeline}
+\end{figure}
+
+\section{Relation to prior work}
+
+Algebraic operads provide the natural language for partial composition and polynomial identities; the exact theorem below is a finite-dimensional coordinate form of restriction along an invariant subspace \cite{LodayVallette2012}. Filippov's \(n\)-Lie identity is one important signed \(n\)-ary polynomial identity \cite{Filippov1985}. Associators and higher nonassociative operations are part of the Akivis and Sabinin landscape \cite{MostovoyPerezIzquierdoShestakov2014}.
+
+The tensor implementation uses standard dense and CP/Tucker representations \cite{KoldaBader2009,DeLathauwerDeMoorVandewalle2000}; gauge and permutation ambiguities mean that factor distance is not an identifiability theorem \cite{Kruskal1977}. Projection-based model reduction already studies preservation of dynamical structure under compatibility hypotheses \cite{EggerKuglerLiljegrenSailerMarheinekeMehrmann2018}. Threshold snapping is positioned against classical spectral-subspace perturbation theory \cite{DavisKahan1970}. The legacy finite cohomology proposition is supporting linear algebra, not a continuum Hodge result \cite{Dodziuk1976}.
+
+The complete comparison matrix is in \texttt{docs/prior\_art\_v2.md} and in the machine-readable registry \texttt{claims/prior\_art\_registry.yaml}. The review found no basis for claiming that exact restriction, identity inheritance, or a gap bound is new.
+
+\section{Notation and preliminaries}
+
+All spaces are finite-dimensional real or complex Hilbert spaces. The adjoint is denoted by \((\cdot)^*\). An isometry \(Q:W\to V\) satisfies \(Q^*Q=I_W\), and \(P=QQ^*\) is the orthogonal projector onto \(\ran Q\). The operator norm of an \(n\)-linear law is
+\[
+\norm{\mu}_{\op}=\sup_{\norm{x_1}=\cdots=\norm{x_n}=1}\norm{\mu(x_1,\ldots,x_n)}.
+\]
+The software records Frobenius norms as computable upper bounds when exact operator norms are unavailable.
+
+\begin{definition}
+An ordered \(n\)-ary tree is a rooted tree in which each internal vertex has \(n\) ordered children. Leaves carry input labels. A tree evaluation is obtained by applying \(\mu\) at every internal vertex.
+\end{definition}
+
+\begin{definition}
+For \(x_1,\ldots,x_n\in V\), the closure residual is the \(V\)-valued \(n\)-linear map
+\[
+r_\mu(x_1,\ldots,x_n)=(I-P)\mu(Px_1,\ldots,Px_n).
+\]
+Its operator norm is denoted by \(\rho\).
+\end{definition}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig02_ternary_composition_trees}
+\caption{Three ternary composition conventions represented as ordered trees. Slot order and leaf labels are part of the mathematical object; they are not inferred from a drawing.}
+\label{fig:trees}
+\end{figure}
+
+\section{Exact invariant reduction}
+
+\begin{theorem}[Exact reduction]
+\label{thm:exact}
+Assume \(\mu(\ran P,\ldots,\ran P)\subseteq\ran P\). Define
+\[
+\bar\mu(z_1,\ldots,z_n)=Q^*\mu(Qz_1,\ldots,Qz_n).
+\]
+Then \(Q\bar\mu(z_1,\ldots,z_n)=\mu(Qz_1,\ldots,Qz_n)\). If \(\mu\) and \(\nu\) are compatible laws whose selected subspaces satisfy the same invariance condition, then reduction commutes with every compatible partial composition:
+\[
+Q(\bar\mu\circ_i\bar\nu)
+=(\mu\circ_i\nu)(Q\cdot,\ldots,Q\cdot).
+\]
+\end{theorem}
+
+\begin{remark}
+The result is standard restriction to an invariant subspace. The word \emph{functoriality} describes the commuting diagram of the declared operations; it does not create a new operad.
+\end{remark}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.82\textwidth]{fig03_exact_reduction_diagram}
+\caption{Exact reduction diagram. Under invariance, the two paths agree on all lifted inputs. Without invariance, the single-operation identity still gives the projected output, but nested compositions can disagree.}
+\label{fig:diagram}
+\end{figure}
+
+\section{Polynomial identities and associators}
+
+\begin{corollary}[Identity inheritance]
+Let \(F=\sum_a c_aT_a\) be a finite multilinear polynomial whose terms are declared ordered trees. Under the hypotheses of Theorem~\ref{thm:exact},
+\[
+QF_{\bar\mu}(z)=F_\mu(Qz).
+\]
+Hence \(F_\mu=0\) implies \(F_{\bar\mu}=0\).
+\end{corollary}
+
+For a ternary law, the five-input associator used in the experiments is
+\[
+A_\mu(x_1,\ldots,x_5)
+=\mu(\mu(x_1,x_2,x_3),x_4,x_5)
+-\mu(x_1,x_2,\mu(x_3,x_4,x_5)).
+\]
+The convention is fixed by the tree figure and by the reference implementation. Other generalized associators require their own slot and sign registry.
+
+\section{Approximate closure and stability}
+
+\begin{theorem}[Tree-level approximate-closure certificate]
+\label{thm:approx}
+Let \(M=\norm{\mu}_{\op}\) and \(\rho=\norm{r_\mu}_{\op}\). Let \(F_T\) be the ambient evaluation of a full ordered tree \(T\) on lifted leaves \(Qz_\ell\), and let \(R_T\) be the recursively projected evaluation. If \(k(T)\) is the number of internal vertices, then
+\[
+\norm{F_T-R_T}
+\leq k(T)\rho M^{k(T)-1}\prod_\ell\norm{z_\ell}.
+\]
+Moreover \(\norm{PF_T-R_T}\) obeys the same bound.
+\end{theorem}
+
+\begin{corollary}[Ternary associator]
+\label{cor:assocbound}
+For the five-input ternary associator,
+\[
+\norm{QA_{\bar\mu}(z)-PA_\mu(Qz)}
+\leq4M\rho\prod_{j=1}^5\norm{z_j}.
+\]
+\end{corollary}
+
+\begin{corollary}[Signed polynomial residual]
+If \(F=\sum_ac_aT_a\), then
+\[
+\norm{QF_{\bar\mu}(z)-PF_\mu(Qz)}
+\leq \sum_a |c_a|\,k(T_a)\rho M^{k(T_a)-1}\prod_\ell\norm{z_\ell}.
+\]
+For an \(n\)-Lie fundamental identity encoded as \(n+1\) signed two-node trees, this gives the conservative coefficient \(2(n+1)M\rho\).
+\end{corollary}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.78\textwidth]{fig04_closure_leakage_geometry}
+\caption{Geometric definition of closure leakage. The normal component is the residual controlled by \(\rho\); the tangent component remains in \(\ran P\). This is a conceptual definition, not a fitted data curve.}
+\label{fig:leakage}
+\end{figure}
+
+\section{Spectral snapping}
+
+\begin{theorem}[Gap-dependent threshold snapping]
+\label{thm:snap}
+Let \(A=A^*\) and \(S(A)=\mathbf 1_{[1/2,\infty)}(A)\). If \(\gamma=\operatorname{dist}(1/2,\sigma(A))>0\) and \(E=E^*\) satisfies \(\norm{E}_2\leq\gamma/2\), then the selected rank is unchanged and the conservative Davis--Kahan bound
+\[
+\norm{S(A+E)-S(A)}_2\leq\min\{1,4\norm{E}_2/\gamma\}
+\]
+holds.
+\end{theorem}
+
+The constant is intentionally not optimized. The gap is indispensable: the no-gap family in Section~\ref{sec:counterexamples} has perturbation norm tending to zero but a projector distance equal to one.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.92\textwidth]{fig07_spectral_gap_stability}
+\caption{Positive-gap snapping evidence. Left: threshold and eigenvalue geometry. Right: registered perturbations over five seeds against the conservative bound. The no-gap control is reported separately and is not plotted as a continuous curve.}
+\label{fig:spectral}
+\end{figure}
+
+\section{Algorithms and independent implementations}
+
+The reference evaluator in \texttt{src/seion\_core/research\_v2/reference.py} sums tensor coordinates explicitly. The accelerated evaluator in \texttt{src/seion\_core/research\_v2/accelerated.py} uses Einstein contractions and a separately ordered partial-composition contraction. The parity tests exercise arities \(2,3,4\), complex inputs, all ternary slots, repeated leaves, and invalid tree labels.
+
+The exact reduction is computed by contraction with \(Q\) on every input mode and \(Q^*\) on the output mode. Approximate experiments use Frobenius upper bounds for \(M\) and \(\rho\); this makes the certificate valid but conservative. CP experiments keep the exact dense law as a rank-zero-error baseline and report approximation error separately from factor-level distances.
+
+\section{Experimental design}
+
+The matrix \texttt{experiments/matrices/research\_v2\_matrix.yaml} declares five seed values for each principal family. Every run records a source commit, resolved configuration hash, mathematical-object hash, input-artifact hash, seed, precision, backend, device, implementation version, runtime, RAM, VRAM, convergence status, and failure count.
+
+The 180 registered runs comprise:
+\begin{enumerate}[leftmargin=*]
+\item 60 closure-bound rows: four leakage levels, three tree families, five seeds;
+\item 30 projector-recovery rows: six methods and five seeds;
+\item 20 CP rows: dense baseline plus three ranks over five seeds;
+\item 65 spectral rows: positive-gap perturbations and a no-gap control;
+\item 5 CPU/GPU parity rows, with the GPU result marked unavailable when CUDA is absent.
+\end{enumerate}
+
+Repeated historical executions are not used as independent samples. The v2 scientific-instance identity is stronger than the legacy identity and includes object and input hashes.
+
+\section{Results}
+
+\subsection{Bound tightness}
+
+All 60 closure-bound rows satisfy the stated upper bound. The largest observed ratio \(\norm{F_T-R_T}/B_T\) is \(0.71\), while the median ratios depend on the tree family and remain well below one. Table~\ref{tab:bound} reports the seed-level summary; Figure~\ref{fig:convergence} shows the observed scaling with the registered residual parameter.
+
+\begin{table}[t]
+\centering
+\caption{Approximate-closure bound tightness. Each row aggregates five unique seeds.}
+\label{tab:bound}
+\input{tables/bound_tightness}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.78\textwidth]{fig08_closure_convergence}
+\caption{Observed tree error versus the registered closure residual. Points and error bars are computed from five seeds; the displayed slopes are fits to those registered observations. This validates finite scaling, not a continuum theorem.}
+\label{fig:convergence}
+\end{figure}
+
+\subsection{Projector recovery}
+
+Known invariant, PCA, SVD, and spectral projectors have small sampled leakage in the declared approximate example, while random and closure-minimizing controls are variable. The closure-minimizing method is explicitly empirical and is not presented as a recovery theorem. Figure~\ref{fig:recovery} and Table~\ref{tab:recovery} use the same five seeds and common sample budget.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.92\textwidth]{fig05_projector_recovery}
+\caption{Projector recovery over five seeds. The exact known projector is a control, not a learned method. Leakage is sampled and normalized by the legacy closure diagnostic; principal angle measures distance to the declared subspace.}
+\label{fig:recovery}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{Projector recovery summary in the approximate example.}
+\label{tab:recovery}
+\input{tables/projector_recovery}
+\end{table}
+
+\subsection{CP rank trade-off}
+
+The CP sweep is a representation diagnostic. It does not test the reduction theorem and it does not claim CP identifiability. Table~\ref{tab:cp} reports reconstruction error and runtime; Figure~\ref{fig:cp} separates those quantities rather than placing categorical precision or dtype values on a continuous axis.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.82\textwidth]{fig06_cp_rank_tradeoff}
+\caption{Dense baseline and CP rank sweep. All nonzero ranks use five registered seeds; the dense law is the exact reference.}
+\label{fig:cp}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{CP rank/error/runtime summary.}
+\label{tab:cp}
+\input{tables/cp_rank_tradeoff}
+\end{table}
+
+\subsection{Spectral controls}
+
+The positive-gap rows satisfy the conservative bound. The no-gap rows show the intended discontinuity and are recorded as counterexamples rather than averaged into the stable regime. Table~\ref{tab:spectral} gives the positive-gap summary.
+
+\begin{table}[t]
+\centering
+\caption{Positive-gap snapping summary over five seeds per cell.}
+\label{tab:spectral}
+\input{tables/spectral_gap}
+\end{table}
+
+\section{Counterexamples}
+\label{sec:counterexamples}
+
+\subsection{Removing invariance}
+
+On \(V=\R^2\), let \(W=\operatorname{span}(e_0)\), let \(\mu(e_0,e_0)=e_1\), and let \(\mu(e_1,e_0)=e_0\), with all other basis values zero. The reduced binary law is zero because the first output leaves \(W\), but the ambient composition \((\mu\circ_0\mu)(e_0,e_0,e_0)=e_0\). Thus the exact composition theorem cannot omit invariance.
+
+\subsection{Removing the spectral gap}
+
+For \(\delta>0\), take
+\[
+A_\delta=\operatorname{diag}(1/2-\delta,1/2+\delta),\qquad
+E_\delta=\operatorname{diag}(2\delta,-2\delta).
+\]
+Then \(\norm{E_\delta}_2=2\delta\to0\), while threshold snapping exchanges the two rank-one coordinate projectors. The projector distance remains one. This is an exact finite counterexample to gap-free continuity.
+
+\section{Limitations and unresolved blockers}
+
+The paper remains blocked for submission for scientific and metadata reasons:
+\begin{enumerate}[leftmargin=*]
+\item no theorem-level novelty has been established beyond a proved auxiliary recurrence;
+\item the finite tree certificate uses operator-norm hypotheses but the experiments use conservative Frobenius upper bounds;
+\item projector recovery is empirical and method-dependent;
+\item the legacy historical index contains duplicate executions and cannot support naive aggregate claims;
+\item verified email and ORCID metadata are absent;
+\item the v2 figures and runs establish finite behavior only; no continuum, infinite-dimensional, or universal claim is made.
+\end{enumerate}
+
+The exact blocker record is \texttt{papers/foundations\_v2/RESEARCH\_BLOCKED.md}. The legacy 0.1 paper and releases are preserved.
+
+\section{Reproducibility statement}
+
+The v2 run command is
+\[
+\texttt{python scripts/run\_research\_v2.py}
+\]
+followed by
+\[
+\texttt{python scripts/build\_research\_v2\_tables.py}
+\]
+and
+\[
+\texttt{python scripts/build\_research\_v2\_figures.py}.
+\]
+The manuscript build command is documented in the companion README and uses \texttt{latexmk} with a dedicated build directory. The evidence manifest reports 180 complete runs, 100 object/input/seed scientific-instance keys, and no modification of the legacy run history.
+
+\begin{table}[t]
+\centering
+\caption{Reproducibility manifest.}
+\label{tab:manifest}
+\input{tables/manifest}
+\end{table}
+
+\section{Conclusion}
+
+Exact invariant reduction is mathematically clean and operationally useful, and approximate closure can be certified by an explicit internal-node recurrence. The same analysis also shows why gap conditions and assumption-removal counterexamples matter. The responsible scientific conclusion is narrower than the proposed title: this repository now contains a rigorous finite research draft and a reproducible verification suite, but it has not yet identified a defensible new theorem. The next research step is a sharpness or recovery result that survives the prior-art comparison.
+
+\appendix
+\section{Full proofs}
+\input{proofs/full_proofs}
+
+\section{Artifact and claim ledger}
+
+The v2 theorem registry is \texttt{claims/theorem\_registry\_v2.yaml}; the counterexample registry is \texttt{claims/counterexample\_registry\_v2.yaml}. The dependency graph and run indexes are generated under \texttt{artifacts/index/}. Each quantitative figure caption identifies its finite regime and number of seeds; machine-level provenance remains in the run manifests.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

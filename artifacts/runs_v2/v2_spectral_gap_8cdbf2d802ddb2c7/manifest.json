@@ -1,0 +1,69 @@
+{
+  "schema_version": 2,
+  "run_id": "v2_spectral_gap_8cdbf2d802ddb2c7",
+  "experiment_id": "V2_SPECTRAL_GAP",
+  "status": "complete",
+  "failure_reason": "",
+  "source_commit": "247de089a5fea826fa87f9b9e791c20a5a6fd1b6",
+  "worktree_dirty": true,
+  "implementation_version": "research_v2.1",
+  "resolved_config": {
+    "id": "V2_SPECTRAL_GAP",
+    "purpose": "Positive-gap snapping stability and no-gap rank-flip control",
+    "dimensions": [
+      4
+    ],
+    "gaps": [
+      0.5,
+      0.2,
+      0.1,
+      0.05
+    ],
+    "relative_perturbations": [
+      0.01,
+      0.1,
+      0.4
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "gap": 0.1,
+    "relative": 0.1
+  },
+  "resolved_config_hash": "086f2b39ee533eefde5a23eac40f598b1f58dcb27444e93233af7baeed3146bc",
+  "mathematical_object_hash": "26d0198c2cafc79f86012481ab0fd40f3dcb09eefbfede70c385db40314d2f83",
+  "input_artifact_hash": "1c08e14f3456d3240f73bd0a1e3c9aa6536614b5a11457486869229298dcd749",
+  "seed": 1,
+  "precision": "float64",
+  "backend": "numpy",
+  "device": "cpu",
+  "identity_key": {
+    "experiment_id": "V2_SPECTRAL_GAP",
+    "resolved_config_hash": "086f2b39ee533eefde5a23eac40f598b1f58dcb27444e93233af7baeed3146bc",
+    "mathematical_object_hash": "26d0198c2cafc79f86012481ab0fd40f3dcb09eefbfede70c385db40314d2f83",
+    "input_artifact_hash": "1c08e14f3456d3240f73bd0a1e3c9aa6536614b5a11457486869229298dcd749",
+    "seed": 1,
+    "precision": "float64",
+    "backend": "numpy",
+    "device": "cpu",
+    "implementation_version": "research_v2.1"
+  },
+  "metrics": {
+    "control": "positive_gap",
+    "gap": 0.1,
+    "relative_perturbation": 0.1,
+    "perturbation_norm": 0.010000000000000004,
+    "snapped_projector_distance": 0.01661597820059218,
+    "theoretical_bound": 0.40000000000000013,
+    "bound_respected": true,
+    "runtime_seconds": 0.00018769997404888272,
+    "ram_peak_bytes": 4452,
+    "vram_peak_bytes": 0,
+    "convergence_status": "complete",
+    "failure_count": 0
+  }
+}

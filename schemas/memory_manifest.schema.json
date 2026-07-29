@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://seion.invalid/schema/memory-manifest.json",
+  "title": "SEION durable memory manifest",
+  "type": "object",
+  "required": ["version", "project_id", "canonical_root", "durable_files", "rules"],
+  "properties": {
+    "version": {"type": "integer", "minimum": 1},
+    "project_id": {"type": "string", "minLength": 1},
+    "canonical_root": {"type": "string"},
+    "durable_files": {"type": "array", "items": {"type": "string"}},
+    "derived_directories": {"type": "array", "items": {"type": "string"}},
+    "runtime_directories": {"type": "array", "items": {"type": "string"}},
+    "rules": {"type": "object", "additionalProperties": {"type": "boolean"}}
+  },
+  "additionalProperties": true
+}

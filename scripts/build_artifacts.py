@@ -73,7 +73,12 @@ def build_indexes() -> None:
     claims = load_claims()
     evidence_rows = []
     for claim in claims:
-        evidence_rows.append({"claim_id": claim["id"], "status": claim["status"], "statement": claim["statement"], "evidence": ";".join(map(str, claim.get("evidence", claim.get("proof", []))))})
+        evidence = claim.get("evidence")
+        if evidence is None:
+            evidence = claim.get("proof", [])
+        if isinstance(evidence, str):
+            evidence = [evidence]
+        evidence_rows.append({"claim_id": claim["id"], "status": claim["status"], "statement": claim["statement"], "evidence": ";".join(map(str, evidence or []))})
     write_csv(ROOT / "artifacts" / "index" / "claim_evidence_matrix.csv", evidence_rows, ["claim_id", "status", "statement", "evidence"])
     write_claims_report(ROOT)
     failure_rows = [row for row in rows if str(row.get("status", "")).startswith("FAILED") or row.get("status") == "INTERRUPTED"]
@@ -103,6 +108,10 @@ def build_figures() -> None:
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
+
+    from figure_style import COLORBLIND_PALETTE, apply_style
+
+    apply_style(plt)
 
     metrics = _metrics_for_plot()
     for directory in [ROOT / "artifacts" / "figures" / "png", ROOT / "artifacts" / "figures" / "pdf", ROOT / "artifacts" / "figures" / "svg", ROOT / "paper" / "generated" / "figures"]:
@@ -143,14 +152,15 @@ def build_figures() -> None:
             data = metrics.get("closure_leakage", {}) or {}
             labels = list(data) or ["known_invariant", "random", "pca", "closure_minimizing_empirical"]
             values = [float(data.get(label, 0.0 if label == "known_invariant" else 1.0)) for label in labels]
-            ax.bar(labels, values, color=["#1b6ca8", "#c44e52", "#dd8452", "#55a868"][:len(labels)])
+            ax.bar(labels, values, color=[COLORBLIND_PALETTE["blue"], COLORBLIND_PALETTE["vermillion"], COLORBLIND_PALETTE["orange"], COLORBLIND_PALETTE["green"]][:len(labels)])
             ax.set_ylabel("sampled normalized leakage")
             ax.tick_params(axis="x", rotation=25)
         elif name == "precision_escalation":
             labels = ["float32", "float64", "complex64", "complex128"]
             values = [1e-5, 1e-12, 2e-5, 1e-13]
-            ax.semilogy(labels, values, "o-")
-            ax.set_ylabel("illustrative residual scale")
+            ax.bar(labels, values, color=[COLORBLIND_PALETTE["orange"], COLORBLIND_PALETTE["blue"], COLORBLIND_PALETTE["purple"], COLORBLIND_PALETTE["green"]])
+            ax.set_yscale("log")
+            ax.set_ylabel("residual scale (declared diagnostic)")
         elif name == "cp_rank_error":
             ranks = np.arange(1, 6)
             ax.semilogy(ranks, np.array([0.7, 0.25, 0.09, 0.03, 0.01]), "o-")
@@ -214,9 +224,8 @@ def build_figures() -> None:
             ax.text(0.5, 0.55, name.replace("_", " "), ha="center", va="center", fontsize=16)
             ax.text(0.5, 0.38, "declared dependency or status diagram", ha="center", va="center", fontsize=9)
         ax.set_title(name.replace("_", " ").title())
-        fig.text(0.01, 0.01, f"SEION Math Core | figure {index:02d} | source: generated artifacts | n={metrics.get('sample_count', 'registered')}", fontsize=7)
         for extension, directory in [("png", ROOT / "artifacts" / "figures" / "png"), ("pdf", ROOT / "artifacts" / "figures" / "pdf"), ("svg", ROOT / "artifacts" / "figures" / "svg")]:
-            fig.savefig(directory / f"{name}.{extension}", dpi=180 if extension == "png" else None)
+            fig.savefig(directory / f"{name}.{extension}", dpi=220 if extension == "png" else None)
         fig.savefig(ROOT / "paper" / "generated" / "figures" / f"{name}.pdf")
         plt.close(fig)
 
@@ -300,6 +309,8 @@ def build_quality_report() -> None:
         ("release_readiness", 3, "Ready for a reproducible initial release, not a claim of final research completeness."),
     ]
     matrix = {"aspirational_standard": "Fields Medal caliber is an aspirational rubric, not an award claim.", "critical_dimensions": ["foundational_clarity", "proof_completeness", "technical_correctness", "falsifiability", "reproducibility", "limitation_honesty"], "dimensions": [{"id": i, "score": s, "justification": j} for i, s, j in dimensions], "release_ready_under_critical_gate": all(s >= 4 for i, s, _ in dimensions if i in {"foundational_clarity", "proof_completeness", "technical_correctness", "falsifiability", "reproducibility", "limitation_honesty"})}
+    release_scores = {identifier: score for identifier, score, _ in dimensions}
+    matrix["release_ready_under_critical_gate"] = matrix["release_ready_under_critical_gate"] and release_scores.get("release_readiness", 0) >= 4
     quality = ROOT / "paper" / "quality"
     quality.mkdir(parents=True, exist_ok=True)
     (quality / "paper_quality_matrix.yaml").write_text(yaml.safe_dump(matrix, sort_keys=False), encoding="utf-8")

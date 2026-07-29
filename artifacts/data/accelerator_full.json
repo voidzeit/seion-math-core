@@ -10,9 +10,9 @@
     256,
     8
   ],
-  "elapsed_seconds": 0.0872277999878861,
+  "elapsed_seconds": 0.0728318999754265,
   "peak_gpu_memory_bytes": 35864576,
-  "process_peak_working_set_bytes": 780759040,
+  "process_peak_working_set_bytes": 781729792,
   "system_memory_total_bytes": 136856682496,
   "precision": "float64",
   "status": "GPU_EXECUTED"

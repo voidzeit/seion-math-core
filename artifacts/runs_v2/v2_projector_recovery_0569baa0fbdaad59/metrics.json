@@ -1,0 +1,11 @@
+{
+  "method": "random",
+  "closure_leakage": 0.39057523839812025,
+  "principal_angle_radians": 1.246639318581135,
+  "projector_rank": 2,
+  "runtime_seconds": 0.0043803000007756054,
+  "ram_peak_bytes": 6288,
+  "vram_peak_bytes": 0,
+  "convergence_status": "complete",
+  "failure_count": 0
+}

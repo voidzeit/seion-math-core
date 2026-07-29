@@ -1,7 +1,7 @@
 {
   "profile": "full",
   "device_requested": "cuda",
-  "vertical_slice": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs\\certification\\finite_ternary_v1\\20260729T114030Z-a36e269b3c99",
+  "vertical_slice": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs\\certification\\finite_ternary_v1\\20260729T124626Z-a36e269b3c99",
   "status": "COMPLETE",
   "accelerator": {
     "requested_device": "cuda",
@@ -15,13 +15,52 @@
       256,
       8
     ],
-    "elapsed_seconds": 0.0872277999878861,
+    "elapsed_seconds": 0.0728318999754265,
     "peak_gpu_memory_bytes": 35864576,
-    "process_peak_working_set_bytes": 780759040,
+    "process_peak_working_set_bytes": 781729792,
     "system_memory_total_bytes": 136856682496,
     "precision": "float64",
     "status": "GPU_EXECUTED"
   },
   "matrix_rows_declared": 7,
-  "matrix_execution_note": "finite canonical rows executed by deterministic local runner; extended rows remain explicitly registered"
+  "matrix_rows_executed": 7,
+  "matrix_rows": [
+    {
+      "id": "ALG_DENSE_FLOAT64",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_DENSE_FLOAT64/20260729T124628579291Z-b2b1c5060a4f"
+    },
+    {
+      "id": "ALG_CP_RANK_ONE",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_CP_RANK_ONE/20260729T124628790482Z-39cc0da820d9"
+    },
+    {
+      "id": "ASSOC_FIVE_INPUT",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ASSOC_FIVE_INPUT/20260729T124628982259Z-d607e0281a16"
+    },
+    {
+      "id": "CURVATURE_STANDARD_IDENTITY",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/CURVATURE_STANDARD_IDENTITY/20260729T124629235715Z-04847c84fb47"
+    },
+    {
+      "id": "PROJECTOR_VERTICAL_SLICE",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/PROJECTOR_VERTICAL_SLICE/20260729T124629541620Z-fe19e68153ff"
+    },
+    {
+      "id": "SNAP_GAP",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/SNAP_GAP/20260729T124629781190Z-1e476d23ba7e"
+    },
+    {
+      "id": "COHOMOLOGY_COMPATIBLE",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/COHOMOLOGY_COMPATIBLE/20260729T124630001435Z-1aa650842d54"
+    }
+  ],
+  "matrix_all_mandatory_rows_passed": true,
+  "matrix_execution_note": "all registered finite canonical rows executed by the deterministic matrix runner"
 }

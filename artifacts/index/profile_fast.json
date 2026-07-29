@@ -1,7 +1,7 @@
 {
   "profile": "fast",
   "device_requested": "cpu",
-  "vertical_slice": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs\\certification\\finite_ternary_v1\\20260729T114017Z-a36e269b3c99",
+  "vertical_slice": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs\\certification\\finite_ternary_v1\\20260729T124613Z-a36e269b3c99",
   "status": "COMPLETE",
   "accelerator": {
     "requested_device": "cpu",
@@ -15,9 +15,9 @@
       256,
       8
     ],
-    "elapsed_seconds": 0.008189799962565303,
+    "elapsed_seconds": 0.006524900032673031,
     "peak_gpu_memory_bytes": 0,
-    "process_peak_working_set_bytes": 546607104,
+    "process_peak_working_set_bytes": 546557952,
     "system_memory_total_bytes": 136856682496,
     "precision": "float64",
     "status": "CPU_FALLBACK"

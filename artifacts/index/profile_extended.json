@@ -1,0 +1,66 @@
+{
+  "profile": "extended",
+  "device_requested": "cuda",
+  "vertical_slice": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs\\certification\\finite_ternary_v1\\20260729T115848Z-a36e269b3c99",
+  "status": "COMPLETE",
+  "accelerator": {
+    "requested_device": "cuda",
+    "selected_device": "cuda",
+    "backend": "torch",
+    "torch_version": "2.12.0.dev20260408+cu128",
+    "cuda_available": true,
+    "device_name": "NVIDIA RTX PRO 5000 Blackwell Generation Laptop GPU",
+    "batch": 256,
+    "output_shape": [
+      256,
+      8
+    ],
+    "elapsed_seconds": 0.07097290002275258,
+    "peak_gpu_memory_bytes": 35864576,
+    "process_peak_working_set_bytes": 780681216,
+    "system_memory_total_bytes": 136856682496,
+    "precision": "float64",
+    "status": "GPU_EXECUTED"
+  },
+  "matrix_rows_declared": 7,
+  "matrix_rows_executed": 7,
+  "matrix_rows": [
+    {
+      "id": "ALG_DENSE_FLOAT64",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_DENSE_FLOAT64/20260729T115850469905Z-b2b1c5060a4f"
+    },
+    {
+      "id": "ALG_CP_RANK_ONE",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_CP_RANK_ONE/20260729T115850671983Z-39cc0da820d9"
+    },
+    {
+      "id": "ASSOC_FIVE_INPUT",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ASSOC_FIVE_INPUT/20260729T115850863804Z-d607e0281a16"
+    },
+    {
+      "id": "CURVATURE_STANDARD_IDENTITY",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/CURVATURE_STANDARD_IDENTITY/20260729T115851053675Z-04847c84fb47"
+    },
+    {
+      "id": "PROJECTOR_VERTICAL_SLICE",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/PROJECTOR_VERTICAL_SLICE/20260729T115851300716Z-fe19e68153ff"
+    },
+    {
+      "id": "SNAP_GAP",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/SNAP_GAP/20260729T115851515548Z-1e476d23ba7e"
+    },
+    {
+      "id": "COHOMOLOGY_COMPATIBLE",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/COHOMOLOGY_COMPATIBLE/20260729T115851706101Z-1aa650842d54"
+    }
+  ],
+  "matrix_all_mandatory_rows_passed": true,
+  "matrix_execution_note": "all registered finite canonical rows executed by the deterministic matrix runner"
+}

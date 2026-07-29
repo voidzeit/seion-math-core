@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "run_id": "v2_approx_closure_bound_32f65f5d12c56748",
+  "experiment_id": "V2_APPROX_CLOSURE_BOUND",
+  "status": "complete",
+  "failure_reason": "",
+  "source_commit": "247de089a5fea826fa87f9b9e791c20a5a6fd1b6",
+  "worktree_dirty": true,
+  "implementation_version": "research_v2.1",
+  "resolved_config": {
+    "id": "V2_APPROX_CLOSURE_BOUND",
+    "purpose": "Observed tree error versus explicit k*rho*M^(k-1) certificate",
+    "arity": 3,
+    "ambient_dimension": 4,
+    "reduced_rank": 2,
+    "epsilons": [
+      0.0,
+      0.01,
+      0.05,
+      0.1
+    ],
+    "tree_families": [
+      "single",
+      "associator_left",
+      "balanced"
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "epsilon": 0.1,
+    "tree_family": "balanced"
+  },
+  "resolved_config_hash": "17d6e761bf61f83dcda6864e1c729b1a9ceef1f948d77ccc5493d692d207c509",
+  "mathematical_object_hash": "4e65a87d4a62e02eda2ca66b49b861538535e2179907f9c3e26bb6947a7395a3",
+  "input_artifact_hash": "3ac0a455dff31f643cda7695f806247c589144060c77030024e5887e9293f1bd",
+  "seed": 1,
+  "precision": "float64",
+  "backend": "numpy",
+  "device": "cpu",
+  "identity_key": {
+    "experiment_id": "V2_APPROX_CLOSURE_BOUND",
+    "resolved_config_hash": "17d6e761bf61f83dcda6864e1c729b1a9ceef1f948d77ccc5493d692d207c509",
+    "mathematical_object_hash": "4e65a87d4a62e02eda2ca66b49b861538535e2179907f9c3e26bb6947a7395a3",
+    "input_artifact_hash": "3ac0a455dff31f643cda7695f806247c589144060c77030024e5887e9293f1bd",
+    "seed": 1,
+    "precision": "float64",
+    "backend": "numpy",
+    "device": "cpu",
+    "implementation_version": "research_v2.1"
+  },
+  "metrics": {
+    "epsilon_requested": 0.1,
+    "closure_residual_upper": 0.1,
+    "operator_norm_upper": 1.004987562112089,
+    "tree_family": "balanced",
+    "internal_nodes": 4,
+    "tree_height": 2,
+    "observed_error": 1.7089057553716623e-05,
+    "projected_observed_error": 0.0,
+    "theoretical_bound": 0.40601497509328377,
+    "tightness_ratio": 4.2089722305908386e-05,
+    "runtime_seconds": 0.0026807000394910574,
+    "ram_peak_bytes": 9845,
+    "vram_peak_bytes": 0,
+    "convergence_status": "complete",
+    "failure_count": 0
+  }
+}

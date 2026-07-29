@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://seion.invalid/schema/evidence-event.json",
+  "title": "SEION evidence event",
+  "type": "object",
+  "required": ["event_id", "kind", "created_utc", "authority", "source", "result", "limitations"],
+  "properties": {
+    "event_id": {"type": "string"},
+    "kind": {"type": "string"},
+    "created_utc": {"type": "string"},
+    "authority": {"type": "string", "enum": ["declared", "observed", "verified", "approved"]},
+    "source": {"type": "string"},
+    "result": {"type": "string"},
+    "claim_ids": {"type": "array", "items": {"type": "string"}},
+    "run_ids": {"type": "array", "items": {"type": "string"}},
+    "artifacts": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  },
+  "additionalProperties": true
+}

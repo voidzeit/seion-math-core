@@ -1,0 +1,228 @@
+{
+  "main": {
+    "id": "f45d60dabb8527f8",
+    "type": "split",
+    "children": [
+      {
+        "id": "5053337f42083d70",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c537b6635eb12f0e",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3b255d5b953f0fd4",
+    "type": "split",
+    "children": [
+      {
+        "id": "05c5b9f6044f9109",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3fd043618f607bfc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "e502ff19f3ccc6fa",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "589c41b95f757279",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "37dca1eb4dfd9313",
+    "type": "split",
+    "children": [
+      {
+        "id": "a227b0249621ae2f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "553de98f463902e4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "7d81c5991ee5c4c9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "c5b8b9303aa3e1b1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "4f98a1e0e08f4b9b",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "0798765309609390",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "3fd043618f607bfc",
+  "lastOpenFiles": [
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/artifact_hashes.json",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/summary.md",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/certificate.json",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/run_manifest.json",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/metrics.jsonl",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/final_metrics.json",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/constraint_history.csv",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/optimization_history.csv",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/checkpoint_final.pt",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/checkpoint_best.pt",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/checkpoint_initial.pt",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T162010Z-a36e269b3c99/hardware.json",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T155404Z-a36e269b3c99/summary.md",
+    "papers/foundations_v2/README.md",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T154535Z-a36e269b3c99/summary.md",
+    "artifacts/pdf/research_v2_pages/contact_sheets/figures.png",
+    "artifacts/pdf/research_v2_pages/contact_sheets/software.png",
+    "artifacts/pdf/research_v2_pages/contact_sheets/foundations_draft.png",
+    "artifacts/pdf/research_v2_pages/contact_sheets/foundations_main.png",
+    "artifacts/pdf/research_v2_pages/software_companion-3.png",
+    "artifacts/pdf/research_v2_pages/software_companion-2.png",
+    "artifacts/pdf/research_v2_pages/software_companion-1.png",
+    "artifacts/pdf/research_v2_pages/fig09_claim_evidence_dag-1.png",
+    "artifacts/pdf/research_v2_pages/fig08_closure_convergence-1.png",
+    "artifacts/pdf/research_v2_pages/fig07_spectral_gap_stability-1.png",
+    "artifacts/research_audit/v2_state.md",
+    "artifacts/reviews/pure_math_review.md",
+    "artifacts/reviews/numerical_review.md",
+    "artifacts/reviews/author_response.md",
+    "papers/software_v2/README.md",
+    "papers/foundations_v2/RESEARCH_BLOCKED.md",
+    "docs/prior_art_v2.md",
+    "docs/theorems_v2/spectral_snapping.md",
+    "docs/theorems_v2/approximate_closure.md",
+    "docs/theorems_v2/polynomial_identities.md",
+    "docs/theorems_v2/README.md",
+    "docs/theorems_v2/exact_reduction.md",
+    "artifacts/research_audit/paper_gap_analysis.md",
+    "artifacts/research_audit/current_state.md",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T130251Z-a36e269b3c99/summary.md",
+    "artifacts/runs/certification/finite_ternary_v1/20260729T130005Z-a36e269b3c99/summary.md",
+    "artifacts/runs/canonical_matrix/COHOMOLOGY_COMPATIBLE/20260729T124630001435Z-1aa650842d54/summary.md",
+    "artifacts/runs/canonical_matrix/SNAP_GAP/20260729T124629781190Z-1e476d23ba7e/summary.md",
+    "artifacts/runs/canonical_matrix/PROJECTOR_VERTICAL_SLICE/20260729T124629541620Z-fe19e68153ff/summary.md",
+    "artifacts/runs/canonical_matrix/CURVATURE_STANDARD_IDENTITY/20260729T124629235715Z-04847c84fb47/summary.md",
+    "artifacts/runs/canonical_matrix/ASSOC_FIVE_INPUT/20260729T124628982259Z-d607e0281a16/summary.md"
+  ]
+}

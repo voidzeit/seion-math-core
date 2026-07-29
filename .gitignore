@@ -19,6 +19,9 @@ artifacts/paper_render/contact_sheet.png
 artifacts/paper_render/render_report.json
 artifacts/release/*
 !artifacts/release/README.md
+.ai/runtime/*
+.ai/machine/*
+.ai/packs/*
 *.log
 *.aux
 *.bbl
@@ -27,4 +30,3 @@ artifacts/release/*
 *.fls
 *.out
 *.synctex.gz
-

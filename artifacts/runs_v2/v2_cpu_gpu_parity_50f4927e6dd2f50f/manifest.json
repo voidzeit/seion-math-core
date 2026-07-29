@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "run_id": "v2_cpu_gpu_parity_50f4927e6dd2f50f",
+  "experiment_id": "V2_CPU_GPU_PARITY",
+  "status": "complete",
+  "failure_reason": "",
+  "source_commit": "247de089a5fea826fa87f9b9e791c20a5a6fd1b6",
+  "worktree_dirty": true,
+  "implementation_version": "research_v2.1",
+  "resolved_config": {
+    "id": "V2_CPU_GPU_PARITY",
+    "purpose": "Independent CPU/GPU contraction parity when CUDA is available",
+    "arity": 3,
+    "ambient_dimension": 6,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "cuda_available": true
+  },
+  "resolved_config_hash": "bb037ad575fcc9b9e813051f9bc1cacafe96cda257b3f70e70877e1f07eb4dd5",
+  "mathematical_object_hash": "337e571d2f29e225004faa7a003c2d259ff59f5d2f763fe76e741b722c33e2c6",
+  "input_artifact_hash": "872ecefa6b6fc703e4d672387edd7d263773ef89ef2518e7d2c507d7243cf553",
+  "seed": 3,
+  "precision": "float64",
+  "backend": "numpy",
+  "device": "cpu",
+  "identity_key": {
+    "experiment_id": "V2_CPU_GPU_PARITY",
+    "resolved_config_hash": "bb037ad575fcc9b9e813051f9bc1cacafe96cda257b3f70e70877e1f07eb4dd5",
+    "mathematical_object_hash": "337e571d2f29e225004faa7a003c2d259ff59f5d2f763fe76e741b722c33e2c6",
+    "input_artifact_hash": "872ecefa6b6fc703e4d672387edd7d263773ef89ef2518e7d2c507d7243cf553",
+    "seed": 3,
+    "precision": "float64",
+    "backend": "numpy",
+    "device": "cpu",
+    "implementation_version": "research_v2.1"
+  },
+  "metrics": {
+    "status_detail": "complete",
+    "reason": "",
+    "max_abs_error": 8.881784197001252e-16,
+    "failure_count": 0,
+    "vram_peak_bytes": 33579520
+  }
+}

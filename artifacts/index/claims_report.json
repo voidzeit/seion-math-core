@@ -1,6 +1,1301 @@
 {
   "runs": [
     {
+      "cp_rank": 1,
+      "relative_reconstruction_error": 0.0,
+      "dense_cp_probe_error": 7.244417918960238e-17,
+      "experiment_id": "ALG_CP_RANK_ONE",
+      "claim": "CP-to-dense reconstruction is exact for rank-one factors",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.08473810000577942,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_CP_RANK_ONE/20260729T115718917281Z-39cc0da820d9"
+    },
+    {
+      "cp_rank": 1,
+      "relative_reconstruction_error": 0.0,
+      "dense_cp_probe_error": 7.244417918960238e-17,
+      "experiment_id": "ALG_CP_RANK_ONE",
+      "claim": "CP-to-dense reconstruction is exact for rank-one factors",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.06791430001612753,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_CP_RANK_ONE/20260729T115748783204Z-39cc0da820d9"
+    },
+    {
+      "cp_rank": 1,
+      "relative_reconstruction_error": 0.0,
+      "dense_cp_probe_error": 7.244417918960238e-17,
+      "experiment_id": "ALG_CP_RANK_ONE",
+      "claim": "CP-to-dense reconstruction is exact for rank-one factors",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07793840003432706,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_CP_RANK_ONE/20260729T115842021682Z-39cc0da820d9"
+    },
+    {
+      "cp_rank": 1,
+      "relative_reconstruction_error": 0.0,
+      "dense_cp_probe_error": 7.244417918960238e-17,
+      "experiment_id": "ALG_CP_RANK_ONE",
+      "claim": "CP-to-dense reconstruction is exact for rank-one factors",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.0712125000427477,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_CP_RANK_ONE/20260729T115850671983Z-39cc0da820d9"
+    },
+    {
+      "cp_rank": 1,
+      "relative_reconstruction_error": 0.0,
+      "dense_cp_probe_error": 7.244417918960238e-17,
+      "experiment_id": "ALG_CP_RANK_ONE",
+      "claim": "CP-to-dense reconstruction is exact for rank-one factors",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.0772829000488855,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_CP_RANK_ONE/20260729T115945901550Z-39cc0da820d9"
+    },
+    {
+      "cp_rank": 1,
+      "relative_reconstruction_error": 0.0,
+      "dense_cp_probe_error": 7.244417918960238e-17,
+      "experiment_id": "ALG_CP_RANK_ONE",
+      "claim": "CP-to-dense reconstruction is exact for rank-one factors",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.06680069997673854,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_CP_RANK_ONE/20260729T124628790482Z-39cc0da820d9"
+    },
+    {
+      "max_multilinearity_residual": 1.298408944086918e-16,
+      "residuals_by_input": [
+        1.298408944086918e-16,
+        1.2470794834341178e-16,
+        1.1178203268234443e-16
+      ],
+      "dimension": 3,
+      "arity": 3,
+      "experiment_id": "ALG_DENSE_FLOAT64",
+      "claim": "dense n-ary contraction preserves multilinearity",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 1.8607230999623425,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_DENSE_FLOAT64/20260729T115716918525Z-b2b1c5060a4f"
+    },
+    {
+      "max_multilinearity_residual": 1.298408944086918e-16,
+      "residuals_by_input": [
+        1.298408944086918e-16,
+        1.2470794834341178e-16,
+        1.1178203268234443e-16
+      ],
+      "dimension": 3,
+      "arity": 3,
+      "experiment_id": "ALG_DENSE_FLOAT64",
+      "claim": "dense n-ary contraction preserves multilinearity",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 5.563336500024889,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_DENSE_FLOAT64/20260729T115743109359Z-b2b1c5060a4f"
+    },
+    {
+      "max_multilinearity_residual": 1.298408944086918e-16,
+      "residuals_by_input": [
+        1.298408944086918e-16,
+        1.2470794834341178e-16,
+        1.1178203268234443e-16
+      ],
+      "dimension": 3,
+      "arity": 3,
+      "experiment_id": "ALG_DENSE_FLOAT64",
+      "claim": "dense n-ary contraction preserves multilinearity",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07052370003657416,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_DENSE_FLOAT64/20260729T115841810059Z-b2b1c5060a4f"
+    },
+    {
+      "max_multilinearity_residual": 1.298408944086918e-16,
+      "residuals_by_input": [
+        1.298408944086918e-16,
+        1.2470794834341178e-16,
+        1.1178203268234443e-16
+      ],
+      "dimension": 3,
+      "arity": 3,
+      "experiment_id": "ALG_DENSE_FLOAT64",
+      "claim": "dense n-ary contraction preserves multilinearity",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.0752453000168316,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_DENSE_FLOAT64/20260729T115850469905Z-b2b1c5060a4f"
+    },
+    {
+      "max_multilinearity_residual": 1.298408944086918e-16,
+      "residuals_by_input": [
+        1.298408944086918e-16,
+        1.2470794834341178e-16,
+        1.1178203268234443e-16
+      ],
+      "dimension": 3,
+      "arity": 3,
+      "experiment_id": "ALG_DENSE_FLOAT64",
+      "claim": "dense n-ary contraction preserves multilinearity",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.0876004999736324,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_DENSE_FLOAT64/20260729T115945674676Z-b2b1c5060a4f"
+    },
+    {
+      "max_multilinearity_residual": 1.298408944086918e-16,
+      "residuals_by_input": [
+        1.298408944086918e-16,
+        1.2470794834341178e-16,
+        1.1178203268234443e-16
+      ],
+      "dimension": 3,
+      "arity": 3,
+      "experiment_id": "ALG_DENSE_FLOAT64",
+      "claim": "dense n-ary contraction preserves multilinearity",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.08937100000912324,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_DENSE_FLOAT64/20260729T124628579291Z-b2b1c5060a4f"
+    },
+    {
+      "convention": "five_input",
+      "squared_energy": 7.631022213435772e-32,
+      "normalized_defect": 1.3304948818425872e-31,
+      "samples": 64,
+      "seed": 42,
+      "dtype": "float64",
+      "exact": false,
+      "input_distribution": "standard_normal",
+      "normalization": "mean residual energy / mean intermediate output energy",
+      "experiment_id": "ASSOC_FIVE_INPUT",
+      "claim": "five-input associator is a distinct typed composition convention",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07751959998859093,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ASSOC_FIVE_INPUT/20260729T115719158564Z-d607e0281a16"
+    },
+    {
+      "convention": "five_input",
+      "squared_energy": 7.631022213435772e-32,
+      "normalized_defect": 1.3304948818425872e-31,
+      "samples": 64,
+      "seed": 42,
+      "dtype": "float64",
+      "exact": false,
+      "input_distribution": "standard_normal",
+      "normalization": "mean residual energy / mean intermediate output energy",
+      "experiment_id": "ASSOC_FIVE_INPUT",
+      "claim": "five-input associator is a distinct typed composition convention",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07366960000945255,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ASSOC_FIVE_INPUT/20260729T115748982645Z-d607e0281a16"
+    },
+    {
+      "convention": "five_input",
+      "squared_energy": 7.631022213435772e-32,
+      "normalized_defect": 1.3304948818425872e-31,
+      "samples": 64,
+      "seed": 42,
+      "dtype": "float64",
+      "exact": false,
+      "input_distribution": "standard_normal",
+      "normalization": "mean residual energy / mean intermediate output energy",
+      "experiment_id": "ASSOC_FIVE_INPUT",
+      "claim": "five-input associator is a distinct typed composition convention",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07665240002097562,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ASSOC_FIVE_INPUT/20260729T115842237680Z-d607e0281a16"
+    },
+    {
+      "convention": "five_input",
+      "squared_energy": 7.631022213435772e-32,
+      "normalized_defect": 1.3304948818425872e-31,
+      "samples": 64,
+      "seed": 42,
+      "dtype": "float64",
+      "exact": false,
+      "input_distribution": "standard_normal",
+      "normalization": "mean residual energy / mean intermediate output energy",
+      "experiment_id": "ASSOC_FIVE_INPUT",
+      "claim": "five-input associator is a distinct typed composition convention",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07693109998945147,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ASSOC_FIVE_INPUT/20260729T115850863804Z-d607e0281a16"
+    },
+    {
+      "convention": "five_input",
+      "squared_energy": 7.631022213435772e-32,
+      "normalized_defect": 1.3304948818425872e-31,
+      "samples": 64,
+      "seed": 42,
+      "dtype": "float64",
+      "exact": false,
+      "input_distribution": "standard_normal",
+      "normalization": "mean residual energy / mean intermediate output energy",
+      "experiment_id": "ASSOC_FIVE_INPUT",
+      "claim": "five-input associator is a distinct typed composition convention",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07825810002395883,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ASSOC_FIVE_INPUT/20260729T115946125647Z-d607e0281a16"
+    },
+    {
+      "convention": "five_input",
+      "squared_energy": 7.631022213435772e-32,
+      "normalized_defect": 1.3304948818425872e-31,
+      "samples": 64,
+      "seed": 42,
+      "dtype": "float64",
+      "exact": false,
+      "input_distribution": "standard_normal",
+      "normalization": "mean residual energy / mean intermediate output energy",
+      "experiment_id": "ASSOC_FIVE_INPUT",
+      "claim": "five-input associator is a distinct typed composition convention",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07836019998649135,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ASSOC_FIVE_INPUT/20260729T124628982259Z-d607e0281a16"
+    },
+    {
+      "d_squared_zero": {
+        "residuals": [],
+        "passed": true,
+        "tolerance": 1e-10
+      },
+      "compatible_control": {
+        "commutator_defects": [
+          0.0
+        ],
+        "tolerance": 1e-10,
+        "descends": true,
+        "status": "proved_under_finite_dimensional_commutation"
+      },
+      "incompatible_control": {
+        "commutator_defects": [
+          1.0
+        ],
+        "tolerance": 1e-10,
+        "descends": false,
+        "status": "incompatible_control"
+      },
+      "experiment_id": "COHOMOLOGY_COMPATIBLE",
+      "claim": "a finite operator commuting with d descends to cohomology",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.08570430002873763,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/COHOMOLOGY_COMPATIBLE/20260729T115720020763Z-1aa650842d54"
+    },
+    {
+      "d_squared_zero": {
+        "residuals": [],
+        "passed": true,
+        "tolerance": 1e-10
+      },
+      "compatible_control": {
+        "commutator_defects": [
+          0.0
+        ],
+        "tolerance": 1e-10,
+        "descends": true,
+        "status": "proved_under_finite_dimensional_commutation"
+      },
+      "incompatible_control": {
+        "commutator_defects": [
+          1.0
+        ],
+        "tolerance": 1e-10,
+        "descends": false,
+        "status": "incompatible_control"
+      },
+      "experiment_id": "COHOMOLOGY_COMPATIBLE",
+      "claim": "a finite operator commuting with d descends to cohomology",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07631580001907423,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/COHOMOLOGY_COMPATIBLE/20260729T115749890063Z-1aa650842d54"
+    },
+    {
+      "d_squared_zero": {
+        "residuals": [],
+        "passed": true,
+        "tolerance": 1e-10
+      },
+      "compatible_control": {
+        "commutator_defects": [
+          0.0
+        ],
+        "tolerance": 1e-10,
+        "descends": true,
+        "status": "proved_under_finite_dimensional_commutation"
+      },
+      "incompatible_control": {
+        "commutator_defects": [
+          1.0
+        ],
+        "tolerance": 1e-10,
+        "descends": false,
+        "status": "incompatible_control"
+      },
+      "experiment_id": "COHOMOLOGY_COMPATIBLE",
+      "claim": "a finite operator commuting with d descends to cohomology",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.08796989999245852,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/COHOMOLOGY_COMPATIBLE/20260729T115843184549Z-1aa650842d54"
+    },
+    {
+      "d_squared_zero": {
+        "residuals": [],
+        "passed": true,
+        "tolerance": 1e-10
+      },
+      "compatible_control": {
+        "commutator_defects": [
+          0.0
+        ],
+        "tolerance": 1e-10,
+        "descends": true,
+        "status": "proved_under_finite_dimensional_commutation"
+      },
+      "incompatible_control": {
+        "commutator_defects": [
+          1.0
+        ],
+        "tolerance": 1e-10,
+        "descends": false,
+        "status": "incompatible_control"
+      },
+      "experiment_id": "COHOMOLOGY_COMPATIBLE",
+      "claim": "a finite operator commuting with d descends to cohomology",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.08050000004004687,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/COHOMOLOGY_COMPATIBLE/20260729T115851706101Z-1aa650842d54"
+    },
+    {
+      "d_squared_zero": {
+        "residuals": [],
+        "passed": true,
+        "tolerance": 1e-10
+      },
+      "compatible_control": {
+        "commutator_defects": [
+          0.0
+        ],
+        "tolerance": 1e-10,
+        "descends": true,
+        "status": "proved_under_finite_dimensional_commutation"
+      },
+      "incompatible_control": {
+        "commutator_defects": [
+          1.0
+        ],
+        "tolerance": 1e-10,
+        "descends": false,
+        "status": "incompatible_control"
+      },
+      "experiment_id": "COHOMOLOGY_COMPATIBLE",
+      "claim": "a finite operator commuting with d descends to cohomology",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.0842013000510633,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/COHOMOLOGY_COMPATIBLE/20260729T115947132585Z-1aa650842d54"
+    },
+    {
+      "d_squared_zero": {
+        "residuals": [],
+        "passed": true,
+        "tolerance": 1e-10
+      },
+      "compatible_control": {
+        "commutator_defects": [
+          0.0
+        ],
+        "tolerance": 1e-10,
+        "descends": true,
+        "status": "proved_under_finite_dimensional_commutation"
+      },
+      "incompatible_control": {
+        "commutator_defects": [
+          1.0
+        ],
+        "tolerance": 1e-10,
+        "descends": false,
+        "status": "incompatible_control"
+      },
+      "experiment_id": "COHOMOLOGY_COMPATIBLE",
+      "claim": "a finite operator commuting with d descends to cohomology",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07835199998226017,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/COHOMOLOGY_COMPATIBLE/20260729T124630001435Z-1aa650842d54"
+    },
+    {
+      "max_identity_residual": 1.8296883017090038e-14,
+      "mean_identity_residual": 2.987524525010973e-15,
+      "samples": 32,
+      "experiment_id": "CURVATURE_STANDARD_IDENTITY",
+      "claim": "standard operator curvature equals an associator difference",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07358729996485636,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/CURVATURE_STANDARD_IDENTITY/20260729T115719370779Z-04847c84fb47"
+    },
+    {
+      "max_identity_residual": 1.8296883017090038e-14,
+      "mean_identity_residual": 2.987524525010973e-15,
+      "samples": 32,
+      "experiment_id": "CURVATURE_STANDARD_IDENTITY",
+      "claim": "standard operator curvature equals an associator difference",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07710779999615625,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/CURVATURE_STANDARD_IDENTITY/20260729T115749179494Z-04847c84fb47"
+    },
+    {
+      "max_identity_residual": 1.8296883017090038e-14,
+      "mean_identity_residual": 2.987524525010973e-15,
+      "samples": 32,
+      "experiment_id": "CURVATURE_STANDARD_IDENTITY",
+      "claim": "standard operator curvature equals an associator difference",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07233769999584183,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/CURVATURE_STANDARD_IDENTITY/20260729T115842423774Z-04847c84fb47"
+    },
+    {
+      "max_identity_residual": 1.8296883017090038e-14,
+      "mean_identity_residual": 2.987524525010973e-15,
+      "samples": 32,
+      "experiment_id": "CURVATURE_STANDARD_IDENTITY",
+      "claim": "standard operator curvature equals an associator difference",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.075736400031019,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/CURVATURE_STANDARD_IDENTITY/20260729T115851053675Z-04847c84fb47"
+    },
+    {
+      "max_identity_residual": 1.8296883017090038e-14,
+      "mean_identity_residual": 2.987524525010973e-15,
+      "samples": 32,
+      "experiment_id": "CURVATURE_STANDARD_IDENTITY",
+      "claim": "standard operator curvature equals an associator difference",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.08487409999361262,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/CURVATURE_STANDARD_IDENTITY/20260729T115946348803Z-04847c84fb47"
+    },
+    {
+      "max_identity_residual": 1.8296883017090038e-14,
+      "mean_identity_residual": 2.987524525010973e-15,
+      "samples": 32,
+      "experiment_id": "CURVATURE_STANDARD_IDENTITY",
+      "claim": "standard operator curvature equals an associator difference",
+      "status": "COMPLETE",
+      "epistemic_status": "FINITE_DIMENSION_EXHAUSTIVE",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.08665009995456785,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/CURVATURE_STANDARD_IDENTITY/20260729T124629235715Z-04847c84fb47"
+    },
+    {
+      "experiment_id": "PROJECTOR_VERTICAL_SLICE",
+      "claim": "known invariant subspace has zero finite closure leakage",
+      "status": "FAILED_RUNTIME",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "error": "AttributeError(\"'tuple' object has no attribute 'output_dim'\")",
+      "device_requested": "cuda",
+      "runtime_seconds": 0.07256970001617447,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/PROJECTOR_VERTICAL_SLICE/20260729T115719588336Z-fe19e68153ff"
+    },
+    {
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "known_projector_diagnostics": {
+        "idempotence_error": 0.0,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "known_invariant"
+      },
+      "learned_projector_diagnostics": {
+        "idempotence_error": 3.3872891290362214e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "closure_minimizing_empirical"
+      },
+      "samples": 96,
+      "experiment_id": "PROJECTOR_VERTICAL_SLICE",
+      "claim": "known invariant subspace has zero finite closure leakage",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "auto",
+      "runtime_seconds": 0.14601130003575236,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/PROJECTOR_VERTICAL_SLICE/20260729T115749445887Z-fe19e68153ff"
+    },
+    {
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "known_projector_diagnostics": {
+        "idempotence_error": 0.0,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "known_invariant"
+      },
+      "learned_projector_diagnostics": {
+        "idempotence_error": 3.3872891290362214e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "closure_minimizing_empirical"
+      },
+      "samples": 96,
+      "experiment_id": "PROJECTOR_VERTICAL_SLICE",
+      "claim": "known invariant subspace has zero finite closure leakage",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "auto",
+      "runtime_seconds": 0.1599119000020437,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/PROJECTOR_VERTICAL_SLICE/20260729T115842701268Z-fe19e68153ff"
+    },
+    {
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "known_projector_diagnostics": {
+        "idempotence_error": 0.0,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "known_invariant"
+      },
+      "learned_projector_diagnostics": {
+        "idempotence_error": 3.3872891290362214e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "closure_minimizing_empirical"
+      },
+      "samples": 96,
+      "experiment_id": "PROJECTOR_VERTICAL_SLICE",
+      "claim": "known invariant subspace has zero finite closure leakage",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "auto",
+      "runtime_seconds": 0.13554579997435212,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/PROJECTOR_VERTICAL_SLICE/20260729T115851300716Z-fe19e68153ff"
+    },
+    {
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "known_projector_diagnostics": {
+        "idempotence_error": 0.0,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "known_invariant"
+      },
+      "learned_projector_diagnostics": {
+        "idempotence_error": 3.3872891290362214e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "closure_minimizing_empirical"
+      },
+      "samples": 96,
+      "experiment_id": "PROJECTOR_VERTICAL_SLICE",
+      "claim": "known invariant subspace has zero finite closure leakage",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "auto",
+      "runtime_seconds": 0.16971919999923557,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/PROJECTOR_VERTICAL_SLICE/20260729T115946667185Z-fe19e68153ff"
+    },
+    {
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "known_projector_diagnostics": {
+        "idempotence_error": 0.0,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "known_invariant"
+      },
+      "learned_projector_diagnostics": {
+        "idempotence_error": 3.3872891290362214e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "closure_minimizing_empirical"
+      },
+      "samples": 96,
+      "experiment_id": "PROJECTOR_VERTICAL_SLICE",
+      "claim": "known invariant subspace has zero finite closure leakage",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "auto",
+      "runtime_seconds": 0.15843300003325567,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/PROJECTOR_VERTICAL_SLICE/20260729T124629541620Z-fe19e68153ff"
+    },
+    {
+      "threshold": 0.5,
+      "eigenvalues": [
+        -0.02134155490951253,
+        0.02146689058953619,
+        0.9562287133637156,
+        1.0240988126536945
+      ],
+      "spectral_gap_to_threshold": 0.4562287133637156,
+      "rank_before_threshold": 3,
+      "rank_after_snapping": 2,
+      "perturbation_size": 0.05842060991339006,
+      "idempotence_error": 1.685135911139571e-16,
+      "selfadjoint_error": 0.0,
+      "gap_condition_satisfied": true,
+      "counterexample_without_gap": {
+        "before": [
+          [
+            0.499999999999,
+            0.0
+          ],
+          [
+            0.0,
+            0.500000000001
+          ]
+        ],
+        "after_perturbation": [
+          [
+            0.500000000001,
+            0.0
+          ],
+          [
+            0.0,
+            0.499999999999
+          ]
+        ],
+        "rank_flip": true,
+        "status": "counterexample_to_continuity_without_uniform_gap"
+      },
+      "snapped_diagnostics": {
+        "idempotence_error": 1.191571029987762e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "spectral_snap"
+      },
+      "experiment_id": "SNAP_GAP",
+      "claim": "spectral snapping is stable away from threshold gap",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07615400000941008,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/SNAP_GAP/20260729T115719800257Z-1e476d23ba7e"
+    },
+    {
+      "threshold": 0.5,
+      "eigenvalues": [
+        -0.02134155490951253,
+        0.02146689058953619,
+        0.9562287133637156,
+        1.0240988126536945
+      ],
+      "spectral_gap_to_threshold": 0.4562287133637156,
+      "rank_before_threshold": 3,
+      "rank_after_snapping": 2,
+      "perturbation_size": 0.05842060991339006,
+      "idempotence_error": 1.685135911139571e-16,
+      "selfadjoint_error": 0.0,
+      "gap_condition_satisfied": true,
+      "counterexample_without_gap": {
+        "before": [
+          [
+            0.499999999999,
+            0.0
+          ],
+          [
+            0.0,
+            0.500000000001
+          ]
+        ],
+        "after_perturbation": [
+          [
+            0.500000000001,
+            0.0
+          ],
+          [
+            0.0,
+            0.499999999999
+          ]
+        ],
+        "rank_flip": true,
+        "status": "counterexample_to_continuity_without_uniform_gap"
+      },
+      "snapped_diagnostics": {
+        "idempotence_error": 1.191571029987762e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "spectral_snap"
+      },
+      "experiment_id": "SNAP_GAP",
+      "claim": "spectral snapping is stable away from threshold gap",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.08206200000131503,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/SNAP_GAP/20260729T115749677089Z-1e476d23ba7e"
+    },
+    {
+      "threshold": 0.5,
+      "eigenvalues": [
+        -0.02134155490951253,
+        0.02146689058953619,
+        0.9562287133637156,
+        1.0240988126536945
+      ],
+      "spectral_gap_to_threshold": 0.4562287133637156,
+      "rank_before_threshold": 3,
+      "rank_after_snapping": 2,
+      "perturbation_size": 0.05842060991339006,
+      "idempotence_error": 1.685135911139571e-16,
+      "selfadjoint_error": 0.0,
+      "gap_condition_satisfied": true,
+      "counterexample_without_gap": {
+        "before": [
+          [
+            0.499999999999,
+            0.0
+          ],
+          [
+            0.0,
+            0.500000000001
+          ]
+        ],
+        "after_perturbation": [
+          [
+            0.500000000001,
+            0.0
+          ],
+          [
+            0.0,
+            0.499999999999
+          ]
+        ],
+        "rank_flip": true,
+        "status": "counterexample_to_continuity_without_uniform_gap"
+      },
+      "snapped_diagnostics": {
+        "idempotence_error": 1.191571029987762e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "spectral_snap"
+      },
+      "experiment_id": "SNAP_GAP",
+      "claim": "spectral snapping is stable away from threshold gap",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.0823380000074394,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/SNAP_GAP/20260729T115842963384Z-1e476d23ba7e"
+    },
+    {
+      "threshold": 0.5,
+      "eigenvalues": [
+        -0.02134155490951253,
+        0.02146689058953619,
+        0.9562287133637156,
+        1.0240988126536945
+      ],
+      "spectral_gap_to_threshold": 0.4562287133637156,
+      "rank_before_threshold": 3,
+      "rank_after_snapping": 2,
+      "perturbation_size": 0.05842060991339006,
+      "idempotence_error": 1.685135911139571e-16,
+      "selfadjoint_error": 0.0,
+      "gap_condition_satisfied": true,
+      "counterexample_without_gap": {
+        "before": [
+          [
+            0.499999999999,
+            0.0
+          ],
+          [
+            0.0,
+            0.500000000001
+          ]
+        ],
+        "after_perturbation": [
+          [
+            0.500000000001,
+            0.0
+          ],
+          [
+            0.0,
+            0.499999999999
+          ]
+        ],
+        "rank_flip": true,
+        "status": "counterexample_to_continuity_without_uniform_gap"
+      },
+      "snapped_diagnostics": {
+        "idempotence_error": 1.191571029987762e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "spectral_snap"
+      },
+      "experiment_id": "SNAP_GAP",
+      "claim": "spectral snapping is stable away from threshold gap",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07249140000203624,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/SNAP_GAP/20260729T115851515548Z-1e476d23ba7e"
+    },
+    {
+      "threshold": 0.5,
+      "eigenvalues": [
+        -0.02134155490951253,
+        0.02146689058953619,
+        0.9562287133637156,
+        1.0240988126536945
+      ],
+      "spectral_gap_to_threshold": 0.4562287133637156,
+      "rank_before_threshold": 3,
+      "rank_after_snapping": 2,
+      "perturbation_size": 0.05842060991339006,
+      "idempotence_error": 1.685135911139571e-16,
+      "selfadjoint_error": 0.0,
+      "gap_condition_satisfied": true,
+      "counterexample_without_gap": {
+        "before": [
+          [
+            0.499999999999,
+            0.0
+          ],
+          [
+            0.0,
+            0.500000000001
+          ]
+        ],
+        "after_perturbation": [
+          [
+            0.500000000001,
+            0.0
+          ],
+          [
+            0.0,
+            0.499999999999
+          ]
+        ],
+        "rank_flip": true,
+        "status": "counterexample_to_continuity_without_uniform_gap"
+      },
+      "snapped_diagnostics": {
+        "idempotence_error": 1.191571029987762e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "spectral_snap"
+      },
+      "experiment_id": "SNAP_GAP",
+      "claim": "spectral snapping is stable away from threshold gap",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.07996960001764819,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/SNAP_GAP/20260729T115946912293Z-1e476d23ba7e"
+    },
+    {
+      "threshold": 0.5,
+      "eigenvalues": [
+        -0.02134155490951253,
+        0.02146689058953619,
+        0.9562287133637156,
+        1.0240988126536945
+      ],
+      "spectral_gap_to_threshold": 0.4562287133637156,
+      "rank_before_threshold": 3,
+      "rank_after_snapping": 2,
+      "perturbation_size": 0.05842060991339006,
+      "idempotence_error": 1.685135911139571e-16,
+      "selfadjoint_error": 0.0,
+      "gap_condition_satisfied": true,
+      "counterexample_without_gap": {
+        "before": [
+          [
+            0.499999999999,
+            0.0
+          ],
+          [
+            0.0,
+            0.500000000001
+          ]
+        ],
+        "after_perturbation": [
+          [
+            0.500000000001,
+            0.0
+          ],
+          [
+            0.0,
+            0.499999999999
+          ]
+        ],
+        "rank_flip": true,
+        "status": "counterexample_to_continuity_without_uniform_gap"
+      },
+      "snapped_diagnostics": {
+        "idempotence_error": 1.191571029987762e-16,
+        "selfadjoint_error": 0.0,
+        "dimension": 4,
+        "rank": 2,
+        "method": "spectral_snap"
+      },
+      "experiment_id": "SNAP_GAP",
+      "claim": "spectral snapping is stable away from threshold gap",
+      "status": "COMPLETE",
+      "epistemic_status": "NUMERICALLY_TESTED",
+      "seed": 42,
+      "precision": "float64",
+      "tolerance": 1e-10,
+      "device_requested": "cpu",
+      "runtime_seconds": 0.08520319999661297,
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/SNAP_GAP/20260729T124629781190Z-1e476d23ba7e"
+    },
+    {
       "experiment_id": "finite_ternary_v1",
       "status": "FAILED_RUNTIME",
       "error": "'NaryLaw' object has no attribute 'five_input_associator'",
@@ -888,7 +2183,2065 @@
       "runtime_seconds": 2.432908300019335,
       "warnings": [],
       "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T114030Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 5.254430199973285,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T114752Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 2.0854792000027373,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T114758Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 2.84608049999224,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T114818Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 1.8874989000032656,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T114836Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 1.9898133000242524,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T114842Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 1.8644261000445113,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T114847Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 5.109644299955107,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T115707Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 5.271088999987114,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T115824Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 2.025003499991726,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T115834Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 1.8106841000262648,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T115839Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 1.8776159000117332,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T115848Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 2.0880554000032134,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T115852Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 4.979623699968215,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T115912Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 2.000891799980309,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T115931Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 1.9653166999923997,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T115938Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 1.918509199982509,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T115943Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 4.964848199975677,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T123900Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 5.03742060001241,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T124551Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 2.652975199976936,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T124613Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 2.056473799981177,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T124620Z-a36e269b3c99"
+    },
+    {
+      "experiment_id": "finite_ternary_v1",
+      "status": "COMPLETE",
+      "epistemic_status": "numerically_verified",
+      "example": "known_invariant_subspace",
+      "dimension": 4,
+      "arity": 3,
+      "precision": "float64",
+      "seed": 42,
+      "sample_count": 96,
+      "associator_convention": "five_input",
+      "associator_squared_energy": 30.4069851161008,
+      "associator_normalized_defect": 11.707569605717612,
+      "cyclic_defect_mean": 19.640771435536028,
+      "closure_leakage": {
+        "known_invariant": 0.0,
+        "random": 0.35031370595792083,
+        "pca": 0.5835434815366937,
+        "closure_minimizing_empirical": 0.12640160331109038
+      },
+      "learned_closure_history": [
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5466816230065327,
+        0.5196735029145519,
+        0.5196735029145519,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.4074779411621985,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.3304306782997161,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.20471708099932465,
+        0.1492362395234278,
+        0.1492362395234278,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.13540360075083277,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038,
+        0.12640160331109038
+      ],
+      "reduced_dimension": 2,
+      "projector_diagnostics": {
+        "known_invariant": {
+          "idempotence_error": 0.0,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "known_invariant"
+        },
+        "random": {
+          "idempotence_error": 5.042050700450313e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "random"
+        },
+        "pca": {
+          "idempotence_error": 3.8894960744499723e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "pca"
+        },
+        "closure_minimizing_empirical": {
+          "idempotence_error": 3.3872891290362214e-16,
+          "selfadjoint_error": 0.0,
+          "dimension": 4,
+          "rank": 2,
+          "method": "closure_minimizing_empirical"
+        }
+      },
+      "cp_relative_frobenius_error": 0.4343239333353975,
+      "complex128_associator_normalized_defect": 44.26739864754806,
+      "condition_number_tensor_unfolding": Infinity,
+      "precision_info": {
+        "precision": "float64",
+        "dtype": "float64",
+        "machine_epsilon": 2.220446049250313e-16,
+        "itemsize": 8,
+        "python": "3.12.10"
+      },
+      "runtime_seconds": 1.8465641999500804,
+      "warnings": [],
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T124626Z-a36e269b3c99"
     }
   ],
-  "count": 10
+  "count": 73
 }

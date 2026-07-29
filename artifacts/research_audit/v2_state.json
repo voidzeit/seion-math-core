@@ -1,0 +1,531 @@
+{
+  "version": 2,
+  "generated_utc": "2026-07-29T16:20:43.936309+00:00",
+  "scope": "v2 deliverable audit; legacy 0.1 artifacts are outside the v2 write set",
+  "manifest": {
+    "version": 2,
+    "implementation_version": "research_v2.1",
+    "source_commit": "247de089a5fea826fa87f9b9e791c20a5a6fd1b6",
+    "worktree_dirty": true,
+    "total_runs": 180,
+    "complete_runs": 180,
+    "failed_runs": 0,
+    "unique_scientific_instances": 100,
+    "required_seed_count": 5,
+    "legacy_history_modified": false,
+    "gpu_rows": 5,
+    "gpu_completed": 5
+  },
+  "checks": {
+    "all_registered_runs_complete": true,
+    "five_seeds_for_principal_groups": true,
+    "bound_rows_respect_bound": true,
+    "cpu_gpu_parity_rows_complete": true,
+    "cpu_gpu_error_below_tolerance": true,
+    "required_vector_figures_present": true,
+    "paper_pdfs_present": true,
+    "rendered_pages_present": true,
+    "claim_matrix_present": true,
+    "dependency_matrix_present": true,
+    "blocked_status_is_explicit": true,
+    "legacy_history_not_modified_by_runner": true
+  },
+  "strict_gate": false,
+  "blockers": [
+    {
+      "id": "V2-B-0001",
+      "title": "Theorem-level novelty is not established",
+      "evidence": "claims/theorem_registry_v2.yaml and papers/foundations_v2/RESEARCH_BLOCKED.md"
+    },
+    {
+      "id": "V2-B-0002",
+      "title": "Author email and ORCID remain unverified",
+      "evidence": "papers/foundations_v2/main.tex front matter"
+    }
+  ],
+  "runs": {
+    "total": 180,
+    "complete": 180,
+    "failed": 0,
+    "unique_scientific_instances": 100,
+    "principal_seed_groups": {
+      "V2_APPROX_CLOSURE_BOUND|associator_left|epsilon=0.0": 5,
+      "V2_APPROX_CLOSURE_BOUND|associator_left|epsilon=0.01": 5,
+      "V2_APPROX_CLOSURE_BOUND|associator_left|epsilon=0.05": 5,
+      "V2_APPROX_CLOSURE_BOUND|associator_left|epsilon=0.1": 5,
+      "V2_APPROX_CLOSURE_BOUND|balanced|epsilon=0.0": 5,
+      "V2_APPROX_CLOSURE_BOUND|balanced|epsilon=0.01": 5,
+      "V2_APPROX_CLOSURE_BOUND|balanced|epsilon=0.05": 5,
+      "V2_APPROX_CLOSURE_BOUND|balanced|epsilon=0.1": 5,
+      "V2_APPROX_CLOSURE_BOUND|single|epsilon=0.0": 5,
+      "V2_APPROX_CLOSURE_BOUND|single|epsilon=0.01": 5,
+      "V2_APPROX_CLOSURE_BOUND|single|epsilon=0.05": 5,
+      "V2_APPROX_CLOSURE_BOUND|single|epsilon=0.1": 5,
+      "V2_CPU_GPU_PARITY||gap=|relative=": 5,
+      "V2_CP_RANK_SWEEP|rank=0": 5,
+      "V2_CP_RANK_SWEEP|rank=1": 5,
+      "V2_CP_RANK_SWEEP|rank=2": 5,
+      "V2_CP_RANK_SWEEP|rank=3": 5,
+      "V2_PROJECTOR_RECOVERY|closure_minimizing": 5,
+      "V2_PROJECTOR_RECOVERY|known_invariant": 5,
+      "V2_PROJECTOR_RECOVERY|pca": 5,
+      "V2_PROJECTOR_RECOVERY|random": 5,
+      "V2_PROJECTOR_RECOVERY|spectral": 5,
+      "V2_PROJECTOR_RECOVERY|svd": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.05|relative=0.01": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.05|relative=0.1": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.05|relative=0.4": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.1|relative=0.01": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.1|relative=0.1": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.1|relative=0.4": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.2|relative=0.01": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.2|relative=0.1": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.2|relative=0.4": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.5|relative=0.01": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.5|relative=0.1": 5,
+      "V2_SPECTRAL_GAP|positive_gap|gap=0.5|relative=0.4": 5
+    }
+  },
+  "bound_validation": {
+    "rows": 60,
+    "failures": 0,
+    "max_tightness_ratio": 0.7100467992738069
+  },
+  "parity": {
+    "rows": 5,
+    "max_abs_error": 1.4210854715202004e-14,
+    "vram_recorded": true
+  },
+  "theorems": [
+    {
+      "id": "THM_EXACT_TYPED_REDUCTION_V2",
+      "title": "Exact invariant reduction commutes with declared tree composition",
+      "statement": "For an isometric embedding Q and an exactly invariant subspace, Q times the reduced tree evaluation equals the ambient tree evaluation on lifted leaves.",
+      "assumptions": [
+        "finite-dimensional Hilbert spaces",
+        "Q*Q = I",
+        "every law used at an internal node maps the selected subspaces into the selected output subspace",
+        "declared slot order and compatible dimensions"
+      ],
+      "proof_location": "docs/theorems_v2/exact_reduction.md",
+      "implementation": {
+        "reference": "src/seion_core/research_v2/reference.py",
+        "accelerated": "src/seion_core/research_v2/accelerated.py"
+      },
+      "evidence": {
+        "tests": "tests/research_v2/test_reference_parity.py",
+        "artifacts": "artifacts/symbolic_v2/exact_invariant_reduction.json"
+      },
+      "epistemic_status": "ESTABLISHED_KNOWN_RESULT",
+      "novelty_status": "NOT_CLAIMED"
+    },
+    {
+      "id": "THM_OPERADIC_IDENTITY_INHERITANCE_V2",
+      "title": "Exact inheritance of declared multilinear polynomial identities",
+      "statement": "Every finite signed polynomial in declared tree compositions vanishing for the ambient law vanishes for the exactly reduced law.",
+      "assumptions": [
+        "assumptions of THM_EXACT_TYPED_REDUCTION_V2",
+        "every term uses the same declared operations and convention"
+      ],
+      "proof_location": "docs/theorems_v2/polynomial_identities.md",
+      "implementation": "src/seion_core/research_v2/reference.py",
+      "evidence": "tests/research_v2/test_theorem_examples.py",
+      "epistemic_status": "ESTABLISHED_KNOWN_RESULT",
+      "novelty_status": "NOT_CLAIMED"
+    },
+    {
+      "id": "THM_APPROXIMATE_TREE_BOUND_V2",
+      "title": "Explicit approximate-closure tree recurrence",
+      "statement": "For k internal nodes, ||F_T-R_T|| <= k rho M^(k-1) product leaf norms.",
+      "assumptions": [
+        "finite-dimensional Hilbert space",
+        "bounded n-linear law with operator norm M",
+        "uniform closure residual rho for projected inputs",
+        "every internal output is projected in the reduced evaluation"
+      ],
+      "proof_location": "docs/theorems_v2/approximate_closure.md",
+      "implementation": "src/seion_core/research_v2/reference.py",
+      "evidence": {
+        "tests": "tests/research_v2/test_theorem_examples.py",
+        "artifacts": "artifacts/index/bound_tightness_v2.csv"
+      },
+      "epistemic_status": "PROVED_AUXILIARY",
+      "novelty_status": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "THM_SPECTRAL_SNAPPING_GAP_V2",
+      "title": "Threshold snapping stability under a positive gap",
+      "statement": "For Hermitian threshold snapping with gap gamma and ||E|| <= gamma/2, a conservative Davis-Kahan bound is min(1,4||E||/gamma).",
+      "assumptions": [
+        "Hermitian A and E",
+        "threshold 1/2",
+        "positive distance gamma from threshold spectrum",
+        "spectral perturbation norm at most gamma/2"
+      ],
+      "proof_location": "docs/theorems_v2/spectral_snapping.md",
+      "implementation": "src/seion_core/projectors/snapping.py",
+      "evidence": {
+        "tests": "tests/research_v2/test_theorem_examples.py",
+        "artifacts": "artifacts/counterexamples_v2/spectral_gap_sweep.json"
+      },
+      "epistemic_status": "ESTABLISHED_KNOWN_RESULT",
+      "novelty_status": "NOT_CLAIMED"
+    },
+    {
+      "id": "PROP_FINITE_COHOMOLOGY_DESCENT_V2",
+      "title": "Finite commuting operator descends to cohomology",
+      "statement": "A degree-preserving operator commuting with a finite differential preserves cycles and boundaries and induces a map on quotient cohomology.",
+      "assumptions": [
+        "finite-dimensional cochain spaces",
+        "d squared equals zero",
+        "exact commutation"
+      ],
+      "proof_location": "docs/theorems/cohomology_descent.md",
+      "epistemic_status": "PROVED_UNDER_ASSUMPTIONS",
+      "novelty_status": "SUPPORTING_ONLY"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "CLM_V2_001",
+      "status": "ESTABLISHED_KNOWN_RESULT",
+      "claim_text": "Exact invariant reduction commutes with every declared full ordered tree composition.",
+      "theorem_or_proposition_evidence": "THM_EXACT_TYPED_REDUCTION_V2",
+      "experiment_evidence": "exact symbolic artifact and parity tests",
+      "counterexample_evidence": "",
+      "run_index": "artifacts/symbolic_v2/exact_invariant_reduction.json",
+      "figures_or_tables": "fig03_exact_reduction_diagram.pdf",
+      "release_impact": "No novelty claim; theorem is auditable and reusable."
+    },
+    {
+      "claim_id": "CLM_V2_002",
+      "status": "ESTABLISHED_KNOWN_RESULT",
+      "claim_text": "Multilinear polynomial identities built from the declared operation descend under exact invariance.",
+      "theorem_or_proposition_evidence": "THM_OPERADIC_IDENTITY_INHERITANCE_V2",
+      "experiment_evidence": "tests/research_v2/test_theorem_examples.py",
+      "counterexample_evidence": "",
+      "run_index": "artifacts/symbolic_v2/exact_invariant_reduction.json",
+      "figures_or_tables": "fig02_ternary_composition_trees.pdf",
+      "release_impact": "No novelty claim; convention-dependent scope is explicit."
+    },
+    {
+      "claim_id": "CLM_V2_003",
+      "status": "PROVED_AUXILIARY",
+      "claim_text": "For a tree with k internal nodes, projected evaluation error is at most k rho M^(k-1) times the product of leaf norms.",
+      "theorem_or_proposition_evidence": "THM_APPROXIMATE_TREE_BOUND_V2",
+      "experiment_evidence": "60 registered runs with five seeds per tree/epsilon group",
+      "counterexample_evidence": "",
+      "run_index": "artifacts/index/bound_tightness_v2.csv",
+      "figures_or_tables": "fig08_closure_convergence.pdf;tables/bound_tightness.tex",
+      "release_impact": "Auxiliary certificate; not submission-grade novelty by itself."
+    },
+    {
+      "claim_id": "CLM_V2_004",
+      "status": "ESTABLISHED_KNOWN_RESULT",
+      "claim_text": "Hermitian threshold snapping is stable under a positive gap with a conservative min(1,4||E||/gamma) bound.",
+      "theorem_or_proposition_evidence": "THM_SPECTRAL_SNAPPING_GAP_V2",
+      "experiment_evidence": "60 positive-gap runs with five seeds per control cell",
+      "counterexample_evidence": "CE_NO_SPECTRAL_GAP_BREAKS_SNAPPING_CONTINUITY_V2",
+      "run_index": "artifacts/index/spectral_gap_v2.csv",
+      "figures_or_tables": "fig07_spectral_gap_stability.pdf;tables/spectral_gap.tex",
+      "release_impact": "Standard perturbation consequence; no novelty claim."
+    },
+    {
+      "claim_id": "CLM_V2_005",
+      "status": "VERIFIED_COUNTEREXAMPLE",
+      "claim_text": "Without exact invariance, reduction need not commute with partial composition.",
+      "theorem_or_proposition_evidence": "",
+      "experiment_evidence": "test_no_invariance_counterexample_breaks_composition",
+      "counterexample_evidence": "CE_NO_INVARIANCE_BREAKS_COMPOSITION_V2",
+      "run_index": "artifacts/counterexamples_v2/no_invariance_composition.json",
+      "figures_or_tables": "fig04_closure_leakage_geometry.pdf",
+      "release_impact": "Supports the stated hypothesis boundary."
+    },
+    {
+      "claim_id": "CLM_V2_006",
+      "status": "VERIFIED_COUNTEREXAMPLE",
+      "claim_text": "Without a positive spectral gap, snapping can change by O(1) under perturbations tending to zero.",
+      "theorem_or_proposition_evidence": "",
+      "experiment_evidence": "test_no_gap_counterexample_has_small_perturbation_but_large_snap_change",
+      "counterexample_evidence": "CE_NO_SPECTRAL_GAP_BREAKS_SNAPPING_CONTINUITY_V2",
+      "run_index": "artifacts/counterexamples_v2/spectral_gap_sweep.json",
+      "figures_or_tables": "fig07_spectral_gap_stability.pdf",
+      "release_impact": "Supports fail-closed gap requirement."
+    },
+    {
+      "claim_id": "CLM_V2_007",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "claim_text": "Reference coordinate-loop evaluation, NumPy accelerated evaluation, dense composition, and CP rank-one evaluation agree to floating-point tolerance.",
+      "theorem_or_proposition_evidence": "",
+      "experiment_evidence": "13 research_v2 tests plus CP parity and five CPU/GPU parity runs",
+      "counterexample_evidence": "",
+      "run_index": "",
+      "figures_or_tables": "tests/research_v2/test_reference_parity.py;tests/research_v2/test_gpu_parity.py",
+      "release_impact": "Software evidence only; not mathematical novelty."
+    },
+    {
+      "claim_id": "CLM_V2_008",
+      "status": "VERIFIED_REPRODUCIBILITY",
+      "claim_text": "Every v2 numerical row carries source/config/object/input/seed/backend/precision provenance and is reproducible from registered matrices.",
+      "theorem_or_proposition_evidence": "",
+      "experiment_evidence": "180 complete runs; 100 unique scientific instances; five seeds per principal family",
+      "counterexample_evidence": "",
+      "run_index": "",
+      "figures_or_tables": "artifacts/index/research_v2_manifest.json;artifacts/index/run_index_v2.csv",
+      "release_impact": "preserves legacy history and enables companion release review."
+    },
+    {
+      "claim_id": "CLM_V2_009",
+      "status": "DIAGNOSTIC_ONLY",
+      "claim_text": "CP rank sweep records a representation trade-off for a deterministic finite diagnostic, not a decomposition or identifiability theorem.",
+      "theorem_or_proposition_evidence": "",
+      "experiment_evidence": "20 CP runs with ranks 0--3",
+      "counterexample_evidence": "",
+      "run_index": "",
+      "figures_or_tables": "artifacts/index/cp_rank_sweep_v2.csv",
+      "release_impact": "fig06_cp_rank_tradeoff.pdf;tables/cp_rank_tradeoff.tex",
+      "null": [
+        "Must remain explicitly diagnostic."
+      ]
+    },
+    {
+      "claim_id": "CLM_V2_010",
+      "status": "OPEN_BLOCKER",
+      "claim_text": "A genuinely new theorem-level contribution beyond standard restriction, recurrence, and spectral perturbation consequences has not been established.",
+      "theorem_or_proposition_evidence": "RESEARCH_BLOCKED.md",
+      "experiment_evidence": "",
+      "counterexample_evidence": "",
+      "run_index": "claims/prior_art_registry.yaml",
+      "figures_or_tables": "RESEARCH_BLOCKED.md",
+      "release_impact": "Mathematical paper remains draft/not for submission."
+    }
+  ],
+  "dependency_matrix": [
+    {
+      "theorem_id": "THM_EXACT_TYPED_REDUCTION_V2",
+      "kind": "theorem",
+      "depends_on": "",
+      "required_assumptions": "finite-dimensional Hilbert spaces; isometric Q; compatible dimensions; exact closure at every node",
+      "proof_or_definition": "docs/theorems_v2/exact_reduction.md",
+      "independent_evidence": "tests/research_v2/test_theorem_examples.py;artifacts/symbolic_v2/exact_invariant_reduction.json",
+      "cycle_status": "acyclic",
+      "epistemic_status": "ESTABLISHED_KNOWN_RESULT",
+      "novelty_status": "NOT_CLAIMED"
+    },
+    {
+      "theorem_id": "THM_OPERADIC_IDENTITY_INHERITANCE_V2",
+      "kind": "theorem",
+      "depends_on": "THM_EXACT_TYPED_REDUCTION_V2",
+      "required_assumptions": "same declared operation and tree convention for every polynomial term",
+      "proof_or_definition": "docs/theorems_v2/polynomial_identities.md",
+      "independent_evidence": "tests/research_v2/test_theorem_examples.py",
+      "cycle_status": "acyclic",
+      "epistemic_status": "ESTABLISHED_KNOWN_RESULT",
+      "novelty_status": "NOT_CLAIMED"
+    },
+    {
+      "theorem_id": "THM_APPROXIMATE_TREE_BOUND_V2",
+      "kind": "theorem",
+      "depends_on": "",
+      "required_assumptions": "bounded n-linear law; uniform closure residual rho; projection at every reduced internal node",
+      "proof_or_definition": "docs/theorems_v2/approximate_closure.md",
+      "independent_evidence": "tests/research_v2/test_theorem_examples.py;artifacts/index/bound_tightness_v2.csv",
+      "cycle_status": "acyclic",
+      "epistemic_status": "PROVED_AUXILIARY",
+      "novelty_status": "NOT_ESTABLISHED"
+    },
+    {
+      "theorem_id": "THM_SPECTRAL_SNAPPING_GAP_V2",
+      "kind": "theorem",
+      "depends_on": "",
+      "required_assumptions": "Hermitian A and E; threshold 1/2; gap gamma>0; ||E||<=gamma/2",
+      "proof_or_definition": "docs/theorems_v2/spectral_snapping.md",
+      "independent_evidence": "tests/research_v2/test_theorem_examples.py;artifacts/counterexamples_v2/spectral_gap_sweep.json",
+      "cycle_status": "acyclic",
+      "epistemic_status": "ESTABLISHED_KNOWN_RESULT",
+      "novelty_status": "NOT_CLAIMED"
+    },
+    {
+      "theorem_id": "PROP_FINITE_COHOMOLOGY_DESCENT_V2",
+      "kind": "proposition",
+      "depends_on": "",
+      "required_assumptions": "finite cochain spaces; d^2=0; exact commutation",
+      "proof_or_definition": "docs/theorems/cohomology_descent.md",
+      "independent_evidence": "legacy theorem registry",
+      "cycle_status": "acyclic",
+      "epistemic_status": "PROVED_UNDER_ASSUMPTIONS",
+      "novelty_status": "SUPPORTING_ONLY"
+    },
+    {
+      "theorem_id": "CE_NO_INVARIANCE_BREAKS_COMPOSITION_V2",
+      "kind": "counterexample",
+      "depends_on": "THM_EXACT_TYPED_REDUCTION_V2",
+      "required_assumptions": "exact invariance removed",
+      "proof_or_definition": "claims/counterexample_registry_v2.yaml",
+      "independent_evidence": "tests/research_v2/test_theorem_examples.py",
+      "cycle_status": "acyclic",
+      "epistemic_status": "REFUTED_WITHOUT_HYPOTHESIS",
+      "novelty_status": "BOUNDARY_CONTROL"
+    },
+    {
+      "theorem_id": "CE_NO_SPECTRAL_GAP_BREAKS_SNAPPING_CONTINUITY_V2",
+      "kind": "counterexample",
+      "depends_on": "THM_SPECTRAL_SNAPPING_GAP_V2",
+      "required_assumptions": "positive gap removed",
+      "proof_or_definition": "claims/counterexample_registry_v2.yaml",
+      "independent_evidence": "tests/research_v2/test_theorem_examples.py",
+      "cycle_status": "acyclic",
+      "epistemic_status": "REFUTED_WITHOUT_HYPOTHESIS",
+      "novelty_status": "BOUNDARY_CONTROL"
+    }
+  ],
+  "figures": {
+    "fig01_canonical_pipeline": {
+      "pdf": {
+        "exists": true,
+        "bytes": 19015,
+        "sha256": "b9d1b3ff163e0cbd83f5897ac181f3c98064efe2dc73a1a0fc5d5ac56c89153a"
+      },
+      "svg": {
+        "exists": true,
+        "bytes": 10522,
+        "sha256": "ce6ad11b29a01bbed45401c48ff7ebc63d6fc02e06dc1afb1e5329c4868b7721"
+      }
+    },
+    "fig02_ternary_composition_trees": {
+      "pdf": {
+        "exists": true,
+        "bytes": 12090,
+        "sha256": "3f123b2ba7eeaff0ddc315a66f9fa26d8ac0ea69fff24271320a3fd944571c5b"
+      },
+      "svg": {
+        "exists": true,
+        "bytes": 21229,
+        "sha256": "c4d8c2572850b242cc6ef2ffa78f232d6e120982fa7d42409920f85bdd37240d"
+      }
+    },
+    "fig03_exact_reduction_diagram": {
+      "pdf": {
+        "exists": true,
+        "bytes": 13230,
+        "sha256": "9d7f428edab939fd97d7cc1ba15396cea2ef654c1bde307603bb5e9a8e0056ac"
+      },
+      "svg": {
+        "exists": true,
+        "bytes": 8002,
+        "sha256": "924d911ea16e497209d71a51fb2b79855544d1929c520ebb726c47c906f5ef8e"
+      }
+    },
+    "fig04_closure_leakage_geometry": {
+      "pdf": {
+        "exists": true,
+        "bytes": 17722,
+        "sha256": "285c209b0529c4bb509507b65f9a71bc58987e3a96d1cfbc5f20fa08a843da5f"
+      },
+      "svg": {
+        "exists": true,
+        "bytes": 22897,
+        "sha256": "25673e8808bb3b445d8c175686cfe058ad61e90e1e76fab7b4ec9c0be745027e"
+      }
+    },
+    "fig05_projector_recovery": {
+      "pdf": {
+        "exists": true,
+        "bytes": 17183,
+        "sha256": "5e7357d1a6979b6f7095831f493963ef20f7570d1c29c950d7f64308a1233c12"
+      },
+      "svg": {
+        "exists": true,
+        "bytes": 42951,
+        "sha256": "3b4ff399a4019f71a9a665c1e9a512a443a543ddca159aca63bd8b22fceb8427"
+      }
+    },
+    "fig06_cp_rank_tradeoff": {
+      "pdf": {
+        "exists": true,
+        "bytes": 18703,
+        "sha256": "0ef6434fefb8cc491d4d52b4d277c7b555bf019871cbdc8ff8a4e7232f1e2da1"
+      },
+      "svg": {
+        "exists": true,
+        "bytes": 20361,
+        "sha256": "553319ae000e69525549b7e034c67b89420cb4c1006022c4a6365025694f2228"
+      }
+    },
+    "fig07_spectral_gap_stability": {
+      "pdf": {
+        "exists": true,
+        "bytes": 25769,
+        "sha256": "d2b4340dffc06a39870050603a8bcc6b3f83ed9dcf4697bb3db6bdb72f3c0290"
+      },
+      "svg": {
+        "exists": true,
+        "bytes": 37127,
+        "sha256": "0b42da80f918eb1b67d7587503c675f0af9a173b301869484792855282bbfc1d"
+      }
+    },
+    "fig08_closure_convergence": {
+      "pdf": {
+        "exists": true,
+        "bytes": 24592,
+        "sha256": "a68674711175886fb28562b58fa0153845ca740742be3a6889056f5fe4686430"
+      },
+      "svg": {
+        "exists": true,
+        "bytes": 39082,
+        "sha256": "fa04af90179f3faff481c263a47a2df8e3cf90811b3f567a7d7484a383ff03ef"
+      }
+    },
+    "fig09_claim_evidence_dag": {
+      "pdf": {
+        "exists": true,
+        "bytes": 17324,
+        "sha256": "e302eb6effc57beb3f38ea59e4199bf7558a18c4fdbf30ac8fb66fb0a781cc3f"
+      },
+      "svg": {
+        "exists": true,
+        "bytes": 8650,
+        "sha256": "5813f2adbd94f8e886f5bb7139e4ba42240bed685554705421ede34e460b020d"
+      }
+    }
+  },
+  "missing_figures": [],
+  "pdfs": {
+    "foundations_main": {
+      "exists": true,
+      "pages": 12,
+      "sha256": "e48610bf19099840f4217d272c7623a325be0b820edf37a3bbb9d3a7a31382e8",
+      "reader": "pdfinfo"
+    },
+    "foundations_draft": {
+      "exists": true,
+      "pages": 12,
+      "sha256": "5122dde8fe36a257bcffe4ea3cd6f954e472ba54ba510dac7d755562105df1c7",
+      "reader": "pdfinfo"
+    },
+    "software_companion": {
+      "exists": true,
+      "pages": 3,
+      "sha256": "1bd733def122d8992c2c240d99ac0a1f6bfb507b2232427fb242944ca58f2e97",
+      "reader": "pdfinfo"
+    }
+  },
+  "rendered_pages": {
+    "root": "artifacts\\pdf\\research_v2_pages",
+    "png_count": 39
+  },
+  "review_files": {
+    "artifacts\\reviews\\author_response.md": {
+      "exists": true,
+      "sha256": "f5a4847c5f8c23d61d041c844b3b6a8f89efb690f30ca95fcb3fba5dbd37a661"
+    },
+    "artifacts\\reviews\\numerical_review.md": {
+      "exists": true,
+      "sha256": "e6a33a0431b55455e0c6633123010fb4e6efed14021fe527b9e921ddd0743807"
+    },
+    "artifacts\\reviews\\pure_math_review.md": {
+      "exists": true,
+      "sha256": "7f06d7696fd2da59d4159d602e9dd4b76235807dc98ce98fb7ba784ddeb9997d"
+    }
+  }
+}

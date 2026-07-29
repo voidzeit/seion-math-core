@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://seion.invalid/schema/agent-manifest.json",
+  "title": "SEION role manifest",
+  "type": "object",
+  "required": ["version", "agent_id", "role", "authority", "reads", "may_change", "must_not"],
+  "properties": {
+    "version": {"type": "integer", "minimum": 1},
+    "agent_id": {"type": "string"},
+    "role": {"type": "string"},
+    "authority": {"type": "string"},
+    "reads": {"type": "array", "items": {"type": "string"}},
+    "may_change": {"type": "array", "items": {"type": "string"}},
+    "must_not": {"type": "array", "items": {"type": "string"}},
+    "required_outputs": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

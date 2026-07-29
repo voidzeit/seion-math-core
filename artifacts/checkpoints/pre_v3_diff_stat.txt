@@ -1,0 +1,63 @@
+branch: research/structure-preserving-reduction-v2
+commit: 247de089a5fea826fa87f9b9e791c20a5a6fd1b6
+captured_utc: 2026-07-29T16:19:20.8212342Z
+
+ .gitignore                                         |    4 +-
+ CITATION.cff                                       |    4 +-
+ Makefile                                           |   16 +-
+ README.md                                          |   34 +-
+ artifacts/data/accelerator_fast.json               |    4 +-
+ artifacts/data/accelerator_full.json               |    4 +-
+ artifacts/index/claim_evidence_matrix.csv          |    4 +-
+ artifacts/index/claims_report.json                 | 3399 +++++++++++++++++++-
+ artifacts/index/failure_registry.csv               |    1 +
+ artifacts/index/fast_execution.json                |   12 +-
+ artifacts/index/full_execution.json                |   14 +-
+ artifacts/index/profile_fast.json                  |    6 +-
+ artifacts/index/profile_full.json                  |   47 +-
+ artifacts/index/run_index.csv                      |   63 +
+ artifacts/index/run_index.parquet                  |    2 +-
+ claims/novelty_registry.yaml                       |   43 +-
+ docs/architecture.md                               |   10 +
+ docs/epistemic_policy.md                           |    5 +
+ docs/index.md                                      |    3 +-
+ docs/prior_art_matrix.md                           |   21 +-
+ docs/prior_art_matrix.tex                          |    4 +
+ mkdocs.yml                                         |    6 +-
+ paper/generated/figures/associator_conventions.pdf |  Bin 13532 -> 9505 bytes
+ .../figures/canonical_object_hierarchy.pdf         |  Bin 15815 -> 10795 bytes
+ .../figures/closure_leakage_by_method.pdf          |  Bin 16406 -> 11740 bytes
+ .../generated/figures/cohomology_compatibility.pdf |  Bin 14847 -> 10352 bytes
+ paper/generated/figures/counterexample_gallery.pdf |  Bin 17246 -> 12836 bytes
+ paper/generated/figures/cp_rank_error.pdf          |  Bin 16488 -> 10780 bytes
+ .../figures/curvature_hypothesis_dependency.pdf    |  Bin 15322 -> 10829 bytes
+ .../generated/figures/dense_vs_cp_contraction.pdf  |  Bin 14658 -> 9919 bytes
+ .../generated/figures/epistemic_status_diagram.pdf |  Bin 15422 -> 10378 bytes
+ .../figures/gauge_aligned_persistence.pdf          |  Bin 16431 -> 12008 bytes
+ .../law_associator_curvature_dependency.pdf        |  Bin 14183 -> 9571 bytes
+ paper/generated/figures/multiscale_convergence.pdf |  Bin 16098 -> 11712 bytes
+ paper/generated/figures/precision_escalation.pdf   |  Bin 17136 -> 12600 bytes
+ paper/generated/figures/quadrature_convergence.pdf |  Bin 16053 -> 11418 bytes
+ .../generated/figures/reduced_law_preservation.pdf |  Bin 15381 -> 10434 bytes
+ paper/generated/figures/runtime_memory_scaling.pdf |  Bin 16649 -> 12230 bytes
+ paper/generated/figures/spectral_snapping_gap.pdf  |  Bin 17741 -> 13172 bytes
+ .../generated/figures/theorem_evidence_matrix.pdf  |  Bin 15196 -> 11922 bytes
+ paper/generated/tables/prior_art_matrix.tex        |    4 +
+ paper/main.tex                                     |    2 +
+ paper/metadata.tex                                 |    3 +-
+ paper/quality/paper_quality_matrix.yaml            |    2 +-
+ paper/quality/paper_quality_report.json            |    2 +-
+ paper/quality/paper_quality_report.md              |    2 +-
+ paper/references.bib                               |  119 +-
+ paper/sections/02_prior_work.tex                   |    7 +-
+ paper/sections/19_conclusion.tex                   |    5 -
+ papers/foundations/README.md                       |   17 +-
+ scripts/build_all_artifacts.ps1                    |    5 +-
+ scripts/build_artifacts.py                         |   23 +-
+ scripts/release_bundle.ps1                         |    3 +-
+ scripts/release_bundle.py                          |   26 +-
+ scripts/run_fast.ps1                               |    3 +-
+ scripts/run_full_blackwell.ps1                     |    3 +-
+ src/seion_core/cli/main.py                         |   77 +-
+ tests/conftest.py                                  |    6 +
+ 58 files changed, 3913 insertions(+), 102 deletions(-)

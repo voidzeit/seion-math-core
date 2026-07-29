@@ -1,0 +1,40 @@
+version: 1
+stages:
+  intake:
+    purpose: define the requested outcome and scope
+    required: [task_id, affected_workstream, risk_level, expected_outputs]
+    gate: no external repository mutation; no scope expansion by inference
+  context:
+    purpose: recover durable state and relevant evidence
+    required: [AGENTS.md, .ai/CURRENT_STATE.md, .ai/TASKS.md, relevant registries]
+    command: python -m seion_core.cli.main governance context --task "..."
+    gate: unresolved blockers are visible
+  plan:
+    purpose: map each intended change to a source, test, and evidence output
+    required: [plan, claim_impact, test_plan, rollback_or_preservation_note]
+  change:
+    purpose: implement additive changes in source, schemas, docs, or generators
+    required: [changed_files, no_secrets, preserved_user_changes]
+    gate: no generated artifact is hand-edited as a source of truth
+  verify:
+    purpose: execute relevant tests and mathematical gates
+    required: [command, exit_code, environment, branch, commit, limitations]
+    gate: stale historical output cannot stand in for current execution
+  evidence:
+    purpose: connect claims to run artifacts, proofs, figures, and tables
+    required: [run_id_or_proof_location, artifact_hashes, provenance]
+    gate: repeated runs are deduplicated before aggregate interpretation
+  postflight:
+    purpose: update durable memory and handoff state
+    required: [summary, outcome, validation, changed_files, limitations]
+    command: python -m seion_core.cli.main governance postflight --task "..." --summary "..."
+  release:
+    purpose: create a reproducible release candidate
+    required: [strict_governance_audit, tests, paper_build, render_report, blocker_report, human_approval]
+    gate: automation may recommend; it cannot approve by itself
+state_transitions:
+  allowed: [declared, in_progress, verified, blocked, superseded, released]
+  forbidden:
+    - failed_to_complete_without_evidence
+    - historical_pass_to_current_pass_without_execution
+    - numerical_observation_to_proved

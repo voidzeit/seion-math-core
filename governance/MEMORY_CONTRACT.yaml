@@ -1,0 +1,45 @@
+version: 1
+canonical_root: .ai
+record_types:
+  durable:
+    location: .ai/
+    examples: [current_state, decision, task, risk, blocker, test_matrix, handoff]
+    retention: append_or_supersede
+  epistemic:
+    location: claims/
+    examples: [claim, theorem, conjecture, counterexample, novelty]
+    retention: versioned_registry
+  evidence:
+    location: artifacts/runs/ and artifacts/index/
+    examples: [run_manifest, final_metrics, certificate, hashes, provenance]
+    retention: immutable_after_run
+  derived:
+    location: .ai/machine/ and .ai/packs/
+    examples: [context_pack, graph, index, summary]
+    retention: rebuildable
+  runtime:
+    location: .ai/runtime/
+    examples: [scratch, transient_prompt, cache]
+    retention: disposable
+rules:
+  - Runtime files are never evidence or durable memory.
+  - Every durable current-state assertion includes observed_at, source, command_or_artifact, and limitation.
+  - Historical entries are not deleted; corrections append a superseding entry.
+  - Generated files must identify their source registry or run artifact.
+  - Claims must use the allowed statuses and cite evidence paths when evidence is asserted.
+  - A failed or interrupted run remains visible in the run index.
+  - Memory never overrides executable behavior or an executed artifact.
+required_memory_files:
+  - .ai/MEMORY_MANIFEST.yaml
+  - .ai/PROJECT_REFERENCE_MANIFEST.yaml
+  - .ai/CURRENT_STATE.md
+  - .ai/DECISIONS.md
+  - .ai/TASKS.md
+  - .ai/KNOWN_BLOCKERS.md
+  - .ai/RISK_REGISTER.md
+  - .ai/TEST_MATRIX.md
+  - .ai/RUN_HISTORY.md
+  - .ai/HANDOFF.md
+  - .ai/CONTEXT_RECOVERY.md
+  - .ai/MEMORY_GOVERNANCE.md
+  - .ai/MEMORY_OWNERSHIP_MATRIX.md

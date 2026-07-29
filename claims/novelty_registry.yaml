@@ -4,11 +4,52 @@ novelty:
     new_component: none claimed in the definitions
     new_combination: typed computational evidence ledger linking a declared law to reductions
     evidence: docs/prior_art_matrix.md
+    references: [Filippov1985, Sabinin1999, MostovoyPerezIzquierdoShestakov2014]
+    theorem_level_novelty: none currently claimed
+    computational_novelty: convention-aware finite residual evaluation
     limitations: "The repository does not claim a new algebraic identity by renaming these objects."
+  - area: operads and polynomial identities
+    known_component: algebras over operads and partial compositions
+    new_component: explicit finite ternary insertion conventions
+    new_combination: composition metadata linked to theorem/evidence records
+    evidence: docs/prior_art_matrix.md
+    references: [LodayVallette2012]
+    theorem_level_novelty: proposed invariant-reduction functoriality, not yet proved
+    computational_novelty: typed insertion checks
+    limitations: "No novelty is claimed for operadic composition itself."
   - area: structure-preserving model reduction
     known_component: invariant subspaces, PCA, SVD, spectral projectors
     new_component: finite closure-leakage certificate with convention metadata
     new_combination: common artifact contract for algebraic and reduction diagnostics
     evidence: src/seion_core/projectors
+    references: [BennerGugercinWillcox2015, ChaturantabutBeattieGugercin2016]
+    theorem_level_novelty: explicit approximate-closure bound remains open
+    computational_novelty: traceable closure-leakage comparison
     limitations: "Empirical optimizer results are not a superiority theorem."
-
+  - area: tensor decomposition and identifiability
+    known_component: CP/Tucker/HOSVD representations and gauge non-uniqueness
+    new_component: law-level parity and gauge-alignment evidence
+    new_combination: factorization, associator, and reduction provenance
+    evidence: src/seion_core/algebra/cp_law.py
+    references: [KoldaBader2009, BaderKolda2007, Kruskal1977]
+    theorem_level_novelty: none claimed
+    computational_novelty: deterministic finite parity and error records
+    limitations: "No CP uniqueness or optimal approximation theorem is claimed."
+  - area: spectral projector perturbation
+    known_component: eigenspace perturbation bounds under spectral separation
+    new_component: threshold snapping control and no-gap counterexample
+    new_combination: snapping diagnostics attached to reduced-law evidence
+    evidence: src/seion_core/projectors/snapping.py
+    references: [DavisKahan1970]
+    theorem_level_novelty: no new perturbation theorem currently claimed
+    computational_novelty: finite positive-gap and zero-gap controls
+    limitations: "Observed stability is not a sharp general bound."
+  - area: finite/discrete Hodge theory
+    known_component: finite cochain complexes, Laplacians, and discrete approximation
+    new_component: commuting-operator descent certificate in the SEION pipeline
+    new_combination: algebraic law evidence linked to finite cohomological checks
+    evidence: src/seion_core/cohomology
+    references: [Dodziuk1976]
+    theorem_level_novelty: supporting finite proposition only
+    computational_novelty: explicit compatible/incompatible controls
+    limitations: "No continuum Hodge or microlocal theorem is claimed."

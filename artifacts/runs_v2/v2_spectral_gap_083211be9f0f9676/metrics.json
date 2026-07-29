@@ -1,0 +1,14 @@
+{
+  "control": "no_gap",
+  "gap": 1e-09,
+  "relative_perturbation": 1.0,
+  "perturbation_norm": 2e-09,
+  "snapped_projector_distance": 1.0,
+  "theoretical_bound": null,
+  "bound_respected": null,
+  "runtime_seconds": 0.0,
+  "ram_peak_bytes": 0,
+  "vram_peak_bytes": 0,
+  "convergence_status": "rank_flip_control",
+  "failure_count": 0
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "delta": 0.01,
+    "perturbation_norm_2": 0.020000000000000018,
+    "snapped_projector_distance_2": 1.0
+  },
+  {
+    "delta": 0.001,
+    "perturbation_norm_2": 0.0020000000000000018,
+    "snapped_projector_distance_2": 1.0
+  },
+  {
+    "delta": 0.0001,
+    "perturbation_norm_2": 0.00019999999999997797,
+    "snapped_projector_distance_2": 1.0
+  },
+  {
+    "delta": 1e-05,
+    "perturbation_norm_2": 1.999999999996449e-05,
+    "snapped_projector_distance_2": 1.0
+  },
+  {
+    "delta": 1e-06,
+    "perturbation_norm_2": 2.000000000002e-06,
+    "snapped_projector_distance_2": 1.0
+  },
+  {
+    "delta": 1e-07,
+    "perturbation_norm_2": 1.9999999995023998e-07,
+    "snapped_projector_distance_2": 1.0
+  },
+  {
+    "delta": 1e-08,
+    "perturbation_norm_2": 2.0000000044984034e-08,
+    "snapped_projector_distance_2": 1.0
+  }
+]

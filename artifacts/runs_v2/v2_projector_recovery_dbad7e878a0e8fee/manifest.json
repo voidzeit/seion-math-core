@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "run_id": "v2_projector_recovery_dbad7e878a0e8fee",
+  "experiment_id": "V2_PROJECTOR_RECOVERY",
+  "status": "complete",
+  "failure_reason": "",
+  "source_commit": "247de089a5fea826fa87f9b9e791c20a5a6fd1b6",
+  "worktree_dirty": true,
+  "implementation_version": "research_v2.1",
+  "resolved_config": {
+    "id": "V2_PROJECTOR_RECOVERY",
+    "purpose": "Known, random, PCA, SVD, spectral, and closure-minimizing controls",
+    "arity": 3,
+    "ambient_dimension": 4,
+    "reduced_rank": 2,
+    "leakage": 0.02,
+    "methods": [
+      "known_invariant",
+      "random",
+      "pca",
+      "svd",
+      "spectral",
+      "closure_minimizing"
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "method": "known_invariant"
+  },
+  "resolved_config_hash": "73344649f17a5a4848ec6bfd7226aa8597010b61ad1677d33934a0cb3f76b7ab",
+  "mathematical_object_hash": "64a78160844f7e3ff4414d5a4e75602658a7935b37b4b75aa6a7f47bf18f98c5",
+  "input_artifact_hash": "b8814c1a8ce7db4f302a0ed87ec2d0b9ecc6e901cf8f3e1ac596818cc5fea0a6",
+  "seed": 1,
+  "precision": "float64",
+  "backend": "numpy",
+  "device": "cpu",
+  "identity_key": {
+    "experiment_id": "V2_PROJECTOR_RECOVERY",
+    "resolved_config_hash": "73344649f17a5a4848ec6bfd7226aa8597010b61ad1677d33934a0cb3f76b7ab",
+    "mathematical_object_hash": "64a78160844f7e3ff4414d5a4e75602658a7935b37b4b75aa6a7f47bf18f98c5",
+    "input_artifact_hash": "b8814c1a8ce7db4f302a0ed87ec2d0b9ecc6e901cf8f3e1ac596818cc5fea0a6",
+    "seed": 1,
+    "precision": "float64",
+    "backend": "numpy",
+    "device": "cpu",
+    "implementation_version": "research_v2.1"
+  },
+  "metrics": {
+    "method": "known_invariant",
+    "closure_leakage": 0.0007328889491905325,
+    "principal_angle_radians": 0.0,
+    "projector_rank": 2,
+    "runtime_seconds": 0.005509299982804805,
+    "ram_peak_bytes": 6288,
+    "vram_peak_bytes": 0,
+    "convergence_status": "complete",
+    "failure_count": 0
+  }
+}

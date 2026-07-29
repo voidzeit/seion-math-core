@@ -1,0 +1,45 @@
+{
+  "profile": "full",
+  "device_requested": "cuda",
+  "matrix_version": "0.1",
+  "rows_declared": 7,
+  "rows_executed": 7,
+  "rows": [
+    {
+      "id": "ALG_DENSE_FLOAT64",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_DENSE_FLOAT64/20260729T124628579291Z-b2b1c5060a4f"
+    },
+    {
+      "id": "ALG_CP_RANK_ONE",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ALG_CP_RANK_ONE/20260729T124628790482Z-39cc0da820d9"
+    },
+    {
+      "id": "ASSOC_FIVE_INPUT",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/ASSOC_FIVE_INPUT/20260729T124628982259Z-d607e0281a16"
+    },
+    {
+      "id": "CURVATURE_STANDARD_IDENTITY",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/CURVATURE_STANDARD_IDENTITY/20260729T124629235715Z-04847c84fb47"
+    },
+    {
+      "id": "PROJECTOR_VERTICAL_SLICE",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/PROJECTOR_VERTICAL_SLICE/20260729T124629541620Z-fe19e68153ff"
+    },
+    {
+      "id": "SNAP_GAP",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/SNAP_GAP/20260729T124629781190Z-1e476d23ba7e"
+    },
+    {
+      "id": "COHOMOLOGY_COMPATIBLE",
+      "status": "COMPLETE",
+      "run_path": "C:/Documents/metamaths/seion-math-core/artifacts/runs/canonical_matrix/COHOMOLOGY_COMPATIBLE/20260729T124630001435Z-1aa650842d54"
+    }
+  ],
+  "all_mandatory_rows_passed": true
+}

@@ -1,0 +1,17 @@
+{
+  "epsilon_requested": 0.01,
+  "closure_residual_upper": 0.01,
+  "operator_norm_upper": 1.0000499987500626,
+  "tree_family": "associator_left",
+  "internal_nodes": 2,
+  "tree_height": 2,
+  "observed_error": 0.0006098987867800333,
+  "projected_observed_error": 0.0,
+  "theoretical_bound": 0.02000099997500125,
+  "tightness_ratio": 0.03049341470638121,
+  "runtime_seconds": 0.0012547000078484416,
+  "ram_peak_bytes": 9445,
+  "vram_peak_bytes": 0,
+  "convergence_status": "complete",
+  "failure_count": 0
+}

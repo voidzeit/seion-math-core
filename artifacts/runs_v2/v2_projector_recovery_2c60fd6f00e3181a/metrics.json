@@ -1,0 +1,11 @@
+{
+  "method": "svd",
+  "closure_leakage": 0.0008609577258783376,
+  "principal_angle_radians": 0.029254006196412455,
+  "projector_rank": 2,
+  "runtime_seconds": 0.0044398000463843346,
+  "ram_peak_bytes": 6288,
+  "vram_peak_bytes": 0,
+  "convergence_status": "complete",
+  "failure_count": 0
+}

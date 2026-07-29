@@ -1,0 +1,38 @@
+version: 1
+principle: >-
+  Mathematical novelty and software reproducibility are coupled by evidence
+  links but are not the same contribution.
+mathematical_research:
+  proposed_title: "Structure-Preserving Reduction of Finite-Dimensional N-Ary Laws: Exact Functoriality, Associator Stability, and Projection Error Bounds"
+  canonical_source: papers/foundations/main.tex
+  legacy_release_note: paper/main.tex
+  claims_allowed: [definition, theorem, proof, conditional_theorem, counterexample, conjecture, open_problem]
+  central_program:
+    - exact invariant-subspace reduction
+    - preservation of operadic partial compositions and polynomial identities
+    - explicit approximate-closure bounds
+    - spectral snapping stability under a gap
+    - counterexamples without invariance or gap
+  cannot_claim:
+    - repository architecture is mathematical novelty
+    - numerical agreement is a proof
+    - finite results imply continuum or universal results
+software_reproducibility:
+  proposed_title: "SEION Math Core: A Reproducible Verification Suite for Finite-Dimensional N-Ary Algebra"
+  canonical_source: [papers/software/main.tex, scripts/, schemas/, artifacts/, docs/reproducibility/]
+  claims_allowed: [implementation, schema_conformance, executed_run, artifact_traceability, reproducible_build]
+  required_outputs:
+    - run manifest and environment
+    - deduplicated run index
+    - claim/evidence matrix
+    - figure/table provenance
+    - build and render reports
+    - unresolved blocker list
+  cannot_claim:
+    - software pass establishes theorem truth
+    - reproducibility establishes novelty
+    - a release bundle removes scientific limitations
+link_contract:
+  every_math_claim_has: [claim_id, epistemic_status, assumptions, proof_or_experiment, limitations]
+  every_numeric_claim_has: [run_id, seed_or_exactness, precision, metric_definition, uncertainty_or_scope]
+  every_paper_figure_has: [source_artifact, generator, run_identifiers, caption_scope]

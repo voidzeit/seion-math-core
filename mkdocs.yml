@@ -16,5 +16,7 @@ nav:
   - Experiments: experiments/vertical_slice.md
   - Counterexamples: counterexamples/index.md
   - Open problems: open_problems/index.md
-  - Reproducibility: reproducibility/guide.md
-
+  - Governance: governance.md
+  - Reproducibility:
+      - Guide: reproducibility/guide.md
+      - Governance-aware workflow: reproducibility/governance.md

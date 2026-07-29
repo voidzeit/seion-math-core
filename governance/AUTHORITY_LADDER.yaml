@@ -1,0 +1,45 @@
+version: 1
+description: >-
+  Governance authority records how strongly an operational statement is
+  supported. It is separate from mathematical epistemic status.
+levels:
+  declared:
+    rank: 0
+    meaning: registered in a plan, config, claim, or paper draft
+    permits: [planning, context compilation]
+    does_not_permit: [claiming execution, claiming proof, release approval]
+  observed:
+    rank: 1
+    meaning: produced by an executed command with captured output and environment
+    permits: [reporting a scoped observation]
+    requires: [command, timestamp, environment, artifact path]
+    does_not_permit: [universal inference, theorem status change]
+  verified:
+    rank: 2
+    meaning: passed a deterministic, symbolic, exact, or schema gate
+    permits: [verification claim within declared scope]
+    requires: [observed evidence, reproducible gate, limitations]
+    does_not_permit: [continuum or universal inference without proof]
+  approved:
+    rank: 3
+    meaning: explicitly accepted for a named release or decision
+    permits: [release or decision within scope]
+    requires: [verified evidence, named reviewer or deterministic policy, decision record]
+    does_not_permit: [upgrading mathematical epistemic status]
+separate_epistemic_statuses:
+  - DEFINITION
+  - PROVED
+  - PROVED_UNDER_ASSUMPTIONS
+  - COMPUTER_ALGEBRA_VERIFIED
+  - FINITE_DIMENSION_EXHAUSTIVE
+  - NUMERICALLY_TESTED
+  - EMPIRICAL
+  - HEURISTIC
+  - CONJECTURE
+  - OPEN_PROBLEM
+  - REFUTED
+  - SUPERSEDED
+rules:
+  - AI output is advisory until accepted by a named gate.
+  - A green audit is not release approval.
+  - A numerical certificate cannot upgrade a conjecture to a theorem.

@@ -1,0 +1,95 @@
+\subsection{Proof of Theorem \ref{thm:exact}}
+
+By exact invariance, \(\mu(Qz_1,\ldots,Qz_n)\in\ran Q\). Since \(QQ^*\) is
+the identity on \(\ran Q\),
+\[
+Q\bar\mu(z_1,\ldots,z_n)
+=QQ^*\mu(Qz_1,\ldots,Qz_n)
+=\mu(Qz_1,\ldots,Qz_n).
+\]
+For a partial composition, apply this identity first to the inner law. Its
+lifted output is exactly the ambient inner output, so the outer law receives
+the same arguments on both sides. Induction on the number of internal nodes
+proves the statement for every finite ordered tree.
+
+\subsection{Proof of the identity-inheritance corollary}
+
+Every term \(T_a\) is a finite tree. The preceding induction gives
+\[
+QT_{a,\bar\mu}(z)=T_{a,\mu}(Qz).
+\]
+Linearity in the coefficients \(c_a\) gives the asserted identity for
+\(F=\sum_ac_aT_a\). Since \(Q\) is injective, a zero ambient polynomial
+restricts to a zero reduced polynomial.
+
+\subsection{Proof of Theorem \ref{thm:approx}}
+
+For a node \(v\), let \(F_v\) be the unprojected ambient value, \(R_v\) the
+projected recursive value, \(k_v\) the number of internal nodes below \(v\),
+and \(L_v\) the product of norms of leaves below \(v\). We prove
+\[
+\norm{F_v},\norm{R_v}\leq M^{k_v}L_v,\qquad
+\norm{F_v-R_v}\leq k_v\rho M^{k_v-1}L_v.
+\]
+For a leaf, \(F_v=R_v=Qz\), \(k_v=0\), and the claim is immediate. At an
+internal vertex,
+\[
+\begin{aligned}
+\norm{F_v-R_v}
+&=\norm{\mu(F_{v_1},\ldots,F_{v_n})
+-P\mu(R_{v_1},\ldots,R_{v_n})}\\
+&\leq \norm{\mu(F_{v_1},\ldots,F_{v_n})
+-\mu(R_{v_1},\ldots,R_{v_n})}\\
+&\quad+\norm{(I-P)\mu(R_{v_1},\ldots,R_{v_n})}.
+\end{aligned}
+\]
+The first term is bounded by the multilinear telescoping inequality
+\[
+M\sum_i\norm{F_{v_i}-R_{v_i}}
+\prod_{j\ne i}\max(\norm{F_{v_j}},\norm{R_{v_j}}).
+\]
+Every \(R_{v_i}\) belongs to \(\ran P\), so the second term is at most
+\(\rho\prod_i\norm{R_{v_i}}\). Substitute the induction bounds. With
+\(k_v=1+\sum_i k_{v_i}\) and \(L_v=\prod_iL_{v_i}\), the \(i\)-th telescoping
+term is at most
+\[
+k_{v_i}\rho M^{k_v-1}L_v,
+\]
+and the local residual term is at most
+\[
+\rho M^{k_v-1}L_v.
+\]
+Summing gives \(k_v\rho M^{k_v-1}L_v\). The norm bounds follow from
+\(\norm{\mu(u_1,\ldots,u_n)}\leq M\prod_i\norm{u_i}\) and contractivity of
+\(P\). Finally, \(\norm{PF_T-R_T}\leq\norm{F_T-R_T}\).
+
+\subsection{Proof of Corollary \ref{cor:assocbound}}
+
+The left and right associator terms are two-node ternary trees. Apply
+Theorem~\ref{thm:approx} to each term and use the triangle inequality:
+\[
+\norm{QA_{\bar\mu}-PA_\mu}
+\leq 2M\rho\prod_{j=1}^5\norm{z_j}
++2M\rho\prod_{j=1}^5\norm{z_j}.
+\]
+This is the stated \(4M\rho\) bound.
+
+\subsection{Spectral-snapping justification}
+
+The selected eigenspaces of \(A\) and \(A+E\) are separated from the
+threshold when \(\norm{E}_2\leq\gamma/2\), so their dimensions agree by
+Weyl's eigenvalue perturbation bound. Applying a standard Davis--Kahan
+sin-theta estimate with the threshold separation and replacing the exact
+separation by the conservative lower bound \(\gamma/2\) yields a constant no
+larger than \(4/\gamma\) in the stated regime. The theorem intentionally
+records the safe threshold constant rather than a sharp variant.
+
+\subsection{Counterexample verification}
+
+For the no-invariance construction, the reduced inner output is zero, while
+the ambient inner output on \((e_0,e_0)\) is \(e_1\), and the outer law maps
+\((e_1,e_0)\) to \(e_0\). Hence the two compositions differ. For the
+no-gap construction, the two diagonal eigenvalues cross the threshold after
+an \(O(\delta)\) perturbation, and the snapped coordinate projectors are
+\(\operatorname{diag}(0,1)\) and \(\operatorname{diag}(1,0)\), whose operator
+distance is one.

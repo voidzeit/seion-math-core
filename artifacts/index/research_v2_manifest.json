@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "implementation_version": "research_v2.1",
+  "source_commit": "247de089a5fea826fa87f9b9e791c20a5a6fd1b6",
+  "worktree_dirty": true,
+  "total_runs": 180,
+  "complete_runs": 180,
+  "failed_runs": 0,
+  "unique_scientific_instances": 100,
+  "required_seed_count": 5,
+  "legacy_history_modified": false,
+  "gpu_rows": 5,
+  "gpu_completed": 5
+}

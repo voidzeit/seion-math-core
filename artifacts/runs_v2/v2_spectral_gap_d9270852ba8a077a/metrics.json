@@ -1,0 +1,14 @@
+{
+  "control": "positive_gap",
+  "gap": 0.1,
+  "relative_perturbation": 0.4,
+  "perturbation_norm": 0.04000000000000001,
+  "snapped_projector_distance": 0.0447003939210213,
+  "theoretical_bound": 1.0,
+  "bound_respected": true,
+  "runtime_seconds": 0.0001946999691426754,
+  "ram_peak_bytes": 4452,
+  "vram_peak_bytes": 0,
+  "convergence_status": "complete",
+  "failure_count": 0
+}

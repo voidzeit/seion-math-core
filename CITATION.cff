@@ -3,8 +3,8 @@ title: "SEION Math Core: Kernel-Integrated N-Ary Laws"
 message: "If this repository supports your work, cite the release and its paper."
 type: software
 authors:
-  - family-names: "SEION Mathematical Verification Contributors"
-    given-names: ""
+  - family-names: "Jasso"
+    given-names: "Eliuth Chavero"
 version: 0.1.0
 date-released: 2026-07-29
 license: MIT

@@ -1,0 +1,117 @@
+version: 1
+scope: "Conservative prior-art map for the finite-dimensional structure-preserving reduction v2 track."
+novelty_policy:
+  - "A standard restriction, identity inheritance, or Davis-Kahan estimate is not a new theorem here."
+  - "Terminology and a software implementation do not establish mathematical novelty."
+  - "Any future novelty claim must name a theorem-level difference and a primary-source comparison."
+entries:
+  - id: PA_OPERAD_ALGEBRAS
+    area: operads_and_algebras
+    source: "Loday and Vallette, Algebraic Operads"
+    source_url: "https://doi.org/10.1007/978-3-642-30362-3"
+    established_result: "Algebraic operations and their compositions are organized by operads; algebras over an operad satisfy the declared compositional identities."
+    closest_known_construction: "Restriction of an algebraic operation to an invariant subspace, expressed through partial compositions."
+    exact_overlap: "The exact reduction theorem uses the same composition and identity inheritance mechanism."
+    genuine_difference: "This repository gives a finite-dimensional coordinate certificate and tests it against an independent evaluator."
+    theorem_level_novelty: "none established"
+    computational_novelty: "typed parity and artifact contracts"
+    limitation_of_novelty_claim: "No new operad or subalgebra theorem is claimed."
+  - id: PA_FILIPPOV
+    area: n_ary_and_filippov
+    source: "Filippov, n-Lie algebras"
+    source_url: "https://doi.org/10.1007/BF00969110"
+    established_result: "The n-Lie/Filippov identity defines a class of alternating n-ary algebras."
+    closest_known_construction: "Represent the fundamental identity as a signed polynomial in two n-ary operations."
+    exact_overlap: "The v2 polynomial residual bookkeeping applies once the same arity and sign convention is encoded."
+    genuine_difference: "The software handles generic finite n-linear laws, including laws that are not Filippov algebras."
+    theorem_level_novelty: "none established"
+    computational_novelty: "explicit convention registry"
+    limitation_of_novelty_claim: "No classification, deformation theorem, or new Filippov identity is proved."
+  - id: PA_AKIVIS_SABININ
+    area: nonassociative_algebra
+    source: "Mostovoy, Perez-Izquierdo, and Shestakov, Hopf algebras in non-associative Lie theory"
+    source_url: "https://doi.org/10.1007/s13373-013-0049-8"
+    established_result: "Akivis and Sabinin structures record nonassociative brackets, associators, and related operations."
+    closest_known_construction: "Associator and polynomial identity tracking for a nonassociative product."
+    exact_overlap: "The associator is treated as an operadic polynomial of the underlying operation."
+    genuine_difference: "The v2 code is a finite tensor verification suite rather than a loop/Hopf-envelope construction."
+    theorem_level_novelty: "none established"
+    computational_novelty: "none claimed beyond finite verification"
+    limitation_of_novelty_claim: "The paper must not suggest a new Akivis or Sabinin algebra."
+  - id: PA_TENSOR_CP_TUCKER
+    area: tensor_decomposition
+    source: "Kolda and Bader, Tensor Decompositions and Applications"
+    source_url: "https://doi.org/10.1137/07070111X"
+    established_result: "CP and Tucker/HOSVD are standard higher-order tensor decompositions with distinct approximation and identifiability behavior."
+    closest_known_construction: "Dense and CP-factorized representations of finite n-linear laws."
+    exact_overlap: "The rank/error experiments use standard CP terminology and reconstruction metrics."
+    genuine_difference: "No decomposition theorem is proposed; the representation is used as a numerical implementation choice."
+    theorem_level_novelty: "none established"
+    computational_novelty: "parity checks for dense and factorized evaluation"
+    limitation_of_novelty_claim: "Gauge non-uniqueness and absence of an Eckart-Young analogue prohibit simplistic rank claims."
+  - id: PA_MLSVD
+    area: tensor_decomposition
+    source: "De Lathauwer, De Moor, and Vandewalle, A Multilinear Singular Value Decomposition"
+    source_url: "https://doi.org/10.1137/S0895479896305696"
+    established_result: "Multilinear SVD generalizes matrix SVD concepts to higher-order tensors and analyzes symmetry and perturbation effects."
+    closest_known_construction: "SVD/PCA projectors as baselines for recovering a structure-preserving subspace."
+    exact_overlap: "The v2 recovery matrix includes SVD/PCA controls."
+    genuine_difference: "The target is closure leakage rather than multilinear rank approximation."
+    theorem_level_novelty: "none established"
+    computational_novelty: "common-budget comparison with closure residual"
+    limitation_of_novelty_claim: "No new tensor decomposition or identifiability guarantee is supplied."
+  - id: PA_TENSOR_IDENTIFIABILITY
+    area: tensor_identifiability
+    source: "Kruskal, Three-way arrays: rank and uniqueness of trilinear decompositions"
+    source_url: "https://doi.org/10.1016/0024-3795(77)90069-6"
+    established_result: "Rank-one tensor decompositions have nontrivial permutation and scaling ambiguities; uniqueness requires hypotheses."
+    closest_known_construction: "Gauge-aware CP factor comparison."
+    exact_overlap: "The v2 software records component permutations and factor scales explicitly."
+    genuine_difference: "No identifiability theorem is used to infer uniqueness of a recovered law."
+    theorem_level_novelty: "none established"
+    computational_novelty: "negative tests for gauge-sensitive comparisons"
+    limitation_of_novelty_claim: "A low reconstruction error is not an algebraic uniqueness certificate."
+  - id: PA_STRUCTURE_PRESERVING_ROM
+    area: structure_preserving_reduction
+    source: "Egger et al., On Structure-Preserving Model Reduction for Damped Wave Propagation in Transport Networks"
+    source_url: "https://doi.org/10.1137/17M1125303"
+    established_result: "Galerkin projection can preserve conservation, passivity, dissipation, steady states, and stability under compatibility conditions."
+    closest_known_construction: "Projection-based reduction with an exactly invariant or approximately closed subspace."
+    exact_overlap: "Both programs connect projection hypotheses to preservation of structure."
+    genuine_difference: "The v2 object is a static finite n-linear law and its operadic polynomial identities."
+    theorem_level_novelty: "none established"
+    computational_novelty: "finite n-ary closure certificates"
+    limitation_of_novelty_claim: "The work does not extend the cited model-reduction theorems to dynamics."
+  - id: PA_SPECTRAL_PERTURBATION
+    area: spectral_projectors
+    source: "Davis and Kahan, The Rotation of Eigenvectors by a Perturbation III"
+    source_url: "https://doi.org/10.1137/0707001"
+    established_result: "Invariant subspace rotation is controlled by perturbation size and spectral separation."
+    closest_known_construction: "Threshold snapping of an approximate projector."
+    exact_overlap: "The v2 gap bound is a conservative spectral-projector consequence."
+    genuine_difference: "The implementation makes the threshold counterexample and run certificate explicit."
+    theorem_level_novelty: "none established"
+    computational_novelty: "positive-gap and no-gap controls"
+    limitation_of_novelty_claim: "Snapping stability is not a new perturbation theorem."
+  - id: PA_DISCRETE_HODGE
+    area: finite_hodge_theory
+    source: "Dodziuk, Finite-difference approach to the Hodge theory of harmonic forms"
+    source_url: "https://doi.org/10.2307/2373615"
+    established_result: "Finite-difference and discrete Hodge constructions provide finite analogues of harmonic-form operators."
+    closest_known_construction: "Finite descent and cycle/boundary quotient checks."
+    exact_overlap: "The legacy cohomology result is a finite linear-algebra descent proposition."
+    genuine_difference: "The v2 reduction theorem is independent of Hodge convergence."
+    theorem_level_novelty: "none established"
+    computational_novelty: "none claimed"
+    limitation_of_novelty_claim: "No continuum Hodge theorem or convergence result is asserted."
+  - id: PA_REPRODUCIBLE_COMPUTATIONAL_MATH
+    area: reproducibility
+    source: "SIAM Journal on Scientific Computing, Instructions for Authors"
+    source_url: "https://epubs.siam.org/journal/sisc/instructions-for-authors"
+    established_result: "Reproducibility requires code, data, parameter settings, and procedures sufficient to regenerate numerical tables and figures."
+    closest_known_construction: "Registered runs, hashes, manifests, and fail-closed release gates."
+    exact_overlap: "The v2 software companion follows the same principle."
+    genuine_difference: "Repository-local contracts add mathematical object and input-artifact hashes."
+    theorem_level_novelty: "not applicable"
+    computational_novelty: "repository-specific audit implementation"
+    limitation_of_novelty_claim: "Reproducibility infrastructure is not mathematical novelty."

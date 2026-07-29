@@ -1,0 +1,58 @@
+version: 1
+project_id: seion-math-core
+name: SEION Math Core
+purpose: >-
+  Canonical finite-dimensional mathematical and computational verification
+  environment for Kernel-Integrated N-Ary Laws.
+scope:
+  included:
+    - typed finite-dimensional n-ary laws
+    - ternary composition conventions and associators
+    - algebraic/operator curvature definitions with assumptions
+    - projectors, closure leakage, CP representations, kernels, and finite cohomology
+    - falsification, numerical certificates, and reproducible paper artifacts
+  excluded:
+    - KGE
+    - LLM compression
+    - BIM
+    - cosmology
+    - trading
+    - universal physical or continuum claims without separate proof
+tracks:
+  mathematical_research:
+    canonical_source: paper/main.tex
+    registries:
+      - claims/claims_registry.yaml
+      - claims/theorem_registry.yaml
+      - claims/novelty_registry.yaml
+    allowed_outputs: [definition, theorem, proof, counterexample, conjecture, open_problem]
+  software_reproducibility:
+    canonical_source: scripts/
+    registries:
+      - experiments/matrices/canonical_run_matrix.yaml
+      - schemas/run_manifest.schema.json
+      - schemas/certificate.schema.json
+    allowed_outputs: [run, certificate, figure, table, manifest, release_bundle]
+source_of_truth:
+  behavior: [src/, tests/]
+  mathematical_status: [claims/, docs/theorems/, docs/counterexamples/]
+  experiment_design: [experiments/, schemas/]
+  executed_evidence: [artifacts/runs/, artifacts/index/]
+  durable_memory: [.ai/]
+  generated_publication: [paper/generated/, paper/build/]
+commands:
+  install: python -m pip install -e .
+  tests: python -m pytest -q
+  audit: python -m seion_core.cli.main governance audit --strict
+  context: python -m seion_core.cli.main governance context --task "describe task"
+  dedupe: python -m seion_core.cli.main governance dedupe-runs
+  fast: .\scripts\run_fast.ps1
+  full: .\scripts\run_full_blackwell.ps1
+  paper: .\scripts\build_paper.ps1
+  release: .\scripts\release_bundle.ps1
+release_policy:
+  requires_human_review: true
+  requires_clean_or_explained_worktree: true
+  requires_complete_provenance: true
+  requires_no_unresolved_critical_gate: true
+  requires_scientific_blockers_report: true

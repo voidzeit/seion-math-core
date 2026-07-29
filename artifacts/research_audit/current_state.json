@@ -1,0 +1,367 @@
+{
+  "version": 2,
+  "generated_utc": "2026-07-29T15:51:36.489002+00:00",
+  "git": {
+    "branch": "research/structure-preserving-reduction-v2",
+    "commit": "247de089a5fea826fa87f9b9e791c20a5a6fd1b6",
+    "dirty": true
+  },
+  "scope": "read-only forensic snapshot; legacy 0.1 artifacts preserved",
+  "paths": {
+    "source_modules": {
+      "path": "src/seion_core",
+      "exists": true
+    },
+    "theorem_docs": {
+      "path": "docs/theorems",
+      "count": 2
+    },
+    "counterexample_docs": {
+      "path": "docs/counterexamples",
+      "count": 2
+    },
+    "v2_foundations": {
+      "path": "papers/foundations_v2",
+      "exists": true
+    },
+    "v2_software": {
+      "path": "papers/software_v2",
+      "exists": true
+    }
+  },
+  "formal_results": {
+    "theorems": [
+      {
+        "id": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+        "statement": "R_standard(x,y)z = A(y,x,z)-A(x,y,z).",
+        "dependencies": [
+          "DEF_NARY_LAW_V1"
+        ],
+        "hypotheses": [
+          "finite-dimensional bilinear product",
+          "stated bracket"
+        ],
+        "proof_location": "docs/theorems/curvature_associator.md",
+        "symbolic_verification": "artifacts/symbolic/curvature_identity.json",
+        "epistemic_status": "PROVED",
+        "proof_exists": true,
+        "symbolic_exists": true
+      },
+      {
+        "id": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+        "statement": "T d = d T implies a well-defined action on finite cohomology.",
+        "dependencies": [
+          "DEF_NARY_LAW_V1"
+        ],
+        "hypotheses": [
+          "d^2=0",
+          "degree-preserving T"
+        ],
+        "proof_location": "docs/theorems/cohomology_descent.md",
+        "symbolic_verification": null,
+        "epistemic_status": "PROVED_UNDER_ASSUMPTIONS",
+        "proof_exists": true,
+        "symbolic_exists": false
+      }
+    ],
+    "claim_status_counts": {
+      "definition": 2,
+      "empirical": 1,
+      "numerically_verified": 1,
+      "open": 1,
+      "proved": 1,
+      "proved_under_assumptions": 1,
+      "refuted": 1
+    }
+  },
+  "conjectures": [
+    {
+      "id": "CONJ_CLOSURE_RECOVERY",
+      "statement": "Under identifiable spectral separation and adequate sampling, closure-minimizing projectors may recover invariant subspaces more reliably than generic baselines.",
+      "status": "CONJECTURE",
+      "blockers": [
+        "identifiability",
+        "optimizer global behavior",
+        "sample complexity"
+      ]
+    },
+    {
+      "id": "CONJ_MULTISCALE_PERSISTENCE",
+      "statement": "Gauge-aligned finite tensor features may persist across a suitable resolution sequence.",
+      "status": "CONJECTURE",
+      "blockers": [
+        "choice of maps",
+        "topology",
+        "uniform estimates"
+      ]
+    }
+  ],
+  "counterexamples": [
+    {
+      "id": "CE_SNAPPING_NO_GAP",
+      "claim": "REFUTED_SNAPPING_NO_GAP_V1",
+      "construction": "Diagonal matrices with eigenvalues on opposite sides of 1/2 and arbitrarily small perturbation.",
+      "status": "REFUTED"
+    },
+    {
+      "id": "CE_CURVATURE_NOT_RAW_ASSOCIATOR",
+      "claim": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "construction": "A product with A(y,x,z) nonzero shows standard curvature is a difference of associators, not one raw associator.",
+      "status": "REFUTED"
+    }
+  ],
+  "runs": {
+    "version": 1,
+    "generated_utc": "2026-07-29T15:48:48.885949+00:00",
+    "historical_run_count": 76,
+    "unique_scientific_instance_count": 9,
+    "duplicate_group_count": 8,
+    "duplicate_record_count": 67,
+    "status_counts_historical": {
+      "COMPLETE": 74,
+      "FAILED_RUNTIME": 2
+    },
+    "status_counts_unique": {
+      "COMPLETE": 8,
+      "FAILED_RUNTIME": 1
+    },
+    "incomplete_artifact_contract_runs": [],
+    "historical_index_preserved": true,
+    "output": "artifacts/index/run_index_deduplicated.csv",
+    "limitations": [
+      "Scientific identity is inferred from experiment, resolved-config hash, seed, precision, backend, and device.",
+      "Different seeds are separate instances; repeated attempts with the same identity are not.",
+      "This is a derived view and does not establish independence of the underlying data-generating process."
+    ],
+    "deduplicated_rows": 9,
+    "unique_experiments": [
+      "ALG_CP_RANK_ONE",
+      "ALG_DENSE_FLOAT64",
+      "ASSOC_FIVE_INPUT",
+      "COHOMOLOGY_COMPATIBLE",
+      "CURVATURE_STANDARD_IDENTITY",
+      "PROJECTOR_VERTICAL_SLICE",
+      "SNAP_GAP",
+      "finite_ternary_v1"
+    ],
+    "unique_rows_by_experiment": {
+      "ALG_CP_RANK_ONE": 1,
+      "ALG_DENSE_FLOAT64": 1,
+      "ASSOC_FIVE_INPUT": 1,
+      "COHOMOLOGY_COMPATIBLE": 1,
+      "CURVATURE_STANDARD_IDENTITY": 1,
+      "PROJECTOR_VERTICAL_SLICE": 2,
+      "SNAP_GAP": 1,
+      "finite_ternary_v1": 1
+    },
+    "scientific_identity_note": "The legacy deduplicator identity is experiment, resolved-config fingerprint, seed, precision, backend, and device; v2 must add source commit, implementation version, object hash, and input artifact hash."
+  },
+  "figures": {
+    "rows": [
+      {
+        "figure_id": "canonical_object_hierarchy",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "law_associator_curvature_dependency",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "dense_vs_cp_contraction",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "associator_conventions",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "curvature_hypothesis_dependency",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "closure_leakage_by_method",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "illustrative_or_diagnostic"
+      },
+      {
+        "figure_id": "reduced_law_preservation",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "precision_escalation",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "illustrative_or_diagnostic"
+      },
+      {
+        "figure_id": "cp_rank_error",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "illustrative_or_diagnostic"
+      },
+      {
+        "figure_id": "gauge_aligned_persistence",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "spectral_snapping_gap",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "multiscale_convergence",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "illustrative_or_diagnostic"
+      },
+      {
+        "figure_id": "quadrature_convergence",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "illustrative_or_diagnostic"
+      },
+      {
+        "figure_id": "cohomology_compatibility",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "illustrative_or_diagnostic"
+      },
+      {
+        "figure_id": "runtime_memory_scaling",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "counterexample_gallery",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "theorem_evidence_matrix",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      },
+      {
+        "figure_id": "epistemic_status_diagram",
+        "source": "artifacts/runs/*/final_metrics.json",
+        "status": "generated_deterministically",
+        "classification": "registered_generated"
+      }
+    ],
+    "counts": {
+      "illustrative_or_diagnostic": 6,
+      "registered_generated": 12
+    }
+  },
+  "paper": {
+    "legacy_source": "paper/main.tex",
+    "section_count": 19,
+    "pdf_exists": true,
+    "pdf_sha256": "b278fdc59730ba3dc1e7a2fd21e500b4f74e0aa576dc4033197e0f03ed613fe4",
+    "quality_scores": {
+      "foundational_clarity": 4,
+      "conceptual_originality": 2,
+      "theorem_strength": 3,
+      "assumption_minimality": 3,
+      "proof_completeness": 4,
+      "counterexample_depth": 3,
+      "structural_unity": 4,
+      "technical_correctness": 4,
+      "numerical_integrity": 3,
+      "falsifiability": 4,
+      "reproducibility": 4,
+      "prior_art_positioning": 4,
+      "expository_quality": 3,
+      "notational_discipline": 4,
+      "visual_quality": 3,
+      "research_significance": 2,
+      "limitation_honesty": 5,
+      "artifact_quality": 4,
+      "independent_readability": 4,
+      "release_readiness": 3
+    },
+    "release_ready_under_critical_gate": false
+  },
+  "v2": {
+    "foundations_source_exists": true,
+    "software_source_exists": true,
+    "theorem_registry_exists": true,
+    "run_manifest_exists": true
+  },
+  "blockers": [
+    {
+      "id": "B-0001",
+      "blocker": "The current paper's theorem program is too modest for a competitive research paper.",
+      "impact": "Research-paper release is blocked.",
+      "evidence": "`paper/quality/paper_quality_report.*`, `claims/theorem_registry.yaml`",
+      "resolution_condition": "A nontrivial central theorem is proved with complete assumptions and counterexamples.",
+      "minimum_result": "A reviewed theorem or a preserved counterexample must connect the central reduction statement to the implementation."
+    },
+    {
+      "id": "B-0002",
+      "blocker": "Historical run indexes contain repeated executions of identical configurations.",
+      "impact": "Naive aggregate statistics are invalid.",
+      "evidence": "`artifacts/index/run_index.csv`",
+      "resolution_condition": "Use `seion-core governance dedupe-runs` and report unique-instance counts.",
+      "minimum_result": "Generate and use a v2 scientific-instance index with object and input hashes; retain history unchanged."
+    },
+    {
+      "id": "B-0003",
+      "blocker": "Several figures are diagnostic or illustrative rather than dense multi-seed experiments.",
+      "impact": "Quantitative visual claims are limited.",
+      "evidence": "`paper/generated/figures/`, `claims/claims_registry.yaml`",
+      "resolution_condition": "Rebuild figures from registered multi-seed runs with uncertainty and provenance.",
+      "minimum_result": "Register multi-seed bound-tightness data with uncertainty, metrics, and theoretical upper bounds."
+    },
+    {
+      "id": "B-0004",
+      "blocker": "Author ORCID and contact metadata are not available in the repository.",
+      "impact": "Submission metadata is incomplete.",
+      "evidence": "`paper/metadata.tex`, `CITATION.cff`",
+      "resolution_condition": "Add verified author metadata explicitly.",
+      "minimum_result": "Supply verified author email and ORCID or preserve an explicit metadata blocker."
+    }
+  ],
+  "audit_questions": {
+    "proved_statements": [
+      "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "THM_COHOMOLOGY_DESCENT_FINITE_V1"
+    ],
+    "standard_or_auxiliary": [
+      "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "THM_COHOMOLOGY_DESCENT_FINITE_V1"
+    ],
+    "conjectural_or_open": [
+      "CONJ_CLOSURE_RECOVERY",
+      "CONJ_MULTISCALE_PERSISTENCE"
+    ],
+    "illustrative_figures": [
+      "closure_leakage_by_method",
+      "cohomology_compatibility",
+      "cp_rank_error",
+      "multiscale_convergence",
+      "precision_escalation",
+      "quadrature_convergence"
+    ],
+    "minimum_missing_bridge": "A proved exact-reduction statement plus an independently tested explicit approximate-closure recurrence and assumption-removal counterexamples."
+  }
+}

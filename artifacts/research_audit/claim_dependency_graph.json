@@ -1,0 +1,437 @@
+{
+  "version": 2,
+  "nodes": [
+    {
+      "id": "DEF_NARY_LAW_V1",
+      "kind": "claim",
+      "status": "definition"
+    },
+    {
+      "id": "evidence:src/seion_core/algebra/nary_law.py",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:tests/unit/test_nary_law.py",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "DEF_ASSOCIATOR_CONVENTIONS_V1",
+      "kind": "claim",
+      "status": "definition"
+    },
+    {
+      "id": "evidence:src/seion_core/algebra/ternary_law.py",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:tests/unit/test_associators.py",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "kind": "theorem",
+      "status": "PROVED"
+    },
+    {
+      "id": "evidence:d",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:o",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:c",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:s",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:/",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:t",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:h",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:e",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:r",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:m",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:u",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:v",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:a",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:_",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:i",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:.",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "kind": "theorem",
+      "status": "PROVED_UNDER_ASSUMPTIONS"
+    },
+    {
+      "id": "evidence:l",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:g",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:y",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:n",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "NUM_KNOWN_INVARIANT_CLOSURE_V1",
+      "kind": "claim",
+      "status": "numerically_verified"
+    },
+    {
+      "id": "evidence:experiments/configs/finite_ternary_v1.yaml",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "EMP_PROJECTOR_RECOVERY_V1",
+      "kind": "claim",
+      "status": "empirical"
+    },
+    {
+      "id": "evidence:src/seion_core/variational/optimizers.py",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "CONJ_CONTINUUM_LIMIT_V1",
+      "kind": "claim",
+      "status": "open"
+    },
+    {
+      "id": "evidence:docs/open_problems/index.md",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "REFUTED_SNAPPING_NO_GAP_V1",
+      "kind": "claim",
+      "status": "refuted"
+    },
+    {
+      "id": "evidence:src/seion_core/projectors/snapping.py",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "evidence:tests/numerical/test_snapping.py",
+      "kind": "evidence",
+      "status": "registered"
+    },
+    {
+      "id": "artifact:docs/theorems/curvature_associator.md",
+      "kind": "artifact",
+      "status": "present"
+    },
+    {
+      "id": "artifact:artifacts/symbolic/curvature_identity.json",
+      "kind": "artifact",
+      "status": "present"
+    },
+    {
+      "id": "artifact:docs/theorems/cohomology_descent.md",
+      "kind": "artifact",
+      "status": "present"
+    }
+  ],
+  "edges": [
+    {
+      "source": "DEF_NARY_LAW_V1",
+      "target": "evidence:src/seion_core/algebra/nary_law.py",
+      "relation": "supported_by"
+    },
+    {
+      "source": "DEF_NARY_LAW_V1",
+      "target": "evidence:tests/unit/test_nary_law.py",
+      "relation": "supported_by"
+    },
+    {
+      "source": "DEF_ASSOCIATOR_CONVENTIONS_V1",
+      "target": "evidence:src/seion_core/algebra/ternary_law.py",
+      "relation": "supported_by"
+    },
+    {
+      "source": "DEF_ASSOCIATOR_CONVENTIONS_V1",
+      "target": "evidence:tests/unit/test_associators.py",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:d",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:o",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:c",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:s",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:/",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:t",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:h",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:e",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:r",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:m",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:u",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:v",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:a",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:_",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:i",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "evidence:.",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:d",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:o",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:c",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:s",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:/",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:t",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:h",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:e",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:r",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:m",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:l",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:g",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:y",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:_",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:n",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "evidence:.",
+      "relation": "supported_by"
+    },
+    {
+      "source": "NUM_KNOWN_INVARIANT_CLOSURE_V1",
+      "target": "evidence:experiments/configs/finite_ternary_v1.yaml",
+      "relation": "supported_by"
+    },
+    {
+      "source": "EMP_PROJECTOR_RECOVERY_V1",
+      "target": "evidence:src/seion_core/variational/optimizers.py",
+      "relation": "supported_by"
+    },
+    {
+      "source": "CONJ_CONTINUUM_LIMIT_V1",
+      "target": "evidence:docs/open_problems/index.md",
+      "relation": "supported_by"
+    },
+    {
+      "source": "REFUTED_SNAPPING_NO_GAP_V1",
+      "target": "evidence:src/seion_core/projectors/snapping.py",
+      "relation": "supported_by"
+    },
+    {
+      "source": "REFUTED_SNAPPING_NO_GAP_V1",
+      "target": "evidence:tests/numerical/test_snapping.py",
+      "relation": "supported_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "DEF_NARY_LAW_V1",
+      "relation": "depends_on"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "artifact:docs/theorems/curvature_associator.md",
+      "relation": "proved_by"
+    },
+    {
+      "source": "THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1",
+      "target": "artifact:artifacts/symbolic/curvature_identity.json",
+      "relation": "checked_by"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "DEF_NARY_LAW_V1",
+      "relation": "depends_on"
+    },
+    {
+      "source": "THM_COHOMOLOGY_DESCENT_FINITE_V1",
+      "target": "artifact:docs/theorems/cohomology_descent.md",
+      "relation": "proved_by"
+    }
+  ]
+}
