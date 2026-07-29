@@ -132,30 +132,15 @@
       "pass": true
     }
   ],
-  "generated_utc": "2026-07-29T18:13:55.926736+00:00",
+  "generated_utc": "2026-07-29T18:18:08.463396+00:00",
   "passed": 9,
   "result": "FAIL_CLOSED_NOVELTY",
   "schema_version": 3,
-  "source_commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4",
+  "source_commit": "3dbf401c1087f0790f7c3583e0d1dd2e9f6c20ec",
   "submission_ready": false,
   "worktree_porcelain": [
     "M .obsidian/workspace.json",
-    "?? artifacts/index/bound_hierarchy_v3.csv",
-    "?? artifacts/index/constants_atlas_v3.csv",
-    "?? artifacts/index/extremizer_registry_v3.csv",
-    "?? artifacts/index/failures_v3.csv",
-    "?? artifacts/index/node_contributions_v3.parquet",
-    "?? artifacts/index/optimality_gaps_v3.csv",
-    "?? artifacts/index/scientific_instances_full_v3.csv",
-    "?? artifacts/index/scientific_instances_full_v3.parquet",
-    "?? artifacts/index/tree_instances_v3.csv",
-    "?? artifacts/index/tree_instances_v3.parquet",
-    "?? artifacts/qa_v3/",
-    "?? artifacts/research_v3/",
-    "?? artifacts/reviews_v3/",
-    "?? artifacts/runs_v3/",
-    "?? papers/tree_stability_v3/figures/",
-    "?? papers/tree_stability_v3/generated_results.tex",
-    "?? papers/tree_stability_v3/tables/"
+    " M artifacts/research_v3/audit_v3.json",
+    " M artifacts/research_v3/audit_v3.md"
   ]
 }

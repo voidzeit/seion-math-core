@@ -740,6 +740,10 @@ def technical_audit() -> dict[str, Any]:
 
 
 def release_gate() -> dict[str, Any]:
+    # Capture the caller-visible repository state before the audit refresh writes
+    # timestamped derived files. Otherwise this gate can invalidate itself even
+    # when the incoming worktree is clean.
+    worktree = _git("status", "--porcelain")
     audit = technical_audit()
     reviews = _read_json(REVIEWS_ROOT / "review_summary_v3.json") or build_reviews()
     theorem_registry = yaml.safe_load(
@@ -752,7 +756,6 @@ def release_gate() -> dict[str, Any]:
         (ROOT / "claims" / "prior_art_registry_v3.yaml").read_text(encoding="utf-8")
     )
     extended = _read_json(ARTIFACT_ROOT / "extended_progress_v3.json", {})
-    worktree = _git("status", "--porcelain")
     novelty_values = []
     for candidate in prior.get(
         "entries", prior.get("candidates", prior.get("theorems", []))

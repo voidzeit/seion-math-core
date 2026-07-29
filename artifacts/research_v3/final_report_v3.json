@@ -4,7 +4,7 @@
   "branch": "research/nodewise-tree-constants-v3",
   "certified_lower_bound_rows": 9945,
   "certified_upper_bound_rows": 9945,
-  "commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4",
+  "commit": "3dbf401c1087f0790f7c3583e0d1dd2e9f6c20ec",
   "cpu_gpu_parity": 1.922112502494855e-08,
   "exact_atlas_rows": 4185,
   "exact_cases_certified_global": 60,
@@ -179,7 +179,7 @@
     }
   ],
   "figures_generated": 18,
-  "generated_utc": "2026-07-29T18:13:56.026823+00:00",
+  "generated_utc": "2026-07-29T18:18:08.632664+00:00",
   "maximum_certified_relative_gap": 1.0,
   "maximum_theorem_bound_ratio": 1.0,
   "optimizer_trajectories_completed": 4,
