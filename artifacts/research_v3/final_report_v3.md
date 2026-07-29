@@ -1,7 +1,7 @@
 # V3 final execution report
 
 - Branch: research/nodewise-tree-constants-v3
-- Commit: 3dbf401c1087f0790f7c3583e0d1dd2e9f6c20ec
+- Commit: 91025b9dd1fbdc7348454f26d7af64adac9889a1
 - Worktree: dirty
 - Tests passed: 69
 - Tree occurrences: 81,445

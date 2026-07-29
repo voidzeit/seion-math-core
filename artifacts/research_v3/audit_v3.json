@@ -1,6 +1,6 @@
 {
   "branch": "research/nodewise-tree-constants-v3",
-  "commit": "3dbf401c1087f0790f7c3583e0d1dd2e9f6c20ec",
+  "commit": "91025b9dd1fbdc7348454f26d7af64adac9889a1",
   "data": {
     "block_counts": {
       "A": 4185,
@@ -45,7 +45,7 @@
     "theorems": 8,
     "unknown_dependencies": []
   },
-  "generated_utc": "2026-07-29T18:18:08.085437+00:00",
+  "generated_utc": "2026-07-29T18:19:32.190335+00:00",
   "labels": {
     "duplicates": [],
     "label_count": 51,

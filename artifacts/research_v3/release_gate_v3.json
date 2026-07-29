@@ -132,15 +132,13 @@
       "pass": true
     }
   ],
-  "generated_utc": "2026-07-29T18:18:08.463396+00:00",
+  "generated_utc": "2026-07-29T18:19:32.498878+00:00",
   "passed": 9,
   "result": "FAIL_CLOSED_NOVELTY",
   "schema_version": 3,
-  "source_commit": "3dbf401c1087f0790f7c3583e0d1dd2e9f6c20ec",
+  "source_commit": "91025b9dd1fbdc7348454f26d7af64adac9889a1",
   "submission_ready": false,
   "worktree_porcelain": [
-    "M .obsidian/workspace.json",
-    " M artifacts/research_v3/audit_v3.json",
-    " M artifacts/research_v3/audit_v3.md"
+    "M .obsidian/workspace.json"
   ]
 }
