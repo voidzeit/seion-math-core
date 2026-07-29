@@ -1,0 +1,8 @@
+# Open problems
+
+1. Establish useful sample-complexity bounds for closure leakage.
+2. Characterize when CP gauge-aligned persistence is identifiable.
+3. Prove quadrature convergence under explicit kernel regularity assumptions.
+4. Separate finite cohomology descent from any strong operator or microlocal upgrade.
+5. Determine which associator energies have stability interpretations.
+

@@ -1,0 +1,114 @@
+{
+  "aspirational_standard": "Fields Medal caliber is an aspirational rubric, not an award claim.",
+  "critical_dimensions": [
+    "foundational_clarity",
+    "proof_completeness",
+    "technical_correctness",
+    "falsifiability",
+    "reproducibility",
+    "limitation_honesty"
+  ],
+  "dimensions": [
+    {
+      "id": "foundational_clarity",
+      "score": 4,
+      "justification": "Typed primitive objects and notation are present."
+    },
+    {
+      "id": "conceptual_originality",
+      "score": 2,
+      "justification": "The repository claims a reproducible combination, not a new algebraic identity."
+    },
+    {
+      "id": "theorem_strength",
+      "score": 3,
+      "justification": "Finite algebraic expansions are useful but modest in scope."
+    },
+    {
+      "id": "assumption_minimality",
+      "score": 3,
+      "justification": "Key assumptions are explicit; broad necessity sweeps remain open."
+    },
+    {
+      "id": "proof_completeness",
+      "score": 4,
+      "justification": "The stated finite theorems have proofs; open bridges are marked."
+    },
+    {
+      "id": "counterexample_depth",
+      "score": 3,
+      "justification": "Snapping and curvature counterexamples are included."
+    },
+    {
+      "id": "structural_unity",
+      "score": 4,
+      "justification": "The object-to-certificate chain is coherent."
+    },
+    {
+      "id": "technical_correctness",
+      "score": 4,
+      "justification": "Unit and symbolic gates pass in the local environment."
+    },
+    {
+      "id": "numerical_integrity",
+      "score": 3,
+      "justification": "Dtype, seed, scaling, and condition indicators are recorded."
+    },
+    {
+      "id": "falsifiability",
+      "score": 4,
+      "justification": "Random/PCA/incompatible controls are registered."
+    },
+    {
+      "id": "reproducibility",
+      "score": 4,
+      "justification": "Run artifacts, hashes, inventories, and scripts are generated."
+    },
+    {
+      "id": "prior_art_positioning",
+      "score": 4,
+      "justification": "Novelty language is conservative."
+    },
+    {
+      "id": "expository_quality",
+      "score": 3,
+      "justification": "Initial documentation is concise and extensible."
+    },
+    {
+      "id": "notational_discipline",
+      "score": 4,
+      "justification": "Conventions are named and separated."
+    },
+    {
+      "id": "visual_quality",
+      "score": 3,
+      "justification": "Deterministic publication figures are generated; external review remains useful."
+    },
+    {
+      "id": "research_significance",
+      "score": 2,
+      "justification": "The first slice opens questions rather than resolving them."
+    },
+    {
+      "id": "limitation_honesty",
+      "score": 5,
+      "justification": "Unproved bridges and empirical status are explicit."
+    },
+    {
+      "id": "artifact_quality",
+      "score": 4,
+      "justification": "Certificates follow the requested contract."
+    },
+    {
+      "id": "independent_readability",
+      "score": 4,
+      "justification": "Repository documentation does not rely on prior conversation."
+    },
+    {
+      "id": "release_readiness",
+      "score": 3,
+      "justification": "Ready for a reproducible initial release, not a claim of final research completeness."
+    }
+  ],
+  "release_ready_under_critical_gate": true
+}

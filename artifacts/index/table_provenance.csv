@@ -1,0 +1,16 @@
+table_id,source,status
+object_notation,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+associator_conventions,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+curvature_definitions,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+identity_comparison,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+theorem_assumptions,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+canonical_examples,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+projector_baselines,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+precision_escalation,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+cp_rank_sweep,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+spectral_snapping,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+multiscale_convergence,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+cohomology_compatibility,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+counterexamples,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+computational_cost,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically
+claims_status,claims/claims_registry.yaml and artifacts/index/run_index.csv,generated_deterministically

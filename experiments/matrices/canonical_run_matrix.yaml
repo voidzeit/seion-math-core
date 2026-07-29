@@ -1,0 +1,165 @@
+version: "0.1"
+status: registered_finite_execution_with_extended_rows_explicit
+runs:
+  - id: ALG_DENSE_FLOAT64
+    claim: dense n-ary contraction preserves multilinearity
+    implementation: seion_core.algebra.nary_law.NaryLaw
+    example: random_dense
+    dimension: 3
+    arity: 3
+    field: real
+    representation: dense
+    rank: null
+    symmetry: unconstrained
+    associator_convention: five_input
+    projector_rank: null
+    precision: float64
+    backend: numpy
+    device: cpu
+    seed: 42
+    samples: 32
+    optimizer: none
+    maximum_steps: 0
+    tolerance: 1.0e-10
+    expected_result: multilinearity residual below tolerance
+    failure_interpretation: implementation or numerical failure
+    paper_target: representation_table
+  - id: ALG_CP_RANK_ONE
+    claim: CP-to-dense reconstruction is exact for rank-one factors
+    implementation: seion_core.algebra.cp_law.CPLaw
+    example: rank_one_cp
+    dimension: 3
+    arity: 3
+    field: real
+    representation: CP
+    rank: 1
+    symmetry: unconstrained
+    associator_convention: five_input
+    projector_rank: null
+    precision: float64
+    backend: numpy
+    device: cpu
+    seed: 42
+    samples: 16
+    optimizer: none
+    maximum_steps: 0
+    tolerance: 1.0e-10
+    expected_result: relative reconstruction error below tolerance
+    failure_interpretation: CP contraction mismatch
+    paper_target: cp_rank_sweep
+  - id: ASSOC_FIVE_INPUT
+    claim: five-input associator is a distinct typed composition convention
+    implementation: seion_core.algebra.associators.sample_associator_defect
+    example: associative_algebra
+    dimension: 3
+    arity: 3
+    field: real
+    representation: dense
+    rank: null
+    symmetry: full
+    associator_convention: five_input
+    projector_rank: null
+    precision: float64
+    backend: numpy
+    device: cpu
+    seed: 42
+    samples: 64
+    optimizer: none
+    maximum_steps: 0
+    tolerance: 1.0e-10
+    expected_result: zero residual for coordinatewise associative law
+    failure_interpretation: associator convention or contraction error
+    paper_target: associator_convention_table
+  - id: CURVATURE_STANDARD_IDENTITY
+    claim: standard operator curvature equals an associator difference
+    implementation: seion_core.geometry.induced_curvature.standard_curvature_residual
+    example: random_dense
+    dimension: 3
+    arity: 2
+    field: real
+    representation: dense
+    rank: null
+    symmetry: unconstrained
+    associator_convention: anchored_binary
+    projector_rank: null
+    precision: float64
+    backend: numpy
+    device: cpu
+    seed: 42
+    samples: 32
+    optimizer: none
+    maximum_steps: 0
+    tolerance: 1.0e-10
+    expected_result: exact finite-dimensional residual identity
+    failure_interpretation: algebraic expansion mismatch
+    paper_target: theorem_dependency_matrix
+  - id: PROJECTOR_VERTICAL_SLICE
+    claim: known invariant subspace has zero finite closure leakage
+    implementation: seion_core.projectors.closure.closure_leakage
+    example: known_invariant_subspace
+    dimension: 4
+    arity: 3
+    field: real
+    representation: dense
+    rank: 2
+    symmetry: unconstrained
+    associator_convention: five_input
+    projector_rank: 2
+    precision: float64
+    backend: auto
+    device: auto
+    seed: 42
+    samples: 96
+    optimizer: closure_minimizing_empirical
+    maximum_steps: 30
+    tolerance: 1.0e-10
+    expected_result: known baseline passes; learned result is empirical
+    failure_interpretation: failure is retained as evidence against recovery on this seed
+    paper_target: closure_leakage_by_method
+  - id: SNAP_GAP
+    claim: spectral snapping is stable away from threshold gap
+    implementation: seion_core.projectors.snapping.spectral_snap
+    example: random_dense
+    dimension: 4
+    arity: 3
+    field: real
+    representation: matrix
+    rank: 2
+    symmetry: none
+    associator_convention: none
+    projector_rank: 2
+    precision: float64
+    backend: numpy
+    device: cpu
+    seed: 42
+    samples: 0
+    optimizer: none
+    maximum_steps: 0
+    tolerance: 1.0e-10
+    expected_result: rank locally stable with positive gap
+    failure_interpretation: no-gap counterexample is expected
+    paper_target: spectral_snapping_table
+  - id: COHOMOLOGY_COMPATIBLE
+    claim: a finite operator commuting with d descends to cohomology
+    implementation: seion_core.cohomology.compatibility.descends_to_cohomology
+    example: finite_chain_complex
+    dimension: 3
+    arity: 1
+    field: real
+    representation: matrix
+    rank: null
+    symmetry: none
+    associator_convention: none
+    projector_rank: null
+    precision: float64
+    backend: numpy
+    device: cpu
+    seed: 42
+    samples: 0
+    optimizer: none
+    maximum_steps: 0
+    tolerance: 1.0e-10
+    expected_result: compatible operator passes; incompatible control fails
+    failure_interpretation: finite commutator defect
+    paper_target: cohomology_compatibility_table
+

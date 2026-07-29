@@ -1,0 +1,16 @@
+theorems:
+  - id: THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1
+    statement: "R_standard(x,y)z = A(y,x,z)-A(x,y,z)."
+    dependencies: [DEF_NARY_LAW_V1]
+    hypotheses: [finite-dimensional bilinear product, stated bracket]
+    proof_location: docs/theorems/curvature_associator.md
+    symbolic_verification: artifacts/symbolic/curvature_identity.json
+    epistemic_status: PROVED
+  - id: THM_COHOMOLOGY_DESCENT_FINITE_V1
+    statement: "T d = d T implies a well-defined action on finite cohomology."
+    dependencies: [DEF_NARY_LAW_V1]
+    hypotheses: [d^2=0, degree-preserving T]
+    proof_location: docs/theorems/cohomology_descent.md
+    symbolic_verification: null
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+

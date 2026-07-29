@@ -1,0 +1,31 @@
+version = 1
+revision = 1
+requires-python = ">=3.10"
+
+[[package]]
+name = "seion-math-core"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+  { name = "numpy" },
+  { name = "pyyaml" },
+  { name = "scipy" },
+  { name = "sympy" },
+]
+
+[[package]]
+name = "numpy"
+version = "environment-managed"
+
+[[package]]
+name = "pyyaml"
+version = "environment-managed"
+
+[[package]]
+name = "scipy"
+version = "environment-managed"
+
+[[package]]
+name = "sympy"
+version = "environment-managed"
+

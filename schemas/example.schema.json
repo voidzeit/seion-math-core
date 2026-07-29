@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SEION canonical example",
+  "type": "object",
+  "required": ["identifier", "mathematical_definition", "dimension", "arity", "field", "symmetries", "known_associator", "expected_results"],
+  "properties": {
+    "identifier": {"type": "string"},
+    "mathematical_definition": {"type": "string"},
+    "dimension": {"type": "integer"},
+    "arity": {"type": "integer"},
+    "field": {"type": "string"},
+    "symmetries": {"type": "array"},
+    "known_associator": {"type": "string"},
+    "expected_results": {"type": "array"}
+  }
+}
+

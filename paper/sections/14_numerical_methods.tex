@@ -1,0 +1,6 @@
+\section{Numerical methods and precision}
+
+Critical quantities carry a precision tier, input scaling, sample count, seed, and a condition indicator. The local ladder includes float32, float64, complex64, and complex128; arbitrary precision and exact symbolic checks are separate tracks. A residual near machine precision is not accepted as meaningful without scale or conditioning metadata.
+
+\input{generated/tables/precision_escalation}
+\begin{center}\includegraphics[width=.75\linewidth]{precision_escalation}\\\small Precision escalation diagnostic with dtype labels.\end{center}

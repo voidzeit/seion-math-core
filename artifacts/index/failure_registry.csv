@@ -1,0 +1,2 @@
+run_path,experiment_id,status,epistemic_status,precision,seed,runtime_seconds,closure_leakage
+C:/Documents/metamaths/seion-math-core/artifacts/runs/certification/finite_ternary_v1/20260729T112150Z-a36e269b3c99,finite_ternary_v1,FAILED_RUNTIME,,,,9.543110299971886,{}

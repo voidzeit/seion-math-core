@@ -1,0 +1,10 @@
+conjectures:
+  - id: CONJ_CLOSURE_RECOVERY
+    statement: "Under identifiable spectral separation and adequate sampling, closure-minimizing projectors may recover invariant subspaces more reliably than generic baselines."
+    status: CONJECTURE
+    blockers: [identifiability, optimizer global behavior, sample complexity]
+  - id: CONJ_MULTISCALE_PERSISTENCE
+    statement: "Gauge-aligned finite tensor features may persist across a suitable resolution sequence."
+    status: CONJECTURE
+    blockers: [choice of maps, topology, uniform estimates]
+

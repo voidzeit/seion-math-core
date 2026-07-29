@@ -1,0 +1,27 @@
+{
+  "profile": "full",
+  "device_requested": "cuda",
+  "vertical_slice": "C:\\Documents\\metamaths\\seion-math-core\\artifacts\\runs\\certification\\finite_ternary_v1\\20260729T114030Z-a36e269b3c99",
+  "status": "COMPLETE",
+  "accelerator": {
+    "requested_device": "cuda",
+    "selected_device": "cuda",
+    "backend": "torch",
+    "torch_version": "2.12.0.dev20260408+cu128",
+    "cuda_available": true,
+    "device_name": "NVIDIA RTX PRO 5000 Blackwell Generation Laptop GPU",
+    "batch": 256,
+    "output_shape": [
+      256,
+      8
+    ],
+    "elapsed_seconds": 0.0872277999878861,
+    "peak_gpu_memory_bytes": 35864576,
+    "process_peak_working_set_bytes": 780759040,
+    "system_memory_total_bytes": 136856682496,
+    "precision": "float64",
+    "status": "GPU_EXECUTED"
+  },
+  "matrix_rows_declared": 7,
+  "matrix_execution_note": "finite canonical rows executed by deterministic local runner; extended rows remain explicitly registered"
+}

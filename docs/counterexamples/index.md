@@ -1,0 +1,4 @@
+# Counterexamples and failed generalizations
+
+The repository preserves negative controls. The spectral snapping threshold map is discontinuous without a uniform gap. Standard operator curvature is generally an antisymmetrized associator difference rather than a raw associator. These examples prevent language that overstates the curvature program.
+

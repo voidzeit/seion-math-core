@@ -1,0 +1,4 @@
+# Curvature is not automatically one associator
+
+For the standard left-action convention, the exact identity is `R=A(y,x,z)-A(x,y,z)`. A product with both ordered associators nonzero is a counterexample to the unqualified statement `R=A`. Any specialization must record the extra symmetry or vanishing hypothesis.
+

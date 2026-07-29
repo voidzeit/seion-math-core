@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: "SEION Math Core: Kernel-Integrated N-Ary Laws"
+message: "If this repository supports your work, cite the release and its paper."
+type: software
+authors:
+  - family-names: "SEION Mathematical Verification Contributors"
+    given-names: ""
+version: 0.1.0
+date-released: 2026-07-29
+license: MIT
+repository-code: https://example.invalid/seion-math-core
+abstract: >
+  A conservative, reproducible finite-dimensional environment for defining,
+  testing, falsifying, and documenting n-ary laws, associators, projectors,
+  and finite cohomological operator questions.

@@ -1,0 +1,4 @@
+{"claim_id":"DEF_NARY_LAW_V1","status":"definition","artifact":"src/seion_core/algebra/nary_law.py"}
+{"claim_id":"THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1","status":"proved","artifact":"docs/theorems/curvature_associator.md"}
+{"claim_id":"NUM_KNOWN_INVARIANT_CLOSURE_V1","status":"numerically_verified","artifact":"experiments/configs/finite_ternary_v1.yaml"}
+

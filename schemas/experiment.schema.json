@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SEION experiment configuration",
+  "type": "object",
+  "required": ["experiment_id", "example", "arity", "precision", "seed"],
+  "properties": {
+    "experiment_id": {"type": "string"},
+    "example": {"type": "string"},
+    "dimension": {"type": "integer", "minimum": 1},
+    "arity": {"type": "integer", "minimum": 2},
+    "precision": {"enum": ["float32", "float64", "complex64", "complex128", "arbitrary", "exact_rational", "symbolic"]},
+    "seed": {"type": "integer"},
+    "samples": {"type": "integer", "minimum": 0},
+    "device": {"type": "string"}
+  },
+  "additionalProperties": true
+}
+

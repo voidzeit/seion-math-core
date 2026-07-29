@@ -1,0 +1,10 @@
+# Finite n-ary laws
+
+For dimensions `(d_out,d_1,...,d_n)`, a structural tensor `K` defines
+
+\[
+\mu_n(x_1,\ldots,x_n)^a=\sum K^a{}_{i_1\cdots i_n}\prod_j x_j^{i_j}.
+\]
+
+`NaryLaw` validates all dimensions at construction and call time. It has no implicit broadcasting. `CPLaw` is an alternate representation with explicitly non-unique factors and gauge operations.
+

@@ -1,0 +1,15 @@
+# Canonical notation
+
+| Symbol | Meaning | Status |
+|---|---|---|
+| `V_i`, `W` | finite-dimensional input/output spaces | definition |
+| `mu_n` | n-linear internal law | definition |
+| `K` | structural tensor of `mu_n` | definition |
+| `A_mu` | selected composition defect | convention-dependent definition |
+| `P=QQ*` | orthogonal projector when `Q*Q=I` | definition |
+| `E_closure` | normalized leakage outside `Im(P)` | numerical functional |
+| `mu_bar` | `Q* mu(Qz_1,...,Qz_n)` | definition |
+| `R_standard` | `[L_x,L_y]-L_[x,y]` | declared operator convention |
+
+The same symbol `A` is not reused for the five-input, anchored, and operadic objects without a convention label.
+

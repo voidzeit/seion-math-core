@@ -1,0 +1,5 @@
+{
+  "format": "parquet_unavailable_in_environment",
+  "reason": "(\"Expected bytes, got a 'int' object\", 'Conversion failed for column seed with type object')",
+  "csv_equivalent": "run_index.csv"
+}

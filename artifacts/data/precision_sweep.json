@@ -1,0 +1,46 @@
+[
+  {
+    "convention": "five_input",
+    "squared_energy": 9.265005718782608e-33,
+    "normalized_defect": 1.683448950586362e-32,
+    "samples": 32,
+    "seed": 11,
+    "dtype": "float32",
+    "exact": false,
+    "input_distribution": "standard_normal",
+    "normalization": "mean residual energy / mean intermediate output energy"
+  },
+  {
+    "convention": "five_input",
+    "squared_energy": 9.265005718782608e-33,
+    "normalized_defect": 1.683448950586362e-32,
+    "samples": 32,
+    "seed": 11,
+    "dtype": "float64",
+    "exact": false,
+    "input_distribution": "standard_normal",
+    "normalization": "mean residual energy / mean intermediate output energy"
+  },
+  {
+    "convention": "five_input",
+    "squared_energy": 3.932434624147219e-31,
+    "normalized_defect": 6.676560387632335e-32,
+    "samples": 32,
+    "seed": 11,
+    "dtype": "complex64",
+    "exact": false,
+    "input_distribution": "standard_normal",
+    "normalization": "mean residual energy / mean intermediate output energy"
+  },
+  {
+    "convention": "five_input",
+    "squared_energy": 3.932434624147219e-31,
+    "normalized_defect": 6.676560387632335e-32,
+    "samples": 32,
+    "seed": 11,
+    "dtype": "complex128",
+    "exact": false,
+    "input_distribution": "standard_normal",
+    "normalization": "mean residual energy / mean intermediate output energy"
+  }
+]

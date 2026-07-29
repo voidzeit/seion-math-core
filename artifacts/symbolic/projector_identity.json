@@ -1,0 +1,5 @@
+{
+  "status": "simplification_under_assumption_QTQ_I",
+  "identity": "P^2-P=Q(Q^TQ-I)Q^T",
+  "expression": "(Q*Q.T)**2 - Q*Q.T"
+}

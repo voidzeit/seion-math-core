@@ -1,0 +1,10 @@
+{
+  "resolutions": [
+    16,
+    32,
+    64,
+    128
+  ],
+  "status": "finite_sequence_observation",
+  "continuum_claim": false
+}

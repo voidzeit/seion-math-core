@@ -1,0 +1,27 @@
+experiment_id: finite_ternary_v1
+description: >
+  Finite-dimensional vertical slice: ternary law, five-input associator,
+  cyclic defect, CP approximation, known invariant projector, controls,
+  closure-minimizing empirical projector, reduced law, and certificate.
+example: known_invariant_subspace
+dimension: 4
+arity: 3
+field: real
+precision: float64
+projector_rank: 2
+cp_rank: 2
+samples: 96
+seed: 42
+optimizer_steps: 30
+device: auto
+backend: numpy
+tolerances:
+  projector: 1.0e-10
+  identity: 1.0e-10
+  reproducibility: 1.0e-12
+expected_result: known projector has zero closure leakage up to floating point
+failure_interpretation: empirical baseline comparison; no superiority theorem is inferred
+paper_targets:
+  - closure_leakage_by_method
+  - reduced_law_preservation
+

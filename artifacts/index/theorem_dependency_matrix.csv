@@ -1,0 +1,3 @@
+identifier,statement,dependencies,hypotheses,proof_location,symbolic_verification,exact_examples,numerical_examples,counterexamples,epistemic_status,use
+THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1,"R=A(y,x,z)-A(x,y,z)",DEF_NARY_LAW_V1,finite bilinear product,docs/theorems/curvature_associator.md,artifacts/symbolic/curvature_identity.json,binary tensor,unit test,CE_CURVATURE_NOT_RAW_ASSOCIATOR,PROVED,curvature section
+THM_COHOMOLOGY_DESCENT_FINITE_V1,Td=dT descends,d^2=0,degree-preserving T,docs/theorems/cohomology_descent.md,not applicable,finite complex,unit test,incompatible control,PROVED_UNDER_ASSUMPTIONS,cohomology section

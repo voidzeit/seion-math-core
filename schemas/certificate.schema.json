@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SEION certificate",
+  "type": "object",
+  "required": ["certificate_version", "status", "epistemic_status", "mathematical_convention", "assumptions", "metrics"],
+  "properties": {
+    "certificate_version": {"type": "string"},
+    "status": {"type": "string"},
+    "epistemic_status": {"type": "string"},
+    "mathematical_convention": {"type": "object"},
+    "assumptions": {"type": "array"},
+    "metrics": {"type": "object"}
+  }
+}
+

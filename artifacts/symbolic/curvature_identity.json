@@ -1,0 +1,5 @@
+{
+  "status": "general_symbolic_derivation",
+  "identity_residual": "0",
+  "expression": "circ(x, circ(y, z)) - circ(y, circ(x, z)) - circ(circ(x, y), z) + circ(circ(y, x), z)"
+}

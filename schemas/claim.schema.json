@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SEION claim",
+  "type": "object",
+  "required": ["id", "title", "status", "statement"],
+  "properties": {
+    "id": {"type": "string"},
+    "title": {"type": "string"},
+    "status": {"type": "string"},
+    "statement": {"type": "string"},
+    "assumptions": {"type": "array"}
+  }
+}
+

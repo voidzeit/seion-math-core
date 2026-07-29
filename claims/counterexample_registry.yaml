@@ -1,0 +1,10 @@
+counterexamples:
+  - id: CE_SNAPPING_NO_GAP
+    claim: REFUTED_SNAPPING_NO_GAP_V1
+    construction: "Diagonal matrices with eigenvalues on opposite sides of 1/2 and arbitrarily small perturbation."
+    status: REFUTED
+  - id: CE_CURVATURE_NOT_RAW_ASSOCIATOR
+    claim: THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1
+    construction: "A product with A(y,x,z) nonzero shows standard curvature is a difference of associators, not one raw associator."
+    status: REFUTED
+

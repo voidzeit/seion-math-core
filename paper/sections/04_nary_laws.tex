@@ -1,0 +1,10 @@
+\section{Finite-dimensional n-ary laws}
+
+For input dimensions $d_1,\ldots,d_n$ and output dimension $d_0$, a tensor $K\in\mathbb F^{d_0\times d_1\times\cdots\times d_n}$ defines
+\[
+\mu_n(x_1,\ldots,x_n)^a=\sum_{i_1,\ldots,i_n}K^a{}_{i_1\cdots i_n}\prod_{j=1}^n x_j^{i_j}.
+\]
+The implementation accepts real and complex NumPy dtypes and rejects incompatible ranks or vector dimensions. Dense, sparse, typed, and CP representations retain the same explicit arity.
+
+The CP representation stores an output factor $O\in\mathbb F^{d_0\times R}$, input factors $A^{(j)}\in\mathbb F^{R\times d_j}$, and weights $\lambda\in\mathbb F^R$. Factor non-uniqueness is tested by product-one gauge transformations and component permutations rather than assumed away.
+

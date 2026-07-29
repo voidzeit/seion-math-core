@@ -1,0 +1,14 @@
+novelty:
+  - area: non-associative algebra
+    known_component: associators and non-associative identities
+    new_component: none claimed in the definitions
+    new_combination: typed computational evidence ledger linking a declared law to reductions
+    evidence: docs/prior_art_matrix.md
+    limitations: "The repository does not claim a new algebraic identity by renaming these objects."
+  - area: structure-preserving model reduction
+    known_component: invariant subspaces, PCA, SVD, spectral projectors
+    new_component: finite closure-leakage certificate with convention metadata
+    new_combination: common artifact contract for algebraic and reduction diagnostics
+    evidence: src/seion_core/projectors
+    limitations: "Empirical optimizer results are not a superiority theorem."
+

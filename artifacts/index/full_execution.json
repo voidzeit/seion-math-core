@@ -1,0 +1,8 @@
+{
+  "profile": "full",
+  "started": "2026-07-29T11:40:07.1693311Z",
+  "finished": "2026-07-29T11:40:34.4148772Z",
+  "exit_code": 0,
+  "device": "cuda",
+  "mandatory_gates": "pytest, vertical certificate, inventories, precision, multiscale, claims"
+}

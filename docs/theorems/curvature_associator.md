@@ -1,0 +1,28 @@
+# Standard curvature and associator expansion
+
+## Statement — `THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1` (`PROVED`)
+
+Let `circ` be any bilinear product on a finite-dimensional vector space. Define
+
+\[
+L_xz=x\circ z,\qquad [x,y]=x\circ y-y\circ x,
+\]
+
+and `R_standard(x,y)=[L_x,L_y]-L_[x,y]`. With
+
+\[
+A(x,y,z)=(x\circ y)\circ z-x\circ(y\circ z),
+\]
+
+direct expansion gives
+
+\[
+R_{standard}(x,y)z=A(y,x,z)-A(x,y,z).
+\]
+
+This is a finite algebraic identity. It does not identify `R_standard` with one raw associator without an additional hypothesis such as `A(y,x,z)=0` or a different curvature convention.
+
+## Proof
+
+Expand `[L_x,L_y]z=x circ (y circ z)-y circ (x circ z)` and subtract `(x circ y-y circ x) circ z`. Regroup the four terms into the two displayed associators. The symbolic artifact records the same expansion.
+

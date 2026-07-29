@@ -1,0 +1,19 @@
+{
+  "requested_device": "cpu",
+  "selected_device": "cpu",
+  "backend": "torch",
+  "torch_version": "2.12.0.dev20260408+cu128",
+  "cuda_available": true,
+  "device_name": "cpu",
+  "batch": 256,
+  "output_shape": [
+    256,
+    8
+  ],
+  "elapsed_seconds": 0.008189799962565303,
+  "peak_gpu_memory_bytes": 0,
+  "process_peak_working_set_bytes": 546607104,
+  "system_memory_total_bytes": 136856682496,
+  "precision": "float64",
+  "status": "CPU_FALLBACK"
+}

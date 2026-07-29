@@ -1,0 +1,53 @@
+claims:
+  - id: DEF_NARY_LAW_V1
+    title: Typed finite-dimensional n-ary law
+    status: definition
+    statement: "A structural tensor K of shape (d_out,d_1,...,d_n) defines an n-linear map with explicit input and output dimensions."
+    assumptions: [finite-dimensional coordinate spaces, numeric field]
+    evidence: [src/seion_core/algebra/nary_law.py, tests/unit/test_nary_law.py]
+  - id: DEF_ASSOCIATOR_CONVENTIONS_V1
+    title: Distinct ternary composition conventions
+    status: definition
+    statement: "The five-input, anchored binary, and operadic partial-composition objects are represented by separate functions and recorded conventions."
+    assumptions: [ternary arity for specialized formulas]
+    evidence: [src/seion_core/algebra/ternary_law.py, tests/unit/test_associators.py]
+  - id: THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1
+    title: Standard left-action curvature expansion
+    status: proved
+    statement: "For any bilinear product, [L_x,L_y]-L_[x,y] applied to z equals A(y,x,z)-A(x,y,z), with [x,y]=x circ y-y circ x."
+    assumptions: [finite-dimensional bilinear product, stated commutator convention]
+    proof: docs/theorems/curvature_associator.md
+    symbolic_checks: [artifacts/symbolic/curvature_identity.json]
+    counterexamples: [docs/counterexamples/curvature_without_symmetry.md]
+  - id: THM_COHOMOLOGY_DESCENT_FINITE_V1
+    title: Commuting finite operator descends to cohomology
+    status: proved_under_assumptions
+    statement: "If a finite operator commutes with the differential, it preserves cycles and boundaries and therefore induces a map on the quotient cohomology space."
+    assumptions: [d squared equals zero, same-degree linear operator, exact commutation]
+    proof: docs/theorems/cohomology_descent.md
+    numerical_checks: [tests/unit/test_cohomology.py]
+  - id: NUM_KNOWN_INVARIANT_CLOSURE_V1
+    title: Known block subspace closure
+    status: numerically_verified
+    statement: "For the declared block-supported example, the coordinate projector has zero closure leakage up to floating-point evaluation."
+    assumptions: [example definition, finite samples, float64]
+    evidence: [experiments/configs/finite_ternary_v1.yaml]
+  - id: EMP_PROJECTOR_RECOVERY_V1
+    title: Empirical closure-minimizing recovery
+    status: empirical
+    statement: "A small stochastic Stiefel search can reduce sampled closure leakage on some declared examples; no general recovery or superiority claim is made."
+    assumptions: [seed, sample distribution, optimizer steps]
+    evidence: [src/seion_core/variational/optimizers.py]
+  - id: CONJ_CONTINUUM_LIMIT_V1
+    title: Uniform continuum limit for kernel-integrated laws
+    status: open
+    statement: "A sequence of finite laws may converge in a specified topology under uniform estimates; this repository does not prove a general theorem."
+    assumptions: [resolution sequence, topology, uniform bounds, compactness or convergence argument]
+    evidence: [docs/open_problems/index.md]
+  - id: REFUTED_SNAPPING_NO_GAP_V1
+    title: Continuity of spectral snapping without a gap
+    status: refuted
+    statement: "Threshold snapping is not continuous when eigenvalues may cross the threshold."
+    assumptions: [no uniform spectral gap]
+    evidence: [src/seion_core/projectors/snapping.py, tests/numerical/test_snapping.py]
+

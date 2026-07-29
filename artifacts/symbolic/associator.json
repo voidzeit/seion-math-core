@@ -1,0 +1,5 @@
+{
+  "status": "general_symbolic_derivation",
+  "expression": "-mu(a, b, mu(c, d, e)) + mu(mu(a, b, c), d, e)",
+  "simplified": "-mu(a, b, mu(c, d, e)) + mu(mu(a, b, c), d, e)"
+}

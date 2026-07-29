@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SEION run manifest",
+  "type": "object",
+  "required": ["run_id", "status", "created_utc", "config", "hardware"],
+  "properties": {
+    "run_id": {"type": "string"},
+    "status": {"type": "string"},
+    "created_utc": {"type": "string"},
+    "config": {"type": "object"},
+    "hardware": {"type": "object"}
+  }
+}
+

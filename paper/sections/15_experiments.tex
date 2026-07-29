@@ -1,0 +1,7 @@
+\section{Executed finite experiments}
+
+The canonical command \texttt{seion-core certify experiments/configs/finite\_ternary\_v1.yaml} produces the vertical-slice artifact contract. The declared example has a block-supported invariant subspace. The known projector is expected to have zero closure leakage up to floating-point error. Random, PCA, and empirical optimizer values are reported with their run identifier.
+
+\input{generated/tables/canonical_examples}
+\input{generated/tables/cp_rank_sweep}
+\begin{center}\includegraphics[width=.75\linewidth]{cp_rank_error}\\\small CP approximation error sweep. Factorization is non-unique; errors are representation diagnostics.\end{center}

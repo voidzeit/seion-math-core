@@ -1,0 +1,15 @@
+name: reproducibility
+on:
+  workflow_dispatch:
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e .
+      - run: python -m seion_core.cli.main certify experiments/configs/finite_ternary_v1.yaml
+      - run: python scripts/build_artifacts.py
+
