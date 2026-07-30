@@ -9,3 +9,8 @@ classes:
   SUPERSEDED: []
   SPECULATIVE: [claims/conjecture_registry.yaml]
   OUT_OF_SCOPE: [other repositories]
+  # Additive per spectral A-N legacy-audit engagement (2026-07-30). Evidence
+  # under this class is evidentially separate from CANONICAL_FINITE_CORE and
+  # may never certify or be certified by it without a proved connecting
+  # theorem. See spectral/certification_v18/GATE_TAXONOMY.md.
+  SPECTRAL_LEGACY_TRACK: [spectral]
