@@ -1,0 +1,57 @@
+{
+  "five_input_ternary_associator": {
+    "name": "five_input_ternary_associator",
+    "arity": 3,
+    "triangle_upper": 2.0,
+    "derivative_free_constant": 1.3728658144870964,
+    "gap": 0.6271341855129036,
+    "ratio_of_triangle": 0.6864329072435482,
+    "trials": 4000,
+    "local_refinement_steps": 200,
+    "verdict": "IMPROVABLE_WITH_EXACT_CONSTANT_OPEN"
+  },
+  "anchored_associator": {
+    "name": "anchored_associator",
+    "arity": 2,
+    "triangle_upper": 2.0,
+    "derivative_free_constant": 1.6575226604767213,
+    "gap": 0.34247733952327875,
+    "ratio_of_triangle": 0.8287613302383606,
+    "trials": 4000,
+    "local_refinement_steps": 200,
+    "verdict": "IMPROVABLE_WITH_EXACT_CONSTANT_OPEN"
+  },
+  "jacobiator_variants": {
+    "name": "jacobiator_variants",
+    "arity": 2,
+    "triangle_upper": 3.0,
+    "derivative_free_constant": 2.982774748750292,
+    "gap": 0.017225251249707973,
+    "ratio_of_triangle": 0.9942582495834307,
+    "trials": 4000,
+    "local_refinement_steps": 200,
+    "verdict": "SHARP"
+  },
+  "named_gji_variants": {
+    "name": "named_gji_variants",
+    "arity": 3,
+    "triangle_upper": 6.0,
+    "derivative_free_constant": 6.661338147750939e-16,
+    "gap": 5.999999999999999,
+    "ratio_of_triangle": 1.1102230246251565e-16,
+    "trials": 4000,
+    "local_refinement_steps": 200,
+    "verdict": "OPEN_WITH_CERTIFIED_GAP"
+  },
+  "filippov_fundamental_identity": {
+    "name": "filippov_fundamental_identity",
+    "arity": 3,
+    "triangle_upper": 4.0,
+    "derivative_free_constant": 1.6635181103777974,
+    "gap": 2.3364818896222026,
+    "ratio_of_triangle": 0.41587952759444935,
+    "trials": 4000,
+    "local_refinement_steps": 200,
+    "verdict": "OPEN_WITH_CERTIFIED_GAP"
+  }
+}
