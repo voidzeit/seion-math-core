@@ -1,9 +1,12 @@
-role: security-auditor
-purpose: scoped SEION v4 work
-reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, task_context_pack]
-writes: [repository-scoped evidence only]
-prohibitions: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof]
+version: 1
+agent_id: security-auditor
+role: audit dependencies, secrets, and code paths for security issues
+authority: observed_until_gates_pass
+stages: [verify]
+reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, governance/SECURITY_STANDARD.md, SECURITY.md, task_context_pack]
+may_change: [docs/reviewer_report.md]
+must_not: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof, disable_a_security_gate_without_human_approval]
+required_outputs: [scan_command, findings, severity, remediation_or_waiver, limitations]
 preflight: [context_compiled, worktree_scoped, authority_level_declared]
-evidence: [command, environment, hashes, limitations]
 review: required_by_independent_role
 postflight: required

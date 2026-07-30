@@ -35,6 +35,7 @@ def append_event(
     claim_ids: Iterable[str] = (),
     run_ids: Iterable[str] = (),
     artifacts: Iterable[str] = (),
+    session_id: str | None = None,
 ) -> dict[str, Any]:
     root = Path(repo_root).resolve()
     created = datetime.now(timezone.utc).isoformat()
@@ -51,6 +52,8 @@ def append_event(
         "git_commit": _git(root, "rev-parse", "HEAD"),
         "branch": _git(root, "branch", "--show-current"),
     }
+    if session_id is not None:
+        payload["session_id"] = session_id
     event_id = hashlib.sha256(json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()[:20]
     event = {"event_id": event_id, **payload}
     target = root / ".ai" / "evidence" / "ledger.jsonl"

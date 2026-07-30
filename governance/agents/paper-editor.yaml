@@ -1,9 +1,12 @@
-role: paper-editor
-purpose: scoped SEION v4 work
-reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, task_context_pack]
-writes: [repository-scoped evidence only]
-prohibitions: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof]
+version: 1
+agent_id: paper-editor
+role: edit and assemble paper prose, ensuring claim-to-text consistency and citation integrity
+authority: advisory
+stages: [release]
+reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, claims/, papers/, task_context_pack]
+may_change: [paper/, papers/]
+must_not: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof, invent_a_citation, assert_a_claim_status_not_in_the_registry]
+required_outputs: [claim_mapping, citation_check, consistency_report, limitations]
 preflight: [context_compiled, worktree_scoped, authority_level_declared]
-evidence: [command, environment, hashes, limitations]
 review: required_by_independent_role
 postflight: required

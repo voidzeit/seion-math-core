@@ -13,6 +13,9 @@ from ..governance.audit import audit_governance
 from ..governance.context import build_context_pack
 from ..governance.postflight import record_postflight
 from ..governance.runs import deduplicate_runs
+from ..orchestration.loop import advance, record_verify_result, start_session
+from ..orchestration.roles import roles_for_stage
+from ..orchestration.session import list_sessions, load_session
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -54,6 +57,33 @@ def build_parser() -> argparse.ArgumentParser:
     governance_postflight.add_argument("--command", dest="run_command", required=True)
     governance_postflight.add_argument("--changed-file", action="append", default=[])
     governance_postflight.add_argument("--limitation", action="append", default=[])
+    governance_lifecycle = governance_sub.add_parser(
+        "lifecycle", help="drive a task through the 8-stage development lifecycle graph"
+    )
+    lifecycle_sub = governance_lifecycle.add_subparsers(dest="lifecycle_command", required=True)
+    lifecycle_start = lifecycle_sub.add_parser("start", help="open a new lifecycle session at INTAKE")
+    lifecycle_start.add_argument("--task", required=True)
+    lifecycle_start.add_argument("--workstream", required=True)
+    lifecycle_start.add_argument("--risk", choices=["low", "medium", "high", "critical"], default="medium")
+    lifecycle_start.add_argument("--evidence-json", default="{}", help="JSON object satisfying the intake stage's required fields")
+    lifecycle_advance = lifecycle_sub.add_parser("advance", help="attempt a stage transition for a session")
+    lifecycle_advance.add_argument("session_id")
+    lifecycle_advance.add_argument("--to", required=True, help="target stage key (context/plan/change/verify/evidence/postflight/release) or blocked/superseded")
+    lifecycle_advance.add_argument("--evidence-json", default="{}", help="JSON object satisfying the target stage's required fields")
+    lifecycle_advance.add_argument("--gate-confirm", action="store_true", help="explicitly confirm the CURRENT stage's gate condition")
+    lifecycle_verify_result = lifecycle_sub.add_parser(
+        "verify-result", help="record a verify-stage pass/fail; fail routes back to change with a capped retry"
+    )
+    lifecycle_verify_result.add_argument("session_id")
+    lifecycle_verify_result.add_argument("--passed", action="store_true")
+    lifecycle_verify_result.add_argument("--evidence-json", default="{}")
+    lifecycle_verify_result.add_argument("--gate-confirm", action="store_true")
+    lifecycle_verify_result.add_argument("--max-retries", type=int, default=5)
+    lifecycle_status = lifecycle_sub.add_parser("status", help="show a session's current stage and history")
+    lifecycle_status.add_argument("session_id")
+    lifecycle_sub.add_parser("list", help="list all lifecycle sessions")
+    lifecycle_roles = lifecycle_sub.add_parser("roles", help="show which roles are bound to a stage")
+    lifecycle_roles.add_argument("stage")
     return parser
 
 
@@ -119,6 +149,57 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(json.dumps(result, indent=2))
             return 0
+        if args.governance_command == "lifecycle":
+            return _dispatch_lifecycle(root, args)
+    return 2
+
+
+def _dispatch_lifecycle(root: Path, args: argparse.Namespace) -> int:
+    if args.lifecycle_command == "start":
+        evidence = json.loads(args.evidence_json)
+        result = start_session(root, task=args.task, workstream=args.workstream, risk_level=args.risk, evidence=evidence)
+        print(json.dumps({"ok": result.ok, "session": result.session.to_dict(), "problems": list(result.problems)}, indent=2))
+        return 0 if result.ok else 1
+    if args.lifecycle_command == "advance":
+        evidence = json.loads(args.evidence_json)
+        gate_confirmations = {}
+        try:
+            session = load_session(root, args.session_id)
+            from ..orchestration.lifecycle import load_lifecycle
+
+            current_spec = load_lifecycle(root).stage_for_state(session.current_stage)
+            if current_spec:
+                gate_confirmations[current_spec.key] = args.gate_confirm
+        except FileNotFoundError as exc:
+            print(json.dumps({"ok": False, "problems": [str(exc)]}, indent=2))
+            return 1
+        result = advance(root, session_id=args.session_id, target=args.to, evidence=evidence, gate_confirmations=gate_confirmations)
+        print(json.dumps({"ok": result.ok, "session": result.session.to_dict(), "problems": list(result.problems)}, indent=2))
+        return 0 if result.ok else 1
+    if args.lifecycle_command == "verify-result":
+        evidence = json.loads(args.evidence_json)
+        result = record_verify_result(
+            root,
+            session_id=args.session_id,
+            passed=args.passed,
+            evidence=evidence,
+            gate_confirmations={"verify": args.gate_confirm},
+            max_retries=args.max_retries,
+        )
+        print(json.dumps({"ok": result.ok, "session": result.session.to_dict(), "problems": list(result.problems)}, indent=2))
+        return 0 if result.ok else 1
+    if args.lifecycle_command == "status":
+        session = load_session(root, args.session_id)
+        print(json.dumps(session.to_dict(), indent=2))
+        return 0
+    if args.lifecycle_command == "list":
+        sessions = list_sessions(root)
+        print(json.dumps([s.to_dict() for s in sessions], indent=2))
+        return 0
+    if args.lifecycle_command == "roles":
+        roles = roles_for_stage(root, args.stage)
+        print(json.dumps([r.agent_id for r in roles], indent=2))
+        return 0
     return 2
 
 

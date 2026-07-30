@@ -1,9 +1,12 @@
-role: prior-art-auditor
-purpose: scoped SEION v4 work
-reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, task_context_pack]
-writes: [repository-scoped evidence only]
-prohibitions: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof]
+version: 1
+agent_id: prior-art-auditor
+role: search and record prior-art comparisons for claimed results, using only primary sources
+authority: advisory
+stages: [plan]
+reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, claims/, task_context_pack]
+may_change: [claims/prior_art_registry.yaml, claims/prior_art_registry_v3.yaml, claims/novelty_registry.yaml]
+must_not: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof, self_approve_a_novelty_claim]
+required_outputs: [comparison_table, overlap_verdict, sources, limitations]
 preflight: [context_compiled, worktree_scoped, authority_level_declared]
-evidence: [command, environment, hashes, limitations]
 review: required_by_independent_role
 postflight: required
