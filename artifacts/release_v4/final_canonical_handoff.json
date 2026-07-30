@@ -1,8 +1,8 @@
 {
   "schema_version": 4,
-  "generated_utc": "2026-07-30T02:45:57.662231+00:00",
+  "generated_utc": "2026-07-30T02:47:07.599944+00:00",
   "branch": "program/seion-canonical-repository-v4",
-  "commit": "a39de8047d3d33314adb485f762c2b74c7af73fb",
+  "commit": "d1b176a841c1bd801c6464de30dd8444f6ebfc0b",
   "canonical_repository": "C:\\Documents\\metamaths\\seion-math-core",
   "external_repositories": [
     {
@@ -113,7 +113,7 @@
     {
       "command": "python -m pytest -q",
       "exit_code": 0,
-      "stdout_tail": "........................................................................ [ 98%]\n.                                                                        [100%]\n73 passed in 5.99s\n",
+      "stdout_tail": "........................................................................ [ 98%]\n.                                                                        [100%]\n73 passed in 5.95s\n",
       "stderr_tail": ""
     },
     {
@@ -125,7 +125,7 @@
     {
       "command": "python -m seion_core.cli.main governance audit --json",
       "exit_code": 0,
-      "stdout_tail": "{\n  \"version\": 1,\n  \"audited_at\": \"2026-07-30T02:46:07.715082+00:00\",\n  \"status\": \"yellow\",\n  \"strict\": false,\n  \"git\": {\n    \"branch\": \"program/seion-canonical-repository-v4\",\n    \"commit\": \"a39de8047d3d33314adb485f762c2b74c7af73fb\",\n    \"dirty\": true\n  },\n  \"required_files\": {\n    \"count\": 34,\n    \"missing\": []\n  },\n  \"memory_health\": {\n    \"canonical_manifest_present\": true,\n    \"durable_required_files_present\": 13,\n    \"derived_runtime_separated\": true,\n    \"status\": \"green\"\n  },\n  \"runs\": {\n    \"historical_run_count\": 101,\n    \"unique_scientific_instance_count\": 9,\n    \"duplicate_group_count\": 8,\n    \"duplicate_record_count\": 92,\n    \"artifact_contract\": {\n      \"run_count\": 101,\n      \"contract_complete_count\": 101,\n      \"contract_incomplete_count\": 0,\n      \"missing_artifacts\": {},\n      \"statuses\": {\n        \"COMPLETE\": 99,\n        \"FAILED_RUNTIME\": 2\n      }\n    }\n  },\n  \"scientific_blocker_ids\": [\n    \"B-0001\",\n    \"B-0002\",\n    \"B-0003\",\n    \"B-0004\",\n    \"B-0005\",\n    \"B-0006\",\n    \"B-0007\",\n    \"B-0008\",\n    \"B-0009\",\n    \"B-0010\"\n  ],\n  \"issues\": [\n    {\n      \"severity\": \"warning\",\n      \"code\": \"duplicate_runs_detected\",\n      \"message\": \"8 duplicate run groups detected; use the derived unique index\",\n      \"paths\": [\n        \"artifacts/index/run_index.csv\",\n        \"artifacts/index/run_index_deduplicated.csv\"\n      ]\n    },\n    {\n      \"severity\": \"warning\",\n      \"code\": \"paper_not_release_ready\",\n      \"message\": \"paper quality report does not support a release-ready claim under the declared rubric\",\n      \"paths\": [\n        \"C:\\\\Documents\\\\metamaths\\\\seion-math-core\\\\paper\\\\quality\\\\paper_quality_report.json\"\n      ]\n    }\n  ],\n  \"limitations\": [\n    \"Structural audit only; declared validation commands are not executed by this command.\",\n    \"A green result is not mathematical proof or release approval.\"\n  ],\n  \"passed\": true\n}\n",
+      "stdout_tail": "{\n  \"version\": 1,\n  \"audited_at\": \"2026-07-30T02:47:17.847691+00:00\",\n  \"status\": \"yellow\",\n  \"strict\": false,\n  \"git\": {\n    \"branch\": \"program/seion-canonical-repository-v4\",\n    \"commit\": \"d1b176a841c1bd801c6464de30dd8444f6ebfc0b\",\n    \"dirty\": true\n  },\n  \"required_files\": {\n    \"count\": 34,\n    \"missing\": []\n  },\n  \"memory_health\": {\n    \"canonical_manifest_present\": true,\n    \"durable_required_files_present\": 13,\n    \"derived_runtime_separated\": true,\n    \"status\": \"green\"\n  },\n  \"runs\": {\n    \"historical_run_count\": 102,\n    \"unique_scientific_instance_count\": 9,\n    \"duplicate_group_count\": 8,\n    \"duplicate_record_count\": 93,\n    \"artifact_contract\": {\n      \"run_count\": 102,\n      \"contract_complete_count\": 102,\n      \"contract_incomplete_count\": 0,\n      \"missing_artifacts\": {},\n      \"statuses\": {\n        \"COMPLETE\": 100,\n        \"FAILED_RUNTIME\": 2\n      }\n    }\n  },\n  \"scientific_blocker_ids\": [\n    \"B-0001\",\n    \"B-0002\",\n    \"B-0003\",\n    \"B-0004\",\n    \"B-0005\",\n    \"B-0006\",\n    \"B-0007\",\n    \"B-0008\",\n    \"B-0009\",\n    \"B-0010\"\n  ],\n  \"issues\": [\n    {\n      \"severity\": \"warning\",\n      \"code\": \"duplicate_runs_detected\",\n      \"message\": \"8 duplicate run groups detected; use the derived unique index\",\n      \"paths\": [\n        \"artifacts/index/run_index.csv\",\n        \"artifacts/index/run_index_deduplicated.csv\"\n      ]\n    },\n    {\n      \"severity\": \"warning\",\n      \"code\": \"paper_not_release_ready\",\n      \"message\": \"paper quality report does not support a release-ready claim under the declared rubric\",\n      \"paths\": [\n        \"C:\\\\Documents\\\\metamaths\\\\seion-math-core\\\\paper\\\\quality\\\\paper_quality_report.json\"\n      ]\n    }\n  ],\n  \"limitations\": [\n    \"Structural audit only; declared validation commands are not executed by this command.\",\n    \"A green result is not mathematical proof or release approval.\"\n  ],\n  \"passed\": true\n}\n",
       "stderr_tail": ""
     },
     {
