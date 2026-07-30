@@ -1,8 +1,15 @@
-"""Ties Phase 0 evidence (the actual run directories under spectral/runs/)
-to the Phase 1 gate taxonomy: confirms the historical data actually shows
-what BLOCK_B_FINDINGS.md claims (coherence_ratio <= 0 in every real trained
-checkpoint, i.e. worse than the zero baseline), and that this correctly
-resolves to a FAIL under the typed-gate rules, not a WARN near-miss.
+"""Ties Phase 0 evidence to the Phase 1 gate taxonomy: confirms the
+historical data actually shows what BLOCK_B_FINDINGS.md claims
+(coherence_ratio <= 0 in every real trained checkpoint, i.e. worse than
+the zero baseline), and that this correctly resolves to a FAIL under the
+typed-gate rules, not a WARN near-miss.
+
+Reads from the COMMITTED extract `block_b_historical_evidence.json`
+(produced by `tools/ingest_legacy.py` from the live `spectral/runs/`
+directories), not from `spectral/runs/` itself — that directory is
+intentionally NOT checked into version control (preserved as local
+historical evidence, not canonical source; see mission's file-hygiene
+classification), so a CI checkout would never have it.
 """
 
 from __future__ import annotations
@@ -12,20 +19,12 @@ from pathlib import Path
 
 from spectral.certification_v18.gates import TypedStatus, combine_gate_status
 
-RUNS_DIR = Path(__file__).resolve().parents[2] / "runs"
+EVIDENCE_PATH = Path(__file__).resolve().parents[2] / "legacy" / "v17" / "block_b_historical_evidence.json"
 
 
 def _block_b_records() -> list[tuple[str, dict]]:
-    records = []
-    for run_dir in sorted(p for p in RUNS_DIR.iterdir() if p.is_dir()):
-        summary_path = run_dir / "summary.json"
-        if not summary_path.exists():
-            continue
-        data = json.loads(summary_path.read_text(encoding="utf-8"))
-        b = data.get("blocks", {}).get("B_commutator")
-        if b:
-            records.append((run_dir.name, b))
-    return records
+    data = json.loads(EVIDENCE_PATH.read_text(encoding="utf-8"))
+    return list(data.items())
 
 
 def test_historical_runs_show_block_b_at_or_worse_than_zero_baseline():

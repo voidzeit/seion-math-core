@@ -412,6 +412,22 @@ def main() -> None:
         yaml.safe_dump(reclass, sort_keys=False, width=100), encoding="utf-8"
     )
 
+    # --- block_b_historical_evidence.json ---
+    # Committed extract of every historical run's B_commutator block data,
+    # so downstream tests (test_block_b_gate_status.py) can verify the
+    # "worse than zero baseline in every real checkpoint" claim against
+    # committed evidence rather than the live spectral/runs/ directories,
+    # which are intentionally NOT checked into version control (preserved
+    # as local historical evidence, not canonical source).
+    block_b_evidence = {
+        name: ev.blocks["B_commutator"]
+        for name, ev in merged.items()
+        if ev.blocks.get("B_commutator")
+    }
+    (LEGACY_DEST / "block_b_historical_evidence.json").write_text(
+        json.dumps(block_b_evidence, indent=2, sort_keys=True), encoding="utf-8"
+    )
+
     print(f"Wrote manifest, lineage, dedup report, and reclassification to {LEGACY_DEST}")
     print(f"Total unique runs: {len(merged)} | dedup groups: {len(groups)} | distinct seeds: {sorted(s for s in distinct_seeds if s is not None)}")
 
