@@ -1,0 +1,24 @@
+# v4 audit
+
+{
+  "generated_utc": "2026-07-30T02:46:04.936490+00:00",
+  "paper_claim_lint": {
+    "status": "PASS",
+    "matches": [],
+    "rule": "empirical or pending claims may not use unqualified we prove"
+  },
+  "table_invariants": {
+    "status": "PASS",
+    "violations": [],
+    "policy": "operator and Frobenius metrics remain distinct; lower <= upper where schema declares both"
+  },
+  "security": {
+    "status": "PASS",
+    "matches": [],
+    "patterns": [
+      "(?i)-----BEGIN (RSA|EC|OPENSSH|PGP) PRIVATE KEY-----",
+      "(?i)api[_-]?key\\s*[:=]\\s*['\\\"][A-Za-z0-9]",
+      "(?i)password\\s*[:=]\\s*['\\\"][^'\\\"]+['\\\"]"
+    ]
+  }
+}

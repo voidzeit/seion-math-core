@@ -1,0 +1,5 @@
+warning: in the working copy of '.obsidian/graph.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.obsidian/workspace.json', LF will be replaced by CRLF the next time Git touches it
+ .obsidian/graph.json     |  2 +-
+ .obsidian/workspace.json | 92 ++++++++++++++++++++++++------------------------
+ 2 files changed, 47 insertions(+), 47 deletions(-)

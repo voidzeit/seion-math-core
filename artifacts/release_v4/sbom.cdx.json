@@ -1,0 +1,29 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "metadata": {
+    "timestamp": "2026-07-30T02:45:55.325897+00:00",
+    "component": {
+      "name": "seion-math-core",
+      "version": "0.4.0"
+    }
+  },
+  "components": [
+    {
+      "name": "numpy",
+      "scope": "runtime"
+    },
+    {
+      "name": "scipy",
+      "scope": "runtime"
+    },
+    {
+      "name": "sympy",
+      "scope": "runtime"
+    },
+    {
+      "name": "PyYAML",
+      "scope": "runtime"
+    }
+  ]
+}

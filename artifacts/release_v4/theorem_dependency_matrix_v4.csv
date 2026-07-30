@@ -1,0 +1,5 @@
+node,depends_on,status
+exact_invariance,isometry+exact_closure,conditional_candidate
+operadic_identity_descent,exact_invariance,blocked_independent_audit
+approximate_associator_bound,closure_residual+norm,open
+spectral_snapping,gap_around_half,open

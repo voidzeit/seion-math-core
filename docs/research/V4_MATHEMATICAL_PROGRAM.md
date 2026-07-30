@@ -1,0 +1,18 @@
+# v4 mathematical program status
+
+## Completed or conditionally established
+
+- Finite-dimensional recursive projection/tree certificates and their registered numerical validation are preserved from the v3 research track.
+- Exact reduction is formally defined for an isometry (Q:W\hookrightarrow V), (P=QQ^\ast), under exact invariance; the intended partial-composition proof is a direct substitution lemma and is represented as a conditional theorem candidate pending independent audit.
+- The repository distinguishes operator, Frobenius, lower, and upper metrics and preserves negative controls.
+
+## Explicitly blocked
+
+- A complete theorem-level novelty claim and primary-source prior-art adjudication.
+- A proof-quality approximate-closure associator/FI/GJI/Jacobiator bound with all constants explicit.
+- Sharp fixed-η extremizers, (k-1) sharpness, and spectral-snapping gap theorem/counterexample package.
+- Complete mixed-mask recurrence and full path-sum terms.
+- Full 460,800-trajectory / 8,400-cell extended optimizer grid.
+- Independent proof audit and human release decisions.
+
+Numerical evidence remains observational; it cannot transition a claim to `PROVED`.

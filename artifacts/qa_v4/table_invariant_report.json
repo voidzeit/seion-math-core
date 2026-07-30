@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "violations": [],
+  "policy": "operator and Frobenius metrics remain distinct; lower <= upper where schema declares both"
+}

@@ -1,0 +1,139 @@
+{
+  "schema_version": 4,
+  "generated_utc": "2026-07-30T02:45:57.662231+00:00",
+  "branch": "program/seion-canonical-repository-v4",
+  "commit": "a39de8047d3d33314adb485f762c2b74c7af73fb",
+  "canonical_repository": "C:\\Documents\\metamaths\\seion-math-core",
+  "external_repositories": [
+    {
+      "path": "C:\\Documents\\ai-memory-orchestrator",
+      "exists": true,
+      "checked_read_only": true,
+      "status": "M .ai/state.md\n M .ai/tasks.md\n M README.md\n?? .ai/runs/2026-07-06/\n?? .ai/runs/2026-07-19/\n?? .obsidian/"
+    },
+    {
+      "path": "C:\\Documents\\Hyperghaps EMA\\EMA-AI",
+      "exists": true,
+      "checked_read_only": true,
+      "status": ""
+    },
+    {
+      "path": "C:\\Documents\\AEC_Agentic",
+      "exists": true,
+      "checked_read_only": true,
+      "status": "M apps/control-plane-api/app/api/readiness.py\n M apps/control-plane-api/app/main.py\n M apps/control-plane-api/app/models.py\n M apps/control-plane-api/app/readiness/persistence.py\n M apps/control-plane-api/app/readiness/rules.py\n M apps/control-plane-api/app/readiness/service.py\n M apps/control-plane-api/app/schemas.py\n M apps/web-console/src/App.tsx\n M apps/web-console/src/api/client.ts\n M apps/web-console/src/components/Layout.tsx\n M apps/web-console/src/types.ts\n M docs/legacy/ema-ai/docs/architecture/SECURITY_AND_DATA_BOUNDARIES.md\n M packages/python/policy-engine/pyproject.toml\n M packages/python/policy-engine/src/control_plane_policy/__init__.py\n?? apps/control-plane-api/alembic/versions/0004_obligation.py\n?? apps/control-plane-api/alembic/versions/0005_evidence_review.py\n?? apps/control-plane-api/alembic/versions/0006_readiness_provenance.py\n?? apps/control-plane-api/app/api/obligations.py\n?? apps/control-plane-api/app/api/reviews.py\n?? apps/control-plane-api/app/services/evidence_claim_adapter.py\n?? apps/control-plane-api/app/services/evidence_review_service.py\n?? apps/control-plane-api/app/services/obligation_service.py\n?? apps/control-plane-api/tests/test_evidence_review.py\n?? apps/control-plane-api/tests/test_obligations.py\n?? apps/web-console/src/components/ErrorBoundary.tsx\n?? apps/web-console/src/pages/ObligationsPage.tsx\n?? apps/web-console/src/pages/ReadinessExplainPage.tsx\n?? apps/web-console/src/pages/SourceTraceViewPage.tsx\n?? docs/adr/0006-evidence-review-model.md\n?? docs/adr/0007-readiness-scoring.md\n?? docs/adr/0008-policy-engine-canonicalization.md\n?? docs/demo/\n?? packages/python/policy-engine/src/control_plane_policy/evaluation.py\n?? packages/python/policy-engine/src/control_plane_policy/fixtures.py\n?? packages/python/policy-engine/src/control_plane_policy/registry.py\n?? packages/python/policy-engine/src/control_plane_policy/rule.py\n?? packages/python/policy-engine/tests/\n?? scripts/demo.ps1"
+    },
+    {
+      "path": "C:\\Documents\\SFC\\bluebim-web",
+      "exists": true,
+      "checked_read_only": true,
+      "status": "M .ai/GRAPH_INDEX.md\n M .ai/OBSIDIAN_RECENT.md\n M .ai/OBSIDIAN_SYNC_LOG.md\n M .obsidian/.obsidian/graph.json\n M index.html\n M package-lock.json\n M package.json\n M src/App.tsx\n M src/components/BimViewport.tsx\n M src/components/CTA.tsx\n M src/components/ErrorBoundary.tsx\n M src/components/Icon.tsx\n M src/components/Industries.tsx\n M src/components/Scroll3DScene.tsx\n M src/components/Services.tsx\n M src/components/StartingPoints.tsx\n M src/components/TrustBar.tsx\n M src/components/illustrations/DeliveryFlowDiagram.tsx\n M src/pages/Electrical.tsx\n M src/pages/Home.tsx\n M src/pages/NotFound.tsx\n M src/pages/Status.tsx\n M src/styles.css\n M src/styles/tokens.css"
+    },
+    {
+      "path": "C:\\Documents\\ometeos\\pixelcity_smoke_test",
+      "exists": true,
+      "checked_read_only": true
+    }
+  ],
+  "graph": {
+    "nodes": 1239,
+    "edges": 2727
+  },
+  "pdfs": [
+    {
+      "name": "mathematical",
+      "source": "papers\\tree_stability_v4\\build\\main.pdf",
+      "path": "output\\pdf\\seion-math-core-v4-mathematical.pdf",
+      "sha256": "8533c65b1ce627c0401a28b4bebb7fb46e8048f21ff5e4dcad12ac9e4bf59fc6",
+      "bytes": 794981,
+      "full_render_exit": 0,
+      "rendered_page_count": 31
+    },
+    {
+      "name": "software",
+      "source": "papers\\software_v4\\build\\main.pdf",
+      "path": "output\\pdf\\seion-math-core-v4-software.pdf",
+      "sha256": "0ad775efc8338e6374a2810018cd08cb078ee4d25cf83f2a46f25b12ecbcee2f",
+      "bytes": 258102,
+      "full_render_exit": 0,
+      "rendered_page_count": 6
+    },
+    {
+      "name": "supplement",
+      "source": "papers\\supplement_v4\\build\\main.pdf",
+      "path": "output\\pdf\\seion-math-core-v4-supplement.pdf",
+      "sha256": "dd0d01785bb64f0d3c76e6a929c91ca1b5cd8f170f76318c40901127c4ba9a5b",
+      "bytes": 114190,
+      "full_render_exit": 0,
+      "rendered_page_count": 2
+    }
+  ],
+  "packages": [
+    "seion_math_core-0.4.0-py3-none-any.whl",
+    "seion_math_core-0.4.0.tar.gz"
+  ],
+  "blockers": [
+    {
+      "id": "BLOCK-V4-MATH-SHARPNESS",
+      "status": "OPEN",
+      "statement": "Fixed-positive-eta sharpness extremizers and k-1 sharpness are not complete."
+    },
+    {
+      "id": "BLOCK-V4-MATH-CONSTANTS",
+      "status": "OPEN",
+      "statement": "Approximate closure, spectral snapping, and cancellation-aware FI/GJI/Jacobiator constants require proof-quality completion."
+    },
+    {
+      "id": "BLOCK-V4-NOVELTY",
+      "status": "OPEN",
+      "statement": "Theorem-level novelty is not approved; primary-source prior-art adjudication remains a human research decision."
+    },
+    {
+      "id": "BLOCK-V4-EXTENDED-GRID",
+      "status": "OPEN",
+      "statement": "Extended grid is 4/460800 optimizer trajectories and 0/8400 performance cells."
+    },
+    {
+      "id": "BLOCK-V4-PDF-REVIEW",
+      "status": "OPEN",
+      "statement": "Automated compile/render passed, but full visual and accessibility approval remains human."
+    },
+    {
+      "id": "BLOCK-V4-INDEPENDENT-REVIEW",
+      "status": "OPEN",
+      "statement": "Independent mathematical, numerical, visualization, security, and release reviews are pending."
+    },
+    {
+      "id": "BLOCK-V4-WORKTREE",
+      "status": "OPEN",
+      "statement": "User-owned .obsidian/graph.json and .obsidian/workspace.json remain intentionally unmodified by this task's scope policy."
+    }
+  ],
+  "commands": [
+    {
+      "command": "python -m pytest -q",
+      "exit_code": 0,
+      "stdout_tail": "........................................................................ [ 98%]\n.                                                                        [100%]\n73 passed in 5.99s\n",
+      "stderr_tail": ""
+    },
+    {
+      "command": "python scripts/audit_v4.py",
+      "exit_code": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "command": "python -m seion_core.cli.main governance audit --json",
+      "exit_code": 0,
+      "stdout_tail": "{\n  \"version\": 1,\n  \"audited_at\": \"2026-07-30T02:46:07.715082+00:00\",\n  \"status\": \"yellow\",\n  \"strict\": false,\n  \"git\": {\n    \"branch\": \"program/seion-canonical-repository-v4\",\n    \"commit\": \"a39de8047d3d33314adb485f762c2b74c7af73fb\",\n    \"dirty\": true\n  },\n  \"required_files\": {\n    \"count\": 34,\n    \"missing\": []\n  },\n  \"memory_health\": {\n    \"canonical_manifest_present\": true,\n    \"durable_required_files_present\": 13,\n    \"derived_runtime_separated\": true,\n    \"status\": \"green\"\n  },\n  \"runs\": {\n    \"historical_run_count\": 101,\n    \"unique_scientific_instance_count\": 9,\n    \"duplicate_group_count\": 8,\n    \"duplicate_record_count\": 92,\n    \"artifact_contract\": {\n      \"run_count\": 101,\n      \"contract_complete_count\": 101,\n      \"contract_incomplete_count\": 0,\n      \"missing_artifacts\": {},\n      \"statuses\": {\n        \"COMPLETE\": 99,\n        \"FAILED_RUNTIME\": 2\n      }\n    }\n  },\n  \"scientific_blocker_ids\": [\n    \"B-0001\",\n    \"B-0002\",\n    \"B-0003\",\n    \"B-0004\",\n    \"B-0005\",\n    \"B-0006\",\n    \"B-0007\",\n    \"B-0008\",\n    \"B-0009\",\n    \"B-0010\"\n  ],\n  \"issues\": [\n    {\n      \"severity\": \"warning\",\n      \"code\": \"duplicate_runs_detected\",\n      \"message\": \"8 duplicate run groups detected; use the derived unique index\",\n      \"paths\": [\n        \"artifacts/index/run_index.csv\",\n        \"artifacts/index/run_index_deduplicated.csv\"\n      ]\n    },\n    {\n      \"severity\": \"warning\",\n      \"code\": \"paper_not_release_ready\",\n      \"message\": \"paper quality report does not support a release-ready claim under the declared rubric\",\n      \"paths\": [\n        \"C:\\\\Documents\\\\metamaths\\\\seion-math-core\\\\paper\\\\quality\\\\paper_quality_report.json\"\n      ]\n    }\n  ],\n  \"limitations\": [\n    \"Structural audit only; declared validation commands are not executed by this command.\",\n    \"A green result is not mathematical proof or release approval.\"\n  ],\n  \"passed\": true\n}\n",
+      "stderr_tail": ""
+    },
+    {
+      "command": "python -m seion_core.cli.main governance dedupe-runs",
+      "exit_code": 0,
+      "stdout_tail": "artifacts/index/run_index_deduplicated.csv\n",
+      "stderr_tail": ""
+    }
+  ],
+  "release_status": "FAIL_CLOSED_BLOCKED_PENDING_HUMAN_REVIEW"
+}

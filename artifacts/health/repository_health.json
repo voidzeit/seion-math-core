@@ -1,0 +1,22 @@
+{
+  "branch": "program/seion-canonical-repository-v4",
+  "commit": "a39de8047d3d33314adb485f762c2b74c7af73fb",
+  "dirty_path_count": 107,
+  "generated_utc": "2026-07-30T02:45:41.927916+00:00",
+  "metrics": {
+    "claim_file_count": 17,
+    "context_pack_count": 6,
+    "docs_file_count": 77,
+    "duplicate_authority_count": 0,
+    "failed_run_count": 0,
+    "graph_orphan_count": 0,
+    "resumed_run_count": 0,
+    "run_directory_count": 23,
+    "source_file_count": 140,
+    "test_file_count": 34
+  },
+  "notes": [
+    "Metrics remain dimensioned; no single synthetic health score is emitted."
+  ],
+  "schema_version": 1
+}

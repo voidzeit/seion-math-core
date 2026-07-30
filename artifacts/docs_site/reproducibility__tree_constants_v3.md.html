@@ -1,0 +1,97 @@
+<meta charset='utf-8'><title>SEION</title><pre># Reproducing the v3 nodewise tree-constant track
+
+## Scope
+
+All source, governance, memory, experiments, artifacts, figures, tables, and
+papers are local to this repository. Other repositories are inspiration only
+and are not dependencies or mutation targets.
+
+## Canonical command
+
+From the repository root:
+
+    .\scripts\run_tree_constants_v3_full.ps1
+
+The command performs, in order:
+
+1. checkpoint validation;
+2. hardware inventory;
+3. CUDA validation;
+4. the complete test suite;
+5. exact tree enumeration;
+6. the exact/certified atlas;
+7. the complete A–I base matrix;
+8. extended-schedule reconciliation;
+9. aggregation and registered benchmarking;
+10. generated tables;
+11. vector figures;
+12. both LaTeX builds;
+13. Poppler page rendering and layout preflight;
+14. adversarial reviews and technical audit;
+15. the strict release gate.
+
+Exit code 0 means every strict gate passed. Exit code 2 means execution
+completed but the release correctly remained fail-closed. Any other nonzero
+code is an operational failure.
+
+## Staged commands
+
+    .\scripts\run_tree_constants_v3_smoke.ps1
+    .\scripts\run_tree_constants_v3_exact.ps1
+    .\scripts\run_tree_constants_v3_extended.ps1 -MaxTrajectories 4
+    .\scripts\resume_tree_constants_v3.ps1 -MaxTrajectories 4
+    .\scripts\build_tree_constants_v3_figures.ps1
+    .\scripts\build_tree_constants_v3_paper.ps1
+    .\scripts\audit_tree_constants_v3.ps1 -Render -AdvisoryVisualSignoff
+    .\scripts\release_tree_constants_v3.ps1
+
+The extended scheduler materializes all 460,800 requested optimizer
+trajectories and 8,400 performance cells. Bounded chunks are resumable.
+Unexecuted rows remain PENDING; completed optimizer values remain
+EMPIRICAL_LOWER_BOUND.
+
+## Canonical evidence
+
+- Base scientific index:
+  artifacts/index/scientific_instances_full_v3.parquet
+- Tree index:
+  artifacts/index/tree_instances_v3.parquet
+- Optimality gaps:
+  artifacts/index/optimality_gaps_v3.csv
+- Extended status:
+  artifacts/research_v3/extended_progress_v3.json
+- Figure provenance:
+  artifacts/research_v3/figure_manifest_v3.json
+- Table provenance:
+  artifacts/research_v3/table_manifest_v3.json
+- PDF/render manifest:
+  artifacts/qa_v3/pdf_manifest_v3.json
+- Technical audit:
+  artifacts/research_v3/audit_v3.json
+- Strict gate:
+  artifacts/research_v3/release_gate_v3.json
+- Final report:
+  artifacts/research_v3/final_report_v3.json
+
+Every block-level run directory under artifacts/runs_v3/ includes source,
+configuration, mathematical-object and input hashes, environment, hardware,
+metrics, certificates, logs, and an artifact hash manifest.
+
+## Hash verification
+
+PowerShell:
+
+    Get-FileHash papers/tree_stability_v3/build/main.pdf -Algorithm SHA256
+    Get-FileHash papers/software_v3/build/main.pdf -Algorithm SHA256
+
+Compare the values with artifacts/qa_v3/pdf_manifest_v3.json. Run-level files
+are checked by scripts/tree_constants_v3_audit.py; figure and table outputs are
+checked against their generated manifests.
+
+## Epistemic boundary
+
+The base matrix can pass while the publication gate fails. In particular,
+reproducibility does not establish novelty, empirical maxima do not establish
+global optimality, and an AI-generated review cannot supply human release
+approval.
+</pre>
