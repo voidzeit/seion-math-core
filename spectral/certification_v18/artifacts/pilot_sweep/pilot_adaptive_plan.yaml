@@ -1,0 +1,24 @@
+version: 1
+pilot_cells_run: 96
+pilot_failures: 0
+nan_inf_cells: 0
+acceptance_answers:
+  metrics_numerically_stable: true
+  resume_reproduces_exactly: not tested in this pilot -- job_queue.resumable_jobs()/lineage()
+    are unit-tested (see spectral/certification_v18/tests/test_job_queue.py) but not
+    exercised end-to-end against these blocks in this pass
+  screening_and_certification_separated: true
+  gpu_batches_outperform_cpu_at_pilot_scale: false
+  null_negative_controls_detected: not exercised in this pilot -- block G/H/N reports
+    already include adversarial-search components, but a dedicated randomized-baseline
+    control was not added to this driver
+  output_artifacts_complete_and_hash_stable: true
+recommended_phase_4_intensification:
+- 'If GPU underperformed CPU at this scale (see pilot_resource_report.md): route Phase
+  4''s larger n/cp_rank cells to GPU, keep small cells on CPU -- don''t blindly GPU-schedule
+  the whole grid.'
+- Extend this driver to cover blocks D, I, K, L (currently only A/G/H/N have GPU support
+  after this pilot's device-parameter fix) before Phase 4, since those remain CPU-only.
+- Add a certification-mode leg (eval_mode=certification, float64/complex128, held_out_seeds,
+  tf32 disabled via enter_certification_mode()) once the screening-mode scheduler
+  mechanics above are trusted.

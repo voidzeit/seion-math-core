@@ -1,0 +1,33 @@
+version: 1
+grid:
+  arity:
+  - 3
+  - 4
+  n:
+  - 12
+  - 24
+  rank:
+  - 3
+  - 6
+  cp_rank:
+  - 4
+  - 8
+seeds:
+- 0
+- 1
+- 2
+devices:
+- cpu
+- cuda
+pilot_effort:
+  n_samples: 300
+  adversarial_steps: 30
+  trials: 50
+blocks_covered:
+- A
+- G
+- H
+- N
+eval_mode: screening
+note: Pilot-scale effort (reduced n_samples/trials/adversarial_steps vs certification
+  defaults). Not a certification run.
