@@ -37,7 +37,8 @@ def _unit(v: torch.Tensor) -> torch.Tensor:
 
 
 def estimate_law_operator_bound(model: SpectralModelV18, *, trials: int = 500, adversarial_steps: int = 150, seed: int = 0) -> float:
-    gen = torch.Generator().manual_seed(seed)
+    device = model.device
+    gen = torch.Generator(device=device).manual_seed(seed)
     extras = [model.anchor.detach() for _ in range(model.arity - 2)]
 
     def sample_ratio(a, b):
@@ -46,14 +47,14 @@ def estimate_law_operator_bound(model: SpectralModelV18, *, trials: int = 500, a
 
     best = 0.0
     for _ in range(trials):
-        a = _unit(torch.complex(torch.randn(model.n, generator=gen, dtype=model.rdtype), torch.randn(model.n, generator=gen, dtype=model.rdtype)))
-        b = _unit(torch.complex(torch.randn(model.n, generator=gen, dtype=model.rdtype), torch.randn(model.n, generator=gen, dtype=model.rdtype)))
+        a = _unit(torch.complex(torch.randn(model.n, generator=gen, dtype=model.rdtype, device=device), torch.randn(model.n, generator=gen, dtype=model.rdtype, device=device)))
+        b = _unit(torch.complex(torch.randn(model.n, generator=gen, dtype=model.rdtype, device=device), torch.randn(model.n, generator=gen, dtype=model.rdtype, device=device)))
         best = max(best, sample_ratio(a, b).item())
 
-    a_re = torch.randn(model.n, generator=gen, dtype=model.rdtype, requires_grad=True)
-    a_im = torch.randn(model.n, generator=gen, dtype=model.rdtype, requires_grad=True)
-    b_re = torch.randn(model.n, generator=gen, dtype=model.rdtype, requires_grad=True)
-    b_im = torch.randn(model.n, generator=gen, dtype=model.rdtype, requires_grad=True)
+    a_re = torch.randn(model.n, generator=gen, dtype=model.rdtype, device=device, requires_grad=True)
+    a_im = torch.randn(model.n, generator=gen, dtype=model.rdtype, device=device, requires_grad=True)
+    b_re = torch.randn(model.n, generator=gen, dtype=model.rdtype, device=device, requires_grad=True)
+    b_im = torch.randn(model.n, generator=gen, dtype=model.rdtype, device=device, requires_grad=True)
     opt = torch.optim.Adam([a_re, a_im, b_re, b_im], lr=0.05)
     for _ in range(adversarial_steps):
         opt.zero_grad()
@@ -76,9 +77,9 @@ class AssociatorConstantReport:
     verdict: str
 
 
-def associator_constant_report(seed: int = 0, *, n: int = 16, rank: int = 4, arity: int = 3, cp_rank: int = 4, trials: int = 300, adversarial_steps: int = 150) -> AssociatorConstantReport:
-    gen = torch.Generator().manual_seed(seed)
-    model = SpectralModelV18(n=n, rank=rank, arity=arity, cp_rank=cp_rank, device="cpu", dtype="float64", generator=gen)
+def associator_constant_report(seed: int = 0, *, n: int = 16, rank: int = 4, arity: int = 3, cp_rank: int = 4, trials: int = 300, adversarial_steps: int = 150, device: str = "cpu") -> AssociatorConstantReport:
+    gen = torch.Generator(device=device).manual_seed(seed)
+    model = SpectralModelV18(n=n, rank=rank, arity=arity, cp_rank=cp_rank, device=device, dtype="float64", generator=gen)
     m_hat = estimate_law_operator_bound(model, trials=200, adversarial_steps=100, seed=seed)
 
     extras = [model.anchor.detach() for _ in range(arity - 2)]
@@ -94,9 +95,9 @@ def associator_constant_report(seed: int = 0, *, n: int = 16, rank: int = 4, ari
     cosines = []
     best_ratio = 0.0
     for _ in range(trials):
-        x = _unit(torch.complex(torch.randn(n, generator=gen, dtype=torch.float64), torch.randn(n, generator=gen, dtype=torch.float64)))
-        y = _unit(torch.complex(torch.randn(n, generator=gen, dtype=torch.float64), torch.randn(n, generator=gen, dtype=torch.float64)))
-        z = _unit(torch.complex(torch.randn(n, generator=gen, dtype=torch.float64), torch.randn(n, generator=gen, dtype=torch.float64)))
+        x = _unit(torch.complex(torch.randn(n, generator=gen, dtype=torch.float64, device=device), torch.randn(n, generator=gen, dtype=torch.float64, device=device)))
+        y = _unit(torch.complex(torch.randn(n, generator=gen, dtype=torch.float64, device=device), torch.randn(n, generator=gen, dtype=torch.float64, device=device)))
+        z = _unit(torch.complex(torch.randn(n, generator=gen, dtype=torch.float64, device=device), torch.randn(n, generator=gen, dtype=torch.float64, device=device)))
         a, t1, t2 = associator_and_terms(x, y, z)
         denom = m_hat**2 + 1e-30
         ratio = (torch.linalg.norm(a) / denom).item()
@@ -106,12 +107,12 @@ def associator_constant_report(seed: int = 0, *, n: int = 16, rank: int = 4, ari
         best_ratio = max(best_ratio, ratio)
 
     # adversarial refinement over (x,y,z) jointly
-    xr = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
-    xi = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
-    yr = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
-    yi = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
-    zr = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
-    zi = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
+    xr = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
+    xi = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
+    yr = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
+    yi = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
+    zr = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
+    zi = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
     opt = torch.optim.Adam([xr, xi, yr, yi, zr, zi], lr=0.05)
     for _ in range(adversarial_steps):
         opt.zero_grad()

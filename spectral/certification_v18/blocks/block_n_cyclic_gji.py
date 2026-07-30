@@ -87,12 +87,12 @@ class CyclicNReport:
     mutation_test_detects_wrong_sign: bool
 
 
-def cyclic_and_gji_report(seed: int = 0, *, n: int = 16, rank: int = 4, arity: int = 3, cp_rank: int = 4, trials: int = 200, adversarial_steps: int = 100) -> CyclicNReport:
-    gen = torch.Generator().manual_seed(seed)
-    model = SpectralModelV18(n=n, rank=rank, arity=arity, cp_rank=cp_rank, device="cpu", dtype="float64", generator=gen)
+def cyclic_and_gji_report(seed: int = 0, *, n: int = 16, rank: int = 4, arity: int = 3, cp_rank: int = 4, trials: int = 200, adversarial_steps: int = 100, device: str = "cpu") -> CyclicNReport:
+    gen = torch.Generator(device=device).manual_seed(seed)
+    model = SpectralModelV18(n=n, rank=rank, arity=arity, cp_rank=cp_rank, device=device, dtype="float64", generator=gen)
 
     def rand_unit():
-        v = torch.complex(torch.randn(n, generator=gen, dtype=torch.float64), torch.randn(n, generator=gen, dtype=torch.float64))
+        v = torch.complex(torch.randn(n, generator=gen, dtype=torch.float64, device=device), torch.randn(n, generator=gen, dtype=torch.float64, device=device))
         return v / (torch.linalg.norm(v) + 1e-30)
 
     raw_defects = []
@@ -139,12 +139,12 @@ def cyclic_and_gji_report(seed: int = 0, *, n: int = 16, rank: int = 4, arity: i
     mutation_detects = mutation_diff > 1e-6
 
     # adversarial search maximizing the GJI ratio
-    xr = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
-    xi = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
-    yr = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
-    yi = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
-    zr = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
-    zi = torch.randn(n, generator=gen, dtype=torch.float64, requires_grad=True)
+    xr = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
+    xi = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
+    yr = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
+    yi = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
+    zr = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
+    zi = torch.randn(n, generator=gen, dtype=torch.float64, device=device, requires_grad=True)
     opt = torch.optim.Adam([xr, xi, yr, yi, zr, zi], lr=0.05)
     best_ratio = max(gji_ratios)
     for _ in range(adversarial_steps):

@@ -26,8 +26,8 @@ from spectral.certification_v18.model import SpectralModelV18, orthonormalize_co
 
 def random_unit_in_subspace(U: torch.Tensor, batch: int, *, generator: torch.Generator) -> torch.Tensor:
     r = U.shape[1]
-    re = torch.randn(r, batch, generator=generator, dtype=torch.float64)
-    im = torch.randn(r, batch, generator=generator, dtype=torch.float64)
+    re = torch.randn(r, batch, generator=generator, dtype=torch.float64, device=U.device)
+    im = torch.randn(r, batch, generator=generator, dtype=torch.float64, device=U.device)
     coeffs = torch.complex(re, im)
     coeffs = coeffs / torch.linalg.norm(coeffs, dim=0, keepdim=True)
     return U @ coeffs  # (n, batch)
@@ -59,9 +59,9 @@ class ClosureReport:
     adversarial_worst: float
 
 
-def closure_report(seed: int, *, n: int = 20, rank: int = 5, arity: int = 3, cp_rank: int = 5, n_samples: int = 2000, adversarial_steps: int = 200) -> ClosureReport:
-    gen = torch.Generator().manual_seed(seed)
-    model = SpectralModelV18(n=n, rank=rank, arity=arity, cp_rank=cp_rank, device="cpu", dtype="float64", generator=gen)
+def closure_report(seed: int, *, n: int = 20, rank: int = 5, arity: int = 3, cp_rank: int = 5, n_samples: int = 2000, adversarial_steps: int = 200, device: str = "cpu") -> ClosureReport:
+    gen = torch.Generator(device=device).manual_seed(seed)
+    model = SpectralModelV18(n=n, rank=rank, arity=arity, cp_rank=cp_rank, device=device, dtype="float64", generator=gen)
     U = orthonormalize_columns(model.u())
     defects = closure_defect_batch(model, U, n_samples, generator=gen)
     vals, _ = torch.sort(defects)
@@ -76,8 +76,8 @@ def closure_report(seed: int, *, n: int = 20, rank: int = 5, arity: int = 3, cp_
     # maximizes closure defect for a single fixed random y2 companion input.
     U_fixed = U.detach()
     r = U.shape[1]
-    coeff_re = torch.randn(r, generator=gen, dtype=torch.float64, requires_grad=False).clone().requires_grad_(True)
-    coeff_im = torch.randn(r, generator=gen, dtype=torch.float64, requires_grad=False).clone().requires_grad_(True)
+    coeff_re = torch.randn(r, generator=gen, dtype=torch.float64, device=device, requires_grad=False).clone().requires_grad_(True)
+    coeff_im = torch.randn(r, generator=gen, dtype=torch.float64, device=device, requires_grad=False).clone().requires_grad_(True)
     y2 = random_unit_in_subspace(U_fixed, 1, generator=gen)[:, 0].detach()
     opt = torch.optim.Adam([coeff_re, coeff_im], lr=0.05)
     extras = [model.anchor.detach() for _ in range(arity - 2)]
