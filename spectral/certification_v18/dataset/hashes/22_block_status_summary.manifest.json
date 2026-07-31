@@ -1,0 +1,10 @@
+{
+  "figure": "22_block_status_summary",
+  "generator": "spectral/certification_v18/dataset/generate_atlas_figures.py",
+  "source_data": "tables/22_block_status_summary.json",
+  "hashes": {
+    "png": "bdc7a2d72f7ede01c83eba3f54d731dfca5cd7ee9ba367072745b51cabbc8265",
+    "svg": "4df89858ab1af06804aacbd6bff213b8d0d03f478858cbbeb2c4dfb8f2737201",
+    "source_data": "cce5994089fae710c8ab75fab89fb4ba323fe8d17b0ef7dea00b3a820ea92758"
+  }
+}
