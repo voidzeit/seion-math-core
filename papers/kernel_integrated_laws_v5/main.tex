@@ -1,0 +1,775 @@
+\documentclass[11pt]{amsart}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs,tabularx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={Kernel-Integrated Typed Multilinear Laws: A Finite Core, a Conditioned Analytic Extension, and an Open Geometric Program},
+  pdfauthor={Eliuth Chavero Jasso},
+  pdfsubject={Typed multilinear laws, recursive orthogonal projection, nodewise error certificates, kernel realizations, truncated Hodge/spectral extensions},
+  pdfkeywords={multilinear tree, recursive projection, closure residual, nodewise certificate, kernel operator, Hodge theory, spectral dimension}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{openproblem}[theorem]{Open Problem}
+
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\op}{op}
+
+\title{Kernel-Integrated Typed Multilinear Laws:\\
+A Finite Core, a Conditioned Analytic Extension,\\
+and an Open Geometric Program}
+\author{Eliuth Chavero Jasso}
+\date{\today}
+
+\begin{document}
+\maketitle
+\markboth{Eliuth Chavero Jasso}{Kernel-Integrated Typed Multilinear Laws}
+
+\begin{abstract}
+We give a self-contained formalization of SEION / Kernel-Integrated Laws
+at three explicitly separated levels: a \emph{proved finite core}
+(typed multilinear laws, recursive orthogonal projection, and exact
+nodewise error propagation on finite composition trees), a
+\emph{conditioned analytic extension} (kernel realizations on
+$L^2$ spaces, truncated Hodge/cohomological compatibility, an induced
+Markov Laplacian), and an \emph{open geometric program} (continuum
+limits, microlocal regularity, algebraization) that is stated but not
+claimed. The central proved result is the ambient-to-projected
+coefficient improvement
+$E_T^{\mathrm{amb}} \le k\rho M^{k-1}L_T$ versus
+$E_T^{P} \le (k-1)\rho M^{k-1}L_T$
+for a finite typed composition tree with $k$ internal nodes, proved by
+an exact nodewise error-orthogonality identity together with induction.
+We are explicit throughout about what is proved unconditionally, what
+is proved only under stated hypotheses, what is demonstrated only in a
+bounded or truncated regime, and what remains open. No claim in this
+document is asserted stronger than the evidence in
+\S\S\ref{sec:xxvi} supports.
+\end{abstract}
+
+\tableofcontents
+
+\section{Scope and epistemic map}
+
+The canonical formulation separates three levels:
+\[
+\underbrace{\text{finite proved core}}_{\S\S\ref{sec:types}--\ref{sec:xiii}}
+\;\subset\;
+\underbrace{\text{conditioned analytic extension}}_{\S\S\ref{sec:xv}--\ref{sec:xxiii}}
+\;\subset\;
+\underbrace{\text{open geometric program}}_{\S\ref{sec:xxiv}}.
+\]
+The scientifically most defensible object here is not a physical
+theory, but a theory of multilinear laws, projection-based reduction,
+and structured error propagation.
+
+\section{Foundational algebraic data}
+\label{sec:types}
+
+\subsection{Type system}
+
+Let $\mathcal T$ be a finite set of types. To each $\tau \in \mathcal T$
+we associate a finite-dimensional Hilbert space $V_\tau$ over
+$\mathbb K \in \{\mathbb R, \mathbb C\}$. A \emph{typed signature} is a
+list $(\tau_1,\ldots,\tau_a;\tau_0)$ representing an operation with
+inputs in $V_{\tau_1},\ldots,V_{\tau_a}$ and output in $V_{\tau_0}$.
+
+\subsection{Typed $a$-ary law}
+
+A \emph{typed multilinear law} is a map
+$\mu : V_{\tau_1}\times\cdots\times V_{\tau_a} \to V_{\tau_0}$,
+multilinear in each argument. In orthonormal bases it is determined by
+a tensor
+$K \in V_{\tau_0}\otimes V_{\tau_1}^*\otimes\cdots\otimes V_{\tau_a}^*$,
+with coordinates
+\[
+\bigl[\mu(x_1,\ldots,x_a)\bigr]^{i_0}
+= \sum_{i_1,\ldots,i_a} K^{i_0}_{\ i_1\cdots i_a}\prod_{j=1}^{a} x_j^{i_j}.
+\]
+Its operator norm is
+$\lVert\mu\rVert_{\op} = \sup_{\lVert x_1\rVert=\cdots=\lVert x_a\rVert=1}\lVert \mu(x_1,\ldots,x_a)\rVert$.
+The computational formalization accepts dense, sparse, complex, typed,
+and CP-factorized laws, with arity and domains tracked explicitly.
+
+\section{CP representation}
+
+To avoid storing a tensor of size $d_0 d_1\cdots d_a$, a rank-$R$ CP
+representation is used:
+\[
+K = \sum_{r=1}^{R}\lambda_r\, o_r\otimes a_r^{(1)}\otimes\cdots\otimes a_r^{(a)},
+\qquad
+\mu(x_1,\ldots,x_a) = O\Bigl[\lambda\odot A^{(1)}x_1\odot\cdots\odot A^{(a)}x_a\Bigr],
+\]
+with $A^{(j)}:V_{\tau_j}\to\mathbb K^R$ and $O:\mathbb K^R\to V_{\tau_0}$.
+
+The CP representation is not unique: for nonzero scalars $c_r^{(j)}$
+with $c_r^{(0)}c_r^{(1)}\cdots c_r^{(a)}=1$, factors may be rescaled
+without changing $K$, and there is additional freedom under
+permutation of components. Comparison of factors must therefore be
+performed modulo scale $+$ phase $+$ permutation $+$ admissible gauge
+transformations.
+
+\begin{remark}
+CP factorization is a computational representation; on its own it does
+not constitute a new algebraic structure and does not by itself prove
+identifiability.
+\end{remark}
+
+\section{Symmetries and identities}
+
+\subsection{Cyclic symmetry}
+
+For an $a$-ary law, cyclicity means
+$\mu(x_1,\ldots,x_a) = \mu(x_2,\ldots,x_a,x_1)$.
+The cyclic projector on the tensor space is
+$\Pi_{\mathrm{cyc}} = \tfrac1a\sum_{j=0}^{a-1}\sigma^j$,
+where $\sigma$ rotates the input slots. Since $\sigma$ acts unitarily,
+$\Pi_{\mathrm{cyc}}^2=\Pi_{\mathrm{cyc}}$ and
+$\Pi_{\mathrm{cyc}}^*=\Pi_{\mathrm{cyc}}$, so
+$\mu_{\mathrm{cyc}} := \Pi_{\mathrm{cyc}}\mu$ is cyclic \emph{by
+construction}.
+
+\begin{remark}
+A zero cyclic residual after this operation is a structural identity,
+not evidence that the symmetry was learned.
+\end{remark}
+
+\subsection{Filippov's fundamental identity}
+
+For a ternary law $\mu$, one convention for the Filippov residual is
+\begin{align*}
+\operatorname{FI}_\mu(x_1,x_2;y_1,y_2,y_3)
+={}&\mu(x_1,x_2,\mu(y_1,y_2,y_3))\\
+&-\mu(\mu(x_1,x_2,y_1),y_2,y_3)\\
+&-\mu(y_1,\mu(x_1,x_2,y_2),y_3)\\
+&-\mu(y_1,y_2,\mu(x_1,x_2,y_3)),
+\end{align*}
+and the Filippov condition is $\operatorname{FI}_\mu = 0$.
+
+\begin{remark}
+FI, GJI, Jacobi, cyclicity, and associativity are distinct identities.
+A small residual for one does not imply the others.
+\end{remark}
+
+\section{Associator conventions}
+
+For a ternary operation there is no unique canonical associator
+without specifying how compositions are inserted.
+
+\subsection{Five-input ternary associator}
+\[
+A_\mu^{(5)}(x_1,\ldots,x_5)
+= \mu(\mu(x_1,x_2,x_3),x_4,x_5) - \mu(x_1,x_2,\mu(x_3,x_4,x_5)),
+\qquad A_\mu^{(5)}: V^5\to V.
+\]
+
+\subsection{Anchored binary reduction}
+
+Fixing an anchor $e\in V$, set $x\circ_e y := \mu(x,y,e)$. The induced
+binary associator is
+$A_e(x,y,z) = (x\circ_e y)\circ_e z - x\circ_e(y\circ_e z)$.
+
+\subsection{Operadic insertions}
+
+For an $a$-ary law, insertion at slot $i$ is $\mu\circ_i\mu$. In the
+ternary case,
+$(\mu\circ_1\mu)(x_1,\ldots,x_5)=\mu(\mu(x_1,x_2,x_3),x_4,x_5)$ and
+$(\mu\circ_3\mu)(x_1,\ldots,x_5)=\mu(x_1,x_2,\mu(x_3,x_4,x_5))$, so
+$A_\mu^{(5)} = \mu\circ_1\mu - \mu\circ_3\mu$.
+
+\begin{remark}
+These conventions have different domains and meanings and must not be
+merged under a single ``associator score.''
+\end{remark}
+
+\section{Curvature: definition versus theorem}
+
+\subsection{Constitutive curvature}
+
+One may \emph{define}, by convention, $R_{\mathrm{alg}} := A_\mu$. This
+is a definition of algebraic curvature, not an automatic identification
+with the standard curvature of a connection.
+
+\subsection{Curvature induced by left operators}
+
+For a binary product $\circ$, let $L_x z = x\circ z$ and
+$[x,y]=x\circ y - y\circ x$. Define
+$R_{\mathrm{std}}(x,y) := [L_x,L_y]-L_{[x,y]}$.
+
+\begin{theorem}
+\label{thm:curvature}
+With $A(x,y,z) = (x\circ y)\circ z - x\circ(y\circ z)$,
+\[
+R_{\mathrm{std}}(x,y)z = A(y,x,z) - A(x,y,z).
+\]
+\end{theorem}
+\begin{proof}
+\begin{align*}
+R_{\mathrm{std}}(x,y)z
+&= x\circ(y\circ z) - y\circ(x\circ z) - (x\circ y)\circ z + (y\circ x)\circ z\\
+&= \bigl[x\circ(y\circ z) - (x\circ y)\circ z\bigr]
+ - \bigl[y\circ(x\circ z) - (y\circ x)\circ z\bigr]\\
+&= -A(x,y,z) + A(y,x,z). \qedhere
+\end{align*}
+\end{proof}
+
+\begin{remark}
+An outright identity $R_{\mathrm{std}}=A$ requires additional
+hypotheses, particular symmetries, or a different convention. The
+universal identity currently defensible is the antisymmetrized
+difference of Theorem~\ref{thm:curvature}.
+\end{remark}
+
+\section{Projectors and the reduced law}
+
+\subsection{Reduced spaces}
+
+For each type $\tau$, let $W_\tau$ be another finite-dimensional
+Hilbert space and $Q_\tau : W_\tau \to V_\tau$ an isometry,
+$Q_\tau^*Q_\tau = I_{W_\tau}$. Define the orthogonal projector
+$P_\tau = Q_\tau Q_\tau^*$, which satisfies
+$P_\tau^2=P_\tau$, $P_\tau^*=P_\tau$, $\lVert P_\tau\rVert=1$.
+
+\subsection{Reduced law}
+
+For $\mu : V_{\tau_1}\times\cdots\times V_{\tau_a}\to V_{\tau_0}$, the
+\emph{reduced law} is
+\[
+\bar\mu(z_1,\ldots,z_a) := Q_{\tau_0}^{*}\,\mu(Q_{\tau_1}z_1,\ldots,Q_{\tau_a}z_a),
+\]
+with ambient realization
+$Q_{\tau_0}\bar\mu(z_1,\ldots,z_a) = P_{\tau_0}\,\mu(Q_{\tau_1}z_1,\ldots,Q_{\tau_a}z_a)$.
+
+\subsection{Exact closure}
+
+The subspace family is invariant under $\mu$ if
+$\mu(\ran P_{\tau_1},\ldots,\ran P_{\tau_a}) \subseteq \ran P_{\tau_0}$,
+equivalently
+$(I-P_{\tau_0})\,\mu(P_{\tau_1}x_1,\ldots,P_{\tau_a}x_a)=0$ for all
+$x_i$.
+
+\subsection{Closure leakage}
+
+The leakage map is
+$\mathcal C_\mu := (I-P_{\tau_0})\,\mu(P_{\tau_1}\cdot,\ldots,P_{\tau_a}\cdot)$,
+with norm $\rho_\mu := \lVert\mathcal C_\mu\rVert_{\op}$, so
+\[
+\bigl\lVert (I-P_{\tau_0})\,\mu(P_{\tau_1}x_1,\ldots,P_{\tau_a}x_a)\bigr\rVert
+\le \rho_\mu \prod_{i=1}^{a}\lVert x_i\rVert.
+\]
+Experiments also use a normalized diagnostic
+\[
+\mathcal E_{\mathrm{closure}} := \mathbb E\left[\frac{\lVert(I-P)\mu(PX_1,\ldots,PX_a)\rVert^2}
+{\lVert\mu(PX_1,\ldots,PX_a)\rVert^2+\varepsilon}\right].
+\]
+
+\begin{remark}
+The operator norm $\rho_\mu$ and the sampled average
+$\mathcal E_{\mathrm{closure}}$ are not the same quantity; the latter
+does not automatically certify the former.
+\end{remark}
+
+\section{Typed composition trees}
+
+This is currently the strongest mathematical core of the theory. Let
+$T$ be a finite, ordered, rooted tree. Each internal node $v$ carries
+an arity $a_v$, an output type $\tau(v)$, input types
+$\tau(v,1),\ldots,\tau(v,a_v)$, and a law
+$\mu_v : \prod_{j=1}^{a_v}V_{\tau(v,j)} \to V_{\tau(v)}$. Edges must
+respect types; an ill-typed tree carries no mathematical semantics.
+Write $k(T) = \lvert \Int T\rvert$ for the number of internal nodes.
+
+\section{Two evaluations of the tree}
+
+\subsection{Ambient evaluation}
+
+For a leaf $\ell$ with reduced datum $z_\ell \in W_{\tau(\ell)}$, set
+$F_\ell = Q_{\tau(\ell)}z_\ell$. At an internal node,
+$F_v = \mu_v(F_{c_1},\ldots,F_{c_{a_v}})$: no intermediate result is
+projected.
+
+\subsection{Recursively projected evaluation}
+
+At leaves, $R_\ell = Q_{\tau(\ell)}z_\ell$; at each internal node,
+\[
+R_v := P_{\tau(v)}\,\mu_v(R_{c_1},\ldots,R_{c_{a_v}}).
+\]
+Define the nodewise error $D_v = F_v - R_v$ and its components
+$D_v^P = P_v D_v$, $D_v^N = (I-P_v)D_v$, separating retained error from
+normal leakage.
+
+\section{Exact root-error geometry}
+\label{sec:root-geometry}
+
+Let $r$ be the root; write $F=F_r$, $R=R_r$, $P=P_r$, and define
+\[
+E_T^{\mathrm{amb}} = \lVert F-R\rVert,\quad
+E_T^{P} = \lVert PF-R\rVert,\quad
+E_T^{N} = \lVert (I-P)F\rVert,\quad
+E_T^{\mathrm{red}} = \lVert Q^*F - Q^*R\rVert.
+\]
+
+\begin{theorem}[Error orthogonality]
+\label{thm:orthogonality}
+$(E_T^{\mathrm{amb}})^2 = (E_T^P)^2 + (E_T^N)^2$ and
+$E_T^{\mathrm{red}} = E_T^P$.
+\end{theorem}
+\begin{proof}
+Since $R\in\ran P$, $F-R = (PF-R)+(I-P)F$, and the two terms are
+orthogonal (one lies in $\ran P$, the other in its complement), giving
+the first identity. Since $Q^*(I-P)=0$ and $Q^*$ is isometric on
+$\ran P$, $Q^*F-Q^*R = Q^*(PF-R)$ has the same norm as $PF-R$, giving
+the second.
+\end{proof}
+
+The reduced system observes exactly the projected component of the
+ambient error.
+
+\section{Exact subset expansion}
+
+Let $v$ have arity $a$ and write $F_i=R_i+D_i$ for its children. By
+multilinearity, for each nonempty $S\subseteq[a]$ define
+$y_i^S = D_i$ if $i\in S$, else $R_i$, and let the local residual be
+$r_v(R_1,\ldots,R_a) = (I-P_v)\mu_v(R_1,\ldots,R_a)$.
+
+\begin{theorem}[Exact nodewise expansion]
+\label{thm:subset}
+\[
+D_v = r_v(R_1,\ldots,R_a) + \sum_{\varnothing\neq S\subseteq[a]} \mu_v(y_1^S,\ldots,y_a^S).
+\]
+\end{theorem}
+This identity is exact. Terms with $\lvert S\rvert=1$ are single-branch
+propagation; $\lvert S\rvert\ge 2$ terms represent genuine
+cross-branch interaction. Since $P_v r_v = 0$,
+\[
+D_v^P = \sum_{\varnothing\neq S\subseteq[a]} P_v\mu_v(y_1^S,\ldots,y_a^S).
+\]
+A node's own local leakage does not appear in its own projected error,
+but a child's normal leakage can become tangential output,
+$P_v\mu_v(\ldots,D_i^N,\ldots)\neq 0$ — the \emph{normal-to-tangent
+mechanism}.
+
+\section{Mixed-mask calculus}
+
+Each input slot of a node may be in one of three states
+$\mathfrak S=\{R,P,N\}$. For a mask
+$\sigma=(\sigma_1,\ldots,\sigma_a)\in\mathfrak S^a$, set
+$Z_i^\sigma = R_i$ if $\sigma_i=R$, $D_i^P$ if $\sigma_i=P$, $D_i^N$ if
+$\sigma_i=N$. Then
+\[
+\mu_v(F_1,\ldots,F_a) = \sum_{\sigma\in\{R,P,N\}^a}\mu_v(Z_1^\sigma,\ldots,Z_a^\sigma).
+\]
+The mask $(R,\ldots,R)$ contains the reduced evaluation and the local
+residual; other masks contain error propagation and interaction.
+
+For $\chi\in\{P,N\}$, block gains
+$\beta_v^\chi(\sigma) = \lVert \Pi_v^\chi\,\mu_v(\Pi_{c_1}^{\sigma_1}\cdot,\ldots,\Pi_{c_a}^{\sigma_a}\cdot)\rVert_{\op}$
+(with $\Pi^R=\Pi^P=P$, $\Pi^N=I-P$, though $R$ and $P$ states retain
+different magnitude bounds) satisfy the recurrence
+\[
+b_v^\chi \le \lambda_v^\chi + \sum_{\sigma\neq(R,\ldots,R)}\beta_v^\chi(\sigma)\prod_i b_i^{\sigma_i},
+\qquad \lambda_v^P=0,\quad \lambda_v^N\le\rho_v\prod_i b_i^R.
+\]
+This recurrence is a finer nodewise certificate than a single global
+norm; its soundness is proved for the declared finite configuration.
+
+\section{Scalar telescoping and optimal order}
+
+To compare $\mu(F_1,\ldots,F_a)$ against $\mu(R_1,\ldots,R_a)$, slots
+are swapped one at a time. With $e_i$ an error bound, $r_i,f_i$ bounds
+on $\lVert R_i\rVert,\lVert F_i\rVert$, $G_i$ a slot gain, and
+$w_i=G_ie_i$, the cost of order $\pi$ is
+\[
+C(\pi) = \sum_{t=1}^{a} w_{\pi_t}\prod_{s<t}r_{\pi_s}\prod_{s>t}f_{\pi_s}.
+\]
+
+\begin{proposition}
+Adjacent transposition favors placing $i$ before $j$ iff
+$w_i(f_j-r_j) \le w_j(f_i-r_i)$.
+\end{proposition}
+Ordering by this rule minimizes $C(\pi)$ within this declared scalar
+certificate family — not among all conceivable bounding methods.
+
+\section{The structural $k\to k-1$ theorem}
+\label{sec:xiii}
+
+\subsection{Uniform hypotheses}
+
+Suppose $\lVert\mu_v\rVert_{\op}\le M$ for every node, and
+\[
+\lVert (I-P_v)\mu_v(P_{c_1}\cdot,\ldots,P_{c_a}\cdot)\rVert_{\op}\le\rho.
+\]
+Let $L_T = \prod_{\ell\in\text{Leaves}(T)}\lVert z_\ell\rVert$.
+
+\begin{theorem}[Ambient-to-projected coefficient improvement]
+\label{thm:kk1}
+For every finite, well-typed tree with $k$ internal nodes,
+\[
+E_T^{\mathrm{amb}} \le k\rho M^{k-1}L_T,
+\qquad
+E_T^{N} \le k\rho M^{k-1}L_T,
+\qquad
+E_T^{P} = E_T^{\mathrm{red}} \le (k-1)\rho M^{k-1}L_T.
+\]
+\end{theorem}
+\begin{proof}
+Let the root have arity $a$, subtrees $T_i$, $k_i=k(T_i)$, so
+$k = 1+\sum_i k_i$. By induction, $\lVert F_i-R_i\rVert \le k_i\rho M^{k_i-1}L_i$
+and $\lVert F_i\rVert,\lVert R_i\rVert \le M^{k_i}L_i$. Telescoping over
+children,
+\begin{align*}
+\lVert\mu(F_1,\ldots,F_a)-\mu(R_1,\ldots,R_a)\rVert
+&\le \sum_i M\cdot k_i\rho M^{k_i-1}L_i\prod_{j\neq i}M^{k_j}L_j\\
+&= \Bigl(\sum_i k_i\Bigr)\rho M^{k-1}L_T = (k-1)\rho M^{k-1}L_T.
+\end{align*}
+The root's own new residual satisfies
+$\lVert(I-P)\mu(R_1,\ldots,R_a)\rVert \le \rho M^{k-1}L_T$, so
+$E_T^{\mathrm{amb}} \le (k-1)\rho M^{k-1}L_T + \rho M^{k-1}L_T = k\rho M^{k-1}L_T$.
+But projecting the root gives $P(I-P)\mu(R_1,\ldots,R_a)=0$: the
+root's own local residual vanishes under projection, leaving
+$E_T^{P}\le (k-1)\rho M^{k-1}L_T$.
+\end{proof}
+
+\begin{remark}
+The improvement does not depend on tree balance or any statistical
+distribution; it comes from the orthogonality of the final projection
+(Theorem~\ref{thm:orthogonality}).
+\end{remark}
+
+\subsection{Base cases}
+
+For $k=1$: $F=\mu(Qz_1,\ldots,Qz_a)$, $R=P\mu(Qz_1,\ldots,Qz_a)$, so
+$PF-R=0$ and $E_T^P=E_T^{\mathrm{red}}=0$ exactly, though
+$E_T^{\mathrm{amb}}$ may be nonzero. For $k=2$,
+$T(x,y,z)=\mu_v(\mu_u(x,y),z)$: $E_T^{\mathrm{amb}}\le 2\rho ML_T$ but
+$E_T^{P}\le \rho ML_T$ — leakage created at $u$ can be turned tangential
+by $v$; leakage created at $v$ itself vanishes on projection.
+
+\section{Path-sum certificate}
+
+Given a valid scalar recurrence $B_v \le \lambda_v + \sum_j h_{v,j}B_{c_j}$
+(with $\lambda_v$ a local residual source and $h_{v,j}$ a transport
+gain), recursive substitution gives
+\[
+B_{T,\mathrm{path}}^{\mathrm{amb}}
+= \sum_{v\in\Int T} \lambda_v \prod_{(a,j)\in\mathrm{path}(v,\mathrm{root})} h_{a,j},
+\qquad
+B_{T,\mathrm{path}}^{P}
+= \sum_{\substack{v\in\Int T\\ v\neq\mathrm{root}}} \lambda_v \prod_{(a,j)\in\mathrm{path}(v,\mathrm{root})} \tilde h_{a,j},
+\]
+where the root's source is omitted in the projected version and the
+last factor uses the projected output gain. This attributes error to
+each node and path individually rather than reporting only one global
+constant.
+
+\section{Signed forests and identities}
+\label{sec:signed-forests}
+
+For a finite compatible combination $\mathcal F = \sum_{\alpha=1}^m c_\alpha T_\alpha$,
+the triangle inequality gives
+$E_{\mathcal F}^{P} \le \sum_\alpha \lvert c_\alpha\rvert B_{T_\alpha}^P$.
+For the five-input ternary associator $A_\mu^{(5)}=T_1-T_2$ with
+$k(T_1)=k(T_2)=2$, each contributes at most $(k-1)\rho ML=\rho ML$, so
+$\lvert A_\mu^{(5),P}\rvert \le 2\rho ML$ (the ambient triangle bound
+would be $4\rho ML$).
+
+\begin{openproblem}
+The coefficient $2$ is an immediate bound; its sharpness, and whether
+shared-DAG or adversarial whole-forest cancellation can lower it, are
+open (see \S\ref{sec:xxvi}).
+\end{openproblem}
+
+\section{Representation error}
+
+Suppose each $\mu_v$ is replaced by an approximation $\widehat\mu_v$
+with $\lVert\mu_v\rVert\le M$, $\lVert\mu_v-\widehat\mu_v\rVert\le\delta$,
+$\lVert\widehat\mu_v\rVert\le M+\delta$. For a homogeneous tree of $k$
+nodes,
+\[
+E_{\mathrm{repr}} \le k\delta(M+\delta)^{k-1}L_T,
+\]
+separating law-approximation error from recursive-projection error: a
+CP or quantized representation introduces a term distinct from closure
+leakage.
+
+\section{Extremal constants}
+
+With $\eta=\rho/M$, the optimal projected constant for a tree $T$ is
+\[
+C_T^{P}(\eta) := \sup_{\mathcal A(T,\eta)} \frac{E_T^P}{\rho M^{k-1}L_T},
+\]
+over the admissible class $\mathcal A(T,\eta)$. Theorem~\ref{thm:kk1}
+proves $C_T^P(\eta)\le k-1$ but not $C_T^P(\eta)=k-1$. Open
+possibilities: equality, strict inequality, or a finer dependence
+$C_T^P(\eta) = C(T,\eta,\dim V,\operatorname{rank}P,\text{arities})$.
+Current evidence includes lower constructions and certified small
+cells, but sharpness at $\eta>0$ remains open.
+
+\section{Kernel-integrated realization}
+\label{sec:xv}
+
+\subsection{Function-space setting}
+
+Let $(X,\mu)$ be a $\sigma$-finite measure space and $H=L^2(X,\mu)$.
+
+\subsection{Ternary kernel}
+
+For $K:X^4\to\mathbb C$, define
+\[
+T_K(f,g,h)(p) = \iiint_{X^3} K(p;q,r,s)f(q)g(r)h(s)\,d\mu(q)\,d\mu(r)\,d\mu(s).
+\]
+
+\begin{proposition}
+If $K\in L^2(X^4)$, then $T_K:H^3\to H$ is bounded with
+$\lVert T_K(f,g,h)\rVert_2 \le \lVert K\rVert_{L^2(X^4)}\lVert f\rVert_2\lVert g\rVert_2\lVert h\rVert_2$.
+\end{proposition}
+\begin{proof}
+Cauchy--Schwarz on $X^3$ followed by Fubini in the output variable.
+\end{proof}
+The $n$-ary construction uses $K_n\in L^2(X^{n+1})$ and gives
+$\lVert T_{K_n}(f_1,\ldots,f_n)\rVert_2 \le \lVert K_n\rVert_2\prod_j\lVert f_j\rVert_2$.
+
+\subsection{Stability in the kernel}
+
+If $K,\widetilde K\in L^2(X^4)$,
+$\lVert T_K(f,g,h)-T_{\widetilde K}(f,g,h)\rVert_2 \le \lVert K-\widetilde K\rVert_2\lVert f\rVert_2\lVert g\rVert_2\lVert h\rVert_2$,
+so $K_n\to K$ in $L^2$ implies strong convergence on each fixed triple.
+
+\section{Kernel of the associator}
+
+Two composite kernels arise for five inputs:
+\[
+K_L(p;q_1,\ldots,q_5) = \int_X K(p;u,q_4,q_5)K(u;q_1,q_2,q_3)\,d\mu(u),
+\]
+\[
+K_R(p;q_1,\ldots,q_5) = \int_X K(p;q_1,q_2,u)K(u;q_3,q_4,q_5)\,d\mu(u).
+\]
+With defect kernel $\Phi_K = K_L-K_R$,
+\begin{align*}
+A_K(f_1,\ldots,f_5)(p) &= T_K(T_K(f_1,f_2,f_3),f_4,f_5)(p) - T_K(f_1,f_2,T_K(f_3,f_4,f_5))(p)\\
+&= \int_{X^5}\Phi_K(p;q_1,\ldots,q_5)\prod_{j=1}^5 f_j(q_j)\,d\mu^{\otimes 5}.
+\end{align*}
+Define the associator energy $\rho_A(K) := \lVert\Phi_K\rVert_{L^2(X^6)}^2$.
+
+\begin{proposition}
+If $\Phi_K=0$ a.e., the product is associative under the stated
+convention; under suitable density/integrability conditions, if the
+associator vanishes on all products of test functions then
+$\Phi_K=0$ a.e.\ (converse also holds).
+\end{proposition}
+
+\section{Variational program}
+
+Let $\theta$ parametrize a law $\mu_\theta$, kernel $K_\theta$, and
+possibly a projector $P_\theta$. A general energy is
+\[
+\mathcal E(\theta) = \lambda_A\mathcal E_A + \lambda_C\mathcal E_C
++ \lambda_{\mathrm{cyc}}\mathcal E_{\mathrm{cyc}} + \lambda_{\mathrm{FI}}\mathcal E_{\mathrm{FI}}
++ \lambda_R\mathcal E_R + \lambda_P\mathcal E_P,
+\]
+e.g.\ $\mathcal E_A = \mathbb E\lVert A_{\mu_\theta}(X)\rVert^2$,
+$\mathcal E_C = \mathbb E\lVert(I-P_\theta)\mu_\theta(P_\theta X_1,\ldots,P_\theta X_a)\rVert^2$,
+$\mathcal E_P = \lVert P_\theta^2-P_\theta\rVert_F^2 + \lVert P_\theta-P_\theta^*\rVert_F^2$.
+Parametrizing $P=QQ^*$, $Q^*Q=I_r$ places $Q$ on the Stiefel manifold
+$\operatorname{St}(d,r)=\{Q\in\mathbb K^{d\times r}: Q^*Q=I_r\}$, with
+tangent space $T_Q\operatorname{St}(d,r)=\{Z: Q^*Z+Z^*Q=0\}$; for a
+Euclidean gradient $G$, the Riemannian gradient is
+$\operatorname{grad}\mathcal E(Q) = G-Q\,\operatorname{sym}(Q^*G)$.
+
+\begin{remark}
+Finding a numerical minimum does not prove it is global, nor that the
+recovered subspace is canonical.
+\end{remark}
+
+\section{Finite cohomology and truncated Hodge theory}
+\label{sec:xxiii}
+
+\subsection{Cochain complex}
+
+Let $C^0\xrightarrow{d_0}C^1\xrightarrow{d_1}\cdots$ be a finite
+complex with $d_{p+1}d_p=0$, and
+$H^p(C,d) = \ker d_p/\operatorname{im}d_{p-1}$.
+
+\subsection{Descent of an operator}
+
+A graded operator $T$ induces $T_*:H^p\to H^p$ if
+$T(\ker d_p)\subseteq\ker d_p$ and
+$T(\operatorname{im}d_{p-1})\subseteq\operatorname{im}d_{p-1}$; a
+sufficient condition is $Td=dT$, since then $x\sim x+dy \Rightarrow
+Tx+d(Ty)$, so $[Tx]$ is well defined.
+
+\subsection{Hodge compatibility}
+
+With inner products and adjoint $d^*$, let
+$\Delta = dd^*+d^*d$. If $[T,d]=0$ and $[T,d^*]=0$ then $[T,\Delta]=0$,
+so $T$ preserves the harmonic subspaces $\mathcal H^p=\ker\Delta_p$.
+
+\subsection{Spectral truncation}
+
+On a compact manifold, let $\Pi_{\le\Lambda}$ be the spectral projector
+of the Hodge Laplacian and $V_\Lambda=\ran\Pi_{\le\Lambda}$. For
+curried operators $T^K_{e_i,e_j}$, define
+\[
+\mathcal E_d^\Lambda(K) = \sum_{i,j}\Bigl(
+\lVert[d,T^K_{e_i,e_j}]\Pi_{\le\Lambda}\rVert_{\mathrm{HS}}^2
++\lVert[d^*,T^K_{e_i,e_j}]\Pi_{\le\Lambda}\rVert_{\mathrm{HS}}^2\Bigr).
+\]
+If $\mathcal E_d^\Lambda(K)=0$, the operators commute with $d,d^*$
+within the truncation and descend to truncated cohomology. The
+proposed total functional is
+$\mathcal E_{\mathrm{total}}^\Lambda(K) = \mathcal E_{\mathrm{assoc}}^\Lambda(K)+\eta\,\mathcal E_d^\Lambda(K)$.
+
+\begin{remark}
+Being a local minimum does not by itself imply
+$\mathcal E_d^\Lambda=0$; that conclusion needs an additional
+control/surjectivity hypothesis on variations of the defect map.
+\end{remark}
+
+\section{Markov operator and induced Laplacian}
+
+Suppose a declared kernel contraction yields a symmetric nonnegative
+function $W_K(p,s)=W_K(s,p)\ge0$. Set
+$d_K(p)=\int_X W_K(p,s)\,d\mu(s)$ and, where $d_K(p)>0$,
+$P_K(p,s)=W_K(p,s)/d_K(p)$. With $d\nu(p)=d_K(p)\,d\mu(p)$,
+$(P_Kf)(p)=\int_X P_K(p,s)f(s)\,d\mu(s)$, and $\Delta_K = I-P_K$,
+$P_K$ is self-adjoint on $L^2(X,\nu)$ and
+\[
+\langle f,\Delta_K f\rangle_{L^2(\nu)}
+= \frac12\iint \lvert f(p)-f(s)\rvert^2 W_K(p,s)\,d\mu(p)\,d\mu(s),
+\]
+so $\Delta_K\ge0$. If $e^{-t\Delta_K}$ is trace class, let
+$\Theta(t)=\Tr(e^{-t\Delta_K})$. If $\Theta(t)\sim Ct^{-d_s/2}$ as
+$t\downarrow0$, the spectral dimension is
+$d_s = -2\lim_{t\downarrow0}\tfrac{d\log\Theta(t)}{d\log t}$.
+
+\begin{remark}
+Existence of this limit is an additional hypothesis, not an automatic
+consequence of the ternary kernel.
+\end{remark}
+
+\section{Multiscale structure}
+\label{sec:xxiv}
+
+Let $(V_N,\mu_N,P_N)$ be a family indexed by resolution $N$, with
+prolongation maps $J_N^M:V_N\to V_M$ and restriction maps
+$R_M^N:V_M\to V_N$. Define the law transport defect
+$\mathcal D_\mu^{N,M} = J_N^M\mu_N - \mu_M(J_N^M\cdot,\ldots,J_N^M\cdot)$
+and the projector transport defect
+$\mathcal D_P^{N,M} = P_MJ_N^M - J_N^MP_N$. Subspace distances may be
+measured via $\lVert P_M - J_N^MP_NR_M^N\rVert$ or principal angles.
+
+\begin{remark}
+A finite decreasing sequence of such values does not by itself
+establish a continuum limit. That would additionally require explicit
+topologies, uniform bounds, compactness control, convergence of laws,
+convergence of projectors, stability of the identities, and
+identification of the limiting operator. The present computational
+results are correctly limited to finite observations of transport, not
+a continuum claim.
+\end{remark}
+
+\section{The complete canonical object}
+
+The finite mathematical structure can be summarized as
+\[
+\mathfrak S = \Bigl(\mathcal T,\ \{V_\tau,W_\tau,Q_\tau,P_\tau\}_{\tau\in\mathcal T},\ \{\mu_v\}_v,\ \{K_v\}_v,\ \{A_v\}_v,\ \mathcal E,\ T,\ \mathcal C,\ \mathcal Z\Bigr),
+\]
+with $\mathcal T$ the types; $V_\tau,W_\tau$ ambient/reduced spaces;
+$Q_\tau$ isometric inclusions; $P_\tau$ projectors; $\mu_v$ multilinear
+laws; $K_v$ tensors or kernels; $A_v$ declared composition defects;
+$\mathcal E$ functionals; $T$ the composition tree/forest; $\mathcal C$
+error certificates; $\mathcal Z$ proof/exactness/evidence artifacts.
+The canonical chain is
+\begin{align*}
+\text{typed space} &\to \text{multilinear law} \to \text{associator}
+\to \text{closure leakage} \to \text{projector}\\
+&\to \text{reduced law}
+\to \text{recursive tree} \to \text{tangent-normal calculus}
+\to \text{global certificate}.
+\end{align*}
+
+\section{Exact mathematical status}
+\label{sec:xxvi}
+
+\subsection{Proved in the finite core}
+\[
+(E_T^{\mathrm{amb}})^2 = (E_T^P)^2+(E_T^N)^2,
+\qquad
+E_T^{\mathrm{red}}=E_T^P,
+\qquad
+D_v = r_v+\sum_{\varnothing\neq S}\mu_v(y^S),
+\]
+\[
+E_T^{\mathrm{amb}} \le k\rho M^{k-1}L_T,
+\qquad
+E_T^{P}=E_T^{\mathrm{red}} \le (k-1)\rho M^{k-1}L_T,
+\]
+\[
+R_{\mathrm{std}}(x,y)z = A(y,x,z)-A(x,y,z),
+\qquad
+K\in L^2(X^{a+1}) \Longrightarrow T_K \text{ is bounded multilinear},
+\]
+\[
+Td=dT \Longrightarrow T \text{ descends to cohomology}.
+\]
+
+\subsection{Proved, but of limited scope}
+Soundness of the mixed-mask recurrence; the path-sum identity for the
+declared recurrence; the optimal order within the declared telescoping
+family; the triangle bound for signed forests; stability under tensor
+perturbation; self-adjointness of the induced Laplacian under stated
+symmetry and positivity.
+
+\subsection{Open}
+The exact value of $C_T^P(\eta)$; the exact constant for $k=2$;
+per-topology constants for $k=3$; sharpness of $k-1$; sharpness of the
+associator's coefficient $2$; cancellation-aware certificates;
+informational optimality of the mixed-mask calculus; the continuum
+limit; membership in $\Psi^0$; microlocal regularity; $D$-modules and
+the Riemann--Hilbert correspondence; algebraization of the limiting
+projector; theorem-to-theorem novelty.
+
+\section{Final synthesis}
+
+The defensible mathematical formalization of SEION is a finite theory
+of typed multilinear laws, approximately invariant projectors, and
+nodewise error propagation on composition trees. Its current main
+theorem is
+\[
+E_T^{P} \le (k-1)\rho M^{k-1}L_T,
+\]
+and its central mechanism is that internal leakage can return to
+tangent, but the root's own normal leakage is eliminated exactly
+(Theorem~\ref{thm:orthogonality}). The kernel, cohomology, Hodge, and
+spectral-operator extensions are mathematically formulated in a bounded
+or truncated regime. The passage to the continuum, microlocal geometry,
+and algebraization remain a conditioned program, not a closed theory.
+
+\end{document}
