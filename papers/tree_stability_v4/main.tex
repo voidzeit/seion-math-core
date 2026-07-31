@@ -472,6 +472,78 @@ cancellation theorem; adversarial values are lower bounds.
 \resizebox{\textwidth}{!}{\input{tables/signed_expression_constants}}
 \end{table}
 
+\subsection{Adversarial cancellation-aware search (follow-up session)}
+\label{sec:signed-followup}
+
+The block-G pipeline that produced Table~\ref{tab:signed} left its
+\texttt{gradient\_adversarial\_constant}/\texttt{derivative\_free\_constant}
+columns explicitly \texttt{NaN} (\texttt{optimizer\_status =
+"EXTENDED\_PENDING\_RESOURCE\_GATE"}) --- an honestly-labeled gap, not a
+silently dropped one, and exactly Open Problem~3 below. A follow-up
+session filled it in for the five priority named forests: 4{,}000
+random-tensor trials plus 200 derivative-free local-refinement steps
+each (operator norm numerically normalized to $\sim 1$, matching the
+pipeline's existing natural-units convention), independently random leaf
+inputs rather than the pipeline's original identical-unit-input
+convention (a real methodological correction found in the process ---
+identical inputs at every leaf can trivially collapse
+permutation-antisymmetric terms regardless of the law).
+
+\begin{center}
+\small
+\begin{tabular}{lrrrl}
+\toprule
+Forest & Triangle bound & New lower bound & Ratio & Verdict \\
+\midrule
+five-input ternary associator & 2.0 & 1.373 & 0.686 & improvable, open \\
+anchored associator & 2.0 & 1.658 & 0.829 & improvable, open \\
+Jacobiator (3-term cyclic) & 3.0 & 2.983 & 0.994 & \textsc{sharp} \\
+Filippov fundamental identity & 4.0 & 1.664 & 0.416 & open, widest gap \\
+declared 6-term GJI variant & 6.0 & $\sim 0$ & $\sim 0$ & see below \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Jacobiator result is a genuine negative result, not merely an
+improved number: the plain triangle inequality is empirically not
+improvable for the Jacobiator under this projected-error metric, so
+cancellation-aware reasoning specifically does not help there --- useful
+to know before spending further effort on it. The declared 6-term GJI
+variant is the more surprising finding: it evaluated to machine-precision
+zero (ambient, projected, \emph{and} normal error, $10^{-16}$ to
+$10^{-21}$) across every one of the 4{,}000 trials plus five independently
+reseeded spot checks, under both leaf-input conventions. This looks like
+a formal combinatorial identity (vanishing for \emph{any} ternary law,
+not a property of special laws) rather than a genuine bound target ---
+consistent with this construction's own documentation already hedging
+that no equivalence to another author's GJI convention had been checked.
+Classified \textsc{not\_certifiable\_as\_defined} rather than assigned a
+spurious sharpness verdict for a quantity that may not measure anything;
+symbolic verification of the apparent identity is left as explicit
+follow-up. Full detail: \texttt{docs/research/signed\_forest\_terminal\_status\_v5.md}.
+
+\subsection{Terminal status for $k=2$ and $k=3$ (follow-up session)}
+\label{sec:k23-followup}
+
+Re-verifying (not re-deriving) the existing atlas
+(\texttt{artifacts/index/constants\_atlas\_v3.csv}, 7{,}065 rows) directly
+rather than trusting a prior summary: at $k=2$, 513 rows split by error
+type show the projected-error bound reaches exact optimality
+(\textsc{exact\_optimal\_constant}, gap 0) for 6 of 75 homogeneous
+gated-rotation configurations, but no ambient- or normal-error row anywhere
+reaches global optimality; gaps range from $3.75\times10^{-7}$ (as
+$\eta\to0$, matching this paper's own stated asymptotic caveat) to a full
+100\%. At $k=3$ (1{,}053 rows), no configuration or error type reaches
+global optimality; the projected-error gap floor rises to 35\%. Terminal
+states: \texttt{OPEN\_K2\_WITH\_CERTIFIED\_GAP},
+\texttt{OPEN\_K3\_WITH\_CERTIFIED\_TOPOLOGY\_GAPS} --- legitimate,
+precisely-scoped exit states rather than an unresolved ``still open.''
+No new sharpness proof or refutation was attempted this pass (real
+unsolved extremal-optimization mathematics, correctly left as such rather
+than rushed); \texttt{approval\_status: PENDING\_HUMAN\_REVIEW} on the
+underlying theorems in \texttt{claims/theorem\_registry\_v3.yaml} was left
+untouched. Full detail: \texttt{docs/research/track\_t\_v5\_terminal\_status\_k2\_k3.md}.
+
 \section{Certified small-case optimization}
 
 An explicit attained value is a rigorous lower bound only after its
@@ -689,14 +761,33 @@ The central open questions are:
 \item decide whether dimension or projector rank can improve upon embedded
 planar constructions;
 \item obtain cancellation-aware certified constants for associator, FI, GJI,
-and Jacobiator forests;
+and Jacobiator forests --- partially addressed
+(\S\ref{sec:signed-followup}): the Jacobiator is now known
+\textsc{sharp} (a genuine negative result closing that specific
+sub-question), the associator and Filippov identities have substantially
+tighter empirical lower bounds than previously recorded but remain open,
+and one declared GJI variant is now suspected to be a vacuous identity
+rather than a meaningful target, pending symbolic confirmation;
 \item characterize when mixed-mask, path-sum, and optimized telescoping
 certificates dominate one another;
 \item replace Frobenius operator bounds by validated tensor spectral-norm
 certificates at useful scale; and
 \item complete an independent prior-art and proof audit sufficient to change
-the novelty status, if justified.
+the novelty status, if justified --- a first pass now exists
+(\texttt{docs/research/novelty\_matrix\_v5.md}), every verdict recorded
+\texttt{PENDING\_HUMAN\_REVIEW}; no verdict in it is \textsc{novel}
+outright, and it has not yet been checked against the specific numerical
+findings of \S\ref{sec:signed-followup}, itself an open item.
 \end{enumerate}
+
+The exact fixed-$\eta$ constant $C_T^P(\eta)$ (Open Problem~1) is also
+now backed by a directly re-verified terminal classification for $k=2$
+and $k=3$ rather than an unresolved ``still exploring'' state ---
+\texttt{OPEN\_K2\_WITH\_CERTIFIED\_GAP} and
+\texttt{OPEN\_K3\_WITH\_CERTIFIED\_TOPOLOGY\_GAPS}, respectively
+(\S\ref{sec:k23-followup}). This narrows, but does not resolve, Open
+Problem~1: sharpness at fixed $\eta>0$ remains a genuine open
+optimization problem.
 
 \section{Conclusion}
 
