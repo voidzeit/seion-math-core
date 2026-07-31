@@ -53,7 +53,11 @@ per-mode anomaly; and a methodological error caught by our own required
 negative control --- comparing subspace bases via free-unitary Procrustes,
 which is vacuous because the unitary group acts transitively on
 same-size orthonormal frames --- is documented and fixed with principal
-angles. No block in this pass reaches a state stronger than
+angles. A follow-up 416-cell sweep across blocks A/G/H/N (Section~\ref{sec:sweep})
+extends this to a real grid rather than single configurations, and answers
+a concrete scheduling question: GPU never overtakes CPU for these blocks
+anywhere in $n\in\{12,24,48,96\}$, a stable $\sim 3\times$ CPU advantage
+throughout, not a small-scale artifact. No block in this pass reaches a state stronger than
 \textsc{empirical\_screening\_pass} or \textsc{statistically\_validated\_pass}
 for any scientific (as opposed to purely algebraic/structural) claim, and
 no process here self-issues a final certification: the ceiling is
@@ -269,6 +273,60 @@ $2.8\times10^{-16}$; a deliberate sign-mutation is confirmed detected.
 The GJI-ratio supremum is not shown to be bounded (adversarial maximum
 $5.98$ against a mean of $0.43$) and is left \textsc{open}.
 
+\section{Extending the sweep: pilot and broad screening}
+\label{sec:sweep}
+
+The original pass above used single-configuration or few-seed evidence
+throughout --- explicitly not a swept grid. A follow-up session executed
+two real, hardware-verified sweep stages against blocks A, G, H, N (the
+four with GPU support added for this purpose) on the confirmed RTX PRO
+5000 Blackwell laptop GPU.
+
+\subsection{Pilot (mission Phase 3)}
+96 cells (arity $\in\{3,4\}$, $n\in\{12,24\}$, rank $\in\{3,6\}$,
+cp-rank $\in\{4,8\}$, 3 seeds, CPU+CUDA), 0 failures, 945.5\,s wall time.
+GPU was $2.97\times$ slower than CPU at this scale (mean 14.70\,s/cell
+CUDA vs 4.94\,s/cell CPU), consistent with the single-sample CPU/GPU
+parity finding of the companion software paper (a 19.1\,ms CPU vs
+835.1\,ms CUDA single-case comparison). Block H's
+associator ratio, evaluated across 96 independent configurations rather
+than the single config of Section~\ref{sec:blocks}, ranged from $0.130$
+to $0.957$ of the triangle bound (mean $0.334$) --- broader evidence for
+the same \textsc{not\_sharp} verdict, not a contradiction of the earlier
+$0.452$ figure. Block N's GJI-ratio adversarial maximum reproduced at
+$4.65$--$5.92$ across the 96 cells (original single-config value: $5.98$),
+confirming that finding is robust across configurations rather than a
+single-run artifact.
+
+\subsection{Broad screening, Stage S1 (mission Phase 4)}
+320 cells extending $n$ to 96 (4$\times$ the pilot's range), 5 seeds, 0
+failures, 6316.5\,s ($\approx 105$ minutes) wall time --- this answers
+the specific question the pilot raised (does GPU ever overtake CPU at
+larger $n$?). It does not, anywhere in the tested range:
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+$n$ & CPU mean (s) & CUDA mean (s) & CUDA/CPU ratio \\
+\midrule
+12 & 9.44 & 30.64 & 3.25$\times$ \\
+24 & 9.31 & 30.80 & 3.31$\times$ \\
+48 & 9.83 & 34.50 & 3.51$\times$ \\
+96 & 7.90 & 25.09 & 3.18$\times$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The ratio is stable across an 8$\times$ range in ambient dimension ---
+not a transient small-$n$ effect. The concrete scheduling consequence for
+any further work on these four blocks: route to CPU, not GPU, at least up
+through $n=96$. Blocks B, C, D, E, F, I, J, K, L, M were not extended to
+support the GPU device parameter and remain untested for this question.
+Stage S2 (adaptive intensification of anomalous/boundary cells) and Stage
+S3 (certification-mode reruns with held-out seeds, float64/complex128,
+deterministic algorithms) were not executed --- both remain open work.
+
 \section{Fail-closed combination and final state}
 \label{sec:final}
 
@@ -291,10 +349,26 @@ training objective for tractability, not the legacy's full $\sim 16$-term
 weighted loss; Section~\ref{sec:blocks}'s negative findings for blocks
 B/E/J/M are established for the objectives actually tested, not proved to
 persist under the historical loss, though block B's own ablation matrix
-shows objective choice materially changes outcomes. No independent
-literature search was performed; no novelty claim should be read into any
-of the methodological corrections described here (Procrustes-on-subspaces,
-the gauge-invariant loss fix) beyond ``documented and fixed within this
-codebase.'' Track T is entirely out of scope.
+shows objective choice materially changes outcomes. Section~\ref{sec:sweep}
+extends coverage to 416 total sweep cells across blocks A/G/H/N only ---
+the other ten blocks remain single-configuration evidence. Track T is
+entirely out of scope, by the strict track-separation policy this
+program enforces.
+
+A follow-up literature search (\texttt{docs/research/novelty\_matrix\_v5.md})
+has since been performed for three of this program's own methodological
+claims (the fail-closed typed-gate taxonomy itself, the legacy-lineage
+reclassification methodology, and the capacity-versus-deployment
+diagnosis behind block B's ablation matrix). It found genuine, specific
+prior art in each case --- a directly-named ``fail-closed certification
+protocol'' in an unrelated deployment domain, general ML provenance
+tooling for the lineage methodology, and a strong match to
+D'Amour et al.'s underspecification literature for block B's
+capacity-versus-deployment phenomenon --- so none of the methodological
+corrections described in this paper (Procrustes-on-subspaces, the
+gauge-invariant loss fix, or the typed-gate taxonomy itself) should be
+read as claimed novel. Every verdict in that search is recorded as
+\texttt{PENDING\_HUMAN\_REVIEW}: no automated process in this program
+self-approves a novelty verdict.
 
 \end{document}

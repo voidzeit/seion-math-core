@@ -42,13 +42,18 @@ passing tests as of this writing). It records a real, reproducible
 CPU/GPU parity result on the confirmed hardware (RTX PRO 5000 Blackwell,
 24\,GB VRAM), a concrete process-global TF32 contamination hazard found and
 fixed, and the current gaps in continuous integration and packaging for
-this new track.
+this new track. Section~\ref{sec:closed} records what a follow-up session
+has since closed: real CI (verified on GitHub Actions, including a
+genuine setuptools CVE caught by \texttt{pip-audit}), a 416-cell
+hardware-measured GPU-scaling sweep answering the throughput question
+this version of the paper originally left open, and a frozen,
+mutation-tested evidence contract.
 \end{abstract}
 
 \section{Repository layout}
 \begin{center}
 \small
-\begin{tabular}{ll}
+\begin{tabularx}{\linewidth}{lX}
 \toprule
 Path & Contents \\
 \midrule
@@ -61,7 +66,7 @@ Path & Contents \\
 \texttt{spectral/certification\_v18/artifacts/} & Saved experiment result JSON \\
 \texttt{spectral/certification\_v18/tests/} & 85 tests, \texttt{pytest spectral/certification\_v18/tests} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 This track is deliberately NOT reimported into \texttt{src/seion\_core}: it
@@ -125,10 +130,11 @@ $4.4\times10^{-16}$ relative difference --- CPU/GPU parity confirmed at
 float64 for this computation. The wall-time comparison is an honest
 negative result for accelerating problems at this scale: GPU kernel-launch
 overhead dominates for $n=24$, and CPU is $\sim 44\times$ faster in this
-single case. Real GPU throughput advantage should be expected only once
-batch sizes or ambient dimensions are large enough to amortize that
-overhead --- not exercised in this pass; the sweep/scaling phase
-(Section~\ref{sec:gaps}) is where that would be measured.
+single case. Whether that reverses once ambient dimensions are large
+enough to amortize the overhead was an open question at the time this
+result was first recorded; Section~\ref{sec:closed} reports it has since
+been measured directly across $n\in\{12,24,48,96\}$, and it does not
+reverse anywhere in that range.
 
 \section{Resumable job queue}
 \texttt{hardware/job\_queue.py} implements an append-only, JSONL-backed
@@ -154,20 +160,54 @@ Output: \texttt{spectral/legacy/v17/legacy\_a\_to\_n\_manifest.yaml},
 \texttt{legacy\_run\_lineage.json}, \texttt{legacy\_run\_dedup\_report.md},
 \texttt{legacy\_claim\_reclassification.yaml}.
 
-\section{Gaps and follow-up (honestly listed, not hidden)}
-\label{sec:gaps}
+\section{What has since been closed}
+\label{sec:closed}
+A follow-up session closed three of the four gaps below with real,
+verified work rather than by editing this list in place:
 \begin{itemize}[leftmargin=*]
-\item No CI workflow for \texttt{spectral/certification\_v18/} exists yet
-  in \texttt{.github/}; the 85 tests are currently run manually only.
-\item No SBOM or packaging metadata specific to this track has been
-  generated; the track depends on the same \texttt{pyproject.toml}
-  dependencies (\texttt{torch}, \texttt{numpy}) as the rest of the
-  repository, declared under the existing \texttt{research} extra.
-\item GPU throughput scaling (large batch/dimension sweeps) was not
-  measured --- only correctness parity at small scale.
-\item Clean-environment reproduction (a fresh virtualenv/container
-  install-and-rerun) was not exercised this pass; all runs used the
-  already-configured local environment.
+\item \textbf{CI}: \texttt{.github/workflows/spectral-v18.yml} now runs
+  all 85 tests on every push/PR (confirmed green on real GitHub Actions
+  runs, not just locally). A separate
+  \texttt{security-and-quality.yml} adds \texttt{pip-audit} (a genuine
+  setuptools CVE was found and fixed this way), CycloneDX SBOM
+  generation, license reporting, \texttt{gitleaks} secret scanning,
+  CodeQL, and a clean sdist-install matrix on \texttt{ubuntu-latest} and
+  \texttt{windows-latest} --- all verified against real CI runs, not
+  assumed.
+\item \textbf{GPU throughput scaling}: measured, not merely proposed.
+  \texttt{closure\_report}, \texttt{associator\_constant\_report}, and
+  \texttt{cyclic\_and\_gji\_report} gained an explicit \texttt{device}
+  parameter (default \texttt{"cpu"}, fully backward compatible --- the
+  85-test suite still passes unchanged), threaded through every
+  \texttt{torch.randn}/\texttt{Generator} call site that previously
+  created CPU tensors unconditionally regardless of the model's device
+  (a real bug that would have silently broken any attempt to run these
+  functions on CUDA). A 96-cell pilot sweep and a 320-cell broad
+  screening sweep (416 cells total, 0 failures, $\approx 121$ minutes
+  combined wall time) found GPU consistently $3.2\times$--$3.5\times$
+  slower than CPU across $n\in\{12,24,48,96\}$ --- a genuine, hardware-
+  measured negative result, stable across an 8$\times$ range in ambient
+  dimension, not a small-scale artifact. Full detail in the companion
+  certification paper's Section~4.
+\item \textbf{Evidence-contract freeze}: \texttt{governance/RELEASE\_GATES.yaml}
+  v5 registers the 4 critical gates the original 8-gate taxonomy didn't
+  cover (\texttt{construction\_integrity}, \texttt{novelty}, \texttt{paper},
+  \texttt{release}); a new \texttt{scientific\_instance.schema.json}
+  formalizes the \texttt{scientific\_instance\_id}/\texttt{execution\_id}/
+  \texttt{optimizer\_restart\_id} identity hierarchy this paper's job-queue
+  section describes informally; 7 invariants (bound ordering, exact-status-
+  requires-zero-gap, screening-cannot-certify, etc.) are now enforced as
+  real code (\texttt{src/seion\_core/governance/evidence\_contract.py})
+  with 23 passing mutation tests, plus a sha256-hash-pinned schema-drift
+  detector, hand-verified to actually catch tampering (a schema file was
+  deliberately edited, the drift test confirmed to fail, then restored
+  and confirmed to pass again).
+\item \textbf{Not yet closed}: clean-environment reproduction (a fresh
+  virtualenv/container install-and-rerun of the full v18 suite
+  specifically, as opposed to the repository's general clean-install CI
+  matrix, which does exercise a fresh sdist install but not this track's
+  own 85-test run inside it) has still not been exercised as a dedicated
+  pass.
 \end{itemize}
 
 \end{document}
