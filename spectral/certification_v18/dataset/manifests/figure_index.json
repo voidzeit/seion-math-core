@@ -5,7 +5,7 @@
     "source_data": "tables/21_gate_status_overview.json",
     "hashes": {
       "png": "513163017b0097cc8765c0855eeae2927c2ea3660bf1e63c205e4d36d0d96609",
-      "svg": "98195a0a74cbc68df9e70a643d0909530ab489bfe4154f257ba447aea9c8b6e6",
+      "svg": "b7c7c8be363d09095096ba422c9c3791e4373a23e5b76799af00174daf955785",
       "source_data": "cce5994089fae710c8ab75fab89fb4ba323fe8d17b0ef7dea00b3a820ea92758"
     }
   },
@@ -15,8 +15,18 @@
     "source_data": "tables/22_block_status_summary.json",
     "hashes": {
       "png": "bdc7a2d72f7ede01c83eba3f54d731dfca5cd7ee9ba367072745b51cabbc8265",
-      "svg": "4df89858ab1af06804aacbd6bff213b8d0d03f478858cbbeb2c4dfb8f2737201",
+      "svg": "904d43b261ef5fe92a4f2fd960a3395ac96fc5ec80cd889ff180cca52f1f2f92",
       "source_data": "cce5994089fae710c8ab75fab89fb4ba323fe8d17b0ef7dea00b3a820ea92758"
+    }
+  },
+  {
+    "figure": "25_s1_gpu_cpu_crossover",
+    "generator": "spectral/certification_v18/dataset/generate_atlas_figures.py",
+    "source_data": "tables/25_s1_gpu_cpu_crossover.json",
+    "hashes": {
+      "png": "b5e960402f2b673027e9df795f4ba3769ff82d30db5ecaaacc266253b64bd478",
+      "svg": "42e1a280bdc00d1d489d335f7a6f6131d40d0aa7146e09c68d5fe02829e34cd1",
+      "source_data": "3e9ecbba5bcc5692b990d584a38818b010f8fb55d8b65ebdfe9937db88686bd1"
     }
   }
 ]
