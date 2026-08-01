@@ -147,3 +147,24 @@ entries:
       research/math_closure/continuum/counterexamples_without_uniformity.tex,
       per the mission's own explicit warning against unconditional
       growing-tree claims.
+
+  - id: M6_verified_markov_construction
+    question: >
+      Does the mission's symmetrized quadratic weight W_kappa (measurability,
+      symmetry, nonnegativity, 0<d(p)<infinity a.e., P a contraction,
+      self-adjoint, Dirichlet-form identity) admit a verified instance
+      under explicit assumptions?
+    status: PROVED_UNDER_STATED_ASSUMPTIONS
+    admissible_class: >
+      kappa jointly measurable, kappa in L^2(X^4, nu^{tensor 4}) (K1);
+      d(p):=integral W_kappa(p,s)dnu(s) satisfies 0<d(p)<infinity a.e. (K2,
+      not automatic from K1, checked per instance).
+    evidence:
+      - research/math_closure/markov/verified_class_or_failure_report.tex
+      - research/math_closure/markov/examples/finite_sinusoidal_kernel.py
+      - research/math_closure/markov/tests/test_verified_markov_construction.py
+    example: >
+      Finite X={1..6}, kappa(p;q,r,s)=sin(2pi(p+q+r+s)/n)+2 (bounded,
+      strictly positive, non-separable). All properties verified exactly
+      (symmetry to machine precision, d(p)>0, self-adjoint, largest
+      eigenvalue exactly 1 others <1, Dirichlet identity holds to 1e-12).
