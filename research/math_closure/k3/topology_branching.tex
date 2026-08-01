@@ -1,0 +1,34 @@
+\section*{M3: $k=3$ branching topology}
+
+\textbf{Construction:} root joins two independent 2-leaf binary nodes,
+$T = \mu(\mu(L_0,L_1), \mu(L_2,L_3))$ ($u_1,u_2 \to \text{root}$, mission's
+named branching shape), same homogeneous gated-planar-rotation law and
+conventions as the chain case.
+
+\textbf{Theorem (new this pass).}
+\[
+  E_T^{\mathrm{proj}}(\eta) \;=\; \eta^2\sqrt{1-\eta^2}, \qquad \eta\in[0,1].
+\]
+Proved the same way as the chain case (exact symbolic substitution
+through the repository's own evaluator; $\|\text{diff}\|^2 =
+\eta^4(1-\eta^2)$ identically).
+
+\textbf{Ratio to the universal bound} ($2\eta$, same as chain, since both
+have $k=3$):
+\[
+  \frac{E_T^{\mathrm{proj}}(\eta)}{2\eta} = \frac12\,\eta\sqrt{1-\eta^2},
+\]
+maximized at the same $\eta^\star=1/\sqrt2$, with maximum value
+$\boxed{1/4}$ (relative gap $3/4$) — branching is a substantially
+\emph{less} efficient construction than chain for this law family:
+$1/4$ vs.\ chain's $3/4$ best-ratio, a factor of 3 apart, for the exact
+same universal bound. This shows the $k=3$ certified-gap floor is
+\textbf{topology-dependent} even within one fixed law family and fixed
+$(n,r)$ — a genuinely new, exact, closed-form confirmation of what the
+prior session's terminal-status document could only describe
+qualitatively ("consistent with the single-topology gated-rotation
+construction not generalizing cleanly across topologies").
+
+\textbf{Status:} neither topology saturates the $k=3$ universal bound at
+any $\eta$; chain is the better of the two named topologies for this law
+family, by an exact factor of 3 at the shared optimal $\eta^\star=1/\sqrt2$.

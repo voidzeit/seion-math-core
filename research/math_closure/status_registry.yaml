@@ -69,3 +69,33 @@ entries:
     corollary: >
       Saturates the universal (k-1)=1 bound iff eta=1; explains (does not
       merely restate) the atlas's 6 exact-match rows.
+
+  - id: M3_k3_chain_gated_rotation
+    question: >
+      For the k=3 chain topology, homogeneous gated-planar-rotation law
+      (unit leaves, dimension 2, rank 1), what is the exact projected
+      error and the best achievable ratio to the universal (k-1)=2 bound?
+    status: PROVED
+    evidence:
+      - research/math_closure/k3/topology_chain.tex
+      - research/math_closure/k3/certificates/chain_and_branching_closed_forms.py
+    result: "E_T^proj(eta) = 3*eta^2*sqrt(1-eta^2); best ratio 3/4 at eta*=1/sqrt(2); never saturates."
+    corrects: >
+      docs/research/track_t_v5_terminal_status_k2_k3.md's discretely-sampled
+      min relative gap of 0.350 (at eta=0.5) - true continuous minimum gap
+      is 1/4, at eta*=1/sqrt(2), a point the sampled grid never tested.
+
+  - id: M3_k3_branching_gated_rotation
+    question: >
+      Same question as above for the k=3 branching topology (u1,u2 -> root).
+    status: PROVED
+    evidence:
+      - research/math_closure/k3/topology_branching.tex
+      - research/math_closure/k3/certificates/chain_and_branching_closed_forms.py
+    result: "E_T^proj(eta) = eta^2*sqrt(1-eta^2); best ratio 1/4 at eta*=1/sqrt(2); never saturates."
+    note: "Exactly 3x less efficient than chain at the shared optimal eta - topology-dependence now exact, not qualitative."
+
+  - id: M3_k3_general_class_A
+    question: For k=3, any law/topology, what is C_T^proj(eta; A)?
+    status: OPEN_WITH_PRECISE_BOUNDARY
+    boundary: "0 <= C_T^proj(eta; A) <= 2*eta*M*L_T; no counterexample found; no saturating construction found at any eta."
