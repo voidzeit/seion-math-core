@@ -41,3 +41,14 @@ spectral/runs/
 # audit of CANONICAL_FINITE_CORE, kept as local reference material — not
 # part of any registered claim/theorem evidence chain.
 docs/research/truth_audit_2026_07_29/
+
+# runs/: SEION-KGR v25/v26 trainer run artifacts (checkpoints, metrics,
+# manifests). Same convention as artifacts/runs/** and spectral/runs/
+# above — local evidence, not committed canonical source. Checkpoints in
+# particular are large binaries that do not belong in git history.
+runs/
+
+# data/: knowledge-graph benchmark datasets (FB15K-237, WN18RR, CoDEx-M,
+# DB100K+, YAGO3-10). Not committed — large third-party data, not
+# repository source. Fetch/place locally before running seion_kgr_v26_train.py.
+data/
