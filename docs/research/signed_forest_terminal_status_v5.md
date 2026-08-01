@@ -141,3 +141,30 @@ at all.
   its triangle bound unaccounted for) and received the same trial budget
   as the others — a dedicated, larger search specifically for this
   identity is the most promising next step if this track is resumed.
+
+## Correction (SEION V6 math-closure session, follow-up)
+
+This document's `named_gji_variants` finding above (evaluates to ~0
+across 4,000+ trials, classified `NOT_CERTIFIABLE_AS_DEFINED`, "symbolic
+verification left as follow-up") has now been resolved by exact symbolic
+methods (two independent implementations plus an exact-rational
+counterexample) in `research/math_closure/gji/`. **It is not a formal
+identity.** An explicit exact-rational instance
+(`research/math_closure/gji/mutation_test_report.json`,
+`general_identity_claim.exact_rational_counterexample`) gives a nonzero
+value ($97/3$ in both components, $n=2$, no floating point) for generic
+(non-collinear) inputs.
+
+The real, narrower fact this document's numerical search actually found:
+`named_gji_variants` **is** an identity whenever all 5 leaves are
+collinear (each a scalar multiple of one shared vector) — proved
+symbolically in `research/math_closure/gji/exact_proof_or_counterexample.tex`.
+The adversarial search above always used a rank-1 projector
+(`scripts/signed_forest_adversarial_search_v5.py::forest_ratio`,
+`PROJECTOR_RANK=1`), which forces every leaf into this collinear regime
+regardless of how "independently random" the reduced coordinates were
+drawn — so the 4,000-trial zero was real, exact, and fully explained, but
+does not support the general-identity reading this document originally
+entertained. See `research/math_closure/status_registry.yaml` for the
+formal terminal statuses (`DISPROVED_BY_COUNTEREXAMPLE` for the general
+claim, `PROVED` for the collinear sub-case).

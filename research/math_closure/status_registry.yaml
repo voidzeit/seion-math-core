@@ -1,0 +1,41 @@
+# Status registry for the math_closure campaign (mission Section IV).
+# Allowed statuses: PROVED, DISPROVED_BY_COUNTEREXAMPLE,
+# CLASSIFIED_UNDER_EXPLICIT_ASSUMPTIONS, OPEN_WITH_PRECISE_BOUNDARY.
+# One entry per mathematical question actually closed or classified this
+# campaign. Updated incrementally as M1-M7 are worked; do not remove prior
+# entries when adding new ones.
+
+version: 1
+
+entries:
+  - id: M1_gji_six_term_general
+    question: >
+      Does named_gji_variants / ternary_declared_gji (six-term signed
+      combination of ternary insertion trees) vanish identically for every
+      multilinear mu: V^3 -> V and every 5 (possibly non-collinear) input
+      vectors?
+    status: DISPROVED_BY_COUNTEREXAMPLE
+    evidence:
+      - research/math_closure/gji/exact_proof_or_counterexample.tex
+      - research/math_closure/gji/mutation_test_report.json (exact_rational_counterexample)
+    supersedes: >
+      docs/research/signed_forest_terminal_status_v5.md's
+      NOT_CERTIFIABLE_AS_DEFINED verdict for named_gji_variants.
+
+  - id: M1_gji_six_term_collinear_subcase
+    question: >
+      Does the same six-term expression vanish for every multilinear mu
+      whenever all 5 leaves are collinear (L_i = c_i * q for a single
+      shared vector q)?
+    status: PROVED
+    admissible_class: >
+      any finite-dimensional real or complex V, any multilinear
+      mu: V^3 -> V (no symmetry/associativity assumed), leaves constrained
+      to a common 1-dimensional subspace.
+    evidence:
+      - research/math_closure/gji/exact_proof_or_counterexample.tex (Result B)
+      - research/math_closure/gji/mutation_test_report.json (collinear_leaves_sub_identity)
+    note: >
+      This is exactly the regime the prior session's 4000-trial adversarial
+      search exercised (rank-1 projector forces collinear leaves), which
+      explains that finding without supporting the general claim above.
