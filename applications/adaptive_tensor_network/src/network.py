@@ -265,3 +265,72 @@ class TensorNetwork:
         simplest declared budget unit)."""
 
         return sum(ranks.get(node.node_id, node.ambient_dim) for node in self.topology.nodes_postorder)
+
+    def reduced_children_of_root(
+        self, leaf_batch: list[np.ndarray], ranks: dict[str, int]
+    ) -> list[np.ndarray]:
+        """The (rank-reduced) values feeding into the root's own core
+        tensor, given a rank allocation for all non-root nodes. Used by
+        fit_root_via_least_squares (Level 2: a "random-feature"
+        hierarchical regression - intermediate layers are fixed random
+        multilinear feature extractors, truncated per the chosen ranks;
+        only the root's own core tensor is trained, via closed-form
+        least squares, against a real target)."""
+
+        root_id = self.topology.root.node_id
+
+        def visit(node_or_leaf) -> np.ndarray:
+            if isinstance(node_or_leaf, int):
+                return leaf_batch[node_or_leaf]
+            child_values = [visit(c) for c in node_or_leaf.children]
+            out = self.cores[node_or_leaf.node_id].apply(child_values)
+            if node_or_leaf.node_id == root_id:
+                return out
+            rank = ranks.get(node_or_leaf.node_id, node_or_leaf.ambient_dim)
+            projector = self.projectors[node_or_leaf.node_id]
+            return projector.project(out, rank)
+
+        return [visit(c) for c in self.topology.root.children]
+
+    def fit_root_via_least_squares(
+        self,
+        leaf_batch: list[np.ndarray],
+        ranks: dict[str, int],
+        target: np.ndarray,
+        *,
+        ridge: float = 1e-6,
+    ) -> None:
+        """Fits self.cores[root_id]'s tensor via ordinary (ridge-
+        regularized) least squares: target[n,d] ~ sum_idx tensor[d,idx] *
+        prod_i reduced_children[i][n, idx_i] - linear in the tensor's own
+        entries given fixed reduced children, so this has an exact
+        closed-form solution (no iterative optimizer needed)."""
+
+        root_id = self.topology.root.node_id
+        reduced_children = self.reduced_children_of_root(leaf_batch, ranks)
+        batch_size = leaf_batch[0].shape[0]
+
+        # Feature matrix: outer product of all children's reduced vectors,
+        # flattened, per sample.
+        features = reduced_children[0]
+        for child in reduced_children[1:]:
+            features = np.einsum("na,nb->nab", features, child).reshape(batch_size, -1)
+
+        # Ridge regression: solve (X^T X + ridge*I) W = X^T Y for each
+        # output dimension jointly (target has shape (batch, ambient_dim)).
+        n_features = features.shape[1]
+        gram = features.T @ features + ridge * np.eye(n_features)
+        rhs = features.T @ target
+        weights = np.linalg.solve(gram, rhs)  # shape (n_features, ambient_dim)
+
+        child_dims = [c.shape[1] for c in reduced_children]
+        new_tensor = weights.T.reshape(self.topology.root.ambient_dim, *child_dims)
+        self.cores[root_id] = NodeCore(tensor=new_tensor)
+
+    def predict_root(self, leaf_batch: list[np.ndarray], ranks: dict[str, int]) -> np.ndarray:
+        """Forward pass through the (possibly just-fitted) network,
+        returning the root's ambient output for the given leaf batch and
+        rank allocation - used for train/test evaluation in Level 2."""
+
+        reduced_children = self.reduced_children_of_root(leaf_batch, ranks)
+        return self.cores[self.topology.root.node_id].apply(reduced_children)
