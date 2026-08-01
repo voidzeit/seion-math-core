@@ -1,0 +1,42 @@
+{
+  "block_status": {
+    "A_projector": "STRUCTURAL_IDENTITY_PASS",
+    "B_commutator": "FAIL",
+    "C_beals": "NUMERICAL_SANITY_PASS",
+    "D_snapping": "EMPIRICAL_SCREENING_PASS",
+    "E_interscale": "FAIL",
+    "F_rigidity": "EMPIRICAL_SCREENING_PASS",
+    "G_nary_closure": "STATISTICALLY_VALIDATED_PASS",
+    "H_associator": "EMPIRICAL_SCREENING_PASS",
+    "I_reduced_tensor": "EXACT_CERTIFICATE",
+    "J_tensor_interscale": "FAIL",
+    "K_hosvd": "EMPIRICAL_SCREENING_PASS",
+    "L_gauge_canonicalization": "EXACT_CERTIFICATE",
+    "M_persistent_factorization": "FAIL",
+    "N_cyclic_law": "STRUCTURAL_IDENTITY_PASS"
+  },
+  "gate_status": {
+    "projector_gate": "STRUCTURAL_IDENTITY_PASS",
+    "algebra_gate": "STRUCTURAL_IDENTITY_PASS",
+    "dynamic_explanation_gate": "FAIL",
+    "interscale_gate": "FAIL",
+    "gauge_gate": "EXACT_CERTIFICATE",
+    "persistence_gate": "FAIL",
+    "reproducibility_gate": "WARN",
+    "mathematical_proof_gate": "EMPIRICAL_SCREENING_PASS"
+  },
+  "final_state": "FAIL_CLOSED_PROJECTOR_GATE_NOT_ESTABLISHED",
+  "passed_gates": [
+    "gauge_gate",
+    "mathematical_proof_gate"
+  ],
+  "excluded_gates": [],
+  "failing_gates": [
+    "projector_gate",
+    "algebra_gate",
+    "dynamic_explanation_gate",
+    "interscale_gate",
+    "persistence_gate",
+    "reproducibility_gate"
+  ]
+}

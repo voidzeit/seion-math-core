@@ -1,0 +1,39 @@
+version: 1
+stage: S1
+grid:
+  arity:
+  - 3
+  - 4
+  n:
+  - 12
+  - 24
+  - 48
+  - 96
+  rank:
+  - 3
+  - 6
+  cp_rank:
+  - 4
+  - 8
+seeds:
+- 0
+- 1
+- 2
+- 3
+- 4
+devices:
+- cpu
+- cuda
+effort:
+  n_samples: 300
+  adversarial_steps: 30
+  trials: 50
+blocks_covered:
+- A
+- G
+- H
+- N
+eval_mode: screening
+scope_reduction_note: arity restricted to {3,4} (mission suggests up to 5), cp_rank
+  to {4,8} (mission suggests up to 32), only blocks with GPU support (A/G/H/N) --
+  not the full mission-scale S1 grid, see module docstring.

@@ -1,0 +1,301 @@
+{
+  "nodes": [
+    {
+      "name": "BLACKWELL_ASSOC_PASS_900_R6_FASTLOG",
+      "resume": false,
+      "resume_path": null,
+      "strict_resume": null,
+      "restore_rng": null,
+      "resume_optimizer": null,
+      "seed": null,
+      "lr": null,
+      "eval_mode": null,
+      "is_root": true,
+      "chain_depth": 0
+    },
+    {
+      "name": "BLACKWELL_ULTRA_ASSOC_PASS_900_R6",
+      "resume": false,
+      "resume_path": null,
+      "strict_resume": null,
+      "restore_rng": null,
+      "resume_optimizer": null,
+      "seed": 3,
+      "lr": 0.0004,
+      "eval_mode": "screening",
+      "is_root": true,
+      "chain_depth": 0
+    },
+    {
+      "name": "BLACKWELL_ULTRA_FLOAT64_CERT_FROM_POLISH_R6",
+      "resume": true,
+      "resume_path": "runs\\BLACKWELL_ULTRA_POLISH_ADFL_FROM_ASSOC_R6\\latest_checkpoint.pt",
+      "strict_resume": null,
+      "restore_rng": null,
+      "resume_optimizer": null,
+      "seed": 3,
+      "lr": 0.0,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 2
+    },
+    {
+      "name": "BLACKWELL_ULTRA_JM_PHASE_FROM_POLISH_R6",
+      "resume": true,
+      "resume_path": "runs\\BLACKWELL_ULTRA_POLISH_ADFL_FROM_ASSOC_R6\\latest_checkpoint.pt",
+      "strict_resume": null,
+      "restore_rng": null,
+      "resume_optimizer": null,
+      "seed": 4,
+      "lr": 0.0002,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 2
+    },
+    {
+      "name": "BLACKWELL_ULTRA_POLISH_ADFL_FROM_ASSOC_R6",
+      "resume": true,
+      "resume_path": "runs\\BLACKWELL_ULTRA_ASSOC_PASS_900_R6\\latest_checkpoint.pt",
+      "strict_resume": null,
+      "restore_rng": null,
+      "resume_optimizer": null,
+      "seed": 3,
+      "lr": 0.0008,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 1
+    },
+    {
+      "name": "REPRO_BOOTSTRAP_FROM_POLISH_R6",
+      "resume": true,
+      "resume_path": "runs\\BLACKWELL_ULTRA_POLISH_ADFL_FROM_ASSOC_R6\\latest_checkpoint.pt",
+      "strict_resume": false,
+      "restore_rng": false,
+      "resume_optimizer": true,
+      "seed": 3,
+      "lr": 0.0,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 2
+    },
+    {
+      "name": "REPRO_FLOAT64_CERT_FROM_BALANCED_3000",
+      "resume": true,
+      "resume_path": "runs\\REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_3000\\latest_checkpoint.pt",
+      "strict_resume": false,
+      "restore_rng": false,
+      "resume_optimizer": true,
+      "seed": 3,
+      "lr": 0.0,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 5
+    },
+    {
+      "name": "REPRO_FLOAT64_CERT_FROM_CONT_3200",
+      "resume": true,
+      "resume_path": "runs\\REPRO_TENSOR_EXPLICIT_JM_R6_CONT_3200\\latest_checkpoint.pt",
+      "strict_resume": false,
+      "restore_rng": false,
+      "resume_optimizer": true,
+      "seed": 3,
+      "lr": 0.0,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 5
+    },
+    {
+      "name": "REPRO_FLOAT64_CERT_FROM_JM_R6_2400",
+      "resume": true,
+      "resume_path": "runs\\REPRO_TENSOR_EXPLICIT_JM_R6_FIX_2400\\latest_checkpoint.pt",
+      "strict_resume": false,
+      "restore_rng": false,
+      "resume_optimizer": true,
+      "seed": 3,
+      "lr": 0.0,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 4
+    },
+    {
+      "name": "REPRO_FLOAT64_CERT_FROM_MICROPOLISH_3400",
+      "resume": true,
+      "resume_path": "runs\\REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_MICROPOLISH_3400\\latest_checkpoint.pt",
+      "strict_resume": false,
+      "restore_rng": false,
+      "resume_optimizer": true,
+      "seed": 3,
+      "lr": 0.0,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 6
+    },
+    {
+      "name": "REPRO_TENSOR_EXPLICIT_JM_R6",
+      "resume": false,
+      "resume_path": null,
+      "strict_resume": null,
+      "restore_rng": null,
+      "resume_optimizer": null,
+      "seed": null,
+      "lr": null,
+      "eval_mode": null,
+      "is_root": true,
+      "chain_depth": 0
+    },
+    {
+      "name": "REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_3000",
+      "resume": true,
+      "resume_path": "runs\\REPRO_TENSOR_EXPLICIT_JM_R6_FIX_2400\\latest_checkpoint.pt",
+      "strict_resume": false,
+      "restore_rng": false,
+      "resume_optimizer": true,
+      "seed": 3,
+      "lr": 3e-05,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 4
+    },
+    {
+      "name": "REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_MICROPOLISH_3400",
+      "resume": true,
+      "resume_path": "runs\\REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_3000\\latest_checkpoint.pt",
+      "strict_resume": false,
+      "restore_rng": false,
+      "resume_optimizer": true,
+      "seed": 3,
+      "lr": 1.5e-05,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 5
+    },
+    {
+      "name": "REPRO_TENSOR_EXPLICIT_JM_R6_CONT_3200",
+      "resume": true,
+      "resume_path": "runs\\REPRO_TENSOR_EXPLICIT_JM_R6_FIX_2400\\latest_checkpoint.pt",
+      "strict_resume": false,
+      "restore_rng": false,
+      "resume_optimizer": true,
+      "seed": 3,
+      "lr": 5e-05,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 4
+    },
+    {
+      "name": "REPRO_TENSOR_EXPLICIT_JM_R6_FIX_2400",
+      "resume": true,
+      "resume_path": "runs\\REPRO_BOOTSTRAP_FROM_POLISH_R6\\latest_checkpoint.pt",
+      "strict_resume": false,
+      "restore_rng": false,
+      "resume_optimizer": true,
+      "seed": 3,
+      "lr": 0.0001,
+      "eval_mode": "screening",
+      "is_root": false,
+      "chain_depth": 3
+    },
+    {
+      "name": "master_audit_A_to_N_v17_RTXPRO5000_CLOSURE_300_R6",
+      "resume": false,
+      "resume_path": null,
+      "strict_resume": null,
+      "restore_rng": null,
+      "resume_optimizer": null,
+      "seed": 0,
+      "lr": 0.0006,
+      "eval_mode": "screening",
+      "is_root": true,
+      "chain_depth": 0
+    },
+    {
+      "name": "master_audit_A_to_N_v17_RTXPRO5000_CLOSURE_600_R6",
+      "resume": false,
+      "resume_path": null,
+      "strict_resume": null,
+      "restore_rng": null,
+      "resume_optimizer": null,
+      "seed": 1,
+      "lr": 0.0005,
+      "eval_mode": "screening",
+      "is_root": true,
+      "chain_depth": 0
+    },
+    {
+      "name": "master_audit_A_to_N_v17_RTXPRO5000_ULTRAFAST_120",
+      "resume": false,
+      "resume_path": null,
+      "strict_resume": null,
+      "restore_rng": null,
+      "resume_optimizer": null,
+      "seed": 0,
+      "lr": 0.0005,
+      "eval_mode": "screening",
+      "is_root": true,
+      "chain_depth": 0
+    },
+    {
+      "name": "master_audit_A_to_N_v17_RTXPRO5000_closure_gji_300",
+      "resume": false,
+      "resume_path": null,
+      "strict_resume": null,
+      "restore_rng": null,
+      "resume_optimizer": null,
+      "seed": null,
+      "lr": null,
+      "eval_mode": null,
+      "is_root": true,
+      "chain_depth": 0
+    }
+  ],
+  "edges": [
+    {
+      "child": "BLACKWELL_ULTRA_FLOAT64_CERT_FROM_POLISH_R6",
+      "parent": "BLACKWELL_ULTRA_POLISH_ADFL_FROM_ASSOC_R6"
+    },
+    {
+      "child": "BLACKWELL_ULTRA_JM_PHASE_FROM_POLISH_R6",
+      "parent": "BLACKWELL_ULTRA_POLISH_ADFL_FROM_ASSOC_R6"
+    },
+    {
+      "child": "BLACKWELL_ULTRA_POLISH_ADFL_FROM_ASSOC_R6",
+      "parent": "BLACKWELL_ULTRA_ASSOC_PASS_900_R6"
+    },
+    {
+      "child": "REPRO_BOOTSTRAP_FROM_POLISH_R6",
+      "parent": "BLACKWELL_ULTRA_POLISH_ADFL_FROM_ASSOC_R6"
+    },
+    {
+      "child": "REPRO_FLOAT64_CERT_FROM_BALANCED_3000",
+      "parent": "REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_3000"
+    },
+    {
+      "child": "REPRO_FLOAT64_CERT_FROM_CONT_3200",
+      "parent": "REPRO_TENSOR_EXPLICIT_JM_R6_CONT_3200"
+    },
+    {
+      "child": "REPRO_FLOAT64_CERT_FROM_JM_R6_2400",
+      "parent": "REPRO_TENSOR_EXPLICIT_JM_R6_FIX_2400"
+    },
+    {
+      "child": "REPRO_FLOAT64_CERT_FROM_MICROPOLISH_3400",
+      "parent": "REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_MICROPOLISH_3400"
+    },
+    {
+      "child": "REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_3000",
+      "parent": "REPRO_TENSOR_EXPLICIT_JM_R6_FIX_2400"
+    },
+    {
+      "child": "REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_MICROPOLISH_3400",
+      "parent": "REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_3000"
+    },
+    {
+      "child": "REPRO_TENSOR_EXPLICIT_JM_R6_CONT_3200",
+      "parent": "REPRO_TENSOR_EXPLICIT_JM_R6_FIX_2400"
+    },
+    {
+      "child": "REPRO_TENSOR_EXPLICIT_JM_R6_FIX_2400",
+      "parent": "REPRO_BOOTSTRAP_FROM_POLISH_R6"
+    }
+  ]
+}

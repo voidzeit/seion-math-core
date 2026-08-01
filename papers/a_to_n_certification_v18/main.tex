@@ -1,0 +1,374 @@
+\documentclass[11pt]{amsart}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{array,booktabs,tabularx}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+\sloppy
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={A Fail-Closed Certification Framework for Cyclic N-Ary Laws, Projectors, and Multiresolution Tensor Structure},
+  pdfauthor={Eliuth Chavero Jasso},
+  pdfsubject={Typed-gate certification of a legacy 14-block audit suite},
+  pdfkeywords={certification, fail-closed, projector, associator, GJI, HOSVD, gauge invariance, principal angles}
+}
+
+\title[A Fail-Closed Certification Framework for Cyclic N-Ary Laws]{A Fail-Closed Certification Framework for Cyclic N-Ary Laws, Projectors, and Multiresolution Tensor Structure}
+\author{Eliuth Chavero Jasso}
+\address{Independent Researcher, Apizaco, Tlaxcala, Mexico}
+\thanks{Spectral A-N legacy-audit track (\texttt{SPECTRAL\_LEGACY\_TRACK}, additive scope class, \texttt{claims/scope\_registry\_v4.yaml}). Evidentially separate from the canonical finite-algebra core (\texttt{CANONICAL\_FINITE\_CORE}); no claim below certifies or is certified by that track without a proved connecting theorem. Track T (projected n-ary tree mathematics) is explicitly out of scope, deferred by an accepted mid-campaign checkpoint.}
+\date{30 July 2026 --- v18 certification suite, first pass}
+
+\begin{document}
+
+\begin{abstract}
+We replace a 14-block legacy audit script's averaging-based scoring system
+(WARN scores 0.5, N/A scores 1.0, no FAIL state exists) with a fail-closed
+typed-gate taxonomy: ten states from \textsc{structural\_identity\_pass}
+through \textsc{exact\_certificate}, combined by minimum across eight
+critical gates, never by average. Applying it to the legacy evidence and
+to a from-scratch v18 reimplementation, we find: every one of 19 unique
+historical runs is capped at \textsc{empirical\_screening\_pass} (all
+\texttt{eval\_mode=screening}, including runs named \texttt{*\_CERT\_*});
+the ``coherent dynamic curvature'' commutator explanation (block B)
+performs \emph{worse than the trivial zero predictor} in all 15 real
+checkpoints with block-B data, and a controlled ablation matrix identifies
+the mechanism as genuine conflict with an associator/GJI-family objective,
+not insufficient capacity, gradient starvation, or scale imbalance alone;
+an independently-trained three-resolution interscale transport experiment
+(blocks E, J, M) finds no persistence signal beyond a single unexplained
+per-mode anomaly; and a methodological error caught by our own required
+negative control --- comparing subspace bases via free-unitary Procrustes,
+which is vacuous because the unitary group acts transitively on
+same-size orthonormal frames --- is documented and fixed with principal
+angles. A follow-up 416-cell sweep across blocks A/G/H/N (Section~\ref{sec:sweep})
+extends this to a real grid rather than single configurations, and answers
+a concrete scheduling question: GPU never overtakes CPU for these blocks
+anywhere in $n\in\{12,24,48,96\}$, a stable $\sim 3\times$ CPU advantage
+throughout, not a small-scale artifact. No block in this pass reaches a state stronger than
+\textsc{empirical\_screening\_pass} or \textsc{statistically\_validated\_pass}
+for any scientific (as opposed to purely algebraic/structural) claim, and
+no process here self-issues a final certification: the ceiling is
+\textsc{pass\_a\_to\_n\_partial\_certification}, pending human review.
+\end{abstract}
+
+\maketitle
+
+\section{Why the legacy scoring system cannot be trusted}
+\label{sec:legacy}
+
+The legacy script (\texttt{seion\_master\_audit\_A\_to\_N\_v17\_blackwell\_repro\_fix.py},
+2653 lines, hashed and archived at
+\texttt{spectral/legacy/v17/}) assigns each of 14 blocks one of
+$\{\textsc{pass}, \textsc{pass\_strong}, \textsc{warn}, \textsc{warn\_geometric}, \textsc{n/a}\}$
+and computes \texttt{master\_score} as $100\times$ the mean of per-block
+scores, where \textsc{warn}$\mapsto 0.5$ and \textsc{n/a}$\mapsto 1.0$.
+There is no \textsc{fail} state anywhere in the vocabulary. Consequently a
+block that never even ran (no high-resolution scale configured) scores
+full credit, and a block that failed outright scores half credit, not
+zero.
+
+We ingested all 19 unique historical runs (9 logged in
+\texttt{REPRO\_SUMMARIES\_A\_TO\_M\_VALIDATED.txt}, 18 on-disk run
+directories, 8 overlapping) and reconstructed their resume lineage. All 9
+logged runs share \texttt{seed=3} and are one continuous non-strict-resume
+chain (\texttt{restore\_rng=false}, \texttt{strict\_resume=false}
+throughout) rooted at a single bootstrap --- not nine independent trials.
+Every run, without exception, has \texttt{eval\_mode="screening"},
+including every directory named \texttt{*\_CERT\_*}. Two distinct
+\texttt{script\_sha256} values appear across the lineage: the script
+currently in the repository matches 8 of 9 logged runs but not the
+earliest bootstrap run, meaning the script changed mid-campaign without
+this being tracked anywhere in the legacy artifacts.
+
+\section{The typed-gate taxonomy}
+\label{sec:taxonomy}
+
+We define ten typed states (full definitions and non-implications in
+\texttt{spectral/certification\_v18/GATE\_TAXONOMY.md}):
+\textsc{structural\_identity\_pass}, \textsc{numerical\_sanity\_pass},
+\textsc{empirical\_screening\_pass}, \textsc{statistically\_validated\_pass},
+\textsc{validated\_numerical\_certificate}, \textsc{exact\_certificate},
+\textsc{warn}, \textsc{fail}, \textsc{not\_applicable}, and
+\textsc{not\_certifiable\_as\_defined}. These are not a numeric scale.
+Eight critical gates (\texttt{projector\_gate}, \texttt{algebra\_gate},
+\texttt{dynamic\_explanation\_gate}, \texttt{interscale\_gate},
+\texttt{gauge\_gate}, \texttt{persistence\_gate},
+\texttt{reproducibility\_gate}, \texttt{mathematical\_proof\_gate}) each
+take the \emph{minimum} (weakest, never averaged) status over their
+contributing blocks. A code-level enforcement point
+(\texttt{gates.py:assign\_block\_status}) raises
+\texttt{ScreeningCertificateViolation} if a screening-mode run is ever
+assigned a certificate-tier status --- a hard error, not a silent
+downgrade. No code path in this suite can emit
+\texttt{PASS\_A\_TO\_N\_FULL\_CERTIFICATION}; the ceiling is
+\texttt{PASS\_A\_TO\_N\_PARTIAL\_CERTIFICATION}, since full certification
+requires human review this process cannot self-issue.
+
+\section{Block-by-block results}
+\label{sec:blocks}
+
+\subsection{A --- projector validity}
+$P=UU^{*}$ is idempotent and self-adjoint to machine precision for any
+orthonormal $U$ (5 seeds, plus an exact $n=2$ case at tolerance
+$10^{-14}$). This is a \textsc{structural\_identity\_pass} by construction
+and is never reported as evidence about the learned subspace's relevance.
+
+\subsection{B --- dynamic commutator explanation}
+The candidate explanation $C_\theta = U\Phi U^{*}\Delta K - K\Delta U
+\Phi^{*}U^{*}$ for $[\Delta,P] = K\Delta P - P\Delta K$ (exact identity,
+both sides rank $\le 2r$) is not capacity-limited in isolation: training
+$U$ against \emph{only} the commutator-unexplained loss drives the
+residual to $\sim 10^{-9}$ across 5 seeds, matching a closed-form
+optimal-$\Phi$ ceiling exactly. Yet in every one of 15 real historical
+checkpoints, \texttt{coherence\_ratio} $\le 0$: $C_\theta$ performs at or
+worse than predicting zero. A seven-regime ablation matrix isolates the
+mechanism (Table~\ref{tab:ablation}): freezing the law and training only
+the projector reaches unexplained-rel $0.99$ (barely moves); freezing the
+projector and training only the law reaches unexplained-rel exactly $0$
+even with $U$ left at its random initial value; training jointly with a
+projected-associator objective degrades the commutator residual roughly
+$100\times$ relative to isolated training, while a closure objective does
+not. The best-supported diagnosis is a genuine, structural conflict
+between the commutator-explanation objective and the associator/GJI
+family, mediated through the law's parameters --- not insufficient
+capacity, not gradient starvation, not the projector search being hard.
+
+\begin{table}[h]
+\centering
+\caption{Block B ablation matrix ($n=16$, rank 4, cp-rank 4, 400 steps).}
+\label{tab:ablation}
+\begin{tabular}{lrrr}
+\toprule
+Regime & unexplained-rel & closure & associator \\
+\midrule
+Isolated B only & 0.000081 & 0.310 & 464.1 \\
++ closure & 0.000351 & 0.000004 & 74.6 \\
++ associator & \textbf{0.008486} & 0.111 & 0.000005 \\
+Joint (all) & 0.005995 & 0.000479 & 0.000001 \\
+Frozen law, train projector & \textbf{0.992488} & 0.0156 & 0.233 \\
+Frozen projector, train law & \textbf{0.000000} & 0.738 & 580.9 \\
+Staged (competing, then B) & 0.000465 & 0.217 & 141.1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{C --- FINITE\_BEALS\_PROXY}
+Renamed to make the scope limit explicit: this block reports finite
+nested-commutator Frobenius norms only, never a PsiDO-membership or
+microlocal-regularity claim. Adversarially-optimized projectors produce
+larger commutator norms (4.35) than random (3.84), smooth (2.85), or
+spatially-localized (2.00) hand-picked families, confirming the reported
+figures are not favorably cherry-picked.
+
+\subsection{D --- spectral snapping}
+Tested on genuine near-projectors $P+\epsilon H$ ($H$ Hermitian), not only
+exact ones. Rank recovery and a Davis--Kahan-style bound hold up to the
+point the spectral gap closes; an explicit counterexample
+($\epsilon=1.2$, gap closes from $1.0$ to $0.51$) reproduces rank
+misrecovery, confirming the gap condition is necessary.
+
+\subsection{E --- interscale subspace transport}
+Three \emph{independently} initialized and trained resolutions ($n=12,
+18, 24$), one frozen Gaussian-kernel lift operator per pair, principal
+angles against a random-subspace baseline and an interpolation baseline.
+All transported angles sit at $1.41$--$1.53$ rad, essentially the maximum
+possible ($\pi/2 = 1.571$); the trained lift beats both baselines in only
+2 of 3 pairs, by margins ($0.02$--$0.15$ rad) small relative to how close
+every condition already is to full orthogonality. No transport signal is
+found, consistent with block F's independent basin-instability finding.
+
+\subsection{F --- rigidity}
+The exact Hessian and the generalized Gauss--Newton approximation ($2 J^\top J$)
+are computed and never conflated; GGN is confirmed PSD by construction,
+the exact Hessian is not (indefinite at a non-minimum, as expected). The
+infinitesimal gauge-rotation direction shows Hessian curvature
+$-3.5\times10^{-18}$ (numerically flat), confirming identifiability only
+modulo gauge --- after a real methodological fix: the first version of
+the test loss was not actually gauge-invariant (a single-column
+construction, $0.87\%$ discrepancy caught by the test itself), corrected
+by summing over all $r$ columns (a Frobenius-norm quantity, exactly
+invariant under right-multiplication by a unitary). Basin stability across
+3 seeds: all reach near-zero loss, but the pairwise maximum principal
+angle between converged subspaces is $1.55$ rad ($\approx 89^\circ$) ---
+essentially orthogonal, a genuine non-identifiability finding.
+
+\subsection{G --- n-ary closure}
+Upgraded from 8--16 legacy trials to a 2000-sample empirical distribution
+plus adversarial gradient ascent (confirmed to find defects at least as
+bad as the best random sample). No interval/SOS certified bound was
+derived this pass; the claim is \textsc{statistically\_validated\_pass},
+not \textsc{pass\_certified}.
+
+\subsection{H --- associator constant}
+The triangle-inequality bound $\|A(x,y,z)\| \le 2\hat M^2\|x\|\|y\|\|z\|$
+is never violated across 500 trials (300 random + 200 adversarial), but
+the maximum observed ratio is $0.452$ --- a $1.55$ gap below the bound.
+The constant 2 is empirically far from sharp for this law family (mean
+$\cos(T_1,T_2)=0.067$, near-uncorrelated rather than anti-aligned as the
+bound's worst case assumes); no analytic tighter constant is derived, so
+sharpness remains \textsc{open}.
+
+\subsection{I --- reduced tensor extraction}
+Extraction-correctness only, as required. Two independent
+implementations (explicit loops; CP-exploiting einsum, including the
+cyclic average) agree to $<10^{-10}$ at float64 and $<10^{-4}$ at
+float32; an exact rational small case ($n=2$, $r=1$) matches a
+hand-expanded computation exactly, with zero floating point.
+
+\subsection{J --- tensor interscale}
+The gauge-invariant comparison methodology (raw, Procrustes-aligned,
+permutation-aligned, amplitude-ratio, reported separately) is a genuine
+improvement over the legacy's single Gram-eigenbasis heuristic. Applied
+to block E's real three-resolution experiment: no persistence signal.
+
+\subsection{K --- HOSVD compactness}
+A real reduced tensor needs mode ranks $[3,4,4]$ (out of full rank 4) to
+reach $99\%$ energy, versus $[4,4,4]$ for a norm-matched random-tensor
+null --- modestly, not dramatically, more compact, and only in one of
+three modes.
+
+\subsection{L --- gauge canonicalization}
+Residual gauge is reported explicitly by spectral-cluster size. A
+deliberately constructed degenerate case (eigenvalues $2,1,1$) is
+correctly detected, and an \emph{arbitrary} (not infinitesimal) unitary
+rotation within the 2-dimensional degenerate eigenspace is confirmed to
+produce a pointwise-different but subspace-identical basis (principal
+angle $<10^{-8}$ despite Frobenius difference $>0.1$) --- the concrete
+demonstration of ``canonical only modulo residual gauge.''
+
+\subsection{M --- persistent factorization}
+The comparison tool itself required a real fix during development: an
+early version compared HOSVD subspaces via free-unitary Procrustes and
+silently reported independent random tensors as gauge-equivalent, because
+the unitary group acts transitively on same-size orthonormal frames ---
+caught by the block's own required negative control, fixed with principal
+angles. Applied to block E's three real, independently-trained
+resolutions: rank needed is inconsistent across scales
+($\{3,3,4\},\{3,4,4\},\{3,3,3\}$); mean pairwise-mode principal angle
+$1.01$ rad; one mode (of nine compared) shows a near-exact match
+($1.5\times10^{-8}$ rad) unexplained by this pass and left as an open
+anomaly rather than smoothed into a summary verdict.
+
+\subsection{N --- cyclic law and GJI}
+Raw (pre-averaging) cyclic defect $4.60$ versus symmetrized (post
+cyclic-averaging) defect $8.2\times10^{-33}$ --- a $31$-order-of-magnitude
+gap confirming the near-zero symmetrized figure is a construction
+identity, never learned evidence. One exact, versioned GJI formula (full
+antisymmetrization of the associator over the six permutations of three
+arguments) is implemented twice independently and agrees to
+$2.8\times10^{-16}$; a deliberate sign-mutation is confirmed detected.
+The GJI-ratio supremum is not shown to be bounded (adversarial maximum
+$5.98$ against a mean of $0.43$) and is left \textsc{open}.
+
+\section{Extending the sweep: pilot and broad screening}
+\label{sec:sweep}
+
+The original pass above used single-configuration or few-seed evidence
+throughout --- explicitly not a swept grid. A follow-up session executed
+two real, hardware-verified sweep stages against blocks A, G, H, N (the
+four with GPU support added for this purpose) on the confirmed RTX PRO
+5000 Blackwell laptop GPU.
+
+\subsection{Pilot (mission Phase 3)}
+96 cells (arity $\in\{3,4\}$, $n\in\{12,24\}$, rank $\in\{3,6\}$,
+cp-rank $\in\{4,8\}$, 3 seeds, CPU+CUDA), 0 failures, 945.5\,s wall time.
+GPU was $2.97\times$ slower than CPU at this scale (mean 14.70\,s/cell
+CUDA vs 4.94\,s/cell CPU), consistent with the single-sample CPU/GPU
+parity finding of the companion software paper (a 19.1\,ms CPU vs
+835.1\,ms CUDA single-case comparison). Block H's
+associator ratio, evaluated across 96 independent configurations rather
+than the single config of Section~\ref{sec:blocks}, ranged from $0.130$
+to $0.957$ of the triangle bound (mean $0.334$) --- broader evidence for
+the same \textsc{not\_sharp} verdict, not a contradiction of the earlier
+$0.452$ figure. Block N's GJI-ratio adversarial maximum reproduced at
+$4.65$--$5.92$ across the 96 cells (original single-config value: $5.98$),
+confirming that finding is robust across configurations rather than a
+single-run artifact.
+
+\subsection{Broad screening, Stage S1 (mission Phase 4)}
+320 cells extending $n$ to 96 (4$\times$ the pilot's range), 5 seeds, 0
+failures, 6316.5\,s ($\approx 105$ minutes) wall time --- this answers
+the specific question the pilot raised (does GPU ever overtake CPU at
+larger $n$?). It does not, anywhere in the tested range:
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+$n$ & CPU mean (s) & CUDA mean (s) & CUDA/CPU ratio \\
+\midrule
+12 & 9.44 & 30.64 & 3.25$\times$ \\
+24 & 9.31 & 30.80 & 3.31$\times$ \\
+48 & 9.83 & 34.50 & 3.51$\times$ \\
+96 & 7.90 & 25.09 & 3.18$\times$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The ratio is stable across an 8$\times$ range in ambient dimension ---
+not a transient small-$n$ effect. The concrete scheduling consequence for
+any further work on these four blocks: route to CPU, not GPU, at least up
+through $n=96$. Blocks B, C, D, E, F, I, J, K, L, M were not extended to
+support the GPU device parameter and remain untested for this question.
+Stage S2 (adaptive intensification of anomalous/boundary cells) and Stage
+S3 (certification-mode reruns with held-out seeds, float64/complex128,
+deterministic algorithms) were not executed --- both remain open work.
+
+\section{Fail-closed combination and final state}
+\label{sec:final}
+
+No global certificate is computed by averaging. Blocks B, E, J, and M
+resolve to \textsc{fail} for their scientific (non-structural) claims;
+blocks A, I, L, N carry genuine \textsc{exact}/\textsc{structural\_identity}
+components alongside empirical residuals; blocks C, D, G, H, K remain at
+\textsc{empirical\_screening\_pass} or weaker, single-seed evidence. The
+resulting state is \texttt{FAIL\_CLOSED\_DYNAMIC\_EXPLANATION\_GATE\_NOT\_ESTABLISHED}
+(named after the first failing required gate encountered, per
+\texttt{evaluate\_global\_certificate}); the honest global label most
+consistent with the full evidence set is
+\texttt{PASS\_A\_TO\_N\_PARTIAL\_CERTIFICATION at best, pending human review},
+never full certification, and several blocks (B, E, J, M) currently sit
+in an explicit failed state rather than an unresolved one.
+
+\section{Limitations}
+This pass used a closure-only (block E/F/G) or two-term (block B ablation)
+training objective for tractability, not the legacy's full $\sim 16$-term
+weighted loss; Section~\ref{sec:blocks}'s negative findings for blocks
+B/E/J/M are established for the objectives actually tested, not proved to
+persist under the historical loss, though block B's own ablation matrix
+shows objective choice materially changes outcomes. Section~\ref{sec:sweep}
+extends coverage to 416 total sweep cells across blocks A/G/H/N only ---
+the other ten blocks remain single-configuration evidence. Track T is
+entirely out of scope, by the strict track-separation policy this
+program enforces.
+
+A follow-up literature search (\texttt{docs/research/novelty\_matrix\_v5.md})
+has since been performed for three of this program's own methodological
+claims (the fail-closed typed-gate taxonomy itself, the legacy-lineage
+reclassification methodology, and the capacity-versus-deployment
+diagnosis behind block B's ablation matrix). It found genuine, specific
+prior art in each case --- a directly-named ``fail-closed certification
+protocol'' in an unrelated deployment domain, general ML provenance
+tooling for the lineage methodology, and a strong match to
+D'Amour et al.'s underspecification literature for block B's
+capacity-versus-deployment phenomenon --- so none of the methodological
+corrections described in this paper (Procrustes-on-subspaces, the
+gauge-invariant loss fix, or the typed-gate taxonomy itself) should be
+read as claimed novel. Every verdict in that search is recorded as
+\texttt{PENDING\_HUMAN\_REVIEW}: no automated process in this program
+self-approves a novelty verdict.
+
+\end{document}

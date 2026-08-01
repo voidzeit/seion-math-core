@@ -1,0 +1,684 @@
+BLACKWELL_ASSOC_PASS_900_R6_FASTLOG:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: null
+  legacy_statuses: {}
+  warn_blocks: []
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: EMPIRICAL_SCREENING_PASS
+  caveats:
+  - 'eval_mode=None (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  dedup_key:
+    script_sha256: UNKNOWN_SCRIPT_HASH
+    config_fingerprint: NO_CONFIG
+    seed: null
+    dtype: null
+    checkpoint_sha256: 09208e23d5b5ec5d098cf1d177e31be7fef2fb814b733d54a6011776e96dabc1
+    audit_state_fingerprint: NO_BLOCKS
+BLACKWELL_ULTRA_ASSOC_PASS_900_R6:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 75.0
+  legacy_statuses:
+    A_projector: WARN
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: WARN
+    E_interscale: PASS
+    F_rigidity: WARN
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: WARN
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - A_projector
+  - B_commutator
+  - D_snapping
+  - F_rigidity
+  - J_tensor_interscale
+  - L_gauge_canonicalization
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  dedup_key:
+    script_sha256: UNKNOWN_SCRIPT_HASH
+    config_fingerprint: acd063835507f33400916a0fedfb5d3af4b52539d08c17265b3ecb8e65f91ba9
+    seed: 3
+    dtype: float32
+    checkpoint_sha256: fe6951cce139844b3a2c1625e4b6bc6176f56eed8cd0bdc6f4fde37fd889e273
+    audit_state_fingerprint: cefce55178b961a11db52587b6f98ea808c7768869f9cf367e94db85557c748b
+BLACKWELL_ULTRA_FLOAT64_CERT_FROM_POLISH_R6:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 89.28571428571429
+  legacy_statuses:
+    A_projector: PASS
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: PASS
+    E_interscale: PASS
+    F_rigidity: PASS
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: PASS
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - B_commutator
+  - J_tensor_interscale
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  - 'lr=0 on a resumed run: this run performed no further optimization; it is a checkpoint replay / re-evaluation,
+    not independent optimization evidence.'
+  dedup_key:
+    script_sha256: UNKNOWN_SCRIPT_HASH
+    config_fingerprint: 1754dff388f91c095130d7103f4cbbfe8de8f9ccf2c18809a6eb771fd47726f0
+    seed: 3
+    dtype: float64
+    checkpoint_sha256: 23fa0b78f8a749156033837920383cdddcacd28e6634073602c07eeca737a5c3
+    audit_state_fingerprint: 4757cbaaa819e21696c5caa833c2dd0b6cf11d9a3028f49d73982c21443a09f2
+BLACKWELL_ULTRA_JM_PHASE_FROM_POLISH_R6:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 67.85714285714286
+  legacy_statuses:
+    A_projector: WARN
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: WARN
+    E_interscale: PASS
+    F_rigidity: WARN
+    G_nary_closure: WARN
+    H_nary_associator: WARN
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: WARN
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - A_projector
+  - B_commutator
+  - D_snapping
+  - F_rigidity
+  - G_nary_closure
+  - H_nary_associator
+  - J_tensor_interscale
+  - L_gauge_canonicalization
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  dedup_key:
+    script_sha256: UNKNOWN_SCRIPT_HASH
+    config_fingerprint: 5f8f24b80089d1395bfd02fe3336c6de4bb797d5f101037af2ed2a624bd90430
+    seed: 4
+    dtype: float32
+    checkpoint_sha256: 0502627dcff4eb49e5f7ce0060ce9a05fc45989a80861d2ef8588ff19f278f8a
+    audit_state_fingerprint: 90a5f690dd8f6eade99d07d8617fa8d6e69e0795c3e621c19c96a482a3d03f9d
+BLACKWELL_ULTRA_POLISH_ADFL_FROM_ASSOC_R6:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 75.0
+  legacy_statuses:
+    A_projector: WARN
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: WARN
+    E_interscale: PASS
+    F_rigidity: WARN
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: WARN
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - A_projector
+  - B_commutator
+  - D_snapping
+  - F_rigidity
+  - J_tensor_interscale
+  - L_gauge_canonicalization
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  dedup_key:
+    script_sha256: UNKNOWN_SCRIPT_HASH
+    config_fingerprint: 4804f7aa07bae25f5848420f60cb0417f3e2b0c08f807d89b189981c9b95fece
+    seed: 3
+    dtype: float32
+    checkpoint_sha256: aa1b4874059e4854e9eb71b3a77bdba80c8aba36cf0925473a5c46cadb617791
+    audit_state_fingerprint: 678275e56c68f03fa1fe93f0bfb5bbaca0e424ab16e388155f2566347c5afeaf
+REPRO_BOOTSTRAP_FROM_POLISH_R6:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 75.0
+  legacy_statuses:
+    A_projector: WARN
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: WARN
+    E_interscale: PASS
+    F_rigidity: WARN
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: WARN
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - A_projector
+  - B_commutator
+  - D_snapping
+  - F_rigidity
+  - J_tensor_interscale
+  - L_gauge_canonicalization
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  - 'restore_rng=false on a resumed run: the RNG stream was not restored from checkpoint, so the resumed
+    segment is a fresh-seeded continuation, not a faithful replay of the original trajectory.'
+  - 'strict_resume=false on a resumed run: checkpoint loading is non-strict, so silent shape/parameter
+    mismatches between the checkpoint and current model would not raise.'
+  - 'lr=0 on a resumed run: this run performed no further optimization; it is a checkpoint replay / re-evaluation,
+    not independent optimization evidence.'
+  dedup_key:
+    script_sha256: 8d275fdbae84f2330aed8758539f71d29b454c2f6b00aef2ab4f5b25efeb70ba
+    config_fingerprint: 0f415861db736ba2521249eb0f0af444e10b2766b3fabbb9ddc027f1b58cd1e9
+    seed: 3
+    dtype: float32
+    checkpoint_sha256: 6a4ae12eb9ed23e3ccdf8de5d720db91c9894214623bf15461da3a3394a8f3c0
+    audit_state_fingerprint: 559b281a23843a6007c919d2ca0d27e8fdb815e3b198ca5f530cb24bd84ce999
+REPRO_FLOAT64_CERT_FROM_BALANCED_3000:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 89.28571428571429
+  legacy_statuses:
+    A_projector: PASS
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: PASS
+    E_interscale: PASS
+    F_rigidity: PASS
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: PASS
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - B_commutator
+  - J_tensor_interscale
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  - 'restore_rng=false on a resumed run: the RNG stream was not restored from checkpoint, so the resumed
+    segment is a fresh-seeded continuation, not a faithful replay of the original trajectory.'
+  - 'strict_resume=false on a resumed run: checkpoint loading is non-strict, so silent shape/parameter
+    mismatches between the checkpoint and current model would not raise.'
+  - 'lr=0 on a resumed run: this run performed no further optimization; it is a checkpoint replay / re-evaluation,
+    not independent optimization evidence.'
+  dedup_key:
+    script_sha256: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+    config_fingerprint: 958cdf9b41cd695728a0d73fc2fe7daa969a07005de35c60486893b332ca3e5b
+    seed: 3
+    dtype: float64
+    checkpoint_sha256: NO_CHECKPOINT_HASH
+    audit_state_fingerprint: 560b4e588289624ab55edbcfc5d86be43affd83f0dc1bc91392f24aae8a4fa6c
+REPRO_FLOAT64_CERT_FROM_CONT_3200:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 85.71428571428571
+  legacy_statuses:
+    A_projector: PASS
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: PASS
+    E_interscale: WARN
+    F_rigidity: PASS
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: PASS
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - B_commutator
+  - E_interscale
+  - J_tensor_interscale
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  - 'restore_rng=false on a resumed run: the RNG stream was not restored from checkpoint, so the resumed
+    segment is a fresh-seeded continuation, not a faithful replay of the original trajectory.'
+  - 'strict_resume=false on a resumed run: checkpoint loading is non-strict, so silent shape/parameter
+    mismatches between the checkpoint and current model would not raise.'
+  - 'lr=0 on a resumed run: this run performed no further optimization; it is a checkpoint replay / re-evaluation,
+    not independent optimization evidence.'
+  dedup_key:
+    script_sha256: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+    config_fingerprint: f7748f2a961aee9bb62b7fe7b93be36d1928aefdae3d839da783dbf61165d87f
+    seed: 3
+    dtype: float64
+    checkpoint_sha256: 8b14b4fa3ee0ad2cf01023c1e4b1dfaa2bd1f781b7f7ccef6a4c104ee30cb1c2
+    audit_state_fingerprint: f88c236a90933cfd747c23a65fffe23e3f8af7d6487a730acd7f648fa022fb61
+REPRO_FLOAT64_CERT_FROM_JM_R6_2400:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 89.28571428571429
+  legacy_statuses:
+    A_projector: PASS
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: PASS
+    E_interscale: PASS
+    F_rigidity: PASS
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: PASS
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - B_commutator
+  - J_tensor_interscale
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  - 'restore_rng=false on a resumed run: the RNG stream was not restored from checkpoint, so the resumed
+    segment is a fresh-seeded continuation, not a faithful replay of the original trajectory.'
+  - 'strict_resume=false on a resumed run: checkpoint loading is non-strict, so silent shape/parameter
+    mismatches between the checkpoint and current model would not raise.'
+  - 'lr=0 on a resumed run: this run performed no further optimization; it is a checkpoint replay / re-evaluation,
+    not independent optimization evidence.'
+  dedup_key:
+    script_sha256: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+    config_fingerprint: bde7824e3b7bda5c3734256e62855551828b2d82c9bbd8633521d2dcee9bc630
+    seed: 3
+    dtype: float64
+    checkpoint_sha256: 276690c824922aad5804095dcf6aa093b8e886cb78099eff57f2ef4e962b9055
+    audit_state_fingerprint: ab007b997f250994fe0ad1bc1f81589b702e66ab3179c0bf11abce7b12931f6c
+REPRO_FLOAT64_CERT_FROM_MICROPOLISH_3400:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 89.28571428571429
+  legacy_statuses:
+    A_projector: PASS
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: PASS
+    E_interscale: PASS
+    F_rigidity: PASS
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: PASS
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - B_commutator
+  - J_tensor_interscale
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  - 'restore_rng=false on a resumed run: the RNG stream was not restored from checkpoint, so the resumed
+    segment is a fresh-seeded continuation, not a faithful replay of the original trajectory.'
+  - 'strict_resume=false on a resumed run: checkpoint loading is non-strict, so silent shape/parameter
+    mismatches between the checkpoint and current model would not raise.'
+  - 'lr=0 on a resumed run: this run performed no further optimization; it is a checkpoint replay / re-evaluation,
+    not independent optimization evidence.'
+  dedup_key:
+    script_sha256: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+    config_fingerprint: 2716a8f1103cb0588d2717af94a4b020ace53902009452d216114e468fa7dee4
+    seed: 3
+    dtype: float64
+    checkpoint_sha256: 92a80624f762e622364584cd5240f22f74f285d169fbf728c1b866d057102279
+    audit_state_fingerprint: b82a8f6d375ef361f659b0999e7051eb79f32df43db699307a5253275541b49d
+REPRO_TENSOR_EXPLICIT_JM_R6:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: null
+  legacy_statuses: {}
+  warn_blocks: []
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: EMPIRICAL_SCREENING_PASS
+  caveats:
+  - 'eval_mode=None (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  dedup_key:
+    script_sha256: UNKNOWN_SCRIPT_HASH
+    config_fingerprint: NO_CONFIG
+    seed: null
+    dtype: null
+    checkpoint_sha256: NO_CHECKPOINT_HASH
+    audit_state_fingerprint: NO_BLOCKS
+REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_3000:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 75.0
+  legacy_statuses:
+    A_projector: WARN
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: WARN
+    E_interscale: PASS
+    F_rigidity: WARN
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: WARN
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - A_projector
+  - B_commutator
+  - D_snapping
+  - F_rigidity
+  - J_tensor_interscale
+  - L_gauge_canonicalization
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  - 'restore_rng=false on a resumed run: the RNG stream was not restored from checkpoint, so the resumed
+    segment is a fresh-seeded continuation, not a faithful replay of the original trajectory.'
+  - 'strict_resume=false on a resumed run: checkpoint loading is non-strict, so silent shape/parameter
+    mismatches between the checkpoint and current model would not raise.'
+  dedup_key:
+    script_sha256: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+    config_fingerprint: 75db38b03f471bbf069164f24ec57846c8b1c1162dd487de7c39c855d6c1fdad
+    seed: 3
+    dtype: float32
+    checkpoint_sha256: d8213b50313abbbddec71993397e884a2004c29df5afd7d92594dceaf7b8dbaf
+    audit_state_fingerprint: a31b7bf36b9fdd829d2b50d4e27ba343f2354e993e67193d45360c850c02219c
+REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_MICROPOLISH_3400:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 75.0
+  legacy_statuses:
+    A_projector: WARN
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: WARN
+    E_interscale: PASS
+    F_rigidity: WARN
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: WARN
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - A_projector
+  - B_commutator
+  - D_snapping
+  - F_rigidity
+  - J_tensor_interscale
+  - L_gauge_canonicalization
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  - 'restore_rng=false on a resumed run: the RNG stream was not restored from checkpoint, so the resumed
+    segment is a fresh-seeded continuation, not a faithful replay of the original trajectory.'
+  - 'strict_resume=false on a resumed run: checkpoint loading is non-strict, so silent shape/parameter
+    mismatches between the checkpoint and current model would not raise.'
+  dedup_key:
+    script_sha256: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+    config_fingerprint: 4717af9ffd48fc49a3ab8e6b690fc4ad062798e75be71ba73825c525434faffe
+    seed: 3
+    dtype: float32
+    checkpoint_sha256: b9fae9af7d32413627c195ba790963caccca890f4872d0a3c3b102663bcd3728
+    audit_state_fingerprint: 1cb8cefc874bfccd995dc0d19dd7d9dc0af1227ae86c8721be0426a02d313e46
+REPRO_TENSOR_EXPLICIT_JM_R6_CONT_3200:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 71.42857142857143
+  legacy_statuses:
+    A_projector: WARN
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: WARN
+    E_interscale: WARN
+    F_rigidity: WARN
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: WARN
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - A_projector
+  - B_commutator
+  - D_snapping
+  - E_interscale
+  - F_rigidity
+  - J_tensor_interscale
+  - L_gauge_canonicalization
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  - 'restore_rng=false on a resumed run: the RNG stream was not restored from checkpoint, so the resumed
+    segment is a fresh-seeded continuation, not a faithful replay of the original trajectory.'
+  - 'strict_resume=false on a resumed run: checkpoint loading is non-strict, so silent shape/parameter
+    mismatches between the checkpoint and current model would not raise.'
+  dedup_key:
+    script_sha256: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+    config_fingerprint: 1d81bd833e41864ea52a261fcd5d166be8842d4e7294f185417d8fd3703ec008
+    seed: 3
+    dtype: float32
+    checkpoint_sha256: d66ff0d98610e0fd8d993dd7fa97bb38d26253e89e7e4aa49f79f54d97d13f89
+    audit_state_fingerprint: 069a9b322acc207e439b6a4bf9aebcde4de7c81f1950abee790c83c797b84683
+REPRO_TENSOR_EXPLICIT_JM_R6_FIX_2400:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 75.0
+  legacy_statuses:
+    A_projector: WARN
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: WARN
+    E_interscale: PASS
+    F_rigidity: WARN
+    G_nary_closure: PASS
+    H_nary_associator: PASS
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: WARN
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - A_projector
+  - B_commutator
+  - D_snapping
+  - F_rigidity
+  - J_tensor_interscale
+  - L_gauge_canonicalization
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  - 'restore_rng=false on a resumed run: the RNG stream was not restored from checkpoint, so the resumed
+    segment is a fresh-seeded continuation, not a faithful replay of the original trajectory.'
+  - 'strict_resume=false on a resumed run: checkpoint loading is non-strict, so silent shape/parameter
+    mismatches between the checkpoint and current model would not raise.'
+  dedup_key:
+    script_sha256: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+    config_fingerprint: 41858eda1aa85cdf2dc385264babe6c564b753d7ec0e051d86e2c9559a4cabac
+    seed: 3
+    dtype: float32
+    checkpoint_sha256: ee1cf6095e00b18f6e65451c6d25d3323557f80be7c1b989c5e8814baab90fea
+    audit_state_fingerprint: 99ea34063695abada4706d926ed982b1be6bb72d4a43c3604165c5510c5d37b6
+master_audit_A_to_N_v17_RTXPRO5000_CLOSURE_300_R6:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 85.71428571428571
+  legacy_statuses:
+    A_projector: PASS
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: PASS
+    E_interscale: PASS
+    F_rigidity: PASS
+    G_nary_closure: WARN
+    H_nary_associator: WARN
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: PASS
+    M_persistent_factorization: PASS
+    N_cyclic_law: PASS
+  warn_blocks:
+  - B_commutator
+  - G_nary_closure
+  - H_nary_associator
+  - J_tensor_interscale
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  dedup_key:
+    script_sha256: UNKNOWN_SCRIPT_HASH
+    config_fingerprint: d4cd81e293d9328119d6d91a70c192995f147795690f5af6243bfc7e2e98f0a2
+    seed: 0
+    dtype: float32
+    checkpoint_sha256: da51f1c95e18a89e7aa146fd8051a8e8a2813b2206621f471947c3bd8416f272
+    audit_state_fingerprint: aa82afd66a8c1f34f64275c1b7cb6835dabbbc284ea22c496aa4d13d94addef7
+master_audit_A_to_N_v17_RTXPRO5000_CLOSURE_600_R6:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 85.71428571428571
+  legacy_statuses:
+    A_projector: PASS
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: PASS
+    E_interscale: PASS
+    F_rigidity: PASS
+    G_nary_closure: PASS
+    H_nary_associator: WARN
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: PASS
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - B_commutator
+  - H_nary_associator
+  - J_tensor_interscale
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  dedup_key:
+    script_sha256: UNKNOWN_SCRIPT_HASH
+    config_fingerprint: 6c31c442ea82a53c18dad8f2715b86f49f20eeec89c7bf7486bd247c209a1f72
+    seed: 1
+    dtype: float32
+    checkpoint_sha256: f18368c3b30347b120bde726d30cf10ce4f0c1a8d203100889e883c6934a2e04
+    audit_state_fingerprint: 74567cbfeba4d870f30eae4c25c8f3a81f09e3fa0fd5e2e3c273b40f819165f7
+master_audit_A_to_N_v17_RTXPRO5000_ULTRAFAST_120:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: 78.57142857142857
+  legacy_statuses:
+    A_projector: PASS
+    B_commutator: WARN
+    C_beals: PASS
+    D_snapping: PASS
+    E_interscale: WARN
+    F_rigidity: PASS
+    G_nary_closure: WARN
+    H_nary_associator: WARN
+    I_reduced_tensor: PASS
+    J_tensor_interscale: WARN
+    K_hosvd: PASS
+    L_gauge_canonicalization: PASS
+    M_persistent_factorization: WARN
+    N_cyclic_law: PASS
+  warn_blocks:
+  - B_commutator
+  - E_interscale
+  - G_nary_closure
+  - H_nary_associator
+  - J_tensor_interscale
+  - M_persistent_factorization
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: WARN
+  caveats:
+  - 'eval_mode=''screening'' (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  dedup_key:
+    script_sha256: UNKNOWN_SCRIPT_HASH
+    config_fingerprint: 1eea9b6c5361442e82015293d460231abfa2be50b65944c5c94ec2934457923d
+    seed: 0
+    dtype: float32
+    checkpoint_sha256: d15e8176bb6461e1e2d3199e4b609ef1331b8a646add1979d47c7401c6a12164
+    audit_state_fingerprint: d173b2fd7b4b26636e9a53ac56349cf8d4b1468f173e19e5c8226c4b8c889726
+master_audit_A_to_N_v17_RTXPRO5000_closure_gji_300:
+  legacy_master_score_DO_NOT_USE_AS_CERTIFICATE: null
+  legacy_statuses: {}
+  warn_blocks: []
+  na_blocks_scored_as_full_credit_in_legacy_scoring: []
+  reclassified_status: EMPIRICAL_SCREENING_PASS
+  caveats:
+  - 'eval_mode=None (not ''certification''): thresholds_for_mode() applies looser screening tolerances
+    (up to ~1000x looser per block); this run cannot support a certification-tier claim regardless of
+    its reported master_score.'
+  dedup_key:
+    script_sha256: UNKNOWN_SCRIPT_HASH
+    config_fingerprint: NO_CONFIG
+    seed: null
+    dtype: null
+    checkpoint_sha256: 2fc4f274c0543f5aced770bf1aa4554df883319e2dbfc4e1c7c420fd2d844cd6
+    audit_state_fingerprint: NO_BLOCKS

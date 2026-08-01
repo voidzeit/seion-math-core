@@ -1,0 +1,10 @@
+{
+  "figure": "25_s1_gpu_cpu_crossover",
+  "generator": "spectral/certification_v18/dataset/generate_atlas_figures.py",
+  "source_data": "tables/25_s1_gpu_cpu_crossover.json",
+  "hashes": {
+    "png": "b5e960402f2b673027e9df795f4ba3769ff82d30db5ecaaacc266253b64bd478",
+    "svg": "42e1a280bdc00d1d489d335f7a6f6131d40d0aa7146e09c68d5fe02829e34cd1",
+    "source_data": "3e9ecbba5bcc5692b990d584a38818b010f8fb55d8b65ebdfe9937db88686bd1"
+  }
+}
