@@ -3,3 +3,9 @@
 *.npz binary
 *.parquet binary
 *.svg binary
+
+# Force LF for anything a checksum/hash-drift test compares byte-for-byte,
+# so a Windows checkout (core.autocrlf=true) doesn't produce a spurious
+# mismatch against a manifest frozen from an LF blob.
+schemas/*.json text eol=lf
+*.sha256 text eol=lf
