@@ -20,4 +20,10 @@ derived_outputs:
   - .ai/packs/experiment/context.md
   - .ai/packs/paper/context.md
   - .ai/packs/release/context.md
+# Disposable runtime state written by the agent-graph-loop executor
+# (src/seion_core/orchestration/), never canonical, never hand-edited,
+# gitignored under .ai/runtime/* -- see docs/orchestration/AGENT_GRAPH_LOOP.md.
+runtime_paths:
+  - .ai/runtime/sessions/
+  - .ai/runtime/locks/
 integrity: source_hashes_required

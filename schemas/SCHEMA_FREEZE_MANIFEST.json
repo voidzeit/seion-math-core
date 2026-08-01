@@ -1,0 +1,16 @@
+{
+  "hashes": {
+    "agent_manifest.schema.json": "1c105dd0de1f8f3c12507ddf105fd241afcc96d7ed7115725379187b579c16f7",
+    "certificate.schema.json": "8f32fe2525d5ecf7dc4e64c5f6163ad247c3a18605be44ecd95f6c73344a7bfd",
+    "claim.schema.json": "74e55cc9d41814a899c79d3cd0d7ed088d234f055b87ec028c6a68bf85bd1dda",
+    "evidence_event.schema.json": "ecac3671f9610e3e13ff35a76d9196386b93e44b912b6698ee226fc8298d000c",
+    "example.schema.json": "341fddb9723c15357081564ee3b0fc0733b28562309b620069fc3347ec92b0b8",
+    "experiment.schema.json": "e767071b8645a2363a473e58ec7b811fa16d279e4e414cf877167bb49633c441",
+    "governance_action.schema.json": "61f019bf085535731507f3f3a07faf0d85745b9e54df3b7cf4533d04ecf1a3f4",
+    "memory_manifest.schema.json": "af81bda156128b0c8544cd0e7af070b37a8dcc2b4a3f5d61f16b7525496135b1",
+    "run_manifest.schema.json": "f9773cd72ce8256ac0a0ec5d6544eb6be23798d297ab93c20901afde1e184054",
+    "scientific_instance.schema.json": "0ee0c979a8d92b1454f3ee379b9cfdbd6815379d332b9370763dd0b73c1b002d"
+  },
+  "note": "sha256 of each frozen schemas/*.json file. Regenerate only as part of a recorded migration in schemas/MIGRATIONS.md.",
+  "version": 1
+}

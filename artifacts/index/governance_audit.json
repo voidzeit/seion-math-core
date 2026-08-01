@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "audited_at": "2026-07-29T18:16:11.200664+00:00",
+  "audited_at": "2026-07-30T18:08:47.801279+00:00",
   "status": "yellow",
-  "strict": true,
+  "strict": false,
   "git": {
-    "branch": "research/nodewise-tree-constants-v3",
-    "commit": "b718f4e5178590d1f8b6a090fb696545eb3bfcd4",
+    "branch": "infra/agent-graph-loop-v1",
+    "commit": "427ad529e7793b604cdb23bda089534420a6aee6",
     "dirty": true
   },
   "required_files": {
@@ -19,17 +19,17 @@
     "status": "green"
   },
   "runs": {
-    "historical_run_count": 80,
+    "historical_run_count": 105,
     "unique_scientific_instance_count": 9,
     "duplicate_group_count": 8,
-    "duplicate_record_count": 71,
+    "duplicate_record_count": 96,
     "artifact_contract": {
-      "run_count": 80,
-      "contract_complete_count": 80,
+      "run_count": 105,
+      "contract_complete_count": 105,
       "contract_incomplete_count": 0,
       "missing_artifacts": {},
       "statuses": {
-        "COMPLETE": 78,
+        "COMPLETE": 103,
         "FAILED_RUNTIME": 2
       }
     }

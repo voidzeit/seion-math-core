@@ -59,7 +59,7 @@ def test_context_pack_is_derived_and_bounded(repo_root: Path, tmp_path: Path) ->
     assert "derived; rebuildable" in text
 
 
-def test_audit_reports_missing_paper_as_warning_but_not_error(tmp_path: Path) -> None:
+def _write_valid_registry_tree(tmp_path: Path) -> None:
     for relative in REQUIRED_FILES:
         path = tmp_path / relative
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -80,10 +80,74 @@ def test_audit_reports_missing_paper_as_warning_but_not_error(tmp_path: Path) ->
             path.write_text("{}\n", encoding="utf-8")
         else:
             path.write_text("version: 1\n", encoding="utf-8") if path.suffix == ".yaml" else path.write_text("# test\n", encoding="utf-8")
+
+
+def test_audit_reports_missing_paper_as_warning_but_not_error(tmp_path: Path) -> None:
+    _write_valid_registry_tree(tmp_path)
     result = audit_governance(tmp_path, write_outputs=False)
     assert result["status"] == "yellow"
     assert result["passed"] is True
     assert not any(item["severity"] == "error" for item in result["issues"])
+
+
+def test_audit_rejects_corrupted_claim_status(tmp_path: Path) -> None:
+    """A claim status outside the frozen vocabulary must fail closed, not pass silently."""
+    _write_valid_registry_tree(tmp_path)
+    claims_path = tmp_path / "claims" / "claims_registry.yaml"
+    claims_path.write_text(
+        "claims:\n  - id: C1\n    title: demo\n    status: DEFINITELY_TRUE_TRUST_ME\n    statement: demo\n",
+        encoding="utf-8",
+    )
+    result = audit_governance(tmp_path, write_outputs=False)
+    assert result["status"] == "red"
+    assert result["passed"] is False
+    # load_yaml_registry() itself rejects unknown statuses (defense in depth before
+    # the per-claim status check in _check_registry_references ever runs).
+    codes = {item["code"] for item in result["issues"] if item["severity"] == "error"}
+    assert "claims_registry_invalid" in codes
+
+
+def test_audit_rejects_evidence_matrix_pointing_at_unregistered_claim(tmp_path: Path) -> None:
+    """A tampered claim/evidence mapping that references a claim id absent from the registry must fail closed."""
+    _write_valid_registry_tree(tmp_path)
+    matrix_path = tmp_path / "artifacts" / "index" / "claim_evidence_matrix.csv"
+    matrix_path.write_text("claim_id,status,statement,evidence\nC_FORGED,proved,demo,demo\n", encoding="utf-8")
+    result = audit_governance(tmp_path, write_outputs=False)
+    assert result["status"] == "red"
+    assert result["passed"] is False
+    codes = {item["code"] for item in result["issues"] if item["severity"] == "error"}
+    assert "evidence_matrix_unknown_claim" in codes
+
+
+def test_audit_rejects_claim_reference_to_missing_local_evidence(tmp_path: Path) -> None:
+    """A claim citing evidence/proof at a path that does not exist on disk must fail closed, not be trusted."""
+    _write_valid_registry_tree(tmp_path)
+    claims_path = tmp_path / "claims" / "claims_registry.yaml"
+    claims_path.write_text(
+        "claims:\n"
+        "  - id: C1\n"
+        "    title: demo\n"
+        "    status: proved\n"
+        "    statement: demo\n"
+        "    proof: proofs/does_not_exist_on_disk.md\n",
+        encoding="utf-8",
+    )
+    result = audit_governance(tmp_path, write_outputs=False)
+    assert result["status"] == "red"
+    assert result["passed"] is False
+    codes = {item["code"] for item in result["issues"] if item["severity"] == "error"}
+    assert "claim_reference_missing" in codes
+
+
+def test_audit_rejects_missing_required_governance_file(tmp_path: Path) -> None:
+    """Deleting a required governance/memory file must be caught, not silently pass as green/yellow."""
+    _write_valid_registry_tree(tmp_path)
+    (tmp_path / "governance" / "ACTION_POLICY.yaml").unlink()
+    result = audit_governance(tmp_path, write_outputs=False)
+    assert result["status"] == "red"
+    assert result["passed"] is False
+    codes = {item["code"] for item in result["issues"] if item["severity"] == "error"}
+    assert "required_file_missing" in codes
 
 
 def test_postflight_command_argument_does_not_shadow_subcommand() -> None:

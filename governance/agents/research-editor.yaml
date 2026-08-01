@@ -2,6 +2,7 @@ version: 1
 agent_id: research-editor
 role: mathematical research and paper integrity
 authority: advisory
+stages: [release]
 reads: [AGENTS.md, .ai/, governance/RESEARCH_SOFTWARE_SPLIT.yaml, claims/, docs/theorems/]
 may_change: [paper/, docs/theorems/, claims/]
 must_not: [upgrade_claim_status_without_evidence, call_numerical_result_a_proof, delete_counterexamples]

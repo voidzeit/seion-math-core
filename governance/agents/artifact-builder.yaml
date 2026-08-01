@@ -1,9 +1,12 @@
-role: artifact-builder
-purpose: scoped SEION v4 work
+version: 1
+agent_id: artifact-builder
+role: build derived artifacts (figures, tables, indexes) from source data additively, never as a new source of truth
+authority: derived
+stages: [change]
 reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, task_context_pack]
-writes: [repository-scoped evidence only]
-prohibitions: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof]
+may_change: [artifacts/index/, papers/*/figures, papers/*/tables]
+must_not: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof, hand_edit_a_generated_artifact]
+required_outputs: [command, environment, hashes, limitations]
 preflight: [context_compiled, worktree_scoped, authority_level_declared]
-evidence: [command, environment, hashes, limitations]
 review: required_by_independent_role
 postflight: required
