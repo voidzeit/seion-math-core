@@ -168,3 +168,17 @@ entries:
       strictly positive, non-separable). All properties verified exactly
       (symmetry to machine precision, d(p)>0, self-adjoint, largest
       eigenvalue exactly 1 others <1, Dirichlet identity holds to 1e-12).
+
+  - id: M7_pseudodifferential_microlocal_program
+    question: >
+      Symbol class stability, projector composition stability, associator
+      symbol estimates, wavefront-set propagation, and whether the final
+      orthogonal projection removes microlocal sources.
+    status: OPEN_WITH_PRECISE_BOUNDARY
+    evidence: research/math_closure/pseudodifferential/research_note.md
+    boundary: >
+      No compact manifold or symbol class has been fixed anywhere in this
+      repository's history - genuinely different machinery from M1-M6's
+      finite-dimensional techniques, not a mechanical extension. Explicitly
+      lowest priority per the mission brief; no claim attempted per the
+      mission's own prohibition against incomplete-hypothesis claims here.
