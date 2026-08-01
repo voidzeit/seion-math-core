@@ -376,6 +376,30 @@ do not establish any mathematical statement in either companion article, and no 
 computed by this software is a proof of anything.
 \end{remark}
 
+\subsection{Expanded coverage and a clean-room run (follow-up session)}
+
+A follow-up session expanded case study~I to $132$ tests (up from $73$) and added an
+independent $18$-test suite covering the six-term signed-combination resolution (two
+structurally unrelated symbolic implementations, four mutation tests), the exact k\,=\,2
+and k\,=\,3 closed-form constructions across four dimension/rank pairs each, the verified
+Markov construction, and configuration/execution-identity checks on a companion
+applied-benchmark's raw results (no duplicate (topology, seed, budget, method) identities;
+every configuration ran the same declared method set). A separate $16$-test suite covers
+the applied benchmark itself (the adaptive rank-allocation companion article): budget conservation for every
+allocation method and ablation, projector orthonormality and idempotence, no test-set
+leakage, determinism given a fixed seed, and regression tests for two real bugs found and
+fixed during that work (one ablation that could not perturb its own greedy ranking; one
+network topology that made a node's rank irrelevant by construction).
+
+A fresh Docker container, built from an unrelated public base image with no cached state
+from the author's machine, reran both existing suites plus the new ones, plus the six-term
+resolution and exact closed-form scripts, plus a full re-execution of the applied
+benchmark's synthetic validation level -- byte-identical, by SHA-256, to the
+already-committed results. One real environment gap (a missing \texttt{git} binary,
+needed by tests that record commit-hash lineage) was found and fixed before the container
+run was declared passing. Full log in \texttt{clean\_room/reproduction\_run/} in the
+accompanying repository.
+
 \section{Cross-platform and cross-implementation agreement}
 \label{sec:agreement}
 
