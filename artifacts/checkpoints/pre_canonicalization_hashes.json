@@ -1,0 +1,15 @@
+{
+  "commit": "a39de8047d3d33314adb485f762c2b74c7af73fb",
+  "pdfs": {
+    "mathematical_paper": {
+      "bytes": 790425,
+      "path": "papers\\tree_stability_v3\\build\\main.pdf",
+      "sha256": "c67106c478e660741c1ac71d2fadc31ef270636141e36e5732896ce8533574eb"
+    },
+    "software_companion": {
+      "bytes": 258142,
+      "path": "papers\\software_v3\\build\\main.pdf",
+      "sha256": "6a4bdce3b504bf244b9514c7bcc76aa5b0aa6d84f78cb96b41803405417837b3"
+    }
+  }
+}

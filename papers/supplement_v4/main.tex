@@ -1,0 +1,41 @@
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,hyperref,xcolor}
+\title{SEION Math Core v4 Supplementary Atlas}
+\author{Eliuth Chavero Jasso\\Independent Researcher, Apizaco, Tlaxcala, Mexico}
+\date{29 July 2026}
+\begin{document}\maketitle
+\begin{abstract}This atlas records the finite-dimensional evidence, artifact contracts, negative controls, and reproducibility boundaries associated with the canonical SEION Math Core v4 research draft. It is a companion record, not an independent proof of universal or continuum statements.\end{abstract}
+\section{Scope and authority}
+The mathematical paper separates definitions, conditional results, observed numerical residuals, and unresolved claims. The authority ladder is recorded in \texttt{governance/AUTHORITY\_LADDER.yaml}; the machine graph and source hashes are in \texttt{.ai/machine}.
+\section{Canonical artifact map}
+\begin{center}\begin{tabular}{ll}\toprule
+Artifact family & Authority\\\midrule
+Theorem/proof & theorem registry and proof source\\
+Executed result & run manifest, metrics, certificate, hashes\\
+Experiment design & registered experiment matrix\\
+Figure/table & generated output with provenance\\
+Release status & independent gate report and human decisions\\\bottomrule
+\end{tabular}\end{center}
+\section{Required controls}
+The registry distinguishes known invariant projectors, random projectors, PCA/SVD, spectral projectors, and closure-minimizing projectors. Exact dense laws and CP rank sweeps are controls; negative spectral-gap controls remain mandatory. Repeated executions are deduplicated by scientific-instance identity and are not counted as independent experiments.
+\section{Mathematical blockers}
+The v4 program does not silently promote the current tree-level certificates to a universal theorem. Sharpness extremizers, a complete prior-art novelty audit, cancellation-aware FI/GJI/Jacobiator constants, and a full extended optimizer grid remain explicit blockers until independently completed.
+\section{Reproducibility manifest}
+\begin{verbatim}
+python -m pytest -q
+python scripts/build_v4_foundation.py
+python scripts/seion_campaign_v4.ps1
+\end{verbatim}
+    The last command is a PowerShell orchestrator; all stages report status and preserve failed evidence.
+\section{Selected figures}
+Figures are generated from registered v3 runs and copied into the v4 paper tree. Their captions state the metric, seed count, baseline, and limitation. No categorical dtype progression is treated as a continuous variable.
+\section{Reviewer checklist}
+\begin{itemize}
+\item Claims map to theorem, experiment, counterexample, or blocker records.
+\item No numerical residual upgrades a claim to \texttt{PROVED}.
+\item Tables obey lower/upper and operator/Frobenius metric invariants.
+\item PDF and source checksums are emitted by the release script.
+\item Human review remains a required external decision.
+\end{itemize}
+\end{document}

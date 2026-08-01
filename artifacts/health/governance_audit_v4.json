@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "audited_at": "2026-07-30T02:45:36.571910+00:00",
+  "status": "yellow",
+  "strict": false,
+  "git": {
+    "branch": "program/seion-canonical-repository-v4",
+    "commit": "a39de8047d3d33314adb485f762c2b74c7af73fb",
+    "dirty": true
+  },
+  "required_files": {
+    "count": 34,
+    "missing": []
+  },
+  "memory_health": {
+    "canonical_manifest_present": true,
+    "durable_required_files_present": 13,
+    "derived_runtime_separated": true,
+    "status": "green"
+  },
+  "runs": {
+    "historical_run_count": 100,
+    "unique_scientific_instance_count": 9,
+    "duplicate_group_count": 8,
+    "duplicate_record_count": 91,
+    "artifact_contract": {
+      "run_count": 100,
+      "contract_complete_count": 100,
+      "contract_incomplete_count": 0,
+      "missing_artifacts": {},
+      "statuses": {
+        "COMPLETE": 98,
+        "FAILED_RUNTIME": 2
+      }
+    }
+  },
+  "scientific_blocker_ids": [
+    "B-0001",
+    "B-0002",
+    "B-0003",
+    "B-0004",
+    "B-0005",
+    "B-0006",
+    "B-0007",
+    "B-0008",
+    "B-0009",
+    "B-0010"
+  ],
+  "issues": [
+    {
+      "severity": "warning",
+      "code": "duplicate_runs_detected",
+      "message": "8 duplicate run groups detected; use the derived unique index",
+      "paths": [
+        "artifacts/index/run_index.csv",
+        "artifacts/index/run_index_deduplicated.csv"
+      ]
+    },
+    {
+      "severity": "warning",
+      "code": "paper_not_release_ready",
+      "message": "paper quality report does not support a release-ready claim under the declared rubric",
+      "paths": [
+        "C:\\Documents\\metamaths\\seion-math-core\\paper\\quality\\paper_quality_report.json"
+      ]
+    }
+  ],
+  "limitations": [
+    "Structural audit only; declared validation commands are not executed by this command.",
+    "A green result is not mathematical proof or release approval."
+  ],
+  "passed": true
+}

@@ -1,0 +1,21 @@
+<meta charset='utf-8'><title>SEION</title><pre># Architecture
+
+`src/seion_core/algebra` contains typed laws and identity evaluators. `kernels` adds exact finite weighted models. `geometry`, `variational`, and `projectors` implement declared derived objects. `multiscale`, `operators`, and `cohomology` remain finite/truncated modules. `certification` owns run manifests and artifact hashes. The CLI and PowerShell scripts orchestrate execution without hiding failures.
+
+The evidence path is:
+
+```text
+config -&gt; run directory -&gt; final_metrics.json -&gt; generated table/figure -&gt; paper location
+```
+
+The operational control path is separate and local to this repository:
+
+```text
+AGENTS.md -&gt; .ai durable memory -&gt; governance contracts
+          -&gt; governance audit/context/action gate
+          -&gt; claims, runs, paper, and release decisions
+```
+
+The control path records and constrains evidence; it does not replace the
+mathematical source code or promote numerical observations to proofs.
+</pre>

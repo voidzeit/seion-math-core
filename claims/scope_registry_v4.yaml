@@ -1,0 +1,11 @@
+version: 4
+canonical_repository: seion-math-core
+classes:
+  CANONICAL_FINITE_CORE: [src/seion_core, tests, claims, experiments]
+  ACTIVE_RESEARCH_TRACK: [papers/tree_stability_v3, artifacts/research_v3]
+  SUPPORTING_MATHEMATICS: [foundations, projector_reduction, truncated_cohomology]
+  EXTERNAL_APPLICATION: []
+  HISTORICAL: [artifacts/checkpoints]
+  SUPERSEDED: []
+  SPECULATIVE: [claims/conjecture_registry.yaml]
+  OUT_OF_SCOPE: [other repositories]

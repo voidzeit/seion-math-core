@@ -1,0 +1,44 @@
+{
+  "baseline": {
+    "mkdocs": {
+      "command": "mkdocs build --strict",
+      "exit_code": 127,
+      "summary": "mkdocs executable unavailable in the current environment"
+    },
+    "pytest": {
+      "command": "python -m pytest -q",
+      "exit_code": 0,
+      "summary": "69 passed"
+    },
+    "v3_paper_build": {
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/build_tree_constants_v3_paper.ps1",
+      "exit_code": 0,
+      "summary": "both v3 PDFs up to date"
+    }
+  },
+  "branch": "research/nodewise-tree-constants-v3",
+  "captured_utc": "2026-07-30T02:18:28.027742+00:00",
+  "commit": "a39de8047d3d33314adb485f762c2b74c7af73fb",
+  "dirty_paths": [
+    " M.obsidian/graph.json",
+    " M.obsidian/workspace.json",
+    "??scripts/preserve_pre_canonicalization.py"
+  ],
+  "pdfs": {
+    "mathematical_paper": {
+      "bytes": 790425,
+      "path": "papers\\tree_stability_v3\\build\\main.pdf",
+      "sha256": "c67106c478e660741c1ac71d2fadc31ef270636141e36e5732896ce8533574eb"
+    },
+    "software_companion": {
+      "bytes": 258142,
+      "path": "papers\\software_v3\\build\\main.pdf",
+      "sha256": "6a4bdce3b504bf244b9514c7bcc76aa5b0aa6d84f78cb96b41803405417837b3"
+    }
+  },
+  "schema_version": 1,
+  "tracked_file_count": 1760,
+  "untracked_paths": [
+    "scripts/preserve_pre_canonicalization.py"
+  ]
+}

@@ -1,42 +1,23 @@
-version: 1
-project_id: seion-math-core
-canonical_root: .ai
-memory_policy: governance/MEMORY_CONTRACT.yaml
-durable_files:
+version: 4
+canonical_scope: C:/Documents/metamaths/seion-math-core
+other_repositories: read_only_inspiration
+source_of_truth: domain_scoped
+required_files:
+  - .ai/PROJECT_IDENTITY.md
   - .ai/CURRENT_STATE.md
-  - .ai/DECISIONS.md
   - .ai/TASKS.md
   - .ai/KNOWN_BLOCKERS.md
-  - .ai/RISK_REGISTER.md
-  - .ai/TEST_MATRIX.md
+  - .ai/DECISIONS.md
   - .ai/RUN_HISTORY.md
-  - .ai/HANDOFF.md
-  - .ai/CONTEXT_RECOVERY.md
-  - .ai/WORKSTREAMS.md
-  - .ai/MEMORY_GOVERNANCE.md
-  - .ai/MEMORY_OWNERSHIP_MATRIX.md
-derived_directories:
-  - .ai/machine
-  - .ai/packs
-runtime_directories:
-  - .ai/runtime
-rules:
-  runtime_is_not_memory: true
-  generated_memory_must_be_rebuildable: true
-  historical_records_are_append_only: true
-  every_state_update_requires_provenance: true
-  ai_approval_is_not_official_approval: true
-ownership:
-  source_code: src/
-  tests: tests/
-  claims: claims/
-  experiments: experiments/
-  run_artifacts: artifacts/runs/
-  v3_run_artifacts: artifacts/runs_v3/
-  v3_research_evidence: artifacts/research_v3/
-  v3_quality_evidence: artifacts/qa_v3/
-  paper: paper/
-  v3_mathematical_paper: papers/tree_stability_v3/
-  v3_software_companion: papers/software_v3/
-  durable_memory: .ai/
-  governance_contracts: governance/
+  - governance/AUTHORITY_LADDER.yaml
+  - claims/claims_registry.yaml
+  - claims/theorem_registry.yaml
+  - artifacts/reference_audit/adaptation_matrix.csv
+derived_outputs:
+  - .ai/machine/repository_graph.json
+  - .ai/machine/context_index.json
+  - .ai/packs/proof/context.md
+  - .ai/packs/experiment/context.md
+  - .ai/packs/paper/context.md
+  - .ai/packs/release/context.md
+integrity: source_hashes_required

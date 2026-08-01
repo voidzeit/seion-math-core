@@ -1,0 +1,23 @@
+<meta charset='utf-8'><title>SEION</title><pre># Signed forests and cancellation-aware scope
+
+A polynomial expression is a finite signed forest
+(mathcal F=\sum_\alpha c_\alpha T_\alpha) whose terms have a common typed
+input/output signature.  A per-tree triangle certificate is always valid, but
+it can discard exact cancellation.
+
+The v3 engine applies three progressively stronger operations:
+
+1. syntactically identical trees are grouped and their coefficients summed
+   exactly;
+2. shared subtree evaluations are represented as an expression DAG;
+3. adversarial evaluation optimizes the whole signed expression rather than
+   independent terms.
+
+Only the first operation is an unconditional symbolic cancellation theorem in
+the current implementation.  A lower adversarial ratio for the whole forest is
+an `EMPIRICAL_LOWER_BOUND`, not an optimal constant.  The projected five-input
+ternary associator has unconditional triangle coefficient two by the
+(k-1) theorem.  A matching fixed-(eta) construction has not been certified,
+so coefficient two is not labeled exact-optimal.  Filippov, GJI, and Jacobiator
+experiments preserve their exact named sign and insertion conventions.
+</pre>

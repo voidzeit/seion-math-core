@@ -1,0 +1,51 @@
+<meta charset='utf-8'><title>SEION</title><pre># Prior-art review for structure-preserving reduction v2
+
+## Scope and method
+
+The review was performed against primary or official publisher pages. It is a
+positioning review, not a claim that every neighboring result has been
+exhaustively searched. The central decision is conservative: exact restriction
+to an invariant subspace, inheritance of operadic identities, and
+gap-dependent spectral-subspace perturbation are established ideas. The
+repository therefore treats them as foundations and refuses to label them new
+theorems.
+
+## Comparison matrix
+
+| Area | Established result | Closest construction here | Exact overlap | Genuine difference | Novelty status |
+|---|---|---|---|---|---|
+| Operads | Operations and their partial compositions are organized by operads. | Typed tree evaluator and reduction. | Exact reduction commutes with declared compositions under closure. | Finite coordinate certificate and parity tests. | Known result; no operad novelty. |
+| Filippov n-Lie | The fundamental identity defines n-Lie algebras. | Signed polynomial residual for a fixed convention. | Same two-operation tree pattern. | Generic n-linear laws are also supported. | No new n-Lie theorem. |
+| Akivis/Sabinin | Associators and higher operations encode nonassociative structure. | Associator trees and convention registry. | Associator is treated as a polynomial identity. | No loop, Hopf, or envelope construction. | No novelty established. |
+| CP/Tucker/HOSVD | Standard tensor representations, approximation, and multilinear SVD. | Dense/CP laws and rank/error controls. | Same tensor and CP objects. | Used as implementation baselines, not new decomposition theory. | No decomposition novelty. |
+| Identifiability | CP factors have gauge and permutation ambiguity; uniqueness needs hypotheses. | Gauge-aware factor tests. | Same ambiguities. | Explicit negative tests in the artifact contract. | Computational hygiene only. |
+| Structure-preserving reduction | Projection can preserve dynamical structure under compatibility conditions. | Static n-linear closure and identity residual. | Projection hypothesis implies exact preservation. | Static finite n-ary object rather than a dynamical system. | Theorem transfer not claimed. |
+| Spectral projectors | Davis--Kahan controls subspace rotation by a gap. | Threshold snapping and no-gap counterexample. | Same gap mechanism. | Threshold-specific reproducibility controls. | Standard consequence. |
+| Discrete Hodge | Finite cochain operators and harmonic approximations are established. | Finite cycle/boundary descent proposition. | Finite quotient argument. | No continuum limit. | Supporting result only. |
+| Reproducibility | Code/data/parameters must regenerate published results. | v2 manifests and independent parity. | Same principle. | Object/input hashes and strict gates. | Software contribution only. |
+
+## Current novelty judgment
+
+No theorem-level novelty is established by the current v2 program. The
+approximate-closure recurrence
+
+\[
+\lVert F_T-R_T\rVert\leq k(T)\rho M^{k(T)-1}\prod_\ell\lVert z_\ell\rVert
+\]
+
+is explicit and useful for a certificate, but its induction is elementary and
+the present review does not justify a major novelty claim. The appropriate
+release state is therefore a mathematically rigorous research draft plus
+RESEARCH_BLOCKED.md, not a submission-ready research paper.
+
+The shortest credible path to unblocking is a sharper theorem with a
+demonstrated lower-bound or optimality result, or a genuinely new algorithmic
+guarantee for recovering invariant/approximately closed subspaces that is
+compared to the established projection and tensor-decomposition literature.
+
+## Sources
+
+The machine-readable source records are in claims/prior_art_registry.yaml;
+the complete BibTeX set used by the v2 manuscripts is in
+papers/foundations_v2/references.bib.
+</pre>

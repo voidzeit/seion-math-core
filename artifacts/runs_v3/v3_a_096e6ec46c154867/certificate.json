@@ -1,0 +1,8 @@
+{
+  "fixed_eta_global_optimality": "OPEN_EXCEPT_TRIVIAL_ZERO_CASES",
+  "status": "CERTIFIED_UPPER_BOUND_AND_CERTIFIED_LOWER_BOUND",
+  "theorems": [
+    "THM_V3_HOMOGENEOUS_AMBIENT_K",
+    "THM_V3_PROJECTED_ROOT_K_MINUS_ONE"
+  ]
+}

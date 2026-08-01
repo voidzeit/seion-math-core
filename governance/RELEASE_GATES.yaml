@@ -1,0 +1,7 @@
+version: 4
+gates:
+  math: [proof_status, prior_art, counterexamples, claim_lint, human_review]
+  software: [tests, static_quality, artifact_contracts, packaging, security]
+  dataset: [run_registry, deduplication, manifests, hashes]
+  extended: [budget, resource_gate, terminal_rows, aggregate_audit]
+policy: fail_closed

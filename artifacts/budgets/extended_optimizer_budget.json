@@ -1,0 +1,9 @@
+{
+  "completed_performance_cells": 0,
+  "completed_trajectories": 4,
+  "required_performance_cells": 8400,
+  "required_trajectories": 460800,
+  "status": "BLOCKED_RESOURCE_GATE",
+  "storage": "content-addressed manifests plus compact aggregates",
+  "version": 4
+}

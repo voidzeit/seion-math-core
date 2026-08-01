@@ -1,0 +1,9 @@
+version: 4
+contracts:
+  change: [scope_recorded, tests_added_or_waived, no_secret_added]
+  research: [claim_registered, hypotheses_explicit, proof_or_blocker_recorded, prior_art_recorded]
+  experiment: [matrix_registered, seed_policy, manifest_hashes, negative_control, aggregate_statistics]
+  artifact: [source_run_recorded, schema_validated, content_hash, provenance]
+  paper: [claim_lint, bibliography_clean, latexmk_clean, rendered_pages_inspected]
+  release: [all_gates_evaluated, sbom, checksums, reproducibility_bundle, human_decisions_recorded]
+  governance: [postflight_recorded, blockers_exact, worktree_scoped]

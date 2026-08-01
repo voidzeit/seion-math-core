@@ -59,6 +59,22 @@ rendered pages, and fail-closed audit with:
 powershell -ExecutionPolicy Bypass -File scripts/build_research_v2.ps1
 ```
 
+## Canonical repository v4
+
+All governance, memory, evidence, graph, paper, packaging, and release work is
+canonical here; other repositories are read-only inspiration. Recover with
+`AGENTS.md` and `.ai/MEMORY_MANIFEST.yaml`, then run:
+
+```powershell
+python scripts/build_v4_foundation.py
+python scripts/build_docs_v4.py
+powershell -ExecutionPolicy Bypass -File scripts/seion_campaign_v4.ps1 -SkipHeavy
+```
+
+The v4 campaign is fail-closed. It preserves incomplete extended runs,
+distinguishes mathematical claims from software evidence, and emits the exact
+unresolved blockers in `artifacts/release_v4/`.
+
 The v2 foundations draft is intentionally not submission-ready: its standard
 exact-reduction and spectral results are not claimed as novel, and the audit
 records the remaining novelty and author-metadata blockers in

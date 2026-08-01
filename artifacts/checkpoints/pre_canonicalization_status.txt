@@ -1,0 +1,3 @@
+ M .obsidian/graph.json
+ M .obsidian/workspace.json
+?? scripts/preserve_pre_canonicalization.py

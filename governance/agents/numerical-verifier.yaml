@@ -1,0 +1,9 @@
+role: numerical-verifier
+purpose: scoped SEION v4 work
+reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, task_context_pack]
+writes: [repository-scoped evidence only]
+prohibitions: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof]
+preflight: [context_compiled, worktree_scoped, authority_level_declared]
+evidence: [command, environment, hashes, limitations]
+review: required_by_independent_role
+postflight: required

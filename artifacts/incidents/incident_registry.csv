@@ -1,0 +1,15 @@
+incident_id,defect,root_cause,regression,status,eligibility
+INC-V4-001,table_12_schema,schema drift,table invariant validator,repaired,eligible after rerun
+INC-V4-002,table_3_telescoping,aggregation mismatch,telescoping identity test,repaired,eligible after rerun
+INC-V4-003,path_sum_terms,abbreviated factors,full-term symbolic check,blocked,not eligible
+INC-V4-004,count_ledger,duplicate execution rows,dedupe audit,repaired,eligible after rerun
+INC-V4-005,exact_near_optimal,label ambiguity,label schema,repaired,eligible after rerun
+INC-V4-006,bound_direction,lower/upper naming,inequality gate,repaired,eligible after rerun
+INC-V4-007,dtype_semantics,categorical precision plot,paper claim linter,repaired,eligible after rerun
+INC-V4-008,operator_frobenius,metric conflation,metric schema,repaired,eligible after rerun
+INC-V4-009,pdf_type3_unicode,font pipeline,PDF audit,blocked,not eligible
+INC-V4-010,main_supplement_scope,artifact placement,paper manifest,repaired,eligible after rerun
+INC-V4-011,extended_grid,resource budget,terminal-row gate,blocked,not eligible
+INC-V4-012,sharpness,extremizer unresolved,counterexample registry,blocked,not eligible
+INC-V4-013,novelty,prior-art audit pending,primary-source matrix,blocked,not eligible
+INC-V4-014,human_review,no independent reviewer record,review packet,blocked,not eligible

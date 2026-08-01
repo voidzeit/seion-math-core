@@ -1,0 +1,6 @@
+source_repository,practice_name,reason_rejected,replacement_practice,target_component
+ema-ai,PostgreSQL dashboard truth,Product dashboard persistence is not needed for finite research evidence; JSONL and Parquet artifacts are canonical.,no database dependency,data/release evidence services
+aec-agentic,Docker/Kubernetes microservices,Distributed deployment would add operational surface without improving theorem or artifact authority.,modular monolith,src/seion_core/canonical
+bluebim-web,frontend application shell,"SEION only needs a local read-only graph viewer, not a product UI or authenticated server.",static HTML/JS viewer,docs/graph
+pixelcity-smoke-test,Flutter platform directories,Mobile/desktop platform code is unrelated to finite-dimensional mathematics.,Python/LaTeX/Actions,none
+ai-memory-orchestrator,embedding/vector retrieval as authority,Semantic retrieval can assist context but cannot supersede exact registries or proofs.,deterministic graph and path selection,src/seion_core/canonical/context_compiler.py
