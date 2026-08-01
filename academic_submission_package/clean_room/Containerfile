@@ -1,0 +1,52 @@
+# Clean-room environment for reproducing the minimal supporting set of this package.
+#
+# Build:  podman build -t seion-repro -f clean_room/Containerfile .
+#     or: docker build  -t seion-repro -f clean_room/Containerfile .
+#
+# Run:    podman run --rm -v "$PWD/out:/out" seion-repro
+#
+# This image contains no part of the package. It is deliberately built from a clean base so
+# that a reproduction inside it is independent of the author's machine, on which every
+# result in this package was produced.
+#
+# The container reproduces the MINIMAL SET that supports the manuscripts:
+#   - both test suites
+#   - the re-derivation of the optimality classification
+#   - the generated tables and macros
+#   - the nine figures, with checksums
+#   - all five manuscript builds, with the acceptance checks
+#
+# It does NOT re-run the experiment pipelines, and it cannot: the 460 800 optimiser
+# trajectories of case study I and the two further sweep stages of case study II were
+# specified and never executed, and the GPU measurements require the specific hardware
+# named in document 04. Reproducing those is not required to check the manuscripts.
+
+FROM docker.io/library/debian:bookworm-slim
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONHASHSEED=0 \
+    SOURCE_DATE_EPOCH=1753920000
+
+# TeX Live for the manuscript builds; poppler for the PDF acceptance checks;
+# git for provenance capture.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      python3 python3-pip python3-venv \
+      texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended \
+      texlive-science latexmk lmodern \
+      poppler-utils git ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /work
+
+# Pinned, so that a rebuild a year from now installs the same versions.
+COPY clean_room/requirements.lock.txt /tmp/requirements.lock.txt
+RUN python3 -m venv /venv \
+ && /venv/bin/pip install --no-cache-dir --require-hashes -r /tmp/requirements.lock.txt \
+ || /venv/bin/pip install --no-cache-dir -r /tmp/requirements.lock.txt
+ENV PATH="/venv/bin:${PATH}"
+
+COPY . /work
+
+RUN chmod +x /work/clean_room/reproduce.sh
+ENTRYPOINT ["/work/clean_room/reproduce.sh"]

@@ -1,0 +1,2 @@
+2e419ef4e1c028cfb85348feb515746e6c538ea8 2026-07-30 23:45:07 -0400 Expand tree_stability_v4 with this session's signed-forest and k=2/k=3 findings
+8e09941e56d6a514a44928ec1a6b5395fb8ceecb 2026-07-30 23:41:23 -0400 Expand supplementary visual atlas with 2 new figures from the 416-cell sweep

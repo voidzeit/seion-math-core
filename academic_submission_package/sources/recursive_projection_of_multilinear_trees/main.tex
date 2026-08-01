@@ -1,0 +1,1293 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% Latin Modern supplies T1-encoded Type 1 outlines. Without it the T1 text fonts are
+% embedded as Type 3 bitmaps, whose ligature glyphs carry no usable ToUnicode mapping, so
+% "finite", "difference" and "certificate" cease to be searchable in the output PDF.
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs,tabularx}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\graphicspath{{figures/}}
+\sisetup{detect-all,group-separator={,},group-minimum-digits=4}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={Error Propagation under Recursive Orthogonal Projection of Finite Multilinear Composition Trees},
+  pdfauthor={Eliuth Chavero Jasso},
+  pdfsubject={Error bounds for multilinear composition trees under recursive orthogonal projection},
+  pdfkeywords={multilinear algebra, orthogonal projection, error propagation, composition tree, operad, model reduction, hierarchical tensor, validated numerics}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\Int}{\operatorname{Int}}
+% \mathrm rather than \operatorname: this macro is used in subscript position
+% (\norm{\mu}_\op), where \operatorname does not expand to a single token.
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Types}{\mathcal T}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\amb}{\mathrm{amb}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\red}{\mathrm{red}}
+
+\input{generated_results}
+\input{figures/captions}
+
+\title[Error propagation under recursive orthogonal projection]{Error Propagation under Recursive Orthogonal Projection\\ of Finite Multilinear Composition Trees}
+\author{Eliuth Chavero Jasso}
+\address{Independent Researcher, Apizaco, Tlaxcala, Mexico}
+\thanks{The proofs and the numerical results of this article have not been checked by
+anyone other than the author. No claim of originality is made; see
+Section~\ref{sec:priorwork}.}
+\date{31 July 2026}
+
+\begin{document}
+
+\begin{abstract}
+Let $T$ be a finite rooted ordered tree whose internal vertices carry bounded multilinear
+maps between finite-dimensional Hilbert spaces, and suppose that the output at each
+internal vertex is orthogonally projected onto a prescribed subspace of its ambient
+space. We compare the value obtained by unprojected evaluation with the value obtained
+by recursive projection. We derive an exact local decomposition of the discrepancy into a
+closure residual created at the vertex and a sum over all nonempty subsets of the
+children whose subtree errors interact, and we show that at the root the discrepancy
+splits orthogonally, with the reduced-coordinate error equal to the projected component
+exactly. Under uniform bounds $M$ on the multilinear maps and $\rho$ on their failure to
+preserve the prescribed subspaces, we prove that a tree with $k\ge1$ internal vertices
+satisfies $E_T^{\amb}\le k\rho M^{k-1}L_T$ while $E_T^{\proj}=E_T^{\red}\le(k-1)\rho
+M^{k-1}L_T$, where $L_T$ is the product of the leaf norms; the reduction from $k$ to
+$k-1$ is exactly the removal of the root closure residual by the final projection. We
+also derive state-resolved and pathwise upper bounds, prove that a closed-form ordering
+rule minimises the telescoping bound within a declared scalar family, and treat finite
+signed linear combinations of trees. The coefficient $k-1$ is an upper bound; it is not
+shown to be attained at fixed $\rho/M>0$. Over a registry of \VThreeGapRegistryRows{}
+configurations, the constant is determined in \VThreeDeterminedPositive{} cases and
+vanishes by the theorem in \VThreeZeroByTheorem{} further cases, while in
+\VThreeNoPositiveLowerBound{} cases (\VThreeNoPositiveLowerPercent{}\,\%) no positive
+lower bound was obtained at all. Determining the exact constant, already for two and
+three internal vertices, remains open.
+\end{abstract}
+
+\subjclass[2020]{15A69, 65G50, 65F35, 41A65, 18M60}
+\keywords{multilinear algebra, orthogonal projection, error propagation, composition
+tree, projection-based model reduction, hierarchical tensor format, validated numerics}
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+
+Finite compositions of multilinear maps arise in nonassociative algebra, in the syntax of
+coloured operads, in hierarchical tensor computations, and in projection-based model
+reduction. In all of these settings a recurring computational step is to project the
+output of every intermediate operation back onto a prescribed subspace, either because
+the subspace carries the structure one wishes to preserve, or because storing the full
+ambient object is too expensive.
+
+Projection is exact only when the prescribed subspaces are invariant under the maps. When
+they are not, each internal vertex creates a residual lying in the orthogonal complement
+of its subspace, and these residuals then propagate through the remaining composition.
+The question studied here is how those local residuals accumulate.
+
+A crude answer is available immediately. Bounding every intermediate quantity by the
+product of the operator norms yields an estimate that is valid but uninformative: it
+neither identifies which vertex is responsible for the error, nor distinguishes the part
+of the error that survives the final projection from the part that does not, nor exploits
+the geometry of orthogonality at all. The purpose of this article is to replace that
+estimate by a decomposition that does all three.
+
+\subsection*{What is proved}
+
+The starting point is an exact identity. At each internal vertex, the discrepancy between
+the two evaluations is the sum of a locally created residual and a term for each nonempty
+subset of the children whose subtree errors are simultaneously active
+(Theorem~\ref{thm:subset}). No inequality is used, and no expansion is truncated. Applying
+the vertex projector annihilates the locally created residual exactly and leaves the
+propagated terms untouched.
+
+From this identity three kinds of estimate follow. The first is a uniform estimate: with
+$M$ bounding the multilinear maps and $\rho$ bounding their closure residuals,
+\[
+ E_T^{\amb}\le k\rho M^{k-1}L_T,
+ \qquad
+ E_T^{\proj}=E_T^{\red}\le(k-1)\rho M^{k-1}L_T
+\]
+for every tree with $k\ge1$ internal vertices (Theorem~\ref{thm:homogeneous}). The two
+coefficients differ by exactly one, because the ambient error may contain a residual
+created at every internal vertex, whereas the residual created at the root lies in the
+orthogonal complement of the root subspace and is annihilated by the final projection.
+
+The second is a family of vertexwise estimates that track, separately, the projected and
+orthogonal components of every subtree error (Section~\ref{sec:state}). These are finer
+than the uniform estimate because a residual created orthogonally at one vertex can
+acquire a projected component at its parent, and the two situations carry different
+constants.
+
+The third attributes the bound to individual vertices: unrolling a valid scalar
+recurrence expresses the estimate as a sum over internal vertices of a locally created
+source multiplied by the gains along its path to the root (Section~\ref{sec:pathwise}).
+
+\subsection*{What is not proved}
+
+The coefficient $k-1$ is an upper bound. We do not show that it is the best possible
+coefficient at a fixed positive value of $\eta=\rho/M$, and the numerical evidence
+assembled here does not settle the question: explicit constructions attain the ambient
+coefficient in the configurations where it is determined, while the projected
+constructions we have found remain strictly below $k-1$ except in a small number of
+configurations. Section~\ref{sec:lowcases} reports what is known for two and three
+internal vertices; in both cases the exact constant is undetermined over most of the
+parameter range.
+
+Every result is finite-dimensional. Nothing here is a statement about infinite
+composition, about continuum limits, or about function spaces.
+
+\subsection*{Organisation}
+
+Section~\ref{sec:priorwork} places the results relative to the literature.
+Sections~\ref{sec:setting} and~\ref{sec:evaluations} fix the setting.
+Section~\ref{sec:local} proves the exact local decomposition and
+Section~\ref{sec:root} the orthogonal splitting at the root. Sections~\ref{sec:state}
+to~\ref{sec:pathwise} develop the state-resolved, order-optimised and pathwise estimates,
+and Section~\ref{sec:uniform} the uniform estimate. Section~\ref{sec:signed} treats signed
+combinations of trees. Sections~\ref{sec:lower} and~\ref{sec:lowcases} report lower
+constructions and the unresolved low-order cases. Section~\ref{sec:representation} adds
+approximation of the maps themselves. Section~\ref{sec:numerical} describes the numerical
+verification, Section~\ref{sec:limitations} the limitations and
+Section~\ref{sec:open} the open problems. Complete proofs are in
+Appendix~\ref{app:proofs} and reproduction instructions in
+Appendix~\ref{app:reproducibility}.
+
+\section{Relation to previous work}
+\label{sec:priorwork}
+
+The typed composition of multilinear operations is the setting of coloured operads
+\cite{Yau2016,LodayVallette2012}, from which we borrow only the bookkeeping: the trees
+here are finite and the operations are concrete linear-algebraic objects. Signed
+combinations of composition trees are the natural home of the nonassociative identities
+of Filippov \cite{Filippov1985} and of the Akivis--Sabinin circle of ideas
+\cite{MostovoyPerezIzquierdoShestakov2014}.
+
+The question of how a map that is only approximately structure-preserving behaves under
+composition is classical in operator algebra: Johnson's work on approximately
+multiplicative maps between Banach algebras \cite{Johnson1988} asks a related question
+under global hypotheses, but does not address a fixed finite tree with prescribed
+subspaces at every vertex.
+
+Forward and backward error analysis has always treated the order of composition and the
+propagation of local perturbations as central \cite{Higham2002}; the estimates of
+Sections~\ref{sec:state}--\ref{sec:pathwise} are recognisably of that kind. Layerwise
+Lipschitz estimates for composed operators \cite{CombettesPesquet2020} and sound abstract
+interpretation for layered computations \cite{GehrEtAl2018} show, in different settings,
+that a structure-aware summary can improve on a plain product of norms. We do not claim
+that a vertexwise recursion is itself new.
+
+Hierarchical tensor formats organise computation along a dimension tree and adapt the
+approximation to it \cite{HackbuschKuhn2009,BallaniGrasedyck2014}; canonical polyadic
+decomposition, factor nonuniqueness and identifiability are a separate matter
+\cite{KoldaBader2009,Kruskal1977}. The dominant error in those formats is representation
+or rank truncation. The dominant error here is different in kind: it is a closure defect
+created at every algebraic vertex, and Section~\ref{sec:representation} keeps the two
+apart deliberately. Projection-based structure-preserving model reduction supplies the
+closest methodological precedent \cite{EggerEtAl2018}.
+
+Interval arithmetic \cite{MooreKearfottCloud2009} and moment relaxations
+\cite{Lasserre2001} provide rigorous global tools when their hypotheses and solver
+statuses are verified. We use directed interval recursion and, in a few low-dimensional
+cases, exact symbolic elimination. We do not report a semidefinite relaxation as a
+certificate.
+
+\begin{remark}[Originality]
+\label{rem:originality}
+We make no claim of originality for any statement in this article. A bounded search of
+the areas above did not locate the projected-error coefficient, the state-resolved
+recursion or the pathwise attribution in the form given here, but absence from a bounded
+search is not evidence of novelty. The relationship between these estimates and existing
+error bounds has not been assessed sufficiently to support such a claim, and the
+comparison in Table~\ref{tab:prior} should be read as a record of overlap, not as a
+verdict.
+\end{remark}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Overlap with the cited literature, by area. A bounded search cannot establish
+originality; see Remark~\ref{rem:originality}.}
+\label{tab:prior}
+\resizebox{\textwidth}{!}{\input{tables/prior_art_matrix}}
+\end{table}
+
+\section{Typed multilinear composition trees}
+\label{sec:setting}
+
+Let $\Types$ be a finite set of \emph{types}. To each $\tau\in\Types$ we associate a
+finite-dimensional Hilbert space $V_\tau$ over $\mathbb K\in\{\mathbb R,\mathbb C\}$, a
+second finite-dimensional Hilbert space $W_\tau$, and an isometry
+\[
+ Q_\tau:W_\tau\longrightarrow V_\tau,
+ \qquad
+ Q_\tau^*Q_\tau=I_{W_\tau}.
+\]
+We call $V_\tau$ the \emph{ambient} space and $W_\tau$ the \emph{reduced} space of type
+$\tau$, and we write
+\[
+ P_\tau=Q_\tau Q_\tau^*,
+\]
+so that $P_\tau$ is the orthogonal projector of $V_\tau$ onto $\ran Q_\tau$, and
+$P_\tau^2=P_\tau=P_\tau^*$, $\norm{P_\tau}=1$.
+
+Throughout, $\ran P_\tau$ is a fixed linear subspace of $V_\tau$. It is not a tangent
+space, and we use the words \emph{projected} and \emph{orthogonal} for the two components
+of a vector relative to it.
+
+\begin{definition}[Composition tree]
+\label{def:tree}
+A \emph{typed composition tree} $T$ is a finite rooted ordered tree together with:
+an output type $\tau(v)\in\Types$ and an arity $a_v\ge1$ for each internal vertex $v$;
+input types $\tau(v,1),\ldots,\tau(v,a_v)$; a multilinear map
+\[
+ \mu_v:\prod_{j=1}^{a_v}V_{\tau(v,j)}\longrightarrow V_{\tau(v)};
+\]
+and a type $\tau(\ell)\in\Types$ for each leaf $\ell$. The $j$th child of $v$ must have
+output type $\tau(v,j)$. Trees violating this condition are not admitted: they have no
+numerical semantics.
+\end{definition}
+
+We write $\Int T$ for the set of internal vertices, $k(T)=\lvert\Int T\rvert$, and
+$a_{\max}=\max_{v}a_v$. The multilinear operator norm is
+\[
+ \norm{\mu}_\op
+ =\sup\{\norm{\mu(x_1,\ldots,x_a)}:\norm{x_1}=\cdots=\norm{x_a}=1\}.
+\]
+
+\begin{definition}[Closure-residual map]
+\label{def:closure}
+For an internal vertex $v$ with children $c_1,\ldots,c_{a}$, the \emph{closure-residual
+map} is the multilinear map
+\[
+ r_v
+ =(I-P_{\tau(v)})\,\mu_v\bigl(P_{\tau(c_1)}\,\cdot\,,\ldots,P_{\tau(c_a)}\,\cdot\,\bigr).
+\]
+It vanishes identically if and only if
+$\mu_v(\ran P_{\tau(c_1)},\ldots,\ran P_{\tau(c_a)})\subseteq\ran P_{\tau(v)}$, that is,
+if and only if the prescribed subspaces are invariant under $\mu_v$.
+\end{definition}
+
+We abbreviate $P_v=P_{\tau(v)}$ when no confusion arises.
+
+\begin{table}[t]
+\centering\small
+\caption{Notation.}
+\label{tab:notation}
+\input{tables/typed_notation}
+\end{table}
+
+\subsection{Standing hypotheses}
+\label{sec:standing}
+
+Every statement in this article is made under the following hypotheses, which are not
+repeated in the individual statements.
+
+\begin{enumerate}[leftmargin=*,label=(H\arabic*)]
+\item\label{h:field} The scalar field is $\mathbb K\in\{\mathbb R,\mathbb C\}$, fixed
+throughout. Nothing below distinguishes the two cases.
+\item\label{h:spaces} For each $\tau\in\Types$, $V_\tau$ and $W_\tau$ are
+finite-dimensional Hilbert spaces over $\mathbb K$, with $1\le\dim W_\tau\le\dim V_\tau$.
+\item\label{h:proj} $Q_\tau:W_\tau\to V_\tau$ is an isometry and $P_\tau=Q_\tau Q_\tau^{*}$
+is the associated \emph{orthogonal} projector. Obliqueness is not permitted; see
+Example~\ref{ex:oblique}.
+\item\label{h:tree} $T$ is a finite rooted ordered tree. Every internal vertex has finite
+arity $a_v\ge1$, and $\Types$ is finite.
+\item\label{h:bounded} Every $\mu_v$ is multilinear and bounded, with
+$\norm{\mu_v}_\op<\infty$. In finite dimension this is automatic and is stated for
+emphasis.
+\item\label{h:types} The tree is type-compatible in the sense of
+Definition~\ref{def:tree}. Type-incompatible trees are not admitted and receive no
+numerical semantics.
+\item\label{h:leafdata} Leaf data $z_\ell$ lie in the \emph{reduced} spaces
+$W_{\tau(\ell)}$, so that $F_\ell=R_\ell=Q_{\tau(\ell)}z_\ell\in\ran P_{\tau(\ell)}$.
+\end{enumerate}
+
+The three constants have the following exact meaning.
+
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+$M$ & any real number with $\norm{\mu_v}_\op\le M$ for \emph{every} internal vertex $v$;
+necessarily $M\ge0$ \\
+$\rho$ & any real number with $\norm{r_v}_\op\le\rho$ for \emph{every} internal vertex $v$,
+$r_v$ being the closure-residual map of Definition~\ref{def:closure}; necessarily
+$\rho\ge0$ \\
+$L_T$ & $\prod_{\ell}\norm{z_\ell}$, the product over the leaves of the norms of the
+reduced leaf data \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Neither $M$ nor $\rho$ is required to be attained. Since $\norm{I-P_v}\le1$ and
+$\norm{P_{\tau(c_i)}}\le1$, one has $\norm{r_v}_\op\le\norm{\mu_v}_\op$ at every vertex, so
+$\rho$ may always be chosen with $\rho\le M$; the ratio $\eta=\rho/M$ of
+Section~\ref{sec:lowcases} is understood with that choice and lies in $[0,1]$ when $M>0$.
+
+\subsection{Degenerate cases}
+\label{sec:degenerate}
+
+These are stated once and used without comment.
+
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+$k=0$ & $T$ is a single leaf. Then $F=R$ and all four errors vanish. The expression
+$M^{k-1}$ is not defined at $k=0$ when $M=0$, so Theorem~\ref{thm:homogeneous} is stated
+for $k\ge1$ and this case is handled separately in Appendix~\ref{app:proofs} \\
+$k=1$ & The root is the only internal vertex and every child is a leaf. Then
+$D_\varrho=r_\varrho(R_1,\ldots,R_a)$ lies entirely in $(\ran P)^{\perp}$, so
+$E_T^{\proj}=E_T^{\red}=0$ exactly, consistently with the coefficient $k-1=0$, while
+$E_T^{\amb}=E_T^{\perp}$ may be nonzero \\
+$M=0$ & Every $\mu_v$ is the zero map, hence $\rho=0$ and every evaluation and every error
+vanishes. All estimates read $0\le0$ for $k\ge1$, with the convention $0^{0}=1$ at $k=1$ \\
+$\rho=0$ & Every prescribed subspace is invariant under its vertex map. Then $D_v=0$ at
+every vertex by Theorem~\ref{thm:subset} and induction, projection is exact, and all four
+errors vanish. The estimates read $0\le0$ \\
+$a_v=1$ & Permitted: a unary vertex carries a bounded linear map. All statements hold, and
+the interaction terms of Theorem~\ref{thm:subset} are absent because $[a_v]$ has only one
+nonempty subset \\
+$L_T=0$ & Some leaf datum is zero; multilinearity makes every evaluation zero and the
+estimates read $0\le0$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig01_typed_tree_semantics}
+\caption{\FigCaptionOne}
+\label{fig:semantics}
+\end{figure}
+
+\section{Unprojected and recursively projected evaluation}
+\label{sec:evaluations}
+
+Fix reduced leaf data $z_\ell\in W_{\tau(\ell)}$ and set
+\[
+ L_T=\prod_{\ell\in\mathrm{Leaves}(T)}\norm{z_\ell}.
+\]
+
+\begin{definition}[The two evaluations]
+\label{def:evaluations}
+The \emph{unprojected} (or ambient) evaluation is
+\[
+ F_\ell=Q_{\tau(\ell)}z_\ell,
+ \qquad
+ F_v=\mu_v(F_{c_1},\ldots,F_{c_{a_v}}),
+\]
+and the \emph{recursively projected} evaluation is
+\[
+ R_\ell=Q_{\tau(\ell)}z_\ell,
+ \qquad
+ R_v=P_{\tau(v)}\,\mu_v(R_{c_1},\ldots,R_{c_{a_v}}).
+\]
+The \emph{local discrepancy} at $v$ is $D_v=F_v-R_v$, with components
+\[
+ D_v^{\parallel}=P_vD_v,
+ \qquad
+ D_v^{\perp}=(I-P_v)D_v.
+\]
+\end{definition}
+
+By construction $R_v\in\ran P_v$ for every internal $v$, and $R_\ell\in\ran P_{\tau(\ell)}$
+at every leaf.
+
+Write $\varrho$ for the root of $T$ and abbreviate $F=F_\varrho$, $R=R_\varrho$,
+$P=P_{\tau(\varrho)}$, $Q=Q_{\tau(\varrho)}$. The four quantities of interest are
+\[
+ E_T^{\amb}=\norm{F-R},
+ \quad
+ E_T^{\proj}=\norm{PF-R},
+ \quad
+ E_T^{\perp}=\norm{(I-P)F},
+ \quad
+ E_T^{\red}=\norm{Q^*F-Q^*R}.
+\]
+The first is the discrepancy in the ambient space; the second is what remains of it after
+the final projection; the third is what the final projection discards; the fourth is the
+discrepancy as measured in the reduced coordinates, which is what a computation carried
+out entirely in the reduced spaces would report.
+
+\section{Exact local decomposition}
+\label{sec:local}
+
+\begin{theorem}[Exact local decomposition]
+\label{thm:subset}
+Let $v$ be an internal vertex of arity $a$ with children $c_1,\ldots,c_a$, and write
+$F_i=F_{c_i}$, $R_i=R_{c_i}$, $D_i=F_i-R_i$. For $S\subseteq[a]$ put
+\[
+ y_i^S=\begin{cases}D_i,&i\in S,\\ R_i,&i\notin S.\end{cases}
+\]
+Then
+\[
+ D_v
+ =r_v(R_1,\ldots,R_a)
+ +\sum_{\varnothing\ne S\subseteq[a]}\mu_v(y_1^S,\ldots,y_a^S).
+\]
+\end{theorem}
+
+The identity is exact: no term is discarded and no inequality is used. The term indexed
+by $S$ records precisely which children carry an error. Singletons are single-branch
+propagation; subsets of size at least two are genuine interactions between the errors of
+different branches.
+
+Two consequences are used repeatedly. Since $P_vr_v=0$,
+\[
+ D_v^{\parallel}
+ =\sum_{\varnothing\ne S\subseteq[a]}P_v\mu_v(y_1^S,\ldots,y_a^S):
+\]
+\emph{the residual created at a vertex never appears in that vertex's own projected
+error.} Conversely, $\mu_v$ need not map the orthogonal complement into itself, so a
+child's orthogonal error can contribute to its parent's projected error,
+\[
+ P_v\mu_v(\ldots,D_i^{\perp},\ldots)\ne0
+ \quad\text{in general.}
+\]
+Both effects are visible in the constants of Section~\ref{sec:uniform}.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig02_exact_node_decomposition}
+\caption{\FigCaptionTwo}
+\label{fig:decomposition}
+\end{figure}
+
+\section{Orthogonal splitting at the root}
+\label{sec:root}
+
+\begin{proposition}[Root geometry]
+\label{prop:root}
+For every typed composition tree,
+\[
+ \bigl(E_T^{\amb}\bigr)^2
+ =\bigl(E_T^{\proj}\bigr)^2+\bigl(E_T^{\perp}\bigr)^2,
+ \qquad
+ E_T^{\red}=E_T^{\proj}.
+\]
+\end{proposition}
+
+Both are identities. The first is the Pythagorean theorem applied to
+$F-R=(PF-R)+(I-P)F$, whose two summands lie in $\ran P$ and $(\ran P)^\perp$
+respectively; the second says that a computation performed in the reduced coordinates
+observes exactly the projected component of the ambient discrepancy, no more and no less.
+
+Orthogonality of the projectors is used, and cannot be dropped.
+
+\begin{example}[Failure for an oblique projector]
+\label{ex:oblique}
+Let $P=\begin{psmallmatrix}1&1\\0&0\end{psmallmatrix}$ on $\mathbb R^2$. Then $P^2=P$, so
+$P$ is a projector, but $P^*\ne P$. For $D=(0,1)^{\!\top}$ one has $PD=(1,0)^{\!\top}$ and
+$(I-P)D=(-1,1)^{\!\top}$, whence $\langle PD,(I-P)D\rangle=-1\ne0$: the two components are
+not orthogonal and Proposition~\ref{prop:root} fails.
+\end{example}
+
+\section{State-resolved estimates}
+\label{sec:state}
+
+Splitting each child discrepancy as $D_i=D_i^{\parallel}+D_i^{\perp}$ and substituting
+into Theorem~\ref{thm:subset} expresses the value at $v$ as a sum over states
+\[
+ \mu_v(F_1,\ldots,F_a)
+ =\sum_{\sigma\in\{R,\parallel,\perp\}^{a}}
+ \mu_v\bigl(Z_1^{\sigma},\ldots,Z_a^{\sigma}\bigr),
+ \qquad
+ Z_i^{\sigma}=
+ \begin{cases}
+ R_i,&\sigma_i=R,\\
+ D_i^{\parallel},&\sigma_i=\parallel,\\
+ D_i^{\perp},&\sigma_i=\perp.
+ \end{cases}
+\]
+The state vector $(R,\ldots,R)$ contains the reduced value together with the locally
+created residual; every other state vector contributes propagation or interaction.
+
+Let $\beta_v^{\chi}(\sigma)$ denote the operator norm of $\mu_v$ restricted to the
+indicated components of its arguments and projected onto the component $\chi$ of its
+output, for $\chi\in\{\parallel,\perp\}$. The $R$ and $\parallel$ states are carried by
+the same projector but obey different magnitude bounds, which is why they are tracked
+separately.
+
+\begin{theorem}[Soundness of the state-resolved recursion]
+\label{thm:state}
+Assume that for every internal vertex $v$ and every state vector
+$\sigma\in\{R,\parallel,\perp\}^{a_v}$ an upper bound for $\beta_v^{\chi}(\sigma)$ is
+available. Then the recursion that stores, at each vertex, upper bounds for
+$\norm{F_v}$, $\norm{R_v}$, $\norm{D_v}$, $\norm{D_v^{\parallel}}$ and
+$\norm{D_v^{\perp}}$, and combines them by
+\[
+ b_v^{\chi}
+ \le\lambda_v^{\chi}
+ +\sum_{\sigma\ne(R,\ldots,R)}\beta_v^{\chi}(\sigma)\prod_i b_{c_i}^{\sigma_i},
+ \qquad
+ \lambda_v^{\parallel}=0,
+ \quad
+ \lambda_v^{\perp}\le\rho_v\prod_ib_{c_i}^{R},
+\]
+returns valid upper bounds at the root. It performs $O\!\left(3^{a_v}\right)$ combination
+steps at each vertex $v$, hence $O\!\left(\lvert T\rvert\,3^{a_{\max}}\right)$ in total.
+\end{theorem}
+
+\begin{remark}
+\label{rem:complexity}
+The count in Theorem~\ref{thm:state} is a count of \emph{combination steps in the
+recursion}. It excludes the cost of obtaining the bounds $\beta_v^{\chi}(\sigma)$, which
+dominates in practice and which we do not analyse; see Section~\ref{sec:limitations}.
+\end{remark}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Vertexwise formulas. Each row is an upper-bound contract, not an equality with
+the observed error.}
+\label{tab:formulas}
+\resizebox{\textwidth}{!}{\input{tables/nodewise_formulas}}
+\end{table}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Comparison of the four upper bounds, as median ratios to the uniform ambient
+bound on the same configurations.}
+\label{tab:hierarchy}
+\resizebox{\textwidth}{!}{\input{tables/bound_hierarchy}}
+\end{table}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig03_bound_hierarchy}
+\caption{\FigCaptionThree}
+\label{fig:hierarchy}
+\end{figure}
+
+\section{Optimal ordering for multilinear telescoping}
+\label{sec:order}
+
+Comparing $\mu(F_1,\ldots,F_a)$ with $\mu(R_1,\ldots,R_a)$ by exchanging one argument at
+a time produces a bound that depends on the order of exchange. Let $e_i\ge0$ bound the
+error in slot $i$, let $r_i,f_i\ge0$ bound $\norm{R_i}$ and $\norm{F_i}$, let $G_i\ge0$ be
+a slot gain, and put $w_i=G_ie_i$. For a permutation $\pi$ of $[a]$ the resulting bound is
+\[
+ C(\pi)=\sum_{t=1}^{a}w_{\pi_t}\prod_{s<t}r_{\pi_s}\prod_{s>t}f_{\pi_s}.
+\]
+
+\begin{theorem}[Optimal order]
+\label{thm:order}
+Put $d_i=f_i-r_i$. Order the slots by placing those with $d_i>0$ first, then those with
+$d_i=0$, then those with $d_i<0$, and sorting each of the two nonzero sign classes by
+nondecreasing $w_i/d_i$. The resulting permutation minimises $C$ over all permutations.
+Slots with $w_i=d_i=0$ may be placed anywhere.
+\end{theorem}
+
+The proof is an adjacent-exchange argument: placing $i$ before $j$ is no worse precisely
+when $w_id_j\le w_jd_i$. What makes the argument yield a \emph{global} minimum, rather
+than only a local one, is that this comparison is induced by the lexicographic key
+$\bigl(\text{sign class of }d_i,\;w_i/d_i\bigr)$, with sign classes ordered positive,
+zero, negative, and is therefore a total preorder; the details are in
+Appendix~\ref{app:proofs}.
+
+\begin{remark}
+\label{rem:orderscope}
+Theorem~\ref{thm:order} is optimal within the family of scalar telescoping bounds defined
+by $C$. It says nothing about bounding strategies outside that family.
+\end{remark}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.9\textwidth]{fig10_optimal_telescoping_order}
+\caption{\FigCaptionTen}
+\label{fig:order}
+\end{figure}
+
+\section{Uniform estimates}
+\label{sec:uniform}
+
+\begin{theorem}[Uniform coefficients]
+\label{thm:homogeneous}
+Suppose that $\norm{\mu_v}_\op\le M$ and $\norm{r_v}_\op\le\rho$ at every internal
+vertex. Then for every typed composition tree with $k=k(T)\ge1$ internal vertices,
+\[
+ E_T^{\amb}\le k\rho M^{k-1}L_T,
+ \qquad
+ E_T^{\perp}\le k\rho M^{k-1}L_T,
+\]
+and
+\[
+ E_T^{\proj}=E_T^{\red}\le(k-1)\rho M^{k-1}L_T.
+\]
+\end{theorem}
+
+The hypotheses are uniform over the vertices, but nothing else is assumed to be uniform:
+types, arities, dimensions, ranks and the maps themselves may all differ from vertex to
+vertex.
+
+\begin{remark}[The case of a leaf]
+\label{rem:leaf}
+The statement is made for $k\ge1$. A leaf has $k=0$ and error $0$, and the expression
+$M^{k-1}$ is not defined at $k=0$ when $M=0$; the induction in
+Appendix~\ref{app:proofs} treats the leaf case separately, where the assertion reads
+$0\le0$.
+\end{remark}
+
+\begin{proof}[Sketch of proof]
+Induction on the tree. At an internal vertex, multilinear telescoping over the children
+together with the magnitude estimate $\norm{F_v},\norm{R_v}\le M^{k_v}L_v$ of
+Lemma~\ref{lem:magnitudes} bounds the propagated contribution by
+$\bigl(\sum_ik_{c_i}\bigr)\rho M^{k_v-1}L_v=(k_v-1)\rho M^{k_v-1}L_v$. The locally created
+residual adds at most $\rho\prod_i\norm{R_i}\le\rho M^{k_v-1}L_v$, which gives the ambient
+estimate. For the projected estimate, $R\in\ran P$ gives $PF-R=PD_\varrho$, and
+$Pr_\varrho=0$ removes the root residual, so only the propagated contribution survives.
+Proposition~\ref{prop:root} identifies the reduced error with the projected one. The
+orthogonal estimate follows from $(I-P)F=(I-P)D_\varrho$ and $\norm{I-P}=1$. Complete
+details are in Appendix~\ref{app:proofs}.
+\end{proof}
+
+\begin{remark}[Where the difference of one comes from]
+\label{rem:kminusone}
+The reduction from $k$ to $k-1$ is not a refinement of the estimate: it is the exact
+removal of one source. The residual created at the root lies in $(\ran P)^\perp$ and is
+annihilated by the final projection. In the extreme case $k=1$, every child is a leaf, so
+$D_\varrho=r_\varrho(R_1,\ldots,R_a)$ lies entirely in the orthogonal complement, and
+\[
+ E_T^{\proj}=E_T^{\red}=0
+\]
+\emph{exactly}, while $E_T^{\amb}$ need not vanish. The estimate is consistent:
+$(k-1)\rho M^{k-1}L_T=0$.
+\end{remark}
+
+\begin{remark}[Upper bound, not optimal constant]
+\label{rem:notsharp}
+Theorem~\ref{thm:homogeneous} is a chain of triangle inequalities. It establishes upper
+bounds and nothing more. In particular it does not show that $k-1$ is the smallest
+coefficient valid at a fixed value of $\eta=\rho/M>0$, nor for a fixed dimension,
+projector rank, topology, or class of repeated maps. Sections~\ref{sec:lower}
+and~\ref{sec:lowcases} report what is and is not known about this.
+\end{remark}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Uniform ambient constants. Lower values are interval-enclosed values of explicit
+constructions.}
+\label{tab:ambient}
+\resizebox{.97\textwidth}{!}{\input{tables/homogeneous_ambient_constants}}
+\end{table}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Uniform projected-error constants. At small $\eta$ the explicit lower
+constructions remain far below the proved upper bound.}
+\label{tab:projected}
+\resizebox{\textwidth}{!}{\input{tables/homogeneous_projected_constants}}
+\end{table}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.96\textwidth]{fig06_k_vs_k_minus_one}
+\caption{\FigCaptionSix}
+\label{fig:kminusone}
+\end{figure}
+
+\section{Pathwise estimates}
+\label{sec:pathwise}
+
+Fix a valid ordering at every vertex, so that the quantities $B_v$ produced by the
+recursion of Section~\ref{sec:state} satisfy the affine scalar inequality
+\begin{equation}
+\label{eq:recurrence}
+ B_v\le\lambda_v+\sum_{j}h_{v,j}B_{c_j},
+ \qquad
+ \lambda_v=\rho_v\prod_iB^{R}_{c_i},
+ \qquad
+ B_\ell=0,
+\end{equation}
+where $h_{v,j}\ge0$ is the gain for transporting an error from slot $j$ through $v$.
+
+The right-hand side of \eqref{eq:recurrence} is an inequality, so $B_\varrho$ itself has no
+closed form. We therefore introduce the quantity that does.
+
+\begin{definition}[Pathwise majorant]
+\label{def:majorant}
+Let $\widehat B_v$ be defined by the \emph{equality}
+\[
+ \widehat B_\ell=0,
+ \qquad
+ \widehat B_v=\lambda_v+\sum_j h_{v,j}\widehat B_{c_j}
+ \quad(v\in\Int T).
+\]
+\end{definition}
+
+\begin{corollary}[Pathwise attribution]
+\label{cor:pathwise}
+For every vertex $v$ one has $B_v\le\widehat B_v$, and at the root
+\[
+ \widehat B_{\varrho}
+ =\sum_{v\in\Int T}\lambda_v
+ \prod_{e\in\mathrm{path}(v,\varrho)}h_e ,
+\]
+the product being over the edges from $v$ to the root, each contributing the gain of the
+slot through which it passes, and the product over the empty path being $1$. Consequently
+\[
+ B_\varrho\;\le\;\sum_{v\in\Int T}\lambda_v\prod_{e\in\mathrm{path}(v,\varrho)}h_e .
+\]
+For the projected error the root source is omitted, $\lambda_\varrho$ being replaced by
+$0$, and the final edge carries a projected-output gain.
+\end{corollary}
+
+\begin{remark}[What the pathwise formula is, and is not]
+\label{rem:pathwise}
+Two distinctions matter here, and the earlier formulation blurred both.
+
+First, the displayed formula is an \emph{identity for $\widehat B_\varrho$}, not for
+$B_\varrho$. The recursion of Section~\ref{sec:state} produces upper bounds, so
+\eqref{eq:recurrence} is an inequality; unrolling an inequality does not yield an equation.
+Definition~\ref{def:majorant} supplies the majorant for which the unrolling is exact, and
+the two statements of Corollary~\ref{cor:pathwise} are then separate: a comparison
+$B_v\le\widehat B_v$, proved by induction, and a closed form for $\widehat B_\varrho$.
+
+Second, even as a statement about $\widehat B$, the formula is not an expansion of the
+multilinear cross terms of Theorem~\ref{thm:subset}. The interaction terms indexed by
+subsets of size at least two were absorbed into the gains $h_{v,j}$ when
+\eqref{eq:recurrence} was formed. Each summand therefore attributes a share of the
+\emph{bound} to a vertex, not a share of the error.
+\end{remark}
+
+\section{Signed combinations of trees}
+\label{sec:signed}
+
+Let $\mathcal F=\sum_{\alpha=1}^{m}c_\alpha T_\alpha$ be a finite linear combination of
+composition trees with compatible root types.
+
+\begin{corollary}[Triangle bound]
+\label{cor:signed}
+$E_{\mathcal F}^{\proj}\le\sum_\alpha\lvert c_\alpha\rvert B_{T_\alpha}^{\proj}$. In
+particular, the five-input ternary associator $\mu\circ_1\mu-\mu\circ_3\mu$, a difference
+of two trees with two internal vertices each, satisfies $E^{\proj}\le2\rho ML$, whereas
+the corresponding ambient bound is $4\rho ML$.
+\end{corollary}
+
+Combining syntactically identical trees before applying the triangle inequality is an
+exact simplification, and it is the only unconditional cancellation available here. Any
+further cancellation --- from shared subtrees, opposite signs, symmetry or antisymmetry
+--- is not captured by Corollary~\ref{cor:signed}, and quantifying it is open
+(Problem~\ref{prob:cancellation}).
+
+\subsection{Numerical lower bounds for five named combinations}
+\label{sec:signed-search}
+
+Table~\ref{tab:signedsearch} reports the largest values found by numerical search for
+five combinations. The search used $4{,}000$ random tensor trials followed by $200$
+derivative-free local refinement steps for each combination, with the multilinear
+operator norm normalised numerically to approximately $1$.
+
+Leaf inputs were drawn independently. This differs from the convention used in the
+earlier evaluation, which supplied the same unit input at every leaf; identical inputs can
+collapse permutation-antisymmetric terms for reasons unrelated to the map, and the change
+was made for that reason.
+
+\begin{table}[t]
+\centering\small
+\caption{Largest values found by numerical search, against the triangle bound of
+Corollary~\ref{cor:signed}. These are lower bounds obtained by optimisation. An optimiser
+can improve a lower bound; it cannot establish that no larger value exists.}
+\label{tab:signedsearch}
+\begin{tabular}{@{}lrrrl@{}}
+\toprule
+combination & \makebox[0pt][r]{triangle bound} & \makebox[0pt][r]{best value} & ratio & status \\
+\midrule
+five-input ternary associator & 2.0 & 1.373 & 0.686 & undetermined \\
+anchored associator & 2.0 & 1.658 & 0.829 & undetermined \\
+Jacobi combination (three terms) & 3.0 & 2.983 & 0.994 & undetermined \\
+Filippov fundamental identity & 4.0 & 1.664 & 0.416 & widest gap \\
+six-term generalised Jacobi expression & 6.0 & ${\sim}0$ & ${\sim}0$ & see \S\ref{sec:gji} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For the Jacobi combination the search did not improve on the triangle bound in any trial.
+This is informative in the negative direction: it indicates that reasoning which accounts
+for cancellation does not help for that combination in the tested regime. It does not
+establish that the constant equals $3$.
+
+\subsection{A quantity that vanishes numerically}
+\label{sec:gji}
+
+For the declared six-term generalised Jacobi expression, the ambient, projected and
+orthogonal errors all evaluated between $10^{-16}$ and $10^{-21}$ in every one of the
+$4{,}000$ trials, in five independently reseeded checks, and under both leaf-input
+conventions.
+
+The quantity evaluated at numerical precision zero in all trials. This suggests that the
+current formula may define an identically vanishing expression --- that is, an expression
+that vanishes for every ternary map, rather than for particular ones. A symbolic
+verification in the free operad is required before the quantity can be used as a
+nontrivial diagnostic, and we do not use it as one here. Whether the expression coincides
+with any published convention for a generalised Jacobi identity has not been checked.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.9\textwidth]{fig13_signed_polynomial_cancellation}
+\caption{\FigCaptionThirteen}
+\label{fig:signed}
+\end{figure}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Constants for associator and signed-combination families.}
+\label{tab:signed}
+\resizebox{\textwidth}{!}{\input{tables/signed_expression_constants}}
+\end{table}
+
+\section{Lower constructions}
+\label{sec:lower}
+
+An attained value is a rigorous lower bound only once admissibility has been verified.
+The principal explicit family acts on a two-dimensional plane spanned by one direction in
+$\ran P$ and one in its orthogonal complement. For $0\le\eta\le1$ put
+\[
+ G_\eta=\begin{bmatrix}\sqrt{1-\eta^2}&-\eta\\ \eta&\sqrt{1-\eta^2}\end{bmatrix}.
+\]
+The first argument is rotated by $G_\eta$ while the remaining arguments act through their
+first coordinate. The multilinear operator norm of the resulting map is one and the norm
+of its closure-residual map is exactly $\eta$. Embedding the plane isometrically into a
+larger ambient space preserves the value.
+
+Directed interval recursion in $160$-bit arithmetic encloses the normalised tree error of
+this family. In a small number of low-dimensional cases an independent exact symbolic
+routine enumerates the endpoints and stationary points on $[-1,1]$ and retains an exact
+nonnegativity witness.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.92\textwidth]{fig11_extremizer_geometry}
+\caption{\FigCaptionEleven}
+\label{fig:extremizer}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.86\textwidth]{fig05_sharpness_profile}
+\caption{\FigCaptionFive}
+\label{fig:profile}
+\end{figure}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Best explicit constructions by error type.}
+\label{tab:extremizers}
+\resizebox{\textwidth}{!}{\input{tables/extremizer_constructions}}
+\end{table}
+
+\section{Low-order cases and unresolved gaps}
+\label{sec:lowcases}
+
+Define, for a fixed tree $T$ and a fixed admissible class of data,
+\[
+ C_T^{\proj}(\eta)
+ =\sup\frac{E_T^{\proj}}{\rho M^{k-1}L_T},
+ \qquad \eta=\rho/M,
+\]
+the supremum being over admissible data. Theorem~\ref{thm:homogeneous} states
+$C_T^{\proj}(\eta)\le k-1$. Whether equality holds is open.
+
+Table~\ref{tab:gaps} classifies the \VThreeGapRegistryRows{} configurations of the
+enclosure registry into four mutually exclusive outcomes. Over the whole registry:
+
+\begin{itemize}[leftmargin=*]
+\item in \VThreeDeterminedPositive{} configurations the interval-enclosed lower
+construction meets the proved upper bound at a positive value, so the constant is
+determined;
+\item in \VThreeZeroByTheorem{} configurations the proved upper bound is itself zero.
+These are the single-internal-vertex cases of Remark~\ref{rem:kminusone}, where the
+projected error vanishes as an immediate consequence of the theorem. They are not the
+outcome of an optimisation;
+\item in \VThreePartialLowerBound{} configurations a positive lower bound was obtained
+but does not meet the upper bound;
+\item in \VThreeNoPositiveLowerBound{} configurations
+(\VThreeNoPositiveLowerPercent{}\,\% of the registry) \emph{no positive lower bound was
+obtained at all}. For these the admissible range spans the whole interval from zero to
+the proved upper bound, and the largest such upper bound is \VThreeMaxAbsoluteGap{}.
+\end{itemize}
+
+\begin{table}[t]
+\centering\small
+\caption{Outcome of comparing the interval-enclosed lower construction with the proved
+upper bound, by error type. \emph{Determined}: the two bounds coincide at a positive
+value. \emph{Zero}: the proved upper bound is itself zero, so the constant vanishes as an
+immediate consequence of Theorem~\ref{thm:homogeneous}. \emph{Partial}: a positive lower
+bound was obtained that does not meet the upper bound. \emph{None}: no positive lower
+bound was obtained, so the only lower bound available is the trivial one implied by
+nonnegativity. The four columns are mutually exclusive and sum to the configuration
+count.}
+\label{tab:gaps}
+\input{tables/optimality_gaps}
+\end{table}
+
+\subsection{Two internal vertices}
+
+Re-examining the enclosure registry directly, at $k=2$ the projected-error bound is
+attained in $6$ of $75$ uniform gated-rotation configurations. Elsewhere the gaps range
+from $3.75\times10^{-7}$, in the limit $\eta\downarrow0$, up to the whole interval. No
+ambient or orthogonal configuration at $k=2$ attains its bound.
+
+Accordingly: \emph{for trees with two internal vertices the exact constant is known only
+on part of the admissible parameter range; on the remainder the available rigorous lower
+and upper bounds do not coincide.}
+
+\subsection{Three internal vertices}
+
+At $k=3$ no configuration and no error type attains its bound, and the smallest projected
+relative gap observed is $35\,\%$.
+
+Accordingly: \emph{for three internal vertices the available bounds depend on tree
+topology and leave nonzero gaps throughout.}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.86\textwidth]{fig12_certified_optimality_gaps}
+\caption{\FigCaptionTwelve}
+\label{fig:gaps}
+\end{figure}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Small configurations in which the constant is determined.}
+\label{tab:small}
+\resizebox{\textwidth}{!}{\input{tables/exact_small_constants}}
+\end{table}
+
+\section{Approximation of the maps}
+\label{sec:representation}
+
+Suppose each $\mu_v$ is replaced by an approximation $\widehat\mu_v$ with
+$\norm{\mu_v-\widehat\mu_v}_\op\le\delta$, so that $\norm{\widehat\mu_v}_\op\le M+\delta$.
+This models a low-rank or quantised representation of the maps, and it introduces an error
+of a different kind from the closure residual. Write $F_\mu$, $R_\mu$ for the two
+evaluations of the exact tree and $R_{\widehat\mu}$ for the recursively projected
+evaluation of the approximate tree.
+
+\begin{proposition}[Representation and projection]
+\label{prop:approximation}
+Under the standing hypotheses of Section~\ref{sec:setting} for the exact maps
+$\{\mu_v\}$, and with $\norm{\mu_v-\widehat\mu_v}_\op\le\delta$ at every internal vertex,
+a tree with $k\ge1$ internal vertices satisfies
+\[
+ \norm{F_\mu-R_{\widehat\mu}}
+ \le\underbrace{k\rho M^{k-1}L_T}_{\text{closure}}
+ +\underbrace{k\delta(M+\delta)^{k-1}L_T}_{\text{representation}},
+\]
+and
+\[
+ \norm{PF_\mu-R_{\widehat\mu}}
+ \le\underbrace{(k-1)\rho M^{k-1}L_T}_{\text{closure}}
+ +\underbrace{k\delta(M+\delta)^{k-1}L_T}_{\text{representation}}.
+\]
+\end{proposition}
+
+\begin{remark}[No closure hypothesis is imposed on the approximate maps]
+\label{rem:noapproxclosure}
+The bound is obtained by inserting $R_\mu$, not $F_{\widehat\mu}$:
+\[
+ \norm{F_\mu-R_{\widehat\mu}}
+ \le\norm{F_\mu-R_\mu}+\norm{R_\mu-R_{\widehat\mu}}.
+\]
+The first term is Theorem~\ref{thm:homogeneous} applied to the \emph{exact} tree, and the
+second compares two recursively projected evaluations, which differ only in the maps. The
+alternative route --- inserting the unprojected approximate tree $F_{\widehat\mu}$ and
+applying Theorem~\ref{thm:homogeneous} to it --- would require a bound on
+$\norm{(I-P_v)\widehat\mu_v(P\,\cdot,\ldots,P\,\cdot)}_\op$, that is, a closure hypothesis
+on the \emph{approximate} maps. No such hypothesis is available: $\delta$ bounds the
+distance between $\mu_v$ and $\widehat\mu_v$ and says nothing about how $\widehat\mu_v$
+interacts with the prescribed subspaces. The route taken here uses only hypotheses that
+have been declared.
+\end{remark}
+
+The two displayed terms are an algebraic partition of one valid upper bound. They are not a
+decomposition of the observed error, and no equality with it is asserted. In particular the
+reconstruction error of a low-rank representation is not folded into $\rho$, and no closure
+property is attributed to the approximation.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.86\textwidth]{fig14_cp_projection_budget}
+\caption{\FigCaptionFourteen}
+\label{fig:cp}
+\end{figure}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Representation and projection budget. The components sum to a proved upper
+bound, not to the observed error.}
+\label{tab:cp}
+\resizebox{\textwidth}{!}{\input{tables/cp_projection_budget}}
+\end{table}
+
+\section{Numerical verification}
+\label{sec:numerical}
+
+The estimates above were evaluated on \VThreeScientificInstances{} distinct
+configurations, comprising \VThreeTreeOccurrences{} enumerated tree occurrences
+(\VThreeUniqueTrees{} distinct trees) and \VThreeLeakageMasks{} exhaustive subset
+evaluations. Repeated executions of the same configuration are not counted as distinct
+configurations. Optimiser seeds and restarts that were specified but not executed are
+recorded as not executed rather than omitted.
+
+The largest observed difference between the CPU and GPU evaluators was
+\VThreeMaxParity{}; this is a validation threshold on the implementation, not a bound in
+any theorem. Bound violations were checked on every configuration and none was found; this
+tests the implementation of the estimates, not their proofs.
+
+\begin{table}[p]
+\centering\small
+\caption{Exhaustive ordered-tree enumeration statistics.}
+\label{tab:topology}
+\input{tables/topology_statistics}
+\end{table}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig04_universal_constant_atlas}
+\caption{\FigCaptionFour}
+\label{fig:atlas}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.86\textwidth]{fig07_topology_phase_diagram}
+\caption{\FigCaptionSeven}
+\label{fig:topology}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.96\textwidth]{fig08_node_contribution_map}
+\caption{\FigCaptionEight}
+\label{fig:contributions}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.86\textwidth]{fig09_residual_interactions}
+\caption{\FigCaptionNine}
+\label{fig:interactions}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.9\textwidth]{fig15_dimension_rank_phase}
+\caption{\FigCaptionFifteen}
+\label{fig:dimension}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.88\textwidth]{fig16_adversarial_convergence}
+\caption{\FigCaptionSixteen}
+\label{fig:optimisation}
+\end{figure}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Dependence on ambient dimension and projector rank. The lower value is the
+two-dimensional construction embedded isometrically.}
+\label{tab:dimension}
+\resizebox{\textwidth}{!}{\input{tables/dimension_rank_interaction}}
+\end{table}
+
+\begin{table}[p]
+\centering\scriptsize
+\caption{Precision and conditioning controls.}
+\label{tab:precision}
+\resizebox{\textwidth}{!}{\input{tables/precision_conditioning}}
+\end{table}
+
+\begin{table}[p]
+\centering\small
+\caption{Agreement between the CPU and GPU evaluators. The tolerance is a validation
+threshold, not a bound in any theorem.}
+\label{tab:parity}
+\resizebox{.82\textwidth}{!}{\input{tables/cpu_gpu_parity}}
+\end{table}
+
+\section{Negative controls}
+\label{sec:controls}
+
+The hypotheses are operational rather than decorative, and each is tested by a control
+that fails when it is dropped.
+
+\begin{enumerate}[leftmargin=*]
+\item If the projector is oblique, Proposition~\ref{prop:root} fails
+(Example~\ref{ex:oblique}).
+\item A type-invalid edge cannot be repaired by numerical broadcasting. All $48$ declared
+invalid configurations are rejected before evaluation.
+\item The projected constant of a single-vertex tree is exactly zero, which refutes any
+formula that assigns the locally created residual to the projected error of the vertex
+that creates it.
+\item Cancellation within a signed combination can make the triangle bound strict; a
+numerical lower bound never reverses the direction of an upper bound.
+\item A larger ambient space contains the two-dimensional construction isometrically, but
+that embedding alone gives no evidence that additional coordinates improve the constant.
+\end{enumerate}
+
+\begin{table}[p]
+\centering\small
+\caption{Controls and unresolved items.}
+\label{tab:failures}
+\resizebox{.94\textwidth}{!}{\input{tables/failure_counterexample_registry}}
+\end{table}
+
+\section{Limitations}
+\label{sec:limitations}
+
+\begin{enumerate}[leftmargin=*]
+\item The exact constants at fixed $\eta>0$ are unknown for most projected, typed,
+repeated-map and signed-combination families.
+\item Interval enclosures certify the value of an explicit construction. They do not
+certify a supremum unless a matching upper bound closes the gap.
+\item The specified optimiser grid was not executed in full, under a stated
+computational-cost constraint. The executed portion is reported as such.
+\item Multilinear operator norms are computed exactly only for the declared explicit
+constructions. For general dense and low-rank maps a Frobenius upper bound is substituted,
+which inflates $M$ and therefore every constant that depends on it.
+\item The complexity statement in Theorem~\ref{thm:state} counts recursion steps and
+excludes the cost of obtaining the block norms it assumes.
+\item All results are finite-dimensional. No statement is made about continuum limits,
+infinite trees, measurability, or the behaviour of these estimates under discretisation.
+\item Neither the proofs nor the numerical results have been checked by anyone other than
+the author, and no assessment of originality has been carried out
+(Remark~\ref{rem:originality}).
+\end{enumerate}
+
+\section{Open problems}
+\label{sec:open}
+
+\begin{problem}[Exact projected constant]
+\label{prob:constant}
+Determine $C_T^{\proj}(\eta)$ for nontrivial families of topologies. Deciding between
+$C_T^{\proj}(\eta)=k-1$ for all admissible $\eta$; $C_T^{\proj}(\eta)<k-1$ for $\eta>0$
+with $\lim_{\eta\downarrow0}C_T^{\proj}(\eta)=k-1$; and
+$C_T^{\proj}(\eta)\le\Gamma_T(\eta)<k-1$ for some smaller function $\Gamma_T$, would each
+be a substantive result. Nothing in this article favours one over the others. The case
+$k=2$ should be settled first.
+\end{problem}
+
+\begin{problem}[Dimension and rank]
+\label{prob:dimension}
+Decide whether ambient dimension or projector rank can improve on the isometrically
+embedded planar constructions of Section~\ref{sec:lower}.
+\end{problem}
+
+\begin{problem}[Cancellation]
+\label{prob:cancellation}
+Obtain rigorous constants for the associator, the Filippov identity and the Jacobi
+combination that account for cancellation between terms, rather than bounding each term
+separately.
+\end{problem}
+
+\begin{problem}[Symbolic status of the six-term expression]
+\label{prob:gji}
+Decide, by exact expansion in the free operad, whether the declared six-term expression of
+Section~\ref{sec:gji} is identically zero.
+\end{problem}
+
+\begin{problem}[Comparison of the estimates]
+\label{prob:domination}
+Characterise when the state-resolved, pathwise and order-optimised estimates dominate one
+another. The ratios in Table~\ref{tab:hierarchy} are medians over configurations and do
+not establish an ordering.
+\end{problem}
+
+\begin{problem}[Operator norms]
+\label{prob:norms}
+Replace the Frobenius upper bounds by validated enclosures of the multilinear spectral
+norm at a useful scale.
+\end{problem}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Recursive orthogonal projection on a finite typed multilinear tree admits an exact local
+error decomposition. From it follow a sound state-resolved recursion, a closed-form
+optimal ordering within a declared scalar family, a pathwise attribution of the bound to
+individual vertices, and the uniform distinction between $k$ ambient sources and $k-1$
+projected sources. The last of these is an upper bound whose optimality is open already
+for two internal vertices, and the numerical evidence assembled here is broad enough to
+expose the dependence on topology, interaction, precision and representation without
+resolving it.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig18_claim_evidence_dag}
+\caption{\FigCaptionEighteen}
+\label{fig:dag}
+\end{figure}
+
+\appendix
+\input{proofs/full_proofs}
+
+\section{Reproducibility}
+\label{app:reproducibility}
+
+All computations were carried out inside a single repository. Each run directory records
+the resolved configuration, the command, the environment, the hardware, the source commit,
+hashes of the mathematical objects and of the inputs, the tensors, the metrics, the
+enclosures, the logs and hashes of every output. The companion software article describes
+the interfaces and commands.
+
+\begin{remark}[Provenance of the numerical evidence]
+\label{rem:provenance}
+The tables and figures of this article were produced at source commit
+\VThreeSourceCommit{}, which is earlier than the commit carrying the text. The
+classification of enclosure outcomes in Table~\ref{tab:gaps} was re-derived from the
+certified lower and upper bounds recorded at that commit, without re-running any
+experiment; the re-derivation script and the reclassified registry accompany this
+article. Full details are in the provenance file of the delivery package.
+\end{remark}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.98\textwidth]{fig17_computational_scaling}
+\caption{\FigCaptionSeventeen}
+\label{fig:scaling}
+\end{figure}
+
+\begin{table}[p]
+\centering\small
+\caption{Reproducibility manifest.}
+\label{tab:manifest}
+\resizebox{.96\textwidth}{!}{\input{tables/reproducibility_manifest}}
+\end{table}
+
+\FloatBarrier
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

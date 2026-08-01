@@ -1,0 +1,544 @@
+SUPPLEMENTARY NUMERICAL RESULTS
+FOR PROJECTED MULTILINEAR MODELS
+ELIUTH CHAVERO JASSO
+
+Abstract. Nine figures supporting the numerical study [2], together with the information needed
+to regenerate each of them: the generating script, the input files, the parameters, and checksums of
+inputs and outputs. Each figure is supplied as a vector PDF, an archival SVG and a raster PNG at
+300 dots per inch, from a single generator run. Captions state whether a displayed quantity is an
+analytical bound, an identity holding by construction, or an observed value, and every logarithmic
+axis with a plotting floor states that floor. Section 2 lists the data sources, Section 3 the parameters
+of each experiment, and Section 5 the material that is deliberately not included.
+
+1. Figures
+Conclusions and evidence types across the numerical studies
+projector identities
+commutator model
+nested commutators
+spectral projector stability
+subspace transport
+identifiability
+closure defect
+associator bound
+reduced tensor
+tensor comparison
+compressibility
+residual basis freedom
+factor persistence
+cyclic symmetrisation
+
+identity holding by construction
+exploratory numerical evidence
+negative result in the tested regime
+
+Figure 1. Summary of conclusions and evidence types across the numerical studies. Each of the fourteen experiments of [2] is classified into exactly one of three
+categories: an identity holding by construction, exploratory numerical evidence, or
+a negative result in the tested regime. The classification is editorial and follows the
+scheme stated in that article; no experiment contributes to a combined score, and
+none is ranked against another.
+
+Date: 31 July 2026.
+Supplement to [2]. Every figure is regenerated from the committed experiment records by generate_figures.py;
+the mapping from figure to input file, with checksums, is in figure_provenance.json.
+1
+
+2
+
+ELIUTH CHAVERO JASSO
+Ablation study of the commutator approximation
+commutator objective alone
+
+8.10e-05
+
++ closure objective
+
+3.51e-04
+
++ associator objective
+
+8.49e-03
+
+all objectives jointly
+
+5.99e-03
+
+map frozen, projector trained
+projector frozen, map trained
+
+9.92e-01
+
+2.46e-07
+
+staged: competing, then commutator
+
+4.65e-04
+
+−5
+
+−4
+
+zero predictor
+
+10
+10
+10−1
+10
+10
+10
+100
+unexplained relative residual (logarithmic axis); the zero predictor gives 1
+−6
+
+−3
+
+−2
+
+Figure 2. Ablation study of the commutator approximation. Seven training
+regimes, one run each, at ambient dimension 16, reduced rank 4, representation
+rank 4 and 400 optimisation steps. The horizontal axis is the unexplained relative
+residual on a logarithmic scale; the dashed line marks the zero predictor, which
+gives the value 1. Every bar is drawn at the value recorded in the experiment file
+and none is displayed at a plotting floor; in particular the regime with the projector
+frozen reaches 2.46 × 10−7 , which is the numerical floor of that run and not zero.
+Freezing the map and training only the projector leaves the residual at 0.9925; freezing the projector and training only the map, with the projector left at its random
+initial value, reaches the smallest residual of the seven. One run per regime: this is
+exploratory evidence, not a replicated experiment.
+
+SUPPLEMENTARY NUMERICAL RESULTS
+
+FOR PROJECTED MULTILINEAR MODELS
+
+Transport of learned subspaces across three resolutions
+(one training run and one lift operator per pair)
+
+largest principal angle (radians)
+
+1.6
+1.4
+1.2
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+
+n = 12 → 18
+
+n = 12 → 24
+
+π/2: complete orthogonality
+trained lift
+
+n = 18 → 24
+random subspace baseline
+interpolation baseline
+
+Figure 3. Transport of learned subspaces across three independently trained resolutions. For each ordered resolution pair, the largest principal angle between the
+transported subspace and the independently learned subspace, for the trained lift
+and for two baselines. The dashed line is π/2 ≈ 1.571 radians, complete orthogonality. All quantities lie between 1.407 and 1.553 radians. The trained lift improves on
+both baselines in two of the three pairs, by 0.02 to 0.15 radians, which is small relative to how close every condition already is to complete orthogonality. One training
+run and one lift operator per pair; no uncertainty interval is available and none is
+drawn.
+
+3
+
+4
+
+ELIUTH CHAVERO JASSO
+
+Observed values and the analytical upper bound
+for the associator estimate
+
+executions
+
+40
+
+30
+
+20
+
+10
+
+0
+0.00
+
+0.25
+
+0.50
+
+0.75
+
+1.00
+
+2̂
+
+1.25
+
+1.50
+
+1.75
+
+2.00
+
+‖A(x, y, z)‖ / (M ‖x‖‖y‖‖z‖)
+observed ratio, 320 executions
+analytical upper bound, 2
+single-configuration value, 0.452
+undetermined range above the largest observed value (0.957)
+
+Figure 4. Observed values and the analytical upper bound for the associator esc2 ∥x∥∥y∥∥z∥) over the 320
+timate. Histogram of the observed ratio ∥A(x, y, z)∥/(M
+executions of the broad sweep. The solid vertical line is the triangle bound of value
+2, which is an analytical upper bound and not an observation. The dashed line is
+the single-configuration value 0.452 reported in [2]. The shaded band is the range
+between the largest observed value and the bound, in which the exact constant is
+undetermined; it is not an uncertainty interval.
+
+mean cyclic residual (logarithmic axis; plotting floor 10−34)
+
+SUPPLEMENTARY NUMERICAL RESULTS
+
+FOR PROJECTED MULTILINEAR MODELS
+
+Cyclic residual before and after exact symmetrisation
+101
+
+4.597
+
+10−4
+10−9
+10−14
+10−19
+10−24
+10−29
+9.24e-33
+
+10−34
+
+before symmetrisation
+
+after symmetrisation
+
+Figure 5. Cyclic residual before and after exact symmetrisation, on a logarithmic
+axis with plotting floor 10−34 , as stated on the axis. The value after symmetrisation
+is at the numerical floor by construction: cyclic averaging is an orthogonal projector
+onto the cyclically invariant subspace, so its output is cyclic identically. The figure
+confirms that the implementation applies that projector correctly. It is not evidence
+that a symmetry was learned.
+
+5
+
+ELIUTH CHAVERO JASSO
+
+mode rank required for 99 % of the energy
+
+6
+
+5
+
+Multilinear singular-value compression
+against a single random draw
+
+4
+
+3
+
+2
+
+1
+
+0
+
+mode 0
+
+mode 1
+
+mode 2
+
+fitted reduced tensor
+norm-matched random tensor (one draw)
+
+Figure 6. Multilinear singular-value compression against a single random draw.
+Mode ranks required to capture 99 % of the energy, for a fitted reduced tensor and
+for one norm-matched random tensor, at a single configuration. The fitted tensor is
+more compressible in one of the three modes and equally compressible in the other
+two. One random draw is a control, not a null distribution, and no distributional
+statement follows from this figure.
+
+SUPPLEMENTARY NUMERICAL RESULTS
+
+10−14
+
+FOR PROJECTED MULTILINEAR MODELS
+
+Agreement between the two devices at the numerical noise floor
+idempotence residual
+self-adjointness residual
+(160 configurations, double precision)
+(160 configurations, double precision)
+10−14
+
+10−15
+
+GPU
+
+GPU
+
+10−15
+
+10−16
+
+10−17
+
+10−18
+10−18
+
+10−16
+
+10−17
+
+10−17
+
+10−16
+CPU
+
+10−15
+
+10−18
+10−14
+10−18
+
+10−17
+
+10−16
+CPU
+
+10−15
+
+10−14
+
+Figure 7. Agreement between the two devices at the numerical noise floor. Each
+point is one configuration, with its CPU value on the horizontal axis and its GPU
+value on the vertical axis, in double precision with reduced-precision matrix multiplication disabled; the dashed line is equality. Both residuals lie at the noise floor
+on both devices, so the figure shows agreement of the implementation, not accuracy
+of any quantity of interest. Values below 10−20 are drawn at that floor.
+
+7
+
+8
+
+ELIUTH CHAVERO JASSO
+
+Observed associator ratio against ambient dimension
+(pilot and broad sweep combined; N = executions per dimension)
+
+observed associator ratio
+
+2.00
+1.75
+1.50
+1.25
+1.00
+0.75
+0.50
+
+0.405
+N = 128
+
+0.25
+0.00
+
+12
+
+0.258
+N = 128
+
+0.182
+N = 80
+
+24
+48
+ambient dimension n
+
+0.118
+N = 80
+
+96
+
+analytical upper bound, 2
+mean; bars span the observed minimum to maximum
+
+Figure 8. Observed associator ratio against ambient dimension, over the pilot and
+broad sweeps combined. Markers are means and bars span the observed minimum
+to maximum; the number of executions contributing to each point is annotated.
+The mean decreases monotonically from 0.405 at n = 12 to 0.118 at n = 96, moving
+further from the analytical bound of 2 as the ambient dimension grows, not closer.
+The single-configuration value 0.452 of Figure 4, measured at n = 16, is consistent
+with this trend. The bars are observed ranges, not confidence intervals. The two
+executions of a configuration, one per device, are not independent observations; the
+counts shown are executions.
+
+SUPPLEMENTARY NUMERICAL RESULTS
+
+FOR PROJECTED MULTILINEAR MODELS
+
+mean wall time per execution (seconds)
+
+Mean wall time per execution, by device and ambient dimension
+(one machine; ratios annotated)
+40
+35
+
+CPU
+GPU
+3.24×
+
+3.51×
+3.31×
+
+30
+3.17×
+
+25
+20
+15
+10
+5
+0
+
+n = 12
+N = 40 each
+
+n = 24
+N = 40 each
+
+n = 48
+N = 40 each
+
+n = 96
+N = 40 each
+
+Figure 9. Mean wall time per execution, by device and ambient dimension, over the
+160 configurations of the broad sweep, with 40 executions per device per dimension.
+The annotated ratios are between 3.17 and 3.51 and show no trend towards crossover
+across an eightfold range in ambient dimension. This is a measurement on one
+machine and one software stack; it supports no asymptotic-complexity statement
+and no comparison between hardware platforms.
+
+9
+
+10
+
+ELIUTH CHAVERO JASSO
+
+2. Data sources and provenance
+Every figure is produced by generate_figures.py from files in data/, which are verbatim copies
+of the committed experiment records. The generator writes figure_provenance.json, containing
+for each figure: the input files with their SHA-256 checksums and sizes; the output files in all three
+formats with their SHA-256 checksums and sizes; the SHA-256 of the generator itself; and the
+versions of the numerical libraries used. No value in any figure is entered by hand.
+Table 1. Input file for each figure.
+Figure
+
+Input
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+classification stated in [2]; no data file
+data/block_b_ablation_matrix.json
+data/block_e_interscale_experiment.json
+data/s1_results.parquet
+data/s1_results.parquet
+mode ranks at the reference configuration, stated in [2]
+data/s1_results.parquet
+data/pilot_results.parquet, data/s1_results.parquet
+data/s1_results.parquet
+
+3. Parameters of the swept experiments
+Table 2. Design of the two sweep stages. A configuration is one distinct mathematical setting; an execution is one run of a configuration on one device. Each
+configuration was executed once on the CPU and once on the GPU, so the two
+executions of a configuration are not independent observations.
+stage
+
+configurations
+
+executions
+
+grid
+
+pilot
+
+48
+
+broad
+
+160
+
+arity ∈ {3, 4}, n ∈ {12, 24}, rank ∈ {3, 6}, representation rank ∈ {4, 8},
+3 seeds
+320 as above, with n ∈ {12, 24, 48, 96} and 5 seeds
+
+total
+
+208
+
+416
+
+96
+
+There were no failures in either stage. Summed over the per-execution records, wall time was
+942.8 seconds for the pilot and 6300.8 seconds for the broad stage. Both stages ran in double precision with reduced-precision matrix multiplication explicitly disabled and deterministic algorithms
+enabled; the hardware is described in [3].
+4. Visual conventions
+• The palette is Okabe–Ito, which is colourblind-safe; no encoding relies on distinguishing red from
+green.
+• Every figure is produced as a vector PDF, which is what the manuscript includes; SVG and
+300-dpi PNG versions are supplied alongside.
+• Where a logarithmic axis cannot display a value, the plotting floor is stated on the axis and the
+true value is annotated.
+• Where a figure shows a range, the caption states whether it is an observed minimum–maximum
+range or something else. No confidence interval is drawn anywhere in this supplement, because
+no sampling model is specified for any of these experiments.
+
+SUPPLEMENTARY NUMERICAL RESULTS
+
+FOR PROJECTED MULTILINEAR MODELS
+
+11
+
+• Sample counts are given on the figure or in its caption.
+• Optimiser restarts and repeated executions of the same configuration are never used as replicates.
+5. What is deliberately not included
+The following material is absent, and is listed rather than silently omitted.
+• Figures relating to the finite-dimensional theory of projected composition trees — topology,
+dimension and η dependence, and the geometry of the coefficients k and k − 1. These belong to
+[1] and appear there.
+• A full diagram of the residual basis freedom, beyond the single degenerate-eigenspace example
+described in [2], and an atlas of the permutations and signs of the generalised Jacobi expression.
+The underlying data exist but were not turned into figures.
+• Adversarial maxima of the closure defect across a swept grid. Figure 8 provides the analogous
+surface for the associator; the closure defect was not swept.
+• Device agreement for the ten experiments that were not extended over the grid. Those were run
+on the CPU only, so no comparison is possible.
+• Any figure aggregating the fourteen experiments into a single score. No such score is formed
+anywhere in this work.
+References
+1. Eliuth Chavero Jasso, Error propagation under recursive orthogonal projection of finite multilinear composition
+trees, 2026, Companion article.
+, A numerical study of cyclic multilinear maps, orthogonal projectors, and multiresolution tensor represen2.
+tations, 2026, Companion article, of which this is the supplement.
+, Software and reproducibility for numerical experiments on projected multilinear models, 2026, Companion
+3.
+software article.
+Independent Researcher, Apizaco, Tlaxcala, Mexico
+
+

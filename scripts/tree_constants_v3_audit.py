@@ -24,6 +24,11 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
+from seion_core.research_v3.interval_certification import (
+    EXACTLY_DETERMINED_POSITIVE,
+    NO_POSITIVE_LOWER_BOUND_OBTAINED,
+    classify_optimality,
+)
 from seion_core.research_v3.run_schema import validate_run_artifacts
 
 
@@ -473,7 +478,14 @@ def _data_audit() -> dict[str, Any]:
     for column in violation_columns:
         values = pd.to_numeric(full[column], errors="coerce").dropna()
         negative_violations[column] = int((values < -1.0e-8).sum())
-    near = gaps[gaps["status"] == "NEAR_OPTIMAL_WITH_CERTIFIED_GAP"]
+    gap_class = [
+        classify_optimality(low, up)
+        for low, up in zip(
+            gaps["certified_lower_bound"], gaps["certified_upper_bound"], strict=True
+        )
+    ]
+    determined = gaps[[c == EXACTLY_DETERMINED_POSITIVE for c in gap_class]]
+    no_lower = gaps[[c == NO_POSITIVE_LOWER_BOUND_OBTAINED for c in gap_class]]
     return {
         "scientific_instances": len(full),
         "unique_scientific_hashes": int(full["scientific_instance_hash"].nunique()),
@@ -487,9 +499,9 @@ def _data_audit() -> dict[str, Any]:
         "negative_bound_violation_margins": negative_violations,
         "maximum_cpu_gpu_parity": float(parity.max()) if len(parity) else None,
         "maximum_certified_relative_gap": float(gaps["relative_gap"].max()),
-        "maximum_near_optimal_relative_gap": (
-            float(near["relative_gap"].max()) if len(near) else None
-        ),
+        "exactly_determined_positive": len(determined),
+        "no_positive_lower_bound_obtained": len(no_lower),
+        "no_positive_lower_bound_fraction": len(no_lower) / len(gaps) if len(gaps) else None,
         "pass": (
             len(full) == 15493
             and int(full["scientific_instance_hash"].nunique()) == 15493
@@ -771,7 +783,14 @@ def release_gate() -> dict[str, Any]:
         }
         for value in novelty_values
     ) and all(value != "NOVELTY_NOT_ESTABLISHED" for value in novelty_values)
-    near = gaps[gaps["status"] == "NEAR_OPTIMAL_WITH_CERTIFIED_GAP"]
+    gap_class = [
+        classify_optimality(low, up)
+        for low, up in zip(
+            gaps["certified_lower_bound"], gaps["certified_upper_bound"], strict=True
+        )
+    ]
+    determined = gaps[[c == EXACTLY_DETERMINED_POSITIVE for c in gap_class]]
+    no_lower = gaps[[c == NO_POSITIVE_LOWER_BOUND_OBTAINED for c in gap_class]]
     gates = [
         {
             "id": 1,
@@ -793,8 +812,9 @@ def release_gate() -> dict[str, Any]:
         },
         {
             "id": 3,
-            "name": "near-optimal claims have certified declared gaps",
-            "pass": bool(len(near)) and bool((near["relative_gap"] <= 0.01).all()),
+            "name": "every exactly-determined constant has a coincident lower and upper bound",
+            "pass": bool(len(determined))
+            and bool((determined["absolute_gap"] <= 1.0e-10).all()),
             "evidence": "artifacts/index/optimality_gaps_v3.csv",
         },
         {
