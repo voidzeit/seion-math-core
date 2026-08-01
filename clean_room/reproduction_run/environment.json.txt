@@ -41,7 +41,7 @@ pytest==9.1.1
 python-dateutil==2.9.0.post0
 PyYAML==6.0.3
 scipy==1.18.0
--e git+https://github.com/voidzeit/seion-math-core.git@7306f35411fa84638ad861f55ab3e7043e021643#egg=seion_math_core
+-e git+https://github.com/voidzeit/seion-math-core.git@ee198a85a4bcdc142fc7aed8dc5c9d019c3a7daf#egg=seion_math_core
 setuptools==83.0.0
 six==1.17.0
 sortedcontainers==2.4.0
@@ -49,4 +49,4 @@ sympy==1.14.0
 torch==2.13.0
 triton==3.7.1
 typing_extensions==4.16.0
-Linux 04b63d0905a5 6.6.114.1-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Mon Dec  1 20:46:23 UTC 2025 x86_64 GNU/Linux
+Linux 46a2d2a638ff 6.6.114.1-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Mon Dec  1 20:46:23 UTC 2025 x86_64 GNU/Linux

@@ -1,0 +1,136 @@
+\section*{M1: Exact symbolic status of the six-term GJI expression}
+
+\subsection*{Object under study}
+
+\texttt{ternary\_declared\_gji} / \texttt{named\_gji\_variants}
+(\texttt{src/seion\_core/research\_v3/polynomial\_forests.py}), a six-term
+signed combination on 5 leaves $L_0,\dots,L_4$, using the fixed ternary
+insertion trees $T_s$ (for slot $s \in \{0,1,2\}$, mu applied to 3
+consecutive leaves starting at $s$, nested inside an outer mu on the
+remaining 2 leaves plus the inner result):
+\[
+  T_0 = \mu(\mu(L_0,L_1,L_2), L_3, L_4), \quad
+  T_1 = \mu(L_0, \mu(L_1,L_2,L_3), L_4), \quad
+  T_2 = \mu(L_0, L_1, \mu(L_2,L_3,L_4)).
+\]
+The declared six-term expression, with the exact permutations and signs
+in the source code, is
+\begin{align*}
+  \mathrm{GJI}_6 \;=\;
+    &+\ \mu(\mu(L_0,L_1,L_2), L_3, L_4) \\
+    &+\ \mu(L_1, \mu(L_2,L_0,L_3), L_4) \\
+    &+\ \mu(L_2, L_0, \mu(L_1,L_3,L_4)) \\
+    &-\ \mu(\mu(L_1,L_0,L_2), L_3, L_4) \\
+    &-\ \mu(L_2, \mu(L_1,L_0,L_3), L_4) \\
+    &-\ \mu(L_0, L_2, \mu(L_1,L_3,L_4)),
+\end{align*}
+where $\mu : V^3 \to V$ is contracted positionally,
+$\mu(a,b,c)_d = \sum_{i,j,k} \mu_{dijk}\, a_i b_j c_k$, with \emph{no}
+symmetry, associativity, or other structure assumed for $\mu$ (matching
+\texttt{TypedLaw.apply} / \texttt{np.einsum} exactly, and cross-checked
+term-by-term against
+\texttt{seion\_core.research\_v3.exact\_evaluation.evaluate\_ambient\_numpy}
+on concrete numeric data before any symbolic claim below was trusted).
+
+\subsection*{Prior finding being corrected}
+
+\texttt{docs/research/signed\_forest\_terminal\_status\_v5.md} reported
+that this expression evaluates to machine-precision zero across 4{,}000+
+random trials plus independent spot checks, ``under both identical and
+independently-random leaf inputs,'' and classified it
+\texttt{NOT\_CERTIFIABLE\_AS\_DEFINED} pending symbolic verification.
+
+\textbf{Root cause found this session.} The adversarial search
+(\texttt{scripts/signed\_forest\_adversarial\_search\_v5.py::forest\_ratio})
+always constructs its type system as
+\texttt{TypedSpace.coordinate("tau", DIMENSION=2, PROJECTOR\_RANK=1)} and
+lifts every leaf's reduced coordinate through this rank-1 embedding. A
+rank-1 lift maps every leaf, however its reduced (1-dimensional)
+coordinate was drawn, onto a scalar multiple of the \emph{same} fixed
+ambient basis vector. So every leaf configuration this search ever tested
+-- ``identical'' or ``independently random'' at the reduced-coordinate
+level -- was \textbf{collinear} at the ambient level, where the
+contraction actually happens. The doc's claim of testing genuinely
+independent leaf inputs is true only in the reduced coordinate, not the
+ambient vector actually fed to $\mu$.
+
+\subsection*{Result A: not a general identity}
+
+\textbf{Claim tested:} $\mathrm{GJI}_6 \equiv 0$ for every multilinear
+$\mu:V^3\to V$ and every 5 (possibly non-collinear) vectors
+$L_0,\dots,L_4$.
+
+\textbf{Verdict: \textsc{disproved\_by\_counterexample}.} Two independent
+exact methods (Method A: direct symbolic substitution with a fully free
+symbolic tensor $\mu$ and free symbolic leaf vectors, dimension $n=2$ and
+$n=3$, simplified with \texttt{sympy.expand}; Method B: an independent
+monomial-dictionary implementation with no call into sympy's polynomial
+engine, tracking exact integer coefficients per
+(mu-tensor-entry, leaf-component) monomial) both find $\mathrm{GJI}_6$ is
+\emph{not} the zero polynomial in either dimension.
+
+An explicit, minimal, exact-rational counterexample ($n=2$, all data
+exact fractions, no floating point):
+\[
+  \mu_{dijk} \text{ as tabulated in
+  \texttt{mutation\_test\_report.json::general\_identity\_claim.exact\_rational\_counterexample}},
+  \qquad
+  L_0=(1,0),\ L_1=(0,1),\ L_2=(1,1),\ L_3=(2,-1),\ L_4=(-1,3),
+\]
+gives $\mathrm{GJI}_6 = \left(\tfrac{97}{3}, \tfrac{97}{3}\right) \neq 0$,
+verified with exact \texttt{Fraction} arithmetic (reproducible by running
+\texttt{scripts/math\_closure\_m1\_gji\_symbolic.py}).
+
+\subsection*{Result B: the true, narrower identity}
+
+\textbf{Claim tested:} $\mathrm{GJI}_6 \equiv 0$ for every multilinear
+$\mu:V^3\to V$, whenever all 5 leaves are \emph{collinear}:
+$L_i = c_i\, q$ for scalars $c_0,\dots,c_4$ and a single shared vector
+$q\in V$.
+
+\textbf{Verdict: \textsc{proved}.} By trilinearity, for any 3 of the 5
+leaves fed into an inner application, $\mu(c_a q, c_b q, c_c q) =
+c_a c_b c_c\,\mu(q,q,q)$ -- the value depends only on the \emph{product}
+of the three scalars (which commute), not on which label carries which
+scalar. Composing with the outer application similarly factors out the
+remaining two scalars, so \emph{every} term of $\mathrm{GJI}_6$ reduces to
+\[
+  (c_0 c_1 c_2 c_3 c_4)\ \cdot\ V_s, \qquad
+  V_s := (\text{the value of } T_s \text{ with every leaf} = q),
+  \quad s\in\{0,1,2\},
+\]
+where $s$ is determined only by \emph{which outer slot} the inner
+application occupies (not by which 3 leaves were grouped into it, nor by
+their internal order -- confirmed computationally: a mutation exchanging
+two leaf labels within one term, preserving the same partition and slot,
+leaves the collinear value unchanged; a mutation changing which slot the
+inner application occupies does not). The six terms of $\mathrm{GJI}_6$
+occupy slots $(0,1,2,0,1,2)$ with signs $(+,+,+,-,-,-)$ respectively --
+i.e.\ exactly the pairing $(+V_0,-V_0), (+V_1,-V_1), (+V_2,-V_2)$ -- so
+\[
+  \mathrm{GJI}_6 \Big|_{\text{collinear}} =
+  (c_0c_1c_2c_3c_4)\big[(V_0 - V_0) + (V_1 - V_1) + (V_2 - V_2)\big] = 0
+\]
+for \emph{any} $\mu$ and \emph{any} 5 scalars $c_i$ -- confirmed
+symbolically (Method A specialized to $L_i = c_i q$, free symbolic $\mu$,
+free symbolic $q$ and $c_i$, dimensions $n=2,3$) and by 4 mutation tests
+(flip a sign, omit a term, change an insertion slot: all three correctly
+produce a nonzero collinear value, confirming the verifier has power;
+exchanging two leaf labels within one term does not, which is the exact
+invariance predicted by the proof above, not a gap in the verifier).
+
+\subsection*{Why this explains, and does not merely contradict, the prior finding}
+
+The rank-1-projector adversarial search exercised \emph{exactly} the
+collinear regime proved above to vanish identically, for 4{,}000 distinct
+random laws $\mu$ -- the observed exact zero (to floating-point precision)
+in every one of those trials is fully explained by Result B, and is not
+evidence for the false general claim the prior doc entertained.
+
+\subsection*{Status}
+
+\texttt{NOT\_CERTIFIABLE\_AS\_DEFINED} (prior) superseded by:
+\textsc{disproved\_by\_counterexample} for the general claim, and
+\textsc{proved} for the collinear-leaves sub-case, on the explicit
+admissible classes stated above. No claim of novelty is made for the
+collinear sub-identity pending the originality review (task \#14).

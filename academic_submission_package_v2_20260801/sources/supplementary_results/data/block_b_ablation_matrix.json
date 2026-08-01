@@ -1,0 +1,44 @@
+[
+  {
+    "regime": "isolated_B_only",
+    "final_comm_unexplained_rel": 8.09626686913521e-05,
+    "final_closure_defect": 0.3102870785245255,
+    "final_associator_defect": 464.0940419035395
+  },
+  {
+    "regime": "plus_closure",
+    "final_comm_unexplained_rel": 0.00035140573946320974,
+    "final_closure_defect": 4.108323293968593e-06,
+    "final_associator_defect": 74.59965005830477
+  },
+  {
+    "regime": "plus_associator",
+    "final_comm_unexplained_rel": 0.008486347301734412,
+    "final_closure_defect": 0.11102539400031416,
+    "final_associator_defect": 4.773574149503356e-06
+  },
+  {
+    "regime": "joint_all",
+    "final_comm_unexplained_rel": 0.005994743914534232,
+    "final_closure_defect": 0.00047947379773513273,
+    "final_associator_defect": 1.0696063855685923e-06
+  },
+  {
+    "regime": "frozen_law_train_projector",
+    "final_comm_unexplained_rel": 0.9924877409888904,
+    "final_closure_defect": 0.015635231783038772,
+    "final_associator_defect": 0.2328704720997477
+  },
+  {
+    "regime": "frozen_projector_train_law",
+    "final_comm_unexplained_rel": 2.463683527245667e-07,
+    "final_closure_defect": 0.7377313487048099,
+    "final_associator_defect": 580.902202269266
+  },
+  {
+    "regime": "staged_competing_then_B",
+    "final_comm_unexplained_rel": 0.000465385892885582,
+    "final_closure_defect": 0.21711993264904345,
+    "final_associator_defect": 141.08685854732443
+  }
+]

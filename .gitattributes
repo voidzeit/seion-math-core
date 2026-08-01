@@ -9,3 +9,35 @@
 # mismatch against a manifest frozen from an LF blob.
 schemas/*.json text eol=lf
 *.sha256 text eol=lf
+
+# Both academic package directories carry a checksums.sha256 covering
+# nearly every text file inside them - force the actual text file types
+# to LF so a fresh Windows checkout (core.autocrlf=true) doesn't
+# invalidate those checksums (same root cause as the schemas/*.json fix
+# above). Deliberately by-extension, NOT a blanket directory "**" rule,
+# so this does not override the binary declarations above for the *.pdf/
+# *.png/*.npz/*.svg/*.parquet files these same directories also contain
+# (a later blanket rule would win over the earlier extension rule for
+# the SAME path and re-mark those binaries as text, corrupting them on
+# checkout).
+academic_submission_package/**/*.md text eol=lf
+academic_submission_package/**/*.tex text eol=lf
+academic_submission_package/**/*.py text eol=lf
+academic_submission_package/**/*.json text eol=lf
+academic_submission_package/**/*.yaml text eol=lf
+academic_submission_package/**/*.csv text eol=lf
+academic_submission_package/**/*.txt text eol=lf
+academic_submission_package/**/*.sh text eol=lf
+academic_submission_package/**/*.bib text eol=lf
+academic_submission_package/**/*.cff text eol=lf
+academic_submission_package_v2_20260801/**/*.md text eol=lf
+academic_submission_package_v2_20260801/**/*.tex text eol=lf
+academic_submission_package_v2_20260801/**/*.py text eol=lf
+academic_submission_package_v2_20260801/**/*.json text eol=lf
+academic_submission_package_v2_20260801/**/*.yaml text eol=lf
+academic_submission_package_v2_20260801/**/*.csv text eol=lf
+academic_submission_package_v2_20260801/**/*.txt text eol=lf
+academic_submission_package_v2_20260801/**/*.sh text eol=lf
+academic_submission_package_v2_20260801/**/*.bib text eol=lf
+academic_submission_package_v2_20260801/**/*.cff text eol=lf
+academic_submission_package_v2_20260801/LICENSE text eol=lf

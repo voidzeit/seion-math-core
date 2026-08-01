@@ -1,0 +1,262 @@
+{
+  "generated_utc": "2026-07-31T05:32:48.547784+00:00",
+  "generator": "generate_figures.py",
+  "generator_sha256": "8868b54c83f33eb6c3c5e120b6998665e3bbe36156eb58728be640b90b67556b",
+  "repository_commit": "2e419ef4e1c028cfb85348feb515746e6c538ea8",
+  "matplotlib_version": "3.10.9",
+  "numpy_version": "2.4.6",
+  "pandas_version": "3.0.3",
+  "palette": "Okabe-Ito",
+  "formats": [
+    "pdf (vector, used in the manuscript)",
+    "svg (vector, archival)",
+    "png (300 dpi)"
+  ],
+  "figures": [
+    {
+      "figure": "01_evidence_summary",
+      "description": "Evidence type for each of the fourteen experiments, as classified in the numerical study.",
+      "inputs": [],
+      "outputs": {
+        "pdf": {
+          "file": "01_evidence_summary.pdf",
+          "sha256": "7b75a1f73fb16a7db938c222767af19aa9d9e4be4de43021ff9c64061f96319c",
+          "bytes": 10924
+        },
+        "svg": {
+          "file": "01_evidence_summary.svg",
+          "sha256": "8e83574e637c8681ea99b3badce74f960138cbeacde65f38a19ed59255fa4f4a",
+          "bytes": 16436
+        },
+        "png": {
+          "file": "01_evidence_summary.png",
+          "sha256": "dacc5930e71ecd70a0e68679892184f889d5454f35475c64b06ffb476b0ae76a",
+          "bytes": 166395
+        }
+      }
+    },
+    {
+      "figure": "02_commutator_ablation",
+      "description": "Seven training regimes, one run each. Every bar is the value recorded in the input file; no bar is displayed at a floor.",
+      "inputs": [
+        {
+          "file": "block_b_ablation_matrix.json",
+          "sha256": "839772bd328173b02fb52ce33163d37904e5592510185c513ab502b781f7cb8c",
+          "bytes": 1453
+        }
+      ],
+      "outputs": {
+        "pdf": {
+          "file": "02_commutator_ablation.pdf",
+          "sha256": "ced7794ee0e79c5aeb38747d7a34f2f6ad409d720ce766cb55ee8e2ba9a10436",
+          "bytes": 14515
+        },
+        "svg": {
+          "file": "02_commutator_ablation.svg",
+          "sha256": "1fc7bf2da6a38bf31a79a5b5bfdae47612ca8508070c8688d1df361a63c601cf",
+          "bytes": 33330
+        },
+        "png": {
+          "file": "02_commutator_ablation.png",
+          "sha256": "52c2470f539e74eae45809069a987800af75bb24b1e5e7f0970ae16710e1584d",
+          "bytes": 148907
+        }
+      }
+    },
+    {
+      "figure": "03_subspace_transport",
+      "description": "Largest principal angle for the trained lift and two baselines, per resolution pair. Every condition lies close to complete orthogonality.",
+      "inputs": [
+        {
+          "file": "block_e_interscale_experiment.json",
+          "sha256": "c6170a218cba80d723056dc9830ed9b63e8b3eed18784dc6fc56ad1a1af9e8f0",
+          "bytes": 1368
+        }
+      ],
+      "outputs": {
+        "pdf": {
+          "file": "03_subspace_transport.pdf",
+          "sha256": "806e063f0904b24393d657206495b1fc2c400f955e265a11bf2a965c1594f07b",
+          "bytes": 16042
+        },
+        "svg": {
+          "file": "03_subspace_transport.svg",
+          "sha256": "74849552935c75cc02d9ca422de1f1278af70519bccc4dfeb5efd5059b6f1029",
+          "bytes": 22296
+        },
+        "png": {
+          "file": "03_subspace_transport.png",
+          "sha256": "886fbb991b564ce49687352fa43cf550823e9e2b5ae9dd6a967fcfbaae5d116f",
+          "bytes": 108523
+        }
+      }
+    },
+    {
+      "figure": "04_associator_bound",
+      "description": "Distribution of the observed associator ratio over the broad sweep, against the triangle bound. The shaded band is the range in which the exact constant is undetermined.",
+      "inputs": [
+        {
+          "file": "s1_results.parquet",
+          "sha256": "7117abf2f27254e616dd145840a070fb656b8a4d5edb675611a4bc3f4541f417",
+          "bytes": 45900
+        }
+      ],
+      "outputs": {
+        "pdf": {
+          "file": "04_associator_bound.pdf",
+          "sha256": "1caddc889086d42bf45dcf02356ae63bca23e22821203dd67523b3935bf06216",
+          "bytes": 20167
+        },
+        "svg": {
+          "file": "04_associator_bound.svg",
+          "sha256": "cb37c100c7b886319153ad24e85c36bf75b0dfd2d327c197fe366691e3d826c7",
+          "bytes": 28384
+        },
+        "png": {
+          "file": "04_associator_bound.png",
+          "sha256": "eb593836a8a0aa1e2a9160813f283aea3996fae50297388a839bb42275c867f2",
+          "bytes": 108987
+        }
+      }
+    },
+    {
+      "figure": "05_cyclic_symmetrisation",
+      "description": "The value after symmetrisation follows by construction, since the cyclic averaging operator is an orthogonal projector onto the cyclically invariant subspace. The plotting floor is stated on the axis.",
+      "inputs": [
+        {
+          "file": "s1_results.parquet",
+          "sha256": "7117abf2f27254e616dd145840a070fb656b8a4d5edb675611a4bc3f4541f417",
+          "bytes": 45900
+        }
+      ],
+      "outputs": {
+        "pdf": {
+          "file": "05_cyclic_symmetrisation.pdf",
+          "sha256": "d9cc887a7e4e6e5ec0fea71307cadb7ac0e6b17e1efee95a27ec6dee939b6587",
+          "bytes": 12440
+        },
+        "svg": {
+          "file": "05_cyclic_symmetrisation.svg",
+          "sha256": "b7a3fbefac2d465a5ac17490d840e5e84089ec59fb745c4baede48f804b0cb8c",
+          "bytes": 20933
+        },
+        "png": {
+          "file": "05_cyclic_symmetrisation.png",
+          "sha256": "876b701d0180f98d73fb332b017092e9878c23bc779b99bfacac6280ce7efeec",
+          "bytes": 88048
+        }
+      }
+    },
+    {
+      "figure": "06_compression",
+      "description": "Mode ranks at a single configuration. One random draw is a control, not a null distribution.",
+      "inputs": [],
+      "outputs": {
+        "pdf": {
+          "file": "06_compression.pdf",
+          "sha256": "0cfb457f6ebabd0c0cf17413287c6a9e015d4d7018b999e920cdfd2769cce022",
+          "bytes": 12962
+        },
+        "svg": {
+          "file": "06_compression.svg",
+          "sha256": "dc057fc90ceada1819adc01f9718f9527201a973f0e427482f866f5d15a37f7c",
+          "bytes": 17320
+        },
+        "png": {
+          "file": "06_compression.png",
+          "sha256": "301e61e00d004f2fe963283045439a348ad14760e159f1f9516b981bfba97e3b",
+          "bytes": 87390
+        }
+      }
+    },
+    {
+      "figure": "07_device_agreement",
+      "description": "Paired per-configuration residuals on the two devices. Both lie at the noise floor; the dashed line is equality.",
+      "inputs": [
+        {
+          "file": "s1_results.parquet",
+          "sha256": "7117abf2f27254e616dd145840a070fb656b8a4d5edb675611a4bc3f4541f417",
+          "bytes": 45900
+        }
+      ],
+      "outputs": {
+        "pdf": {
+          "file": "07_device_agreement.pdf",
+          "sha256": "e383d92b025e738cf8d75aef3c3c74e31cfd329d2e68bebcf1ea6960aa67f299",
+          "bytes": 16510
+        },
+        "svg": {
+          "file": "07_device_agreement.svg",
+          "sha256": "fe327c1ef42fcd7b29532f12286c3434ff8adb03bc86aed7122672c499bcd35c",
+          "bytes": 109400
+        },
+        "png": {
+          "file": "07_device_agreement.png",
+          "sha256": "4ecbae1bf4812f35082e7c5537d628b5894c185f1a48d45c40d85771fef45417",
+          "bytes": 134391
+        }
+      }
+    },
+    {
+      "figure": "08_associator_vs_dimension",
+      "description": "Mean and observed range of the associator ratio by ambient dimension, over the combined pilot and broad sweep.",
+      "inputs": [
+        {
+          "file": "pilot_results.parquet",
+          "sha256": "ddc4676f42c731d1ebab2d8062a2cabe1a43ac50949f16805ed5b2a1210b77f0",
+          "bytes": 24757
+        },
+        {
+          "file": "s1_results.parquet",
+          "sha256": "7117abf2f27254e616dd145840a070fb656b8a4d5edb675611a4bc3f4541f417",
+          "bytes": 45900
+        }
+      ],
+      "outputs": {
+        "pdf": {
+          "file": "08_associator_vs_dimension.pdf",
+          "sha256": "ff7922eae557b23ae284cafbc94c1757bcaf5e71df35832070069be6d7a38273",
+          "bytes": 17200
+        },
+        "svg": {
+          "file": "08_associator_vs_dimension.svg",
+          "sha256": "62013151f5bb33c10a47ec99d470c52877ef1076cc191323a677e50e396a5ab8",
+          "bytes": 30643
+        },
+        "png": {
+          "file": "08_associator_vs_dimension.png",
+          "sha256": "f05c65709a6b48d69df4cd11e54297fa13685b94f0b6d361aa64b1928f928ae6",
+          "bytes": 136550
+        }
+      }
+    },
+    {
+      "figure": "09_device_throughput",
+      "description": "Mean wall time per execution on each device, by ambient dimension, over the broad sweep. A measurement on one machine; no asymptotic claim follows.",
+      "inputs": [
+        {
+          "file": "s1_results.parquet",
+          "sha256": "7117abf2f27254e616dd145840a070fb656b8a4d5edb675611a4bc3f4541f417",
+          "bytes": 45900
+        }
+      ],
+      "outputs": {
+        "pdf": {
+          "file": "09_device_throughput.pdf",
+          "sha256": "d8a2d38b3838735cd9834854c87de0cc98a53c753ab79520400135f3640a2b0a",
+          "bytes": 17112
+        },
+        "svg": {
+          "file": "09_device_throughput.svg",
+          "sha256": "487ca73f96b34b57b3d82331e9f14458614ea20a5f718622af128c269770bbae",
+          "bytes": 24944
+        },
+        "png": {
+          "file": "09_device_throughput.png",
+          "sha256": "4949d4ec30641be0d705e3f47af3bad3128561846df56040a16dba5d5d44a617",
+          "bytes": 99561
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+\section*{M5: Finite-to-continuum convergence for a fixed finite tree}
+
+\subsection*{Setup}
+
+Fix a finite typed ordered tree $T$ with $k=k(T)$ internal vertices —
+$T$ itself, its topology, and its type/law assignment, do \emph{not}
+depend on $N$; only the ambient spaces, laws, and projectors at each
+type are discretized. For each type $\tau$ used in $T$, let
+$V_{\tau,N}\to V_\tau$ be a sequence of ambient spaces with bounded
+linear prolongation/restriction maps $J_N:V_{\tau,N}\to V_\tau$ (one per
+type, suppressed in the type subscript below). For each internal vertex
+$v$ with law $\mu_v$, let $\mu_{v,N}$ be the corresponding discretized
+law, and $P_{\tau,N}$ the discretized projector for type $\tau$.
+
+\textbf{Standing assumptions} (H1)–(H4):
+\begin{description}
+  \item[(H1)] $\|J_N\,\mu_{v,N}(x_1,\dots,x_a) - \mu_v(J_N x_1,\dots,J_N x_a)\| \to 0$
+    as $N\to\infty$, uniformly on bounded sets, for every internal vertex $v$.
+  \item[(H2)] $\|J_N P_{\tau,N} - P_\tau J_N\|_{op} \to 0$ for every type $\tau$.
+  \item[(H3)] $\sup_N \|\mu_{v,N}\|_{op} =: M_N \le M < \infty$ for every $v$
+    (uniform boundedness of the discretized operator norms — not merely
+    boundedness at each fixed $N$).
+  \item[(H4)] $\sup_N \rho_{v,N} =: \rho_N \le \rho < \infty$ for every $v$
+    (uniform boundedness of the discretized closure-leakage norms), and
+    $\rho_N \to \rho_\infty$ for some limit $\rho_\infty \le \rho$.
+\end{description}
+
+These are exactly the assumptions listed in the mission brief, restated
+precisely. No assumption is made about $k(T)$, depth, or the number of
+distinct types growing with $N$ — $T$ is fixed throughout, which is what
+makes the induction below close in finitely many steps independent of
+$N$.
+
+\subsection*{Theorem}
+
+Under (H1)–(H4), for the fixed tree $T$:
+\[
+  J_N F_{T,N} \;\longrightarrow\; F_T
+  \qquad\text{and}\qquad
+  J_N R_{T,N} \;\longrightarrow\; R_T
+\]
+in operator norm as $N\to\infty$ (as maps from the fixed leaf data to
+the root space $V_{\mathrm{root}(T)}$), where $F_{T,N}, R_{T,N}$ denote
+the discretized ambient/reduced tree evaluations and $F_T, R_T$ the
+continuum ones. Consequently
+\[
+  E_{T,N}^{\mathrm{proj}} \;\longrightarrow\; E_T^{\mathrm{proj}}
+  \qquad\text{and}\qquad
+  E_T^{\mathrm{proj}} \;\le\; (k-1)\,\rho_\infty\, M^{k-1} L_T,
+\]
+i.e.\ the $(k-1)$ estimate passes to the continuum limit unchanged.
+
+\subsection*{Proof}
+
+By induction on the tree structure, exactly mirroring the fixed-$N$
+proof in \texttt{docs/theorems\_v3/homogeneous\_constants.md} (multilinear
+telescoping over argument slots), with an added convergence term at each
+step.
+
+\textbf{Base case (leaves).} $J_N$ applied to a fixed leaf datum
+converges trivially (it does not depend on $N$ beyond the prolongation
+itself, which is assumed bounded and — by convention — exact on the
+fixed finite leaf data, i.e.\ $J_N z_\ell \to z_\ell$ is the definition
+of a consistent discretization of leaf data; if leaf data is itself
+$N$-independent and $J_N$ restricted to the finite leaf coordinates is
+the identity for all sufficiently large $N$, as in every construction
+actually used in this repository's extremizers, this step is immediate).
+
+\textbf{Inductive step.} Suppose $v$ has children $c_1,\dots,c_a$ with
+$J_N F_{c_i,N} \to F_{c_i}$ already established (inductive hypothesis).
+Then
+\begin{align*}
+  \big\| J_N F_{v,N} - F_v \big\|
+  &= \big\| J_N\,\mu_{v,N}(F_{c_1,N},\dots,F_{c_a,N})
+      - \mu_v(F_{c_1},\dots,F_{c_a}) \big\| \\
+  &\le \underbrace{\big\| J_N\,\mu_{v,N}(F_{c_1,N},\dots,F_{c_a,N})
+      - \mu_v(J_N F_{c_1,N},\dots,J_N F_{c_a,N}) \big\|}_{\to 0 \text{ by (H1), (H3) [bounded arguments]}} \\
+  &\quad + \underbrace{\big\| \mu_v(J_N F_{c_1,N},\dots,J_N F_{c_a,N})
+      - \mu_v(F_{c_1},\dots,F_{c_a}) \big\|}_{\text{multilinear telescoping, as in the fixed-}N\text{ proof}}.
+\end{align*}
+The second term telescopes exactly as in the fixed-$N$ theorem's own
+proof (replace one argument at a time), giving
+\[
+  \le M \sum_j \big\| J_N F_{c_j,N} - F_{c_j} \big\|
+  \prod_{i<j} \|F_{c_i}\| \prod_{i>j} \|J_N F_{c_i,N}\|,
+\]
+a finite sum (fixed arity $a$) of terms, each $\to 0$ by the inductive
+hypothesis and (H3)'s uniform boundedness controlling the finite product
+factors. Hence $\|J_N F_{v,N} - F_v\| \to 0$, closing the induction. The
+identical argument with $P_{\tau,N}$ inserted at each node (using (H2) in
+place of (H1) for the extra projector term) gives $J_N R_{T,N} \to R_T$.
+
+Because $T$ is fixed, this induction has exactly $k$ steps, independent
+of $N$ — the sum of "vanishing" error terms accumulated is a fixed
+\emph{finite} sum of sequences each individually $\to 0$, hence itself
+$\to 0$ (finite sums of convergent sequences converge). This is precisely
+where fixing the tree size matters: an unbounded number of terms (growing
+$k$ with $N$) would require a summability assumption on the rate of
+convergence in (H1)/(H2), which is explicitly out of scope here (see
+\texttt{counterexamples\_without\_uniformity.tex}).
+
+The convergence of $E_{T,N}^{\mathrm{proj}} = \|P_\tau(J_N F_{T,N}) -
+J_N R_{T,N}\| \to \|P_\tau F_T - R_T\| = E_T^{\mathrm{proj}}$ follows from
+continuity of the norm and (H2) (to move $P_{\tau,N}$'s role to the
+continuum $P_\tau$ acting on the already-converged limits). The bound
+$E_{T,N}^{\mathrm{proj}} \le (k-1)\rho_N M_N^{k-1} L_{T,N}$ holds at every
+finite $N$ (the already-proved fixed-$N$ theorem); taking $N\to\infty$ on
+both sides (limits preserve non-strict inequalities) and using
+$\rho_N\to\rho_\infty$, $M_N\to M$ (bounded, and WLOG convergent along a
+subsequence by (H3)/(H4); stated for the full sequence when the limits
+exist) gives $E_T^{\mathrm{proj}} \le (k-1)\rho_\infty M^{k-1}L_T$.
+$\blacksquare$
+
+\subsection*{Status}
+
+\textsc{proved\_under\_stated\_assumptions} (H1)–(H4), for a
+\emph{fixed} finite tree. This is a direct, mechanical extension of the
+already-proved fixed-$N$ theorem's own telescoping technique — no new
+computation was required, only checking that the induction closes in
+finitely many, $N$-independent steps. It says nothing about growing tree
+size (see \texttt{counterexamples\_without\_uniformity.tex} for why that
+would need additional hypotheses), and nothing about pseudodifferential
+or microlocal behavior (M7, explicitly out of scope here).

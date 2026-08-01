@@ -1,0 +1,46 @@
+\section*{M3: $k=3$ chain topology}
+
+\textbf{Construction:} 3 binary (arity-2) nodes in a chain,
+$T = \mu(\mu(\mu(L_0,L_1),L_2),L_3)$, homogeneous gated-planar-rotation
+law (\texttt{rotation\_tensor}), unit leaf inputs, dimension $n\ge2$,
+rank $1\le r\le n-1$ (admissible class: smallest nontrivial case tested
+$n=2,r=1$; other $(n,r)$ pairs expected to reproduce the same closed form
+by the same argument as M2's dimension/rank-independence, not
+separately re-verified this pass for $k=3$).
+
+\textbf{Theorem (new this pass).}
+\[
+  E_T^{\mathrm{proj}}(\eta) \;=\; 3\eta^2\sqrt{1-\eta^2}, \qquad \eta\in[0,1].
+\]
+Proved by exact \texttt{sympy} substitution ($\eta$ a free symbol) through
+the repository's own \texttt{evaluate\_ambient\_numpy} /
+\texttt{evaluate\_projected\_numpy}, giving
+$\|\text{diff}\|^2 = 9\eta^4(1-\eta^2)$ identically; cross-checked against
+floating-point evaluation at $\eta\in\{0.1,0.5\}$ (matching to 8 decimal
+places).
+
+\textbf{Ratio to the universal bound.} The proved upper bound is
+$(k-1)\rho M^{k-1}L_T = 2\eta$ ($k=3,\rho=\eta,M=1,L_T=1$), so
+\[
+  \frac{E_T^{\mathrm{proj}}(\eta)}{2\eta} = \frac{3}{2}\,\eta\sqrt{1-\eta^2}.
+\]
+This function is maximized at $\eta^\star = 1/\sqrt2$ (solving
+$\frac{d}{d\eta}[\eta\sqrt{1-\eta^2}]=0$ exactly), with maximum value
+$\boxed{3/4}$ — i.e.\ this construction's \emph{best possible} approach
+to the universal bound, over all $\eta$, is a ratio of $3/4$
+(relative gap $1/4$), \textbf{never reaching saturation for any
+$\eta\in[0,1]$.}
+
+\textbf{Correction to the discretely-sampled atlas finding.} The 255-row
+$k=3$ atlas (\texttt{docs/research/track\_t\_v5\_terminal\_status\_k2\_k3.md})
+reported a minimum relative gap of $0.350$, sampled only at
+$\eta\in\{0.001,0.01,0.1,0.5,1.0\}$. At $\eta=0.5$ (the closest sampled
+point to the true optimum), the exact ratio is
+$\frac{3}{2}\cdot\frac12\sqrt{\frac34} \approx 0.6495$, gap $\approx
+0.3505$ — matching the atlas exactly, confirming this is the same
+construction. But the grid never sampled $\eta^\star=1/\sqrt2\approx0.707$,
+so it missed the true tightest point: the exact minimum gap is
+$\mathbf{1/4}$, not $0.350$ — a real, closed-form improvement over what
+discrete sampling found, though still \textbf{not} sharp (this
+construction cannot saturate the $k=3$ bound at any $\eta$, unlike the
+$k=2$ chain which saturates exactly at $\eta=1$).

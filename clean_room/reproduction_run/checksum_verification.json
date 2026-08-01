@@ -1,6 +1,6 @@
 {
   "checksums_recorded": 162,
-  "checked": 162,
+  "checked": 157,
   "mismatches": [
     {
       "path": "clean_room/Containerfile",
@@ -8,174 +8,24 @@
       "actual": "38bd301dd9bddc0a233d2e43093b7aeeaa761a6bf4e85f139561440f909a66a2"
     },
     {
-      "path": "clean_room/reproduce.sh",
-      "expected": "2cff98577e66ea16cee45a0dfa9b86ad897824f2e2a80cb46b749bcbc79ad465",
-      "actual": "00eb4a04791dca3c2a2873fb7d3c5661cb14b39122c6a29a14e5d2d46352545c"
+      "path": "verification/build_logs/01_recursive_projection_of_multilinear_trees.log",
+      "issue": "file not found"
     },
     {
-      "path": "clean_room/requirements.lock.txt",
-      "expected": "560df4bdedff3ec783e53e2597f8fecede33e855ba09d9b0e8674cd609244002",
-      "actual": "2f820068d83e155a0700042cea72f6783ed8dc9ae6a9f0c9e070382c76e0fff8"
+      "path": "verification/build_logs/02_kernel_defined_multilinear_operators.log",
+      "issue": "file not found"
     },
     {
-      "path": "external_review/ORIGINALITY_TABLE_TO_COMPLETE.md",
-      "expected": "1eb83de1bb19d8c73b8466457f18012b6d95330739cd21c891e77709a4dd7968",
-      "actual": "2ea32f4b62cb4da7715ea42c097e90f095def5ce5281224fbd8db38532e430e4"
+      "path": "verification/build_logs/03_numerical_study_of_projected_multilinear_models.log",
+      "issue": "file not found"
     },
     {
-      "path": "external_review/REVIEWER_REQUEST.md",
-      "expected": "943ae61ffdba3c992da8a08a6123a1503f8802ccede0ce263cbce94c40bf0ada",
-      "actual": "c5f52f5662b08e6d6da33d6e44fc916fa795e2325cf42eb074fbc6613f27b347"
+      "path": "verification/build_logs/04_software_and_reproducibility.log",
+      "issue": "file not found"
     },
     {
-      "path": "literature_audit.md",
-      "expected": "aceb67377d24a1d4954459b21296ddef56301137d6b7c94dbc73024b5e66fcc9",
-      "actual": "deb7419b09e18f0eca72a5109825f69abea4d39c8ac8dd18cea4d6f55ee87087"
-    },
-    {
-      "path": "mathematical_audit.md",
-      "expected": "6da66a7a8f9f306dc17fab9be5c9924ea2690ce3ee0737659f2b0a1a5156b39f",
-      "actual": "db28a618712a867e5113549a09d1cd54623be570b881c0b289cf205eee874d8a"
-    },
-    {
-      "path": "MATHEMATICAL_CORRECTIONS_CLOSED.md",
-      "expected": "faf66774e9e2c024c31a1c6884468f602ab2450fe979a3c4e73f64f5e3879223",
-      "actual": "f48e7ef2ab5e142ec9b086efbd0a95c18d225b43ff94f62005ef58b1e2d9ecb5"
-    },
-    {
-      "path": "notation_and_conventions.md",
-      "expected": "6847c33bbbb28d0cb342b07cf1f2e851d4f0a5c6c6ad04c5bef174e8b728445b",
-      "actual": "b7d87fb089fc4262420c825e6259935171ca59e702bba793431f511fd2436267"
-    },
-    {
-      "path": "PATH_TO_ESTABLISHED.md",
-      "expected": "d9a03e605a8e9515498627be40f92ac2cd9a9e2e7de12396a17a1fd7e1430da9",
-      "actual": "bc20991d28b5cdd27cb486e30ce2412871435dcfa9994b73e7e0d9d7e0d2e357"
-    },
-    {
-      "path": "provenance.md",
-      "expected": "0b37f024b4887f2f438c5ea91890ca4350ef0b5f09d3aea5e6c2640854efa4f4",
-      "actual": "6289a856544f60887762e7cdea3acf5ccd055711d7b570f4c3eaefa1f71f8950"
-    },
-    {
-      "path": "README.md",
-      "expected": "6d18ae399bf3cdb6d3792087d5ef8cc780ffe3f87f78eeb0e2d7995dc02555eb",
-      "actual": "af9ca60f654e43e90a0003eeba6029ed244e9e9e8e9d709f0b9a14b3347f49ad"
-    },
-    {
-      "path": "rebuild_all.sh",
-      "expected": "39f4595e0c4d779af2f8e366f8b48986399e2043e37a5c1254c3960b90529911",
-      "actual": "abc0e3fb763995ce849c42df66cc0998e628d85a2e0543461f860af7b418de14"
-    },
-    {
-      "path": "reproducibility_report.md",
-      "expected": "753d8482dbe0da6279c1d09cf164973d135ca3641b5f8b0a455699c727ef68d9",
-      "actual": "697b483970157ff15b5729c8f49ab3cae522a7eccf343afa1d7b2a15e7dcc0c4"
-    },
-    {
-      "path": "scholarly_status.md",
-      "expected": "48356d59c7f339ff8e4a72c3593a4400b8358df62e2c8fc83efe68c24e28d862",
-      "actual": "fc4fa0225afa7c30e3cc025a60add9eb40f9e87359cda064e3ec42232a92d78d"
-    },
-    {
-      "path": "sources/kernel_defined_multilinear_operators/main.tex",
-      "expected": "bd340b9a5940e2aff956e4977f59bea6540bc4ae278c0ec43d429c57d9bf695f",
-      "actual": "9c019e91259ed0309e53b676a8593a85405fa1c160f3aee4a15af349b4d063d2"
-    },
-    {
-      "path": "sources/kernel_defined_multilinear_operators/references.bib",
-      "expected": "5be8cb2a8a495f85b038338481597aefa2487a94d49604dd8e5f75d7431a4c6a",
-      "actual": "1c39b65f7ef41d8acbda82a16665759c147bf2981b6292dd057dd8b252b9f2a7"
-    },
-    {
-      "path": "sources/numerical_study/main.tex",
-      "expected": "249abdee930e1cfaa847283335ba6351d5d16006c5263bab24d3913468c4fc01",
-      "actual": "d5612e429f3a933681f9f69103dce9aead89079e4b83d190f48aef8466172565"
-    },
-    {
-      "path": "sources/numerical_study/references.bib",
-      "expected": "fc42890721486bc787527b605b62ca94c64fedc56b35260082fc2710d0475c5c",
-      "actual": "8b377acacf0860f18568cebae8ca50ab07554f8676ddb922ef5fb18671f5b48e"
-    },
-    {
-      "path": "sources/recursive_projection_of_multilinear_trees/figures/captions.tex",
-      "expected": "7f63b7f1ba3b013b8c5f2bf328375726d71730e5d3e8fdbf942874d2b3bf2c9d",
-      "actual": "7d01ec06c3e010f7d77cdb6ae185a68e1cc6b8d9fce67284c873a2fb87d8847f"
-    },
-    {
-      "path": "sources/recursive_projection_of_multilinear_trees/main.tex",
-      "expected": "bd875c1032c8f86b6be878a816f4015b9c091dba5d977b14414565b660c764b1",
-      "actual": "5110af4b6fa7ca328303ea20f6626560022dc3d0671a90297c3486c583d01ad7"
-    },
-    {
-      "path": "sources/recursive_projection_of_multilinear_trees/proofs/full_proofs.tex",
-      "expected": "6eaea9ed8908e10c3d46b1e8ee4ae2766c8f03e0e9a2f243e24a91963026bb74",
-      "actual": "103822845982da98a1d83e1c7670802e21e0156a4db2e698d513d28f8ccdfc42"
-    },
-    {
-      "path": "sources/recursive_projection_of_multilinear_trees/references.bib",
-      "expected": "b626c5a80aae0ffb35ab6a04c09650a8a57aafb26b8a5d53955be65bb92a370b",
-      "actual": "c57f93dd9fd540fe4bc6a8d8c21cfa1a25f864e8e573692c9d69942c0133259f"
-    },
-    {
-      "path": "sources/software_and_reproducibility/_input/software_v4_references.bib",
-      "expected": "683c6e93aa0ee3bb0340a9bc3ff86e956bbcb9d0de074282e2c350f6ef9ff34d",
-      "actual": "da0054c1eb2b4321fdfced09e75ccefd8af74e01fba5ab1caffe7f20bdd30039"
-    },
-    {
-      "path": "sources/software_and_reproducibility/main.tex",
-      "expected": "979bbc0a5dd88b24af38abd70f6859fb9645e0e162d1afa305e1ee61f723d622",
-      "actual": "a721a1f0f1dac61ac9d0cee8bea02ef9cb7e3a07ec3fad4d5104546cd0ca65bc"
-    },
-    {
-      "path": "sources/software_and_reproducibility/references.bib",
-      "expected": "e88935f67c98389d21d8f01d0195eafdefd2685f07fadf07e3756afd01963a48",
-      "actual": "866059a0e55d277f313002adefeeeb49f4423183ae9aa4aaf38c51cae8309178"
-    },
-    {
-      "path": "sources/supplementary_results/generate_figures.py",
-      "expected": "8868b54c83f33eb6c3c5e120b6998665e3bbe36156eb58728be640b90b67556b",
-      "actual": "316d8e300710e69e9c2786f71fb544200a8e24c382419ddfd68b373206ab9b54"
-    },
-    {
-      "path": "sources/supplementary_results/main.tex",
-      "expected": "4f0f1b15c08c46c1b8309664d2377982ef604782910be5cc0a86f836ebd0109b",
-      "actual": "2447a7fbfad52057841efeb051ab4425e3f90804062f291543e45285811891e3"
-    },
-    {
-      "path": "sources/supplementary_results/references.bib",
-      "expected": "1d47d51d23de2f4b2e67c4835eac40fd67368cfe18cd98c3420a5f733eddddcf",
-      "actual": "9190c00466659ff71307b5b19cdb56bf48c1efbfab503c36ea95a191078a11b1"
-    },
-    {
-      "path": "statement_evidence_table.md",
-      "expected": "00e0e0547beb8cb580f2db4c49e42b1b871da095b4bd60414656f5aafb1e7388",
-      "actual": "48f9adcc2624cec3c8e594e48bbc34c33549fa1ff7381239ad7a3c05562d1454"
-    },
-    {
-      "path": "verification/reference_verification/05_reference_verification.md",
-      "expected": "3353eaa75e490cbccd1e77b5f168dba37c35ee90eb5a4c2c779fc923536e780b",
-      "actual": "9d06498af925f97753ccbf96a06ff3de12306d82e4553aa6a7a6a46f5c16aab1"
-    },
-    {
-      "path": "verification/source_commits/00_source_audit.md",
-      "expected": "56ad5eeaedaa57349a6395d2bea164ea54864ea00762891c2dcf89d94a8269cf",
-      "actual": "2ac6997a10b655c8043665aa4688a460c9ae12be64831d86963da30bd5a606ad"
-    },
-    {
-      "path": "verification/source_commits/07_terminology_map.md",
-      "expected": "46b98358f67cb0369a23dfddf767249edda88ca58fca1419df33bea9da62b799",
-      "actual": "d82c5a506acd2b65697ef19e5d4f24251bb4e2efb319c458b2f050ccb9692ee1"
-    },
-    {
-      "path": "verification/test_results/case_study_I.txt",
-      "expected": "775c69baa6f6ade777dbf2e80fc21a3900b827a8f38b73a6efebb9df11a97d7f",
-      "actual": "7488036c77b88514aff6b1ba2232f68f4b294adcd4fc74df1387053ae0aa079f"
-    },
-    {
-      "path": "verification/test_results/case_study_II.txt",
-      "expected": "693aca6f4f7afb66c153d77f9e05487a2fba4b8c74402a4f6518fd76e9d3fe58",
-      "actual": "cc05db45d7ca825e4105b58e4fa47efee0554cec3569fce534b4c82b8f75a6df"
+      "path": "verification/build_logs/05_supplementary_numerical_results.log",
+      "issue": "file not found"
     }
   ]
 }

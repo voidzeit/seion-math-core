@@ -1,0 +1,14 @@
+Symbolic (norm^2, should be eta**4 for every dimension/rank pair):
+  dimension=2 rank=1: norm^2 = 1.0*eta**4
+  dimension=3 rank=1: norm^2 = 1.0*eta**4
+  dimension=3 rank=2: norm^2 = 1.0*eta**4
+  dimension=4 rank=2: norm^2 = 1.0*eta**4
+
+Floating-point cross-check (dimension=2, rank=1):
+  eta= 0.001  measured=0.0000010000  eta^2=0.0000010000
+  eta= 0.010  measured=0.0001000000  eta^2=0.0001000000
+  eta= 0.100  measured=0.0100000000  eta^2=0.0100000000
+  eta= 0.500  measured=0.2500000000  eta^2=0.2500000000
+  eta= 1.000  measured=1.0000000000  eta^2=1.0000000000
+
+All checks passed: E_T^proj = eta^2 exactly for this construction.

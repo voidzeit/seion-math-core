@@ -1,0 +1,184 @@
+# Status registry for the math_closure campaign (mission Section IV).
+# Allowed statuses: PROVED, DISPROVED_BY_COUNTEREXAMPLE,
+# CLASSIFIED_UNDER_EXPLICIT_ASSUMPTIONS, OPEN_WITH_PRECISE_BOUNDARY.
+# One entry per mathematical question actually closed or classified this
+# campaign. Updated incrementally as M1-M7 are worked; do not remove prior
+# entries when adding new ones.
+
+version: 1
+
+entries:
+  - id: M1_gji_six_term_general
+    question: >
+      Does named_gji_variants / ternary_declared_gji (six-term signed
+      combination of ternary insertion trees) vanish identically for every
+      multilinear mu: V^3 -> V and every 5 (possibly non-collinear) input
+      vectors?
+    status: DISPROVED_BY_COUNTEREXAMPLE
+    evidence:
+      - research/math_closure/gji/exact_proof_or_counterexample.tex
+      - research/math_closure/gji/mutation_test_report.json (exact_rational_counterexample)
+    supersedes: >
+      docs/research/signed_forest_terminal_status_v5.md's
+      NOT_CERTIFIABLE_AS_DEFINED verdict for named_gji_variants.
+
+  - id: M1_gji_six_term_collinear_subcase
+    question: >
+      Does the same six-term expression vanish for every multilinear mu
+      whenever all 5 leaves are collinear (L_i = c_i * q for a single
+      shared vector q)?
+    status: PROVED
+    admissible_class: >
+      any finite-dimensional real or complex V, any multilinear
+      mu: V^3 -> V (no symmetry/associativity assumed), leaves constrained
+      to a common 1-dimensional subspace.
+    evidence:
+      - research/math_closure/gji/exact_proof_or_counterexample.tex (Result B)
+      - research/math_closure/gji/mutation_test_report.json (collinear_leaves_sub_identity)
+    note: >
+      This is exactly the regime the prior session's 4000-trial adversarial
+      search exercised (rank-1 projector forces collinear leaves), which
+      explains that finding without supporting the general claim above.
+
+  - id: M2_k2_class_A_general
+    question: >
+      For k=2, any bounded multilinear law/topology/dimension/rank/leaf
+      norm (field R), what is C_T^proj(eta; A)?
+    status: OPEN_WITH_PRECISE_BOUNDARY
+    admissible_class: research/math_closure/k2/admissible_classes.tex (Class A)
+    evidence:
+      - research/math_closure/k2/classification_theorem.tex
+      - research/math_closure/k2/computational_registry.parquet (513 rows, existing atlas extract)
+    boundary: >
+      0 <= C_T^proj(eta; A) <= eta * M * L_T (proved universal upper bound,
+      no counterexample found); certified lower constructions reach it
+      exactly in 6/75 tested projected-error configurations, strictly
+      below otherwise.
+
+  - id: M2_k2_class_B_chain_gated_rotation
+    question: >
+      For the homogeneous k=2 chain with the gated-planar-rotation law
+      (unit leaves, any dimension n>=2, rank 1<=r<=n-1), what is the
+      exact projected error as a function of eta?
+    status: PROVED
+    admissible_class: research/math_closure/k2/admissible_classes.tex (Class B)
+    evidence:
+      - research/math_closure/k2/classification_theorem.tex
+      - research/math_closure/k2/exact_examples/chain_gated_rotation_eta_squared.py
+    result: "E_T^proj(eta) = eta^2 exactly, for all eta in [0,1], independent of n and r."
+    corollary: >
+      Saturates the universal (k-1)=1 bound iff eta=1; explains (does not
+      merely restate) the atlas's 6 exact-match rows.
+
+  - id: M3_k3_chain_gated_rotation
+    question: >
+      For the k=3 chain topology, homogeneous gated-planar-rotation law
+      (unit leaves, dimension 2, rank 1), what is the exact projected
+      error and the best achievable ratio to the universal (k-1)=2 bound?
+    status: PROVED
+    evidence:
+      - research/math_closure/k3/topology_chain.tex
+      - research/math_closure/k3/certificates/chain_and_branching_closed_forms.py
+    result: "E_T^proj(eta) = 3*eta^2*sqrt(1-eta^2); best ratio 3/4 at eta*=1/sqrt(2); never saturates."
+    corrects: >
+      docs/research/track_t_v5_terminal_status_k2_k3.md's discretely-sampled
+      min relative gap of 0.350 (at eta=0.5) - true continuous minimum gap
+      is 1/4, at eta*=1/sqrt(2), a point the sampled grid never tested.
+
+  - id: M3_k3_branching_gated_rotation
+    question: >
+      Same question as above for the k=3 branching topology (u1,u2 -> root).
+    status: PROVED
+    evidence:
+      - research/math_closure/k3/topology_branching.tex
+      - research/math_closure/k3/certificates/chain_and_branching_closed_forms.py
+    result: "E_T^proj(eta) = eta^2*sqrt(1-eta^2); best ratio 1/4 at eta*=1/sqrt(2); never saturates."
+    note: "Exactly 3x less efficient than chain at the shared optimal eta - topology-dependence now exact, not qualitative."
+
+  - id: M3_k3_general_class_A
+    question: For k=3, any law/topology, what is C_T^proj(eta; A)?
+    status: OPEN_WITH_PRECISE_BOUNDARY
+    boundary: "0 <= C_T^proj(eta; A) <= 2*eta*M*L_T; no counterexample found; no saturating construction found at any eta."
+
+  - id: M4_signed_identities_jacobiator_structured_law
+    question: >
+      Under the structured gated-planar-rotation law (as used for k2/k3),
+      what is the binary Jacobiator's triangle-inequality discrepancy?
+    status: PROVED
+    result: "Exactly 0 for every eta in [0,1] - a fact about this specific law, not the general extremal question."
+    evidence: research/math_closure/signed_identities/proofs.tex
+
+  - id: M4_signed_identities_general_extremal_constants
+    question: >
+      For associator, Filippov, and GJI families under arbitrary generic
+      bounded multilinear laws, what are the exact extremal
+      (triangle-bound-saturating) constants?
+    status: OPEN_WITH_CERTIFIED_GAP
+    evidence:
+      - research/math_closure/signed_identities/constants_table.csv
+      - research/math_closure/signed_identities/proofs.tex
+    note: >
+      Jacobiator empirically near-sharp (99.43%, not exact); associator
+      68.6%/82.9%; Filippov 41.6% (widest gap); GJI general case has no
+      adversarial search at all (distinct gap from the other three, see
+      constants_table.csv note column).
+
+  - id: M5_fixed_tree_continuum_convergence
+    question: >
+      For a FIXED finite typed tree T (topology, laws, types independent
+      of N), do discretized ambient/reduced evaluations converge to their
+      continuum counterparts as the discretization refines, and does the
+      (k-1) projected-error bound pass to the limit?
+    status: PROVED_UNDER_STATED_ASSUMPTIONS
+    admissible_class: >
+      Fixed finite tree T (k, depth, topology independent of N); H1-H4 as
+      stated in research/math_closure/continuum/assumptions_table.md.
+    evidence:
+      - research/math_closure/continuum/fixed_tree_convergence.tex
+      - research/math_closure/continuum/assumptions_table.md
+    method: >
+      Direct extension of the already-proved fixed-N (k-1) theorem's own
+      multilinear-telescoping induction (docs/theorems_v3/homogeneous_constants.md),
+      with a convergence term added at each step; the induction closes in
+      exactly k (N-independent) steps because the tree is fixed.
+    explicitly_out_of_scope: >
+      Growing tree size (k=k_N -> infinity) - documented as unsound without
+      additional summability hypotheses in
+      research/math_closure/continuum/counterexamples_without_uniformity.tex,
+      per the mission's own explicit warning against unconditional
+      growing-tree claims.
+
+  - id: M6_verified_markov_construction
+    question: >
+      Does the mission's symmetrized quadratic weight W_kappa (measurability,
+      symmetry, nonnegativity, 0<d(p)<infinity a.e., P a contraction,
+      self-adjoint, Dirichlet-form identity) admit a verified instance
+      under explicit assumptions?
+    status: PROVED_UNDER_STATED_ASSUMPTIONS
+    admissible_class: >
+      kappa jointly measurable, kappa in L^2(X^4, nu^{tensor 4}) (K1);
+      d(p):=integral W_kappa(p,s)dnu(s) satisfies 0<d(p)<infinity a.e. (K2,
+      not automatic from K1, checked per instance).
+    evidence:
+      - research/math_closure/markov/verified_class_or_failure_report.tex
+      - research/math_closure/markov/examples/finite_sinusoidal_kernel.py
+      - research/math_closure/markov/tests/test_verified_markov_construction.py
+    example: >
+      Finite X={1..6}, kappa(p;q,r,s)=sin(2pi(p+q+r+s)/n)+2 (bounded,
+      strictly positive, non-separable). All properties verified exactly
+      (symmetry to machine precision, d(p)>0, self-adjoint, largest
+      eigenvalue exactly 1 others <1, Dirichlet identity holds to 1e-12).
+
+  - id: M7_pseudodifferential_microlocal_program
+    question: >
+      Symbol class stability, projector composition stability, associator
+      symbol estimates, wavefront-set propagation, and whether the final
+      orthogonal projection removes microlocal sources.
+    status: OPEN_WITH_PRECISE_BOUNDARY
+    evidence: research/math_closure/pseudodifferential/research_note.md
+    boundary: >
+      No compact manifold or symbol class has been fixed anywhere in this
+      repository's history - genuinely different machinery from M1-M6's
+      finite-dimensional techniques, not a mechanical extension. Explicitly
+      lowest priority per the mission brief; no claim attempted per the
+      mission's own prohibition against incomplete-hypothesis claims here.

@@ -3,4 +3,4 @@
 =========================== short test summary info ============================
 SKIPPED [1] tests/research_v2/test_gpu_parity.py:9: CUDA is not available
 SKIPPED [1] tests/research_v3/gpu/test_cuda_parity.py:17: CUDA unavailable
-140 passed, 2 skipped in 11.07s
+140 passed, 2 skipped in 11.40s

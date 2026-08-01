@@ -1,0 +1,40 @@
+\section*{M5: Why growing tree size is out of scope without further hypotheses}
+
+The theorem in \texttt{fixed\_tree\_convergence.tex} fixes $T$ (hence
+$k$) independent of $N$. This section records, precisely, why dropping
+that restriction is unsound without additional summability hypotheses —
+so that no future session is tempted to silently generalize the theorem
+to $k=k_N\to\infty$.
+
+\textbf{The telescoping sum has $k_N$ terms at level $N$.} Revisiting the
+inductive step: the error accumulated at the root is (informally) a sum
+over all $k_N$ internal vertices of a per-vertex error term
+$\varepsilon_{v,N}$ (from H1/H2), each individually $\to 0$ as $N\to
+\infty$ \emph{for fixed $v$}. If $k_N\to\infty$, the total error is a sum
+of a \emph{growing number} of terms, each shrinking — whether the total
+shrinks, stays bounded, or diverges depends entirely on the
+\emph{relative rates}: a sum of $k_N$ terms each of size
+$O(k_N^{-1-\delta})$ (for any $\delta>0$) still $\to 0$, but a sum of
+$k_N$ terms each of size $\Theta(k_N^{-1})$ does \emph{not} — it stays
+$\Theta(1)$, contradicting convergence to $0$. No hypothesis in
+(H1)–(H4) constrains this rate; they only assert convergence at each
+fixed $v$, individually.
+
+\textbf{Minimal illustrative counterexample (schematic, not a
+constructed instance in this repository).} Take a sequence of trees
+$T_N$ with $k_N=N$ internal vertices (a growing chain), and let each
+node's discretization error satisfy $\varepsilon_{v,N} = c/N$ for a fixed
+constant $c>0$ — this is consistent with (H1) holding at every fixed
+node (as $N\to\infty$ with $v$ fixed, $\varepsilon_{v,N}\to0$), but the
+accumulated root error is $\sum_{v=1}^{N} c/N = c$, a nonzero constant,
+for every $N$ — it does \emph{not} converge to $0$. This shows (H1)–(H4)
+alone are insufficient once $k$ grows with $N$; a genuine result for
+growing trees needs an explicit summability condition (e.g.\
+$\sum_N \sup_v \varepsilon_{v,N} < \infty$, or a depth/rate tradeoff),
+which this pass does not attempt to state or prove.
+
+\textbf{Status.} Not a counterexample to the fixed-tree theorem (which
+makes no claim about growing $k$) — a documented boundary of its scope,
+per the mission's own explicit instruction not to claim results for
+growing tree size without controlling depth, number of sources, and
+summability.
