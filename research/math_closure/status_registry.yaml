@@ -39,3 +39,33 @@ entries:
       This is exactly the regime the prior session's 4000-trial adversarial
       search exercised (rank-1 projector forces collinear leaves), which
       explains that finding without supporting the general claim above.
+
+  - id: M2_k2_class_A_general
+    question: >
+      For k=2, any bounded multilinear law/topology/dimension/rank/leaf
+      norm (field R), what is C_T^proj(eta; A)?
+    status: OPEN_WITH_PRECISE_BOUNDARY
+    admissible_class: research/math_closure/k2/admissible_classes.tex (Class A)
+    evidence:
+      - research/math_closure/k2/classification_theorem.tex
+      - research/math_closure/k2/computational_registry.parquet (513 rows, existing atlas extract)
+    boundary: >
+      0 <= C_T^proj(eta; A) <= eta * M * L_T (proved universal upper bound,
+      no counterexample found); certified lower constructions reach it
+      exactly in 6/75 tested projected-error configurations, strictly
+      below otherwise.
+
+  - id: M2_k2_class_B_chain_gated_rotation
+    question: >
+      For the homogeneous k=2 chain with the gated-planar-rotation law
+      (unit leaves, any dimension n>=2, rank 1<=r<=n-1), what is the
+      exact projected error as a function of eta?
+    status: PROVED
+    admissible_class: research/math_closure/k2/admissible_classes.tex (Class B)
+    evidence:
+      - research/math_closure/k2/classification_theorem.tex
+      - research/math_closure/k2/exact_examples/chain_gated_rotation_eta_squared.py
+    result: "E_T^proj(eta) = eta^2 exactly, for all eta in [0,1], independent of n and r."
+    corollary: >
+      Saturates the universal (k-1)=1 bound iff eta=1; explains (does not
+      merely restate) the atlas's 6 exact-match rows.

@@ -1,0 +1,83 @@
+\section*{M2: Classification theorem for $k=2$}
+\label{sec:theorem}
+
+\subsection*{Class $A$ (general): certified enclosure}
+
+\textbf{Theorem (prior work, re-verified this pass).} For class $A$
+(\S admissible\_classes), the proved universal bound is
+\[
+  E_T^{\mathrm{proj}} \;\le\; (k-1)\,\rho\, M^{k-1} L_T \;=\; \rho M L_T,
+  \qquad k=2,
+\]
+(\texttt{THM\_V3\_PROJECTED\_ROOT\_K\_MINUS\_ONE}, proved by induction,
+\texttt{docs/theorems\_v3/homogeneous\_constants.md}). Re-verified
+directly from \texttt{artifacts/index/constants\_atlas\_v3.csv} (513 rows
+at $k=2$; 75 projected-error rows): certified saturating constructions
+reach the bound exactly (relative gap $0$) in 6 of 75 configurations, and
+no configuration exceeds it. \textbf{No counterexample to the upper bound
+itself exists anywhere in the atlas.}
+\[
+  \boxed{\;0 \;\le\; C_T^{\mathrm{proj}}(\eta; A) \;\le\; \eta\; M \cdot L_T\;}
+  \qquad \text{gap certified, not closed: \textsc{open\_with\_certified\_gap}.}
+\]
+
+\subsection*{Class $B$ (homogeneous chain, gated rotation): exact value — new this pass}
+
+\textbf{Theorem.} For class $B$ (chain $T=\mu(\mu(L_0,L_1),L_2)$, gated
+planar-rotation law \texttt{rotation\_tensor} at both nodes, unit leaf
+inputs, any dimension $n\ge2$ and rank $1\le r\le n-1$):
+\[
+  E_T^{\mathrm{proj}}(\eta) \;=\; \eta^2 \qquad \text{exactly, for all } \eta\in[0,1],
+\]
+independent of $n$ and $r$.
+
+\textbf{Proof.} Write $\theta=\arcsin\eta$, so the rotation
+$T_\eta=\begin{psmallmatrix}\cos\theta&-\eta\\\eta&\cos\theta\end{psmallmatrix}$
+acts on the active 2-plane $\mathrm{span}(e_0,e_r)$ and as the identity
+elsewhere; the gate factor $\langle e_0,\cdot\rangle$ equals $1$ on the
+unit leaf $e_0$ used throughout, so every node application reduces to a
+plain application of $T_\eta$ to the running vector. Ambient evaluation
+composes $T_\eta$ twice: root $= T_\eta^2 e_0 = (\cos2\theta,\sin2\theta)$
+in the active plane. The reduced/projected evaluation
+\texttt{evaluate\_projected\_numpy} re-projects onto
+$\mathrm{span}(e_0)$ after every internal node (including the root),
+giving reduced value $(\cos^2\theta, 0)$. Hence
+\[
+  E_T^{\mathrm{proj}} = \big\| P(\text{ambient}) - \text{projected}\big\|
+  = \big| \cos2\theta - \cos^2\theta \big|
+  = \big| (\cos^2\theta-\sin^2\theta) - \cos^2\theta \big|
+  = \sin^2\theta = \eta^2.
+\]
+Verified two ways before being trusted as a proof rather than a
+numerical pattern: (i) exact \texttt{sympy} substitution with $\eta$ kept
+as a free symbol, run through the repository's own
+\texttt{evaluate\_ambient\_numpy} / \texttt{evaluate\_projected\_numpy}
+(not a hand-reconstructed evaluator) at $(n,r)\in\{(2,1),(3,1),(3,2),(4,2)\}$,
+giving \texttt{norm\_sq = eta**4} identically in every case (dimension-
+and rank-independence confirmed, not merely asserted); (ii) floating-point
+evaluation at $\eta\in\{10^{-3},10^{-2},10^{-1},0.5,1\}$ matching $\eta^2$
+to machine precision, consistent with (i). $\blacksquare$
+
+\textbf{Corollary (exact saturation condition).} The ratio of the exact
+construction value to the proved universal bound is
+\[
+  \frac{E_T^{\mathrm{proj}}(\eta)}{\eta M L_T} = \frac{\eta^2}{\eta} = \eta
+  \qquad (M=1,\ L_T=1\text{ for this construction}),
+\]
+so this construction saturates the universal $k-1=1$ bound
+(ratio $=1$) \textbf{if and only if $\eta=1$} — the boundary of the
+admissible range — and the gap is strictly positive and shrinks linearly
+in $\eta$ for every $\eta\in[0,1)$. This exactly reproduces, and now
+explains in closed form rather than only tabulating, the atlas's 6/75
+exact rows (all at $\eta=1$; \S k2/certified\_enclosures).
+
+\subsection*{What remains open}
+
+Class $B$'s exact value does not close class $A$: it is one saturating
+family within a much larger admissible class, and the theorem above says
+nothing about whether some \emph{other} law/topology could exceed
+$\eta^2$ (while still remaining $\le \eta M L_T$) or approach the bound
+faster than linearly in $\eta$. The general class-$A$ gap remains
+\textsc{open\_with\_certified\_gap} for $\eta<1$; only the exact boundary
+behavior at $\eta=1$ and the precise shape of the approach (linear in
+$\eta$) are new, closed facts from this pass.
