@@ -1,0 +1,73 @@
+\section*{M4: Signed combinations and structural identities}
+
+\subsection*{Exact algebraic results}
+
+\textbf{Level-1 (syntactic) cancellation.} For all 5 named identities,
+\texttt{combined\_terms()} (exact syntactic tree-shape collapse) returns
+the same number of terms as the input — confirmed by direct inspection —
+so none of these identities have accidentally-repeated syntactic subtrees
+to cancel before applying the triangle inequality. Any improvement over
+the plain triangle bound must come from level 2 (shared-subtree DAG,
+not attempted) or level 3 (adversarial search over general laws, or an
+exact algebraic argument as in M1/M2/M3).
+
+\textbf{The declared 6-term GJI variant} is resolved in full in
+\texttt{research/math\_closure/gji/} (M1): \textsc{disproved\_by\_counterexample}
+for the general claim (exact rational counterexample, nonzero), and
+\textsc{proved} for the collinear-leaves sub-case — which is exactly the
+regime the adversarial search (constants\_table.csv row
+\texttt{named\_gji\_variants}) tested, fully explaining its
+near-machine-zero reading without supporting a general identity.
+
+\textbf{A structural curiosity found this session}: under the
+\emph{different}, structured gated-planar-rotation law used for the
+k=2/k=3 exact results (not the fully generic random tensors the
+adversarial search below uses), the binary Jacobiator's triangle
+discrepancy is exactly $0$ for every $\eta\in[0,1]$ (verified by exact
+symbolic substitution through the repo's own evaluator). This is a fact
+about that specific structured law, not evidence toward or against the
+general extremal question in \S\ref{sec:extremal} — the two searches use
+different admissible sub-classes and must not be conflated (see
+\texttt{conventions.md}).
+
+\subsection*{Proved universal upper bound}
+\label{sec:extremal}
+
+Every identity's triangle-inequality bound
+$\sum_\alpha|c_\alpha|(k_\alpha-1)$ is the mission's proved universal
+constant, unconditional (no counterexample found in 4,000 adversarial
+trials per identity, nor in this session's exact work).
+
+\subsection*{Certified lower constructions (adversarial search over generic laws)}
+
+\texttt{constants\_table.csv} (re-exported verbatim from
+\texttt{artifacts/research\_v3/signed\_forest\_adversarial\_search\_v5.json},
+no values altered):
+
+\begin{itemize}
+  \item \textbf{Jacobiator}: ratio $0.9943$ of the triangle bound — an
+    empirical near-match, not an exact algebraic saturation proof; no
+    construction in this repository's history reaches exactly $3.0$.
+    Honest label: \textsc{near\_optimal\_with\_certified\_gap} in the
+    strict sense (the prior session's \textsc{sharp} label is a
+    reasonable practical reading of a $0.57\%$ residual, not a claim of
+    exact attainment).
+  \item \textbf{Anchored associator}: ratio $0.8288$, open.
+  \item \textbf{Five-input ternary associator}: ratio $0.6864$, open —
+    the mission's specifically named associator constant $2$ is neither
+    attained nor proved unattainable at any tested $\eta$.
+  \item \textbf{Filippov fundamental identity}: ratio $0.4159$, the
+    widest remaining gap of the four generic-law searches.
+  \item \textbf{Declared 6-term GJI variant}: see M1 — not a meaningful
+    bound target for the specific collinear regime tested; the
+    general-case extremal constant has not been searched at all (a real
+    gap, distinct from the other four rows).
+\end{itemize}
+
+\subsection*{What remains open}
+
+The exact extremal constants for the associator, Filippov, and (now,
+correctly scoped) GJI families remain unresolved — genuine, unsolved
+finite-dimensional optimization problems over the space of bounded
+multilinear laws, correctly left as \textsc{open\_with\_certified\_gap}
+rather than forced to a proved value.

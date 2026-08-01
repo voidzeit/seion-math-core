@@ -99,3 +99,26 @@ entries:
     question: For k=3, any law/topology, what is C_T^proj(eta; A)?
     status: OPEN_WITH_PRECISE_BOUNDARY
     boundary: "0 <= C_T^proj(eta; A) <= 2*eta*M*L_T; no counterexample found; no saturating construction found at any eta."
+
+  - id: M4_signed_identities_jacobiator_structured_law
+    question: >
+      Under the structured gated-planar-rotation law (as used for k2/k3),
+      what is the binary Jacobiator's triangle-inequality discrepancy?
+    status: PROVED
+    result: "Exactly 0 for every eta in [0,1] - a fact about this specific law, not the general extremal question."
+    evidence: research/math_closure/signed_identities/proofs.tex
+
+  - id: M4_signed_identities_general_extremal_constants
+    question: >
+      For associator, Filippov, and GJI families under arbitrary generic
+      bounded multilinear laws, what are the exact extremal
+      (triangle-bound-saturating) constants?
+    status: OPEN_WITH_CERTIFIED_GAP
+    evidence:
+      - research/math_closure/signed_identities/constants_table.csv
+      - research/math_closure/signed_identities/proofs.tex
+    note: >
+      Jacobiator empirically near-sharp (99.43%, not exact); associator
+      68.6%/82.9%; Filippov 41.6% (widest gap); GJI general case has no
+      adversarial search at all (distinct gap from the other three, see
+      constants_table.csv note column).
