@@ -116,3 +116,25 @@ verdict here identifies genuine prior art in the same neighborhood, which
 is itself useful information (it means these claims should be positioned
 as specializations/new applications/new mechanisms in any eventual paper,
 not as "first ever" claims) rather than a failure of the search.
+
+## Addendum (SEION V6 math+AI closure session) — new claims from this session
+
+Same discipline as above: real web searches run this pass (not asserted
+from memory), every verdict `PENDING_HUMAN_REVIEW`, no self-approval.
+
+| # | Claim (this session) | Exact result | Closest prior art found | Prior hypotheses | Current hypotheses | Logical relation | Candidate verdict | Confidence |
+|---|---|---|---|---|---|---|---|---|
+| 11 | M1: six-term declared GJI variant is not a general identity but vanishes for collinear leaves | `research/math_closure/gji/` | No literature search performed - this is a self-contained combinatorial fact about one repo-specific named construction (`ternary_declared_gji`), not a claim tied to any external convention | n/a | n/a | n/a - internal construction, not a comparison to named literature | `NOT_APPLICABLE_INTERNAL_CONSTRUCTION` | high (this is a correctness fact about repo code, not a literature-comparable theorem) |
+| 12 | M2: k=2 chain gated-rotation construction has exact projected error eta^2, saturates iff eta=1 | `research/math_closure/k2/classification_theorem.tex` | No direct search performed this pass for "exact saturation of triangle-inequality bounds in multilinear composition trees" - not searched | — | — | — | `NOT_SEARCHED_THIS_PASS` | — |
+| 13 | M3: k=3 chain/branching exact closed forms, true optimum at eta*=1/sqrt(2) | `research/math_closure/k3/` | Same as above - not searched this pass | — | — | — | `NOT_SEARCHED_THIS_PASS` | — |
+| 14 | M6: symmetrized quadratic weight -> reversible Markov operator, Dirichlet-form identity, contraction via Jensen | `research/math_closure/markov/verified_class_or_failure_report.tex` | **Real search run**: Coifman & Lafon, "Diffusion Maps" (Appl. Comput. Harmon. Anal., 2006) and the standard normalized-graph-Laplacian construction (kernel symmetry + nonnegativity -> degree-normalized reversible Markov chain -> Dirichlet form) - this is the textbook diffusion-maps/graph-Laplacian pattern, not a new construction paradigm | Symmetric nonnegative kernel k(x,y), degree s(x)=sum_y k(x,y), P=k/s reversible w.r.t. s*dnu | Same structure, with k specifically built from a 4-argument "kappa" arising from the multilinear-law framework | M6's general construction is `KNOWN_EQUIVALENT` to diffusion-maps theory; the specific kappa-based instantiation and its connection to the typed multilinear-law framework may be `NEW_APPLICATION` | `KNOWN_EQUIVALENT` (general construction) + `NEW_APPLICATION` (candidate, for the specific kappa-to-multilinear-law connection) | medium-high for the KNOWN_EQUIVALENT part (direct textbook match); low for the NEW_APPLICATION part (not verified against multilinear-law-specific literature) |
+| 15 | AI application: pathwise global-contribution rank allocation for hierarchical tensor networks | `applications/adaptive_tensor_network/` | **Real search run**: Ceruti, Lubich et al., "Rank-Adaptive Time Integration of Tree Tensor Networks" (SIAM J. Numerical Analysis, 2023) and related tensor-network structure-search/error-budget literature (arXiv:2502.02711, arXiv:2412.06111) - rank-adaptive allocation under an error budget, including greedy heuristics, is an established, active research area for tree/hierarchical tensor networks | Error-tolerance-driven rank truncation via Galerkin recursion leaf-to-root-to-leaf (Ceruti/Lubich); greedy heuristics trade global optimality for tractability (general TTN literature) | This session's specific score: local truncation error x product of empirical path-amplification (Lipschitz/operator-norm) factors to the root, directly derived from the SEION k/(k-1) projected-error theorem | This session's method is a specific, theory-motivated instantiation of the general "error-budget rank allocation" problem the literature already studies; not a new problem formulation | `NEW_SPECIAL_CASE` / `NEW_APPLICATION` (candidate) - applies an existing theorem's structure to an established allocation problem, rather than introducing a new allocation paradigm | low-medium (searches found the right neighborhood, not an exhaustive comparison against every existing rank-allocation heuristic) |
+
+**Honest note on this addendum's own limits**: only M6 and the AI
+application received real targeted searches this pass; M2/M3's exact
+closed-form saturation results and M1's collinear-leaves proof were not
+searched against the broader multilinear-algebra/operator-theory
+literature (a real gap, not an oversight to hide - flagged for a future
+session, same as claim 6 above was flagged in the original Phase 9 pass).
+No verdict in this addendum is marked `NOVEL` outright, consistent with
+the rest of this document.

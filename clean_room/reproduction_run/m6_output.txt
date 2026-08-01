@@ -1,0 +1,9 @@
+Symmetry check (max |W - W^T|): 0.0
+Nonnegativity check (min entry): 162.0
+d(p) values: [972. 972. 972. 972. 972. 972.]
+Row sums of P (should all be 1): [1. 1. 1. 1. 1. 1.]
+Self-adjointness check (max |D P - (D P)^T|): 0.0
+Eigenvalues of the symmetrized operator: [np.float64(1.0), np.float64(9.608293522258718e-17), np.float64(6.576162956277046e-17), np.float64(3.174271271083356e-17), np.float64(-3.391235576007571e-18), np.float64(-7.125404542406872e-17)]
+Dirichlet-form identity max discrepancy over 20 random f: 3.637978807091713e-12
+
+All M6 properties verified for this explicit n=6 instance.

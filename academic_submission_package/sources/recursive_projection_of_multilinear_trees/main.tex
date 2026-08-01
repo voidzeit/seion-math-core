@@ -845,12 +845,20 @@ orthogonal errors all evaluated between $10^{-16}$ and $10^{-21}$ in every one o
 $4{,}000$ trials, in five independently reseeded checks, and under both leaf-input
 conventions.
 
-The quantity evaluated at numerical precision zero in all trials. This suggests that the
-current formula may define an identically vanishing expression --- that is, an expression
-that vanishes for every ternary map, rather than for particular ones. A symbolic
-verification in the free operad is required before the quantity can be used as a
-nontrivial diagnostic, and we do not use it as one here. Whether the expression coincides
-with any published convention for a generalised Jacobi identity has not been checked.
+\textbf{Resolved, follow-up session.} The apparent vanishing above is \emph{not} a
+general identity. Two independent exact symbolic methods (a fully generic symbolic
+tensor law with free symbolic leaf vectors, verified by two structurally unrelated
+implementations) prove the expression is nonzero for generic, non-collinear leaves ---
+an explicit exact-rational counterexample ($\eta$-free, dimension $2$, no floating
+point) gives the value $(97/3,\,97/3)\neq0$. The numerical vanishing above is fully
+explained: every one of the $4{,}000$ trials used the pipeline's rank-one reduced-input
+convention, which lifts every leaf to a scalar multiple of a single fixed ambient
+vector. We prove that this specific six-term construction vanishes identically for
+\emph{any} law whenever all leaves are collinear in this sense --- a genuine but
+considerably narrower fact than a formal identity, which fully accounts for the
+observed numerics without supporting the general claim. Full detail, both symbolic
+implementations, the exact counterexample, and mutation tests are in
+\texttt{research/math\_closure/gji/}.
 
 \begin{figure}[p]
 \centering
@@ -962,6 +970,16 @@ Accordingly: \emph{for trees with two internal vertices the exact constant is kn
 on part of the admissible parameter range; on the remainder the available rigorous lower
 and upper bounds do not coincide.}
 
+\textbf{Exact closed form, follow-up session.} For the homogeneous chain
+($k=2$, gated-planar-rotation law, unit leaf inputs), the projected error is
+\emph{exactly} $\eta^2$ for every $\eta\in[0,1]$, independent of the ambient
+dimension $n\ge2$ and reduced rank $1\le r\le n-1$ --- proved by exact symbolic
+substitution through the reference evaluator (not floating point), cross-checked at
+four distinct $(n,r)$ pairs. Consequently this construction saturates the universal
+bound if and only if $\eta=1$, with a linear approach for $\eta<1$: this is the exact
+mechanism behind the six exact rows above, all of which occur at $\eta=1$. Full proof
+in \texttt{research/math\_closure/k2/classification\_theorem.tex}.
+
 \subsection{Three internal vertices}
 
 At $k=3$ no configuration and no error type attains its bound, and the smallest projected
@@ -969,6 +987,18 @@ relative gap observed is $35\,\%$.
 
 Accordingly: \emph{for three internal vertices the available bounds depend on tree
 topology and leave nonzero gaps throughout.}
+
+\textbf{Exact closed forms and a corrected optimum, follow-up session.} For the same
+gated-rotation law, the chain topology (three nodes in series) has projected error
+exactly $3\eta^2\sqrt{1-\eta^2}$, and the branching topology ($u_1,u_2\to\mathrm{root}$)
+exactly $\eta^2\sqrt{1-\eta^2}$ --- both proved by exact symbolic substitution. Both are
+maximised at $\eta^\star=1/\sqrt2$, giving \emph{exact} best-achievable ratios of $3/4$
+(chain) and $1/4$ (branching) to the universal bound: neither topology saturates the
+bound at any $\eta$, and chain is exactly three times as efficient as branching at the
+shared optimum. This corrects the $35\,\%$ figure above: that number came from sampling
+only $\eta\in\{0.001,0.01,0.1,0.5,1\}$, which never tested $\eta^\star\approx0.707$; the
+true continuous minimum relative gap is $1/4$, not $0.35$. Full proofs in
+\texttt{research/math\_closure/k3/}.
 
 \begin{figure}[p]
 \centering
