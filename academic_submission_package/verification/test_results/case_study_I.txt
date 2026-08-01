@@ -1,0 +1,8 @@
+........................................................................ [ 98%]
+.                                                                        [100%]
+73 passed in 9.28s
+
+command: python -m pytest -q
+working directory: repository root, branch research/projected-tree-theory-v5 at 2e419ef
+python: 3.12.10 (MSC v.1943, 64-bit); platform: Windows-11-10.0.26200-SP0
+date: 2026-07-31

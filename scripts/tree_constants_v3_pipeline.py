@@ -52,7 +52,11 @@ from seion_core.research_v3.extremizers import (  # noqa: E402
     rotation_tensor,
 )
 from seion_core.research_v3.interval_certification import (  # noqa: E402
+    EXACTLY_DETERMINED_POSITIVE,
+    EXACTLY_ZERO_BY_THEOREM,
+    NO_POSITIVE_LOWER_BOUND_OBTAINED,
     certified_gap,
+    classify_optimality,
     rotation_tree_ratio_interval,
 )
 from seion_core.research_v3.local_constants import TypedLaw  # noqa: E402
@@ -436,12 +440,14 @@ def _write_block_run(
 
 
 def _exact_status(lower: float, upper: float) -> str:
-    if upper == 0.0 and lower == 0.0:
-        return "EXACT_OPTIMAL_CONSTANT"
-    relative = (upper - lower) / upper if upper else 0.0
-    if relative <= 1.0e-10:
-        return "NEAR_OPTIMAL_WITH_CERTIFIED_GAP"
-    return "CERTIFIED_UPPER_BOUND_AND_CERTIFIED_LOWER_BOUND"
+    """Classify one certified enclosure.
+
+    Delegates to :func:`classify_optimality`. The former local implementation
+    returned ``EXACT_OPTIMAL_CONSTANT`` only when ``lower == upper == 0``, which is the
+    vacuous case, and labelled the genuinely determined case ``lower == upper > 0`` as
+    merely "near optimal". See the docstring of :func:`classify_optimality`.
+    """
+    return classify_optimality(lower, upper)
 
 
 def command_exact(_: argparse.Namespace) -> None:
@@ -550,7 +556,13 @@ def command_exact(_: argparse.Namespace) -> None:
     summary = {
         "scientific_instances": len(frame),
         "tree_shapes": int(frame["tree_hash"].nunique()),
-        "exact_zero_projected_cases": int((frame["status"] == "EXACT_OPTIMAL_CONSTANT").sum()),
+        "exact_zero_projected_cases": int((frame["status"] == EXACTLY_ZERO_BY_THEOREM).sum()),
+        "exactly_determined_positive_cases": int(
+            (frame["status"] == EXACTLY_DETERMINED_POSITIVE).sum()
+        ),
+        "no_positive_lower_bound_cases": int(
+            (frame["status"] == NO_POSITIVE_LOWER_BOUND_OBTAINED).sum()
+        ),
         "certified_lower_bounds": len(frame),
         "certified_upper_bounds": len(frame),
         "maximum_construction_to_upper_ratio": maximum_ratio,

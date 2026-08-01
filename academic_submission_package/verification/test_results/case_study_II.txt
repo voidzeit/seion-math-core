@@ -1,0 +1,8 @@
+........................................................................ [ 84%]
+.............                                                            [100%]
+85 passed in 48.86s
+
+command: python -m pytest spectral/certification_v18/tests -q
+working directory: clean detached worktree of research/spectral-a-to-n-v18 at 8e09941
+python: 3.12.10 (MSC v.1943, 64-bit); platform: Windows-11-10.0.26200-SP0
+date: 2026-07-31

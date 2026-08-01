@@ -1,0 +1,338 @@
+diff --git a/scripts/build_tree_constants_v3_tables.py b/scripts/build_tree_constants_v3_tables.py
+index b871a36..8c0213d 100644
+--- a/scripts/build_tree_constants_v3_tables.py
++++ b/scripts/build_tree_constants_v3_tables.py
+@@ -18,6 +18,19 @@ import yaml
+ 
+ 
+ ROOT = Path(__file__).resolve().parents[1]
++
++import sys  # noqa: E402
++
++sys.path.insert(0, str(ROOT / "src"))
++
++from seion_core.research_v3.interval_certification import (  # noqa: E402
++    EXACTLY_DETERMINED_POSITIVE,
++    EXACTLY_ZERO_BY_THEOREM,
++    NO_POSITIVE_LOWER_BOUND_OBTAINED,
++    POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP,
++    classify_optimality,
++)
++
+ DATA = ROOT / "artifacts" / "research_v3"
+ INDEX = ROOT / "artifacts" / "index"
+ OUT = ROOT / "papers" / "tree_stability_v3" / "tables"
+@@ -197,20 +210,38 @@ def table_extremizer_constructions() -> Path:
+ 
+ 
+ def table_optimality_gaps() -> Path:
++    """One row per error type, split by the four mutually exclusive optimality classes.
++
++    The former version reported an "exact" column that counted only the vacuous
++    ``lower == upper == 0`` rows and a "near" column that counted the genuinely
++    determined ones. Both columns are replaced by the four disjoint counts below, which
++    sum to the configuration count.
++    """
+     data = pd.read_csv(INDEX / "optimality_gaps_v3.csv")
++    data = data.assign(
++        status=[
++            classify_optimality(low, up)
++            for low, up in zip(
++                data["certified_lower_bound"], data["certified_upper_bound"], strict=True
++            )
++        ]
++    )
+     rows = []
+     for error, group in data.groupby("error_type", sort=True):
+-        exact = int((group["status"] == "EXACT_OPTIMAL_CONSTANT").sum())
+-        near = int(group["status"].str.contains("NEAR", na=False).sum())
++        determined = int((group["status"] == EXACTLY_DETERMINED_POSITIVE).sum())
++        zero = int((group["status"] == EXACTLY_ZERO_BY_THEOREM).sum())
++        partial = int((group["status"] == POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP).sum())
++        none = int((group["status"] == NO_POSITIVE_LOWER_BOUND_OBTAINED).sum())
+         rows.append(
+-            f"{esc(error)} & {len(group)} & {exact} & {near} & "
+-            f"{num(group['absolute_gap'].median())} & {num(group['relative_gap'].max())} \\\\"
++            f"{esc(error)} & {len(group)} & {determined} & {zero} & {partial} & {none} & "
++            f"{num(group['absolute_gap'].median())} \\\\"
+         )
+     return write_table(
+         "optimality_gaps",
+-        r"error & cells & exact & near & \multicolumn{1}{c}{median abs. gap} & \multicolumn{1}{c}{max rel. gap} \\",
++        r"error type & configurations & determined & zero by theorem & partial & "
++        r"no positive lower bound & \multicolumn{1}{c}{median abs. gap} \\",
+         rows,
+-        r"@{}lrrrSS@{}",
++        r"@{}lrrrrrS@{}",
+     )
+ 
+ 
+@@ -407,6 +438,21 @@ def build_prior_art_matrix() -> tuple[Path, Path]:
+     return csv_path, tex_path
+ 
+ 
++def _class_count(frame: pd.DataFrame, wanted: str) -> int:
++    """Count rows of ``frame`` falling in one optimality class.
++
++    The class is recomputed from the certified bounds rather than read from any stored
++    ``status`` column, so that historical artifacts written under the earlier, inverted
++    vocabulary are reclassified rather than trusted.
++    """
++    return sum(
++        classify_optimality(low, up) == wanted
++        for low, up in zip(
++            frame["certified_lower_bound"], frame["certified_upper_bound"], strict=True
++        )
++    )
++
++
+ def write_results_macros() -> Path:
+     full = json.loads((DATA / "full_execution_manifest.json").read_text(encoding="utf-8"))
+     enumeration = json.loads((DATA / "tree_enumeration_summary.json").read_text(encoding="utf-8"))
+@@ -419,9 +465,21 @@ def write_results_macros() -> Path:
+         rf"\newcommand{{\VThreeTreeOccurrences}}{{{fmt_int(enumeration['rows'])}}}",
+         rf"\newcommand{{\VThreeUniqueTrees}}{{{fmt_int(enumeration['unique_mathematical_objects'])}}}",
+         rf"\newcommand{{\VThreeLeakageMasks}}{{{fmt_int(full['leakage_masks_executed'])}}}",
+-        rf"\newcommand{{\VThreeExactCells}}{{{fmt_int(exact['global_optimum_certified'].sum())}}}",
++        # Optimality classification. The former single macro \VThreeExactCells counted
++        # every row with lower == upper, without separating the genuinely determined
++        # constants from the vacuous rows where the proved upper bound is itself zero.
++        # Those two situations are now counted separately, and the number of
++        # configurations for which no positive lower bound was obtained is reported
++        # explicitly rather than being hidden inside a "maximum relative gap" of 1.
++        rf"\newcommand{{\VThreeDeterminedPositive}}{{{fmt_int(_class_count(gaps, EXACTLY_DETERMINED_POSITIVE))}}}",
++        rf"\newcommand{{\VThreeZeroByTheorem}}{{{fmt_int(_class_count(gaps, EXACTLY_ZERO_BY_THEOREM))}}}",
++        rf"\newcommand{{\VThreePartialLowerBound}}{{{fmt_int(_class_count(gaps, POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP))}}}",
++        rf"\newcommand{{\VThreeNoPositiveLowerBound}}{{{fmt_int(_class_count(gaps, NO_POSITIVE_LOWER_BOUND_OBTAINED))}}}",
++        rf"\newcommand{{\VThreeGapRegistryRows}}{{{fmt_int(len(gaps))}}}",
++        rf"\newcommand{{\VThreeNoPositiveLowerPercent}}{{\num{{{100.0 * _class_count(gaps, NO_POSITIVE_LOWER_BOUND_OBTAINED) / len(gaps):.1f}}}}}",
++        rf"\newcommand{{\VThreeExactAtlasDeterminedPositive}}{{{fmt_int(_class_count(exact, EXACTLY_DETERMINED_POSITIVE))}}}",
++        rf"\newcommand{{\VThreeExactAtlasZeroByTheorem}}{{{fmt_int(_class_count(exact, EXACTLY_ZERO_BY_THEOREM))}}}",
+         rf"\newcommand{{\VThreeMaxAbsoluteGap}}{{\num{{{float(gaps['absolute_gap'].max()):.3g}}}}}",
+-        rf"\newcommand{{\VThreeMaxRelativeGap}}{{\num{{{float(gaps['relative_gap'].max()):.3g}}}}}",
+         rf"\newcommand{{\VThreeMaxParity}}{{\num{{{float(full['maximum_cpu_gpu_parity_error']):.3e}}}}}",
+         rf"\newcommand{{\VThreeCoreWallSeconds}}{{\num{{{float(full['wall_seconds']):.2f}}}}}",
+         rf"\newcommand{{\VThreeExtendedTrajectories}}{{{fmt_int(full['optimizer_trajectories_requested_extended'])}}}",
+diff --git a/scripts/tree_constants_v3_audit.py b/scripts/tree_constants_v3_audit.py
+index 19c4b53..63ccf11 100644
+--- a/scripts/tree_constants_v3_audit.py
++++ b/scripts/tree_constants_v3_audit.py
+@@ -24,6 +24,11 @@ SRC = ROOT / "src"
+ if str(SRC) not in sys.path:
+     sys.path.insert(0, str(SRC))
+ 
++from seion_core.research_v3.interval_certification import (
++    EXACTLY_DETERMINED_POSITIVE,
++    NO_POSITIVE_LOWER_BOUND_OBTAINED,
++    classify_optimality,
++)
+ from seion_core.research_v3.run_schema import validate_run_artifacts
+ 
+ 
+@@ -473,7 +478,14 @@ def _data_audit() -> dict[str, Any]:
+     for column in violation_columns:
+         values = pd.to_numeric(full[column], errors="coerce").dropna()
+         negative_violations[column] = int((values < -1.0e-8).sum())
+-    near = gaps[gaps["status"] == "NEAR_OPTIMAL_WITH_CERTIFIED_GAP"]
++    gap_class = [
++        classify_optimality(low, up)
++        for low, up in zip(
++            gaps["certified_lower_bound"], gaps["certified_upper_bound"], strict=True
++        )
++    ]
++    determined = gaps[[c == EXACTLY_DETERMINED_POSITIVE for c in gap_class]]
++    no_lower = gaps[[c == NO_POSITIVE_LOWER_BOUND_OBTAINED for c in gap_class]]
+     return {
+         "scientific_instances": len(full),
+         "unique_scientific_hashes": int(full["scientific_instance_hash"].nunique()),
+@@ -487,9 +499,9 @@ def _data_audit() -> dict[str, Any]:
+         "negative_bound_violation_margins": negative_violations,
+         "maximum_cpu_gpu_parity": float(parity.max()) if len(parity) else None,
+         "maximum_certified_relative_gap": float(gaps["relative_gap"].max()),
+-        "maximum_near_optimal_relative_gap": (
+-            float(near["relative_gap"].max()) if len(near) else None
+-        ),
++        "exactly_determined_positive": len(determined),
++        "no_positive_lower_bound_obtained": len(no_lower),
++        "no_positive_lower_bound_fraction": len(no_lower) / len(gaps) if len(gaps) else None,
+         "pass": (
+             len(full) == 15493
+             and int(full["scientific_instance_hash"].nunique()) == 15493
+@@ -771,7 +783,14 @@ def release_gate() -> dict[str, Any]:
+         }
+         for value in novelty_values
+     ) and all(value != "NOVELTY_NOT_ESTABLISHED" for value in novelty_values)
+-    near = gaps[gaps["status"] == "NEAR_OPTIMAL_WITH_CERTIFIED_GAP"]
++    gap_class = [
++        classify_optimality(low, up)
++        for low, up in zip(
++            gaps["certified_lower_bound"], gaps["certified_upper_bound"], strict=True
++        )
++    ]
++    determined = gaps[[c == EXACTLY_DETERMINED_POSITIVE for c in gap_class]]
++    no_lower = gaps[[c == NO_POSITIVE_LOWER_BOUND_OBTAINED for c in gap_class]]
+     gates = [
+         {
+             "id": 1,
+@@ -793,8 +812,9 @@ def release_gate() -> dict[str, Any]:
+         },
+         {
+             "id": 3,
+-            "name": "near-optimal claims have certified declared gaps",
+-            "pass": bool(len(near)) and bool((near["relative_gap"] <= 0.01).all()),
++            "name": "every exactly-determined constant has a coincident lower and upper bound",
++            "pass": bool(len(determined))
++            and bool((determined["absolute_gap"] <= 1.0e-10).all()),
+             "evidence": "artifacts/index/optimality_gaps_v3.csv",
+         },
+         {
+diff --git a/scripts/tree_constants_v3_pipeline.py b/scripts/tree_constants_v3_pipeline.py
+index 0c37d9d..d6caa2a 100644
+--- a/scripts/tree_constants_v3_pipeline.py
++++ b/scripts/tree_constants_v3_pipeline.py
+@@ -52,7 +52,11 @@ from seion_core.research_v3.extremizers import (  # noqa: E402
+     rotation_tensor,
+ )
+ from seion_core.research_v3.interval_certification import (  # noqa: E402
++    EXACTLY_DETERMINED_POSITIVE,
++    EXACTLY_ZERO_BY_THEOREM,
++    NO_POSITIVE_LOWER_BOUND_OBTAINED,
+     certified_gap,
++    classify_optimality,
+     rotation_tree_ratio_interval,
+ )
+ from seion_core.research_v3.local_constants import TypedLaw  # noqa: E402
+@@ -436,12 +440,14 @@ def _write_block_run(
+ 
+ 
+ def _exact_status(lower: float, upper: float) -> str:
+-    if upper == 0.0 and lower == 0.0:
+-        return "EXACT_OPTIMAL_CONSTANT"
+-    relative = (upper - lower) / upper if upper else 0.0
+-    if relative <= 1.0e-10:
+-        return "NEAR_OPTIMAL_WITH_CERTIFIED_GAP"
+-    return "CERTIFIED_UPPER_BOUND_AND_CERTIFIED_LOWER_BOUND"
++    """Classify one certified enclosure.
++
++    Delegates to :func:`classify_optimality`. The former local implementation
++    returned ``EXACT_OPTIMAL_CONSTANT`` only when ``lower == upper == 0``, which is the
++    vacuous case, and labelled the genuinely determined case ``lower == upper > 0`` as
++    merely "near optimal". See the docstring of :func:`classify_optimality`.
++    """
++    return classify_optimality(lower, upper)
+ 
+ 
+ def command_exact(_: argparse.Namespace) -> None:
+@@ -550,7 +556,13 @@ def command_exact(_: argparse.Namespace) -> None:
+     summary = {
+         "scientific_instances": len(frame),
+         "tree_shapes": int(frame["tree_hash"].nunique()),
+-        "exact_zero_projected_cases": int((frame["status"] == "EXACT_OPTIMAL_CONSTANT").sum()),
++        "exact_zero_projected_cases": int((frame["status"] == EXACTLY_ZERO_BY_THEOREM).sum()),
++        "exactly_determined_positive_cases": int(
++            (frame["status"] == EXACTLY_DETERMINED_POSITIVE).sum()
++        ),
++        "no_positive_lower_bound_cases": int(
++            (frame["status"] == NO_POSITIVE_LOWER_BOUND_OBTAINED).sum()
++        ),
+         "certified_lower_bounds": len(frame),
+         "certified_upper_bounds": len(frame),
+         "maximum_construction_to_upper_ratio": maximum_ratio,
+diff --git a/src/seion_core/research_v3/interval_certification.py b/src/seion_core/research_v3/interval_certification.py
+index aaaa898..4b1d8c1 100644
+--- a/src/seion_core/research_v3/interval_certification.py
++++ b/src/seion_core/research_v3/interval_certification.py
+@@ -127,7 +127,85 @@ def rotation_tree_ratio_interval(
+         mp.iv.prec = old_precision
+ 
+ 
+-def certified_gap(lower: float, upper: float) -> dict[str, float | str]:
++#: Mutually exclusive outcomes of comparing a certified lower bound against a proved
++#: upper bound for a nonnegative extremal constant.
++#:
++#: The previous vocabulary conflated three distinct situations under names whose plain
++#: meaning was inverted: a pair ``lower == upper == 0`` was reported as an exactly
++#: determined optimal constant even though it is the vacuous case forced by the theorem,
++#: while a pair ``lower == upper > 0`` -- the genuinely determined case -- was reported
++#: as merely "near optimal". A lower bound of exactly zero was additionally reported as a
++#: "certified lower bound", which is vacuous for a quantity that is nonnegative by
++#: definition. These four states replace that vocabulary.
++EXACTLY_DETERMINED_POSITIVE = "EXACTLY_DETERMINED_POSITIVE"
++EXACTLY_ZERO_BY_THEOREM = "EXACTLY_ZERO_BY_THEOREM"
++POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP = "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP"
++NO_POSITIVE_LOWER_BOUND_OBTAINED = "NO_POSITIVE_LOWER_BOUND_OBTAINED"
++
++OPTIMALITY_CLASSES = (
++    EXACTLY_DETERMINED_POSITIVE,
++    EXACTLY_ZERO_BY_THEOREM,
++    POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP,
++    NO_POSITIVE_LOWER_BOUND_OBTAINED,
++)
++
++DEFAULT_OPTIMALITY_TOLERANCE = 1.0e-10
++
++
++def classify_optimality(
++    lower: float,
++    upper: float,
++    tolerance: float = DEFAULT_OPTIMALITY_TOLERANCE,
++) -> str:
++    """Classify a certified enclosure of a nonnegative extremal constant.
++
++    ``lower`` is a rigorous lower bound obtained from an explicit admissible
++    construction; ``upper`` is the proved universal upper bound. Both are assumed
++    nonnegative with ``lower <= upper``.
++
++    The four outcomes are mutually exclusive and exhaustive:
++
++    ``EXACTLY_ZERO_BY_THEOREM``
++        ``upper`` vanishes, so the constant is zero and nothing was optimised. In the
++        projected-error setting this is exactly the single-internal-vertex case, where
++        the coefficient ``k - 1`` is zero and the theorem already forces the value.
++    ``EXACTLY_DETERMINED_POSITIVE``
++        ``lower`` and ``upper`` agree to within ``tolerance`` at a positive value: the
++        constant is determined.
++    ``POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP``
++        A positive lower bound was obtained but does not meet the upper bound.
++    ``NO_POSITIVE_LOWER_BOUND_OBTAINED``
++        No positive lower bound was obtained. The only lower bound available is the
++        trivial one implied by nonnegativity, so the admissible range spans the whole
++        interval from zero to the proved upper bound. This is *not* a certified lower
++        bound in any informative sense.
++    """
++    if lower < 0.0 or upper < lower:
++        raise ValueError("invalid lower/upper bounds")
++    if upper <= 0.0:
++        return EXACTLY_ZERO_BY_THEOREM
++    # The agreement test is relative to the upper bound, which is the same test the
++    # previous implementation applied. Only the assignment of names is corrected, so the
++    # partition of the registry is directly comparable with the earlier one.
++    relative = (upper - lower) / upper
++    if relative <= tolerance:
++        return EXACTLY_DETERMINED_POSITIVE
++    if lower > 0.0:
++        return POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP
++    return NO_POSITIVE_LOWER_BOUND_OBTAINED
++
++
++def certified_gap(
++    lower: float,
++    upper: float,
++    tolerance: float = DEFAULT_OPTIMALITY_TOLERANCE,
++) -> dict[str, float | str]:
++    """Absolute and relative gap between a lower construction and a proved upper bound.
++
++    ``relative_gap`` is normalised by the *upper* bound, so ``relative_gap == 1``
++    means ``lower == 0``: no positive lower bound was obtained. It must never be
++    reported as a small residual discrepancy.
++    """
+     if lower < 0.0 or upper < lower:
+         raise ValueError("invalid lower/upper bounds")
+     absolute = upper - lower
+@@ -137,5 +215,5 @@ def certified_gap(lower: float, upper: float) -> dict[str, float | str]:
+         "upper": upper,
+         "absolute_gap": absolute,
+         "relative_gap": relative,
+-        "status": "NEAR_OPTIMAL_WITH_CERTIFIED_GAP" if relative <= 0.05 else "OPEN",
++        "status": classify_optimality(lower, upper, tolerance=tolerance),
+     }

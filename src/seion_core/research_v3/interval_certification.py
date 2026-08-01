@@ -127,7 +127,85 @@ def rotation_tree_ratio_interval(
         mp.iv.prec = old_precision
 
 
-def certified_gap(lower: float, upper: float) -> dict[str, float | str]:
+#: Mutually exclusive outcomes of comparing a certified lower bound against a proved
+#: upper bound for a nonnegative extremal constant.
+#:
+#: The previous vocabulary conflated three distinct situations under names whose plain
+#: meaning was inverted: a pair ``lower == upper == 0`` was reported as an exactly
+#: determined optimal constant even though it is the vacuous case forced by the theorem,
+#: while a pair ``lower == upper > 0`` -- the genuinely determined case -- was reported
+#: as merely "near optimal". A lower bound of exactly zero was additionally reported as a
+#: "certified lower bound", which is vacuous for a quantity that is nonnegative by
+#: definition. These four states replace that vocabulary.
+EXACTLY_DETERMINED_POSITIVE = "EXACTLY_DETERMINED_POSITIVE"
+EXACTLY_ZERO_BY_THEOREM = "EXACTLY_ZERO_BY_THEOREM"
+POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP = "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP"
+NO_POSITIVE_LOWER_BOUND_OBTAINED = "NO_POSITIVE_LOWER_BOUND_OBTAINED"
+
+OPTIMALITY_CLASSES = (
+    EXACTLY_DETERMINED_POSITIVE,
+    EXACTLY_ZERO_BY_THEOREM,
+    POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP,
+    NO_POSITIVE_LOWER_BOUND_OBTAINED,
+)
+
+DEFAULT_OPTIMALITY_TOLERANCE = 1.0e-10
+
+
+def classify_optimality(
+    lower: float,
+    upper: float,
+    tolerance: float = DEFAULT_OPTIMALITY_TOLERANCE,
+) -> str:
+    """Classify a certified enclosure of a nonnegative extremal constant.
+
+    ``lower`` is a rigorous lower bound obtained from an explicit admissible
+    construction; ``upper`` is the proved universal upper bound. Both are assumed
+    nonnegative with ``lower <= upper``.
+
+    The four outcomes are mutually exclusive and exhaustive:
+
+    ``EXACTLY_ZERO_BY_THEOREM``
+        ``upper`` vanishes, so the constant is zero and nothing was optimised. In the
+        projected-error setting this is exactly the single-internal-vertex case, where
+        the coefficient ``k - 1`` is zero and the theorem already forces the value.
+    ``EXACTLY_DETERMINED_POSITIVE``
+        ``lower`` and ``upper`` agree to within ``tolerance`` at a positive value: the
+        constant is determined.
+    ``POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP``
+        A positive lower bound was obtained but does not meet the upper bound.
+    ``NO_POSITIVE_LOWER_BOUND_OBTAINED``
+        No positive lower bound was obtained. The only lower bound available is the
+        trivial one implied by nonnegativity, so the admissible range spans the whole
+        interval from zero to the proved upper bound. This is *not* a certified lower
+        bound in any informative sense.
+    """
+    if lower < 0.0 or upper < lower:
+        raise ValueError("invalid lower/upper bounds")
+    if upper <= 0.0:
+        return EXACTLY_ZERO_BY_THEOREM
+    # The agreement test is relative to the upper bound, which is the same test the
+    # previous implementation applied. Only the assignment of names is corrected, so the
+    # partition of the registry is directly comparable with the earlier one.
+    relative = (upper - lower) / upper
+    if relative <= tolerance:
+        return EXACTLY_DETERMINED_POSITIVE
+    if lower > 0.0:
+        return POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP
+    return NO_POSITIVE_LOWER_BOUND_OBTAINED
+
+
+def certified_gap(
+    lower: float,
+    upper: float,
+    tolerance: float = DEFAULT_OPTIMALITY_TOLERANCE,
+) -> dict[str, float | str]:
+    """Absolute and relative gap between a lower construction and a proved upper bound.
+
+    ``relative_gap`` is normalised by the *upper* bound, so ``relative_gap == 1``
+    means ``lower == 0``: no positive lower bound was obtained. It must never be
+    reported as a small residual discrepancy.
+    """
     if lower < 0.0 or upper < lower:
         raise ValueError("invalid lower/upper bounds")
     absolute = upper - lower
@@ -137,5 +215,5 @@ def certified_gap(lower: float, upper: float) -> dict[str, float | str]:
         "upper": upper,
         "absolute_gap": absolute,
         "relative_gap": relative,
-        "status": "NEAR_OPTIMAL_WITH_CERTIFIED_GAP" if relative <= 0.05 else "OPEN",
+        "status": classify_optimality(lower, upper, tolerance=tolerance),
     }

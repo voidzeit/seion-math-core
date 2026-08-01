@@ -1,0 +1,16 @@
+# Pinned Python dependencies for the clean-room reproduction.
+#
+# These are the versions actually used to produce the shipped package, read from
+# sources/supplementary_results/figure_provenance.json and from the interpreter that
+# produced it. They are recorded so that a later rebuild installs the same versions rather
+# than whatever happens to be current.
+#
+# Hashes are intentionally absent for now. The Containerfile attempts --require-hashes and
+# falls back to a hashless install, so this file can be completed with hashes later without
+# breaking the build in the meantime. Completing them is a prerequisite for describing the
+# environment as fully pinned.
+numpy==2.4.6
+pandas==3.0.3
+pyarrow==24.0.0
+matplotlib==3.10.9
+pytest==8.3.4
