@@ -1,0 +1,213 @@
+\documentclass[11pt]{amsart}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{array,booktabs,tabularx}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+\sloppy
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={Spectral A-N v18: Software Architecture and Reproducibility Companion},
+  pdfauthor={Eliuth Chavero Jasso},
+  pdfsubject={Software companion for the v18 certification suite},
+  pdfkeywords={reproducibility, hashing, job scheduler, CPU/GPU parity, CI}
+}
+
+\title[Spectral A-N v18: Software and Reproducibility]{Spectral A-N v18: Software Architecture and Reproducibility Companion}
+\author{Eliuth Chavero Jasso}
+\address{Independent Researcher, Apizaco, Tlaxcala, Mexico}
+\thanks{Companion to ``A Fail-Closed Certification Framework for Cyclic N-Ary Laws, Projectors, and Multiresolution Tensor Structure'' (\texttt{papers/a\_to\_n\_certification\_v18}). Documents interfaces and evidence contracts; makes no independent mathematical claim.}
+\date{30 July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This companion documents the software architecture, artifact schemas,
+hashing/provenance contracts, and reproducibility discipline of the v18
+spectral certification suite (\texttt{spectral/certification\_v18/}, 85
+passing tests as of this writing). It records a real, reproducible
+CPU/GPU parity result on the confirmed hardware (RTX PRO 5000 Blackwell,
+24\,GB VRAM), a concrete process-global TF32 contamination hazard found and
+fixed, and the current gaps in continuous integration and packaging for
+this new track. Section~\ref{sec:closed} records what a follow-up session
+has since closed: real CI (verified on GitHub Actions, including a
+genuine setuptools CVE caught by \texttt{pip-audit}), a 416-cell
+hardware-measured GPU-scaling sweep answering the throughput question
+this version of the paper originally left open, and a frozen,
+mutation-tested evidence contract.
+\end{abstract}
+
+\section{Repository layout}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{lX}
+\toprule
+Path & Contents \\
+\midrule
+\texttt{spectral/legacy/v17/} & Immutable, hash-verified legacy script + run-log copies \\
+\texttt{spectral/certification\_v18/gates.py} & Typed-state enum, fail-closed combination logic \\
+\texttt{spectral/certification\_v18/config.py} & Certification-mode contract, enforced via \texttt{validate()} \\
+\texttt{spectral/certification\_v18/model.py} & Fresh CP-law/projector geometry (not imported from legacy) \\
+\texttt{spectral/certification\_v18/blocks/} & One module + one \texttt{BLOCK\_*\_FINDINGS.md} per block \\
+\texttt{spectral/certification\_v18/hardware/} & Certification-mode setup, resumable job queue \\
+\texttt{spectral/certification\_v18/artifacts/} & Saved experiment result JSON \\
+\texttt{spectral/certification\_v18/tests/} & 85 tests, \texttt{pytest spectral/certification\_v18/tests} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+This track is deliberately NOT reimported into \texttt{src/seion\_core}: it
+is scope class \texttt{SPECTRAL\_LEGACY\_TRACK}
+(\texttt{claims/scope\_registry\_v4.yaml}), evidentially separate from
+\texttt{CANONICAL\_FINITE\_CORE} by design.
+
+\section{Why \texttt{model.py} is a fresh reimplementation, not an import}
+The legacy script sets \texttt{torch.backends.cuda.matmul.allow\_tf32 =
+True} and \texttt{torch.set\_float32\_matmul\_precision("high")}
+unconditionally at import time when CUDA is available. These are
+process-global flags, not scoped to the importing module. A certification-mode
+process that imported the legacy script for convenience would have its
+TF32 discipline silently overridden by an unrelated import. `model.py`
+reimplements the needed primitives (CP product, projector, associator,
+reduced curvature) independently, with its own tests
+(\texttt{test\_model.py}) checked against the legacy formulas by direct
+line-number citation, and \texttt{hardware/certification\_mode.py}
+provides \texttt{enter\_certification\_mode()} / \\
+\texttt{assert\_certification\_discipline()} as the single, idempotent,
+re-assertable enforcement point.
+
+\section{Typed-gate schema}
+\texttt{gates.py} defines \texttt{TypedStatus} (10 states) and
+\texttt{CRITICAL\_GATES} (8 gates, each a tuple of contributing block
+names). \texttt{combine\_gate\_status} takes the minimum over a gate's
+blocks (excluding \texttt{NOT\_APPLICABLE}, which is tracked separately
+and never silently counted as passing). \texttt{assign\_block\_status}
+is the single enforcement point preventing a screening-mode run from
+being assigned a certificate-tier status: it raises
+\texttt{ScreeningCertificateViolation} rather than downgrading silently.
+
+\section{CPU/GPU parity: a real, executed result}
+On the confirmed hardware (Intel Core Ultra 9 285HX, 24 logical cores,
+128\,GB RAM; NVIDIA RTX PRO 5000 Blackwell Laptop GPU, 24\,GB VRAM, CUDA
+12.8, driver 573.49), we constructed a \texttt{SpectralModelV18} instance
+on CPU (float64, seed 0), transferred its exact parameter/buffer values
+to an independently-constructed CUDA instance via \texttt{state\_dict}
+(not \texttt{.to(device)}, which does not update the plain Python
+\texttt{device}/\texttt{dtype} string attributes stored on
+\texttt{CyclicCPProduct} --- a second real hazard found during this
+exercise, documented in \texttt{model.py}), and computed Block A/B
+quantities on both devices with TF32 explicitly disabled and
+deterministic algorithms enabled. Results:
+\begin{center}
+\small
+\begin{tabular}{lrr}
+\toprule
+Quantity & CPU & CUDA \\
+\midrule
+idempotence residual & $1.312\times10^{-15}$ & $1.198\times10^{-15}$ \\
+self-adjointness residual & $0.0$ (exact) & $2.220\times10^{-16}$ \\
+comm.\ unexplained-rel (random init) & $1.0000380759060201$ & $1.0000380759060197$ \\
+wall time & $19.1$\,ms & $835.1$\,ms \\
+\bottomrule
+\end{tabular}
+\end{center}
+The unexplained-rel figure (the only quantity here large enough for a
+relative-difference comparison to be meaningful) agrees to
+$4.4\times10^{-16}$ relative difference --- CPU/GPU parity confirmed at
+float64 for this computation. The wall-time comparison is an honest
+negative result for accelerating problems at this scale: GPU kernel-launch
+overhead dominates for $n=24$, and CPU is $\sim 44\times$ faster in this
+single case. Whether that reverses once ambient dimensions are large
+enough to amortize the overhead was an open question at the time this
+result was first recorded; Section~\ref{sec:closed} reports it has since
+been measured directly across $n\in\{12,24,48,96\}$, and it does not
+reverse anywhere in that range.
+
+\section{Resumable job queue}
+\texttt{hardware/job\_queue.py} implements an append-only, JSONL-backed
+ledger keyed by \texttt{scientific\_instance\_id} (the mathematical
+configuration) versus \texttt{execution\_id} (one specific attempt),
+recording seed, precision, hardware, a config hash, a script hash,
+checkpoint lineage (parent \texttt{execution\_id}), status, retry count,
+and output hashes. History is never mutated, only appended to, matching
+the pattern already established for the separate \texttt{CANONICAL\_FINITE\_CORE}
+track's \texttt{src/seion\_core/governance/runs.py} (different schema,
+same non-destructive philosophy, since this track's artifact set does not
+match that track's \texttt{REQUIRED\_RUN\_ARTIFACTS} contract). Tested:
+submit/complete, retry-increments-count while preserving prior history,
+and checkpoint-lineage traversal.
+
+\section{Legacy provenance}
+\texttt{spectral/certification\_v18/tools/ingest\_legacy.py} hashes both
+named legacy files (sha256, verified after copy), hashes all 18 on-disk
+run directories, parses the 9-run text log, cross-references it against
+on-disk \texttt{summary.json} files, reconstructs resume lineage, and
+reclassifies every historical run against the v18 typed-gate vocabulary.
+Output: \texttt{spectral/legacy/v17/legacy\_a\_to\_n\_manifest.yaml},
+\texttt{legacy\_run\_lineage.json}, \texttt{legacy\_run\_dedup\_report.md},
+\texttt{legacy\_claim\_reclassification.yaml}.
+
+\section{What has since been closed}
+\label{sec:closed}
+A follow-up session closed three of the four gaps below with real,
+verified work rather than by editing this list in place:
+\begin{itemize}[leftmargin=*]
+\item \textbf{CI}: \texttt{.github/workflows/spectral-v18.yml} now runs
+  all 85 tests on every push/PR (confirmed green on real GitHub Actions
+  runs, not just locally). A separate
+  \texttt{security-and-quality.yml} adds \texttt{pip-audit} (a genuine
+  setuptools CVE was found and fixed this way), CycloneDX SBOM
+  generation, license reporting, \texttt{gitleaks} secret scanning,
+  CodeQL, and a clean sdist-install matrix on \texttt{ubuntu-latest} and
+  \texttt{windows-latest} --- all verified against real CI runs, not
+  assumed.
+\item \textbf{GPU throughput scaling}: measured, not merely proposed.
+  \texttt{closure\_report}, \texttt{associator\_constant\_report}, and
+  \texttt{cyclic\_and\_gji\_report} gained an explicit \texttt{device}
+  parameter (default \texttt{"cpu"}, fully backward compatible --- the
+  85-test suite still passes unchanged), threaded through every
+  \texttt{torch.randn}/\texttt{Generator} call site that previously
+  created CPU tensors unconditionally regardless of the model's device
+  (a real bug that would have silently broken any attempt to run these
+  functions on CUDA). A 96-cell pilot sweep and a 320-cell broad
+  screening sweep (416 cells total, 0 failures, $\approx 121$ minutes
+  combined wall time) found GPU consistently $3.2\times$--$3.5\times$
+  slower than CPU across $n\in\{12,24,48,96\}$ --- a genuine, hardware-
+  measured negative result, stable across an 8$\times$ range in ambient
+  dimension, not a small-scale artifact. Full detail in the companion
+  certification paper's Section~4.
+\item \textbf{Evidence-contract freeze}: \texttt{governance/RELEASE\_GATES.yaml}
+  v5 registers the 4 critical gates the original 8-gate taxonomy didn't
+  cover (\texttt{construction\_integrity}, \texttt{novelty}, \texttt{paper},
+  \texttt{release}); a new \texttt{scientific\_instance.schema.json}
+  formalizes the \texttt{scientific\_instance\_id}/\texttt{execution\_id}/
+  \texttt{optimizer\_restart\_id} identity hierarchy this paper's job-queue
+  section describes informally; 7 invariants (bound ordering, exact-status-
+  requires-zero-gap, screening-cannot-certify, etc.) are now enforced as
+  real code (\texttt{src/seion\_core/governance/evidence\_contract.py})
+  with 23 passing mutation tests, plus a sha256-hash-pinned schema-drift
+  detector, hand-verified to actually catch tampering (a schema file was
+  deliberately edited, the drift test confirmed to fail, then restored
+  and confirmed to pass again).
+\item \textbf{Not yet closed}: clean-environment reproduction (a fresh
+  virtualenv/container install-and-rerun of the full v18 suite
+  specifically, as opposed to the repository's general clean-install CI
+  matrix, which does exercise a fresh sdist install but not this track's
+  own 85-test run inside it) has still not been exercised as a dedicated
+  pass.
+\end{itemize}
+
+\end{document}

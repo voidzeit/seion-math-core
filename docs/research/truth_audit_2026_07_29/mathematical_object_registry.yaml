@@ -1,0 +1,203 @@
+# Independent, advisory object registry — 2026-07-29.
+# Lists objects that exist as code in src/seion_core, tagged by the
+# mission's section-1 taxonomy. `audit_coverage: verified` means this pass
+# read the module, its registry entry (if any), and its test, and confirms
+# the epistemic_status below. `audit_coverage: not_reviewed` means the
+# module was located but not independently checked in this pass — its
+# status field is a placeholder ("code exists, theorem backing unverified")
+# and must not be read as a positive claim.
+#
+# This file does not replace claims/theorem_registry_v3.yaml or
+# claims/scope_registry_v4.yaml, which remain the canonical sources.
+
+objects:
+
+  - id: OBJ_NARY_LAW
+    category: "1.2 n-ary laws"
+    modules: [src/seion_core/algebra/nary_law.py, src/seion_core/algebra/ternary_law.py, src/seion_core/algebra/typed_law.py]
+    description: "Typed mu_n: V_1 x ... x V_n -> V_0 laws, ternary specialized."
+    backing_theorem: [THM_V3_* family via research_v3/typed_tree.py wrapping]
+    epistemic_status: DEFINITION
+    audit_coverage: verified
+
+  - id: OBJ_STRUCTURAL_TENSOR
+    category: "1.3 structural tensors / CP factorization"
+    modules: [src/seion_core/algebra/structural_tensor.py, src/seion_core/algebra/cp_law.py, src/seion_core/research_v3/cp_projection_budget.py]
+    description: "Dense structural tensor K and its CP-factorized representation; CP projection budget for research_v3 tree runs."
+    backing_theorem: null
+    epistemic_status: DEFINITION_PLUS_NUMERICAL_OBSERVATION
+    audit_coverage: not_reviewed
+    note: "Not independently checked for gauge-alignment/identifiability discipline (mission section 1.3) in this pass."
+
+  - id: OBJ_KERNEL
+    category: "1.4 kernel-integrated laws"
+    modules: [src/seion_core/kernels/integral_kernel.py, src/seion_core/kernels/discrete_kernel.py, src/seion_core/kernels/measure_space.py, src/seion_core/kernels/boundedness.py, src/seion_core/kernels/compositions.py, src/seion_core/kernels/convergence.py, src/seion_core/kernels/quadrature.py]
+    description: "Bounded/discrete kernel-integrated ternary laws; one of the three tracks docs/mathematical_scope.md declares in scope."
+    backing_theorem: null
+    epistemic_status: DEFINITION_PLUS_NUMERICAL_OBSERVATION
+    audit_coverage: verified
+    note: "See priority_d_kernels.md. No theorem is registered for this track and none is claimed in code (every module docstring self-limits to 'finite/exact, not continuous'). Real gap: near-zero test coverage for public-API functions (DiscreteKernel, quadrature_apply, hilbert_schmidt_bound)."
+
+  - id: OBJ_COMPOSITION_TREE
+    category: "1.5 composition trees / operadic structure"
+    modules: [src/seion_core/research_v3/typed_tree.py, src/seion_core/research_v3/tree_enumeration.py, src/seion_core/algebra/compositions.py]
+    description: "Finite typed ordered trees of n-ary laws; exhaustive enumeration used for the 196-shape k/(k-1) stress test."
+    backing_theorem: [THM_V3_ROOT_ERROR_ORTHOGONALITY, THM_V3_EXACT_SUBSET_EXPANSION]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    audit_coverage: verified
+
+  - id: OBJ_ASSOCIATOR_FIVE_INPUT
+    category: "1.6.A five-input associator"
+    modules: [src/seion_core/algebra/associators.py]
+    description: "A_mu^(5) five-input associator convention."
+    backing_theorem: [THM_V3_PROJECTED_ROOT_K_MINUS_ONE (via COR_V3_PROJECTED_TERNARY_ASSOCIATOR_TWO)]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    audit_coverage: verified
+    note: "See priority_a_finite_core.md finding 1 — the '2' constant's evidence citation is weak, not the theorem itself."
+
+  - id: OBJ_ASSOCIATOR_ANCHORED
+    category: "1.6.B anchored binary reduction associator"
+    modules: [src/seion_core/algebra/ternary_law.py (anchored_product, anchored_associator), src/seion_core/geometry/left_actions.py (anchored_left_operator)]
+    description: "Anchored reduction x∘y = mu(x,y,e) and its associator defect."
+    backing_theorem: null
+    epistemic_status: DEFINITION
+    audit_coverage: verified
+    note: "Implemented but never composed into a curvature identity — see curvature_associator.md."
+
+  - id: OBJ_CURVATURE_STANDARD
+    category: "1.8.A/B constitutive + scalar curvature"
+    modules: [src/seion_core/geometry/induced_curvature.py, src/seion_core/geometry/constitutive_curvature.py]
+    description: "R_standard(x,y)z difference-of-associators identity (proved); constitutive_curvature.py is a bare stipulated definition, not a theorem."
+    backing_theorem: [THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1]
+    epistemic_status: "PROVED (induced_curvature.py) / DEFINITION (constitutive_curvature.py)"
+    audit_coverage: verified
+
+  - id: OBJ_IDENTITY_JACOBI
+    category: "1.7 Jacobiator / GJI"
+    modules: [src/seion_core/algebra/jacobi.py]
+    description: "binary_jacobiator, generalized_jacobiator_ternary — one named GJI variant, explicitly disclaimed as non-universal."
+    backing_theorem: null
+    epistemic_status: DEFINITION
+    audit_coverage: verified
+
+  - id: OBJ_IDENTITY_FILIPPOV
+    category: "1.7 Filippov fundamental identity"
+    modules: [src/seion_core/algebra/filippov.py]
+    epistemic_status: DEFINITION
+    backing_theorem: null
+    audit_coverage: verified
+
+  - id: OBJ_IDENTITY_AKIVIS
+    category: "1.7 Akivis identity"
+    modules: [src/seion_core/algebra/akivis.py]
+    epistemic_status: DEFINITION
+    backing_theorem: null
+    audit_coverage: verified
+
+  - id: OBJ_SYMMETRY
+    category: "1.7 cyclic / full / antisymmetry"
+    modules: [src/seion_core/algebra/symmetry.py]
+    description: "Cyclic symmetry named only in paper prose (08_symmetry_identities.tex), not a separately registered theorem."
+    backing_theorem: null
+    epistemic_status: DEFINITION
+    audit_coverage: verified
+
+  - id: OBJ_PROJECTOR
+    category: "1.9-1.10 exact restriction / approximate closure"
+    modules: [src/seion_core/projectors/projector.py, src/seion_core/projectors/closure.py, src/seion_core/projectors/reduced_law.py, src/seion_core/projectors/baselines.py]
+    description: "P=QQ*, closure residual r_mu, reduced law mu_bar; baselines.py compares against PCA/SVD/random projectors per mission section 1.10."
+    backing_theorem: [THM_V3_ROOT_ERROR_ORTHOGONALITY]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    audit_coverage: verified
+
+  - id: OBJ_SPECTRAL_SNAPPING
+    category: "1.15 spectral snapping"
+    modules: [src/seion_core/projectors/snapping.py]
+    description: "1_[1/2,inf)(A) threshold projector."
+    backing_theorem: [REFUTED_SNAPPING_NO_GAP_V1 — a counterexample is registered, not a positive theorem]
+    epistemic_status: COUNTEREXAMPLE_ON_FILE_FOR_UNIFORM_GAP_HYPOTHESIS
+    audit_coverage: verified
+
+  - id: OBJ_COHOMOLOGY_CHAIN_COMPLEX
+    category: "1.20-1.21 finite cochain complex + descent"
+    modules: [src/seion_core/cohomology/chain_complex.py, src/seion_core/cohomology/compatibility.py]
+    backing_theorem: [THM_COHOMOLOGY_DESCENT_FINITE_V1]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    audit_coverage: verified
+
+  - id: OBJ_DISCRETE_HODGE
+    category: "1.20 (adjacent) — standard combinatorial Hodge Laplacian"
+    modules: [src/seion_core/cohomology/discrete_hodge.py]
+    description: "hodge_laplacian = d_{k-1} d_{k-1}* + d_k* d_k on a finite chain complex — textbook discrete Hodge theory, not the continuum SHP program."
+    backing_theorem: null
+    epistemic_status: STANDARD_KNOWN_RESULT
+    audit_coverage: verified
+
+  - id: OBJ_COHOMOLOGY_OTHER
+    category: "1.20-1.21"
+    modules: [src/seion_core/cohomology/torus_fourier.py, src/seion_core/cohomology/truncation.py, src/seion_core/cohomology/induced_operator.py]
+    epistemic_status: DEFINITION
+    backing_theorem: null
+    audit_coverage: verified
+    note: "See priority_c_operators_and_cohomology_remainder.md Part B. torus_fourier.py and truncation.py are honestly self-limiting (no continuum/error-bound claim made). induced_operator.py is a no-op despite its name (returns input unchanged, `degree` unused) — do not assume it computes an induced/restricted operator."
+
+  - id: OBJ_OPERATOR_SECTOR
+    category: "1.17 curried operators / Laplacians / heat semigroups"
+    modules: [src/seion_core/operators/curried.py, src/seion_core/operators/commutators.py, src/seion_core/operators/laplacian.py, src/seion_core/operators/markov.py, src/seion_core/operators/heat.py, src/seion_core/operators/spectral_dimension.py]
+    epistemic_status: DEFINITION
+    backing_theorem: null
+    audit_coverage: verified
+    note: "See priority_c_operators_and_cohomology_remainder.md Part A. laplacian_from_curried avoids the 'nonnegative eigenvalues therefore Laplacian' fallacy (self-adjointness/PSD numerically re-checked, and explicitly flagged intrinsic:False, non-canonical). heat_kernel/heat_trace assume self-adjointness without checking it before expm/eigvalsh. spectral_dimension.py inherits that unverified assumption. Zero test coverage across all six modules."
+
+  - id: OBJ_MULTISCALE
+    category: "1.16 multiscale structure"
+    modules: [src/seion_core/multiscale/alignment.py, src/seion_core/multiscale/convergence.py, src/seion_core/multiscale/persistence.py, src/seion_core/multiscale/resolution.py, src/seion_core/multiscale/transport.py]
+    description: "Persistence/alignment across resolutions; one of the two open conjectures (claims/conjecture_registry.yaml) is multiscale gauge-aligned persistence."
+    backing_theorem: null
+    epistemic_status: "CONJECTURE (persistence) / DEFENSIVELY_SCOPED_NUMERICAL_UTILITY (rest)"
+    audit_coverage: verified
+    note: "See priority_d_multiscale.md. convergence.py structurally refuses a 'limit' label below 3 resolutions; ResolutionFamily defaults uniform_estimates_available=False. No continuum overclaim found. Real gap: zero test coverage across all five files."
+
+  - id: OBJ_VARIATIONAL_ENERGY
+    category: "1.18 variational energies"
+    modules: [src/seion_core/variational/energies.py, src/seion_core/variational/constraints.py, src/seion_core/variational/estimators.py, src/seion_core/variational/gradients.py, src/seion_core/variational/optimizers.py]
+    epistemic_status: "MOSTLY_DIAGNOSTIC; gji/fi UNIMPLEMENTED_STUB; total_energy DEAD_CODE"
+    backing_theorem: null
+    audit_coverage: verified
+    note: "FLAGGED — see priority_c_variational_energies.md, the single most substantive finding of this audit. No analytic/autodiff gradient path exists anywhere in src/; gradients.py's own gradient_check is never called by anything. gji and fi energies are hardcoded 0.0. total_energy/EnergyWeights (the only trainable-combination mechanism) is unwired dead code. The one real optimizer (optimize_projector_closure) is a gradient-free Stiefel hill-climb on closure_leakage only, honestly self-labeled empirical. Zero test coverage for the entire module. Do not treat energy_components/total_energy as a working trainable-regularizer suite."
+
+  - id: OBJ_GEOMETRY_DYNAMICAL_FRAGMENTS
+    category: "1.19 G-ASUn ingredients (not assembled)"
+    modules: [src/seion_core/geometry/hamiltonian_dynamics.py, src/seion_core/geometry/stiefel.py, src/seion_core/geometry/riemannian_metrics.py]
+    description: "experimental_hamiltonian_step (docstring: 'no physical interpretation'), Stiefel orthonormalize/project_tangent. Isolated utilities, no configuration manifold, no assembled dynamical system, no G-ASUn class or name anywhere in the repo."
+    backing_theorem: null
+    epistemic_status: NOT_YET_FORMALIZED
+    audit_coverage: verified
+
+  - id: OBJ_SHP_FRONTIER
+    category: "1.22 Seionic Hodge Program (all stages)"
+    modules: []
+    description: "No SHP-FINITE beyond OBJ_COHOMOLOGY_CHAIN_COMPLEX/OBJ_DISCRETE_HODGE (both standard finite results). No SHP-1 through SHP-ALGEBRAIC code, registry entry, or paper section exists."
+    backing_theorem: null
+    epistemic_status: ABSENT
+    audit_coverage: verified
+
+  - id: OBJ_LAURENT_ARTIFACT
+    category: "1.23 Laurent algebraization"
+    modules: []
+    epistemic_status: ABSENT
+    audit_coverage: verified
+
+  - id: OBJ_E8_TENSOR
+    category: "1.24 E8 / exceptional tensors"
+    modules: []
+    description: "Only text match repository-wide is a CSS hex color (#E8EEF2); no exceptional Lie algebra code exists."
+    epistemic_status: ABSENT
+    audit_coverage: verified
+
+  - id: OBJ_EXTERNAL_APPLICATIONS
+    category: "1.25 external applications"
+    modules: []
+    description: "KGE, LLM compression, NEC/BIM, hypergraph compilers, cosmology, trading, polynomial roots — explicitly declared non-goals in README.md:104."
+    epistemic_status: ABSENT_BY_DESIGN
+    audit_coverage: verified

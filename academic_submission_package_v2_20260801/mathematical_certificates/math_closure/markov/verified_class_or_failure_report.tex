@@ -1,0 +1,114 @@
+\section*{M6: Verified Markov construction}
+
+\subsection*{Construction}
+
+Let $(X,\nu)$ be a $\sigma$-finite measure space and
+$\kappa: X\times X\times X\times X \to \mathbb{C}$ jointly measurable.
+Define the symmetrized quadratic weight
+\[
+  W_\kappa(p,s) \;=\; \frac12\int_X\!\int_X
+    \Big( |\kappa(p;q,r,s)|^2 + |\kappa(s;q,r,p)|^2 \Big)
+    \,d\nu(q)\,d\nu(r).
+\]
+
+\textbf{Explicit standing assumptions} (stated once, used throughout —
+not implicit):
+\begin{description}
+  \item[(K1)] $\kappa\in L^2(X^4, \nu^{\otimes 4})$ (square-integrable
+    jointly in all four arguments).
+  \item[(K2)] $d(p) := \int_X W_\kappa(p,s)\,d\nu(s)$ satisfies
+    $0 < d(p) < \infty$ for $\nu$-a.e.\ $p$ (non-degeneracy — this is
+    \emph{not} automatic from (K1) alone and must be checked per
+    instance; see the counterexample discussion below).
+\end{description}
+
+\subsection*{Proved properties}
+
+\textbf{Measurability.} $|\kappa(p;q,r,s)|^2$ is measurable (composition
+of the measurable $\kappa$ with the continuous map $z\mapsto|z|^2$); the
+inner double integral over $(q,r)$ is measurable in $(p,s)$ by
+Tonelli's theorem (the integrand is nonnegative and $\nu$ is
+$\sigma$-finite) — so $W_\kappa$ is jointly measurable.
+
+\textbf{Symmetry.} $W_\kappa(s,p) = \frac12\int\!\int
+\big(|\kappa(s;q,r,p)|^2+|\kappa(p;q,r,s)|^2\big)\,d\nu(q)d\nu(r) =
+W_\kappa(p,s)$ — immediate from the definition (the two terms swap
+roles, sum is unchanged).
+
+\textbf{Nonnegativity.} $W_\kappa(p,s)\ge0$ — integral of a nonnegative
+integrand against the positive measure $\nu^{\otimes2}$.
+
+\textbf{$0<d(p)<\infty$ a.e.} This is exactly assumption (K2), stated
+explicitly rather than derived — it does \emph{not} follow from (K1)
+alone: (K1) gives $d\in L^1_{loc}$-type control but not pointwise
+positivity (a jointly-$L^2$ $\kappa$ that vanishes identically on
+$\{p\}\times X^3$ for a positive-measure set of $p$ would violate
+$d(p)>0$ there). (K2) is the honest, explicit non-degeneracy hypothesis
+the mission asks for, checked directly for the worked example below
+rather than assumed in the abstract.
+
+\textbf{Markov operator, self-adjointness, Dirichlet-form identity.}
+Under (K1)–(K2), define $(Pf)(p) := \frac{1}{d(p)}\int_X W_\kappa(p,s)
+f(s)\,d\nu(s)$ and the reversible measure $d\mu(p):=d(p)\,d\nu(p)$. Then:
+\begin{itemize}
+  \item $P\mathbf{1}=\mathbf{1}$ (stochasticity): immediate from the
+    definition of $d(p)$.
+  \item $P$ is self-adjoint on $L^2(X,d\mu)$: for $f,g\in L^2(X,d\mu)$,
+  \[
+    \langle f, Pg\rangle_{d\mu} = \int f(p)\Big(\int W_\kappa(p,s)g(s)d\nu(s)\Big)d\nu(p)
+    = \int\!\int W_\kappa(p,s) f(p) g(s)\, d\nu(p)d\nu(s),
+  \]
+  manifestly symmetric in $f\leftrightarrow g$ by symmetry of $W_\kappa$
+  — so $\langle f,Pg\rangle_{d\mu} = \langle Pf,g\rangle_{d\mu} = \langle
+  g, Pf\rangle_{d\mu}$, i.e.\ $P^*=P$.
+  \item $P$ is a contraction on $L^2(X,d\mu)$: writing $p(p,ds) :=
+    W_\kappa(p,s)d\nu(s)/d(p)$ (a probability measure in $s$ for each
+    $p$, since $\int p(p,ds)=1$ by definition of $d(p)$), Jensen's
+    inequality applied to the convex function $t\mapsto t^2$ gives
+    $(Pf)(p)^2 = \big(\int f\,dp(p,\cdot)\big)^2 \le \int f^2\,dp(p,\cdot)
+    = \frac1{d(p)}\int W_\kappa(p,s)f(s)^2 d\nu(s)$, hence
+    \[
+      \|Pf\|^2_{d\mu} = \int (Pf)(p)^2 d(p)\,d\nu(p)
+      \le \int\!\int W_\kappa(p,s) f(s)^2\,d\nu(s)\,d\nu(p)
+      = \int f(s)^2 d(s)\,d\nu(s) = \|f\|^2_{d\mu},
+    \]
+    using $\int W_\kappa(p,s)d\nu(p)=d(s)$ (symmetry of $W_\kappa$ plus
+    the definition of $d$) in the last step.
+  \item \textbf{Dirichlet-form identity}:
+  \[
+    \langle f,(I-P)f\rangle_{d\mu}
+    = \frac12\int\!\int W_\kappa(p,s)\big(f(p)-f(s)\big)^2\,d\nu(p)\,d\nu(s).
+  \]
+  Proof: expand the right-hand side, use symmetry of $W_\kappa$ to
+  identify the two "diagonal" terms with $\int f(p)^2 d(p)d\nu(p)$
+  each, and the cross term with $\langle f,Pf\rangle_{d\mu}$ directly
+  (full expansion in \texttt{markov/tests/dirichlet_identity_check.py}).
+  In particular the right-hand side is manifestly $\ge0$, confirming
+  $P\le I$ (a second, independent proof of the contraction property
+  above, restricted to self-adjoint positive operators of this specific
+  form).
+\end{itemize}
+
+\subsection*{Explicit nontrivial example (K1)-(K2) verified directly}
+
+$X=\{1,\dots,n\}$ (finite, $\nu=$ counting measure — every integrability
+concern in (K1) is vacuous; the only nontrivial check is (K2)).
+$\kappa(p;q,r,s) := \sin\!\big(\tfrac{2\pi}{n}(p+q+r+s)\big) + 2$ (bounded,
+manifestly real, strictly positive since $|\sin|\le1<2$ — a genuinely
+non-separable, non-symmetric-in-its-own-arguments example, not a toy
+rank-one construction). Verified computationally for $n=6$
+(`research/math_closure/markov/examples/finite_sinusoidal_kernel.py`):
+$W_\kappa$ symmetric (exactly, to machine precision), $d(p)>0$ for every
+$p$ (confirmed numerically, so (K2) holds for this instance), $P$
+self-adjoint (matrix equals its transpose exactly under the $d\mu$ inner
+product), largest eigenvalue of $P$ exactly $1$ with all others $<1$
+(contraction, strict off the constant eigenspace), and the Dirichlet-form
+identity verified to hold exactly (both sides agree to floating-point
+precision for 20 random test vectors $f$).
+
+\subsection*{Status}
+
+\textsc{proved\_under\_stated\_assumptions} (K1)-(K2), with one explicit
+worked instance satisfying both. (K2) is not automatic and must be
+checked per construction — this is the honest boundary of the result,
+stated explicitly rather than silently assumed.

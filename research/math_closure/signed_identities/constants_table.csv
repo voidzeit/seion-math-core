@@ -1,0 +1,6 @@
+name,arity,triangle_upper_bound,certified_lower_construction,absolute_gap,ratio_of_triangle_bound,trials,local_refinement_steps,prior_verdict,note
+five_input_ternary_associator,3,2.0,1.3728658144870964,0.6271341855129036,0.6864329072435482,4000,200,IMPROVABLE_WITH_EXACT_CONSTANT_OPEN,
+anchored_associator,2,2.0,1.6575226604767213,0.34247733952327875,0.8287613302383606,4000,200,IMPROVABLE_WITH_EXACT_CONSTANT_OPEN,
+jacobiator_variants,2,3.0,2.982774748750292,0.017225251249707973,0.9942582495834307,4000,200,SHARP,
+named_gji_variants,3,6.0,6.661338147750939e-16,5.999999999999999,1.1102230246251565e-16,4000,200,OPEN_WITH_CERTIFIED_GAP,"certified_lower_construction=~0 is because the adversarial search uses rank-1 (collinear) leaves; PROVED to vanish identically there (research/math_closure/gji/). The general (non-collinear) case is nonzero (DISPROVED_BY_COUNTEREXAMPLE, same directory) but no adversarial search for a genuine general-case lower bound has been run - status here is OPEN_WITH_CERTIFIED_GAP for a DIFFERENT reason than the prior session believed."
+filippov_fundamental_identity,3,4.0,1.6635181103777974,2.3364818896222026,0.41587952759444935,4000,200,OPEN_WITH_CERTIFIED_GAP,

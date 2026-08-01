@@ -1,0 +1,231 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\usepackage{amsmath,amssymb}
+\usepackage{array,booktabs,tabularx}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{hyperref}
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={Adaptive Rank Allocation for Hierarchical Tensor Models via Pathwise Projected-Error Contributions},
+  pdfauthor={Eliuth Chavero Jasso},
+  pdfsubject={Adaptive rank allocation, hierarchical tensor networks, preregistered evaluation},
+  pdfkeywords={tensor networks, rank allocation, adaptive compression, preregistration, negative results}
+}
+
+\newcommand{\norm}[1]{\lVert#1\rVert}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\title[Adaptive rank allocation via pathwise projected-error contributions]{Adaptive Rank Allocation for Hierarchical Tensor Models\\ via Pathwise Projected-Error Contributions}
+\author{Eliuth Chavero Jasso}
+\address{Independent Researcher, Apizaco, Tlaxcala, Mexico}
+\date{1 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We implement the primary applied benchmark motivated by the projected-error theory of
+\cite{ChaveroJassoTrees}: adaptive rank allocation in a hierarchical tensor network, guided
+by a pathwise score combining each node's own truncation error with an empirical estimate
+of how that error amplifies along the path to the root. We evaluate this method against
+five other allocation strategies and a small-case exhaustive oracle, across three
+experimental levels (exact synthetic validation, teacher-student regression, and a
+finite-difference Burgers-equation surrogate), with hypotheses preregistered before the
+confirmatory (Level~1) run. The results are genuinely mixed: the pathwise method
+significantly outperforms one of three preregistered baselines and significantly
+\emph{underperforms} the other two in the confirmatory design, and is statistically
+indistinguishable from most baselines in the two exploratory designs. What does hold
+robustly is calibration: the pathwise majorant is an empirical upper bound in every tested
+configuration, and correlates strongly with true error ($r=0.933$, $\rho=0.922$). We report
+this as a negative-to-mixed result, not a success story, per the epistemic standard the
+underlying mathematical work applies to itself.
+\end{abstract}
+
+\section{Introduction}
+
+The projected-error theorem of \cite{ChaveroJassoTrees} bounds the discrepancy introduced
+by orthogonal projection at every internal vertex of a finite typed multilinear composition
+tree, in terms of a local closure-leakage bound $\rho$, an operator-norm bound $M$, the
+number of internal vertices $k$, and a product of amplification factors along each path to
+the root. This suggests a natural applied question: if a hierarchical tensor network must
+allocate a limited total rank budget across its internal vertices, should that allocation be
+guided by the \emph{same} local-error-times-path-amplification quantity that governs the
+theorem's own bound?
+
+We implement this as the primary applied benchmark, following the same discipline as the
+mathematical work it is motivated by: every hypothesis is stated before the confirmatory
+run, every comparison is reported regardless of outcome, and no numerical experiment is
+treated as a proof of anything beyond what it directly measured.
+
+\section{The network and the allocation problem}
+
+\begin{definition}[Hierarchical tensor network, this benchmark's instantiation]
+A rooted tree $T$ with leaves holding input data vectors. Each internal vertex $v$ with
+children $c_1,\dots,c_a$ performs a multilinear contraction $\mu_v$ (a random or fitted
+tensor of shape $(\text{ambient}_v, \dim(c_1),\dots,\dim(c_a))$), followed by an orthogonal
+projection $P_v$ to a chosen rank $r_v \le \text{ambient}_v$. The projector $P_v$ is fit
+once, via singular value decomposition on a batch of ambient outputs at $v$ (genuine,
+data-driven singular-value decay -- not synthetic). The root is never projected.
+\end{definition}
+
+For each node we compute, exactly (Level~1) or by direct measurement (Levels~2--3):
+local truncation error $\lambda_v$ (the node's own reconstruction loss, measured on
+un-degraded ambient inputs, isolating it from propagated error), an empirical path
+amplification factor $h_v$ (a finite-difference directional-derivative estimate of the
+parent's sensitivity to $v$'s output), and the pathwise score
+\[
+  \mathrm{score}_v = \lambda_v \prod_{e \in \mathrm{path}(v,\mathrm{root})} h_e,
+\]
+exactly the mission's proposed quantity. The predicted majorant is $\sum_v \mathrm{score}_v$.
+
+\subsection{Allocation methods compared}
+
+Uniform; singular-energy (retain 90\% of each node's own spectral energy, rescaled to
+budget); local-error-greedy (greedy on $\lambda_v$ alone); random; gradient-based (a
+first-order sensitivity proxy, not full backpropagation through a continuous rank
+relaxation); the proposed pathwise global-contribution method (greedy on marginal
+$\mathrm{score}$ per unit rank); and a small-case exhaustive oracle. Five ablations
+isolate the pathwise score's components: local-source-only, path-amplification-only, the
+universal coarse $(k-1)$ bound applied as uniform allocation, a deliberately incorrect
+root-residual negative control, and random path coefficients replacing the real
+amplification estimates.
+
+\section{Preregistration and experimental levels}
+
+Hypotheses were written (\texttt{PREREGISTRATION.md}, in the accompanying software
+package) before the confirmatory Level~1 campaign: primary, that pathwise allocation
+achieves lower true root error than uniform, singular-energy, and local-error-greedy at
+equal budget; secondary, that it reaches a fixed error tolerance at lower budget. Levels~2
+and~3 were designed and run after Level~1's results were seen, and are reported as
+\emph{exploratory}, not confirmatory, throughout.
+
+\textbf{Level 1 (exact synthetic validation).} Two topologies (a depth-3 chain, a balanced
+binary tree over 4 leaves), 10 seeds each, 6 rank budgets, all 6 real methods plus the
+oracle plus 5 ablations: 1{,}440 records, all exactly computable (fixed random cores, no
+training). \textbf{Level 2 (hierarchical tensor regression).} A teacher-student design: a
+fixed full-rank ``teacher'' network defines a synthetic regression target; a ``student'' of
+the same topology is fit by closed-form ridge least squares at its root, with intermediate
+layers acting as fixed random multilinear features truncated per the rank allocation under
+test. 5 seeds, 5 budgets, 150 records. \textbf{Level 3 (Burgers-equation surrogate).} The
+same fitting scheme, with the regression target now the final state of a real
+finite-difference solution of the one-dimensional viscous Burgers equation (periodic
+boundary conditions, explicit upwind/central scheme) as a function of the viscosity and a
+handful of initial-condition Fourier coefficients. 5 seeds, 6 budgets, 180 records.
+
+\section{Results}
+
+\subsection{Level 1: mixed, honestly reported}
+
+\begin{center}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrl}
+\toprule
+Baseline & Mean error reduction (pathwise vs.\ baseline) & 95\% CI & Supported? \\
+\midrule
+uniform & $-0.055$ & $[-0.074,-0.036]$ & \textbf{No} -- uniform is better \\
+singular\_energy & $+0.095$ & $[0.028,0.163]$ & \textbf{Yes} \\
+local\_error\_greedy & $-0.077$ & $[-0.100,-0.057]$ & \textbf{No} -- local-greedy is better \\
+\bottomrule
+\end{tabular}%
+}
+\end{center}
+
+This is a negative result for two of the three preregistered comparisons, retained and
+reported rather than omitted. Regret against the small-case oracle confirms it:
+local-error-greedy has the lowest mean regret (0.345) of all six real methods, ahead of
+pathwise global-contribution (0.423). The secondary (rank-efficiency) hypothesis is
+likewise not supported at any tested error tolerance.
+
+What does hold: the pathwise majorant never exceeded the true error in any of 100 measured
+configurations (ratio always in $[0.35, 0.93]$), and predicted majorant correlates strongly
+with true error across all methods and configurations combined (Pearson $r=0.933$, Spearman
+$\rho=0.922$, $n=1320$) -- real, positive support for calibration even where the allocation
+comparison itself is not favorable.
+
+\subsection{Ablations: informative, not merely confirmatory}
+
+The \texttt{local\_source\_only} ablation (drop the path-amplification factor entirely)
+\emph{outperforms} the full pathwise method in this design. \texttt{path\_amplification\_only}
+(drop local error) is clearly worse. \texttt{random\_path\_coefficients} is statistically
+indistinguishable from the real, measured path amplification (95\% CI $[-0.079,0.042]$
+includes zero). Read together, these three findings say the same thing: in Level~1's
+fully-random, untrained network cores, the path-amplification component of the score is not
+adding value over local truncation error alone, and may be actively unhelpful. The
+deliberately-incorrect root-residual negative control is confirmed worse than the real
+method (CI excludes zero, correct direction) -- after a bug was found and fixed in its first
+implementation (an earlier version multiplied every node's score by the same tree-wide
+constant, which cannot perturb a greedy ranking at all; the corrected version uses a
+genuinely node-dependent spurious factor).
+
+\subsection{Levels 2 and 3: exploratory}
+
+Level~2 produced a null result: all five paired comparisons against pathwise
+global-contribution have 95\% confidence intervals including zero. Level~3, after a real
+design bug was found and fixed (the first topology gave the one allocatable intermediate
+node two one-dimensional leaf inputs, making its output mathematically rank-one regardless
+of the declared ambient dimension -- every method produced byte-identical predictions at
+every rank until this was corrected), gives a partially positive result: pathwise
+global-contribution significantly beats uniform, local-error-greedy, and random, and ties
+with singular-energy and gradient-based. The surrogate's absolute accuracy remains weak
+(mean test RMSE barely below the naive training-mean baseline), a real limitation stated
+plainly rather than obscured by the relative comparison.
+
+\section{Interpretation}
+
+Read together, the three levels do not support a universal claim that pathwise
+global-contribution allocation is the best choice. What they support is narrower and more
+useful: the pathwise majorant is a well-calibrated, strongly correlated estimate of true
+error (a real, positive finding, criterion~3 of the mission's own success criteria), while
+its use as an \emph{allocation} signal is context-dependent -- helpful against some
+baselines and tasks (singular-energy in Level~1; three of five baselines in Level~3), not
+others (uniform and local-error-greedy in Level~1; all baselines in Level~2). A plausible
+account, not established here, is that path amplification is informative only when the
+network's structure carries real long-range dependencies to exploit -- absent in Level~1's
+fully random cores, present to some degree once the root is fit to real data (Levels~2--3).
+
+\section{Limitations}
+
+Per-node correlation between predicted contribution and each node's individually-ablated
+marginal benefit (the mission's own AI5 metric, at node rather than whole-tree granularity)
+was not measured. Levels~2--3 use closed-form ridge least squares at the root only, with
+untrained intermediate layers -- not full end-to-end training. Level~3's absolute surrogate
+accuracy is weak. No claim of a proven or certified worst-case advantage on a restricted
+class (mission success criterion~4) was attempted.
+
+\section{Reproducibility}
+
+All code, raw records (1{,}770 total across three levels), and analysis scripts are in
+\texttt{applications/adaptive\_tensor\_network/} in the accompanying repository. Every
+result in this paper is read directly from a committed JSON file produced by a script also
+in that directory; none is asserted from memory. 16 unit/regression tests cover budget
+conservation for every method and ablation, projector orthonormality and idempotence, no
+test-set leakage, determinism given a fixed seed, and both bugs described above (as
+named regression tests, so they cannot silently reappear).
+
+\begin{thebibliography}{9}
+\bibitem{ChaveroJassoTrees}
+E.~Chavero Jasso, \emph{Recursive Orthogonal Projection of Typed Multilinear Trees},
+accompanying manuscript, this package.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,4 @@
+chain:  E_T^proj(eta)^2 = 9.0*eta**4*(1 - eta**2)  -> E_T^proj = 3.0*eta**2*sqrt(1 - eta**2)
+branch: E_T^proj(eta)^2 = 1.0*eta**4*(1 - eta**2)  -> E_T^proj = 1.0*eta**2*sqrt(1 - eta**2)
+chain: optimal eta = sqrt(2)/2 = 0.707107, best ratio = 0.750000000000000 = 0.750000, min relative gap = 0.250000
+branch: optimal eta = sqrt(2)/2 = 0.707107, best ratio = 0.250000000000000 = 0.250000, min relative gap = 0.750000

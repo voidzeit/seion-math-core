@@ -1,0 +1,24 @@
+{
+  "version": "0.4.0",
+  "generated_utc": "2026-07-30T02:45:55.326894+00:00",
+  "wheel_exit": 0,
+  "sdist_exit": 0,
+  "artifacts": [
+    {
+      "path": "artifacts/release_v4/packages/seion_math_core-0.4.0-py3-none-any.whl",
+      "sha256": "ec688bbffce06546429de3ea769fad9fccbc13921016ec5b3ca217766beabf3c",
+      "bytes": 142421
+    },
+    {
+      "path": "artifacts/release_v4/packages/seion_math_core-0.4.0.tar.gz",
+      "sha256": "6bda6fe9cc3711621dae4e3dc670c2435a4aa45f82326fc4f5c0c29abea21e70",
+      "bytes": 97362
+    },
+    {
+      "path": "artifacts/release_v4/seion-math-core-v4-reproducibility.zip",
+      "sha256": "1ecd760087cc5b43dc68c47f16cd9efe2edf4c1a4c2a2d45c3520d4a46fef3f7",
+      "bytes": 259690
+    }
+  ],
+  "policy": "candidate; human review and unresolved mathematical gates remain"
+}

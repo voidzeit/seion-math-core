@@ -1,0 +1,13 @@
+  infra/agent-graph-loop-v1                            c3f6abe [origin/infra/agent-graph-loop-v1] Freeze SEION V5 evidence contract v1 (Phase 2): schemas, 12 critical gates, invariants
+  master                                               247de08 Execute the canonical run matrix
+  program/seion-canonical-repository-v4                f0c3807 [origin/program/seion-canonical-repository-v4] Fix pre-existing CI: missing pytest install extra, missing torch skip-guard
+  release/seion-integrated-v5                          427ad52 Record v4 canonical handoff
+  research/nodewise-tree-constants-v3                  a39de80 chore(governance): seal final v3 release evidence
+* research/projected-tree-theory-v5                    2e419ef [origin/research/projected-tree-theory-v5] Expand tree_stability_v4 with this session's signed-forest and k=2/k=3 findings
+  research/spectral-a-to-n-v18                         8e09941 [origin/research/spectral-a-to-n-v18] Expand supplementary visual atlas with 2 new figures from the 416-cell sweep
+  research/structure-preserving-reduction-v2           cde6f3b checkpoint: freeze v2 before nodewise tree constants v3
+  remotes/origin/infra/agent-graph-loop-v1             c3f6abe Freeze SEION V5 evidence contract v1 (Phase 2): schemas, 12 critical gates, invariants
+  remotes/origin/main                                  a39de80 chore(governance): seal final v3 release evidence
+  remotes/origin/program/seion-canonical-repository-v4 f0c3807 Fix pre-existing CI: missing pytest install extra, missing torch skip-guard
+  remotes/origin/research/projected-tree-theory-v5     2e419ef Expand tree_stability_v4 with this session's signed-forest and k=2/k=3 findings
+  remotes/origin/research/spectral-a-to-n-v18          8e09941 Expand supplementary visual atlas with 2 new figures from the 416-cell sweep

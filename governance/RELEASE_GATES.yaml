@@ -1,0 +1,37 @@
+version: 5
+gates:
+  math: [proof_status, prior_art, counterexamples, claim_lint, human_review]
+  software: [tests, static_quality, artifact_contracts, packaging, security]
+  dataset: [run_registry, deduplication, manifests, hashes]
+  extended: [budget, resource_gate, terminal_rows, aggregate_audit]
+# v5 (SEION V5 Phase 2 freeze, see governance/EVIDENCE_CONTRACT_V1.md): the
+# 12 critical gates from the mission spec, cross-referenced to whichever
+# track/document owns their concrete pass-condition definition. Adding a
+# gate here or changing an owner requires a schemas/MIGRATIONS.md entry.
+critical_gates:
+  construction_integrity:
+    owner: spectral/certification_v18/GATE_TAXONOMY.md (SPECTRAL_LEGACY_TRACK)
+    note: "STRUCTURAL_IDENTITY_PASS only — construction-integrity must never be conflated with scientific relevance."
+  projector_relevance:
+    owner: spectral/certification_v18/GATE_TAXONOMY.md#projector_gate (SPECTRAL_LEGACY_TRACK)
+  algebra:
+    owner: spectral/certification_v18/GATE_TAXONOMY.md#algebra_gate (SPECTRAL_LEGACY_TRACK)
+  dynamic_explanation:
+    owner: spectral/certification_v18/GATE_TAXONOMY.md#dynamic_explanation_gate (SPECTRAL_LEGACY_TRACK)
+  interscale:
+    owner: spectral/certification_v18/GATE_TAXONOMY.md#interscale_gate (SPECTRAL_LEGACY_TRACK)
+  gauge:
+    owner: spectral/certification_v18/GATE_TAXONOMY.md#gauge_gate (SPECTRAL_LEGACY_TRACK)
+  persistence:
+    owner: spectral/certification_v18/GATE_TAXONOMY.md#persistence_gate (SPECTRAL_LEGACY_TRACK)
+  reproducibility:
+    owner: spectral/certification_v18/GATE_TAXONOMY.md#reproducibility_gate (SPECTRAL_LEGACY_TRACK); software.tests+artifact_contracts (CANONICAL_FINITE_CORE)
+  proof:
+    owner: spectral/certification_v18/GATE_TAXONOMY.md#mathematical_proof_gate (SPECTRAL_LEGACY_TRACK); math.proof_status (CANONICAL_FINITE_CORE / Track T)
+  novelty:
+    owner: math.prior_art + math.human_review — not yet exercised, see mission Phase 9 (theorem-to-theorem novelty audit); no AI process may self-approve this gate
+  paper:
+    owner: not yet exercised, see mission Phase 11 (submission-ready papers) / paper/quality/paper_quality_report.json contract
+  release:
+    owner: this file's math/software/dataset/extended categories jointly, plus novelty+paper gates above; no release gate may pass while any upstream gate is open
+policy: fail_closed

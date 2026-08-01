@@ -1,0 +1,11 @@
+\begin{tabular}{@{}lp{0.58\linewidth}l@{}}
+\toprule
+bounds & generated formula & status \\
+\midrule
+homogeneous ambient & $k\rho M^{k-1}\prod_\ell\lVert z_\ell\rVert$ & proved \\
+homogeneous projected & $(k-1)\rho M^{k-1}\prod_\ell\lVert z_\ell\rVert$ & proved \\
+nodewise subset & $\rho_v\prod_iB_i^R+M_v\sum_{\varnothing\ne S}\prod_{i\in S}B_i^A\prod_{j\notin S}B_j^R$ & proved \\
+pathwise & $\sum_v\rho_v\prod_{e\in\pi(v)}L_e$ & proved upper \\
+optimized telescoping & $\min_\pi\sum_j w_{\pi_j}(f_{\pi_j}-r_{\pi_j})\prod_{i<j}f_{\pi_i}\prod_{i>j}r_{\pi_i}$ & proved upper \\
+\bottomrule
+\end{tabular}

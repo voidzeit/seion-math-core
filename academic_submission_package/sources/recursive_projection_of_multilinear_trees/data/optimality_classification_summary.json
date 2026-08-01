@@ -1,0 +1,67 @@
+{
+  "source_gap_registry": "artifacts/index/optimality_gaps_v3.csv",
+  "source_exact_atlas": "artifacts/research_v3/block_A_exact_atlas.csv",
+  "method": "The optimality class is a pure function of the certified lower and upper bounds. The corrected classifier was re-applied to the bounds already recorded in the committed artifacts. No experiment was re-run and no historical artifact was modified.",
+  "gap_registry_rows": 9945,
+  "gap_registry_counts": {
+    "EXACTLY_DETERMINED_POSITIVE": 309,
+    "EXACTLY_ZERO_BY_THEOREM": 30,
+    "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP": 7812,
+    "NO_POSITIVE_LOWER_BOUND_OBTAINED": 1794
+  },
+  "gap_registry_counts_by_error_type": {
+    "ambient": {
+      "EXACTLY_DETERMINED_POSITIVE": 258,
+      "EXACTLY_ZERO_BY_THEOREM": 0,
+      "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP": 3622,
+      "NO_POSITIVE_LOWER_BOUND_OBTAINED": 395
+    },
+    "normal": {
+      "EXACTLY_DETERMINED_POSITIVE": 30,
+      "EXACTLY_ZERO_BY_THEOREM": 0,
+      "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP": 1098,
+      "NO_POSITIVE_LOWER_BOUND_OBTAINED": 267
+    },
+    "projected": {
+      "EXACTLY_DETERMINED_POSITIVE": 21,
+      "EXACTLY_ZERO_BY_THEOREM": 30,
+      "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP": 3092,
+      "NO_POSITIVE_LOWER_BOUND_OBTAINED": 1132
+    }
+  },
+  "exact_atlas_rows": 4185,
+  "exact_atlas_counts": {
+    "EXACTLY_DETERMINED_POSITIVE": 66,
+    "EXACTLY_ZERO_BY_THEOREM": 30,
+    "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP": 3063,
+    "NO_POSITIVE_LOWER_BOUND_OBTAINED": 1026
+  },
+  "exact_atlas_counts_by_error_type": {
+    "ambient": {
+      "EXACTLY_DETERMINED_POSITIVE": 30,
+      "EXACTLY_ZERO_BY_THEOREM": 0,
+      "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP": 1137,
+      "NO_POSITIVE_LOWER_BOUND_OBTAINED": 228
+    },
+    "normal": {
+      "EXACTLY_DETERMINED_POSITIVE": 30,
+      "EXACTLY_ZERO_BY_THEOREM": 0,
+      "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP": 1098,
+      "NO_POSITIVE_LOWER_BOUND_OBTAINED": 267
+    },
+    "projected": {
+      "EXACTLY_DETERMINED_POSITIVE": 6,
+      "EXACTLY_ZERO_BY_THEOREM": 30,
+      "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP": 828,
+      "NO_POSITIVE_LOWER_BOUND_OBTAINED": 531
+    }
+  },
+  "prose_labels": {
+    "EXACTLY_DETERMINED_POSITIVE": "constant determined exactly (positive value)",
+    "EXACTLY_ZERO_BY_THEOREM": "null case, an immediate consequence of the theorem",
+    "POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP": "positive lower and upper bounds that do not yet coincide",
+    "NO_POSITIVE_LOWER_BOUND_OBTAINED": "no positive lower bound obtained"
+  },
+  "maximum_absolute_gap": 32.0,
+  "relative_gap_definition": "(upper - lower) / upper; a value of 1 means lower == 0"
+}

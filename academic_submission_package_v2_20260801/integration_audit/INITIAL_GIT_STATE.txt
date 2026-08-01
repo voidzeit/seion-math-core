@@ -1,0 +1,72 @@
+1 .M N... 100644 100644 100644 b871a3655fd7d4ec48a2056e4fc8dd1e9b09846b b871a3655fd7d4ec48a2056e4fc8dd1e9b09846b scripts/build_tree_constants_v3_tables.py
+1 .M N... 100644 100644 100644 19c4b5351bdb8c4f5e084a2162ca06d728663e5f 19c4b5351bdb8c4f5e084a2162ca06d728663e5f scripts/tree_constants_v3_audit.py
+1 .M N... 100644 100644 100644 0c37d9df8eccc37a75698b591c43301cb4c1cf6e 0c37d9df8eccc37a75698b591c43301cb4c1cf6e scripts/tree_constants_v3_pipeline.py
+1 .M N... 100644 100644 100644 aaaa89894eb8b5dbbe723f1215494d2e8ef88a64 aaaa89894eb8b5dbbe723f1215494d2e8ef88a64 src/seion_core/research_v3/interval_certification.py
+? academic_delivery_work/
+? academic_submission_package/
+? docs/research/NEXT_SESSION_DELIVERY_PACKAGE_PROMPT.md
+? docs/research/truth_audit_2026_07_29/
+? integration_audit/
+? papers/a_to_n_certification_v18/
+? papers/software_reproducibility_v5/
+? papers/supplementary_visual_atlas_v18/
+? scripts/regenerate_optimality_classification.py
+? scripts/sanitize_generated_tables.py
+? spectral/
+---BRANCHES---
+  infra/agent-graph-loop-v1                            c3f6abe [origin/infra/agent-graph-loop-v1] Freeze SEION V5 evidence contract v1 (Phase 2): schemas, 12 critical gates, invariants
+  master                                               247de08 Execute the canonical run matrix
+  program/seion-canonical-repository-v4                f0c3807 [origin/program/seion-canonical-repository-v4] Fix pre-existing CI: missing pytest install extra, missing torch skip-guard
+  release/seion-integrated-v5                          427ad52 Record v4 canonical handoff
+  research/nodewise-tree-constants-v3                  a39de80 chore(governance): seal final v3 release evidence
+* research/projected-tree-theory-v5                    2e419ef [origin/research/projected-tree-theory-v5] Expand tree_stability_v4 with this session's signed-forest and k=2/k=3 findings
+  research/spectral-a-to-n-v18                         8e09941 [origin/research/spectral-a-to-n-v18] Expand supplementary visual atlas with 2 new figures from the 416-cell sweep
+  research/structure-preserving-reduction-v2           cde6f3b checkpoint: freeze v2 before nodewise tree constants v3
+  remotes/origin/infra/agent-graph-loop-v1             c3f6abe Freeze SEION V5 evidence contract v1 (Phase 2): schemas, 12 critical gates, invariants
+  remotes/origin/main                                  a39de80 chore(governance): seal final v3 release evidence
+  remotes/origin/program/seion-canonical-repository-v4 f0c3807 Fix pre-existing CI: missing pytest install extra, missing torch skip-guard
+  remotes/origin/research/projected-tree-theory-v5     2e419ef Expand tree_stability_v4 with this session's signed-forest and k=2/k=3 findings
+  remotes/origin/research/spectral-a-to-n-v18          8e09941 Expand supplementary visual atlas with 2 new figures from the 416-cell sweep
+---LOG---
+* 2e419ef (HEAD -> research/projected-tree-theory-v5, origin/research/projected-tree-theory-v5) Expand tree_stability_v4 with this session's signed-forest and k=2/k=3 findings
+* 613a44b Add formalization paper: Kernel-Integrated Typed Multilinear Laws (v5)
+* 05acdd7 Theorem-to-theorem novelty audit (SEION V5 Phase 9)
+* 530fb4c Signed forest adversarial search + terminal status (SEION V5 Phase 8)
+* 3cf2ec6 Fix pre-existing CI: missing pytest install extra, missing torch skip-guard
+* 82ce66e Terminal status synthesis for Track T k=2/k=3 (SEION V5 Phase 6/7)
+| * 8e09941 (origin/research/spectral-a-to-n-v18, research/spectral-a-to-n-v18) Expand supplementary visual atlas with 2 new figures from the 416-cell sweep
+| * c8a6a80 Expand A-N certification and software papers with this session's real results (Phase 11)
+| * c4e3b3e Phase 4 S1 broad-screening sweep results (SEION V5)
+| * e7287e8 A-N dataset skeleton and Phase 4 S1 driver (SEION V5 Phase 10 start + Phase 4)
+| * 9f4ca31 A-N terminal classification synthesis (SEION V5 Phase 5)
+| * cdeb63b Execute A-N pilot sweep on real hardware (SEION V5 Phase 3)
+| * 007d9a1 Add device parameter to blocks G/H/N so they can actually run on GPU
+| * 6550335 Add next-cycle prompt: expand the three short papers to full length
+| * 2ebc422 Fix spectral-test CI: don't depend on uncommitted spectral/runs/ at test time
+| * 4aaf647 Fix pre-existing CI: missing pytest/torch install extras, job-name collision
+| * ce50cb4 Add final delivery report for the spectral A-N v18 campaign
+| * 558a590 Release products: A-N certification paper, software companion, visual atlas, truth report
+| * 5c102af v18 certification suite: typed gates + all 14 blocks A-N + fail-closed evaluation
+| * d7b9941 Phase 0: ingest spectral A-N legacy evidence, add SPECTRAL_LEGACY_TRACK scope
+|/  
+| * c3f6abe (origin/infra/agent-graph-loop-v1, infra/agent-graph-loop-v1) Freeze SEION V5 evidence contract v1 (Phase 2): schemas, 12 critical gates, invariants
+| * dbb0c9b Fix real pip-audit CVE finding, add codeql workflow_dispatch, classify untracked dirs
+| * e43b09d Add security/quality CI gates and fail-closed governance mutation tests
+| * 70620d4 chore(governance): refresh audit index artifacts for infra/agent-graph-loop-v1
+| * 46d8d55 Fix pre-existing CI: missing pytest/torch install extras, job-name collision
+| * 5a2e32f Add an executable agent-graph-loop for the development lifecycle
+|/  
+| * f0c3807 (origin/program/seion-canonical-repository-v4, program/seion-canonical-repository-v4) Fix pre-existing CI: missing pytest install extra, missing torch skip-guard
+|/  
+* 427ad52 (release/seion-integrated-v5) Record v4 canonical handoff
+* d1b176a Implement SEION canonical repository v4
+* a39de80 (origin/main, research/nodewise-tree-constants-v3) chore(governance): seal final v3 release evidence
+* 91025b9 fix(governance): prevent release gate self-dirtying
+* 3dbf401 chore(research): record canonical v3 evidence and papers
+* b718f4e feat(research): add nodewise tree constants v3 system
+* cde6f3b (research/structure-preserving-reduction-v2) checkpoint: freeze v2 before nodewise tree constants v3
+* 247de08 (master) Execute the canonical run matrix
+* c7cf35b Complete reproducibility release packaging
+* 1e85989 Implement SEION mathematical verification core
+---HEAD---
+2e419ef4e1c028cfb85348feb515746e6c538ea8

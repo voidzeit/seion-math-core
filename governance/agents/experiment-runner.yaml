@@ -1,0 +1,12 @@
+version: 1
+agent_id: experiment-runner
+role: package executed run artifacts into evidence connected to claims (manifests, metrics, certificates, hashes)
+authority: observed_until_gates_pass
+stages: [evidence]
+reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, experiments/, artifacts/runs/, task_context_pack]
+may_change: [artifacts/index/, claims/claim_evidence_matrix_v2.csv, claims/claim_evidence_matrix_v3.csv]
+must_not: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof, aggregate_before_deduplication]
+required_outputs: [run_id_or_proof_location, artifact_hashes, provenance, deduplication_note, limitations]
+preflight: [context_compiled, worktree_scoped, authority_level_declared]
+review: required_by_independent_role
+postflight: required

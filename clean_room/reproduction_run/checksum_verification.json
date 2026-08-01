@@ -1,0 +1,31 @@
+{
+  "checksums_recorded": 162,
+  "checked": 157,
+  "mismatches": [
+    {
+      "path": "clean_room/Containerfile",
+      "expected": "a7718ef1d0bd9292abf4b5d62910d59109bef4e3d8ab721a17c3a8fcb66d0d21",
+      "actual": "38bd301dd9bddc0a233d2e43093b7aeeaa761a6bf4e85f139561440f909a66a2"
+    },
+    {
+      "path": "verification/build_logs/01_recursive_projection_of_multilinear_trees.log",
+      "issue": "file not found"
+    },
+    {
+      "path": "verification/build_logs/02_kernel_defined_multilinear_operators.log",
+      "issue": "file not found"
+    },
+    {
+      "path": "verification/build_logs/03_numerical_study_of_projected_multilinear_models.log",
+      "issue": "file not found"
+    },
+    {
+      "path": "verification/build_logs/04_software_and_reproducibility.log",
+      "issue": "file not found"
+    },
+    {
+      "path": "verification/build_logs/05_supplementary_numerical_results.log",
+      "issue": "file not found"
+    }
+  ]
+}

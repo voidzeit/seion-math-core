@@ -1,0 +1,795 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% See the note in the companion article: without an outline font the T1 text fonts are
+% embedded as Type 3 bitmaps and the ligatures cease to be searchable in the PDF.
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs,tabularx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={Kernel-Defined Multilinear Operators and Conditional Analytic Extensions of a Finite Projection Theory},
+  pdfauthor={Eliuth Chavero Jasso},
+  pdfsubject={Multilinear integral operators on L2, associator kernels, truncated Hodge compatibility, induced Markov operators},
+  pdfkeywords={multilinear integral operator, associator, orthogonal projection, cochain complex, Hodge Laplacian, spectral truncation, Markov operator}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\Types}{\mathcal T}
+\newcommand{\Kop}{\mathcal K}
+\newcommand{\Energy}{\mathfrak E}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\amb}{\mathrm{amb}}
+\newcommand{\red}{\mathrm{red}}
+
+\title[Kernel-defined multilinear operators]{Kernel-Defined Multilinear Operators\\ and Conditional Analytic Extensions\\ of a Finite Projection Theory}
+\author{Eliuth Chavero Jasso}
+\address{Independent Researcher, Apizaco, Tlaxcala, Mexico}
+\thanks{Companion to \cite{ChaveroJassoTrees}, which contains the finite-dimensional
+theory. Nothing in the present article has been checked by anyone other than the author,
+and no claim of originality is made.}
+\date{31 July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A companion article \cite{ChaveroJassoTrees} studies finite composition trees of
+multilinear maps between finite-dimensional Hilbert spaces whose intermediate outputs are
+orthogonally projected onto prescribed subspaces, and proves an exact local error
+decomposition together with uniform coefficients $k$ and $k-1$ for the ambient and
+projected root errors. The present article asks which parts of that setting survive when
+the finite-dimensional spaces are replaced by $L^2$ spaces and the multilinear maps by
+integral operators, and it is explicit at every step about what is proved, what is proved
+only under stated hypotheses, and what is merely proposed.
+
+We prove that a kernel in $L^2(X^{a+1})$ defines a bounded multilinear operator on
+$L^2(X)$, and --- this closes a gap in an earlier formulation --- that the composite
+kernels obtained by inserting one such operator into another again lie in $L^2$, with
+$\norm{\kappa_L}_{L^2(X^{6})}\le\norm{\kappa}_{L^2(X^{4})}^{2}$ in the ternary case, so
+that the associator of a kernel-defined operator is itself given by a square-integrable
+defect kernel. We prove that the associator characterises this defect: under separability
+of $L^2(X,\nu)$, the associator vanishes on all products of $L^2$ functions if and only if
+the defect kernel vanishes almost everywhere. We record the exact identity relating an
+associator to the commutator defect of left multiplication operators, and we are careful
+to present the resulting algebraic tensor as a definition rather than as a curvature.
+For finite cochain complexes we give the standard conditions under which a degree-zero
+graded operator descends to cohomology and commutes with a Hodge Laplacian, and we state
+the spectral-truncation version as a statement about the truncation only. An induced
+Markov operator and its Dirichlet form are presented as a conditional construction whose
+hypothesis we do not verify for any kernel. Continuum limits, membership in a
+pseudodifferential class, and microlocal regularity are open questions and are collected
+as such.
+\end{abstract}
+
+\subjclass[2020]{47H60, 47G10, 46E30, 58J50, 17A30}
+\keywords{multilinear integral operator, associator kernel, orthogonal projection, cochain
+complex, Hodge Laplacian, spectral truncation, Markov operator}
+
+\tableofcontents
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{What the companion article establishes}
+\label{sec:finite}
+
+Let $\Types$ be a finite set of types, and for each $\tau\in\Types$ let $V_\tau$ be a
+finite-dimensional Hilbert space, $Q_\tau:W_\tau\to V_\tau$ an isometry and
+$P_\tau=Q_\tau Q_\tau^{*}$ the associated orthogonal projector. A finite rooted ordered
+tree whose internal vertices carry multilinear maps
+$\mu_v:\prod_jV_{\tau(v,j)}\to V_{\tau(v)}$ admits two evaluations: the unprojected one,
+and the one in which the output of every internal vertex is replaced by its orthogonal
+projection. Writing $E_T^{\amb}$, $E_T^{\proj}$, $E_T^{\perp}$ and $E_T^{\red}$ for the
+four resulting measures of discrepancy at the root, the companion article proves that
+\[
+ \bigl(E_T^{\amb}\bigr)^2=\bigl(E_T^{\proj}\bigr)^2+\bigl(E_T^{\perp}\bigr)^2,
+ \qquad
+ E_T^{\red}=E_T^{\proj},
+\]
+that the discrepancy at each vertex admits an exact decomposition into a locally created
+residual and a term for every nonempty subset of the children carrying an error, and that
+under uniform bounds $\norm{\mu_v}_\op\le M$ and $\norm{r_v}_\op\le\rho$ a tree with
+$k\ge1$ internal vertices satisfies
+\begin{equation}
+\label{eq:companion}
+ E_T^{\amb}\le k\rho M^{k-1}L_T,
+ \qquad
+ E_T^{\proj}=E_T^{\red}\le(k-1)\rho M^{k-1}L_T,
+\end{equation}
+$L_T$ being the product of the leaf norms. The coefficient $k-1$ is an upper bound; the
+companion article does not show it is attained at fixed $\rho/M>0$, and leaves the exact
+constant open already for two internal vertices.
+
+\emph{We reproduce none of these proofs.} They are stated above only to fix the notation
+and the hypotheses that the present article refers to, and every use of them below is a
+citation of \cite{ChaveroJassoTrees}.
+\label{sec:finite-end}
+
+\subsection{What this article does}
+
+The finite theory has three features that are not obviously stable under passage to
+infinite dimensions: it uses operator norms of multilinear maps, it uses orthogonal
+projectors with closed range, and it uses composition of multilinear maps. Each raises a
+separate analytic question, and the answers are of different quality.
+
+Section~\ref{sec:kernel} shows that multilinear operators defined by square-integrable
+kernels behave well: they are bounded, they depend continuously on the kernel, and ---
+Lemma~\ref{lem:composite} --- their composites are again defined by square-integrable
+kernels. This last point matters because the earlier formulation of this material defined
+the associator kernel without establishing that it exists, and the estimate supplied here
+removes that gap.
+
+Section~\ref{sec:associator} treats the associator. Proposition~\ref{prop:converse} shows
+that the associator determines the defect kernel exactly, under a separability hypothesis
+that we state explicitly because it is not automatic. Section~\ref{sec:curvature} records
+the identity relating the associator to the commutator defect of left multiplication
+operators. We emphasise that the algebraic tensor obtained from an associator is a
+definition, not a curvature tensor of a connection.
+
+Sections~\ref{sec:variational} and~\ref{sec:cohomology} concern structures that are
+finite or truncated: a variational formulation on a Stiefel manifold, and the descent of a
+degree-zero graded operator to the cohomology of a finite cochain complex, together with
+its spectral-truncation analogue. These are standard statements; we give them because the
+truncated versions are what the computational work of the companion program actually
+tests, and it is important that they not be mistaken for continuum statements.
+
+Section~\ref{sec:markov} presents an induced Markov operator and its Dirichlet form as a
+\emph{conditional construction}. Its hypothesis --- that a contraction of the kernel
+produces a symmetric nonnegative weight --- is not verified here for any kernel, and we
+say so.
+
+Section~\ref{sec:open} collects the open analytical questions. Continuum limits of the
+finite theory, membership of kernel-defined operators in a multilinear pseudodifferential
+class, and microlocal regularity are questions, not results, and no claim about them is
+made anywhere in this article.
+
+\section{Multilinear operators defined by square-integrable kernels}
+\label{sec:kernel}
+
+Let $(X,\nu)$ be a $\sigma$-finite measure space and $H=L^2(X,\nu)$. Throughout, $\nu$ is
+the measure; the letter $\mu$ is reserved for the multilinear maps of the finite theory
+and does not appear in this section.
+
+\begin{definition}[Kernel-defined multilinear operator]
+\label{def:kernelop}
+For $\kappa\in L^{2}(X^{a+1},\nu^{\otimes(a+1)})$ define
+\[
+ \Kop_\kappa(f_1,\ldots,f_a)(p)
+ =\int_{X^{a}}\kappa(p;q_1,\ldots,q_a)\prod_{j=1}^{a}f_j(q_j)\,
+ d\nu^{\otimes a}(q_1,\ldots,q_a).
+\]
+\end{definition}
+
+\begin{proposition}[Boundedness]
+\label{prop:bounded}
+If $\kappa\in L^{2}(X^{a+1})$ then $\Kop_\kappa$ is a well-defined bounded $a$-linear map
+$H^{a}\to H$, and
+\[
+ \norm{\Kop_\kappa(f_1,\ldots,f_a)}_{2}
+ \le\norm{\kappa}_{L^{2}(X^{a+1})}\prod_{j=1}^{a}\norm{f_j}_{2}.
+\]
+\end{proposition}
+
+\begin{proof}
+By Tonelli's theorem, $p\mapsto\norm{\kappa(p;\cdot)}_{L^{2}(X^{a})}$ is measurable and
+\[
+ \int_X\norm{\kappa(p;\cdot)}_{L^{2}(X^{a})}^{2}\,d\nu(p)=\norm{\kappa}_{L^{2}(X^{a+1})}^{2}.
+\]
+For $\nu$-almost every $p$ the function $\kappa(p;\cdot)$ lies in $L^{2}(X^{a})$, and
+$f_1\otimes\cdots\otimes f_a\in L^{2}(X^{a})$ with norm $\prod_j\norm{f_j}_2$ by Tonelli
+again. Cauchy--Schwarz on $X^{a}$ gives, for almost every $p$, both absolute convergence
+of the defining integral and
+\[
+ \bigl\lvert\Kop_\kappa(f_1,\ldots,f_a)(p)\bigr\rvert
+ \le\norm{\kappa(p;\cdot)}_{L^{2}(X^{a})}\prod_{j}\norm{f_j}_{2}.
+\]
+Squaring and integrating in $p$ gives the stated estimate.
+\end{proof}
+
+\begin{proposition}[Dependence on the kernel]
+\label{prop:stability}
+For $\kappa,\widetilde\kappa\in L^{2}(X^{a+1})$,
+\[
+ \norm{\Kop_\kappa(f_1,\ldots,f_a)-\Kop_{\widetilde\kappa}(f_1,\ldots,f_a)}_{2}
+ \le\norm{\kappa-\widetilde\kappa}_{L^{2}(X^{a+1})}\prod_j\norm{f_j}_2 .
+\]
+In particular $\kappa_n\to\kappa$ in $L^{2}(X^{a+1})$ implies
+$\Kop_{\kappa_n}\to\Kop_\kappa$ in the multilinear operator norm.
+\end{proposition}
+
+\begin{proof}
+$\kappa\mapsto\Kop_\kappa$ is linear, so this is Proposition~\ref{prop:bounded} applied to
+$\kappa-\widetilde\kappa$. The second assertion follows because the estimate is uniform
+over unit vectors.
+\end{proof}
+
+\subsection{Composite kernels}
+
+We now compose two ternary operators; the general $a$-ary case is identical.
+
+\begin{lemma}[Composite kernels are square-integrable]
+\label{lem:composite}
+Let $\kappa\in L^{2}(X^{4})$ and define, for almost every argument,
+\[
+ \kappa_L(p;q_1,\ldots,q_5)
+ =\int_X\kappa(p;u,q_4,q_5)\,\kappa(u;q_1,q_2,q_3)\,d\nu(u),
+\]
+\[
+ \kappa_R(p;q_1,\ldots,q_5)
+ =\int_X\kappa(p;q_1,q_2,u)\,\kappa(u;q_3,q_4,q_5)\,d\nu(u).
+\]
+Then the defining integrals converge absolutely for
+$\nu^{\otimes6}$-almost every $(p;q_1,\ldots,q_5)$, both $\kappa_L$ and $\kappa_R$ belong
+to $L^{2}(X^{6})$, and
+\[
+ \norm{\kappa_L}_{L^{2}(X^{6})}\le\norm{\kappa}_{L^{2}(X^{4})}^{2},
+ \qquad
+ \norm{\kappa_R}_{L^{2}(X^{6})}\le\norm{\kappa}_{L^{2}(X^{4})}^{2}.
+\]
+\end{lemma}
+
+\begin{proof}
+Write $g(p,q_4,q_5)=\norm{\kappa(p;\cdot,q_4,q_5)}_{L^{2}(X)}$ and
+$h(q_1,q_2,q_3)=\norm{\kappa(\cdot;q_1,q_2,q_3)}_{L^{2}(X)}$, both measurable by Tonelli.
+Cauchy--Schwarz in the variable $u$ gives, pointwise,
+\[
+ \int_X\lvert\kappa(p;u,q_4,q_5)\kappa(u;q_1,q_2,q_3)\rvert\,d\nu(u)
+ \le g(p,q_4,q_5)\,h(q_1,q_2,q_3),
+\]
+so the integral defining $\kappa_L$ converges absolutely whenever the right-hand side is
+finite, and
+\[
+ \lvert\kappa_L(p;q_1,\ldots,q_5)\rvert^{2}\le g(p,q_4,q_5)^{2}\,h(q_1,q_2,q_3)^{2}.
+\]
+Integrating over $X^{6}$ and using Tonelli to separate the variables,
+\[
+ \norm{\kappa_L}_{L^{2}(X^{6})}^{2}
+ \le\Bigl(\int_{X^{3}}g^{2}\,d\nu^{\otimes3}\Bigr)
+ \Bigl(\int_{X^{3}}h^{2}\,d\nu^{\otimes3}\Bigr)
+ =\norm{\kappa}_{L^{2}(X^{4})}^{2}\cdot\norm{\kappa}_{L^{2}(X^{4})}^{2},
+\]
+since each factor is $\norm{\kappa}_{L^{2}(X^{4})}^{2}$ by Tonelli. Finiteness of the
+left-hand side forces the right-hand side of the pointwise estimate to be finite almost
+everywhere, which is the asserted almost-everywhere absolute convergence. The argument for
+$\kappa_R$ is the same with the roles of the variables exchanged.
+\end{proof}
+
+\begin{remark}
+\label{rem:gapclosed}
+Lemma~\ref{lem:composite} is what makes Definition~\ref{def:assockernel} below legitimate.
+An earlier formulation of this material introduced $\kappa_L$, $\kappa_R$ and their
+difference, and defined an energy as the squared $L^{2}(X^{6})$ norm of that difference,
+without establishing that any of the three exists. Square-integrability of a kernel does
+not in general pass to composites of the associated operators for free; here it does, and
+the reason is the elementary estimate above.
+\end{remark}
+
+\section{The associator of a kernel-defined operator}
+\label{sec:associator}
+
+For a ternary operation there is no canonical associator without a choice of how the
+compositions are inserted. We fix one, and use it consistently.
+
+\begin{definition}[Five-input ternary associator]
+\label{def:assoc5}
+For a ternary multilinear map $\mu$ on a vector space,
+\[
+ A^{(5)}_{\mu}(x_1,\ldots,x_5)
+ =\mu(\mu(x_1,x_2,x_3),x_4,x_5)-\mu(x_1,x_2,\mu(x_3,x_4,x_5)).
+\]
+In operadic notation, $A^{(5)}_\mu=\mu\circ_1\mu-\mu\circ_3\mu$ \cite{Yau2016,LodayVallette2012}.
+\end{definition}
+
+Other conventions --- the binary associator induced by anchoring one argument, or
+insertion at another slot --- have different domains and different meanings. They must not
+be merged into a single quantity, and we do not do so.
+
+\begin{definition}[Defect kernel and associator energy]
+\label{def:assockernel}
+For $\kappa\in L^{2}(X^{4})$ put $\Phi_\kappa=\kappa_L-\kappa_R$, which lies in
+$L^{2}(X^{6})$ by Lemma~\ref{lem:composite}, with
+$\norm{\Phi_\kappa}_{L^{2}(X^{6})}\le2\norm{\kappa}_{L^{2}(X^{4})}^{2}$. The
+\emph{associator energy} is
+\[
+ \Energy_A(\kappa)=\norm{\Phi_\kappa}_{L^{2}(X^{6})}^{2}
+ \;\le\;4\norm{\kappa}_{L^{2}(X^{4})}^{4}.
+\]
+\end{definition}
+
+\begin{proposition}[The defect kernel represents the associator]
+\label{prop:represents}
+For all $f_1,\ldots,f_5\in L^{2}(X)$,
+\[
+ A^{(5)}_{\Kop_\kappa}(f_1,\ldots,f_5)(p)
+ =\int_{X^{5}}\Phi_\kappa(p;q_1,\ldots,q_5)\prod_{j=1}^{5}f_j(q_j)\,d\nu^{\otimes5}(q)
+\]
+for $\nu$-almost every $p$; that is, $A^{(5)}_{\Kop_\kappa}=\Kop_{\Phi_\kappa}$.
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:composite} the function
+$(u,q)\mapsto\kappa(p;u,q_4,q_5)\kappa(u;q_1,q_2,q_3)\prod_jf_j(q_j)$ is absolutely
+integrable over $X^{6}$ for almost every $p$: indeed Cauchy--Schwarz bounds its integral
+by $\norm{\kappa(p;\cdot)}_{L^{2}(X^{3})}\norm{\kappa}_{L^{2}(X^{4})}\prod_j\norm{f_j}_2$,
+which is finite for almost every $p$. Fubini's theorem therefore permits the interchange
+of the $u$-integration with the $q$-integration, which converts
+$\Kop_\kappa(\Kop_\kappa(f_1,f_2,f_3),f_4,f_5)$ into integration against $\kappa_L$. The
+same argument converts $\Kop_\kappa(f_1,f_2,\Kop_\kappa(f_3,f_4,f_5))$ into integration
+against $\kappa_R$. Subtracting gives the claim.
+\end{proof}
+
+\begin{proposition}[The associator determines the defect kernel]
+\label{prop:converse}
+Assume in addition that $L^{2}(X,\nu)$ is separable. Then
+\[
+ A^{(5)}_{\Kop_\kappa}(f_1,\ldots,f_5)=0
+ \text{ in }L^{2}(X)\text{ for all }f_1,\ldots,f_5\in L^{2}(X)
+ \iff
+ \Phi_\kappa=0
+ \quad\nu^{\otimes6}\text{-a.e.}
+\]
+\end{proposition}
+
+\begin{proof}
+If $\Phi_\kappa=0$ almost everywhere then the associator vanishes by
+Proposition~\ref{prop:represents}.
+
+Conversely, let $\{g_m\}_{m\in\mathbb N}$ be a countable dense subset of $L^{2}(X,\nu)$,
+which exists by separability. For each of the countably many $5$-tuples
+$(m_1,\ldots,m_5)$, Proposition~\ref{prop:represents} and the hypothesis give
+\[
+ \int_{X^{5}}\Phi_\kappa(p;q)\prod_{j=1}^{5}g_{m_j}(q_j)\,d\nu^{\otimes5}(q)=0
+\]
+for $p$ outside a $\nu$-null set $N_{m_1\cdots m_5}$. Let
+$N=\bigcup N_{m_1\cdots m_5}$, a countable union of null sets, hence null. Enlarging $N$
+if necessary, we may also assume that $\Phi_\kappa(p;\cdot)\in L^{2}(X^{5})$ for
+$p\notin N$, which holds almost everywhere by Lemma~\ref{lem:composite} and Tonelli.
+
+Fix $p\notin N$. The linear span of $\{g_{m_1}\otimes\cdots\otimes g_{m_5}\}$ is dense in
+$L^{2}(X^{5})$: finite linear combinations of products of elements of a dense subset of
+$L^{2}(X)$ are dense in the Hilbert space tensor product $L^{2}(X)^{\otimes5}\cong
+L^{2}(X^{5})$ \cite[Sec.~II.4]{ReedSimon1980}. The function $\Phi_\kappa(p;\cdot)$ is an
+element of $L^{2}(X^{5})$ orthogonal to a dense subspace, hence zero. As this holds for
+every $p\notin N$, we get $\Phi_\kappa=0$ almost everywhere by Tonelli.
+\end{proof}
+
+\begin{remark}
+\label{rem:separability}
+Separability is a genuine hypothesis and is not automatic for a $\sigma$-finite measure
+space; it holds when the underlying $\sigma$-algebra is countably generated modulo null
+sets. Without it the countable-dense-family argument is unavailable, and we make no claim.
+\end{remark}
+
+\section{Associators and commutator defects}
+\label{sec:curvature}
+
+Let $\circ$ be any bilinear operation on a vector space $V$ --- no algebra axioms are
+assumed. Write $\mathsf L_xz=x\circ z$ for left multiplication, $[x,y]=x\circ y-y\circ x$,
+and
+\[
+ A(x,y,z)=(x\circ y)\circ z-x\circ(y\circ z),
+ \qquad
+ R_{\mathrm{std}}(x,y)=[\mathsf L_x,\mathsf L_y]-\mathsf L_{[x,y]}.
+\]
+
+\begin{theorem}[Commutator defect and associator]
+\label{thm:commutator}
+For all $x,y,z\in V$,
+\[
+ R_{\mathrm{std}}(x,y)z=A(y,x,z)-A(x,y,z).
+\]
+\end{theorem}
+
+\begin{proof}
+Expanding the definitions,
+\begin{align*}
+ R_{\mathrm{std}}(x,y)z
+ &=x\circ(y\circ z)-y\circ(x\circ z)-(x\circ y)\circ z+(y\circ x)\circ z\\
+ &=\bigl[x\circ(y\circ z)-(x\circ y)\circ z\bigr]
+ -\bigl[y\circ(x\circ z)-(y\circ x)\circ z\bigr]\\
+ &=-A(x,y,z)+A(y,x,z).\qedhere
+\end{align*}
+\end{proof}
+
+\begin{definition}[Associator-based algebraic tensor]
+\label{def:ralg}
+One may \emph{define}, by convention, $R_{\mathrm{alg}}:=A$.
+\end{definition}
+
+\begin{remark}[This is a definition, not a curvature theorem]
+\label{rem:notcurvature}
+Definition~\ref{def:ralg} assigns a name to the associator. It does not identify
+$R_{\mathrm{alg}}$ with the curvature tensor of a connection: no connection, no bundle and
+no covariant derivative have been introduced, and none is implied. The only universal
+identity available is the antisymmetrised relation of Theorem~\ref{thm:commutator}. An
+outright identity $R_{\mathrm{std}}=A$ would require additional hypotheses, particular
+symmetries, or a different convention, and we do not assert one.
+\end{remark}
+
+\begin{remark}[Distinct identities]
+\label{rem:identities}
+Associativity, cyclic symmetry, the Jacobi identity and Filippov's fundamental identity
+\cite{Filippov1985} are distinct conditions. A small residual for one of them implies
+nothing about the others, and residuals for different conventions must not be aggregated
+into a single score. The companion article's numerical study of signed combinations
+\cite{ChaveroJassoTrees} keeps them separate for this reason.
+\end{remark}
+
+\section{Reduced operators, closure leakage, and a variational formulation}
+\label{sec:variational}
+
+\subsection{Reduced operators}
+
+Let $W$ be a Hilbert space, $Q:W\to V$ an isometry and $P=QQ^{*}$. For a multilinear map
+$\mu$ on $V$ the \emph{reduced map} is
+$\bar\mu(z_1,\ldots,z_a)=Q^{*}\mu(Qz_1,\ldots,Qz_a)$, with ambient realisation
+$Q\bar\mu(z_1,\ldots,z_a)=P\mu(Qz_1,\ldots,Qz_a)$. The subspace family is invariant under
+$\mu$ exactly when the \emph{closure-leakage map}
+$\mathcal C_\mu=(I-P)\mu(P\,\cdot,\ldots,P\,\cdot)$ vanishes identically; its operator
+norm $\rho_\mu=\norm{\mathcal C_\mu}_{\op}$ is the quantity denoted $\rho$ in
+\eqref{eq:companion}.
+
+\begin{remark}[An operator norm is not a sampled average]
+\label{rem:sampled}
+Numerical work frequently reports a normalised sampled quantity such as
+\[
+ \Energy_{\mathrm{closure}}
+ =\mathbb E\left[
+ \frac{\norm{(I-P)\mu(PX_1,\ldots,PX_a)}^{2}}
+ {\norm{\mu(PX_1,\ldots,PX_a)}^{2}+\varepsilon}\right]
+\]
+for random $X_i$. This is not $\rho_\mu$, and a small value of it does not bound
+$\rho_\mu$. The two must be reported separately.
+\end{remark}
+
+\subsection{Low-rank representation}
+
+To avoid storing a coefficient tensor of size $d_0d_1\cdots d_a$ one may use a rank-$R$
+canonical polyadic representation \cite{KoldaBader2009}. Such a representation is not
+unique: factors may be rescaled subject to a product constraint, and components permuted,
+without changing the tensor. Any comparison of factors must therefore be carried out
+modulo scaling, phase and permutation, and identifiability requires hypotheses of Kruskal
+type \cite{Kruskal1977}. A low-rank representation is a computational device; on its own
+it introduces no algebraic structure.
+
+\subsection{Variational formulation on a Stiefel manifold}
+
+Parametrising $P=QQ^{*}$ with $Q^{*}Q=I_r$ places $Q$ on the Stiefel manifold
+\[
+ \mathrm{St}(d,r)=\{Q\in\mathbb K^{d\times r}:Q^{*}Q=I_r\},
+ \qquad
+ T_Q\mathrm{St}(d,r)=\{Z:Q^{*}Z+Z^{*}Q=0\}.
+\]
+With respect to the metric induced by the Euclidean embedding, the Riemannian gradient of
+a smooth objective $\Energy$ with Euclidean gradient $G$ is
+\[
+ \operatorname{grad}\Energy(Q)=G-Q\operatorname{sym}(Q^{*}G),
+ \qquad
+ \operatorname{sym}(B)=\tfrac12(B+B^{*}),
+\]
+see \cite[Sec.~2.4]{EdelmanAriasSmith1998} and \cite[Ch.~3]{AbsilMahonySepulchre2008}. The
+canonical metric on $\mathrm{St}(d,r)$ gives a different gradient; we state the embedded
+Euclidean one because that is the one used in the accompanying computations.
+
+\begin{remark}
+\label{rem:localmin}
+A numerically located stationary point of such an objective need not be a global minimum,
+and the subspace it determines need not be canonical in any sense. This is the ordinary
+situation for nonconvex optimisation on a manifold, and no result below depends on the
+contrary.
+\end{remark}
+
+The tangent space $T_Q\mathrm{St}(d,r)$ is the one place in this article where the word
+\emph{tangent} refers to a tangent space. Elsewhere, $\ran P$ is a fixed linear subspace
+and the words \emph{projected} and \emph{orthogonal} are used.
+
+\section{Finite cochain complexes and spectral truncation}
+\label{sec:cohomology}
+
+\subsection{Descent to cohomology}
+
+Let $C^{\bullet}:C^{0}\xrightarrow{d_0}C^{1}\xrightarrow{d_1}\cdots\to C^{n}$ be a finite
+complex of finite-dimensional inner-product spaces with $d_{p+1}d_p=0$, and
+$H^{p}(C,d)=\ker d_p/\operatorname{im}d_{p-1}$.
+
+\begin{proposition}[Descent]
+\label{prop:descent}
+Let $S=(S_p)_{p}$ be a graded operator \emph{of degree zero}, i.e.\ $S_p:C^{p}\to C^{p}$
+for each $p$. If $S_{p+1}d_p=d_pS_p$ for every $p$, then $S$ induces a well-defined map
+$S_{*}:H^{p}(C,d)\to H^{p}(C,d)$ for every $p$.
+\end{proposition}
+
+\begin{proof}
+If $x\in\ker d_p$ then $d_pS_px=S_{p+1}d_px=0$, so $S_p$ preserves cocycles. If
+$x=d_{p-1}y$ then $S_px=S_pd_{p-1}y=d_{p-1}S_{p-1}y$, so $S_p$ preserves coboundaries.
+Hence $[x]\mapsto[S_px]$ is well defined.
+\end{proof}
+
+The degree-zero hypothesis is required and is stated explicitly; without it the two
+displayed compatibilities do not even typecheck.
+
+\subsection{Hodge compatibility}
+
+With $d^{*}$ the adjoints and $\Delta_p=d_{p-1}d_{p-1}^{*}+d_p^{*}d_p$ the Hodge
+Laplacian, put $\mathcal H^{p}=\ker\Delta_p$.
+
+\begin{proposition}[Harmonic subspaces]
+\label{prop:hodge}
+If $S$ commutes with $d$ and with $d^{*}$ in the graded sense, then $S$ commutes with
+$\Delta$, hence $S_p(\mathcal H^{p})\subseteq\mathcal H^{p}$.
+\end{proposition}
+
+\begin{proof}
+Immediate from $\Delta=dd^{*}+d^{*}d$ and bilinearity of the commutator. The last
+assertion follows because $\Delta_pS_px=S_p\Delta_px=0$ for $x\in\mathcal H^{p}$.
+\end{proof}
+
+For a finite complex, $\mathcal H^{p}\cong H^{p}(C,d)$ by the finite-dimensional Hodge
+decomposition; on a compact Riemannian manifold the corresponding statement for the de
+Rham complex is the Hodge theorem \cite[Ch.~6]{Warner1983}. The two settings are different
+and we do not pass from one to the other.
+
+\subsection{Spectral truncation}
+
+Let $\Delta$ now be the Hodge Laplacian of a compact Riemannian manifold, let
+$\Pi_{\le\Lambda}$ be its spectral projector onto eigenvalues at most $\Lambda$, and let
+$V_\Lambda=\ran\Pi_{\le\Lambda}$, a finite-dimensional space. For a family of operators
+$S^{\kappa}_{e_i,e_j}$ obtained from a kernel by fixing two of its arguments, define
+\[
+ \Energy_d^{\Lambda}(\kappa)
+ =\sum_{i,j}\Bigl(
+ \norm{[d,S^{\kappa}_{e_i,e_j}]\Pi_{\le\Lambda}}_{\mathrm{HS}}^{2}
+ +\norm{[d^{*},S^{\kappa}_{e_i,e_j}]\Pi_{\le\Lambda}}_{\mathrm{HS}}^{2}\Bigr).
+\]
+
+\begin{proposition}[Truncated compatibility]
+\label{prop:truncated}
+If $\Energy_d^{\Lambda}(\kappa)=0$ then every $S^{\kappa}_{e_i,e_j}$ commutes with $d$ and
+$d^{*}$ \emph{on $V_\Lambda$}, and therefore descends to the cohomology of the truncated
+complex $\Pi_{\le\Lambda}C^{\bullet}$ by Proposition~\ref{prop:descent}.
+\end{proposition}
+
+\begin{remark}[The truncation is not the continuum]
+\label{rem:truncation}
+Proposition~\ref{prop:truncated} is a statement about $V_\Lambda$ only. It gives no
+information about $[d,S^{\kappa}]$ on the orthogonal complement of $V_\Lambda$, and
+therefore none about the untruncated complex. Vanishing of $\Energy_d^{\Lambda}$ for every
+$\Lambda$ would be a different and much stronger hypothesis. Furthermore, a numerically
+located local minimum of $\Energy_d^{\Lambda}$ does not imply
+$\Energy_d^{\Lambda}=0$; that conclusion requires an additional surjectivity or
+controllability hypothesis on the variations of the defect map, which we do not have.
+\end{remark}
+
+\section{An induced Markov operator: a conditional construction}
+\label{sec:markov}
+
+This section is a construction under a hypothesis that is \emph{not verified here for any
+kernel}. It is included because it is the shape a diffusion-theoretic extension would
+take, and because stating it precisely makes clear what would have to be proved.
+
+\begin{construction}[Induced Markov operator]
+\label{constr:markov}
+Suppose that a declared contraction of a kernel produces a measurable
+$\mathcal W:X\times X\to[0,\infty)$ with $\mathcal W(p,s)=\mathcal W(s,p)$, and set
+\[
+ \mathsf d(p)=\int_X\mathcal W(p,s)\,d\nu(s).
+\]
+Assume $0<\mathsf d(p)<\infty$ for $\nu$-almost every $p$. Define
+$\mathcal P(p,s)=\mathcal W(p,s)/\mathsf d(p)$, the measure $d\lambda=\mathsf d\,d\nu$, the
+operator $(\mathcal Pf)(p)=\int_X\mathcal P(p,s)f(s)\,d\nu(s)$, and
+$\Delta_{\mathcal P}=I-\mathcal P$.
+\end{construction}
+
+\begin{proposition}[Self-adjointness and positivity]
+\label{prop:markov}
+Under the hypotheses of Construction~\ref{constr:markov}, $\mathcal P$ is self-adjoint on
+$L^{2}(X,\lambda)$, and for $f\in L^{2}(X,\lambda)$
+\[
+ \langle f,\Delta_{\mathcal P}f\rangle_{L^{2}(\lambda)}
+ =\tfrac12\iint_{X\times X}\lvert f(p)-f(s)\rvert^{2}\,\mathcal W(p,s)\,d\nu(p)\,d\nu(s)
+ \;\ge\;0 .
+\]
+\end{proposition}
+
+\begin{proof}
+For $f,g\in L^{2}(X,\lambda)$,
+\[
+ \langle\mathcal Pf,g\rangle_{L^{2}(\lambda)}
+ =\int_X\Bigl(\int_X\frac{\mathcal W(p,s)}{\mathsf d(p)}f(s)\,d\nu(s)\Bigr)
+ \overline{g(p)}\,\mathsf d(p)\,d\nu(p)
+ =\iint \mathcal W(p,s)f(s)\overline{g(p)}\,d\nu(s)\,d\nu(p),
+\]
+which is symmetric in the pair $(f,g)$ after exchanging $p\leftrightarrow s$ and using
+$\mathcal W(p,s)=\mathcal W(s,p)$; hence $\mathcal P$ is self-adjoint. Expanding,
+\[
+ \tfrac12\iint\lvert f(p)-f(s)\rvert^{2}\mathcal W(p,s)
+ =\int_X\lvert f(p)\rvert^{2}\mathsf d(p)\,d\nu(p)
+ -\operatorname{Re}\iint\mathcal W(p,s)f(s)\overline{f(p)},
+\]
+using symmetry of $\mathcal W$ for both cross terms, and the right-hand side is
+$\langle f,f\rangle_{L^{2}(\lambda)}-\langle\mathcal Pf,f\rangle_{L^{2}(\lambda)}$, which
+is $\langle f,\Delta_{\mathcal P}f\rangle_{L^{2}(\lambda)}$.
+\end{proof}
+
+The operator $\Delta_{\mathcal P}$ is the graph Laplacian of the weight $\mathcal W$; the
+Dirichlet form above is the standard one, and the diffusion-map construction
+\cite{CoifmanLafon2006} is the analytic setting in which such operators are usually
+studied.
+
+\begin{remark}[Spectral dimension is a further hypothesis]
+\label{rem:spectraldim}
+If $e^{-t\Delta_{\mathcal P}}$ is trace class one may set $\Theta(t)=\Tr
+e^{-t\Delta_{\mathcal P}}$, and \emph{if} $\Theta(t)\sim Ct^{-d_s/2}$ as $t\downarrow0$ one
+may call $d_s=-2\lim_{t\downarrow0}\frac{d\log\Theta(t)}{d\log t}$ the spectral dimension.
+Both the trace-class property and the existence of the limit are additional hypotheses.
+Neither is a consequence of a kernel being square-integrable.
+\end{remark}
+
+\begin{remark}[The hypothesis of Construction~\ref{constr:markov} is unverified]
+\label{rem:markovunverified}
+We exhibit no contraction of a kernel $\kappa\in L^{2}(X^{4})$ that is guaranteed to
+produce a symmetric nonnegative $\mathcal W$ with $0<\mathsf d<\infty$ almost everywhere,
+and we give no condition on $\kappa$ under which one exists. Until such a condition is
+supplied, Construction~\ref{constr:markov} has no verified instance.
+\end{remark}
+
+\section{Multiscale transport defects}
+\label{sec:multiscale}
+
+Let $(V_N,\mu_N,P_N)$ be a family indexed by a resolution parameter $N$, with prolongation
+maps $J_N^{M}:V_N\to V_M$ and restriction maps $R_M^{N}:V_M\to V_N$. Define the
+\emph{transport defects}
+\[
+ \mathcal D_\mu^{N,M}=J_N^{M}\mu_N-\mu_M(J_N^{M}\cdot,\ldots,J_N^{M}\cdot),
+ \qquad
+ \mathcal D_P^{N,M}=P_MJ_N^{M}-J_N^{M}P_N,
+\]
+and compare subspaces by $\norm{P_M-J_N^{M}P_NR_M^{N}}$ or by principal angles.
+
+These are definitions. No theorem is asserted about them here.
+
+\begin{remark}[A decreasing sequence is not a limit theorem]
+\label{rem:nolimit}
+A finite decreasing sequence of transport defects does not establish a continuum limit.
+Establishing one would additionally require: explicit topologies on the family; uniform
+bounds on $\norm{\mu_N}_{\op}$, on $\norm{P_N}$ and on the leakage norms $\rho_N$; a
+compactness argument; convergence of the maps; convergence of the projectors in a stated
+operator topology; stability of whichever identities are of interest; and identification
+of the limiting operator. See Question~\ref{q:continuum}.
+\end{remark}
+
+\section{Open analytical questions}
+\label{sec:open}
+
+The following are questions. None of them is a result of this article, and nothing above
+depends on any of them.
+
+\begin{question}[Continuum limit]
+\label{q:continuum}
+Under what hypotheses on a family $(V_N,\mu_N,P_N)$ with prolongations $J_N^{M}$ do the
+unprojected and recursively projected evaluations of a fixed finite tree converge, and does
+the estimate $E_T^{\proj}\le(k-1)\rho M^{k-1}L_T$ of \eqref{eq:companion} pass to the
+limit? A plausible set of hypotheses is: $J_N^{M}\mu_N(R\,\cdot,\ldots,R\,\cdot)\to\mu$ and
+$J_N P_N R_N\to P$ in a stated topology, together with
+$\sup_N\norm{\mu_N}_{\op}<\infty$, $\sup_N\norm{P_N}\le1$ and $\sup_N\rho_N<\infty$. For
+trees whose size grows with $N$ a further control on depth and on the summability of the
+sources would be needed.
+\end{question}
+
+\begin{question}[Membership in a multilinear pseudodifferential class]
+\label{q:psido}
+Under what hypotheses does a kernel-defined operator $\Kop_\kappa$ admit a local symbol
+$a(x,\xi_1,\ldots,\xi_a)$ satisfying estimates of the form
+\[
+ \bigl\lvert\partial_x^{\alpha}\partial_{\xi_1}^{\beta_1}\cdots
+ \partial_{\xi_a}^{\beta_a}a\bigr\rvert
+ \le C_{\alpha,\beta}\Bigl(1+\textstyle\sum_j\lvert\xi_j\rvert\Bigr)^{m-\varrho\lvert\beta\rvert+\delta\lvert\alpha\rvert},
+\]
+so that it belongs to a multilinear H\"ormander class? Square-integrability of $\kappa$ is
+far from sufficient. The multilinear Calder\'on--Zygmund theory of Grafakos and Torres
+\cite{GrafakosTorres2002} and the bilinear H\"ormander classes of B\'enyi, Maldonado,
+Naibo and Torres \cite{BenyiMaldonadoNaiboTorres2010} indicate what such a theory requires:
+symbol classes, invariance under changes of coordinates, Sobolev continuity, composition,
+adjoints, and stability of the class under the formation of associators. A realistic first
+target would be a compact manifold, kernels smooth off the diagonal, symbols of order zero
+and spectral projectors as the $P_\tau$.
+\end{question}
+
+\begin{question}[Microlocal regularity]
+\label{q:microlocal}
+If Question~\ref{q:psido} were answered affirmatively, what containment of the form
+$\mathrm{WF}\bigl(\Kop_\kappa(f_1,\ldots,f_a)\bigr)\subseteq
+\mathcal R_\kappa\bigl(\mathrm{WF}(f_1),\ldots,\mathrm{WF}(f_a)\bigr)$ holds, for which
+canonical relation $\mathcal R_\kappa$? Does orthogonal projection create singularities;
+is the orthogonal component of the error more regular than the projected one; and is there
+a microlocal analogue of the passage from $k$ to $k-1$ sources?
+\end{question}
+
+\begin{question}[Effect of projection on the class]
+\label{q:projclass}
+Is a class of kernel-defined operators stable under the operation
+$\mathcal S\mapsto P\mathcal S(P\,\cdot,\ldots,P\,\cdot)$ that the finite theory performs
+at every vertex, and how does the leakage norm $\rho$ behave under it?
+\end{question}
+
+\begin{question}[Verifying Construction~\ref{constr:markov}]
+\label{q:markov}
+Give a condition on $\kappa\in L^{2}(X^{4})$ under which some declared contraction yields a
+symmetric nonnegative weight with $0<\mathsf d<\infty$ almost everywhere.
+\end{question}
+
+We note explicitly that holonomic $D$-modules, the Riemann--Hilbert correspondence and
+algebraisation of a limiting projector have sometimes been mentioned in connection with
+this circle of ideas. No hypothesis, no statement and no proof relating them to the
+material above exists in this article, and they are therefore not listed even as
+questions.
+
+\section{Summary of status}
+\label{sec:status}
+
+\begin{table}[h]
+\centering\small
+\caption{Status of each statement in this article.}
+\label{tab:status}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+Statement & Status \\
+\midrule
+Prop.~\ref{prop:bounded}, \ref{prop:stability} & proved \\
+Lemma~\ref{lem:composite} & proved; closes a gap in an earlier formulation \\
+Prop.~\ref{prop:represents} & proved, using Lemma~\ref{lem:composite} \\
+Prop.~\ref{prop:converse} & proved under separability of $L^{2}(X,\nu)$ \\
+Thm.~\ref{thm:commutator} & proved; an identity for any bilinear operation \\
+Def.~\ref{def:ralg} & a definition, not a theorem; see Remark~\ref{rem:notcurvature} \\
+Prop.~\ref{prop:descent}, \ref{prop:hodge} & proved for finite complexes; standard \\
+Prop.~\ref{prop:truncated} & proved for the truncation only; see Remark~\ref{rem:truncation} \\
+Constr.~\ref{constr:markov}, Prop.~\ref{prop:markov} & conditional construction; hypothesis unverified \\
+Remark~\ref{rem:spectraldim} & definition under two further hypotheses \\
+Section~\ref{sec:multiscale} & definitions only \\
+Section~\ref{sec:open} & open questions \\
+Eq.~\eqref{eq:companion} & proved in \cite{ChaveroJassoTrees}; not reproved here \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+None of the statements above has been checked by anyone other than the author, and no
+assessment of originality has been carried out for any of them. Several --- notably
+Propositions~\ref{prop:descent} and~\ref{prop:hodge}, and the Stiefel gradient of
+Section~\ref{sec:variational} --- are standard, and are included for completeness with
+citations rather than as contributions.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

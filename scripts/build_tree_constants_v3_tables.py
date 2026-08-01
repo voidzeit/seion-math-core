@@ -18,6 +18,19 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+import sys  # noqa: E402
+
+sys.path.insert(0, str(ROOT / "src"))
+
+from seion_core.research_v3.interval_certification import (  # noqa: E402
+    EXACTLY_DETERMINED_POSITIVE,
+    EXACTLY_ZERO_BY_THEOREM,
+    NO_POSITIVE_LOWER_BOUND_OBTAINED,
+    POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP,
+    classify_optimality,
+)
+
 DATA = ROOT / "artifacts" / "research_v3"
 INDEX = ROOT / "artifacts" / "index"
 OUT = ROOT / "papers" / "tree_stability_v3" / "tables"
@@ -197,20 +210,38 @@ def table_extremizer_constructions() -> Path:
 
 
 def table_optimality_gaps() -> Path:
+    """One row per error type, split by the four mutually exclusive optimality classes.
+
+    The former version reported an "exact" column that counted only the vacuous
+    ``lower == upper == 0`` rows and a "near" column that counted the genuinely
+    determined ones. Both columns are replaced by the four disjoint counts below, which
+    sum to the configuration count.
+    """
     data = pd.read_csv(INDEX / "optimality_gaps_v3.csv")
+    data = data.assign(
+        status=[
+            classify_optimality(low, up)
+            for low, up in zip(
+                data["certified_lower_bound"], data["certified_upper_bound"], strict=True
+            )
+        ]
+    )
     rows = []
     for error, group in data.groupby("error_type", sort=True):
-        exact = int((group["status"] == "EXACT_OPTIMAL_CONSTANT").sum())
-        near = int(group["status"].str.contains("NEAR", na=False).sum())
+        determined = int((group["status"] == EXACTLY_DETERMINED_POSITIVE).sum())
+        zero = int((group["status"] == EXACTLY_ZERO_BY_THEOREM).sum())
+        partial = int((group["status"] == POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP).sum())
+        none = int((group["status"] == NO_POSITIVE_LOWER_BOUND_OBTAINED).sum())
         rows.append(
-            f"{esc(error)} & {len(group)} & {exact} & {near} & "
-            f"{num(group['absolute_gap'].median())} & {num(group['relative_gap'].max())} \\\\"
+            f"{esc(error)} & {len(group)} & {determined} & {zero} & {partial} & {none} & "
+            f"{num(group['absolute_gap'].median())} \\\\"
         )
     return write_table(
         "optimality_gaps",
-        r"error & cells & exact & near & \multicolumn{1}{c}{median abs. gap} & \multicolumn{1}{c}{max rel. gap} \\",
+        r"error type & configurations & determined & zero by theorem & partial & "
+        r"no positive lower bound & \multicolumn{1}{c}{median abs. gap} \\",
         rows,
-        r"@{}lrrrSS@{}",
+        r"@{}lrrrrrS@{}",
     )
 
 
@@ -407,6 +438,21 @@ def build_prior_art_matrix() -> tuple[Path, Path]:
     return csv_path, tex_path
 
 
+def _class_count(frame: pd.DataFrame, wanted: str) -> int:
+    """Count rows of ``frame`` falling in one optimality class.
+
+    The class is recomputed from the certified bounds rather than read from any stored
+    ``status`` column, so that historical artifacts written under the earlier, inverted
+    vocabulary are reclassified rather than trusted.
+    """
+    return sum(
+        classify_optimality(low, up) == wanted
+        for low, up in zip(
+            frame["certified_lower_bound"], frame["certified_upper_bound"], strict=True
+        )
+    )
+
+
 def write_results_macros() -> Path:
     full = json.loads((DATA / "full_execution_manifest.json").read_text(encoding="utf-8"))
     enumeration = json.loads((DATA / "tree_enumeration_summary.json").read_text(encoding="utf-8"))
@@ -419,9 +465,21 @@ def write_results_macros() -> Path:
         rf"\newcommand{{\VThreeTreeOccurrences}}{{{fmt_int(enumeration['rows'])}}}",
         rf"\newcommand{{\VThreeUniqueTrees}}{{{fmt_int(enumeration['unique_mathematical_objects'])}}}",
         rf"\newcommand{{\VThreeLeakageMasks}}{{{fmt_int(full['leakage_masks_executed'])}}}",
-        rf"\newcommand{{\VThreeExactCells}}{{{fmt_int(exact['global_optimum_certified'].sum())}}}",
+        # Optimality classification. The former single macro \VThreeExactCells counted
+        # every row with lower == upper, without separating the genuinely determined
+        # constants from the vacuous rows where the proved upper bound is itself zero.
+        # Those two situations are now counted separately, and the number of
+        # configurations for which no positive lower bound was obtained is reported
+        # explicitly rather than being hidden inside a "maximum relative gap" of 1.
+        rf"\newcommand{{\VThreeDeterminedPositive}}{{{fmt_int(_class_count(gaps, EXACTLY_DETERMINED_POSITIVE))}}}",
+        rf"\newcommand{{\VThreeZeroByTheorem}}{{{fmt_int(_class_count(gaps, EXACTLY_ZERO_BY_THEOREM))}}}",
+        rf"\newcommand{{\VThreePartialLowerBound}}{{{fmt_int(_class_count(gaps, POSITIVE_LOWER_BOUND_WITH_NONZERO_GAP))}}}",
+        rf"\newcommand{{\VThreeNoPositiveLowerBound}}{{{fmt_int(_class_count(gaps, NO_POSITIVE_LOWER_BOUND_OBTAINED))}}}",
+        rf"\newcommand{{\VThreeGapRegistryRows}}{{{fmt_int(len(gaps))}}}",
+        rf"\newcommand{{\VThreeNoPositiveLowerPercent}}{{\num{{{100.0 * _class_count(gaps, NO_POSITIVE_LOWER_BOUND_OBTAINED) / len(gaps):.1f}}}}}",
+        rf"\newcommand{{\VThreeExactAtlasDeterminedPositive}}{{{fmt_int(_class_count(exact, EXACTLY_DETERMINED_POSITIVE))}}}",
+        rf"\newcommand{{\VThreeExactAtlasZeroByTheorem}}{{{fmt_int(_class_count(exact, EXACTLY_ZERO_BY_THEOREM))}}}",
         rf"\newcommand{{\VThreeMaxAbsoluteGap}}{{\num{{{float(gaps['absolute_gap'].max()):.3g}}}}}",
-        rf"\newcommand{{\VThreeMaxRelativeGap}}{{\num{{{float(gaps['relative_gap'].max()):.3g}}}}}",
         rf"\newcommand{{\VThreeMaxParity}}{{\num{{{float(full['maximum_cpu_gpu_parity_error']):.3e}}}}}",
         rf"\newcommand{{\VThreeCoreWallSeconds}}{{\num{{{float(full['wall_seconds']):.2f}}}}}",
         rf"\newcommand{{\VThreeExtendedTrajectories}}{{{fmt_int(full['optimizer_trajectories_requested_extended'])}}}",

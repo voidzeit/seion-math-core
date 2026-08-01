@@ -1,0 +1,8 @@
+worktree C:/Documents/metamaths/seion-math-core
+HEAD 2e419ef4e1c028cfb85348feb515746e6c538ea8
+branch refs/heads/research/projected-tree-theory-v5
+
+worktree C:/Users/Eliuth Chavero/AppData/Local/Temp/swt
+HEAD 8e09941e56d6a514a44928ec1a6b5395fb8ceecb
+detached
+

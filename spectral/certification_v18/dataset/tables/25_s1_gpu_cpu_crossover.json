@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "device": "cpu",
+      "n": 12,
+      "wall_time_seconds": 9.443544522499725
+    },
+    {
+      "device": "cpu",
+      "n": 24,
+      "wall_time_seconds": 9.310286982500111
+    },
+    {
+      "device": "cpu",
+      "n": 48,
+      "wall_time_seconds": 9.830987765005556
+    },
+    {
+      "device": "cpu",
+      "n": 96,
+      "wall_time_seconds": 7.90353315249813
+    },
+    {
+      "device": "cuda",
+      "n": 12,
+      "wall_time_seconds": 30.6368660200038
+    },
+    {
+      "device": "cuda",
+      "n": 24,
+      "wall_time_seconds": 30.80428989500797
+    },
+    {
+      "device": "cuda",
+      "n": 48,
+      "wall_time_seconds": 34.50118457250064
+    },
+    {
+      "device": "cuda",
+      "n": 96,
+      "wall_time_seconds": 25.089835230004972
+    }
+  ]
+}

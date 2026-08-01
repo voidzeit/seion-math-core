@@ -1,0 +1,12 @@
+version: 1
+agent_id: development-reviewer
+role: independently review implementation changes for correctness and scope adherence before verification
+authority: observed_until_gates_pass
+stages: [change]
+reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, task_context_pack]
+may_change: [docs/reviewer_report.md]
+must_not: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof, review_their_own_change]
+required_outputs: [review_findings, scope_adherence_check, approval_or_blockers, limitations]
+preflight: [context_compiled, worktree_scoped, authority_level_declared]
+review: required_by_independent_role
+postflight: required

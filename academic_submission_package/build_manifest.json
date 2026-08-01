@@ -1,0 +1,166 @@
+{
+  "package": "academic_submission_package",
+  "assembled_utc": "2026-07-31T05:46:50.824541+00:00",
+  "assembly_host_platform": "Windows-11-10.0.26200-SP0",
+  "toolchain": {
+    "python": "3.12.10",
+    "latexmk": "4.88",
+    "tex_distribution": "MiKTeX",
+    "pdf_tools": "poppler pdftotext, pdffonts"
+  },
+  "source_commits": {
+    "research/projected-tree-theory-v5": "2e419ef4e1c028cfb85348feb515746e6c538ea8",
+    "research/spectral-a-to-n-v18": "8e09941e56d6a514a44928ec1a6b5395fb8ceecb",
+    "numerical_evidence_for_document_01": "b718f4e51785",
+    "merge_base": "427ad529e7793b604cdb23bda089534420a6aee6",
+    "merged": false
+  },
+  "acceptance_criteria": {
+    "latex_errors": 0,
+    "undefined_references": 0,
+    "undefined_citations": 0,
+    "overfull_boxes": 0,
+    "corrupted_ligature_stems": 0,
+    "type3_fonts": 0
+  },
+  "documents": [
+    {
+      "id": "01",
+      "name": "01_recursive_projection_of_multilinear_trees",
+      "title": "Error Propagation under Recursive Orthogonal Projection of Finite Multilinear Composition Trees",
+      "source_directory": "sources/recursive_projection_of_multilinear_trees",
+      "source_commit": "2e419ef4e1c028cfb85348feb515746e6c538ea8",
+      "pdf": "01_recursive_projection_of_multilinear_trees.pdf",
+      "pdf_sha256": "cc85f833df49967d17b65d7d9fcb1bb4a3e4b8de7bca96eb5ef517e1308af32d",
+      "pdf_bytes": 961692,
+      "pages": 39,
+      "latex_errors": 0,
+      "undefined_references": 0,
+      "undefined_citations": 0,
+      "overfull_boxes": 0,
+      "corrupted_ligature_stems": 0,
+      "type3_fonts": 0,
+      "build_command": "cd sources/recursive_projection_of_multilinear_trees && latexmk -pdf -interaction=nonstopmode -outdir=build main.tex"
+    },
+    {
+      "id": "02",
+      "name": "02_kernel_defined_multilinear_operators",
+      "title": "Kernel-Defined Multilinear Operators and Conditional Analytic Extensions of a Finite Projection Theory",
+      "source_directory": "sources/kernel_defined_multilinear_operators",
+      "source_commit": "2e419ef4e1c028cfb85348feb515746e6c538ea8",
+      "pdf": "02_kernel_defined_multilinear_operators.pdf",
+      "pdf_sha256": "6180eb74f3f63089c9591d3c3badf01d0fa90ae254474cfa610faf1199998400",
+      "pdf_bytes": 498871,
+      "pages": 10,
+      "latex_errors": 0,
+      "undefined_references": 0,
+      "undefined_citations": 0,
+      "overfull_boxes": 0,
+      "corrupted_ligature_stems": 0,
+      "type3_fonts": 0,
+      "build_command": "cd sources/kernel_defined_multilinear_operators && latexmk -pdf -interaction=nonstopmode -outdir=build main.tex"
+    },
+    {
+      "id": "03",
+      "name": "03_numerical_study_of_projected_multilinear_models",
+      "title": "A Numerical Study of Cyclic Multilinear Maps, Orthogonal Projectors, and Multiresolution Tensor Representations",
+      "source_directory": "sources/numerical_study",
+      "source_commit": "8e09941e56d6a514a44928ec1a6b5395fb8ceecb",
+      "pdf": "03_numerical_study_of_projected_multilinear_models.pdf",
+      "pdf_sha256": "525565058e5973d1c62163792660521cc996cd6000b7656e4a1a68126492561d",
+      "pdf_bytes": 421247,
+      "pages": 10,
+      "latex_errors": 0,
+      "undefined_references": 0,
+      "undefined_citations": 0,
+      "overfull_boxes": 0,
+      "corrupted_ligature_stems": 0,
+      "type3_fonts": 0,
+      "build_command": "cd sources/numerical_study && latexmk -pdf -interaction=nonstopmode -outdir=build main.tex"
+    },
+    {
+      "id": "04",
+      "name": "04_software_and_reproducibility",
+      "title": "Software and Reproducibility for Numerical Experiments on Projected Multilinear Models",
+      "source_directory": "sources/software_and_reproducibility",
+      "source_commit": "both",
+      "pdf": "04_software_and_reproducibility.pdf",
+      "pdf_sha256": "dd8f6fc57e2179dc61414c17e70bb94a01a52be12af52da52bd352b8cf3b48f0",
+      "pdf_bytes": 349450,
+      "pages": 7,
+      "latex_errors": 0,
+      "undefined_references": 0,
+      "undefined_citations": 0,
+      "overfull_boxes": 0,
+      "corrupted_ligature_stems": 0,
+      "type3_fonts": 0,
+      "build_command": "cd sources/software_and_reproducibility && latexmk -pdf -interaction=nonstopmode -outdir=build main.tex"
+    },
+    {
+      "id": "05",
+      "name": "05_supplementary_numerical_results",
+      "title": "Supplementary Numerical Results for Projected Multilinear Models",
+      "source_directory": "sources/supplementary_results",
+      "source_commit": "8e09941e56d6a514a44928ec1a6b5395fb8ceecb",
+      "pdf": "05_supplementary_numerical_results.pdf",
+      "pdf_sha256": "4f707fb0890d5946e71124382d193138d064864e9cbc5f7b7bd373088eccc327",
+      "pdf_bytes": 421438,
+      "pages": 11,
+      "latex_errors": 0,
+      "undefined_references": 0,
+      "undefined_citations": 0,
+      "overfull_boxes": 0,
+      "corrupted_ligature_stems": 0,
+      "type3_fonts": 0,
+      "build_command": "cd sources/supplementary_results && latexmk -pdf -interaction=nonstopmode -outdir=build main.tex"
+    }
+  ],
+  "tests": [
+    {
+      "suite": "case study I",
+      "command": "python -m pytest -q",
+      "result": "73 passed",
+      "duration_seconds": 9.28,
+      "working_directory": "repository root at 2e419ef"
+    },
+    {
+      "suite": "case study II",
+      "command": "python -m pytest spectral/certification_v18/tests -q",
+      "result": "85 passed",
+      "duration_seconds": 48.86,
+      "working_directory": "clean detached worktree at 8e09941"
+    }
+  ],
+  "regeneration_steps": [
+    "python scripts/regenerate_optimality_classification.py  (idempotent; re-derives from recorded bounds, runs no experiment)",
+    "python scripts/sanitize_generated_tables.py            (headings and labels only; fails if a forbidden token survives)",
+    "python sources/supplementary_results/generate_figures.py (PDF+SVG+PNG with a checksum manifest)"
+  ],
+  "not_verified": [
+    "reproduction from a clean environment",
+    "reproduction by an independent party",
+    "independent review of any proof",
+    "assessment of originality of any statement",
+    "continuous-integration status of case study II",
+    "re-running the experiment pipeline at the manuscript commit"
+  ],
+  "mathematical_corrections": {
+    "record": "MATHEMATICAL_CORRECTIONS_CLOSED.md",
+    "document_01_closed": 8,
+    "document_02_closed": 7,
+    "open": 0,
+    "most_serious": "C-5: the representation-error proposition applied the closure bound to the approximate maps, which was never a declared hypothesis. Corrected; the new bound is strictly tighter."
+  },
+  "external_review": {
+    "originality_table": "external_review/ORIGINALITY_TABLE_TO_COMPLETE.md (empty by design)",
+    "reviewer_request": "external_review/REVIEWER_REQUEST.md",
+    "reviews_received": 0
+  },
+  "clean_room": {
+    "containerfile": "clean_room/Containerfile",
+    "script": "clean_room/reproduce.sh",
+    "requirements": "clean_room/requirements.lock.txt",
+    "executed": false,
+    "reason": "no container runtime on the assembling machine"
+  }
+}

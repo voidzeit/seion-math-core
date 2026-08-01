@@ -1,0 +1,421 @@
+\section{Proofs}
+\label{app:proofs}
+
+This appendix contains the complete finite-dimensional arguments. No statement below
+depends on an optimiser, a conjecture, or a numerical plot.
+
+\subsection{Magnitudes and the orthogonal splitting at the root}
+
+For a subtree rooted at $v$, let $k_v$ be its number of internal vertices and $L_v$ the
+product of the reduced leaf norms below it.
+
+\begin{lemma}[Subtree magnitudes]
+\label{lem:magnitudes}
+If $\norm{\mu_u}_\op\le M$ at every internal vertex $u$ of the subtree, then
+\[
+ \norm{F_v}\le M^{k_v}L_v,
+ \qquad
+ \norm{R_v}\le M^{k_v}L_v.
+\]
+\end{lemma}
+
+\begin{proof}
+At a leaf, $F_v=R_v=Q_{\tau(v)}z_v$ and $Q_{\tau(v)}$ is an isometry, so both norms equal
+$\norm{z_v}=L_v$, and $k_v=0$. Suppose the claim holds for the children
+$c_1,\ldots,c_a$ of an internal vertex $v$. Multilinearity and the definition of the
+operator norm give
+\[
+ \norm{F_v}
+ \le M\prod_i\norm{F_{c_i}}
+ \le M^{1+\sum_ik_{c_i}}\prod_iL_{c_i}
+ =M^{k_v}L_v.
+\]
+The same argument bounds $\norm{R_v}=\norm{P_v\mu_v(R_{c_1},\ldots,R_{c_a})}$, because an
+orthogonal projector is a contraction. Induction proves both claims.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:root}]
+At the root write $P=QQ^*$, $F=F_\varrho$ and $R=R_\varrho$. If $\varrho$ is internal then
+$R=P\mu_\varrho(\cdots)\in\ran P$; if $T$ consists of a single leaf then $R=Qz\in\ran P$
+as well. In either case
+\[
+ F-R=(PF-R)+(I-P)F,
+\]
+where the first summand lies in $\ran P$ and the second in $(\ran P)^\perp$. The
+Pythagorean theorem gives the first identity. For the second, $Q^*(I-P)=Q^*-Q^*QQ^*=0$,
+so
+\[
+ Q^*F-Q^*R=Q^*(PF-R),
+\]
+and the restriction of $Q^*$ to $\ran P$ is an isometry onto $W_{\tau(\varrho)}$, because
+$Q^*Q=I$. Hence $\norm{Q^*F-Q^*R}=\norm{PF-R}$.
+\end{proof}
+
+Both steps use $P^*=P$. Example~\ref{ex:oblique} shows that the conclusion fails for an
+idempotent that is not self-adjoint.
+
+\subsection{The exact local decomposition}
+
+\begin{proof}[Proof of Theorem~\ref{thm:subset}]
+Since $F_i=R_i+D_i$, repeated use of multilinearity in each argument gives
+\[
+ \mu_v(F_1,\ldots,F_a)
+ =\sum_{S\subseteq[a]}\mu_v(y_1^S,\ldots,y_a^S),
+\]
+a sum of $2^a$ terms. The term indexed by $S=\varnothing$ is
+$\mu_v(R_1,\ldots,R_a)$, while $R_v=P_v\mu_v(R_1,\ldots,R_a)$. Subtracting,
+\[
+ D_v
+ =F_v-R_v
+ =(I-P_v)\mu_v(R_1,\ldots,R_a)
+ +\sum_{\varnothing\ne S\subseteq[a]}\mu_v(y_1^S,\ldots,y_a^S).
+\]
+It remains to identify the first summand with $r_v(R_1,\ldots,R_a)$. By construction
+$R_i\in\ran P_{\tau(c_i)}$ for every $i$, so $P_{\tau(c_i)}R_i=R_i$, and therefore
+\[
+ r_v(R_1,\ldots,R_a)
+ =(I-P_v)\mu_v\bigl(P_{\tau(c_1)}R_1,\ldots,P_{\tau(c_a)}R_a\bigr)
+ =(I-P_v)\mu_v(R_1,\ldots,R_a).
+\]
+No inequality has been used.
+\end{proof}
+
+\begin{remark}
+\label{rem:innerprojectors}
+The inner projectors in Definition~\ref{def:closure} are not decorative. The hypothesis
+$\norm{r_v}_\op\le\rho$ of Theorem~\ref{thm:homogeneous} bounds the operator
+$(I-P_v)\mu_v(P\,\cdot,\ldots,P\,\cdot)$, whose operator norm is in general strictly
+smaller than that of $(I-P_v)\mu_v(\cdot,\ldots,\cdot)$. The step
+$P_{\tau(c_i)}R_i=R_i$ above is exactly what permits the smaller quantity to be used.
+\end{remark}
+
+Applying $P_v$ to Theorem~\ref{thm:subset} removes the locally created residual exactly;
+applying $I-P_v$ retains it. Splitting each $D_i$ orthogonally into
+$D_i^{\parallel}+D_i^{\perp}$ produces the three states $\{R,\parallel,\perp\}$ used in
+Section~\ref{sec:state}.
+
+\subsection{Uniform coefficients}
+
+\begin{proof}[Proof of Theorem~\ref{thm:homogeneous}]
+We prove, by induction on the tree, that every subtree rooted at $v$ satisfies
+\begin{equation}
+\label{eq:induction}
+ \norm{D_v}\le k_v\rho M^{k_v-1}L_v
+ \quad (k_v\ge1),
+ \qquad\text{and}\qquad
+ \norm{D_v}=0
+ \quad (k_v=0).
+\end{equation}
+The two cases are stated separately because $M^{k-1}$ is not defined at $k=0$ when $M=0$;
+compare Remark~\ref{rem:leaf}.
+
+\emph{Base case.} At a leaf, $F_v=R_v$, so $\norm{D_v}=0$ and $k_v=0$.
+
+\emph{Inductive step.} Let $v$ be internal of arity $a$ with children $c_1,\ldots,c_a$,
+so that $k_v=1+\sum_ik_{c_i}$. Telescoping the arguments of $\mu_v$ one at a time, in any
+fixed order, and using multilinearity together with $\norm{\mu_v}_\op\le M$,
+\begin{equation}
+\label{eq:telescope}
+ \norm{\mu_v(F_1,\ldots,F_a)-\mu_v(R_1,\ldots,R_a)}
+ \le M\sum_{j=1}^{a}\norm{F_j-R_j}\prod_{i<j}\norm{R_i}\prod_{i>j}\norm{F_i}.
+\end{equation}
+Fix $j$. If $k_{c_j}=0$ then $\norm{F_j-R_j}=0$ and the $j$th summand vanishes, which
+agrees with $k_{c_j}\rho M^{k_v-1}L_v=0$. If $k_{c_j}\ge1$, the inductive hypothesis and
+Lemma~\ref{lem:magnitudes} bound the $j$th summand by
+\[
+ M\cdot k_{c_j}\rho M^{k_{c_j}-1}L_{c_j}\cdot\prod_{i\ne j}M^{k_{c_i}}L_{c_i}
+ =k_{c_j}\rho M^{\sum_ik_{c_i}}L_v
+ =k_{c_j}\rho M^{k_v-1}L_v.
+\]
+Summing over $j$ and using $\sum_jk_{c_j}=k_v-1$, the right-hand side
+of~\eqref{eq:telescope} is at most $(k_v-1)\rho M^{k_v-1}L_v$.
+
+By Theorem~\ref{thm:subset},
+$D_v=r_v(R_1,\ldots,R_a)+\bigl[\mu_v(F_1,\ldots,F_a)-\mu_v(R_1,\ldots,R_a)\bigr]$, and
+the locally created residual satisfies
+\[
+ \norm{r_v(R_1,\ldots,R_a)}
+ \le\rho\prod_i\norm{R_i}
+ \le\rho M^{k_v-1}L_v
+\]
+by Lemma~\ref{lem:magnitudes} and $\sum_ik_{c_i}=k_v-1$. Adding the two contributions
+gives $\norm{D_v}\le k_v\rho M^{k_v-1}L_v$, which is~\eqref{eq:induction}.
+
+Applying~\eqref{eq:induction} at the root gives
+$E_T^{\amb}=\norm{D_\varrho}\le k\rho M^{k-1}L_T$.
+
+For the projected error, $R=R_\varrho\in\ran P$ gives $PR=R$, hence
+$PF-R=P(F-R)=PD_\varrho$. Since $Pr_\varrho=0$ by Definition~\ref{def:closure},
+\[
+ PD_\varrho
+ =P\bigl[\mu_\varrho(F_1,\ldots,F_a)-\mu_\varrho(R_1,\ldots,R_a)\bigr],
+\]
+and $\norm{P}=1$ together with the bound just established for the right-hand side
+of~\eqref{eq:telescope} gives $E_T^{\proj}\le(k-1)\rho M^{k-1}L_T$.
+Proposition~\ref{prop:root} identifies $E_T^{\red}$ with $E_T^{\proj}$.
+
+For the orthogonal error, $(I-P)R=0$ gives $(I-P)F=(I-P)D_\varrho$, and $\norm{I-P}=1$
+gives $E_T^{\perp}\le\norm{D_\varrho}\le k\rho M^{k-1}L_T$.
+\end{proof}
+
+\begin{remark}
+\label{rem:whatisused}
+The proof uses multilinearity, the operator-norm hypotheses, contractivity of $P$ and of
+$I-P$, and --- for the projected estimate only --- the identity $Pr_\varrho=0$, which
+requires $P$ to be the orthogonal projector appearing in Definition~\ref{def:closure}.
+Finite dimensionality is not used: the argument is valid for bounded multilinear maps
+between Hilbert spaces of any dimension. It is stated finite-dimensionally because
+everything else in this article is.
+\end{remark}
+
+\subsection{The ordering theorem}
+
+Let $e_i,r_i,f_i,G_i\ge0$, put $w_i=G_ie_i$ and $d_i=f_i-r_i$, and for a permutation
+$\pi$ of $[a]$ set
+\[
+ C(\pi)=\sum_{t=1}^{a}w_{\pi_t}\prod_{s<t}r_{\pi_s}\prod_{s>t}f_{\pi_s}.
+\]
+
+\begin{lemma}[Adjacent exchange]
+\label{lem:exchange}
+Let $\pi$ and $\pi'$ agree except that $\pi$ places $i$ immediately before $j$ and $\pi'$
+places $j$ immediately before $i$. Then
+\[
+ C(\pi)\le C(\pi')
+ \iff
+ w_id_j\le w_jd_i.
+\]
+\end{lemma}
+
+\begin{proof}
+Write $A$ for the product of $r$ over the slots preceding the pair and $B$ for the
+product of $f$ over the slots following it. Both are common to $\pi$ and $\pi'$, as is
+every summand indexed by a slot outside the pair. The two summands indexed by the pair
+contribute $AB(w_if_j+r_iw_j)$ to $C(\pi)$ and $AB(w_jf_i+r_jw_i)$ to $C(\pi')$. Since
+$A,B\ge0$, the comparison reduces to
+\[
+ w_if_j+r_iw_j\le w_jf_i+r_jw_i
+ \iff
+ w_i(f_j-r_j)\le w_j(f_i-r_i)
+ \iff
+ w_id_j\le w_jd_i.\qedhere
+\]
+\end{proof}
+
+\begin{lemma}[The exchange relation is a total preorder]
+\label{lem:preorder}
+Assign to each slot the key
+\[
+ \kappa_i=\bigl(\mathrm{cls}(i),\,q_i\bigr),
+ \qquad
+ \mathrm{cls}(i)=
+ \begin{cases}
+ 0,&d_i>0,\\
+ 1,&d_i=0,\\
+ 2,&d_i<0,
+ \end{cases}
+ \qquad
+ q_i=
+ \begin{cases}
+ w_i/d_i,&d_i\ne0,\\
+ 0,&d_i=0,
+ \end{cases}
+\]
+ordered lexicographically. Then $\kappa_i\le\kappa_j$ implies $w_id_j\le w_jd_i$, and the
+lexicographic order is a total preorder on the slots.
+\end{lemma}
+
+\begin{proof}
+Four cases, using $w_i,w_j\ge0$ throughout.
+
+\emph{Same nonzero class.} If $d_i,d_j$ are both positive or both negative then
+$d_id_j>0$, and dividing $w_id_j\le w_jd_i$ by $d_id_j$ shows it is equivalent to
+$w_i/d_i\le w_j/d_j$, that is, to $q_i\le q_j$.
+
+\emph{Positive before negative.} If $d_i>0$ and $d_j<0$ then $w_id_j\le0\le w_jd_i$, so
+the inequality holds; here $\mathrm{cls}(i)=0<2=\mathrm{cls}(j)$.
+
+\emph{Positive before zero.} If $d_i>0$ and $d_j=0$ then $w_id_j=0\le w_jd_i$, and
+$\mathrm{cls}(i)=0<1=\mathrm{cls}(j)$.
+
+\emph{Zero before negative.} If $d_i=0$ and $d_j<0$ then $w_id_j\le0=w_jd_i$, and
+$\mathrm{cls}(i)=1<2=\mathrm{cls}(j)$.
+
+Lexicographic order on pairs drawn from totally ordered sets is a total preorder.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:order}]
+Let $\pi^\star$ sort the slots by nondecreasing $\kappa$; this is the order described in
+the statement. Let $\pi$ be arbitrary. Because $\kappa$ induces a total preorder
+(Lemma~\ref{lem:preorder}), $\pi$ can be transformed into $\pi^\star$ by a finite sequence
+of adjacent transpositions, each swapping a pair that occurs in the order $j,i$ with
+$\kappa_i\le\kappa_j$; this is the standard exchange-sorting argument, and it terminates
+because each such transposition strictly decreases the number of pairs inverted with
+respect to $\kappa$. By Lemmas~\ref{lem:preorder} and~\ref{lem:exchange}, no transposition
+increases $C$. Hence $C(\pi^\star)\le C(\pi)$ for every $\pi$, so $\pi^\star$ is a global
+minimiser. If $w_i=d_i=0$ then the inequality of Lemma~\ref{lem:exchange} holds in both
+directions against every other slot, so such slots may be placed anywhere.
+\end{proof}
+
+\begin{remark}
+\label{rem:orderfamily}
+Theorem~\ref{thm:order} minimises $C$, which is one particular scalar bound. It does not
+assert that the bound obtained with the optimal order is the smallest valid bound
+obtainable by any means.
+\end{remark}
+
+\subsection{The state-resolved recursion and the pathwise expansion}
+
+\begin{proof}[Proof of Theorem~\ref{thm:state}]
+At a leaf all five stored quantities are exact: $\norm{F_v}=\norm{R_v}=\norm{z_v}$ and
+the three error quantities vanish.
+
+At an internal vertex, expand by Theorem~\ref{thm:subset} and split each child
+discrepancy orthogonally as $D_i=D_i^{\parallel}+D_i^{\perp}$. Every resulting term is
+$\mu_v(Z_1^\sigma,\ldots,Z_a^\sigma)$ for exactly one state vector
+$\sigma\in\{R,\parallel,\perp\}^{a}$. Projecting the output onto the component $\chi$ and
+applying the operator-norm inequality bounds the norm of that term by
+$\beta_v^{\chi}(\sigma)\prod_i\norm{Z_i^{\sigma_i}}$, hence by
+$\beta_v^{\chi}(\sigma)\prod_ib_{c_i}^{\sigma_i}$ once the inductive bounds are
+substituted. The state vector $(R,\ldots,R)$ contributes the reduced value together with
+the locally created residual: its projection onto $\ran P_v$ is $R_v$ itself, which is
+subtracted, and its orthogonal component is $r_v(R_1,\ldots,R_a)$, of norm at most
+$\rho_v\prod_ib_{c_i}^{R}$. This accounts for $\lambda_v^{\parallel}=0$ and
+$\lambda_v^{\perp}\le\rho_v\prod_ib_{c_i}^{R}$. Summing over the remaining state vectors
+and applying the triangle inequality gives the stated recursion. Taking, at any vertex,
+the minimum of several independently valid upper bounds preserves validity.
+
+For the count: there are $3^{a_v}-1$ state vectors other than $(R,\ldots,R)$ at $v$, and
+each contributes one product of $a_v$ factors, so the number of combination steps at $v$
+is $O(3^{a_v})$; summing over the vertices gives $O(\lvert T\rvert\,3^{a_{\max}})$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:pathwise}]
+Two separate assertions are proved.
+
+\emph{Comparison.} We show $B_v\le\widehat B_v$ by induction on the subtree at $v$. At a
+leaf both are $0$. At an internal vertex, the inductive hypothesis gives
+$B_{c_j}\le\widehat B_{c_j}$ for every child, and the gains satisfy $h_{v,j}\ge0$, so
+\[
+ B_v
+ \;\le\;\lambda_v+\sum_jh_{v,j}B_{c_j}
+ \;\le\;\lambda_v+\sum_jh_{v,j}\widehat B_{c_j}
+ \;=\;\widehat B_v,
+\]
+the first inequality being \eqref{eq:recurrence} and the last
+Definition~\ref{def:majorant}. Nonnegativity of the gains is what makes the middle step
+valid, and it holds because each $h_{v,j}$ is an operator norm.
+
+\emph{Closed form.} We show
+$\widehat B_v=\sum_{u\in\Int T_v}\lambda_u\prod_{e\in\mathrm{path}(u,v)}h_e$, where $T_v$
+is the subtree rooted at $v$, again by induction. At a leaf both sides are $0$, the sum
+being empty. At an internal vertex $v$, Definition~\ref{def:majorant} and the inductive
+hypothesis give
+\[
+ \widehat B_v
+ =\lambda_v+\sum_jh_{v,j}\!\!\sum_{u\in\Int T_{c_j}}\!\!\lambda_u
+ \prod_{e\in\mathrm{path}(u,c_j)}h_e
+ =\lambda_v+\sum_j\;\sum_{u\in\Int T_{c_j}}\!\!\lambda_u
+ \prod_{e\in\mathrm{path}(u,v)}h_e ,
+\]
+because prefixing the edge from $c_j$ to $v$, whose gain is $h_{v,j}$, to the path from
+$u$ to $c_j$ gives exactly the path from $u$ to $v$. The internal vertices of $T_v$ are
+$v$ together with the disjoint union of the internal vertices of the subtrees $T_{c_j}$,
+and the term for $u=v$ is $\lambda_v$ with an empty product. This is the asserted sum.
+Taking $v=\varrho$ gives the statement, and combining the two assertions gives
+$B_\varrho\le\widehat B_\varrho$.
+
+\emph{Projected variant.} Setting $\lambda_\varrho=0$, which is
+$\lambda^{\parallel}_\varrho=0$ from Theorem~\ref{thm:state}, removes the term $u=\varrho$
+from the sum; the remaining derivation is unchanged, with the final edge of each path
+carrying the projected-output gain.
+\end{proof}
+
+\begin{remark}
+\label{rem:pathwisescope}
+The closed form is an identity for $\widehat B$, and $\widehat B$ majorises $B$. It is not
+an identity for $B$, and it is not an expansion of the multilinear cross terms of
+Theorem~\ref{thm:subset}: the interaction terms indexed by subsets of size at least two
+were absorbed into the gains $h_{v,j}$ when the scalar recurrence was formed. The result
+attributes a share of the bound to individual sources, and not a share of the error.
+\end{remark}
+
+\subsection{Signed combinations and approximation of the maps}
+
+\begin{proof}[Proof of Corollary~\ref{cor:signed}]
+Linearity of $P$ and of the evaluation in each tree gives
+$PF_{\mathcal F}-R_{\mathcal F}=\sum_\alpha c_\alpha(PF_{T_\alpha}-R_{T_\alpha})$, and the
+triangle inequality bounds the norm by
+$\sum_\alpha\lvert c_\alpha\rvert B^{\proj}_{T_\alpha}$. For the five-input ternary
+associator, each of the two trees has two internal vertices, so
+Theorem~\ref{thm:homogeneous} gives $B^{\proj}_{T_\alpha}\le(2-1)\rho ML=\rho ML$ and the
+two terms give $2\rho ML$; the ambient bound is $2\cdot2\rho ML=4\rho ML$. Syntactically
+identical trees may be combined exactly before this estimate is applied.
+\end{proof}
+
+\begin{lemma}[Sensitivity of the projected evaluation to the maps]
+\label{lem:sensitivity}
+Let $\{\mu_v\}$ and $\{\widehat\mu_v\}$ satisfy $\norm{\mu_v}_\op\le M$ and
+$\norm{\mu_v-\widehat\mu_v}_\op\le\delta$ at every internal vertex, and let $R_\mu$ and
+$R_{\widehat\mu}$ be the recursively projected evaluations of the two trees on the same
+leaf data. Then for every subtree rooted at $v$,
+\[
+ \norm{R^{\mu}_v-R^{\widehat\mu}_v}\le k_v\,\delta\,(M+\delta)^{k_v-1}L_v
+ \quad(k_v\ge1),
+ \qquad
+ \norm{R^{\mu}_v-R^{\widehat\mu}_v}=0
+ \quad(k_v=0).
+\]
+\end{lemma}
+
+\begin{proof}
+At a leaf both evaluations equal $Q_{\tau(v)}z_v$, so the difference vanishes. At an
+internal vertex $v$ of arity $a$, using $\norm{P_v}=1$ and adding and subtracting
+$\widehat\mu_v(R^{\mu}_{c_1},\ldots,R^{\mu}_{c_a})$,
+\begin{align*}
+ \norm{R^{\mu}_v-R^{\widehat\mu}_v}
+ &=\bigl\lVert P_v\bigl[\mu_v(R^{\mu}_{c_\bullet})-\widehat\mu_v(R^{\widehat\mu}_{c_\bullet})\bigr]\bigr\rVert\\
+ &\le\underbrace{\bigl\lVert(\mu_v-\widehat\mu_v)(R^{\mu}_{c_1},\ldots,R^{\mu}_{c_a})\bigr\rVert}_{(\mathrm I)}
+ +\underbrace{\bigl\lVert\widehat\mu_v(R^{\mu}_{c_\bullet})-\widehat\mu_v(R^{\widehat\mu}_{c_\bullet})\bigr\rVert}_{(\mathrm{II})}.
+\end{align*}
+For $(\mathrm I)$, Lemma~\ref{lem:magnitudes} gives
+$\norm{R^{\mu}_{c_i}}\le M^{k_{c_i}}L_{c_i}$, so
+$(\mathrm I)\le\delta M^{k_v-1}L_v\le\delta(M+\delta)^{k_v-1}L_v$.
+For $(\mathrm{II})$, telescoping the arguments of $\widehat\mu_v$ one at a time and using
+$\norm{\widehat\mu_v}_\op\le M+\delta$ together with the magnitude bounds
+$\norm{R^{\mu}_{c_i}},\norm{R^{\widehat\mu}_{c_i}}\le(M+\delta)^{k_{c_i}}L_{c_i}$ from
+Lemma~\ref{lem:magnitudes} applied with $M+\delta$ in place of $M$,
+\[
+ (\mathrm{II})
+ \le(M+\delta)\sum_{j}\norm{R^{\mu}_{c_j}-R^{\widehat\mu}_{c_j}}
+ \prod_{i\ne j}(M+\delta)^{k_{c_i}}L_{c_i}
+ \le\Bigl(\sum_jk_{c_j}\Bigr)\delta(M+\delta)^{k_v-1}L_v,
+\]
+by the inductive hypothesis, the summand with $k_{c_j}=0$ vanishing. Since
+$\sum_jk_{c_j}=k_v-1$, the two contributions add to $k_v\delta(M+\delta)^{k_v-1}L_v$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:approximation}]
+Insert the recursively projected \emph{exact} tree:
+\[
+ \norm{F_\mu-R_{\widehat\mu}}
+ \le\norm{F_\mu-R_\mu}+\norm{R_\mu-R_{\widehat\mu}}.
+\]
+The first term is $E_T^{\amb}$ for the exact tree, bounded by $k\rho M^{k-1}L_T$ by
+Theorem~\ref{thm:homogeneous}; the second is bounded by $k\delta(M+\delta)^{k-1}L_T$ by
+Lemma~\ref{lem:sensitivity}. This gives the first estimate.
+
+For the second, $R_\mu\in\ran P$ gives $PR_\mu=R_\mu$, so
+\[
+ \norm{PF_\mu-R_{\widehat\mu}}
+ \le\norm{PF_\mu-R_\mu}+\norm{R_\mu-R_{\widehat\mu}},
+\]
+and the first term is $E_T^{\proj}$ for the exact tree, bounded by
+$(k-1)\rho M^{k-1}L_T$ by Theorem~\ref{thm:homogeneous}.
+
+Both estimates use only the declared hypotheses: $\norm{\mu_v}_\op\le M$ and
+$\norm{r_v}_\op\le\rho$ for the exact maps, and $\norm{\mu_v-\widehat\mu_v}_\op\le\delta$.
+In particular no bound is assumed on
+$(I-P_v)\widehat\mu_v(P\,\cdot,\ldots,P\,\cdot)$; compare
+Remark~\ref{rem:noapproxclosure}. No equality with the observed total error is asserted.
+\end{proof}

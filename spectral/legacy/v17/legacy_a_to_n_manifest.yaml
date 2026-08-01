@@ -1,0 +1,195 @@
+version: 1
+generated_by: spectral/certification_v18/tools/ingest_legacy.py
+scope_class: SPECTRAL_LEGACY_TRACK
+legacy_files:
+  seion_master_audit_A_to_N_v17_blackwell_repro_fix.py:
+    original_path: spectral/seion_master_audit_A_to_N_v17_blackwell_repro_fix.py
+    copied_path: spectral/legacy/v17/seion_master_audit_A_to_N_v17_blackwell_repro_fix.py
+    sha256: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+    size_bytes: 116569
+  REPRO_SUMMARIES_A_TO_M_VALIDATED.txt:
+    original_path: spectral/runs/REPRO_SUMMARIES_A_TO_M_VALIDATED.txt
+    copied_path: spectral/legacy/v17/REPRO_SUMMARIES_A_TO_M_VALIDATED.txt
+    sha256: 037d986d87b63f5fe4a132be221301679b7d6aaf4b811ded811291c04ae36c10
+    size_bytes: 245957
+current_repo_script_sha256: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+run_count_total_unique: 19
+run_count_from_txt_log: 8
+run_count_directory_only: 11
+run_count_txt_log_only_no_directory: 1
+runs:
+  BLACKWELL_ASSOC_PASS_900_R6_FASTLOG:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 5
+    txt_log_line_range: null
+    script_sha256_reported: null
+  BLACKWELL_ULTRA_ASSOC_PASS_900_R6:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 28
+    txt_log_line_range: null
+    script_sha256_reported: null
+  BLACKWELL_ULTRA_FLOAT64_CERT_FROM_POLISH_R6:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 23
+    txt_log_line_range: null
+    script_sha256_reported: null
+  BLACKWELL_ULTRA_JM_PHASE_FROM_POLISH_R6:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 31
+    txt_log_line_range: null
+    script_sha256_reported: null
+  BLACKWELL_ULTRA_POLISH_ADFL_FROM_ASSOC_R6:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 28
+    txt_log_line_range: null
+    script_sha256_reported: null
+  REPRO_BOOTSTRAP_FROM_POLISH_R6:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 28
+    txt_log_line_range: null
+    script_sha256_reported: 8d275fdbae84f2330aed8758539f71d29b454c2f6b00aef2ab4f5b25efeb70ba
+  REPRO_FLOAT64_CERT_FROM_BALANCED_3000:
+    sources:
+    - txt_log:REPRO_SUMMARIES_A_TO_M_VALIDATED.txt
+    in_txt_log: true
+    on_disk: false
+    file_count_on_disk: 0
+    txt_log_line_range:
+    - 910
+    - 1834
+    script_sha256_reported: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+  REPRO_FLOAT64_CERT_FROM_CONT_3200:
+    sources:
+    - txt_log:REPRO_SUMMARIES_A_TO_M_VALIDATED.txt
+    - run_directory
+    in_txt_log: true
+    on_disk: true
+    file_count_on_disk: 28
+    txt_log_line_range:
+    - 1834
+    - 2759
+    script_sha256_reported: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+  REPRO_FLOAT64_CERT_FROM_JM_R6_2400:
+    sources:
+    - txt_log:REPRO_SUMMARIES_A_TO_M_VALIDATED.txt
+    - run_directory
+    in_txt_log: true
+    on_disk: true
+    file_count_on_disk: 28
+    txt_log_line_range:
+    - 2759
+    - 3695
+    script_sha256_reported: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+  REPRO_FLOAT64_CERT_FROM_MICROPOLISH_3400:
+    sources:
+    - txt_log:REPRO_SUMMARIES_A_TO_M_VALIDATED.txt
+    - run_directory
+    in_txt_log: true
+    on_disk: true
+    file_count_on_disk: 28
+    txt_log_line_range:
+    - 3695
+    - 4619
+    script_sha256_reported: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+  REPRO_TENSOR_EXPLICIT_JM_R6:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 1
+    txt_log_line_range: null
+    script_sha256_reported: null
+  REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_3000:
+    sources:
+    - txt_log:REPRO_SUMMARIES_A_TO_M_VALIDATED.txt
+    - run_directory
+    in_txt_log: true
+    on_disk: true
+    file_count_on_disk: 39
+    txt_log_line_range:
+    - 4619
+    - 5559
+    script_sha256_reported: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+  REPRO_TENSOR_EXPLICIT_JM_R6_BALANCED_MICROPOLISH_3400:
+    sources:
+    - txt_log:REPRO_SUMMARIES_A_TO_M_VALIDATED.txt
+    - run_directory
+    in_txt_log: true
+    on_disk: true
+    file_count_on_disk: 35
+    txt_log_line_range:
+    - 5559
+    - 6499
+    script_sha256_reported: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+  REPRO_TENSOR_EXPLICIT_JM_R6_CONT_3200:
+    sources:
+    - txt_log:REPRO_SUMMARIES_A_TO_M_VALIDATED.txt
+    - run_directory
+    in_txt_log: true
+    on_disk: true
+    file_count_on_disk: 43
+    txt_log_line_range:
+    - 6499
+    - 7440
+    script_sha256_reported: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+  REPRO_TENSOR_EXPLICIT_JM_R6_FIX_2400:
+    sources:
+    - txt_log:REPRO_SUMMARIES_A_TO_M_VALIDATED.txt
+    - run_directory
+    in_txt_log: true
+    on_disk: true
+    file_count_on_disk: 51
+    txt_log_line_range:
+    - 7440
+    - 8380
+    script_sha256_reported: bb26ad3add48083a788521db2a800a61323c5c078c1ebf3ed2aa00c6953951e8
+  master_audit_A_to_N_v17_RTXPRO5000_CLOSURE_300_R6:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 28
+    txt_log_line_range: null
+    script_sha256_reported: null
+  master_audit_A_to_N_v17_RTXPRO5000_CLOSURE_600_R6:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 29
+    txt_log_line_range: null
+    script_sha256_reported: null
+  master_audit_A_to_N_v17_RTXPRO5000_ULTRAFAST_120:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 25
+    txt_log_line_range: null
+    script_sha256_reported: null
+  master_audit_A_to_N_v17_RTXPRO5000_closure_gji_300:
+    sources:
+    - run_directory
+    in_txt_log: false
+    on_disk: true
+    file_count_on_disk: 5
+    txt_log_line_range: null
+    script_sha256_reported: null

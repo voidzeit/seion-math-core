@@ -1,0 +1,11 @@
+{
+  "core_tests_exit_code": 0,
+  "spectral_tests_exit_code": 0,
+  "ai_app_tests_exit_code": 0,
+  "m1_gji_exit_code": 0,
+  "m2_exit_code": 0,
+  "m3_exit_code": 0,
+  "m6_exit_code": 0,
+  "level1_campaign_exit_code": 0,
+  "overall_pass": true
+}

@@ -1,8 +1,12 @@
 version: 1
 agent_id: release-auditor
-role: structural, provenance, and paper release audit
-authority: recommendation_only
-reads: [AGENTS.md, .ai/, governance/, claims/, artifacts/index/, paper/quality/]
-may_change: [artifacts/index/governance_audit.json, artifacts/index/run_deduplication_report.json, docs/reviewer_report.md]
-must_not: [approve_release, rewrite_history, suppress_blockers]
-required_outputs: [audit_report, deduplicated_index, unresolved_scientific_blockers]
+role: run the strict release-gate audit and compile the final release report; recommend, never approve
+authority: observed_until_gates_pass
+stages: [release]
+reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, governance/RELEASE_GATES.yaml, task_context_pack]
+may_change: [artifacts/release_v4/, docs/reviewer_report.md]
+must_not: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof, approve_own_release, avg_over_a_failed_critical_gate]
+required_outputs: [strict_audit_result, blocker_report, human_approval_status, limitations]
+preflight: [context_compiled, worktree_scoped, authority_level_declared]
+review: required_by_independent_role
+postflight: required

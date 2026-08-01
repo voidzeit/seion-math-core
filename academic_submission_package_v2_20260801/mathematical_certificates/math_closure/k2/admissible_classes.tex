@@ -1,0 +1,63 @@
+\section*{M2: Admissible classes for the $k=2$ classification}
+
+Parameters, following the mission's required list (Section IV.M2):
+
+\begin{itemize}
+  \item \textbf{Field}: $\mathbb{R}$ (all results below; $\mathbb{C}$ not
+    attempted this pass).
+  \item \textbf{Vertex arities}: arity-2 (binary) internal nodes only.
+    With exactly $k=2$ binary internal nodes, there is exactly one
+    topology up to leaf-label mirroring: a \emph{chain}
+    ($T = \mu(\mu(L_0,L_1), L_2)$) -- two binary nodes cannot form any
+    other connected shape. (Higher-arity $k=2$ configurations are outside
+    this pass's scope.)
+  \item \textbf{Ordered insertion slot}: the inner node occupies the
+    first slot of the outer node (mirror-symmetric to occupying the
+    second slot by leaf relabeling; not treated as a separate class).
+  \item \textbf{Ambient dimension} $n$: $n \ge 2$ (tested $n \in
+    \{2,3,4\}$ below; proved dimension-independent for the construction
+    in \S\ref{sec:theorem}).
+  \item \textbf{Reduced dimension / projector rank} $r$: $1 \le r \le
+    n-1$ (nontrivial proper projector; tested $r\in\{1,2\}$; proved
+    rank-independent for the construction below).
+  \item \textbf{Projector ranks}: coordinate-subspace projectors
+    (\texttt{TypedSpace.coordinate}), rank $r$ as above.
+  \item \textbf{Independent or shared maps}: the SAME law (repeated
+    law id \texttt{"mu"}) at both internal nodes -- the
+    \emph{homogeneous, repeated-law} sub-class. Independent (distinct)
+    laws per node are not treated this pass.
+  \item \textbf{Fixed or variable projectors}: a single fixed coordinate
+    projector shared by the one type \texttt{"tau"} used throughout the
+    tree (matching \texttt{rotation\_extremizer}'s construction).
+  \item \textbf{Symmetry restrictions}: none imposed on the general upper
+    bound (any bounded-operator-norm, bounded-closure law); the
+    \emph{specific saturating construction} in \S\ref{sec:theorem} uses
+    the gated-planar-rotation law (\texttt{rotation\_tensor} in
+    \texttt{src/seion\_core/research\_v3/extremizers.py}) -- a genuine
+    rotation (orthogonal, operator norm exactly 1) gated by an inner
+    product with a fixed reference direction, with no further symmetry
+    assumed for the general upper bound.
+  \item \textbf{Fixed or variable $\eta$}: $\eta := \rho/M$ ranges over
+    $[0,1]$ (the construction's valid domain); results below are exact
+    closed-form functions of $\eta$, not evaluated only at fixed points.
+  \item \textbf{Unitary-invariance reduction}: not separately exploited
+    this pass beyond what the coordinate-projector convention already
+    fixes (the construction's ``active'' 2-dimensional rotation subspace
+    $\mathrm{span}(e_0, e_r)$ is, by the coordinate convention, already a
+    canonical block-diagonal choice).
+\end{itemize}
+
+Two classes are distinguished below:
+\begin{description}
+  \item[Class $A$ (general, upper bound only)] any real Hilbert space
+    $V$, any bounded multilinear law $\mu$ with $\|\mu\|_{op} \le M$ at
+    each of the 2 nodes, any bounded closure leakage $\|\rho_v\| \le
+    \rho$, any chain or (if applicable) other $k=2$ topology, any
+    dimension/rank/leaf norm -- the class the proved universal theorem
+    (\texttt{THM\_V3\_PROJECTED\_ROOT\_K\_MINUS\_ONE}) applies to.
+  \item[Class $B$ (specific, exact value)] the homogeneous chain
+    topology above with the gated-planar-rotation law, unit-norm leaf
+    inputs, $M=1$ exactly, $\rho = \eta$ exactly, any $n\ge 2$,
+    $1\le r\le n-1$ -- the class \S\ref{sec:theorem}'s exact theorem
+    applies to.
+\end{description}

@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="567.120961pt" height="256.79952pt" viewBox="0 0 567.120961 256.79952" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-07-29T14:13:02.150095</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>SEION Math Core research-v3 registered figure builder</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 256.79952 
+L 567.120961 256.79952 
+L 567.120961 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 33.35 224.191551 
+L 250.361593 224.191551 
+L 250.361593 38.623304 
+L 33.35 38.623304 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g clip-path="url(#p57b95a75e3)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAS4AAAECCAYAAABALjoOAAADaklEQVR4nO3UQQ3AIADAQIZiRE3AHIIGXkuTOwV99fnetQdAyPw7AOCWcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1xAjnEBOcYF5BgXkGNcQI5xATnGBeQYF5BjXECOcQE5xgXkGBeQY1zAqDnAUgTH7ojalQAAAABJRU5ErkJggg==" id="image5ede2aa315" transform="scale(1 -1) translate(0 -185.76)" x="33.35" y="-38.431551" width="217.44" height="185.76"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m61d409f460" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m61d409f460" x="60.476449" y="224.191551" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="60.476449" y="236.313817" transform="rotate(-0 60.476449 236.313817)">0.125</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m61d409f460" x="114.729347" y="224.191551" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="114.729347" y="236.313817" transform="rotate(-0 114.729347 236.313817)">0.25</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m61d409f460" x="168.982246" y="224.191551" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="168.982246" y="236.313817" transform="rotate(-0 168.982246 236.313817)">0.5</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m61d409f460" x="223.235144" y="224.191551" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="223.235144" y="236.313817" transform="rotate(-0 223.235144 236.313817)">0.75</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 8.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="141.855797" y="247.746786" transform="rotate(-0 141.855797 247.746786)">requested projector-rank ratio</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m722406dcac" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m722406dcac" x="33.35" y="208.727531" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="26.35" y="211.288663" transform="rotate(-0 26.35 211.288663)">2</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m722406dcac" x="33.35" y="177.79949" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="26.35" y="180.360622" transform="rotate(-0 26.35 180.360622)">4</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m722406dcac" x="33.35" y="146.871448" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="26.35" y="149.432581" transform="rotate(-0 26.35 149.432581)">8</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m722406dcac" x="33.35" y="115.943407" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="26.35" y="118.50454" transform="rotate(-0 26.35 118.50454)">16</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m722406dcac" x="33.35" y="85.015366" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="26.35" y="87.576499" transform="rotate(-0 26.35 87.576499)">32</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m722406dcac" x="33.35" y="54.087325" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="26.35" y="56.648458" transform="rotate(-0 26.35 56.648458)">64</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 8.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="13.005234" y="131.407428" transform="rotate(-90 13.005234 131.407428)">ambient dimension</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 33.35 224.191551 
+L 33.35 38.623304 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 33.35 224.191551 
+L 250.361593 224.191551 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="60.476449" y="210.358312" transform="rotate(-0 60.476449 210.358312)">0.71</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="114.729347" y="210.358312" transform="rotate(-0 114.729347 210.358312)">0.71</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="168.982246" y="210.358312" transform="rotate(-0 168.982246 210.358312)">0.71</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="223.235144" y="210.358312" transform="rotate(-0 223.235144 210.358312)">0.71</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="60.476449" y="179.430271" transform="rotate(-0 60.476449 179.430271)">0.71</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="114.729347" y="179.430271" transform="rotate(-0 114.729347 179.430271)">0.71</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="168.982246" y="179.430271" transform="rotate(-0 168.982246 179.430271)">0.71</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="223.235144" y="179.430271" transform="rotate(-0 223.235144 179.430271)">0.71</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="60.476449" y="148.50223" transform="rotate(-0 60.476449 148.50223)">0.71</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="114.729347" y="148.50223" transform="rotate(-0 114.729347 148.50223)">0.71</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="168.982246" y="148.50223" transform="rotate(-0 168.982246 148.50223)">0.71</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="223.235144" y="148.50223" transform="rotate(-0 223.235144 148.50223)">0.71</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="60.476449" y="117.574188" transform="rotate(-0 60.476449 117.574188)">0.71</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="114.729347" y="117.574188" transform="rotate(-0 114.729347 117.574188)">0.71</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="168.982246" y="117.574188" transform="rotate(-0 168.982246 117.574188)">0.71</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="223.235144" y="117.574188" transform="rotate(-0 223.235144 117.574188)">0.71</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="60.476449" y="86.646147" transform="rotate(-0 60.476449 86.646147)">0.71</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="114.729347" y="86.646147" transform="rotate(-0 114.729347 86.646147)">0.71</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="168.982246" y="86.646147" transform="rotate(-0 168.982246 86.646147)">0.71</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="223.235144" y="86.646147" transform="rotate(-0 223.235144 86.646147)">0.71</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="60.476449" y="55.718106" transform="rotate(-0 60.476449 55.718106)">0.71</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="114.729347" y="55.718106" transform="rotate(-0 114.729347 55.718106)">0.71</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="168.982246" y="55.718106" transform="rotate(-0 168.982246 55.718106)">0.71</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="223.235144" y="55.718106" transform="rotate(-0 223.235144 55.718106)">0.71</text>
+   </g>
+   <g id="text_37">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="7.308609" y="29.150574" transform="rotate(-0 7.308609 29.150574)">a</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 9.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="141.855797" y="32.623304" transform="rotate(-0 141.855797 32.623304)">comb</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 284.074818 224.191551 
+L 501.086411 224.191551 
+L 501.086411 38.623304 
+L 284.074818 38.623304 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g clip-path="url(#pb43e17d526)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAS4AAAECCAYAAABALjoOAAADaklEQVR4nO3UMQ3AMBDAwG8YlVn5Lw2GTJGlOwSe/Mz7/QMQsm4HAJwyLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAvIMS4gx7iAHOMCcowLyDEuIMe4gBzjAnKMC8gxLiDHuIAc4wJyjAuYmg1pKwOkX+Y77gAAAABJRU5ErkJggg==" id="image4d93fe3936" transform="scale(1 -1) translate(0 -185.76)" x="284.074818" y="-38.431551" width="217.44" height="185.76"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_5">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m61d409f460" x="311.201267" y="224.191551" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_39">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="311.201267" y="236.313817" transform="rotate(-0 311.201267 236.313817)">0.125</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m61d409f460" x="365.454165" y="224.191551" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_40">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="365.454165" y="236.313817" transform="rotate(-0 365.454165 236.313817)">0.25</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m61d409f460" x="419.707063" y="224.191551" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_41">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="419.707063" y="236.313817" transform="rotate(-0 419.707063 236.313817)">0.5</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m61d409f460" x="473.959962" y="224.191551" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_42">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="473.959962" y="236.313817" transform="rotate(-0 473.959962 236.313817)">0.75</text>
+     </g>
+    </g>
+    <g id="text_43">
+     <text style="font-size: 8.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="392.580614" y="247.746786" transform="rotate(-0 392.580614 247.746786)">requested projector-rank ratio</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_7">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m722406dcac" x="284.074818" y="208.727531" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_44">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="277.074818" y="211.288663" transform="rotate(-0 277.074818 211.288663)">2</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m722406dcac" x="284.074818" y="177.79949" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_45">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="277.074818" y="180.360622" transform="rotate(-0 277.074818 180.360622)">4</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m722406dcac" x="284.074818" y="146.871448" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_46">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="277.074818" y="149.432581" transform="rotate(-0 277.074818 149.432581)">8</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m722406dcac" x="284.074818" y="115.943407" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_47">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="277.074818" y="118.50454" transform="rotate(-0 277.074818 118.50454)">16</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m722406dcac" x="284.074818" y="85.015366" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_48">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="277.074818" y="87.576499" transform="rotate(-0 277.074818 87.576499)">32</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m722406dcac" x="284.074818" y="54.087325" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_49">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: end" x="277.074818" y="56.648458" transform="rotate(-0 277.074818 56.648458)">64</text>
+     </g>
+    </g>
+    <g id="text_50">
+     <text style="font-size: 8.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="263.730052" y="131.407428" transform="rotate(-90 263.730052 131.407428)">ambient dimension</text>
+    </g>
+   </g>
+   <g id="patch_6">
+    <path d="M 284.074818 224.191551 
+L 284.074818 38.623304 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 284.074818 224.191551 
+L 501.086411 224.191551 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_51">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="311.201267" y="210.358312" transform="rotate(-0 311.201267 210.358312)">0.09</text>
+   </g>
+   <g id="text_52">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="365.454165" y="210.358312" transform="rotate(-0 365.454165 210.358312)">0.09</text>
+   </g>
+   <g id="text_53">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="419.707063" y="210.358312" transform="rotate(-0 419.707063 210.358312)">0.09</text>
+   </g>
+   <g id="text_54">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="473.959962" y="210.358312" transform="rotate(-0 473.959962 210.358312)">0.09</text>
+   </g>
+   <g id="text_55">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="311.201267" y="179.430271" transform="rotate(-0 311.201267 179.430271)">0.09</text>
+   </g>
+   <g id="text_56">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="365.454165" y="179.430271" transform="rotate(-0 365.454165 179.430271)">0.09</text>
+   </g>
+   <g id="text_57">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="419.707063" y="179.430271" transform="rotate(-0 419.707063 179.430271)">0.09</text>
+   </g>
+   <g id="text_58">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="473.959962" y="179.430271" transform="rotate(-0 473.959962 179.430271)">0.09</text>
+   </g>
+   <g id="text_59">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="311.201267" y="148.50223" transform="rotate(-0 311.201267 148.50223)">0.09</text>
+   </g>
+   <g id="text_60">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="365.454165" y="148.50223" transform="rotate(-0 365.454165 148.50223)">0.09</text>
+   </g>
+   <g id="text_61">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="419.707063" y="148.50223" transform="rotate(-0 419.707063 148.50223)">0.09</text>
+   </g>
+   <g id="text_62">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="473.959962" y="148.50223" transform="rotate(-0 473.959962 148.50223)">0.09</text>
+   </g>
+   <g id="text_63">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="311.201267" y="117.574188" transform="rotate(-0 311.201267 117.574188)">0.09</text>
+   </g>
+   <g id="text_64">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="365.454165" y="117.574188" transform="rotate(-0 365.454165 117.574188)">0.09</text>
+   </g>
+   <g id="text_65">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="419.707063" y="117.574188" transform="rotate(-0 419.707063 117.574188)">0.09</text>
+   </g>
+   <g id="text_66">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="473.959962" y="117.574188" transform="rotate(-0 473.959962 117.574188)">0.09</text>
+   </g>
+   <g id="text_67">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="311.201267" y="86.646147" transform="rotate(-0 311.201267 86.646147)">0.09</text>
+   </g>
+   <g id="text_68">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="365.454165" y="86.646147" transform="rotate(-0 365.454165 86.646147)">0.09</text>
+   </g>
+   <g id="text_69">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="419.707063" y="86.646147" transform="rotate(-0 419.707063 86.646147)">0.09</text>
+   </g>
+   <g id="text_70">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="473.959962" y="86.646147" transform="rotate(-0 473.959962 86.646147)">0.09</text>
+   </g>
+   <g id="text_71">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="311.201267" y="55.718106" transform="rotate(-0 311.201267 55.718106)">0.09</text>
+   </g>
+   <g id="text_72">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="365.454165" y="55.718106" transform="rotate(-0 365.454165 55.718106)">0.09</text>
+   </g>
+   <g id="text_73">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="419.707063" y="55.718106" transform="rotate(-0 419.707063 55.718106)">0.09</text>
+   </g>
+   <g id="text_74">
+    <text style="font-size: 7px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle; fill: #ffffff" x="473.959962" y="55.718106" transform="rotate(-0 473.959962 55.718106)">0.09</text>
+   </g>
+   <g id="text_75">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="258.033427" y="29.150574" transform="rotate(-0 258.033427 29.150574)">b</text>
+   </g>
+   <g id="text_76">
+    <text style="font-size: 9.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="392.580614" y="32.623304" transform="rotate(-0 392.580614 32.623304)">balanced</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_8">
+    <path d="M 524.473231 205.634727 
+L 531.895961 205.634727 
+L 531.895961 57.180129 
+L 524.473231 57.180129 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAsAAADOCAYAAADoifghAAABM0lEQVR4nO2a0WnAMAxE72R1kQ7U/Ydpo67gKzywQ/P9OJ4lWYQQ6/NrtPm07F1WreoAVpLswmAncFMautDZ2AFrJckOYAtK/tg/n3pp+wqqO3FeCfyRwBXBGii5kzrXPqu2KeeVwMaa4qQpvvKA+09XDZRs7lqZ0jBYZ0HJPmTqjMEK4Pqv898HydfVWacMkt99YZXMhveDhQ6SE1hnwA5gYXU2paFsnn1fU4wlS0do+L6m1BkvJ/LLF2OB7R4ouQ7Z/OKWuSANR8kVaQylYZ0xSANp+P3Oc4KGuc8sTjScwBpsyUwCC4JXpjEXzvNAGsZWQYHO8/amDLZkJkjWfc4G5/k5QcMJvMA6DwTXGRoGm/Jc2JQfLHmo5KKcncHPPrxA5weCV31jGtts+mfI2v/L4hdT+EFTFbIeLAAAAABJRU5ErkJggg==" id="image92b6aa8d05" transform="scale(1 -1) translate(0 -148.32)" x="524.16" y="-56.88" width="7.92" height="148.32"/>
+   <g id="matplotlib.axis_5"/>
+   <g id="matplotlib.axis_6">
+    <g id="ytick_13">
+     <g id="line2d_21">
+      <defs>
+       <path id="ma79767b853" d="M 0 0 
+L 3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ma79767b853" x="531.895961" y="205.634727" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_77">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: start" x="538.895961" y="208.195859" transform="rotate(-0 538.895961 208.195859)">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#ma79767b853" x="531.895961" y="175.943807" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_78">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: start" x="538.895961" y="178.50494" transform="rotate(-0 538.895961 178.50494)">0.2</text>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#ma79767b853" x="531.895961" y="146.252888" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_79">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: start" x="538.895961" y="148.81402" transform="rotate(-0 538.895961 148.81402)">0.4</text>
+     </g>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#ma79767b853" x="531.895961" y="116.561968" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_80">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: start" x="538.895961" y="119.123101" transform="rotate(-0 538.895961 119.123101)">0.6</text>
+     </g>
+    </g>
+    <g id="ytick_17">
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#ma79767b853" x="531.895961" y="86.871048" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_81">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: start" x="538.895961" y="89.432181" transform="rotate(-0 538.895961 89.432181)">0.8</text>
+     </g>
+    </g>
+    <g id="ytick_18">
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#ma79767b853" x="531.895961" y="57.180129" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_82">
+      <text style="font-size: 7.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: start" x="538.895961" y="59.741262" transform="rotate(-0 538.895961 59.741262)">1.0</text>
+     </g>
+    </g>
+    <g id="text_83">
+     <text style="font-size: 8.5px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="558.076196" y="131.407428" transform="rotate(-90 558.076196 131.407428)">normalized lower / upper</text>
+    </g>
+   </g>
+   <g id="LineCollection_1"/>
+   <g id="patch_9">
+    <path d="M 524.473231 205.634727 
+L 528.184596 205.634727 
+L 531.895961 205.634727 
+L 531.895961 57.180129 
+L 528.184596 57.180129 
+L 524.473231 57.180129 
+L 524.473231 205.634727 
+z
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="text_84">
+   <text style="font-size: 10.2px; font-family: 'STIX Two Text', 'STIXGeneral', 'DejaVu Serif', serif; text-anchor: middle" x="283.437015" y="14.166281" transform="rotate(-0 283.437015 14.166281)">Dimension/rank phase diagram for binary 24-node trees</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p57b95a75e3">
+   <rect x="33.35" y="38.623304" width="217.011593" height="185.568247"/>
+  </clipPath>
+  <clipPath id="pb43e17d526">
+   <rect x="284.074818" y="38.623304" width="217.011593" height="185.568247"/>
+  </clipPath>
+ </defs>
+</svg>

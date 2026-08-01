@@ -1,0 +1,4553 @@
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+OF FINITE MULTILINEAR COMPOSITION TREES
+ELIUTH CHAVERO JASSO
+Abstract. Let T be a finite rooted ordered tree whose internal vertices carry bounded multilinear
+maps between finite-dimensional Hilbert spaces, and suppose that the output at each internal vertex
+is orthogonally projected onto a prescribed subspace of its ambient space. We compare the value
+obtained by unprojected evaluation with the value obtained by recursive projection. We derive an
+exact local decomposition of the discrepancy into a closure residual created at the vertex and a sum
+over all nonempty subsets of the children whose subtree errors interact, and we show that at the
+root the discrepancy splits orthogonally, with the reduced-coordinate error equal to the projected
+component exactly. Under uniform bounds M on the multilinear maps and ρ on their failure
+to preserve the prescribed subspaces, we prove that a tree with k ≥ 1 internal vertices satisfies
+ETamb ≤ kρM k−1 LT while ETproj = ETred ≤ (k − 1)ρM k−1 LT , where LT is the product of the leaf
+norms; the reduction from k to k − 1 is exactly the removal of the root closure residual by the
+final projection. We also derive state-resolved and pathwise upper bounds, prove that a closedform ordering rule minimises the telescoping bound within a declared scalar family, and treat finite
+signed linear combinations of trees. The coefficient k − 1 is an upper bound; it is not shown to be
+attained at fixed ρ/M > 0. Over a registry of 9,945 configurations, the constant is determined in
+309 cases and vanishes by the theorem in 30 further cases, while in 1,794 cases (18.0 %) no positive
+lower bound was obtained at all. Determining the exact constant, already for two and three internal
+vertices, remains open.
+
+1. Introduction
+Finite compositions of multilinear maps arise in nonassociative algebra, in the syntax of coloured
+operads, in hierarchical tensor computations, and in projection-based model reduction. In all of
+these settings a recurring computational step is to project the output of every intermediate operation
+back onto a prescribed subspace, either because the subspace carries the structure one wishes to
+preserve, or because storing the full ambient object is too expensive.
+Projection is exact only when the prescribed subspaces are invariant under the maps. When they
+are not, each internal vertex creates a residual lying in the orthogonal complement of its subspace,
+and these residuals then propagate through the remaining composition. The question studied here
+is how those local residuals accumulate.
+A crude answer is available immediately. Bounding every intermediate quantity by the product
+of the operator norms yields an estimate that is valid but uninformative: it neither identifies which
+vertex is responsible for the error, nor distinguishes the part of the error that survives the final
+projection from the part that does not, nor exploits the geometry of orthogonality at all. The
+purpose of this article is to replace that estimate by a decomposition that does all three.
+What is proved. The starting point is an exact identity. At each internal vertex, the discrepancy
+between the two evaluations is the sum of a locally created residual and a term for each nonempty
+Date: 31 July 2026.
+2020 Mathematics Subject Classification. 15A69, 65G50, 65F35, 41A65, 18M60.
+Key words and phrases. multilinear algebra, orthogonal projection, error propagation, composition tree, projectionbased model reduction, hierarchical tensor format, validated numerics.
+The proofs and the numerical results of this article have not been checked by anyone other than the author. No
+claim of originality is made; see Section 2.
+1
+
+2
+
+ELIUTH CHAVERO JASSO
+
+subset of the children whose subtree errors are simultaneously active (Theorem 5.1). No inequality
+is used, and no expansion is truncated. Applying the vertex projector annihilates the locally created
+residual exactly and leaves the propagated terms untouched.
+From this identity three kinds of estimate follow. The first is a uniform estimate: with M
+bounding the multilinear maps and ρ bounding their closure residuals,
+ETamb ≤ kρM k−1 LT ,
+
+ETproj = ETred ≤ (k − 1)ρM k−1 LT
+
+for every tree with k ≥ 1 internal vertices (Theorem 9.1). The two coefficients differ by exactly
+one, because the ambient error may contain a residual created at every internal vertex, whereas
+the residual created at the root lies in the orthogonal complement of the root subspace and is
+annihilated by the final projection.
+The second is a family of vertexwise estimates that track, separately, the projected and orthogonal
+components of every subtree error (Section 7). These are finer than the uniform estimate because
+a residual created orthogonally at one vertex can acquire a projected component at its parent, and
+the two situations carry different constants.
+The third attributes the bound to individual vertices: unrolling a valid scalar recurrence expresses
+the estimate as a sum over internal vertices of a locally created source multiplied by the gains along
+its path to the root (Section 10).
+What is not proved. The coefficient k − 1 is an upper bound. We do not show that it is
+the best possible coefficient at a fixed positive value of η = ρ/M , and the numerical evidence
+assembled here does not settle the question: explicit constructions attain the ambient coefficient in
+the configurations where it is determined, while the projected constructions we have found remain
+strictly below k − 1 except in a small number of configurations. Section 13 reports what is known
+for two and three internal vertices; in both cases the exact constant is undetermined over most of
+the parameter range.
+Every result is finite-dimensional. Nothing here is a statement about infinite composition, about
+continuum limits, or about function spaces.
+Organisation. Section 2 places the results relative to the literature. Sections 3 and 4 fix the
+setting. Section 5 proves the exact local decomposition and Section 6 the orthogonal splitting at
+the root. Sections 7 to 10 develop the state-resolved, order-optimised and pathwise estimates, and
+Section 9 the uniform estimate. Section 11 treats signed combinations of trees. Sections 12 and 13
+report lower constructions and the unresolved low-order cases. Section 14 adds approximation of
+the maps themselves. Section 15 describes the numerical verification, Section 17 the limitations and
+Section 18 the open problems. Complete proofs are in Appendix A and reproduction instructions
+in Appendix B.
+2. Relation to previous work
+The typed composition of multilinear operations is the setting of coloured operads [15, 12], from
+which we borrow only the bookkeeping: the trees here are finite and the operations are concrete
+linear-algebraic objects. Signed combinations of composition trees are the natural home of the
+nonassociative identities of Filippov [4] and of the Akivis–Sabinin circle of ideas [14].
+The question of how a map that is only approximately structure-preserving behaves under composition is classical in operator algebra: Johnson’s work on approximately multiplicative maps
+between Banach algebras [8] asks a related question under global hypotheses, but does not address
+a fixed finite tree with prescribed subspaces at every vertex.
+Forward and backward error analysis has always treated the order of composition and the propagation of local perturbations as central [7]; the estimates of Sections 7–10 are recognisably of
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+3
+
+that kind. Layerwise Lipschitz estimates for composed operators [2] and sound abstract interpretation for layered computations [5] show, in different settings, that a structure-aware summary can
+improve on a plain product of norms. We do not claim that a vertexwise recursion is itself new.
+Hierarchical tensor formats organise computation along a dimension tree and adapt the approximation to it [6, 1]; canonical polyadic decomposition, factor nonuniqueness and identifiability are a
+separate matter [9, 10]. The dominant error in those formats is representation or rank truncation.
+The dominant error here is different in kind: it is a closure defect created at every algebraic vertex, and Section 14 keeps the two apart deliberately. Projection-based structure-preserving model
+reduction supplies the closest methodological precedent [3].
+Interval arithmetic [13] and moment relaxations [11] provide rigorous global tools when their
+hypotheses and solver statuses are verified. We use directed interval recursion and, in a few lowdimensional cases, exact symbolic elimination. We do not report a semidefinite relaxation as a
+certificate.
+Remark 2.1 (Originality). We make no claim of originality for any statement in this article. A
+bounded search of the areas above did not locate the projected-error coefficient, the state-resolved
+recursion or the pathwise attribution in the form given here, but absence from a bounded search
+is not evidence of novelty. The relationship between these estimates and existing error bounds has
+not been assessed sufficiently to support such a claim, and the comparison in Table 1 should be
+read as a record of overlap, not as a verdict.
+3. Typed multilinear composition trees
+Let T be a finite set of types. To each τ ∈ T we associate a finite-dimensional Hilbert space Vτ
+over K ∈ {R, C}, a second finite-dimensional Hilbert space Wτ , and an isometry
+Qτ : Wτ −→ Vτ ,
+
+Q∗τ Qτ = IWτ .
+
+We call Vτ the ambient space and Wτ the reduced space of type τ , and we write
+Pτ = Qτ Q∗τ ,
+so that Pτ is the orthogonal projector of Vτ onto ran Qτ , and Pτ2 = Pτ = Pτ∗ , ∥Pτ ∥ = 1.
+Throughout, ran Pτ is a fixed linear subspace of Vτ . It is not a tangent space, and we use the
+words projected and orthogonal for the two components of a vector relative to it.
+Definition 3.1 (Composition tree). A typed composition tree T is a finite rooted ordered tree
+together with: an output type τ (v) ∈ T and an arity av ≥ 1 for each internal vertex v; input types
+τ (v, 1), . . . , τ (v, av ); a multilinear map
+µv :
+
+av
+Y
+
+Vτ (v,j) −→ Vτ (v) ;
+
+j=1
+
+and a type τ (ℓ) ∈ T for each leaf ℓ. The jth child of v must have output type τ (v, j). Trees
+violating this condition are not admitted: they have no numerical semantics.
+We write Int T for the set of internal vertices, k(T ) = |Int T |, and amax = maxv av . The
+multilinear operator norm is
+∥µ∥op = sup{∥µ(x1 , . . . , xa )∥ : ∥x1 ∥ = · · · = ∥xa ∥ = 1}.
+Definition 3.2 (Closure-residual map). For an internal vertex v with children c1 , . . . , ca , the
+closure-residual map is the multilinear map
+rv = (I − Pτ (v) ) µv Pτ (c1 ) · , . . . , Pτ (ca ) · .
+
+
+It vanishes identically if and only if µv (ran Pτ (c1 ) , . . . , ran Pτ (ca ) ) ⊆ ran Pτ (v) , that is, if and only if
+the prescribed subspaces are invariant under µv .
+
+4
+
+ELIUTH CHAVERO JASSO
+
+We abbreviate Pv = Pτ (v) when no confusion arises.
+3.1. Standing hypotheses. Every statement in this article is made under the following hypotheses, which are not repeated in the individual statements.
+(H1) The scalar field is K ∈ {R, C}, fixed throughout. Nothing below distinguishes the two cases.
+(H2) For each τ ∈ T , Vτ and Wτ are finite-dimensional Hilbert spaces over K, with 1 ≤ dim Wτ ≤
+dim Vτ .
+(H3) Qτ : Wτ → Vτ is an isometry and Pτ = Qτ Q∗τ is the associated orthogonal projector. Obliqueness is not permitted; see Example 6.2.
+(H4) T is a finite rooted ordered tree. Every internal vertex has finite arity av ≥ 1, and T is finite.
+(H5) Every µv is multilinear and bounded, with ∥µv ∥op < ∞. In finite dimension this is automatic
+and is stated for emphasis.
+(H6) The tree is type-compatible in the sense of Definition 3.1. Type-incompatible trees are not
+admitted and receive no numerical semantics.
+(H7) Leaf data zℓ lie in the reduced spaces Wτ (ℓ) , so that Fℓ = Rℓ = Qτ (ℓ) zℓ ∈ ran Pτ (ℓ) .
+The three constants have the following exact meaning.
+M
+ρ
+LT
+
+any real number with ∥µv ∥op ≤ M for every internal vertex v; necessarily M ≥ 0
+any real number with ∥rv ∥op ≤ ρ for every internal vertex v, rv being the closure-residual map of
+Definition
+3.2; necessarily ρ ≥ 0
+Q
+ℓ ∥zℓ ∥, the product over the leaves of the norms of the reduced leaf data
+
+Neither M nor ρ is required to be attained. Since ∥I − Pv ∥ ≤ 1 and ∥Pτ (ci ) ∥ ≤ 1, one has
+∥rv ∥op ≤ ∥µv ∥op at every vertex, so ρ may always be chosen with ρ ≤ M ; the ratio η = ρ/M of
+Section 13 is understood with that choice and lies in [0, 1] when M > 0.
+3.2. Degenerate cases. These are stated once and used without comment.
+k=0
+
+T is a single leaf. Then F = R and all four errors vanish. The expression M k−1 is not defined
+at k = 0 when M = 0, so Theorem 9.1 is stated for k ≥ 1 and this case is handled separately in
+Appendix A
+k=1
+The root is the only internal vertex and every child is a leaf. Then Dϱ = rϱ (R1 , . . . , Ra ) lies
+entirely in (ran P )⊥ , so ETproj = ETred = 0 exactly, consistently with the coefficient k − 1 = 0, while
+ETamb = ET⊥ may be nonzero
+M = 0 Every µv is the zero map, hence ρ = 0 and every evaluation and every error vanishes. All estimates
+read 0 ≤ 0 for k ≥ 1, with the convention 00 = 1 at k = 1
+ρ=0
+Every prescribed subspace is invariant under its vertex map. Then Dv = 0 at every vertex by
+Theorem 5.1 and induction, projection is exact, and all four errors vanish. The estimates read
+0≤0
+av = 1 Permitted: a unary vertex carries a bounded linear map. All statements hold, and the interaction
+terms of Theorem 5.1 are absent because [av ] has only one nonempty subset
+LT = 0 Some leaf datum is zero; multilinearity makes every evaluation zero and the estimates read 0 ≤ 0
+
+4. Unprojected and recursively projected evaluation
+Fix reduced leaf data zℓ ∈ Wτ (ℓ) and set
+LT =
+
+Y
+
+∥zℓ ∥.
+
+ℓ∈Leaves(T )
+
+Definition 4.1 (The two evaluations). The unprojected (or ambient) evaluation is
+Fℓ = Qτ (ℓ) zℓ ,
+
+Fv = µv (Fc1 , . . . , Fcav ),
+
+and the recursively projected evaluation is
+Rℓ = Qτ (ℓ) zℓ ,
+
+Rv = Pτ (v) µv (Rc1 , . . . , Rcav ).
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+5
+
+The local discrepancy at v is Dv = Fv − Rv , with components
+Dv∥ = Pv Dv ,
+
+Dv⊥ = (I − Pv )Dv .
+
+By construction Rv ∈ ran Pv for every internal v, and Rℓ ∈ ran Pτ (ℓ) at every leaf.
+Write ϱ for the root of T and abbreviate F = Fϱ , R = Rϱ , P = Pτ (ϱ) , Q = Qτ (ϱ) . The four
+quantities of interest are
+ETamb = ∥F − R∥,
+
+ETproj = ∥P F − R∥,
+
+ET⊥ = ∥(I − P )F ∥,
+
+ETred = ∥Q∗ F − Q∗ R∥.
+
+The first is the discrepancy in the ambient space; the second is what remains of it after the final
+projection; the third is what the final projection discards; the fourth is the discrepancy as measured
+in the reduced coordinates, which is what a computation carried out entirely in the reduced spaces
+would report.
+5. Exact local decomposition
+Theorem 5.1 (Exact local decomposition). Let v be an internal vertex of arity a with children
+c1 , . . . , ca , and write Fi = Fci , Ri = Rci , Di = Fi − Ri . For S ⊆ [a] put
+(
+
+Di ,
+Ri ,
+
+yiS =
+
+i ∈ S,
+i∈
+/ S.
+
+Then
+Dv = rv (R1 , . . . , Ra ) +
+
+X
+∅̸=S⊆[a]
+
+µv (y1S , . . . , yaS ).
+
+The identity is exact: no term is discarded and no inequality is used. The term indexed by S
+records precisely which children carry an error. Singletons are single-branch propagation; subsets
+of size at least two are genuine interactions between the errors of different branches.
+Two consequences are used repeatedly. Since Pv rv = 0,
+Dv∥ =
+
+X
+∅̸=S⊆[a]
+
+Pv µv (y1S , . . . , yaS ) :
+
+the residual created at a vertex never appears in that vertex’s own projected error. Conversely, µv
+need not map the orthogonal complement into itself, so a child’s orthogonal error can contribute
+to its parent’s projected error,
+Pv µv (. . . , Di⊥ , . . .) ̸= 0
+
+in general.
+
+Both effects are visible in the constants of Section 9.
+6. Orthogonal splitting at the root
+Proposition 6.1 (Root geometry). For every typed composition tree,
+ETamb
+
+2
+
+= ETproj
+
+2
+
+2
+
++ ET⊥ ,
+
+ETred = ETproj .
+
+Both are identities. The first is the Pythagorean theorem applied to F −R = (P F −R)+(I −P )F ,
+whose two summands lie in ran P and (ran P )⊥ respectively; the second says that a computation
+performed in the reduced coordinates observes exactly the projected component of the ambient
+discrepancy, no more and no less.
+Orthogonality of the projectors is used, and cannot be dropped.
+Example 6.2 (Failure for an oblique projector). Let P = ( 10 10 ) on R2 . Then P 2 = P , so P is a
+projector, but P ∗ ̸= P . For D = (0, 1)⊤ one has P D = (1, 0)⊤ and (I − P )D = (−1, 1)⊤ , whence
+⟨P D, (I − P )D⟩ = −1 ̸= 0: the two components are not orthogonal and Proposition 6.1 fails.
+
+6
+
+ELIUTH CHAVERO JASSO
+
+µv : V δ × V γ → V δ
+
+typed ordered tree
+
+Fv = µv (Fu , Qγ z3 )
+ambient evaluation
+
+µv
+Fu
+
+Pτ = Qτ Q∗τ
+
+Qγ
+
+µu
+
+z3 : W γ
+
+Rv = Pδ µv (Ru , Qγ z3 )
+recursive projection
+
+Qβ
+
+Qα
+
+z2 : Wβ
+
+z1 : W α
+
+rv = (I − Pδ )µv (Ru , Qγ z3 )
+local normal residual
+
+Figure 1. Semantics of a typed ordered composition tree. Types determine the ambient spaces, the isometric embeddings, the orthogonal projectors and the admissible
+multilinear maps; unprojected evaluation, recursive projection and the local closure
+residual are three distinct operations. This is a definitional diagram: it carries no
+sampling uncertainty and supports no statement about optimal constants.
+
+v
+Du = Fu − Ru
+
+Da
+Ra
+
+exact identity
+
+Dc
+
+rv : new local normal defect
+uDu , Dc : propagated child errors
+higher subsets: exact interactions
+Db
+
+Dv X
+= rv +
+
+Pv µv (Y1S , Y2S )
+
+∅̸=S⊆{1,2}
+YiS = Di if i ∈ S, else Ri
+
+P
+N
+P
+N
+Rc Dv = Dv + Dv , Dv ⊥ Dv
+2
+P 2
+N 2
+∥Dv ∥ = ∥Dv ∥ + ∥Dv ∥
+
+R
+all child-error bsubsets are retained
+
+Figure 2. Exact local error decomposition. The local closure residual and every
+nonempty subset of propagated child errors appear in the multilinear identity, followed by the orthogonal splitting into projected and orthogonal components. This
+is a diagram of a proof; it is an identity, not a bound, and it does not determine
+optimal constants.
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+7
+
+7. State-resolved estimates
+∥
+
+Splitting each child discrepancy as Di = Di + Di⊥ and substituting into Theorem 5.1 expresses
+the value at v as a sum over states
+µv (F1 , . . . , Fa ) =
+
+X
+
+
+µv Z1σ , . . . , Zaσ ,
+
+σ∈{R,∥,⊥}a
+
+
+
+Ri ,
+
+
+σi = R,
+
+Ziσ = Di∥ ,
+
+
+D ⊥ ,
+i
+
+σi =∥,
+σi =⊥ .
+
+The state vector (R, . . . , R) contains the reduced value together with the locally created residual;
+every other state vector contributes propagation or interaction.
+Let βvχ (σ) denote the operator norm of µv restricted to the indicated components of its arguments
+and projected onto the component χ of its output, for χ ∈ {∥, ⊥}. The R and ∥ states are carried by
+the same projector but obey different magnitude bounds, which is why they are tracked separately.
+Theorem 7.1 (Soundness of the state-resolved recursion). Assume that for every internal vertex
+v and every state vector σ ∈ {R, ∥, ⊥}av an upper bound for βvχ (σ) is available. Then the recursion
+∥
+that stores, at each vertex, upper bounds for ∥Fv ∥, ∥Rv ∥, ∥Dv ∥, ∥Dv ∥ and ∥Dv⊥ ∥, and combines
+them by
+bχv ≤ λχv +
+
+βvχ (σ)
+
+X
+σ̸=(R,...,R)
+
+Y
+
+bσcii ,
+
+λ∥v = 0,
+
+λ⊥
+v ≤ ρv
+
+Y
+
+bR
+ci ,
+
+i
+
+i
+
+returns valid upper bounds at the root. It performs O(3av ) combination steps at each vertex v, hence
+O(|T | 3amax ) in total.
+Remark 7.2. The count in Theorem 7.1 is a count of combination steps in the recursion. It excludes
+the cost of obtaining the bounds βvχ (σ), which dominates in practice and which we do not analyse;
+see Section 17.
+
+8. Optimal ordering for multilinear telescoping
+Comparing µ(F1 , . . . , Fa ) with µ(R1 , . . . , Ra ) by exchanging one argument at a time produces a
+bound that depends on the order of exchange. Let ei ≥ 0 bound the error in slot i, let ri , fi ≥ 0
+bound ∥Ri ∥ and ∥Fi ∥, let Gi ≥ 0 be a slot gain, and put wi = Gi ei . For a permutation π of [a] the
+resulting bound is
+C(π) =
+
+a
+X
+t=1
+
+wπ t
+
+Y
+s<t
+
+rπs
+
+Y
+
+fπs .
+
+s>t
+
+Theorem 8.1 (Optimal order). Put di = fi − ri . Order the slots by placing those with di > 0 first,
+then those with di = 0, then those with di < 0, and sorting each of the two nonzero sign classes
+by nondecreasing wi /di . The resulting permutation minimises C over all permutations. Slots with
+wi = di = 0 may be placed anywhere.
+The proof is an adjacent-exchange argument: placing i before j is no worse precisely when
+wi dj ≤ wj di . What makes the argument yield a global minimum, rather than only
+a local one, is
+
+that this comparison is induced by the lexicographic key sign class of di , wi /di , with sign classes
+ordered positive, zero, negative, and is therefore a total preorder; the details are in Appendix A.
+Remark 8.2. Theorem 8.1 is optimal within the family of scalar telescoping bounds defined by C.
+It says nothing about bounding strategies outside that family.
+
+8
+
+ELIUTH CHAVERO JASSO
+
+9. Uniform estimates
+Theorem 9.1 (Uniform coefficients). Suppose that ∥µv ∥op ≤ M and ∥rv ∥op ≤ ρ at every internal
+vertex. Then for every typed composition tree with k = k(T ) ≥ 1 internal vertices,
+ETamb ≤ kρM k−1 LT ,
+and
+
+ET⊥ ≤ kρM k−1 LT ,
+
+ETproj = ETred ≤ (k − 1)ρM k−1 LT .
+
+The hypotheses are uniform over the vertices, but nothing else is assumed to be uniform: types,
+arities, dimensions, ranks and the maps themselves may all differ from vertex to vertex.
+Remark 9.2 (The case of a leaf). The statement is made for k ≥ 1. A leaf has k = 0 and error 0,
+and the expression M k−1 is not defined at k = 0 when M = 0; the induction in Appendix A treats
+the leaf case separately, where the assertion reads 0 ≤ 0.
+Sketch of proof. Induction on the tree. At an internal vertex, multilinear telescoping over the
+children together with the magnitude
+∥Fv ∥, ∥Rv ∥ ≤ M kv Lv of Lemma A.1 bounds the
+ estimate
+P
+kv −1 L = (k − 1)ρM kv −1 L . The locally created residual
+propagated contribution by
+v
+v
+v
+i kci ρM
+Q
+k
+−1
+v
+adds at most ρ i ∥Ri ∥ ≤ ρM
+Lv , which gives the ambient estimate. For the projected estimate,
+R ∈ ran P gives P F − R = P Dϱ , and P rϱ = 0 removes the root residual, so only the propagated
+contribution survives. Proposition 6.1 identifies the reduced error with the projected one. The
+orthogonal estimate follows from (I − P )F = (I − P )Dϱ and ∥I − P ∥ = 1. Complete details are in
+Appendix A.
+□
+Remark 9.3 (Where the difference of one comes from). The reduction from k to k − 1 is not a
+refinement of the estimate: it is the exact removal of one source. The residual created at the root
+lies in (ran P )⊥ and is annihilated by the final projection. In the extreme case k = 1, every child
+is a leaf, so Dϱ = rϱ (R1 , . . . , Ra ) lies entirely in the orthogonal complement, and
+ETproj = ETred = 0
+exactly, while ETamb need not vanish. The estimate is consistent: (k − 1)ρM k−1 LT = 0.
+Remark 9.4 (Upper bound, not optimal constant). Theorem 9.1 is a chain of triangle inequalities.
+It establishes upper bounds and nothing more. In particular it does not show that k − 1 is the
+smallest coefficient valid at a fixed value of η = ρ/M > 0, nor for a fixed dimension, projector rank,
+topology, or class of repeated maps. Sections 12 and 13 report what is and is not known about
+this.
+10. Pathwise estimates
+Fix a valid ordering at every vertex, so that the quantities Bv produced by the recursion of
+Section 7 satisfy the affine scalar inequality
+(1)
+
+Bv ≤ λv +
+
+X
+
+hv,j Bcj ,
+
+λv = ρv
+
+j
+
+Y
+
+BcRi ,
+
+Bℓ = 0,
+
+i
+
+where hv,j ≥ 0 is the gain for transporting an error from slot j through v.
+The right-hand side of (1) is an inequality, so Bϱ itself has no closed form. We therefore introduce
+the quantity that does.
+bv be defined by the equality
+Definition 10.1 (Pathwise majorant). Let B
+bℓ = 0,
+B
+
+bv = λv +
+B
+
+X
+j
+
+bc
+hv,j B
+j
+
+(v ∈ Int T ).
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+9
+
+bv , and at the root
+Corollary 10.2 (Pathwise attribution). For every vertex v one has Bv ≤ B
+bϱ =
+B
+
+X
+
+Y
+
+λv
+
+v∈Int T
+
+he ,
+
+e∈path(v,ϱ)
+
+the product being over the edges from v to the root, each contributing the gain of the slot through
+which it passes, and the product over the empty path being 1. Consequently
+Bϱ ≤
+
+X
+
+λv
+
+v∈Int T
+
+Y
+
+he .
+
+e∈path(v,ϱ)
+
+For the projected error the root source is omitted, λϱ being replaced by 0, and the final edge carries
+a projected-output gain.
+Remark 10.3 (What the pathwise formula is, and is not). Two distinctions matter here, and the
+earlier formulation blurred both.
+bϱ , not for Bϱ . The recursion of Section 7 proFirst, the displayed formula is an identity for B
+duces upper bounds, so (1) is an inequality; unrolling an inequality does not yield an equation.
+Definition 10.1 supplies the majorant for which the unrolling is exact, and the two statements of
+bv , proved by induction, and a closed form
+Corollary 10.2 are then separate: a comparison Bv ≤ B
+b
+for Bϱ .
+b the formula is not an expansion of the multilinear cross
+Second, even as a statement about B,
+terms of Theorem 5.1. The interaction terms indexed by subsets of size at least two were absorbed
+into the gains hv,j when (1) was formed. Each summand therefore attributes a share of the bound
+to a vertex, not a share of the error.
+11. Signed combinations of trees
+Let F =
+types.
+
+α=1 cα Tα be a finite linear combination of composition trees with compatible root
+
+Pm
+
+Corollary 11.1 (Triangle bound). EFproj ≤ α |cα |BTproj
+. In particular, the five-input ternary
+α
+associator µ ◦1 µ − µ ◦3 µ, a difference of two trees with two internal vertices each, satisfies E proj ≤
+2ρM L, whereas the corresponding ambient bound is 4ρM L.
+P
+
+Combining syntactically identical trees before applying the triangle inequality is an exact simplification, and it is the only unconditional cancellation available here. Any further cancellation
+— from shared subtrees, opposite signs, symmetry or antisymmetry — is not captured by Corollary 11.1, and quantifying it is open (Problem 18.3).
+11.1. Numerical lower bounds for five named combinations. Table 7 reports the largest
+values found by numerical search for five combinations. The search used 4,000 random tensor trials
+followed by 200 derivative-free local refinement steps for each combination, with the multilinear
+operator norm normalised numerically to approximately 1.
+Leaf inputs were drawn independently. This differs from the convention used in the earlier evaluation, which supplied the same unit input at every leaf; identical inputs can collapse permutationantisymmetric terms for reasons unrelated to the map, and the change was made for that reason.
+For the Jacobi combination the search did not improve on the triangle bound in any trial. This
+is informative in the negative direction: it indicates that reasoning which accounts for cancellation
+does not help for that combination in the tested regime. It does not establish that the constant
+equals 3.
+
+10
+
+ELIUTH CHAVERO JASSO
+
+11.2. A quantity that vanishes numerically. For the declared six-term generalised Jacobi
+expression, the ambient, projected and orthogonal errors all evaluated between 10−16 and 10−21
+in every one of the 4,000 trials, in five independently reseeded checks, and under both leaf-input
+conventions.
+The quantity evaluated at numerical precision zero in all trials. This suggests that the current
+formula may define an identically vanishing expression — that is, an expression that vanishes for
+every ternary map, rather than for particular ones. A symbolic verification in the free operad is
+required before the quantity can be used as a nontrivial diagnostic, and we do not use it as one here.
+Whether the expression coincides with any published convention for a generalised Jacobi identity
+has not been checked.
+12. Lower constructions
+An attained value is a rigorous lower bound only once admissibility has been verified. The
+principal explicit family acts on a two-dimensional plane spanned by one direction in ran P and
+one in its orthogonal complement. For 0 ≤ η ≤ 1 put
+Gη =
+
+"p
+
+#
+
+1 − η 2 p −η
+.
+1 − η2
+η
+
+The first argument is rotated by Gη while the remaining arguments act through their first coordinate. The multilinear operator norm of the resulting map is one and the norm of its closure-residual
+map is exactly η. Embedding the plane isometrically into a larger ambient space preserves the value.
+Directed interval recursion in 160-bit arithmetic encloses the normalised tree error of this family.
+In a small number of low-dimensional cases an independent exact symbolic routine enumerates the
+endpoints and stationary points on [−1, 1] and retains an exact nonnegativity witness.
+13. Low-order cases and unresolved gaps
+Define, for a fixed tree T and a fixed admissible class of data,
+CTproj (η) = sup
+
+ETproj
+,
+ρM k−1 LT
+
+η = ρ/M,
+
+the supremum being over admissible data. Theorem 9.1 states CTproj (η) ≤ k − 1. Whether equality
+holds is open.
+Table 10 classifies the 9,945 configurations of the enclosure registry into four mutually exclusive
+outcomes. Over the whole registry:
+• in 309 configurations the interval-enclosed lower construction meets the proved upper bound at
+a positive value, so the constant is determined;
+• in 30 configurations the proved upper bound is itself zero. These are the single-internal-vertex
+cases of Remark 9.3, where the projected error vanishes as an immediate consequence of the
+theorem. They are not the outcome of an optimisation;
+• in 7,812 configurations a positive lower bound was obtained but does not meet the upper bound;
+• in 1,794 configurations (18.0 % of the registry) no positive lower bound was obtained at all. For
+these the admissible range spans the whole interval from zero to the proved upper bound, and
+the largest such upper bound is 32.
+13.1. Two internal vertices. Re-examining the enclosure registry directly, at k = 2 the projectederror bound is attained in 6 of 75 uniform gated-rotation configurations. Elsewhere the gaps range
+from 3.75×10−7 , in the limit η ↓ 0, up to the whole interval. No ambient or orthogonal configuration
+at k = 2 attains its bound.
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+11
+
+Accordingly: for trees with two internal vertices the exact constant is known only on part of the
+admissible parameter range; on the remainder the available rigorous lower and upper bounds do not
+coincide.
+13.2. Three internal vertices. At k = 3 no configuration and no error type attains its bound,
+and the smallest projected relative gap observed is 35 %.
+Accordingly: for three internal vertices the available bounds depend on tree topology and leave
+nonzero gaps throughout.
+14. Approximation of the maps
+bv with ∥µv −µ
+bv ∥op ≤ δ, so that ∥µ
+bv ∥op ≤ M +δ.
+Suppose each µv is replaced by an approximation µ
+This models a low-rank or quantised representation of the maps, and it introduces an error of a
+different kind from the closure residual. Write Fµ , Rµ for the two evaluations of the exact tree and
+Rµb for the recursively projected evaluation of the approximate tree.
+
+Proposition 14.1 (Representation and projection). Under the standing hypotheses of Section 3
+bv ∥op ≤ δ at every internal vertex, a tree with k ≥ 1
+for the exact maps {µv }, and with ∥µv − µ
+internal vertices satisfies
+∥Fµ − Rµb∥ ≤ kρM k−1 LT + kδ(M + δ)k−1 LT ,
+|
+
+{z
+
+closure
+
+}
+
+|
+
+{z
+
+representation
+
+}
+
+and
+∥P Fµ − Rµb∥ ≤ (k − 1)ρM k−1 LT + kδ(M + δ)k−1 LT .
+|
+
+{z
+
+closure
+
+}
+
+|
+
+{z
+
+representation
+
+}
+
+Remark 14.2 (No closure hypothesis is imposed on the approximate maps). The bound is obtained
+by inserting Rµ , not Fµb:
+∥Fµ − Rµb∥ ≤ ∥Fµ − Rµ ∥ + ∥Rµ − Rµb∥.
+
+The first term is Theorem 9.1 applied to the exact tree, and the second compares two recursively projected evaluations, which differ only in the maps. The alternative route — inserting
+the unprojected approximate tree Fµb and applying Theorem 9.1 to it — would require a bound
+bv (P ·, . . . , P ·)∥op , that is, a closure hypothesis on the approximate maps. No such
+on ∥(I − Pv )µ
+bv and says nothing about how µ
+bv
+hypothesis is available: δ bounds the distance between µv and µ
+interacts with the prescribed subspaces. The route taken here uses only hypotheses that have been
+declared.
+The two displayed terms are an algebraic partition of one valid upper bound. They are not
+a decomposition of the observed error, and no equality with it is asserted. In particular the
+reconstruction error of a low-rank representation is not folded into ρ, and no closure property is
+attributed to the approximation.
+15. Numerical verification
+The estimates above were evaluated on 15,493 distinct configurations, comprising 81,445 enumerated tree occurrences (80,870 distinct trees) and 1,530 exhaustive subset evaluations. Repeated
+executions of the same configuration are not counted as distinct configurations. Optimiser seeds
+and restarts that were specified but not executed are recorded as not executed rather than omitted.
+The largest observed difference between the CPU and GPU evaluators was 1.922 × 10−8 ; this is
+a validation threshold on the implementation, not a bound in any theorem. Bound violations were
+checked on every configuration and none was found; this tests the implementation of the estimates,
+not their proofs.
+
+12
+
+ELIUTH CHAVERO JASSO
+
+16. Negative controls
+The hypotheses are operational rather than decorative, and each is tested by a control that fails
+when it is dropped.
+(1) If the projector is oblique, Proposition 6.1 fails (Example 6.2).
+(2) A type-invalid edge cannot be repaired by numerical broadcasting. All 48 declared invalid
+configurations are rejected before evaluation.
+(3) The projected constant of a single-vertex tree is exactly zero, which refutes any formula that
+assigns the locally created residual to the projected error of the vertex that creates it.
+(4) Cancellation within a signed combination can make the triangle bound strict; a numerical lower
+bound never reverses the direction of an upper bound.
+(5) A larger ambient space contains the two-dimensional construction isometrically, but that embedding alone gives no evidence that additional coordinates improve the constant.
+17. Limitations
+(1) The exact constants at fixed η > 0 are unknown for most projected, typed, repeated-map and
+signed-combination families.
+(2) Interval enclosures certify the value of an explicit construction. They do not certify a supremum
+unless a matching upper bound closes the gap.
+(3) The specified optimiser grid was not executed in full, under a stated computational-cost constraint. The executed portion is reported as such.
+(4) Multilinear operator norms are computed exactly only for the declared explicit constructions.
+For general dense and low-rank maps a Frobenius upper bound is substituted, which inflates
+M and therefore every constant that depends on it.
+(5) The complexity statement in Theorem 7.1 counts recursion steps and excludes the cost of
+obtaining the block norms it assumes.
+(6) All results are finite-dimensional. No statement is made about continuum limits, infinite trees,
+measurability, or the behaviour of these estimates under discretisation.
+(7) Neither the proofs nor the numerical results have been checked by anyone other than the author,
+and no assessment of originality has been carried out (Remark 2.1).
+18. Open problems
+Problem 18.1 (Exact projected constant). Determine CTproj (η) for nontrivial families of topologies. Deciding between CTproj (η) = k − 1 for all admissible η; CTproj (η) < k − 1 for η > 0 with
+limη↓0 CTproj (η) = k − 1; and CTproj (η) ≤ ΓT (η) < k − 1 for some smaller function ΓT , would each be
+a substantive result. Nothing in this article favours one over the others. The case k = 2 should be
+settled first.
+Problem 18.2 (Dimension and rank). Decide whether ambient dimension or projector rank can
+improve on the isometrically embedded planar constructions of Section 12.
+Problem 18.3 (Cancellation). Obtain rigorous constants for the associator, the Filippov identity
+and the Jacobi combination that account for cancellation between terms, rather than bounding
+each term separately.
+Problem 18.4 (Symbolic status of the six-term expression). Decide, by exact expansion in the free
+operad, whether the declared six-term expression of Section 11.2 is identically zero.
+Problem 18.5 (Comparison of the estimates). Characterise when the state-resolved, pathwise and
+order-optimised estimates dominate one another. The ratios in Table 4 are medians over configurations and do not establish an ordering.
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+13
+
+Problem 18.6 (Operator norms). Replace the Frobenius upper bounds by validated enclosures of
+the multilinear spectral norm at a useful scale.
+19. Conclusion
+Recursive orthogonal projection on a finite typed multilinear tree admits an exact local error
+decomposition. From it follow a sound state-resolved recursion, a closed-form optimal ordering
+within a declared scalar family, a pathwise attribution of the bound to individual vertices, and the
+uniform distinction between k ambient sources and k − 1 projected sources. The last of these is an
+upper bound whose optimality is open already for two internal vertices, and the numerical evidence
+assembled here is broad enough to expose the dependence on topology, interaction, precision and
+representation without resolving it.
+Appendix A. Proofs
+This appendix contains the complete finite-dimensional arguments. No statement below depends
+on an optimiser, a conjecture, or a numerical plot.
+A.1. Magnitudes and the orthogonal splitting at the root. For a subtree rooted at v, let
+kv be its number of internal vertices and Lv the product of the reduced leaf norms below it.
+Lemma A.1 (Subtree magnitudes). If ∥µu ∥op ≤ M at every internal vertex u of the subtree, then
+∥Rv ∥ ≤ M kv Lv .
+
+∥Fv ∥ ≤ M kv Lv ,
+
+Proof. At a leaf, Fv = Rv = Qτ (v) zv and Qτ (v) is an isometry, so both norms equal ∥zv ∥ = Lv , and
+kv = 0. Suppose the claim holds for the children c1 , . . . , ca of an internal vertex v. Multilinearity
+and the definition of the operator norm give
+∥Fv ∥ ≤ M
+
+∥Fci ∥ ≤ M 1+
+
+Y
+i
+
+P
+i
+
+kci
+
+Y
+
+Lci = M kv Lv .
+
+i
+
+The same argument bounds ∥Rv ∥ = ∥Pv µv (Rc1 , . . . , Rca )∥, because an orthogonal projector is a
+contraction. Induction proves both claims.
+□
+Proof of Proposition 6.1. At the root write P = QQ∗ , F = Fϱ and R = Rϱ . If ϱ is internal then
+R = P µϱ (· · · ) ∈ ran P ; if T consists of a single leaf then R = Qz ∈ ran P as well. In either case
+F − R = (P F − R) + (I − P )F,
+where the first summand lies in ran P and the second in (ran P )⊥ . The Pythagorean theorem gives
+the first identity. For the second, Q∗ (I − P ) = Q∗ − Q∗ QQ∗ = 0, so
+Q∗ F − Q∗ R = Q∗ (P F − R),
+and the restriction of Q∗ to ran P is an isometry onto Wτ (ϱ) , because Q∗ Q = I. Hence ∥Q∗ F −
+Q∗ R∥ = ∥P F − R∥.
+□
+Both steps use P ∗ = P . Example 6.2 shows that the conclusion fails for an idempotent that is
+not self-adjoint.
+
+14
+
+ELIUTH CHAVERO JASSO
+
+A.2. The exact local decomposition.
+Proof of Theorem 5.1. Since Fi = Ri + Di , repeated use of multilinearity in each argument gives
+µv (F1 , . . . , Fa ) =
+
+X
+
+µv (y1S , . . . , yaS ),
+
+S⊆[a]
+
+a sum of 2a terms.
+Subtracting,
+
+The term indexed by S = ∅ is µv (R1 , . . . , Ra ), while Rv = Pv µv (R1 , . . . , Ra ).
+
+Dv = Fv − Rv = (I − Pv )µv (R1 , . . . , Ra ) +
+
+X
+∅̸=S⊆[a]
+
+µv (y1S , . . . , yaS ).
+
+It remains to identify the first summand with rv (R1 , . . . , Ra ). By construction Ri ∈ ran Pτ (ci ) for
+every i, so Pτ (ci ) Ri = Ri , and therefore
+rv (R1 , . . . , Ra ) = (I − Pv )µv Pτ (c1 ) R1 , . . . , Pτ (ca ) Ra = (I − Pv )µv (R1 , . . . , Ra ).
+
+
+No inequality has been used.
+
+□
+
+Remark A.2. The inner projectors in Definition 3.2 are not decorative. The hypothesis ∥rv ∥op ≤ ρ
+of Theorem 9.1 bounds the operator (I − Pv )µv (P ·, . . . , P ·), whose operator norm is in general
+strictly smaller than that of (I − Pv )µv (·, . . . , ·). The step Pτ (ci ) Ri = Ri above is exactly what
+permits the smaller quantity to be used.
+Applying Pv to Theorem 5.1 removes the locally created residual exactly; applying I − Pv retains
+∥
+it. Splitting each Di orthogonally into Di +Di⊥ produces the three states {R, ∥, ⊥} used in Section 7.
+A.3. Uniform coefficients.
+Proof of Theorem 9.1. We prove, by induction on the tree, that every subtree rooted at v satisfies
+(2)
+
+∥Dv ∥ ≤ kv ρM kv −1 Lv
+
+(kv ≥ 1),
+
+and
+
+∥Dv ∥ = 0
+
+(kv = 0).
+
+The two cases are stated separately because M k−1 is not defined at k = 0 when M = 0; compare
+
+Remark 9.2.
+Base case. At a leaf, Fv = Rv , so ∥Dv ∥ = 0 and kv = 0.
+P
+Inductive step. Let v be internal of arity a with children c1 , . . . , ca , so that kv = 1 + i kci .
+Telescoping the arguments of µv one at a time, in any fixed order, and using multilinearity together
+with ∥µv ∥op ≤ M ,
+(3)
+
+∥µv (F1 , . . . , Fa ) − µv (R1 , . . . , Ra )∥ ≤ M
+
+a
+X
+
+∥Fj − Rj ∥
+
+j=1
+
+Y
+i<j
+
+∥Ri ∥
+
+Y
+
+∥Fi ∥.
+
+i>j
+
+Fix j. If kcj = 0 then ∥Fj − Rj ∥ = 0 and the jth summand vanishes, which agrees with
+kcj ρM kv −1 Lv = 0. If kcj ≥ 1, the inductive hypothesis and Lemma A.1 bound the jth summand
+by
+P
+Y
+M · kcj ρM kcj −1 Lcj ·
+M kci Lci = kcj ρM i kci Lv = kcj ρM kv −1 Lv .
+i̸=j
+
+Summing over j and using j kcj = kv − 1, the right-hand side of (3) is at most (kv − 1)ρM kv −1 Lv .
+
+
+By Theorem 5.1, Dv = rv (R1 , . . . , Ra )+ µv (F1 , . . . , Fa )−µv (R1 , . . . , Ra ) , and the locally created
+residual satisfies
+Y
+∥rv (R1 , . . . , Ra )∥ ≤ ρ ∥Ri ∥ ≤ ρM kv −1 Lv
+P
+
+i
+
+by Lemma A.1 and i kci = kv − 1. Adding the two contributions gives ∥Dv ∥ ≤ kv ρM kv −1 Lv ,
+which is (2).
+Applying (2) at the root gives ETamb = ∥Dϱ ∥ ≤ kρM k−1 LT .
+P
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+15
+
+For the projected error, R = Rϱ ∈ ran P gives P R = R, hence P F − R = P (F − R) = P Dϱ .
+Since P rϱ = 0 by Definition 3.2,
+P Dϱ = P µϱ (F1 , . . . , Fa ) − µϱ (R1 , . . . , Ra ) ,
+
+
+
+
+and ∥P ∥ = 1 together with the bound just established for the right-hand side of (3) gives ETproj ≤
+(k − 1)ρM k−1 LT . Proposition 6.1 identifies ETred with ETproj .
+For the orthogonal error, (I − P )R = 0 gives (I − P )F = (I − P )Dϱ , and ∥I − P ∥ = 1 gives
+ET⊥ ≤ ∥Dϱ ∥ ≤ kρM k−1 LT .
+□
+Remark A.3. The proof uses multilinearity, the operator-norm hypotheses, contractivity of P and
+of I − P , and — for the projected estimate only — the identity P rϱ = 0, which requires P to
+be the orthogonal projector appearing in Definition 3.2. Finite dimensionality is not used: the
+argument is valid for bounded multilinear maps between Hilbert spaces of any dimension. It is
+stated finite-dimensionally because everything else in this article is.
+A.4. The ordering theorem. Let ei , ri , fi , Gi ≥ 0, put wi = Gi ei and di = fi − ri , and for a
+permutation π of [a] set
+C(π) =
+
+a
+X
+
+wπ t
+
+t=1
+
+Y
+
+rπs
+
+s<t
+
+Y
+
+fπs .
+
+s>t
+
+Lemma A.4 (Adjacent exchange). Let π and π ′ agree except that π places i immediately before j
+and π ′ places j immediately before i. Then
+C(π) ≤ C(π ′ ) ⇐⇒ wi dj ≤ wj di .
+Proof. Write A for the product of r over the slots preceding the pair and B for the product of f
+over the slots following it. Both are common to π and π ′ , as is every summand indexed by a slot
+outside the pair. The two summands indexed by the pair contribute AB(wi fj + ri wj ) to C(π) and
+AB(wj fi + rj wi ) to C(π ′ ). Since A, B ≥ 0, the comparison reduces to
+wi fj + ri wj ≤ wj fi + rj wi ⇐⇒ wi (fj − rj ) ≤ wj (fi − ri ) ⇐⇒ wi dj ≤ wj di .
+
+□
+
+Lemma A.5 (The exchange relation is a total preorder). Assign to each slot the key
+κi = cls(i), qi ,
+
+
+cls(i) =
+
+
+
+0,
+
+
+1,
+
+
+2,
+
+di > 0,
+di = 0,
+di < 0,
+
+(
+
+qi =
+
+wi /di ,
+0,
+
+di ̸= 0,
+di = 0,
+
+ordered lexicographically. Then κi ≤ κj implies wi dj ≤ wj di , and the lexicographic order is a total
+preorder on the slots.
+Proof. Four cases, using wi , wj ≥ 0 throughout.
+Same nonzero class. If di , dj are both positive or both negative then di dj > 0, and dividing
+wi dj ≤ wj di by di dj shows it is equivalent to wi /di ≤ wj /dj , that is, to qi ≤ qj .
+Positive before negative. If di > 0 and dj < 0 then wi dj ≤ 0 ≤ wj di , so the inequality holds; here
+cls(i) = 0 < 2 = cls(j).
+Positive before zero. If di > 0 and dj = 0 then wi dj = 0 ≤ wj di , and cls(i) = 0 < 1 = cls(j).
+Zero before negative. If di = 0 and dj < 0 then wi dj ≤ 0 = wj di , and cls(i) = 1 < 2 = cls(j).
+Lexicographic order on pairs drawn from totally ordered sets is a total preorder.
+□
+Proof of Theorem 8.1. Let π ⋆ sort the slots by nondecreasing κ; this is the order described in
+the statement. Let π be arbitrary. Because κ induces a total preorder (Lemma A.5), π can be
+transformed into π ⋆ by a finite sequence of adjacent transpositions, each swapping a pair that occurs
+in the order j, i with κi ≤ κj ; this is the standard exchange-sorting argument, and it terminates
+because each such transposition strictly decreases the number of pairs inverted with respect to κ.
+
+16
+
+ELIUTH CHAVERO JASSO
+
+By Lemmas A.5 and A.4, no transposition increases C. Hence C(π ⋆ ) ≤ C(π) for every π, so π ⋆ is a
+global minimiser. If wi = di = 0 then the inequality of Lemma A.4 holds in both directions against
+every other slot, so such slots may be placed anywhere.
+□
+Remark A.6. Theorem 8.1 minimises C, which is one particular scalar bound. It does not assert
+that the bound obtained with the optimal order is the smallest valid bound obtainable by any
+means.
+A.5. The state-resolved recursion and the pathwise expansion.
+Proof of Theorem 7.1. At a leaf all five stored quantities are exact: ∥Fv ∥ = ∥Rv ∥ = ∥zv ∥ and the
+three error quantities vanish.
+At an internal vertex, expand by Theorem 5.1 and split each child discrepancy orthogonally as
+∥
+Di = Di + Di⊥ . Every resulting term is µv (Z1σ , . . . , Zaσ ) for exactly one state vector σ ∈ {R, ∥, ⊥}a .
+Projecting the output onto the component
+χ and applying Q
+the operator-norm inequality bounds
+Q
+the norm of that term by βvχ (σ) i ∥Ziσi ∥, hence by βvχ (σ) i bσcii once the inductive bounds are
+substituted. The state vector (R, . . . , R) contributes the reduced value together with the locally
+created residual: its projection onto ran Pv is Rv itself, which is subtracted, and its orthogonal
+Q
+∥
+⊥
+component is rv (R1 , . . . , Ra ), of norm at most ρv i bR
+ci . This accounts for λv = 0 and λv ≤
+Q R
+ρv i bci . Summing over the remaining state vectors and applying the triangle inequality gives the
+stated recursion. Taking, at any vertex, the minimum of several independently valid upper bounds
+preserves validity.
+For the count: there are 3av − 1 state vectors other than (R, . . . , R) at v, and each contributes
+one product of av factors, so the number of combination steps at v is O(3av ); summing over the
+vertices gives O(|T | 3amax ).
+□
+Proof of Corollary 10.2. Two separate assertions are proved.
+bv by induction on the subtree at v. At a leaf both are 0. At
+Comparison. We show Bv ≤ B
+bc for every child, and the gains satisfy
+an internal vertex, the inductive hypothesis gives Bcj ≤ B
+j
+hv,j ≥ 0, so
+X
+X
+bc = B
+bv ,
+hv,j B
+hv,j Bcj ≤ λv +
+Bv ≤ λv +
+j
+j
+
+j
+
+the first inequality being (1) and the last Definition 10.1. Nonnegativity of the gains is what makes
+the middle step valid, and it holds because each hv,j is an operator norm.
+Q
+bv = P
+Closed form. We show B
+u∈Int Tv λu e∈path(u,v) he , where Tv is the subtree rooted at v,
+again by induction. At a leaf both sides are 0, the sum being empty. At an internal vertex v,
+Definition 10.1 and the inductive hypothesis give
+bv = λv +
+B
+
+X
+j
+
+hv,j
+
+X
+
+λu
+
+u∈Int Tcj
+
+Y
+e∈path(u,cj )
+
+he = λv +
+
+X
+
+X
+
+j
+
+u∈Int Tcj
+
+λu
+
+Y
+
+he ,
+
+e∈path(u,v)
+
+because prefixing the edge from cj to v, whose gain is hv,j , to the path from u to cj gives exactly
+the path from u to v. The internal vertices of Tv are v together with the disjoint union of the
+internal vertices of the subtrees Tcj , and the term for u = v is λv with an empty product. This
+is the asserted sum. Taking v = ϱ gives the statement, and combining the two assertions gives
+bϱ .
+Bϱ ≤ B
+∥
+Projected variant. Setting λϱ = 0, which is λϱ = 0 from Theorem 7.1, removes the term u = ϱ
+from the sum; the remaining derivation is unchanged, with the final edge of each path carrying the
+projected-output gain.
+□
+b and B
+b majorises B. It is not an identity for
+Remark A.7. The closed form is an identity for B,
+B, and it is not an expansion of the multilinear cross terms of Theorem 5.1: the interaction terms
+indexed by subsets of size at least two were absorbed into the gains hv,j when the scalar recurrence
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+17
+
+was formed. The result attributes a share of the bound to individual sources, and not a share of
+the error.
+A.6. Signed combinations and approximation of the maps.
+Proof of Corollary 11.1. Linearity of P and of the evaluation in each tree gives P FF − RF =
+P
+proj
+α cα (P FTα − RTα ), and the triangle inequality bounds the norm by
+α |cα |BTα . For the fiveinput ternary associator, each of the two trees has two internal vertices, so Theorem 9.1 gives
+BTproj
+≤ (2−1)ρM L = ρM L and the two terms give 2ρM L; the ambient bound is 2·2ρM L = 4ρM L.
+α
+Syntactically identical trees may be combined exactly before this estimate is applied.
+□
+
+P
+
+bv } satisfy
+Lemma A.8 (Sensitivity of the projected evaluation to the maps). Let {µv } and {µ
+bv ∥op ≤ δ at every internal vertex, and let Rµ and Rµ
+∥µv ∥op ≤ M and ∥µv − µ
+be
+the
+recursively
+b
+projected evaluations of the two trees on the same leaf data. Then for every subtree rooted at v,
+
+∥Rvµ − Rvµb∥ ≤ kv δ (M + δ)kv −1 Lv
+
+(kv ≥ 1),
+
+∥Rvµ − Rvµb∥ = 0
+
+(kv = 0).
+
+Proof. At a leaf both evaluations equal Qτ (v) zv , so the difference vanishes. At an internal vertex v
+bv (Rcµ1 , . . . , Rcµa ),
+of arity a, using ∥Pv ∥ = 1 and adding and subtracting µ
+b)
+bv (Rcµ
+∥Rvµ − Rvµb∥ = Pv µv (Rcµ• ) − µ
+•
+
+
+
+
+b) .
+bv (Rcµ• ) − µ
+bv (Rcµ
+bv )(Rcµ1 , . . . , Rcµa ) + µ
+≤ (µv − µ
+•
+{z
+
+|
+
+(I)
+
+}
+
+|
+
+{z
+
+}
+
+(II)
+
+For (I), Lemma A.1 gives ∥Rcµi ∥ ≤ M kci Lci , so (I) ≤ δM kv −1 Lv ≤ δ(M + δ)kv −1 Lv . For (II),
+bv one at a time and using ∥µ
+bv ∥op ≤ M + δ together with the
+telescoping the arguments of µ
+kci
+µ
+µ
+b
+magnitude bounds ∥Rci ∥, ∥Rci ∥ ≤ (M + δ) Lci from Lemma A.1 applied with M + δ in place of
+M,
+(II) ≤ (M + δ)
+
+X
+
+Y
+
+j
+
+i̸=j
+
+∥Rcµj − Rcµbj ∥
+
+(M + δ)kci Lci ≤
+
+X
+
+
+
+kcj δ(M + δ)kv −1 Lv ,
+
+j
+
+by the inductive hypothesis, the summand with kcj = 0 vanishing. Since
+contributions add to kv δ(M + δ)kv −1 Lv .
+
+P
+
+j kcj = kv − 1, the two
+
+□
+
+Proof of Proposition 14.1. Insert the recursively projected exact tree:
+∥Fµ − Rµb∥ ≤ ∥Fµ − Rµ ∥ + ∥Rµ − Rµb∥.
+The first term is ETamb for the exact tree, bounded by kρM k−1 LT by Theorem 9.1; the second is
+bounded by kδ(M + δ)k−1 LT by Lemma A.8. This gives the first estimate.
+For the second, Rµ ∈ ran P gives P Rµ = Rµ , so
+∥P Fµ − Rµb∥ ≤ ∥P Fµ − Rµ ∥ + ∥Rµ − Rµb∥,
+
+and the first term is ETproj for the exact tree, bounded by (k − 1)ρM k−1 LT by Theorem 9.1.
+Both estimates use only the declared hypotheses: ∥µv ∥op ≤ M and ∥rv ∥op ≤ ρ for the exact
+bv ∥op ≤ δ. In particular no bound is assumed on (I − Pv )µ
+bv (P ·, . . . , P ·); compare
+maps, and ∥µv − µ
+Remark 14.2. No equality with the observed total error is asserted.
+□
+Appendix B. Reproducibility
+All computations were carried out inside a single repository. Each run directory records the
+resolved configuration, the command, the environment, the hardware, the source commit, hashes
+of the mathematical objects and of the inputs, the tensors, the metrics, the enclosures, the logs and
+hashes of every output. The companion software article describes the interfaces and commands.
+
+18
+
+ELIUTH CHAVERO JASSO
+
+Remark B.1 (Provenance of the numerical evidence). The tables and figures of this article were
+produced at source commit b718f4e51785, which is earlier than the commit carrying the text. The
+classification of enclosure outcomes in Table 10 was re-derived from the certified lower and upper
+bounds recorded at that commit, without re-running any experiment; the re-derivation script and
+the reclassified registry accompany this article. Full details are in the provenance file of the delivery
+package.
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+19
+
+Table 1. Overlap with the cited literature, by area. A bounded search cannot
+establish originality; see Remark 2.1.
+area
+
+overlap
+
+difference
+
+comparison with
+the cited result
+
+Yau, Colored
+Operads
+
+The type grammar and ordered
+tree model.
+
+standard restriction
+
+Loday and Vallette,
+Algebraic Operads
+Johnson,
+Approximately
+multiplicative maps
+between Banach
+algebras
+Higham, Accuracy
+and Stability of
+Numerical
+Algorithms
+Combettes and
+Pesquet, Lipschitz
+bounds for layered
+network structures
+Gehr et al., AI2
+
+Signed forests and insertion-tree
+syntax.
+Quantitative stability language
+for algebraic structure.
+
+Orthogonal projection defects and
+quantitative vertexwise bounds are
+additional analytic data.
+Quantitative orthogonal leakage is not
+the monograph’s central problem.
+The present work propagates
+vertexwise orthogonal projection
+defects on a fixed finite tree, rather
+than correcting a map globally.
+
+Local error propagation and
+evaluation-order comparisons.
+
+Exact multilinear projector residuals
+and typed tree topology.
+
+specialisation of a
+known bound
+
+Recursive propagation of local
+operator summaries.
+
+The present work uses multilinear
+branching, orthogonal and projected
+blocks, and locally created residuals.
+
+originality not
+assessed
+
+Vertexwise abstract summaries
+and recursively propagated
+enclosures.
+Topology-dependent finite tree
+calculations.
+
+No neural activation or robustness
+property; exact multilinear projector
+decomposition.
+The present work studies recursive
+projection of the outputs of multilinear
+maps, rather than rank truncation of a
+single tensor.
+
+originality not
+assessed
+
+Tree topology as an
+experimental factor.
+
+Constants concern closure and
+recursive projection, not hierarchical
+ranks.
+
+originality not
+assessed
+
+Secondary CP representation
+budget.
+
+CP error is separated from closure
+error.
+
+specialisation of a
+known bound
+
+Small explicit lower-construction
+enclosures.
+
+Application to tree constant ratios
+only.
+
+standard
+multilinear bound
+
+Global bounds for small cases.
+
+No semidefinite relaxation is reported
+as a bound here, since solver and
+relaxation status were not
+independently validated.
+Static finite multilinear composition
+trees and closure leakage.
+
+standard
+multilinear bound
+
+Hackbusch and
+Kuehn, A New
+Scheme for the
+Tensor
+Representation
+Ballani and
+Grasedyck, Tree
+Adaptive
+Approximation in
+the Hierarchical
+Tensor Format
+Kolda and Bader,
+Tensor
+Decompositions and
+Applications
+Moore, Kearfott, and
+Cloud, Introduction
+to Interval Analysis
+Lasserre, Global
+Optimization with
+Polynomials and the
+Problem of Moments
+Egger et al.,
+Structure-Preserving
+Model Reduction
+
+Projection hypotheses and
+quantified loss of structure.
+
+specialisation of a
+known bound
+originality not
+assessed
+
+originality not
+assessed
+
+originality not
+assessed
+
+20
+
+ELIUTH CHAVERO JASSO
+
+Table 2. Notation.
+symbol
+
+generated meaning
+
+Vτ , Wτ
+Qτ , Pτ
+Fv , Rv
+∥
+Dv , Dv⊥
+Mv , ρv
+BvF , BvR
+∥
+Bvamb , Bv , Bv⊥
+proj
+amb
+CT , CT
+
+ambient and reduced Hilbert spaces of type τ
+isometry and orthogonal projector Pτ = Qτ Q∗τ
+ambient and recursively projected values at node v
+projected and orthogonal components of Fv − Rv
+local operator-norm and closure-residual bounds
+bounds for ∥Fv ∥ and ∥Rv ∥
+ambient, projected, and orthogonal error bounds
+best universal constants for a typed tree T
+
+Table 3. Vertexwise formulas. Each row is an upper-bound contract, not an equality with the observed error.
+bounds
+
+generated formula
+
+homogeneous ambient
+homogeneous projected
+nodewise subset
+pathwise
+optimized telescoping
+
+kρM k−1
+
+status
+proved
+proved
+proved
+proved upper
+proved upper
+
+Q
+
+∥zℓ ∥
+ℓ Q
+k−1
+(k −
+1)ρM
+∥z ∥ Q
+Q
+P
+Q
+ℓ ℓ
+B A j ∈S
+BjR
+ρv i BiR + Mv
+∅̸=S
+i∈S i
+/
+Q
+P
+ρv e∈π(v) Le
+v P
+Q
+Q
+minπ
+w (f − rπj ) i<j fπi i>j rπi
+j πj πj
+
+Table 4. Comparison of the four upper bounds, as median ratios to the uniform
+ambient bound on the same configurations.
+
+local pattern
+alternating
+deepest_path
+leaves
+one_dominant
+random_log_uniform
+root
+two_branches
+uniform
+
+nodewise
+
+pathwise
+
+state resolved
+
+optimized
+
+0.213
+0.667
+0.417
+0.167
+0.016
+0.167
+0.667
+1.000
+
+0.213
+0.667
+0.417
+0.167
+0.016
+0.167
+0.667
+1.000
+
+0.355
+0.668
+0.692
+0.168
+0.022
+0.168
+0.715
+1.642
+
+0.213
+0.667
+0.417
+0.167
+0.016
+0.167
+0.667
+1.000
+
+instances
+540
+540
+540
+540
+540
+540
+540
+540
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+21
+
+Same-instance hierarchy; median and 10--90% range
+
+certificate / homogeneous ambient certificate
+
+100
+
+10−1
+
+10−2
+
+10−3
+
+10−4
+
+uniform
+root
+leaves
+
+homogeneous
+
+deepest_path
+alternating
+random_log_uniform
+
+nodewise
+
+one_dominant
+two_branches
+
+path sum
+
+mixed mask
+
+optimized
+
+Figure 3. Comparison of four upper bounds on 4,320 distinct configurations with
+heterogeneous local parameters (10 declared parameter draws; no optimiser restarts
+are involved, since all four bounds are computed in closed form). Each bound is
+divided by the uniform ambient bound of Theorem 9.1 on the same configuration;
+points are medians and bars are the 10th–90th percentile range over configurations,
+not an uncertainty estimate. The data show that the vertexwise, pathwise and
+order-optimised bounds improve on the uniform bound when the local parameters
+are nonuniform. They do not show that any of these bounds is optimal.
+
+22
+
+ELIUTH CHAVERO JASSO
+
+optimized telescoping / mixed-mask certificate
+
+Optimal slot ordering; boxes span 5--95% of instances
+1.0
+
+0.8
+
+0.6
+
+0.4
+
+0.2
+mixed-mask/reference order
+
+t
+t
+s
+s
+s
+s
+g
+g
+ot
+ot
+th
+th
+nt
+nt
+m
+m
+es
+ng
+rm :roo ches orm
+ath
+an
+tin _pa eave ina iform :ro nche ifor
+tin _pa eave ina iform :ro nche ifor
+ati t_p :leav min nifo
+2
+3
+4
+l
+l
+t
+t
+na
+na
+an unif
+a
+a
+n
+n
+2
+3:
+4:
+om _un
+om _un
+ern pes
+:
+:u
+:u
+br
+br
+br
+ter epes
+ter epes
+do g_u
+d
+d
+l
+l
+2
+3
+4
+_
+_
+_
+g
+g
+e
+_
+_
+_
+a
+a
+o
+o
+o
+e
+e
+e
+o
+o
+o
+2
+3:
+4:
+de
+de
+de
+tw
+tw
+tw
+on m_l
+on m_l
+on m_l
+2:
+3:
+4:
+2:
+3:
+4:
+2:
+3:
+4:
+do
+do
+do
+n
+n
+n
+a
+a
+a
+r
+r
+r
+2:
+3:
+4:
+t
+:al
+
+Figure 4. Effect of the ordering rule of Theorem 8.1, over all 4,320 distinct configurations. The vertical axis is the bound obtained with the optimal order divided by
+the bound obtained with the reference order. Boxes give the median, quartiles and
+5th–95th percentile range over configurations. The rule is never worse and is sometimes strictly better. It is optimal within the scalar telescoping family of Section 8
+only, not among all bounding strategies.
+a
+
+projected/reduced root error
+30
+
+projected normalized constant
+
+30
+
+ambient normalized constant
+
+b
+
+ambient root error
+k theorem
+certified construction
+
+25
+20
+15
+10
+
+k − 1 theorem
+certified construction
+
+25
+20
+15
+10
+5
+
+5
+
+0
+5
+
+10
+
+15
+
+20
+
+internal nodes k
+
+25
+
+30
+
+5
+
+10
+
+15
+
+20
+
+internal nodes k
+
+25
+
+30
+
+Figure 5. The coefficients k and k−1 on 10 binary left-comb trees in dimension two
+at the smallest tested η, with interval-enclosed lower constructions. Ambient and
+projected errors are normalised by ηM k−1 and compared with the proved coefficients.
+The ambient construction attains the linear coefficient in these configurations. The
+projected construction shown here, at small η, remains far below k − 1; whether
+k − 1 is attained at fixed η > 0 is open.
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+23
+
+Table 5. Uniform ambient constants. Lower values are interval-enclosed values of
+explicit constructions.
+
+arity
+
+k
+
+best ambient lower
+
+proved upper bound
+
+lower/upper
+
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+
+2
+3
+4
+5
+6
+8
+12
+16
+24
+32
+2
+3
+4
+5
+6
+8
+12
+16
+24
+32
+2
+3
+4
+5
+6
+8
+12
+16
+24
+32
+
+2.000
+3.000
+4.000
+5.000
+6.000
+8.000
+12.000
+16.000
+24.000
+32.000
+2.000
+3.000
+4.000
+5.000
+6.000
+8.000
+12.000
+16.000
+24.000
+32.000
+2.000
+3.000
+4.000
+5.000
+6.000
+8.000
+12.000
+16.000
+24.000
+32.000
+
+2.000
+3.000
+4.000
+5.000
+6.000
+8.000
+12.000
+16.000
+24.000
+32.000
+2.000
+3.000
+4.000
+5.000
+6.000
+8.000
+12.000
+16.000
+24.000
+32.000
+2.000
+3.000
+4.000
+5.000
+6.000
+8.000
+12.000
+16.000
+24.000
+32.000
+
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+1.000
+
+24
+
+ELIUTH CHAVERO JASSO
+
+Table 6. Uniform projected-error constants. At small η the explicit lower constructions remain far below the proved upper bound.
+
+arity
+
+k
+
+best projected-error lower bound
+
+proved upper bound
+
+lower/upper
+
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+
+2
+3
+4
+5
+6
+8
+12
+16
+24
+32
+2
+3
+4
+5
+6
+8
+12
+16
+24
+32
+2
+3
+4
+5
+6
+8
+12
+16
+24
+32
+
+1.00 × 10−8
+3.00 × 10−8
+6.00 × 10−8
+1.00 × 10−7
+1.50 × 10−7
+2.80 × 10−7
+6.60 × 10−7
+1.20 × 10−6
+2.76 × 10−6
+4.96 × 10−6
+1.00 × 10−8
+3.00 × 10−8
+6.00 × 10−8
+1.00 × 10−7
+1.50 × 10−7
+2.80 × 10−7
+6.60 × 10−7
+1.20 × 10−6
+2.76 × 10−6
+4.96 × 10−6
+1.00 × 10−8
+3.00 × 10−8
+6.00 × 10−8
+1.00 × 10−7
+1.50 × 10−7
+2.80 × 10−7
+6.60 × 10−7
+1.20 × 10−6
+2.76 × 10−6
+4.96 × 10−6
+
+1.000
+2.000
+3.000
+4.000
+5.000
+7.000
+11.000
+15.000
+23.000
+31.000
+1.000
+2.000
+3.000
+4.000
+5.000
+7.000
+11.000
+15.000
+23.000
+31.000
+1.000
+2.000
+3.000
+4.000
+5.000
+7.000
+11.000
+15.000
+23.000
+31.000
+
+1.00 × 10−8
+1.50 × 10−8
+2.00 × 10−8
+2.50 × 10−8
+3.00 × 10−8
+4.00 × 10−8
+6.00 × 10−8
+8.00 × 10−8
+1.20 × 10−7
+1.60 × 10−7
+1.00 × 10−8
+1.50 × 10−8
+2.00 × 10−8
+2.50 × 10−8
+3.00 × 10−8
+4.00 × 10−8
+6.00 × 10−8
+8.00 × 10−8
+1.20 × 10−7
+1.60 × 10−7
+1.00 × 10−8
+1.50 × 10−8
+2.00 × 10−8
+2.50 × 10−8
+3.00 × 10−8
+4.00 × 10−8
+6.00 × 10−8
+8.00 × 10−8
+1.20 × 10−7
+1.60 × 10−7
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+25
+
+Table 7. Largest values found by numerical search, against the triangle bound of
+Corollary 11.1. These are lower bounds obtained by optimisation. An optimiser can
+improve a lower bound; it cannot establish that no larger value exists.
+combination
+
+triangle bound
+best value
+
+five-input ternary associator
+anchored associator
+Jacobi combination (three terms)
+Filippov fundamental identity
+six-term generalised Jacobi expression
+
+ratio
+
+status
+
+2.0 1.373 0.686 undetermined
+2.0 1.658 0.829 undetermined
+3.0 2.983 0.994 undetermined
+4.0 1.664 0.416 widest gap
+6.0
+∼0
+∼0 see §11.2
+
+Cancellation is bounded separately from observed alignment
+named gji variants
+
+filippov fundamental identity
+
+jacobiator variants
+
+custom signed forests
+
+ternary associator
+
+anchored associator
+
+all ternary insertions
+triangle upper
+
+0
+
+1
+
+2
+
+3
+
+cancellation-aware upper
+
+normalized signed-forest constant
+
+4
+
+registered adversarial lower
+
+5
+
+6
+
+Figure 6. Signed linear combinations of composition trees: seven families over
+28 configurations. The exact quantity plotted is the normalised residual of the
+signed combination. The two upper bars are proved upper bounds — the triangle
+bound and the bound after exact combination of syntactically identical trees —
+while the third bar is the largest lower value found by numerical search over η.
+The comparison shows that exact combination improves the bookkeeping for these
+declared expressions. The search values are lower bounds and do not determine the
+constants for the associator, the Filippov identity, or the generalised Jacobi expressions.
+
+26
+
+ELIUTH CHAVERO JASSO
+
+Table 8. Constants for associator and signed-combination families.
+expression
+
+triangle
+
+cancellation upper
+
+observed
+
+observed/triangle
+
+all_ternary_insertions
+
+2.000
+
+2.000
+
+0.500
+
+0.250
+
+anchored_associator
+
+2.000
+
+2.000
+
+0.500
+
+0.250
+
+custom_signed_forests
+
+2.500
+
+2.500
+
+0.750
+
+0.300
+
+filippov_fundamental_identity
+
+4.000
+
+4.000
+
+0.500
+
+0.125
+
+five_input_ternary_associator
+
+2.000
+
+2.000
+
+0.500
+
+0.250
+
+jacobiator_variants
+
+3.000
+
+3.000
+
+0
+
+0
+
+named_gji_variants
+
+6.000
+
+6.000
+
+2.22 × 10−12
+
+3.70 × 10−13
+
+c
+a
+
+tangent output block
+
+b
+
+not executed, under a
+stated
+computationalcost constraint
+not executed, under a
+stated
+computationalcost constraint
+not executed, under a
+stated
+computationalcost constraint
+not executed, under a
+stated
+computationalcost constraint
+not executed, under a
+stated
+computationalcost constraint
+not executed, under a
+stated
+computationalcost constraint
+not executed, under a
+stated
+computationalcost constraint
+
+registered alignment mechanism
+
+normal output block
+Ru tangent mass
+
+1.34e-08
+
+0
+
+2.32e-08
+
+2.64e-08
+
+-9.68e-10
+
+1
+
+-5.25e-08
+
+0.50
+0.25
+0.00
+−0.25
+
+0.1
+
+0
+
+-8.67e-09
+
+tensor entry
+
+0.995
+
+first input coordinate
+
+first input coordinate
+
+0.75
+1
+
+1
+
+0
+
+second input coordinate
+
+μ(Ru , ⋅ ) rotates
+
+−0.50
+−0.75
+
+0
+
+search status
+
+later gates align residuals
+
+1
+
+second input coordinate
+
+Figure 7. Geometry of the extremal construction. Panels (a) and (b) display
+the projected and orthogonal output blocks of one explicit rank-one gated rotation
+tensor; panel (c) summarises the mechanism by which an orthogonal error created
+at a lower vertex acquires a projected component at its parent. Entries are the exact
+stored inputs up to floating-point representation. The figure establishes admissibility
+and alignment of this construction, not its uniqueness or global optimality.
+Table 9. Best explicit constructions by error type.
+error
+
+construction
+
+ambient
+normal
+projected
+
+gated planar rotation
+gated planar rotation
+gated planar rotation
+
+arity
+
+k
+
+η
+
+lower/upper
+
+2
+2
+2
+
+1
+1
+2
+
+0.500
+0.500
+1.000
+
+1.000
+1.000
+1.000
+
+status
+NEAR_OPTIMAL_WITH_CERTIFIED_GAP
+NEAR_OPTIMAL_WITH_CERTIFIED_GAP
+NEAR_OPTIMAL_WITH_CERTIFIED_GAP
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+27
+
+Sharpness profile for selected binary eight-node trees
+
+normalized projected lower EP /(ηM k − 1 )
+
+7
+6
+5
+left comb lower
+maximally balanced lower
+high strahler lower
+theorem upper k − 1 = 7
+
+4
+3
+2
+1
+0
+
+10−7
+
+10−8
+
+10−6
+
+10−5
+
+10−4
+
+closure parameter η
+
+10−3
+
+10−2
+
+10−1
+
+100
+
+Figure 8. Explicit lower constructions for the projected-error constant on 96 distinct binary trees with eight internal vertices. The vertical axis is the intervalenclosed projected error divided by ηM k−1 ; the dashed line is the proved upper
+coefficient k − 1 = 7. The construction is explicit, so there is no statistical uncertainty. The figure exhibits an admissible lower profile; it does not determine CTproj (η).
+Table 10. Outcome of comparing the interval-enclosed lower construction with
+the proved upper bound, by error type. Determined: the two bounds coincide
+at a positive value. Zero: the proved upper bound is itself zero, so the constant
+vanishes as an immediate consequence of Theorem 9.1. Partial: a positive lower
+bound was obtained that does not meet the upper bound. None: no positive lower
+bound was obtained, so the only lower bound available is the trivial one implied by
+nonnegativity. The four columns are mutually exclusive and sum to the configuration
+count.
+outcome
+error type
+
+#
+
+determined
+
+zero
+
+partial
+
+none
+
+median gap
+
+ambient
+normal
+projected
+
+4275
+1395
+4275
+
+258
+30
+21
+
+0
+0
+30
+
+3622
+1098
+3092
+
+395
+267
+1132
+
+3
+2.701
+3
+
+all
+
+9945
+
+309
+
+30
+
+7812
+
+1794
+
+3
+
+28
+
+ELIUTH CHAVERO JASSO
+Certified intervals for exact small registered cases
+certified lower
+
+k=1 ambient
+k=1 ambient
+k=1 ambient
+k=1 projected
+k=1 projected
+k=1 projected
+k=1 normal
+k=1 normal
+k=1 normal
+k=2 ambient
+k=2 ambient
+k=2 ambient
+k=2 projected
+k=2 projected
+k=2 projected
+k=2 normal
+k=2 normal
+k=2 normal
+k=3 ambient
+k=3 ambient
+k=3 ambient
+k=3 projected
+k=3 projected
+k=3 projected
+k=3 normal
+k=3 normal
+k=3 normal
+k=4 ambient
+k=4 ambient
+k=4 ambient
+k=4 projected
+k=4 projected
+k=4 projected
+k=4 normal
+k=4 normal
+k=4 normal
+0.0
+
+0.5
+
+1.0
+
+1.5
+
+2.0
+
+normalized constant
+
+2.5
+
+3.0
+
+proved upper
+
+3.5
+
+4.0
+
+Figure 9. Enclosures of the constant for 36 small binary configurations at η = 0.1.
+Each horizontal interval joins the interval-enclosed lower construction to the proved
+upper bound; a filled marker identifies a configuration in which the two coincide.
+The references are the coefficients k and k − 1. Only the marked configurations have
+a determined constant; the remaining intervals are open, and their width is not an
+error estimate.
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+29
+
+Table 11. Small configurations in which the constant is determined.
+
+arity
+
+k
+
+error
+
+lower
+
+upper
+
+global bounds
+
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+
+1
+1
+1
+2
+2
+2
+3
+3
+3
+4
+4
+4
+1
+1
+1
+2
+2
+2
+3
+3
+3
+4
+4
+4
+
+ambient
+orthogonal
+projected
+ambient
+orthogonal
+projected
+ambient
+orthogonal
+projected
+ambient
+orthogonal
+projected
+ambient
+orthogonal
+projected
+ambient
+orthogonal
+projected
+ambient
+orthogonal
+projected
+ambient
+orthogonal
+projected
+
+1.000
+1.000
+0
+1.000
+1.000
+0
+1.000
+1.000
+0
+1.000
+1.000
+0
+1.000
+1.000
+0
+1.000
+1.000
+0
+1.000
+1.000
+0
+1.000
+1.000
+0
+
+1.000
+1.000
+0
+2.000
+2.000
+1.000
+3.000
+3.000
+2.000
+4.000
+4.000
+3.000
+1.000
+1.000
+0
+2.000
+2.000
+1.000
+3.000
+3.000
+2.000
+4.000
+4.000
+3.000
+
+yes
+yes
+yes
+no
+no
+no
+no
+no
+no
+no
+no
+no
+yes
+yes
+yes
+no
+no
+no
+no
+no
+no
+no
+no
+no
+
+30
+
+ELIUTH CHAVERO JASSO
+Layered CP plus projection inequality; stacked height is the defined upper sum
+proved total upper
+representation upper
+
+closure upper
+interaction upper
+
+0.4
+
+0.8
+
+upper-bound budget
+
+800
+
+600
+
+400
+
+200
+
+0
+
+0.05
+
+0.1
+
+0.2
+
+CP rank fraction
+
+Figure 10. Separation of representation error from recursive-projection error, for
+five configurations in dimension 64 on a balanced tree with eight internal vertices
+at η = 0.01. The three bars are the separately proved representation, closure and
+interaction terms of Proposition 14.1. Their sum is by definition the proved upper
+bound and is not asserted to equal the observed error. The figure displays a decomposition of a bound; it says nothing about tightness or about identifiability of the
+low-rank representation.
+Universal-constant atlas (tile label: lower/upper and topology prefix)
+
+4
+
+2/2
+lef
+
+3/3
+lef
+
+4/4
+lef
+
+5/5
+lef
+
+6/6
+lef
+
+8/8
+lef
+
+projected
+12/12
+lef
+
+16/16
+lef
+
+24/24
+lef
+
+32/32
+lef
+
+4
+
+normal
+
+1e-08/1 3e-08/2 6e-08/3 1e-07/41.5e-07/52.8e-07/7
+6.6e-07/11
+1.2e-06/15
+2.8e-06/23
+5e-06/31
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+
+4
+
+2/2
+lef
+
+3/3
+lef
+
+4/4
+lef
+
+5/5
+lef
+
+6/6
+lef
+
+8/8
+lef
+
+12/12
+lef
+
+16/16
+lef
+
+24/24
+lef
+
+32/32
+lef
+
+1.0
+0.8
+
+3/3
+lef
+
+4/4
+lef
+
+5/5
+lef
+
+6/6
+lef
+
+8/8
+lef
+
+12/12
+lef
+
+16/16
+lef
+
+24/24
+lef
+
+32/32
+lef
+
+3
+
+1e-08/1 3e-08/2 6e-08/3 1e-07/41.5e-07/52.8e-07/7
+6.6e-07/11
+1.2e-06/15
+2.8e-06/23
+5e-06/31
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+
+arity
+
+2/2
+lef
+
+arity
+
+arity
+
+0.6
+3
+
+3
+
+2/2
+lef
+
+3/3
+lef
+
+4/4
+lef
+
+5/5
+lef
+
+6/6
+lef
+
+8/8
+lef
+
+12/12
+lef
+
+16/16
+lef
+
+24/24
+lef
+
+32/32
+lef
+
+0.4
+0.2
+2
+
+2/2
+lef
+
+3/3
+lef
+
+4/4
+lef
+
+5/5
+lef
+
+6/6
+lef
+
+8/8
+lef
+
+12/12
+lef
+
+16/16
+lef
+
+24/24
+lef
+
+32/32
+lef
+
+2
+
+1e-08/1 3e-08/2 6e-08/3 1e-07/41.5e-07/52.8e-07/7
+6.6e-07/11
+1.2e-06/15
+2.8e-06/23
+5e-06/31
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+lef
+
+2
+
+2/2
+lef
+
+3/3
+lef
+
+4/4
+lef
+
+5/5
+lef
+
+6/6
+lef
+
+8/8
+lef
+
+12/12
+lef
+
+16/16
+lef
+
+24/24
+lef
+
+32/32
+lef
+
+0.0
+2
+
+3
+
+4
+
+5
+
+6
+
+8
+
+12
+
+internal nodes k
+
+16
+
+24
+
+32
+
+2
+
+3
+
+4
+
+5
+
+6
+
+8
+
+12
+
+internal nodes k
+
+16
+
+24
+
+32
+
+2
+
+3
+
+4
+
+5
+
+6
+
+8
+
+12
+
+internal nodes k
+
+16
+
+24
+
+32
+
+Figure 11. Ratios of the best explicit lower construction to the proved upper
+bound, over 240 two-dimensional configurations selected from 2,880. Tile colour
+is the ratio; the text gives the enclosed lower value, the upper bound, and the topology attaining the maximum. Lower values are rigorous interval enclosures of an
+explicit construction, so they carry no sampling uncertainty. A ratio of one identifies a configuration in which the constant is determined; ratios below one leave the
+exact constant undetermined.
+
+best lower / certified upper
+
+ambient
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+31
+
+Table 12. Representation and projection budget. The components sum to a proved
+upper bound, not to the observed error.
+dim.
+
+rank frac.
+
+rank
+
+tensor err.
+
+representation
+
+closure
+
+interaction
+
+total upper
+
+16
+16
+16
+16
+16
+32
+32
+32
+32
+32
+64
+64
+64
+64
+64
+128
+128
+128
+128
+128
+
+0.050
+0.100
+0.200
+0.400
+0.800
+0.050
+0.100
+0.200
+0.400
+0.800
+0.050
+0.100
+0.200
+0.400
+0.800
+0.050
+0.100
+0.200
+0.400
+0.800
+
+1
+2
+3
+6
+13
+2
+3
+6
+13
+26
+3
+6
+13
+26
+51
+6
+13
+26
+51
+102
+
+0.968
+0.935
+0.901
+0.791
+0.433
+0.968
+0.952
+0.901
+0.771
+0.433
+0.976
+0.952
+0.893
+0.771
+0.451
+0.976
+0.948
+0.893
+0.776
+0.451
+
+457.967
+394.174
+336.334
+195.688
+24.042
+457.967
+425.309
+336.334
+176.675
+24.042
+474.879
+425.309
+322.770
+176.675
+27.128
+474.879
+417.384
+322.770
+181.317
+27.128
+
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+0.050
+
+4.070
+3.619
+3.198
+2.102
+0.428
+4.070
+3.841
+3.198
+1.942
+0.428
+4.187
+3.841
+3.097
+1.942
+0.469
+4.187
+3.785
+3.097
+1.982
+0.469
+
+462.087
+397.843
+339.582
+197.840
+24.521
+462.087
+429.199
+339.582
+178.667
+24.521
+479.116
+429.199
+325.917
+178.667
+27.648
+479.116
+421.218
+325.917
+183.348
+27.648
+
+Table 13. Exhaustive ordered-tree enumeration statistics.
+grammar
+binary
+mixed_2_3_4
+quaternary
+ternary
+
+occurrences
+
+unique hashes
+
+internal nodes
+
+max depth
+
+2055
+78879
+167
+344
+
+2055
+78879
+167
+344
+
+1–8
+1–5
+1–4
+1–5
+
+8
+5
+4
+5
+
+32
+
+ELIUTH CHAVERO JASSO
+Topology phase diagram; marker size encodes Strahler number
+1600
+1400
+
+30
+
+ordered grammar
+arity 2
+arity 3
+arity 4
+
+25
+
+20
+
+1000
+800
+
+15
+
+imbalance
+
+root path-length sum
+
+1200
+
+600
+10
+
+400
+5
+
+200
+0
+5
+
+10
+
+15
+
+tree depth
+
+20
+
+25
+
+30
+
+0
+
+Figure 12. Dependence of the bound on tree topology, over 240 distinct configurations at η = 0.1. The axes are tree depth and the sum of root-to-vertex path lengths;
+colour encodes imbalance, marker size the Strahler number, and a highlighted edge
+marks a projected lower-to-upper ratio above 0.9. Topology statistics are exact and
+lower values are interval-enclosed. The figure shows that the bound depends on
+topology; it does not identify a transition or an extremal topology.
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+33
+
+Balanced eight-node tree; node label is Shapley contribution
+0
+0.015
+
+1
+0.015
+
+2
+0.015
+
+5
+0.0047
+
+4
+-0.00011
+
+6
+0.0047
+
+7
+-0.00011
+
+3
+0.015
+
+single-node main effect
+
+projected-error contribution
+
+0.014
+
+all-mask Shapley attribution
+
+0.012
+0.010
+0.008
+0.006
+0.004
+0.002
+0.000
+0
+
+1
+
+2
+
+3
+
+4
+
+preorder internal-node index
+
+5
+
+6
+
+7
+
+Figure 13. Attribution of the projected root error to individual vertices, for one
+balanced tree with eight internal vertices. All 28 = 256 subsets of vertices at which
+the closure residual is switched on were evaluated exhaustively; no sampling is involved. Vertex labels give the Shapley value of the resulting set function, and the
+lower panel compares single-vertex main effects with the full Shapley values. The
+efficiency residual is below 10−12 . The attribution is exact for this construction and
+is not a claim about a unique causal mechanism.
+
+34
+
+ELIUTH CHAVERO JASSO
+
+Residual interactions from every leakage mask
+
+median fraction of absolute Möbius mass
+
+1.0
+
+main effects
+
+pair interactions
+
+order ≥ 3
+
+0.8
+
+0.6
+
+0.4
+
+0.2
+
+0.0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+internal nodes k
+
+7
+
+8
+
+Figure 14. Interaction structure of the local error sources, from all 1,530 exhaustive
+subset evaluations over 24 trees. For each tree, the exact set function of the projected error is Möbius-inverted; bars give the topology-median fraction of absolute
+coefficient mass carried by first-, second- and higher-order subsets. The reference
+is the exact subset expansion of Theorem 5.1. The data show that the local error
+sources do not combine additively in these constructions.
+
+64
+
+0.71
+
+0.71
+
+0.71
+
+0.71
+
+64
+
+0.09
+
+0.09
+
+0.09
+
+0.09
+
+32
+
+0.71
+
+0.71
+
+0.71
+
+0.71
+
+32
+
+0.09
+
+0.09
+
+0.09
+
+0.09
+
+0.8
+
+16
+
+0.71
+
+0.71
+
+0.71
+
+0.71
+
+16
+
+0.09
+
+0.09
+
+0.09
+
+0.09
+
+0.6
+
+8
+
+0.71
+
+0.71
+
+0.71
+
+0.71
+
+8
+
+0.09
+
+0.09
+
+0.09
+
+0.09
+
+0.4
+
+4
+
+0.71
+
+0.71
+
+0.71
+
+0.71
+
+4
+
+0.09
+
+0.09
+
+0.09
+
+0.09
+
+0.2
+
+2
+
+0.71
+
+0.71
+
+0.71
+
+0.71
+
+2
+
+0.09
+
+0.09
+
+0.09
+
+0.09
+
+0.0
+
+0.25
+
+0.5
+
+0.75
+
+0.25
+
+0.5
+
+0.75
+
+0.125
+
+requested projector-rank ratio
+
+ambient dimension
+
+ambient dimension
+
+comb
+
+Dimension/rank phase diagram for binary 24-node trees
+b
+balanced
+
+0.125
+
+requested projector-rank ratio
+
+1.0
+
+normalized lower / upper
+
+a
+
+Figure 15. Dependence on ambient dimension and projector rank, over 72 configurations on binary trees with 24 internal vertices at η = 0.1. Each tile is the value
+of the two-dimensional construction, embedded isometrically into the stated dimension, divided by the proved upper coefficient k −1. Values are interval-enclosed. The
+embedding preserves the value, so the construction is admissible in every dimension
+shown. No configuration exhibits an improvement obtained from the additional coordinates.
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+35
+
+Every pilot trajectory; no failed search is hidden
+1.0
+
+attained lower / certified upper
+
+0.8
+
+0.6
+
+0.4
+
+0.2
+
+0.0
+
+Adam seed 0, restart 0
+Adam seed 0, restart 1
+Adam seed 1, restart 0
+
+0
+
+5
+
+10
+
+15
+
+recorded optimization step
+
+20
+
+Adam seed 1, restart 1
+differential evolution
+certified upper
+
+25
+
+30
+
+Figure 16. Convergence of the numerical search on a single configuration: four
+gradient-based trajectories and one independent derivative-free run. The vertical
+axis is the attained normalised lower value divided by the proved upper bound.
+Every recorded step of every run is shown. Optimiser restarts are not statistical
+replicates and no interval is inferred from them. Agreement close to one indicates a
+strong lower construction for this configuration; it is not a certificate of global optimality.
+proved upper-bound layer
+exact subset
+expansion
+
+interval enclosure
+for explicit cases
+
+k ambient, k − 1
+projected upper bounds
+
+nodewise and
+path-sum certificates
+
+signed-forest
+upper bounds
+
+gated-rotation
+lower construction
+
+gradient and
+fixed-η optimality
+derivative-free
+search
+and novelty unresolved
+
+registered blocks
+paper
+A–I claim
+FAIL CLOSED
+
+evidence and lower-bound layer
+
+Figure 17. Dependency graph relating the statements of this article to their supporting material. Proved upper bounds, rigorous lower enclosures, exploratory numerical evidence, and unresolved questions are kept in separate layers. The graph
+is a navigation aid for the reproducibility appendix; it does not convert a numerical
+search result into a theorem.
+
+36
+
+ELIUTH CHAVERO JASSO
+
+Table 14. Dependence on ambient dimension and projector rank. The lower value
+is the two-dimensional construction embedded isometrically.
+
+dimension
+2
+2
+2
+2
+4
+4
+4
+4
+8
+8
+8
+8
+16
+16
+16
+16
+32
+32
+32
+32
+64
+64
+64
+64
+
+rank ratio
+
+rank
+
+best normalized lower
+
+upper
+
+improvement established
+
+0.125
+0.250
+0.500
+0.750
+0.125
+0.250
+0.500
+0.750
+0.125
+0.250
+0.500
+0.750
+0.125
+0.250
+0.500
+0.750
+0.125
+0.250
+0.500
+0.750
+0.125
+0.250
+0.500
+0.750
+
+1
+1
+1
+1
+1
+1
+2
+3
+1
+2
+4
+6
+2
+4
+8
+12
+4
+8
+16
+24
+8
+16
+32
+48
+
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+16.265
+
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+2.000
+
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+37
+
+Table 15. Precision and conditioning controls.
+precision
+
+case
+
+max residual
+
+backward error
+
+condition est.
+
+min bound margin
+
+arbitrary_precision
+arbitrary_precision
+arbitrary_precision
+arbitrary_precision
+complex128
+complex128
+complex128
+complex128
+complex64
+complex64
+complex64
+complex64
+exact_rational
+exact_rational
+exact_rational
+exact_rational
+float32
+float32
+float32
+float32
+float64
+float64
+float64
+float64
+
+ill_conditioned
+near_bound
+optimizer_stability
+small_exact
+ill_conditioned
+near_bound
+optimizer_stability
+small_exact
+ill_conditioned
+near_bound
+optimizer_stability
+small_exact
+ill_conditioned
+near_bound
+optimizer_stability
+small_exact
+ill_conditioned
+near_bound
+optimizer_stability
+small_exact
+ill_conditioned
+near_bound
+optimizer_stability
+small_exact
+
+0
+0
+2.22 × 10−16
+0
+0
+0
+0
+0
+0
+8.48 × 10−13
+4.04 × 10−8
+6.99 × 10−10
+0
+0
+0
+0
+0
+8.48 × 10−13
+4.04 × 10−8
+6.99 × 10−10
+0
+0
+0
+0
+
+0
+0
+2.09 × 10−16
+0
+0
+0
+0
+0
+0
+8.48 × 10−13
+3.80 × 10−8
+6.99 × 10−10
+0
+0
+0
+0
+0
+8.48 × 10−13
+3.80 × 10−8
+6.99 × 10−10
+0
+0
+0
+0
+
+1.00 × 108
+1,000.000
+2.000
+10.000
+1.00 × 108
+1,000.000
+2.000
+10.000
+1.00 × 108
+1,000.000
+2.000
+10.000
+1.667
+1.667
+1.667
+1.667
+1.00 × 108
+1,000.000
+2.000
+10.000
+1.00 × 108
+1,000.000
+2.000
+10.000
+
+3.00 × 10−8
+0.003
+0.438
+0.241
+3.00 × 10−8
+0.003
+0.438
+0.241
+3.00 × 10−8
+0.003
+0.438
+0.241
+0.547
+0.547
+0.547
+0.547
+3.00 × 10−8
+0.003
+0.438
+0.241
+3.00 × 10−8
+0.003
+0.438
+0.241
+
+Table 16. Agreement between the CPU and GPU evaluators. The tolerance is a
+validation threshold, not a bound in any theorem.
+
+precision
+complex128
+complex64
+float32
+float64
+
+cases
+
+max abs. difference median difference
+
+4
+4
+4
+4
+
+0
+1.92 × 10−8
+1.92 × 10−8
+0
+
+0
+5.60 × 10−9
+5.60 × 10−9
+0
+
+result
+pass
+pass
+pass
+pass
+
+Table 17. Controls and unresolved items.
+
+item
+run failures
+invalid typed edges
+zero projected one-node constant
+fixed-η universal sharpness
+extended optimizer grid
+
+count
+0
+48
+30
+1
+1
+
+disposition
+none
+rejected before evaluation
+exact control
+open
+not executed, under a stated cost constraint
+
+38
+
+ELIUTH CHAVERO JASSO
+a
+
+b
+
+wall time
+
+c
+
+throughput
+
+device memory
+
+10−3
+
+peak allocated VRAM (MiB)
+
+30
+
+internal nodes / second
+
+seconds per tree
+
+reference python
+numpy cpu
+torch cuda
+
+6 × 103
+
+4 × 103
+
+25
+20
+15
+10
+5
+
+3 × 103
+
+0
+2
+
+4
+
+6
+
+8
+
+internal nodes k
+
+10
+
+12
+
+2
+
+4
+
+6
+
+8
+
+internal nodes k
+
+10
+
+12
+
+2
+
+4
+
+6
+
+8
+
+internal nodes k
+
+10
+
+12
+
+Figure 18. Wall-time benchmark on the hardware described in Appendix B: 15
+backend and problem-size configurations, five timing repetitions each, 15–30 evaluations per repetition. Panels show median wall time with the observed minimum–
+maximum range, derived vertex throughput, and peak allocated device memory, for
+the reference coordinate evaluator, the vectorised CPU evaluator and the CUDA
+evaluator. Double-precision outputs agree exactly across the three. This is a measurement on one machine: it supports no asymptotic-complexity statement and no
+comparison between hardware platforms.
+Table 18. Reproducibility manifest.
+
+field
+
+generated value
+
+source commit
+distinct configurations
+enumerated tree occurrences
+unique tree hashes
+closure-residual subsets
+CPU/GPU max difference
+optimizer trajectories requested
+optimizer status
+release status
+
+b718f4e51785
+15493
+81445
+80870
+1530
+1.922e-08
+460800
+not executed, under a stated computational-cost constraint
+FAIL_CLOSED_NOVELTY
+
+ERROR PROPAGATION UNDER RECURSIVE ORTHOGONAL PROJECTION
+
+39
+
+References
+1. Jonas Ballani and Lars Grasedyck, Tree adaptive approximation in the hierarchical tensor format, SIAM Journal
+on Scientific Computing 36 (2014), no. 4, A1415–A1431.
+2. Patrick L. Combettes and Jean-Christophe Pesquet, Lipschitz certificates for layered network structures driven
+by averaged activation operators, SIAM Journal on Mathematics of Data Science 2 (2020), no. 2, 529–557.
+3. Herbert Egger, Tobias Kugler, Benjamin Liljegren-Sailer, Nils Marheineke, and Volker Mehrmann, On structurepreserving model reduction for damped wave propagation in transport networks, SIAM Journal on Scientific Computing 40 (2018), no. 1, A331–A365.
+4. V. T. Filippov, n-Lie algebras, Siberian Mathematical Journal 26 (1985), no. 6, 879–891, Translation of Sibirsk.
+Mat. Zh. 26 (1985), no. 6, 126–140.
+5. Timon Gehr, Matthew Mirman, Dana Drachsler-Cohen, Petar Tsankov, Swarat Chaudhuri, and Martin Vechev,
+AI2: Safety and robustness certification of neural networks with abstract interpretation, 2018 IEEE Symposium
+on Security and Privacy, 2018, pp. 3–18.
+6. Wolfgang Hackbusch and Stefan Kühn, A new scheme for the tensor representation, Journal of Fourier Analysis
+and Applications 15 (2009), 706–722.
+7. Nicholas J. Higham, Accuracy and stability of numerical algorithms, 2 ed., Society for Industrial and Applied
+Mathematics, 2002.
+8. B. E. Johnson, Approximately multiplicative maps between banach algebras, Journal of the London Mathematical
+Society s2-37 (1988), no. 2, 294–316.
+9. Tamara G. Kolda and Brett W. Bader, Tensor decompositions and applications, SIAM Review 51 (2009), no. 3,
+455–500.
+10. Joseph B. Kruskal, Three-way arrays: Rank and uniqueness of trilinear decompositions, with application to
+arithmetic complexity and statistics, Linear Algebra and its Applications 18 (1977), no. 2, 95–138.
+11. Jean B. Lasserre, Global optimization with polynomials and the problem of moments, SIAM Journal on Optimization 11 (2001), no. 3, 796–817.
+12. Jean-Louis Loday and Bruno Vallette, Algebraic operads, Grundlehren der mathematischen Wissenschaften, vol.
+346, Springer, 2012.
+13. Ramon E. Moore, R. Baker Kearfott, and Michael J. Cloud, Introduction to interval analysis, Society for Industrial
+and Applied Mathematics, 2009.
+14. J. Mostovoy, J. M. Pérez-Izquierdo, and I. P. Shestakov, Hopf algebras in non-associative lie theory, Bulletin of
+Mathematical Sciences 4 (2014), 129–173.
+15. Donald Yau, Colored operads, Graduate Studies in Mathematics, vol. 170, American Mathematical Society, 2016.
+Independent Researcher, Apizaco, Tlaxcala, Mexico
+
+

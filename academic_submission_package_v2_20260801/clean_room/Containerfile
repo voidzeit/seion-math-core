@@ -1,0 +1,55 @@
+# Clean-room environment for the FULL integration branch (SEION V6
+# math+AI closure mission), distinct from and broader in scope than
+# academic_submission_package/clean_room/Containerfile, which only
+# reproduces the five-manuscript package's minimal supporting set.
+#
+# Build: docker build -t seion-full-repro -f clean_room/Containerfile .
+# Run:   docker run --rm -v "$PWD/clean_room/reproduction_run:/out" seion-full-repro
+#
+# Deliberately built from a clean, unrelated base image so the
+# reproduction inside is independent of the author's machine.
+#
+# Scope (explicitly, per this file's own comments - see
+# clean_room/reproduction_run/reproduction_report.md for what actually
+# ran and what did not, and why):
+#   - fresh dependency install (pyproject.toml, no cached wheels from
+#     the host)
+#   - both existing test suites (core `tests/`, `spectral/certification_v18/tests`)
+#   - the adaptive_tensor_network application's own test suite
+#   - the M1 GJI symbolic verification script (exact rerun)
+#   - the M2/M3 exact closed-form verification scripts
+#   - the M6 Markov construction example
+#   - the Level 1 AI campaign (fast: ~6s, 1,440 records) re-executed
+#     fresh and hash-compared against the host's committed raw results
+#   - checksum verification of the academic_submission_package
+#
+# Does NOT rebuild the LaTeX manuscripts inside this container (no TeX
+# Live installed here - a multi-GB, many-minute image layer that was
+# judged not to be the load-bearing part of THIS reproduction pass,
+# unlike academic_submission_package/clean_room's own Containerfile,
+# which does install TeX Live for exactly that purpose and already
+# built the five manuscripts there natively in a prior session).
+# Manuscript rebuilds for papers 01/06 in THIS session were done
+# natively on the host (MiKTeX), not re-verified inside this container -
+# stated explicitly, not hidden.
+
+FROM docker.io/library/python:3.12-slim-bookworm
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONHASHSEED=0 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /work
+
+RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY pyproject.toml /work/pyproject.toml
+COPY src /work/src
+RUN pip install --no-cache-dir -e "/work[test,research]" 2>&1 | tail -20 || \
+    pip install --no-cache-dir numpy scipy sympy PyYAML pytest hypothesis
+
+COPY . /work
+
+RUN chmod +x /work/clean_room/reproduce.sh
+ENTRYPOINT ["/work/clean_room/reproduce.sh"]

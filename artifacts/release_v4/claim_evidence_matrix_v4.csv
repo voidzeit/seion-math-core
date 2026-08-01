@@ -1,0 +1,6 @@
+claim_or_result,status,authority,evidence_or_blocker
+finite recursive tree certificates,verified scoped,verified,artifacts/research_v3
+exact invariant reduction,conditional candidate,declared,docs/research/V4_MATHEMATICAL_PROGRAM.md
+approximate closure constants,blocked,declared,BLOCK-V4-MATH-CONSTANTS
+extended optimizer grid,blocked,observed,BLOCK-V4-EXTENDED-GRID
+theorem novelty,blocked,declared,BLOCK-V4-NOVELTY

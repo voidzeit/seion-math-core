@@ -1,0 +1,12 @@
+version: 1
+agent_id: graph-maintainer
+role: regenerate and maintain the repository knowledge graph and machine-readable indexes
+authority: derived
+stages: [context]
+reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, task_context_pack]
+may_change: [.ai/machine/, docs/graph/]
+must_not: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof, hand_edit_a_generated_index]
+required_outputs: [graph_diff_summary, orphan_report, drift_report, limitations]
+preflight: [context_compiled, worktree_scoped, authority_level_declared]
+review: required_by_independent_role
+postflight: required

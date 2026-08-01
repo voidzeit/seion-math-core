@@ -1,0 +1,259 @@
+{
+  "construction": "ternary_declared_gji",
+  "source": "src/seion_core/research_v3/polynomial_forests.py",
+  "contraction_convention": "mu(a,b,c)[d] = sum_{i,j,k} mu[d,i,j,k]*a[i]*b[j]*c[k], positional, no symmetry assumed (matches TypedLaw.apply / np.einsum in local_constants.py + exact_evaluation.py; cross-checked term-by-term against seion_core.research_v3.exact_evaluation.evaluate_ambient_numpy on concrete random data before any symbolic result was trusted)",
+  "terms": [
+    {
+      "coefficient": 1,
+      "tree_canonical_json": {
+        "children": [
+          {
+            "children": [
+              {
+                "kind": "leaf",
+                "label": 0,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 1,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 2,
+                "type": "tau"
+              }
+            ],
+            "kind": "node",
+            "law_id": "mu",
+            "output_type": "tau"
+          },
+          {
+            "kind": "leaf",
+            "label": 3,
+            "type": "tau"
+          },
+          {
+            "kind": "leaf",
+            "label": 4,
+            "type": "tau"
+          }
+        ],
+        "kind": "node",
+        "law_id": "mu",
+        "output_type": "tau"
+      }
+    },
+    {
+      "coefficient": 1,
+      "tree_canonical_json": {
+        "children": [
+          {
+            "kind": "leaf",
+            "label": 1,
+            "type": "tau"
+          },
+          {
+            "children": [
+              {
+                "kind": "leaf",
+                "label": 2,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 0,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 3,
+                "type": "tau"
+              }
+            ],
+            "kind": "node",
+            "law_id": "mu",
+            "output_type": "tau"
+          },
+          {
+            "kind": "leaf",
+            "label": 4,
+            "type": "tau"
+          }
+        ],
+        "kind": "node",
+        "law_id": "mu",
+        "output_type": "tau"
+      }
+    },
+    {
+      "coefficient": 1,
+      "tree_canonical_json": {
+        "children": [
+          {
+            "kind": "leaf",
+            "label": 2,
+            "type": "tau"
+          },
+          {
+            "kind": "leaf",
+            "label": 0,
+            "type": "tau"
+          },
+          {
+            "children": [
+              {
+                "kind": "leaf",
+                "label": 1,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 3,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 4,
+                "type": "tau"
+              }
+            ],
+            "kind": "node",
+            "law_id": "mu",
+            "output_type": "tau"
+          }
+        ],
+        "kind": "node",
+        "law_id": "mu",
+        "output_type": "tau"
+      }
+    },
+    {
+      "coefficient": -1,
+      "tree_canonical_json": {
+        "children": [
+          {
+            "children": [
+              {
+                "kind": "leaf",
+                "label": 1,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 0,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 2,
+                "type": "tau"
+              }
+            ],
+            "kind": "node",
+            "law_id": "mu",
+            "output_type": "tau"
+          },
+          {
+            "kind": "leaf",
+            "label": 3,
+            "type": "tau"
+          },
+          {
+            "kind": "leaf",
+            "label": 4,
+            "type": "tau"
+          }
+        ],
+        "kind": "node",
+        "law_id": "mu",
+        "output_type": "tau"
+      }
+    },
+    {
+      "coefficient": -1,
+      "tree_canonical_json": {
+        "children": [
+          {
+            "kind": "leaf",
+            "label": 2,
+            "type": "tau"
+          },
+          {
+            "children": [
+              {
+                "kind": "leaf",
+                "label": 1,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 0,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 3,
+                "type": "tau"
+              }
+            ],
+            "kind": "node",
+            "law_id": "mu",
+            "output_type": "tau"
+          },
+          {
+            "kind": "leaf",
+            "label": 4,
+            "type": "tau"
+          }
+        ],
+        "kind": "node",
+        "law_id": "mu",
+        "output_type": "tau"
+      }
+    },
+    {
+      "coefficient": -1,
+      "tree_canonical_json": {
+        "children": [
+          {
+            "kind": "leaf",
+            "label": 0,
+            "type": "tau"
+          },
+          {
+            "kind": "leaf",
+            "label": 2,
+            "type": "tau"
+          },
+          {
+            "children": [
+              {
+                "kind": "leaf",
+                "label": 1,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 3,
+                "type": "tau"
+              },
+              {
+                "kind": "leaf",
+                "label": 4,
+                "type": "tau"
+              }
+            ],
+            "kind": "node",
+            "law_id": "mu",
+            "output_type": "tau"
+          }
+        ],
+        "kind": "node",
+        "law_id": "mu",
+        "output_type": "tau"
+      }
+    }
+  ]
+}

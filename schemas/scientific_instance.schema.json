@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://seion.invalid/schema/scientific-instance.json",
+  "title": "SEION scientific instance / execution / optimizer-restart record",
+  "description": "Frozen v1 identity contract (mission section 2): every experiment record must distinguish scientific identity from mere re-execution from mere optimizer-restart, and must carry full provenance hashes.",
+  "type": "object",
+  "required": [
+    "scientific_instance_id",
+    "execution_id",
+    "seed",
+    "precision",
+    "hardware",
+    "code_commit",
+    "config_hash"
+  ],
+  "properties": {
+    "scientific_instance_id": {
+      "type": "string",
+      "description": "Identity of the *scientific question being asked* (example/config/arity/dimension/objective) — independent of how many times it has been executed or resumed."
+    },
+    "execution_id": {
+      "type": "string",
+      "description": "Identity of one specific run of a scientific_instance_id. Multiple execution_ids may share a scientific_instance_id (e.g. reruns for reproducibility); they are not independent scientific evidence of a different kind, only replication evidence."
+    },
+    "optimizer_restart_id": {
+      "type": ["string", "null"],
+      "description": "Identity of a specific optimizer restart/checkpoint-resume within an execution. A new optimizer_restart_id from the same execution_id is NOT a new independent seed/trial (see evidence_contract.check_resumed_run_is_not_independent_seed)."
+    },
+    "seed": {"type": ["integer", "null"]},
+    "precision": {
+      "enum": ["float32", "float64", "complex64", "complex128", "arbitrary", "exact_rational", "symbolic"]
+    },
+    "hardware": {
+      "type": "object",
+      "properties": {
+        "device": {"type": "string"},
+        "gpu_name": {"type": ["string", "null"]},
+        "cpu_name": {"type": ["string", "null"]},
+        "ram_gb": {"type": ["number", "null"]}
+      }
+    },
+    "code_commit": {"type": "string", "description": "git commit SHA the execution ran at."},
+    "script_hash": {"type": ["string", "null"], "description": "sha256 of the entry-point script."},
+    "config_hash": {"type": "string", "description": "sha256 of the fully resolved config."},
+    "model_state_hash": {"type": ["string", "null"], "description": "sha256 of the model/checkpoint state, if applicable."},
+    "checkpoint_lineage": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Ordered list of checkpoint identifiers this execution/restart descends from, oldest first."
+    },
+    "input_hashes": {"type": "array", "items": {"type": "string"}},
+    "output_hashes": {"type": "array", "items": {"type": "string"}},
+    "eval_mode": {
+      "enum": ["screening", "certification"],
+      "description": "Screening-mode executions may never emit a certificate-tier status (evidence_contract.check_screening_cannot_emit_certificate)."
+    },
+    "is_resumed": {"type": "boolean"},
+    "restore_rng": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "SEION Math+AI Closure Package v2: Recursive Projection of Typed Multilinear Trees, Kernel-Integrated Laws, and Adaptive Rank Allocation"
+message: "If this package supports your work, cite this package version and its constituent papers."
+type: software
+authors:
+  - family-names: "Jasso"
+    given-names: "Eliuth Chavero"
+version: 2.0.0
+date-released: 2026-08-01
+license: MIT
+repository-code: https://example.invalid/seion-math-core
+abstract: >
+  A six-manuscript package covering recursive orthogonal projection of
+  typed multilinear composition trees (proved k/(k-1) error theorem),
+  kernel-integrated multilinear operators, numerical/software
+  reproducibility studies, and a new adaptive rank-allocation benchmark
+  for hierarchical tensor networks, together with a math-closure
+  campaign (exact GJI resolution, exact k=2/k=3 closed forms, fixed-tree
+  continuum convergence, a verified Markov construction) and a
+  self-executed clean-room reproduction.

@@ -14,6 +14,7 @@ def _tree():
 
 
 def test_tiny_gradient_search_is_explicitly_empirical():
+    pytest.importorskip("torch")
     result = gradient_search(
         _tree(),
         SearchConfig(

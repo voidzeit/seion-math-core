@@ -1,0 +1,591 @@
+A NUMERICAL STUDY OF CYCLIC MULTILINEAR MAPS,
+ORTHOGONAL PROJECTORS, AND MULTIRESOLUTION
+TENSOR REPRESENTATIONS
+ELIUTH CHAVERO JASSO
+
+Abstract. We report fourteen numerical experiments on a family of cyclically symmetric multilinear maps equipped with orthogonal projectors onto learned subspaces, together with a swept
+extension of four of them. Four results are exact identities that hold by construction and are
+reported as such: idempotence and self-adjointness of U U ∗ , cyclic invariance after exact symmetrisation, agreement of two independent implementations of a reduced tensor, and invariance of a
+corrected objective under a change of orthonormal basis. Four are negative results in the tested
+regime: a parameterised model of a commutator does not outperform the zero predictor in any of the
+fifteen trained checkpoints available; three independently trained resolutions exhibit no transport of
+learned subspaces, with principal angles close to π/2 throughout; the corresponding tensor factors
+do not persist across those resolutions; and three seeds reaching comparable training loss converge
+to subspaces that are pairwise nearly orthogonal. Two are methodological corrections found by
+the study’s own controls: comparing orthonormal frames by unconstrained unitary Procrustes is
+vacuous, because the unitary group acts transitively on orthonormal frames of equal size; and an
+objective intended to be invariant under a change of basis was not, until it was summed over all
+columns. The remaining results are exploratory. A swept extension over 208 distinct configurations, each executed on a CPU and on a GPU, finds the GPU between 3.2 and 3.5 times slower
+than the CPU throughout n ∈ {12, 24, 48, 96}, and finds the observed associator ratio decreasing
+monotonically with ambient dimension, from 0.40 at n = 12 to 0.12 at n = 96, against a triangle
+bound of 2.
+
+[2020]65F99, 65Y20, 15A69, 62-08 numerical linear algebra, principal angles, orthogonal projector, associator, cyclic symmetry, higher-order singular value decomposition, gauge invariance,
+identifiability, negative results
+1. Experimental questions and study design
+1.1. The object under study. Fix an ambient dimension n, a reduced rank r and an arity a.
+The objects of the study are: a cyclically symmetric a-linear map µ on Cn , stored in a rank-R
+canonical polyadic representation [9]; an isometry U ∈ Cn×r with U ∗ U = Ir , and the associated
+orthogonal projector P = U U ∗ ; and a reduced tensor obtained by contracting µ against U in every
+slot. Parameters are fitted by gradient descent against objectives built from a closure defect, an
+associator defect and a commutator residual, all defined in Section 2.
+1.2. The fourteen questions. Each experiment answers one question. We list them here, and
+each subsequent section answers one. The parenthetical labels are the identifiers used in the accompanying software [3] and are given once, here, so that each result can be traced to its implementation;
+they are not used again.
+(Q1) Are the projector identities satisfied numerically? (implementation label: block A)
+(Q2) Can a parameterised model reproduce a commutator? (block B)
+(Q3) How do finite nested-commutator norms behave across families of projectors? (block C)
+Date: 31 July 2026.
+None of the results below has been reproduced by anyone other than the author, and no assessment of originality
+has been carried out. The finite-dimensional theory of projected composition trees [2] is a separate study and is not
+used here; see Remark 1.1.
+1
+
+2
+
+ELIUTH CHAVERO JASSO
+
+(Q4) Is thresholded spectral projection stable under perturbation? (block D)
+(Q5) Do learned subspaces transport across resolutions? (block E)
+(Q6) Is the fitted subspace locally identifiable, and invariant under a change of basis? (block F)
+(Q7) How large is the closure defect of a fitted map? (block G)
+(Q8) How large is the associator, against its triangle bound? (block H)
+(Q9) Do two independent implementations of the reduced tensor agree? (block I)
+(Q10) How should tensors at different resolutions be compared? (block J)
+(Q11) Is a fitted reduced tensor more compressible than a random one? (block K)
+(Q12) How much basis freedom remains after canonicalisation? (block L)
+(Q13) Do tensor factors persist across resolutions? (block M)
+(Q14) Does cyclic symmetrisation produce a cyclic map, and how large is a generalised Jacobi
+residual? (block N)
+1.3. Reporting conventions. Three conventions are used throughout, and departures from them
+are the main defects we found in an earlier version of this work.
+Identities by construction are labelled as such.: Several quantities vanish because of how
+they are defined, not because of anything that was fitted. Where this is the case we say so,
+and we do not report the vanishing as evidence about the fitted object.
+A configuration is not an execution.: A configuration is one distinct mathematical setting:
+a choice of arity, dimension, rank, representation rank and seed. An execution is one run of
+one configuration on one device. Executions of the same configuration on different devices, and
+executions resumed from a checkpoint, are not independent observations and are never counted as
+such.
+Statistical language is used only when a sampling model is stated.: Where no sampling
+population, statistic, uncertainty calculation and inferential procedure are specified, we write “observed over N sampled configurations” and not “statistically validated”.
+Remark 1.1 (This study is separate from the projected-tree theory). The companion article [2]
+proves upper bounds for the error incurred by recursively projecting the intermediate outputs of a
+multilinear composition tree, and leaves the exact constants open. That study and this one share
+vocabulary — projectors, associators, multilinear maps — but not objects: no experiment below
+involves a composition tree or a recursively projected evaluation, and no numerical result below
+bears on the constants of [2]. In particular, the triangle bound of value 2 appearing in Section 10
+is a bound on the norm of an associator of a single map, and is unrelated to the coefficient k − 1
+of [2], which bounds the projected error of a signed combination of trees. The numeral is the same
+by coincidence.
+2. Definitions
+Let µ be an a-linear map on Cn , U ∈ Cn×r an isometry and P =P
+U U ∗.
+1
+j
+Cyclic symmetrisation. Let σ rotate the input slots and Πcyc = a a−1
+j=0 σ . Since σ acts unitarily
+on the coefficient tensor, Πcyc is an orthogonal projector, and µcyc = Πcyc µ is cyclic. The cyclic
+defect of µ is ∥µ − Πcyc µ∥F .
+Closure defect. The normalised sampled closure defect is
+"
+
+#
+
+∥(I − P )µ(P X1 , . . . , P Xa )∥2
+Eclosure = E
+,
+∥µ(P X1 , . . . , P Xa )∥2 + ε
+the Xi being independent standard complex Gaussian vectors. This is a sampled average, not the
+operator norm of the closure-leakage map, and it does not bound that operator norm.
+Associator. With A(x, y, z) = (x◦y)◦z−x◦(y◦z) for the binary product induced by anchoring one
+c2 ∥x∥∥y∥∥z∥, where M
+c is a numerical estimate
+slot, the triangle inequality gives ∥A(x, y, z)∥ ≤ 2M
+
+A NUMERICAL STUDY OF CYCLIC MULTILINEAR MAPS AND PROJECTORS
+
+3
+
+of the operator norm of ◦. The associator ratio is the observed left-hand side divided by the
+right-hand side.
+Commutator residual. For a Hermitian ∆, the identity [∆, P ] = K∆P −P ∆K holds with K = I,
+and both sides have rank at most 2r. The parameterised model is Cθ = U ΦU ∗ ∆K − K∆U Φ∗ U ∗
+with Φ a free r × r matrix. The unexplained relative residual is ∥[∆, P ] − Cθ ∥2F /∥[∆, P ]∥2F ; the zero
+predictor Cθ = 0 gives the value 1.
+Principal angles. Subspaces are compared by principal angles [1, 8]; π/2 ≈ 1.5708 is complete
+orthogonality.
+3. Orthogonal projector identities
+For any isometry U , the matrix P = U U ∗ satisfies P 2 = P and P ∗ = P identically. Numerically,
+over five seeds and over all 416 executions of the swept extension of Section 17, the idempotence
+residual ∥P 2 − P ∥F /∥P ∥F stayed below 3.3 × 10−16 and the self-adjointness residual below 7.7 ×
+10−17 ; an exact n = 2 case agrees to a tolerance of 10−14 .
+Remark 3.1. These identities hold by construction. They confirm that the implementation forms
+U U ∗ correctly and that the arithmetic is well conditioned. They are not evidence that the subspace
+ran P is relevant to anything, and we never use them as such.
+4. Approximation of a commutator by a parameterised model
+4.1. The model is not capacity-limited in isolation. Training U against the unexplained
+residual alone drives that residual to approximately 10−9 across five seeds, matching a closed-form
+optimal-Φ ceiling. The model can therefore represent the target when nothing else competes.
+4.2. It nevertheless fails in every trained checkpoint. In every one of the fifteen historical
+checkpoints carrying the relevant data, the model performed at or worse than the zero predictor.
+Observation 4.1. The proposed approximation did not outperform the zero approximation in any
+of the fifteen available trained models.
+This conclusion is restricted to the parameterisation, the objectives and the trained models
+examined here. It is not an impossibility statement for the model class.
+4.3. Which factor is responsible. Table 1 reports seven training regimes, one run each, at
+n = 16, r = 4, representation rank 4, and 400 optimisation steps.
+Table 1. Seven training regimes, one run per regime. “Unexplained” is the relative
+residual defined in Section 2; the zero predictor gives 1. Values are reproduced from
+the stored experiment record.
+regime
+
+unexplained
+
+commutator objective alone
+with closure objective
+with associator objective
+all objectives jointly
+map frozen, projector trained
+projector frozen, map trained
+staged: competing objectives, then commutator
+
+8.10 × 10−5
+3.51 × 10−4
+8.49 × 10−3
+6.00 × 10−3
+0.9925
+2.46 × 10−7
+4.65 × 10−4
+
+closure
+
+associator
+
+0.310
+464.1
+4.11 × 10−6
+74.6
+0.111 4.77 × 10−6
+4.79 × 10−4 1.07 × 10−6
+1.56 × 10−2
+0.233
+0.738
+580.9
+0.217
+141.1
+
+Two rows carry the interpretation. Freezing the map and training only the projector leaves
+the unexplained residual at 0.9925, barely below the zero predictor. Freezing the projector and
+training only the map — with U left at its random initial value — reaches 2.46 × 10−7 , which
+
+4
+
+ELIUTH CHAVERO JASSO
+
+is the numerical floor of that run and not exactly zero. Adding the associator objective to the
+commutator objective degrades the residual by about two orders of magnitude relative to training
+the commutator objective alone, whereas adding the closure objective does not.
+Observation 4.2. In these seven runs, the explanatory capacity resides in the parameters of the
+map rather than in the fitted subspace, and the commutator objective conflicts with the associator
+objective but not with the closure objective.
+This is a single run per regime. It is an exploratory result, not a controlled experiment with
+replicates, and it is offered as the best-supported reading of the seven runs rather than as an
+established mechanism.
+Remark 4.3 (Relation to the underspecification literature). A pipeline is underspecified when it returns many distinct predictors with equivalently strong test performance which nonetheless behave
+differently in deployment [4]. The finding of Section 8 below — three seeds reaching comparable
+loss but converging to nearly orthogonal subspaces — is conceptually related to that phenomenon.
+The finding of the present section is different in mechanism: it concerns a conflict between two
+objectives within a single training run, rather than a multiplicity of equally good solutions. We
+record the connection as a conceptual one; the model, the objective and the conclusion analysed
+here are not those of [4], and this remark is not an assessment of originality.
+5. Finite nested-commutator diagnostics
+We report Frobenius norms of finite nested commutators for four families of projectors: adversarially optimised, random, smooth, and spatially localised. The observed norms were 4.35, 3.84,
+2.85 and 2.00 respectively.
+That the adversarially optimised family produces the largest norms is the point of the experiment:
+it shows that the reported figures are not a favourable selection.
+Remark 5.1 (Scope). This experiment computes finite nested-commutator norms and nothing else.
+It is not a test of membership in a pseudodifferential class and carries no microlocal-regularity
+content. Such a test would require symbol estimates of the kind recalled in the companion analytic
+article, and none is performed here.
+6. Stability of thresholded spectral projectors
+Given a Hermitian matrix with a spectral gap, thresholding its spectrum yields a projector onto
+the corresponding invariant subspace. Perturbing by ϵH with H Hermitian, rank recovery and a
+Davis–Kahan-type bound [5] hold up to the point at which the gap closes. At ϵ = 1.2 the gap closes
+from 1.0 to 0.51 and the rank is misrecovered.
+Observation 6.1. The tested perturbations confirm that the spectral-gap condition is necessary:
+rank recovery fails exactly when the gap closes.
+The experiment used genuine near-projectors, not only exact ones.
+7. Transport of learned subspaces across resolutions
+Three resolutions, n = 12, 18 and 24, were independently initialised and independently trained.
+For each ordered pair, one frozen Gaussian-kernel lift operator maps the subspace of the lower
+resolution into the higher one, and the transported subspace is compared with the independently
+learned subspace there by principal angles. Two baselines are used: a random subspace of the same
+dimension, and a subspace obtained by interpolation.
+All quantities reported in Table 2 lie between 1.331 and 1.553 radians, that is, between 76.3◦ and
+89.0◦ . The transported angles themselves lie between 1.407 and 1.472. The trained lift improves
+
+A NUMERICAL STUDY OF CYCLIC MULTILINEAR MAPS AND PROJECTORS
+
+5
+
+Table 2. Largest principal angle in radians, by resolution pair. Complete orthogonality is π/2 ≈ 1.571. The trained lift beats both baselines in two of the three
+forward pairs.
+pair
+12 → 18
+12 → 24
+18 → 24
+
+trained lift
+1.410
+1.472
+1.407
+
+random baseline interpolation baseline
+1.480
+1.416
+1.553
+
+backward
+
+1.527
+1.468
+1.446
+
+1.331
+1.540
+1.370
+
+on both baselines in two of the three forward pairs, and the margins where it does are 0.02 to 0.15
+radians, small relative to how close every condition already is to complete orthogonality.
+Observation 7.1. The tested multiresolution models provided no evidence of transport of the
+learned subspace across the examined resolutions.
+The scope is three resolutions, one lift operator per pair, one training run per resolution. This
+is a negative result in the tested regime and not an impossibility statement.
+8. Local identifiability and invariance under a change of basis
+8.1. An objective that was not invariant, and its correction. Any objective built from U
+should be invariant under U 7→ U V for unitary V , since U V spans the same subspace. The first
+version of the test objective used a single column of U and was therefore not invariant: the test
+detected a discrepancy of 0.87 % under such a change of basis. Summing over all r columns produces
+a Frobenius-norm quantity, which is exactly invariant under right multiplication by a unitary. This
+is an identity, and after the correction the discrepancy is zero to machine precision.
+Remark 8.1. The defect was found by the experiment’s own required invariance control, not by
+inspection. Reporting it is the reason the control exists.
+8.2. Curvature along the gauge direction. The exact Hessian and the generalised Gauss–
+Newton approximation 2J ⊤ J are computed separately and never conflated. The generalised Gauss–
+Newton matrix is positive semidefinite by construction; the exact Hessian is indefinite at a nonminimum, as expected. Along the infinitesimal direction generated by U 7→ U V , the Hessian
+curvature is −3.5 × 10−18 , numerically flat, which is what invariance predicts.
+8.3. Different seeds, nearly orthogonal subspaces. Three seeds all reach comparable nearzero training loss. The largest pairwise principal angle between the three converged subspaces is
+1.55 radians, approximately 89◦ .
+Observation 8.2. Over the three seeds tested, comparable training loss was attained at subspaces
+that are pairwise nearly orthogonal. The subspace is not identified by the objective in the tested
+regime.
+Three seeds are three observations, not a statistical sample, and no interval is reported.
+9. Approximate closure of multilinear maps
+The closure defect of a fitted map was evaluated over 2000 sampled configurations of the input
+vectors, and separately maximised by gradient ascent. The adversarial search found defects at least
+as large as the largest random sample in every case.
+Observation 9.1. The closure defect was observed over 2000 sampled inputs, with an adversarial
+maximum at least as large as the largest sampled value.
+
+6
+
+ELIUTH CHAVERO JASSO
+
+Remark 9.2 (No sampling model is claimed). We do not describe this as a statistically validated
+result. Doing so would require stating the sampling population, the statistic, the number of independent observations, the uncertainty calculation, the inferential procedure and the limits of
+generalisation, and this study specifies none of them. No interval-arithmetic or sum-of-squares
+bound on the closure defect was derived.
+10. Bounds for associators
+c2 ∥x∥∥y∥∥z∥ was never violated over 500 trials at a single
+The triangle bound ∥A(x, y, z)∥ ≤ 2M
+configuration (300 random inputs and 200 adversarially optimised). The largest observed ratio was
+0.452. The mean cosine between the two terms of the associator was 0.067: the terms are close to
+uncorrelated, rather than anti-aligned as the worst case of the triangle inequality would require.
+
+Observation 10.1. Across the configurations tested, the observed associator ratio remained well
+below the triangle bound, with a maximum of 0.957 over the swept extension of Section 17. No
+analytic improvement of the constant 2 is derived here, so the exact constant is undetermined.
+Section 17 extends this measurement over a grid and finds a pattern not visible at a single
+configuration.
+11. Extraction of reduced tensors
+Two independent implementations of the reduced tensor — one by explicit loops, one by a
+contraction exploiting the low-rank representation, including the cyclic average — agree to better
+than 10−10 in double precision and 10−4 in single precision. An exact rational case at n = 2, r = 1
+matches a hand computation exactly, with no floating-point arithmetic involved.
+This experiment tests extraction correctness only. It says nothing about whether the extracted
+tensor is meaningful.
+12. Gauge-invariant comparison of tensors
+Comparing two orthonormal frames U1 , U2 ∈ Cn×r by solving the unconstrained unitary Procrustes problem [10] over all of U(n) is vacuous: the unitary group acts transitively on orthonormal
+r-frames in Cn , so a unitary carrying U1 to U2 always exists, whatever the two frames are.
+Observation 12.1. An early version of the comparison tool used exactly this procedure and consequently reported independently drawn random tensors as equivalent. The defect was found by the
+experiment’s own required negative control, and was corrected by comparing subspaces with principal
+angles [1] instead.
+The corrected methodology reports four quantities separately — raw, Procrustes-aligned within
+the admissible group, permutation-aligned, and amplitude ratio — rather than collapsing them
+into one score. This is an improvement over comparing a single eigenbasis heuristic, and it is the
+methodology used in Sections 7 and 15.
+13. Multilinear singular-value compression
+Using the multilinear singular value decomposition [6], a fitted reduced tensor requires mode
+ranks [3, 4, 4] out of a full rank of 4 to capture 99 % of its energy, against [4, 4, 4] for a random
+tensor matched in norm.
+Observation 13.1. The fitted tensor is more compressible than the norm-matched random null in
+one of three modes, and equally compressible in the other two.
+This is a modest difference at a single configuration, and a single random tensor is not a null
+distribution.
+
+A NUMERICAL STUDY OF CYCLIC MULTILINEAR MAPS AND PROJECTORS
+
+7
+
+14. Canonical representatives and residual basis freedom
+After canonicalisation, the residual basis freedom is reported explicitly by the size of each spectral
+cluster. A deliberately constructed degenerate case, with eigenvalues 2, 1, 1, is detected. Applying an arbitrary — not infinitesimal — unitary rotation within the two-dimensional degenerate
+eigenspace produces a frame that differs pointwise (Frobenius difference above 0.1) while spanning
+the same subspace (largest principal angle below 10−8 ).
+This is the concrete content of the statement that canonicalisation determines a representative
+only modulo the residual freedom.
+15. Persistence of tensor factors across resolutions
+Applying the corrected comparison of Section 12 to the three independently trained resolutions of
+Section 7: the mode ranks required are inconsistent across the three resolutions ({3, 3, 4}, {3, 4, 4},
+{3, 3, 3}), and the mean pairwise principal angle between corresponding modes is 1.01 radians.
+Observation 15.1. The tested multiresolution models provided no evidence of persistent tensor
+factors across the examined resolutions.
+One mode of the nine compared shows a near-exact match, 1.5 × 10−8 radians. We have no
+explanation for it. It is recorded here as an unresolved anomaly rather than absorbed into the
+summary above.
+16. Cyclic symmetrisation and a generalised Jacobi residual
+The cyclic defect before symmetrisation is 4.60; after applying Πcyc it is 8.2 × 10−33 , thirty-one
+orders of magnitude smaller.
+Remark 16.1 (This is an identity). Πcyc µ is cyclic by construction, because Πcyc is the orthogonal
+projector onto the cyclically invariant subspace. The post-symmetrisation value is at the numerical
+floor because the identity is exact, not because a symmetry was learned. The figure is reported to
+confirm the implementation, and for no other purpose.
+One exact, versioned generalised Jacobi expression — the full antisymmetrisation of the associator over the six permutations of three arguments — is implemented twice independently; the two
+implementations agree to 2.8 × 10−16 , and a deliberate sign mutation is detected. The supremum
+of the corresponding ratio is not shown to be bounded: the adversarial maximum is 5.98 at a single
+configuration against a mean of 0.43, and 4.65 to 5.92 across the 48 configurations of the pilot
+sweep. This ratio is undetermined.
+The relation of this expression to Filippov’s fundamental identity [7] and to other conventions
+for generalised Jacobi identities has not been checked.
+17. Swept extension over a grid
+The experiments above use a single configuration or a few seeds. Four of them — Sections 3, 9,
+10 and 16 — were extended over a grid, on the hardware described in [3].
+17.1. Design and accounting. There were no failures in either stage. Summed over the perexecution records, the wall time was 942.8 seconds for the pilot and 6300.8 seconds for the broad
+stage; the scheduler reported 945.5 and 6316.5 seconds respectively, the difference being scheduling
+overhead outside the timed region.
+Two further stages — adaptive intensification of boundary configurations, and reruns with heldout seeds in extended precision with deterministic algorithms — were specified but not executed.
+Sections 4, 5, 6, 7, 8, 11, 12, 13, 14 and 15 were not extended over the grid and remain singleconfiguration evidence.
+
+8
+
+ELIUTH CHAVERO JASSO
+
+Table 3. Design of the swept extension. Each configuration was executed once
+on the CPU and once on the GPU. The two executions of a configuration are not
+independent observations.
+stage
+
+configurations
+
+executions
+
+grid
+
+pilot
+broad
+
+48
+160
+
+96 a ∈ {3, 4}, n ∈ {12, 24}, r ∈ {3, 6}, R ∈ {4, 8}, 3 seeds
+320 as above with n ∈ {12, 24, 48, 96}, 5 seeds
+
+total
+
+208
+
+416
+
+Table 4. Mean wall time per execution, in seconds, over the 160 configurations of
+the broad stage. Each mean is over 40 executions.
+n
+
+CPU
+
+GPU
+
+ratio
+
+12
+24
+48
+96
+
+9.44
+9.31
+9.83
+7.90
+
+30.64
+30.80
+34.50
+25.09
+
+3.24
+3.31
+3.51
+3.17
+
+17.2. Device throughput.
+Observation 17.1. Over the tested range n ∈ {12, 24, 48, 96}, the GPU was between 3.17 and 3.51
+times slower than the CPU for these four experiments, with no trend towards crossover.
+The ratio is stable across an eightfold range in ambient dimension, so the effect is not a small-n
+artefact. The practical consequence for further work on these four experiments, on this hardware,
+is to use the CPU. No asymptotic-complexity statement and no comparison between hardware
+platforms follows from this measurement.
+17.3. The associator ratio decreases with ambient dimension. Over the 96 executions of
+the pilot the observed associator ratio ranged from 0.130 to 0.957 with mean 0.334; over the 320
+executions of the broad stage it ranged from 0.042 to 0.957 with mean 0.240. Broken down by
+ambient dimension, the mean ratio was 0.404 at n = 12, 0.257 at n = 24, 0.182 at n = 48 and 0.118
+at n = 96.
+Observation 17.2. The mean observed associator ratio decreases monotonically with ambient
+dimension over the tested range, moving further from the triangle bound as n grows.
+The single-configuration value 0.452 of Section 10, measured at n = 16, is consistent with this
+trend rather than an outlier.
+17.4. Reproducibility of the generalised Jacobi ratio. The adversarial maximum of the generalised Jacobi ratio reproduced between 4.65 and 5.92 over the 48 pilot configurations, against
+5.98 at the original single configuration. The finding is stable across configurations.
+18. Provenance of the historical evidence
+An earlier body of evidence for these questions was re-examined before this study was carried
+out, and the re-examination changed what that evidence supports.
+Observation 18.1. The nineteen distinct historical runs are all exploratory: every one records
+an evaluation mode of screening, including the run directories whose names suggest otherwise.
+The nine runs recorded in the run log share a single seed and form one continuous chain of nonstrict resumptions rooted at a single bootstrap; they are not nine independent trials. Two distinct
+
+A NUMERICAL STUDY OF CYCLIC MULTILINEAR MAPS AND PROJECTORS
+
+9
+
+script hashes appear across the chain, so the script changed during the campaign without this being
+recorded.
+The scoring procedure used at the time computed a global score as the mean of per-experiment
+scores, with an inconclusive experiment contributing half credit and an experiment that never ran
+contributing full credit; no failing state existed. A mean over such a vocabulary cannot decrease
+when an experiment fails to run, so we do not use it. Throughout this article each experiment is
+reported separately and no global score is formed.
+19. Limitations
+(1) The negative results of Sections 4, 7, 8 and 15 are established for the objectives actually tested.
+For tractability these used a closure-only or two-term objective rather than the full weighted
+objective of the historical campaign, and Section 4 itself shows that the choice of objective
+changes the outcome materially.
+(2) The swept extension covers four of the fourteen experiments. The remaining ten are singleconfiguration evidence and were not run on the GPU at all.
+(3) Two further sweep stages were specified and not executed.
+(4) Single random tensors are used as nulls in Section 13. A single draw is not a null distribution.
+(5) Timing measurements come from one machine and one software stack.
+(6) No result here has been reproduced by anyone other than the author.
+(7) No assessment of originality has been carried out. A bounded literature search located directly
+relevant prior work for three of this study’s own methodological choices — a protocol of the
+same conservative design in an unrelated domain, established provenance tooling for run-lineage
+reconstruction, and the underspecification literature [4] for the phenomenon of Section 8. None
+of the methodological corrections described above should be read as claimed novel.
+20. Summary
+Table 5. Summary of the fourteen experiments and the swept extension.
+Question
+
+Conclusion
+
+Projector identities (§3)
+satisfied
+Commutator model (§4)
+not supported in the tested models
+Nested commutators (§5)
+adversarial family gives the largest norms
+Spectral projector stability (§6) gap condition is necessary
+Subspace transport (§7)
+not observed
+Identifiability (§8)
+subspace not identified
+Basis invariance (§8)
+holds after correction
+Closure defect (§9)
+measured
+Associator bound (§10)
+constant undetermined
+Reduced tensor (§11)
+implementations agree
+Tensor comparison (§12)
+unconstrained Procrustes is vacuous
+Compressibility (§13)
+modest, in one mode
+Residual basis freedom (§14)
+quantified
+Factor persistence (§15)
+not observed; one anomaly
+Cyclic symmetrisation (§16)
+identity
+Generalised Jacobi ratio (§16)
+undetermined
+Device throughput (§17)
+CPU faster throughout
+Associator trend (§17)
+decreases with n
+
+Evidence
+identity by construction
+negative result
+exploratory
+counterexample
+negative result
+negative result
+identity by construction
+observed over 2000 samples
+exploratory
+exact check
+counterexample
+exploratory
+identity by construction
+negative result
+identity by construction
+exploratory
+negative result
+exploratory
+
+10
+
+ELIUTH CHAVERO JASSO
+
+Four of the questions received negative answers in the tested regime, two produced methodological corrections that were found by the study’s own controls, four are identities that hold by
+construction, and the remainder are exploratory. No global score is formed from these, and no
+result is described as established beyond the regime in which it was measured. Submission of this
+study is deferred pending independent reproduction and an assessment of originality, neither of
+which has been carried out.
+References
+1. Åke Björck and Gene H. Golub, Numerical methods for computing angles between linear subspaces, Mathematics
+of Computation 27 (1973), no. 123, 579–594.
+2. Eliuth Chavero Jasso, Error propagation under recursive orthogonal projection of finite multilinear composition
+trees, 2026, Companion article.
+3.
+, Software and reproducibility for numerical experiments on projected multilinear models, 2026, Companion
+software article.
+4. Alexander D’Amour, Katherine Heller, Dan Moldovan, Ben Adlam, Babak Alipanahi, Alex Beutel, Christina
+Chen, Jonathan Deaton, Jacob Eisenstein, Matthew D. Hoffman, Farhad Hormozdiari, Neil Houlsby, Shaobo
+Hou, Ghassen Jerfel, Alan Karthikesalingam, Mario Lucic, Yian Ma, Cory McLean, Diana Mincu, Akinori Mitani,
+Andrea Montanari, Zachary Nado, Vivek Natarajan, Christopher Nielson, Thomas F. Osborne, Rajiv Raman,
+Kim Ramasamy, Rory Sayres, Jessica Schrouff, Martin Seneviratne, Shannon Sequeira, Harini Suresh, Victor
+Veitch, Max Vladymyrov, Xuezhi Wang, Kellie Webster, Steve Yadlowsky, Taedong Yun, Xiaohua Zhai, and
+D. Sculley, Underspecification presents challenges for credibility in modern machine learning, Journal of Machine
+Learning Research 23 (2022), no. 226, 1–61.
+5. Chandler Davis and W. M. Kahan, The rotation of eigenvectors by a perturbation. III, SIAM Journal on Numerical
+Analysis 7 (1970), no. 1, 1–46.
+6. Lieven De Lathauwer, Bart De Moor, and Joos Vandewalle, A multilinear singular value decomposition, SIAM
+Journal on Matrix Analysis and Applications 21 (2000), no. 4, 1253–1278.
+7. V. T. Filippov, n-Lie algebras, Siberian Mathematical Journal 26 (1985), no. 6, 879–891, Translation of Sibirsk.
+Mat. Zh. 26 (1985), no. 6, 126–140.
+8. Gene H. Golub and Charles F. Van Loan, Matrix computations, 4 ed., Johns Hopkins University Press, 2013.
+9. Tamara G. Kolda and Brett W. Bader, Tensor decompositions and applications, SIAM Review 51 (2009), no. 3,
+455–500.
+10. Peter H. Schönemann, A generalized solution of the orthogonal Procrustes problem, Psychometrika 31 (1966),
+no. 1, 1–10.
+Independent Researcher, Apizaco, Tlaxcala, Mexico
+
+

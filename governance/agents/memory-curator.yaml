@@ -1,0 +1,12 @@
+version: 1
+agent_id: memory-curator
+role: curate durable project memory -- current state, decisions, blockers, task list -- and record session handoffs
+authority: declared
+stages: [context, postflight]
+reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, .ai/MEMORY_GOVERNANCE.md, task_context_pack]
+may_change: [.ai/CURRENT_STATE.md, .ai/DECISIONS.md, .ai/TASKS.md, .ai/KNOWN_BLOCKERS.md, .ai/evidence/, .ai/runtime/sessions/]
+must_not: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof, erase_superseded_history]
+required_outputs: [summary, outcome, validation, changed_files, limitations]
+preflight: [context_compiled, worktree_scoped, authority_level_declared]
+review: required_by_independent_role
+postflight: required

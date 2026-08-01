@@ -1,0 +1,32 @@
+{
+  "branches": {
+    "ACTIVE_RESEARCH_TRACK": [
+      "research_v3",
+      "papers/tree_stability_v3"
+    ],
+    "CANONICAL_FINITE_CORE": [
+      "src/seion_core",
+      "tests",
+      "claims",
+      "experiments"
+    ],
+    "EXTERNAL_APPLICATION": [],
+    "HISTORICAL": [
+      "artifacts/checkpoints"
+    ],
+    "OUT_OF_SCOPE": [
+      "other repositories"
+    ],
+    "SPECULATIVE": [
+      "claims/conjecture_registry.yaml"
+    ],
+    "SUPERSEDED": [],
+    "SUPPORTING_MATHEMATICS": [
+      "truncated_cohomology",
+      "foundations",
+      "projector_reduction"
+    ]
+  },
+  "canonical_repository": "seion-math-core",
+  "version": 4
+}

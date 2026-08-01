@@ -1,0 +1,92 @@
+name: security-and-quality
+on: [push, pull_request]
+jobs:
+  pip-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install --upgrade pip setuptools
+      - run: python -m pip install -e '.[test]' pip-audit
+      # Fresh venv scoped to this project's own declared dependencies only —
+      # deliberately not auditing an unrelated ambient environment.
+      # --skip-editable: the local editable install itself is not a
+      # published PyPI package and cannot be looked up; that is not a
+      # vulnerability finding and must not be conflated with one.
+      - run: python -m pip_audit --skip-editable
+
+  license-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install -e '.[test]' pip-licenses
+      - name: Verify LICENSE file is present
+        run: test -f LICENSE
+      - name: Report dependency licenses
+        run: python -m piplicenses --format=markdown --with-authors --with-urls --order=license
+
+  sbom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install -e '.[test]' cyclonedx-bom
+      - run: python -m cyclonedx_py environment -o sbom.cdx.json --output-format json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.cdx.json
+          retention-days: 90
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  lint-and-typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install -e '.[test]' ruff mypy
+      # Report-only until the pre-existing violation backlog (tracked
+      # separately) is cleared; do not block unrelated PRs on legacy debt.
+      - run: python -m ruff check src tests
+        continue-on-error: true
+      - run: python -m mypy src
+        continue-on-error: true
+
+  clean-install:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install build
+      - run: python -m build
+      - name: Install sdist into a clean environment (POSIX)
+        if: runner.os != 'Windows'
+        run: |
+          python -m venv /tmp/clean-install-test
+          /tmp/clean-install-test/bin/python -m pip install dist/*.tar.gz
+          /tmp/clean-install-test/bin/python -c "import seion_core; print(seion_core.__name__)"
+      - name: Install sdist into a clean environment (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          python -m venv $env:TEMP\clean-install-test
+          $sdist = Get-ChildItem dist\*.tar.gz | Select-Object -First 1
+          & "$env:TEMP\clean-install-test\Scripts\python.exe" -m pip install $sdist.FullName
+          & "$env:TEMP\clean-install-test\Scripts\python.exe" -c "import seion_core; print(seion_core.__name__)"

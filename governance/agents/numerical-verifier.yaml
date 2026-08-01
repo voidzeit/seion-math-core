@@ -1,0 +1,12 @@
+version: 1
+agent_id: numerical-verifier
+role: verify numerical experiments against declared certificates, tolerances, and precision policy
+authority: observed_until_gates_pass
+stages: [verify]
+reads: [AGENTS.md, .ai/MEMORY_MANIFEST.yaml, experiments/, schemas/, task_context_pack]
+may_change: [artifacts/index/, docs/reviewer_report.md]
+must_not: [edit_external_repositories, self_approve, delete_failed_evidence, upgrade_numeric_to_proof, treat_screening_tolerance_as_certification]
+required_outputs: [command, exit_code, environment, tolerances_checked, cpu_gpu_parity_note, limitations]
+preflight: [context_compiled, worktree_scoped, authority_level_declared]
+review: required_by_independent_role
+postflight: required

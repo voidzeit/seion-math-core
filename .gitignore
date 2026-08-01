@@ -30,3 +30,14 @@ artifacts/release/*
 *.fls
 *.out
 *.synctex.gz
+
+# spectral/runs/: legacy A-N v17 run evidence, deliberately preserved as
+# local historical evidence rather than committed canonical source (see
+# spectral/legacy/v17/ on research/spectral-a-to-n-v18 for the immutable,
+# hash-verified, committed copy).
+spectral/runs/
+
+# docs/research/truth_audit_2026_07_29/: earlier advisory (non-canonical)
+# audit of CANONICAL_FINITE_CORE, kept as local reference material — not
+# part of any registered claim/theorem evidence chain.
+docs/research/truth_audit_2026_07_29/
