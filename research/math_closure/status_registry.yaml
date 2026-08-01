@@ -122,3 +122,28 @@ entries:
       68.6%/82.9%; Filippov 41.6% (widest gap); GJI general case has no
       adversarial search at all (distinct gap from the other three, see
       constants_table.csv note column).
+
+  - id: M5_fixed_tree_continuum_convergence
+    question: >
+      For a FIXED finite typed tree T (topology, laws, types independent
+      of N), do discretized ambient/reduced evaluations converge to their
+      continuum counterparts as the discretization refines, and does the
+      (k-1) projected-error bound pass to the limit?
+    status: PROVED_UNDER_STATED_ASSUMPTIONS
+    admissible_class: >
+      Fixed finite tree T (k, depth, topology independent of N); H1-H4 as
+      stated in research/math_closure/continuum/assumptions_table.md.
+    evidence:
+      - research/math_closure/continuum/fixed_tree_convergence.tex
+      - research/math_closure/continuum/assumptions_table.md
+    method: >
+      Direct extension of the already-proved fixed-N (k-1) theorem's own
+      multilinear-telescoping induction (docs/theorems_v3/homogeneous_constants.md),
+      with a convergence term added at each step; the induction closes in
+      exactly k (N-independent) steps because the tree is fixed.
+    explicitly_out_of_scope: >
+      Growing tree size (k=k_N -> infinity) - documented as unsound without
+      additional summability hypotheses in
+      research/math_closure/continuum/counterexamples_without_uniformity.tex,
+      per the mission's own explicit warning against unconditional
+      growing-tree claims.
