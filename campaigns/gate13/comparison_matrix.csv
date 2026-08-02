@@ -1,0 +1,12 @@
+gate_id,question,minimum_comparison,pass_condition,status
+13.1,Does the router gate open under gradient descent when path evidence is necessary?,synthetic path-required task: trained gate vs gate(0) init,"grad_alpha>0 AND |gamma_r-gamma_r(0)|>0.05 AND rms_contribution_ratio>0.05 on R_path relation",executed
+13.2,Does the vectorized reasoner match the legacy reasoner and scale to a full epoch?,BatchedPathReasoner vs PathReasoner on identical small graph + full WN18RR epoch,"max_abs_state_diff<1e-4 AND no per-query Python loop AND full epoch completes",executed
+13.3,Can the observed error be attributed to specific modules?,telescoping decomposition + Shapley vs exact subset expansion on small trees,"telescoping sum reconstructs exact error AND shapley efficiency holds AND identical module gets zero attribution",open
+13.4,Is the compressed path-reasoner path certified with nonzero real coverage?,CP-closure + LayerNorm + selector-stability bounds vs observed error,"bound valid AND certified_coverage>0 AND zero violations on certified queries",open
+13.5,Does SEION increase MRR? (screening),A2-A0 and A3-A1 on FB15K-237,CI-corrected(delta MRR)>0,open
+13.6,Does SEION increase MRR? (confirmatory),A2-A0 and A3-A1 on FB15K-237+WN18RR 5 seeds,Holm-corrected CI>0,open
+13.7,Does E8 add causal structure?,E8_exact vs 4 destructive controls,paired superiority + replication,open
+13.8,Does projection conserve performance?,full vs compressed at r in {4,8,16,32,64,d},noninferior AND (VRAM-25% OR latency-20%),open
+13.9,Does adaptive rank beat uniform?,adaptive vs 6 policies at 3 budgets,CI>0 in >=2 budgets + 2nd dataset replication,open
+13.10,Does assoc/FI improve generalization?,2x2 factorial G0-G3,geometric defect down AND test MRR up,open
+13.11,Is the system SOTA?,final model vs re-run compatible baselines,better metric under identical protocol,open

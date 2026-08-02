@@ -114,15 +114,29 @@ def test_zero_kernel_residual_contributes_exactly_zero_regardless_of_gate():
     assert torch.linalg.norm(out).item() == 0.0
 
 
-def test_near_zero_init_gate_makes_residual_contribution_small():
+def test_zero_init_gate_makes_residual_contribution_exactly_zero():
+    """Gate 13.1 reparameterization (``campaigns/gate13/``): the gate is now
+    ``g_max*tanh(epsilon_raw)`` with ``epsilon_raw`` initialized to exactly
+    0, so ``gate(0) == 0`` exactly (was ``sigmoid(-4) ~= 0.018``, near-zero
+    but never exactly zero)."""
     residual = _residual_for("random_scale_matched")
     x, a, q = torch.randn(4, 5), torch.randn(4, 5), torch.randn(4, 5)
     out = residual(x, a, q, torch.tensor([0, 1, 2, 3]))
-    gate = torch.sigmoid(residual.epsilon_raw.weight).mean().item()
-    assert gate < 0.05  # sigmoid(-4) ~ 0.018
+    gate = (residual.gate_g_max * torch.tanh(residual.epsilon_raw.weight)).mean().item()
+    assert gate == 0.0
+    assert torch.equal(out, torch.zeros_like(out))  # exact-zero gate -> exact-zero branch output at init
 
 
-def test_gradients_reach_adapters_and_gate_but_never_the_frozen_kernel():
+def test_gate_gets_gradient_at_init_but_adapters_only_after_the_gate_moves():
+    """A multiplicative zero-init gate (``out = gate * branch(...)``) has a
+    real, expected consequence: at ``gate == 0`` exactly, the branch's own
+    internal adapters (``Ux``/``Ua``/``Uq``/``W``) get EXACTLY zero gradient
+    (their contribution is scaled by 0 before it reaches the loss), while the
+    gate parameter itself still gets a nonzero gradient (``d(gate)/d(alpha)``
+    at ``alpha=0`` is ``gate_g_max``, not 0). This is the same tradeoff
+    documented in ``model.py``'s Gate 13.1 docstring for the path/seion
+    router gates. Once the gate has taken one step away from exactly 0, the
+    adapters start receiving gradient too."""
     residual = _residual_for("random_scale_matched")
     x = torch.randn(3, 5, requires_grad=True)
     a = torch.randn(3, 5, requires_grad=True)
@@ -131,10 +145,23 @@ def test_gradients_reach_adapters_and_gate_but_never_the_frozen_kernel():
     out.backward()
     for name in ("Ux", "Ua", "Uq", "W"):
         layer = getattr(residual, name)
-        assert layer.weight.grad is not None and float(layer.weight.grad.norm().item()) > 0.0, name
+        assert layer.weight.grad is None or float(layer.weight.grad.norm().item()) == 0.0, name
     assert residual.epsilon_raw.weight.grad is not None
+    assert float(residual.epsilon_raw.weight.grad.norm().item()) > 0.0
     assert residual.K.grad is None  # buffer, never trainable, structurally cannot accumulate a gradient
     assert x.grad is not None and a.grad is not None and q.grad is not None
+    assert torch.equal(x.grad, torch.zeros_like(x.grad))  # eps=0 also blocks input gradient, same reasoning
+
+    # Move the gate away from exactly 0 (mimics the effect of one optimizer
+    # step on epsilon_raw), then re-run: adapters now get real gradient.
+    with torch.no_grad():
+        residual.epsilon_raw.weight.add_(0.1)
+    residual.zero_grad()
+    out2 = residual(x.detach().requires_grad_(), a.detach().requires_grad_(), q.detach().requires_grad_(), torch.tensor([0, 1, 2])).sum()
+    out2.backward()
+    for name in ("Ux", "Ua", "Uq", "W"):
+        layer = getattr(residual, name)
+        assert layer.weight.grad is not None and float(layer.weight.grad.norm().item()) > 0.0, name
 
 
 def test_gate_differs_per_relation_after_a_training_step():
@@ -143,17 +170,48 @@ def test_gate_differs_per_relation_after_a_training_step():
     # Optimize ONLY the gate (isolates the effect being tested from the
     # adapters/W also moving, and avoids the divergence a naive
     # high-lr joint SGD step produced here initially).
-    opt = torch.optim.Adam([residual.epsilon_raw.weight], lr=0.5)
     x, a, q = torch.randn(3, 5), torch.randn(3, 5), torch.randn(3, 5)
     relation_ids = torch.tensor([0, 1, 2])
+
+    # Probe each relation's natural (pre-gate) branch-output sign, so the
+    # loss below can reliably push relation 0's gate positive and relation
+    # 2's gate negative REGARDLESS of that random sign. Without this, a loss
+    # built directly from the raw (random-sign) branch output can push both
+    # gates in the same direction — Adam's step is ~sign(grad), not
+    # magnitude-proportional, so two same-sign, same-shape gradients drive
+    # both gates along near-identical trajectories from the same zero init,
+    # landing on indistinguishable values even though nothing is broken.
+    with torch.no_grad():
+        residual.epsilon_raw.weight.fill_(2.0)  # temporarily open the gate to read the branch's sign
+        probe = residual(x, a, q, relation_ids)
+        sign0 = torch.sign(probe[0].sum()).item() or 1.0
+        sign2 = torch.sign(probe[2].sum()).item() or 1.0
+        residual.epsilon_raw.weight.fill_(0.0)  # reset to the true zero init before the real test
+
+    opt = torch.optim.Adam([residual.epsilon_raw.weight], lr=0.05)
     for _ in range(20):
         opt.zero_grad()
         out = residual(x, a, q, relation_ids)
-        loss = (out[0] ** 2).sum() - (out[2] ** 2).sum()  # push relation 0 and 2's gates apart
+        # A LINEAR reduction of ``out``, not a square: at the gate's exact-
+        # zero init, ``d(out**2)/d(gate) = 2*out*d(out)/d(gate) = 0`` because
+        # ``out`` itself is 0 there (a genuine saddle point for any loss
+        # that is stationary in ``out`` at ``out=0``) — a linear reduction
+        # has ``d(loss)/d(gate) = d(loss)/d(out) . d(out)/d(gate)``, nonzero
+        # as long as ``d(out)/d(gate) = branch_raw`` is (generically nonzero),
+        # matching how the real KGE ranking loss is linear in the gated
+        # branch's contribution to the total score, not quadratic in it.
+        loss = -sign0 * out[0].sum() + sign2 * out[2].sum()  # deterministically pushes relation 0's gate up, relation 2's down
         loss.backward()
         opt.step()
-    gates = torch.sigmoid(residual.epsilon_raw.weight).squeeze(-1)
+    # Compare the PRE-activation alpha, not the post-tanh gate: a large
+    # enough learning rate saturates tanh to +-1 for both relations, which
+    # would mask a real (still-differing) alpha under a post-tanh comparison
+    # — the low lr here keeps both in the unsaturated regime as a sanity
+    # check too.
+    alpha = residual.epsilon_raw.weight.detach().squeeze(-1)
+    gates = residual.gate_g_max * torch.tanh(alpha)
     assert torch.isfinite(gates).all()
+    assert abs(float(alpha[0] - alpha[2])) > 1e-4
     assert abs(float(gates[0] - gates[2])) > 1e-4
 
 

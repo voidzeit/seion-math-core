@@ -35,7 +35,67 @@ def _inverse_relation(r: int, num_rel_orig: int) -> int:
     return r + num_rel_orig if r < num_rel_orig else r - num_rel_orig
 
 
-def build_structural_kernel(variant: str, dim: int, num_relations_total: int, seed: int, kernel_dim: int) -> Any:
+ROUTER_PARAM_NAMES = ("gamma_raw", "eta_raw", "epsilon_raw")
+
+
+def build_optimizer_param_groups(model: SeionKGRv26, lr: float, router_lr_multiplier: float) -> list:
+    """Gate 13.1: the router gates (``gamma_raw``/``eta_raw`` on the model,
+    ``epsilon_raw`` inside ``structural_kernel`` when enabled) get their own
+    ``AdamW`` param group at ``router_lr_multiplier x lr`` — a near-zero-
+    gradient-at-init gate (see model.py docstring) needs a faster-moving
+    optimizer step to actually open within a realistic epoch budget, without
+    also inflating the LR for the base/path/seion weight matrices."""
+    router_params, other_params = [], []
+    for name, param in model.named_parameters():
+        leaf = name.rsplit(".", 1)[-1]
+        (router_params if leaf in ROUTER_PARAM_NAMES else other_params).append(param)
+    return [
+        {"params": other_params, "lr": lr},
+        {"params": router_params, "lr": lr * router_lr_multiplier},
+    ]
+
+
+def compute_gate_diagnostics(
+    model: SeionKGRv26, kg: KnowledgeGraph, adjacency, device: torch.device, seed: int, epoch: int, sample_size: int = 512,
+) -> list:
+    """Gate 13.1 acceptance evidence: per-branch gate displacement from its
+    zero init and the RMS share of the total score the gated branch
+    actually contributes, sampled on real validation triples (not the
+    training batch, so this never influences gradients). Returns one
+    record per active branch, or ``[]`` if neither the path nor seion
+    branch is enabled."""
+    records = []
+    if not (model.enable_path or model.enable_seion):
+        return records
+    sample = kg.valid[:sample_size] if len(kg.valid) > sample_size else kg.valid
+    if not sample:
+        return records
+    h = torch.tensor([t[0] for t in sample], device=device)
+    r = torch.tensor([t[1] for t in sample], device=device)
+    t = torch.tensor([t[2] for t in sample], device=device)
+    model.eval()
+    with torch.no_grad():
+        _, breakdown = model.score_positive(h, r, t, adjacency, seed, training=False, return_breakdown=True)
+    model.train()
+    s_total_rms = float(breakdown["s_total"].pow(2).mean().sqrt().item()) if "s_total" in breakdown else 0.0
+    for branch, raw_name in (("gamma_path", "gamma_raw"), ("eta_seion", "eta_raw")):
+        if branch not in breakdown:
+            continue
+        raw = getattr(model, raw_name).weight.squeeze(-1).detach()
+        gamma = model.gate_g_max * torch.tanh(raw)
+        branch_rms = float(breakdown[branch].pow(2).mean().sqrt().item())
+        records.append({
+            "epoch": epoch,
+            "branch": branch,
+            "alpha_mean": float(raw.mean().item()),
+            "gamma_mean": float(gamma.mean().item()),
+            "gamma_displacement_mean": float(gamma.abs().mean().item()),  # gamma(0) == 0 exactly, so |gamma - gamma(0)| == |gamma|
+            "rms_contribution_ratio": branch_rms / s_total_rms if s_total_rms > 0 else 0.0,
+        })
+    return records
+
+
+def build_structural_kernel(variant: str, dim: int, num_relations_total: int, seed: int, kernel_dim: int, gate_g_max: float = 1.0) -> Any:
     """Contract CLM_KGR_018 control battery, wired for CLI use. Returns
     ``None`` for ``variant="none"`` (the default — branch disabled)."""
     if variant == "none":
@@ -44,7 +104,7 @@ def build_structural_kernel(variant: str, dim: int, num_relations_total: int, se
     e8_kernel = load_e8_kernel() if needs_real_e8 else None
     e8_info = load_e8_info() if variant == "E8_exact" else None
     K, provenance = build_kernel(variant, e8_kernel=e8_kernel, dim=kernel_dim, seed=seed, e8_info=e8_info)
-    return StructuralKernelResidual(dim=dim, K=K, num_relations_total=num_relations_total, provenance=provenance)
+    return StructuralKernelResidual(dim=dim, K=K, num_relations_total=num_relations_total, provenance=provenance, gate_g_max=gate_g_max)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -88,6 +148,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--lr", type=float, default=1e-3)
     p.add_argument("--weight_decay", type=float, default=0.0)
     p.add_argument("--grad_clip", type=float, default=1.0)
+    p.add_argument("--gate_g_max", type=float, default=1.0, help="Gate 13.1: max |gamma_r|/|eta_r| residual gate magnitude (gamma_r = gate_g_max * tanh(alpha_r))")
+    p.add_argument("--router_lr_multiplier", type=float, default=5.0, help="Gate 13.1: LR multiplier for the router (gamma_raw/eta_raw) optimizer param group, relative to --lr")
 
     p.add_argument("--fi_weight", type=float, default=0.0)
     p.add_argument("--fi_samples", type=int, default=8)
@@ -158,6 +220,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
     kg = load_knowledge_graph(args.train, args.valid, args.test)
     structural_kernel = build_structural_kernel(
         args.structural_kernel_variant, args.dim, kg.num_relations_total, args.structural_kernel_seed, args.structural_kernel_dim,
+        gate_g_max=args.gate_g_max,
     )
     model = SeionKGRv26(
         num_entities=kg.num_entities, num_relations_total=kg.num_relations_total, dim=args.dim,
@@ -165,6 +228,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         seion_rank=args.seion_rank, path_rank=args.path_rank, path_layers=args.path_layers,
         path_max_neighbors=args.path_max_neighbors, path_proj_rank=args.path_proj_rank,
         path_selector_mode=args.path_selector_mode, structural_kernel=structural_kernel,
+        gate_g_max=args.gate_g_max,
     ).to(device)
     adjacency = Adjacency.build(kg) if args.enable_path else None
     if structural_kernel is not None and args.out_dir:
@@ -172,7 +236,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
 
     dataset = TripleDataset(kg.train)
     loader = torch.utils.data.DataLoader(dataset, batch_size=args.batch_size, shuffle=True, drop_last=False)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    optimizer = torch.optim.AdamW(build_optimizer_param_groups(model, args.lr, args.router_lr_multiplier), weight_decay=args.weight_decay)
     rng = np.random.default_rng(args.seed + 1)
     gen = torch.Generator(device=device)
     gen.manual_seed(args.seed + 2)
@@ -180,6 +244,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
     metrics_path = Path(args.out_dir) / "metrics.jsonl" if args.out_dir else None
     rank_history_path = Path(args.out_dir) / "rank_history.jsonl" if args.out_dir else None
     error_attribution_path = Path(args.out_dir) / "error_attribution.jsonl" if args.out_dir else None
+    gate_diagnostics_path = Path(args.out_dir) / "gate_diagnostics.jsonl" if args.out_dir else None
     start = time.time()
     history: list[Dict[str, Any]] = []
 
@@ -261,6 +326,10 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                 last_batch_grad_norms["seion_scorer"] = float(
                     sum(p.grad.norm().item() for p in model.seion_scorer.parameters() if p.grad is not None)
                 )
+            if args.enable_path and model.gamma_raw.weight.grad is not None:
+                last_batch_grad_norms["gamma_raw"] = float(model.gamma_raw.weight.grad.norm().item())
+            if args.enable_seion and model.eta_raw.weight.grad is not None:
+                last_batch_grad_norms["eta_raw"] = float(model.eta_raw.weight.grad.norm().item())
             optimizer.step()
             global_step += 1
 
@@ -294,6 +363,13 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                     seed=args.seed,
                 )
                 repro.append_jsonl({"epoch": epoch, "diagnostics": [d.__dict__ for d in diagnostics], "policy_comparison": comparison}, rank_history_path)
+
+            gate_records = compute_gate_diagnostics(model, kg, adjacency, device, args.seed, epoch)
+            if gate_records and gate_diagnostics_path is not None:
+                grad_key = {"gamma_path": "gamma_raw", "eta_seion": "eta_raw"}
+                for rec in gate_records:
+                    rec["grad_alpha_norm"] = last_batch_grad_norms.get(grad_key[rec["branch"]], 0.0)
+                    repro.append_jsonl(rec, gate_diagnostics_path)
 
             if args.enable_path and model.path_reasoner.projector.enabled and error_attribution_path is not None:
                 sample = torch.randn(16, args.dim)

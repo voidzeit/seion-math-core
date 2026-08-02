@@ -1,0 +1,32 @@
+{
+  "gate_diagnostics.jsonl": {
+    "produced_by": "seion_kgr/train.py (Gate 13.1)",
+    "one_record_per": "eval epoch",
+    "fields": {
+      "epoch": "int",
+      "branch": "string, one of ['gamma_path', 'eta_seion']",
+      "alpha_mean": "float, mean pre-activation alpha_r across relations",
+      "gamma_mean": "float, mean gate value g_max*tanh(alpha_r)",
+      "gamma_displacement_mean": "float, mean |gamma_r - gamma_r(0)|",
+      "grad_alpha_norm": "float, gradient norm on the router embedding this step",
+      "rms_contribution_ratio": "float, RMS(gamma_r * s_branch) / RMS(s_total), computed on the eval batch"
+    }
+  },
+  "module_error_attribution.jsonl": {
+    "produced_by": "seion_kgr/attribution.py (Gate 13.3, OPEN in this campaign)",
+    "status": "schema reserved, not yet produced"
+  },
+  "query_error_attribution.jsonl": {
+    "produced_by": "seion_kgr/attribution.py (Gate 13.3, OPEN in this campaign)",
+    "status": "schema reserved, not yet produced",
+    "fields_per_mission_brief": [
+      "query_id", "module_id", "local_state_error", "certified_local_bound",
+      "path_gain_bound", "certified_output_contribution", "telescoping_score_delta",
+      "shapley_score_delta", "gold_rank_before", "gold_rank_after",
+      "ranking_flipped", "selector_stable"
+    ]
+  },
+  "module_interactions.json": {"status": "reserved, not yet produced (Gate 13.3)"},
+  "rank_flip_attribution.jsonl": {"status": "reserved, not yet produced (Gate 13.3)"},
+  "bound_vs_observed.csv": {"status": "reserved, not yet produced (Gate 13.4)"}
+}

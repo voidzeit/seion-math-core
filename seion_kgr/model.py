@@ -1,7 +1,7 @@
 """Contract §XI/§XX: SeionKGRv26 — base expert + path branch + seionic
 branch + optional structural-kernel (E8/control) residual, combined by
-per-relation residual gates initialized near zero (contract §XX.4: "el
-modelo empieza como el baseline fuerte").
+per-relation residual gates initialized at exactly zero (contract §XX.4:
+"el modelo empieza como el baseline fuerte").
 
 Campaign Phase B3 update: the structural-kernel branch (E8 or one of its
 matched controls, `structural_kernel.py`) is now implemented, closing
@@ -12,6 +12,17 @@ enabled, still starts near-zero via its own internal per-relation gate
 carries the CLM_KGR_018-compliant warning: no causal claim is licensed
 by this wiring alone, only by the matched-control comparison it makes
 possible.
+
+Gate 13.1 update (router activation, `campaigns/gate13/`): the router
+gates were previously `sigmoid(gamma_raw)` with `gamma_raw` initialized to
+`-4.0` (`sigmoid(-4) ~= 0.018`, `sigmoid'(-4) ~= 0.0177`) — a 40-epoch run
+showed the gate stays at its initialization under that parameterization,
+starving the path/seion branches of gradient signal. The gate is now
+`gamma_r = gate_g_max * tanh(alpha_r)` with `alpha_r` (still stored in the
+`gamma_raw`/`eta_raw` embeddings) zero-initialized: `gamma_r(0) = 0`
+exactly (same "starts as the baseline" property) but
+`d(gamma_r)/d(alpha_r)(0) = gate_g_max`, i.e. a `gate_g_max`-sized gradient
+at init rather than `~0.0177`.
 """
 from __future__ import annotations
 
@@ -46,6 +57,7 @@ class SeionKGRv26(nn.Module):
         path_proj_rank: int = 0,
         path_selector_mode: str = "budgeted_bfs",
         structural_kernel: Optional[StructuralKernelResidual] = None,
+        gate_g_max: float = 1.0,
     ):
         super().__init__()
         if base_expert not in BASE_EXPERTS:
@@ -93,11 +105,18 @@ class SeionKGRv26(nn.Module):
         self.structural_kernel = structural_kernel
         self.enable_structural_kernel = structural_kernel is not None
 
-        # Near-zero-init residual router (contract §XX.4).
+        # Zero-init residual router (contract §XX.4; Gate 13.1 reparameterization —
+        # see module docstring). ``gamma_raw``/``eta_raw`` store the PRE-ACTIVATION
+        # alpha_r, not a pre-sigmoid logit, despite the unchanged attribute names
+        # (kept so checkpoints/optimizer-group lookups by name stay stable).
+        self.gate_g_max = gate_g_max
         self.gamma_raw = nn.Embedding(num_relations_total, 1)
         self.eta_raw = nn.Embedding(num_relations_total, 1)
-        nn.init.constant_(self.gamma_raw.weight, -4.0)  # sigmoid(-4) ~ 0.018
-        nn.init.constant_(self.eta_raw.weight, -4.0)
+        nn.init.constant_(self.gamma_raw.weight, 0.0)
+        nn.init.constant_(self.eta_raw.weight, 0.0)
+
+    def _gate(self, raw: nn.Embedding, r_ids: torch.Tensor) -> torch.Tensor:
+        return self.gate_g_max * torch.tanh(raw(r_ids).squeeze(-1))
 
     def _tail_embed(self, ids: torch.Tensor) -> torch.Tensor:
         return self.entity_tail(ids) if self.base_expert_name == "cp" else self.entity(ids)
@@ -106,11 +125,18 @@ class SeionKGRv26(nn.Module):
         self,
         h_ids: torch.Tensor, r_ids: torch.Tensor, t_ids: torch.Tensor,
         adjacency: Optional[Adjacency] = None, seed: int = 0, training: bool = True,
-    ) -> torch.Tensor:
+        return_breakdown: bool = False,
+    ):
+        """Gate 13.1: ``return_breakdown=True`` additionally returns a dict of
+        per-branch GATED contributions (``gamma * s_path``, ``eta * s_seion``)
+        and raw gate values, keyed by branch name — used by
+        ``gate_diagnostics.jsonl`` logging (``train.py``) and by the router
+        activation acceptance test. Never changes ``s`` itself."""
         h = self.entity(h_ids)
         r = self.relation(r_ids)
         t = self._tail_embed(t_ids)
         s = self.base.score_positive(h, r, t)
+        breakdown: Dict[str, torch.Tensor] = {}
 
         if self.enable_path and adjacency is not None:
             frontiers = self.path_reasoner.run_batch_frontiers(
@@ -121,20 +147,28 @@ class SeionKGRv26(nn.Module):
                 [self.path_reasoner.state_for_node(f, int(t_ids[b])) for b, f in enumerate(frontiers)], dim=0,
             )
             s_path = (reached * t).sum(dim=-1) / math.sqrt(self.dim)
-            gamma = torch.sigmoid(self.gamma_raw(r_ids).squeeze(-1))
+            gamma = self._gate(self.gamma_raw, r_ids)
             s = s + gamma * s_path
+            breakdown["gamma_path"] = gamma * s_path
+            breakdown["gamma_path_gate"] = gamma
 
         if self.enable_seion:
             seion_t = self.entity(t_ids)  # always the shared table, see score_tail_candidates note
             s_seion = self.seion_scorer.score_positive(h, r, r, seion_t)
-            eta = torch.sigmoid(self.eta_raw(r_ids).squeeze(-1))
+            eta = self._gate(self.eta_raw, r_ids)
             s = s + eta * s_seion
+            breakdown["eta_seion"] = eta * s_seion
+            breakdown["eta_seion_gate"] = eta
 
         if self.enable_structural_kernel:
             kernel_t = self.entity(t_ids)  # shared table, same convention as the seionic branch
             raw = self.structural_kernel(h, r, r, r_ids)  # gate is internal to the module (near-zero init)
             s_kernel = (raw * kernel_t).sum(dim=-1) / math.sqrt(self.dim)
             s = s + s_kernel
+
+        if return_breakdown:
+            breakdown["s_total"] = s
+            return s, breakdown
         return s
 
     def score_tail_candidates(
@@ -165,7 +199,7 @@ class SeionKGRv26(nn.Module):
             )  # [B,K,dim]
             cand_full = cand_emb if cand_emb.ndim == 3 else cand_emb.unsqueeze(0).expand(batch, -1, -1)
             s_path = (states * cand_full).sum(dim=-1) / math.sqrt(self.dim)
-            gamma = torch.sigmoid(self.gamma_raw(r_ids).squeeze(-1)).unsqueeze(-1)
+            gamma = self._gate(self.gamma_raw, r_ids).unsqueeze(-1)
             s = s + gamma * s_path
 
         if self.enable_seion:
@@ -175,7 +209,7 @@ class SeionKGRv26(nn.Module):
             # asymmetric embedding convention.
             seion_cand = self.entity(candidates_ids)
             s_seion = self.seion_scorer.score_tail_candidates(h, r, r, seion_cand)
-            eta = torch.sigmoid(self.eta_raw(r_ids).squeeze(-1)).unsqueeze(-1)
+            eta = self._gate(self.eta_raw, r_ids).unsqueeze(-1)
             s = s + eta * s_seion
 
         if self.enable_structural_kernel:

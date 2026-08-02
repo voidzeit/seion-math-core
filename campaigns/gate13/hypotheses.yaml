@@ -1,0 +1,55 @@
+# Gate 13 preregistered hypotheses (machine-readable companion to preregistration.md).
+# Only H_ROUTER and H_SCALING get an executed verdict in this campaign.
+# H1-H4 are Gate 12's mandate hypotheses, carried forward as OPEN — NOT re-verdicted here.
+
+campaign_id: gate13-closeout-2026-08-02
+base_sha: 69de7849e7fefe1aefab97807ff2aaecd646abf0
+
+hypotheses:
+  - id: H_ROUTER
+    statement: >
+      The per-relation residual gate (gamma_r) can be driven away from its
+      initialization by gradient descent alone on a synthetic task where
+      gold-tail prediction is impossible from the base expert's bilinear
+      score alone and requires the path branch's composed 2-hop state.
+    primary_metric: rms_contribution_ratio  # RMS(gamma_r * s_path) / RMS(s_total) on path-necessary relation
+    secondary_metrics: [gate_displacement, grad_alpha_nonzero]
+    minimum_effect:
+      delta_gate: 0.05
+      rms_contribution_ratio: 0.05
+    pass_condition: "grad_alpha_nonzero AND gate_displacement > delta_gate AND rms_contribution_ratio > 0.05"
+    status: executed
+    gate_name: PASS_ROUTER_ACTIVATION
+
+  - id: H_SCALING
+    statement: >
+      The CSR + batched-frontier + segment-top-k reasoner reproduces the
+      legacy per-sample dict-BFS reasoner's frontier states (within float
+      tolerance) on identical small graphs, and completes a full WN18RR
+      training epoch without a per-query Python loop.
+    primary_metric: max_abs_state_diff
+    secondary_metrics: [wall_clock_full_epoch_sec, python_loop_per_query_present]
+    minimum_effect:
+      noninferiority_margin: 1.0e-4
+    pass_condition: "max_abs_state_diff < 1.0e-4 AND python_loop_per_query_present == false AND full_epoch_completed == true"
+    status: executed
+    gate_name: PASS_PATH_SCALING
+
+  # Carried forward from Gate 12 mandate — NOT executed in Gate 13, listed
+  # only so this file is a complete picture of what remains OPEN.
+  - id: H1
+    statement: "SEION (path and/or seionic branch) improves filtered valid MRR over matched base expert."
+    status: open
+    depends_on: [PASS_ROUTER_ACTIVATION, PASS_PATH_SCALING]
+  - id: H2
+    statement: "Orthogonal projection + adaptive rank controller recovers most unprojected MRR at reduced rank budget."
+    status: open
+    depends_on: [PASS_ROUTER_ACTIVATION, PASS_PATH_SCALING]
+  - id: H3
+    statement: "Learned selector matches/exceeds fixed budgeted-BFS at equal edge-visit budget."
+    status: open
+    depends_on: [PASS_ROUTER_ACTIVATION, PASS_PATH_SCALING]
+  - id: H4
+    statement: "E8_exact's specific structure produces a measured MRR gain that random_scale_matched does not."
+    status: open
+    depends_on: []

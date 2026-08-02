@@ -158,7 +158,7 @@ class StructuralKernelResidual(nn.Module):
     law with a different name.
     """
 
-    def __init__(self, dim: int, K: torch.Tensor, num_relations_total: int, provenance: KernelProvenance):
+    def __init__(self, dim: int, K: torch.Tensor, num_relations_total: int, provenance: KernelProvenance, gate_g_max: float = 1.0):
         super().__init__()
         self.dim = dim
         self.kernel_dim = int(K.shape[0])
@@ -170,8 +170,12 @@ class StructuralKernelResidual(nn.Module):
         self.W = nn.Linear(self.kernel_dim, dim, bias=False)
         for layer in (self.Ux, self.Ua, self.Uq, self.W):
             nn.init.xavier_uniform_(layer.weight)
+        # Gate 13.1: same zero-init tanh reparameterization as the path/seion
+        # router gates in model.py (was sigmoid(epsilon_raw), init -4.0, near-
+        # zero gradient at init — see model.py's module docstring).
+        self.gate_g_max = gate_g_max
         self.epsilon_raw = nn.Embedding(num_relations_total, 1)
-        nn.init.constant_(self.epsilon_raw.weight, -4.0)  # sigmoid(-4) ~ 0.018, near-zero at init
+        nn.init.constant_(self.epsilon_raw.weight, 0.0)
 
     def mu_kernel(self, x: torch.Tensor, a: torch.Tensor, q: torch.Tensor) -> torch.Tensor:
         """Double contraction against the single frozen tensor ``K``,
@@ -186,7 +190,7 @@ class StructuralKernelResidual(nn.Module):
         xk, ak, qk = self.Ux(x), self.Ua(a), self.Uq(q)
         raw = self.mu_kernel(xk, ak, qk)
         out = self.W(raw)
-        eps = torch.sigmoid(self.epsilon_raw(relation_ids).squeeze(-1))
+        eps = self.gate_g_max * torch.tanh(self.epsilon_raw(relation_ids).squeeze(-1))
         while eps.ndim < out.ndim:
             eps = eps.unsqueeze(-1)
         return eps * out
