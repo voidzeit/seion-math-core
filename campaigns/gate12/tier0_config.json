@@ -1,0 +1,40 @@
+{
+  "frozen_before_execution": true,
+  "note": "Fixed before any Tier 0 run executes, per preregistration.md §9. Not changed after seeing results.",
+  "base_expert_selection": {
+    "method": "1-epoch screening pass over all 4 base experts on FB15K-237, capped eval, pick highest valid MRR",
+    "dim": 64,
+    "epochs": 1,
+    "batch_size": 1024,
+    "neg_k": 64,
+    "eval_max_queries": 200,
+    "entity_block_eval": 4096,
+    "device": "cuda",
+    "seed": 1
+  },
+  "ladder_points": ["A0", "A3"],
+  "A3_definition": "best_base + path_reasoner(budgeted_bfs) + seionic_scalar (no projection, no rank controller, no curricula, no learned selector, no E8 -- those are Fase 6-9 components already unit-tested separately, not benchmarked at dataset scale in Tier 0)",
+  "seeds": [1, 2],
+  "datasets": ["FB15K-237", "WN18RR"],
+  "shared_hyperparameters": {
+    "dim": 64,
+    "epochs": 5,
+    "batch_size": 1024,
+    "neg_k": 64,
+    "adversarial_temperature": 1.0,
+    "n3_weight": 0.001,
+    "lr": 0.001,
+    "eval_every": 5,
+    "eval_max_queries": 300,
+    "entity_block_eval": 4096,
+    "device": "cuda"
+  },
+  "A3_specific": {
+    "path_rank": 16,
+    "path_layers": 2,
+    "path_max_neighbors": 16,
+    "path_selector_mode": "budgeted_bfs",
+    "seion_rank": 16
+  },
+  "honesty_statement": "This is a 2-seed, 5-epoch screening pass on two datasets. It is NOT a Gate 12 confirmatory result (needs 5 seeds, full epoch budget, and the full 13-point ablation ladder with statistical testing per preregistration.md §5/§8). Every artifact and report referencing these runs must say SCREENING (reduced), never CONFIRMATORY."
+}
