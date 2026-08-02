@@ -61,3 +61,11 @@ campaigns/*/*_run/
 campaigns/*/tier*/
 campaigns/*/screening/
 campaigns/*/confirmatory/
+
+# release/: PDF package intermediate QA renders and the final compiled ZIP
+# archive are bulky derived artifacts, not source -- kept local-only, same
+# convention as runs/ above. The LaTeX sources, compiled PDFs, and compact
+# JSON/checksum manifests under release/*/{sources,pdf,manifests}/ (except
+# pdf/qa_png/) ARE committed.
+release/*/pdf/qa_png/
+release/*_PDF_PACKAGE.zip

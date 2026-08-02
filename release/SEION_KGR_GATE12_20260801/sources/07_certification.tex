@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{07 --- Certification, Error Bounds, and Ranking Stability}{SEION-KGR v26 MAX}{Purpose: state exactly what is certified, under what checked assumptions, and report coverage honestly separate from accuracy.}
+
+\tableofcontents
+
+\section{The four namespaces}
+\texttt{certified\_bound} (valid under checked assumptions), \texttt{empirical\_majorant}
+(measured, never proved), \texttt{empirical\_error\_predictor} (fitted/measured proxy, e.g.\ the
+closure-leakage sample mean), \texttt{observed\_error} (direct measured discrepancy, e.g.\ ranking
+margin). These are structurally separate Python objects in \texttt{seion\_kgr/certification.py}
+--- never merged in code, so they cannot be merged by accident in a report either.
+
+\section{What is certified (narrow, but real)}
+\label{sec:narrow}
+\textbf{Theorem (elementary, \Proved).} If $\|\mathbf s - \tilde{\mathbf s}\|_\infty \le \varepsilon$
+and $s_i - s_j > 2\varepsilon$, then $\tilde s_i > \tilde s_j$. Direct triangle-inequality argument.
+
+This campaign's contribution is the \emph{chain} that produces a checked $\varepsilon$ for one real
+(if narrow) case: when the score path involves no rank-reducing projector and no nonlinear
+envelope, the deployed computation is identical to the ambient computation --- nothing was
+approximated --- so $B_{\text{state}} = 0$ exactly, and $\varepsilon = 0$. Any strictly positive
+margin then certifies the ranking. This holds for base-expert-only scoring, and (via duck typing on
+the shared $A,B,C,O$ weight structure) for the seionic scalar branch used alone.
+
+The exact operator-norm bound used when a CP-shaped law IS present in the certified path:
+\[
+  M_{\text{bound}} = \|O\|_{\text{op}}\,\|A\|_{\text{op}}\,\|B\|_{\text{op}}\,\|C\|_{\text{op}}
+\]
+(top singular value of each factor, exact SVD, not sampled),
+a valid upper bound via the elementwise-product Cauchy--Schwarz inequality
+($\|u\odot v\odot w\|_2 \le \|u\|_2\|v\|_2\|w\|_2$, since $\|\cdot\|_\infty \le \|\cdot\|_2$)
+composed with each factor's operator norm. Verified never exceeded across 500 random unit-norm
+probes (\texttt{tests/kgr/test\_certification.py}).
+
+\section{What is honestly NOT certified}
+\label{sec:not-cert}
+The moment a rank-reducing \texttt{StiefelProjector} (\texttt{rank}$<$\texttt{dim}) or the path
+reasoner's \texttt{LayerNorm+tanh} envelope enters the score path, certification returns
+\texttt{NOT\_CERTIFIED} unconditionally --- verified with a test using a margin of $2000$ that
+still refuses certification, proving margin size cannot compensate for a missing assumption check.
+The two specific missing assumptions:
+\begin{itemize}
+  \item \textbf{Closure leakage operator norm} $\rho_\mu = \|(I-P)\mu(P\cdot)\|_{\text{op}}$ ---
+        no checked bound exists anywhere in this repository (assumption A4). The sample-mean
+        closure-leakage ratio used in training (\texttt{docs/definitions/projectors.md}) is
+        explicitly a proxy, never an operator-norm certificate.
+  \item \textbf{Nonlinear-envelope Lipschitz constant} for \texttt{LayerNorm(tanh(\ldots))} ---
+        no checked bound exists (assumption A6).
+\end{itemize}
+
+\section{Coverage, reported separately from accuracy}
+\texttt{certify\_evaluation\_split} is a structurally separate pass from \texttt{evaluate.evaluate()}
+--- coverage is never blended with MRR/Hits@K in the same call, satisfying the mandate's explicit
+"report coverage separately from accuracy." Two integration tests
+(\texttt{tests/kgr/test\_certification.py}) demonstrate the honest coverage swing on identical
+underlying data: a base-expert-only \texttt{SeionKGRv26} instance shows $100\%$
+\texttt{certified\_rank\_stable\_coverage} (every non-tied query certifies); the identical setup
+with the path reasoner enabled shows exactly $0\%$ --- not a bug, the correct behavior of a chain
+that refuses to certify what it has not checked.
+
+\textbf{No coverage study was run on real benchmark data in this campaign.} The two integration
+tests above use the 6-entity synthetic \texttt{tiny\_kg} fixture, not FB15K-237/WN18RR. This is
+stated explicitly so the $100\%$/$0\%$ figures are not misread as a benchmark-scale result.
+
+\section{Consequence for any future compressed-model deployment}
+Until A4 or A6 is resolved (a real operator-norm bound for closure leakage, or a real Lipschitz
+bound for the nonlinear envelope), \emph{no} certified compression claim is available for any
+SEION-KGR configuration that uses the path reasoner or a rank-reduced projector. This is the
+honest state of the art in this repository as of this campaign; closing it is future work, listed
+in \texttt{09\_negative\_results\_limitations\_and\_open\_problems.pdf}.
+
+\end{document}

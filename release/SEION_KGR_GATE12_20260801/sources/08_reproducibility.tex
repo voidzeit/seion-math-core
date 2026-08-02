@@ -1,0 +1,106 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{08 --- Reproducibility, Software, and Artifacts}{SEION-KGR v26 MAX}{Purpose: environment, hardware, test matrix, CI, parity checks, run identity, regeneration commands.}
+
+\tableofcontents
+
+\section{Environment and hardware}
+\begin{itemize}
+  \item Python 3.12.10 (local); CI pins Python 3.11 (\texttt{.github/workflows/kgr-ci.yml}).
+  \item PyTorch \texttt{2.12.0.dev20260408+cu128}.
+  \item GPU: NVIDIA RTX PRO 5000 Blackwell Generation Laptop GPU, 24463~MiB VRAM (real, used for
+        Phase B5's BF16/FP32 parity tests and the Tier~0 A0 base-expert screening runs).
+  \item OS: Windows 11 Pro, MiKTeX (pdflatex/xelatex/latexmk) for this package.
+\end{itemize}
+
+\section{Test matrix}
+130 tests in \texttt{tests/kgr/} at the end of this campaign (66 at the canonical commit
+\texttt{\CanonicalSHA}, 64 added across Phases B2--B5 and D):
+\begin{center}
+\begin{tabular}{@{}p{0.42\textwidth}p{0.48\textwidth}@{}}
+\toprule
+File & Adds \\
+\midrule
+\texttt{test\_selector.py} & 14 --- learned selector (Phase B2) \\
+\texttt{test\_structural\_kernel.py} & 19 --- E8/matched controls (Phase B3) \\
+\texttt{test\_certification.py} & 15 --- certification chain (Phase B4) \\
+\texttt{test\_perf\_and\_parity.py} & 4 --- reference/optimized + BF16/FP32 parity (Phase B5) \\
+\texttt{test\_campaign\_negative\_controls.py} & 2 --- integration-level negative controls (Phase D) \\
+\bottomrule
+\end{tabular}
+\end{center}
+Run: \texttt{python -m pytest tests/kgr -q}. All 130 pass at the campaign's final commit on this
+branch.
+
+\section{Continuous integration}
+\texttt{.github/workflows/kgr-ci.yml}, path-filtered on \texttt{seion\_kgr/**} and related files:
+installs \texttt{.[test,research]} on Python 3.11, runs the FP64 oracle self-test, the trainer
+self-test (16 architecture combinations), the full pytest battery with JUnit output, a tiny
+synthetic file-based end-to-end smoke test, and a determinism spot-check (two oracle invocations,
+same seed, asserted byte-identical). Real, executed run on branch
+\texttt{\CampaignBranch}: job \texttt{seion-kgr-ci}, run id \texttt{30726372321}, \textbf{success},
+1m41s. Three other pre-existing workflows on the same push also passed
+(\texttt{fast-cpu}, \texttt{seion-canonical-v4}, \texttt{security-and-quality}); one pre-existing,
+unrelated workflow (\texttt{spectral-v18-cpu}) failed on a known-flaky floating-point-boundary test
+in \texttt{spectral/certification\_v18/tests/test\_block\_m.py} ($1.49\times10^{-8} < 10^{-8}$) ---
+not touched by this campaign, not part of \texttt{seion\_kgr}.
+
+\section{Reference-vs-optimized and precision parity}
+\begin{itemize}
+  \item \texttt{seion\_kgr\_reference\_fp64.CPTernaryLaw} vs. \texttt{seion\_kgr.kernels.CPTernaryLaw}:
+        identical copied weights, identical output to $\mathrm{atol}=10^{-4}$, across 6 random
+        cases.
+  \item BF16 on the real GPU vs. FP32 on CPU: relative error $<5\%$ (declared tolerance,
+        appropriate for BF16's $\sim$3 decimal digits of precision).
+  \item FP32 CPU vs. FP32 GPU (device-placement check, tighter): $\mathrm{atol}=10^{-5}$.
+\end{itemize}
+
+\section{Run identity}
+Every run directory carries \texttt{configuration\_id} (SHA-256 of the resolved config, excluding
+run-control fields: seed, out\_dir, resume, epochs, eval cadence/subset), a fresh
+\texttt{execution\_id} per invocation, and \texttt{parent\_execution\_id} when resumed. A resume
+whose \texttt{configuration\_id} does not match its parent checkpoint is rejected with a clear
+error before any state is loaded --- live-verified, including catching and fixing two real bugs
+during this campaign: \texttt{epochs} was initially (wrongly) part of the configuration hash,
+which broke the ordinary "resume for more epochs" case; and the mismatch check initially ran
+\emph{after} \texttt{load\_state\_dict}, surfacing a confusing raw PyTorch shape-mismatch error
+instead of the intended message on a genuine architecture-mismatch resume. Both fixed and
+reverified with real CLI runs, not just unit tests.
+
+An out-dir reuse guard rejects a non-empty \texttt{--out\_dir} unless \texttt{--resume} is passed
+--- live-verified: a fresh run into an occupied directory raises \texttt{FileExistsError} with an
+explanatory message.
+
+\section{Regeneration commands}
+\begin{lstlisting}[basicstyle=\ttfamily\small]
+# Full test suite
+python -m pytest tests/kgr -q
+
+# Both self-tests
+python seion_kgr_reference_fp64.py --self_test
+python seion_kgr_v26_train.py --self_test
+
+# Tier 0 base-expert selection (FB15K-237, 1 epoch, GPU)
+for BASE in complex distmult tucker cp; do
+  python seion_kgr_v26_train.py --train data/FB15K-237/train.txt \
+    --valid data/FB15K-237/valid.txt --test data/FB15K-237/test.txt \
+    --out_dir runs/base_selection_$BASE --dim 64 --base_expert $BASE \
+    --epochs 1 --batch_size 1024 --neg_k 64 --eval_max_queries 200 \
+    --entity_block_eval 4096 --seed 1
+done
+\end{lstlisting}
+
+\section{Limitations of this reproduction}
+\begin{itemize}
+  \item \texttt{E8\_Exact\_v18\_2/f\_E8.npy} (59MB) is not committed to git (same convention as
+        \texttt{data/}); \texttt{E8\_exact}-variant tests and runs are skipped/unavailable without
+        it placed locally.
+  \item \texttt{data/} (FB15K-237, WN18RR, CoDEx-M, DB100K+, YAGO3-10) is not committed; must be
+        fetched/placed locally.
+  \item \texttt{runs/} and \texttt{campaigns/*/tier*/} are gitignored (checkpoints, large binaries)
+        --- this package's \texttt{manifests/} directory carries the compact JSON summaries and
+        hashes needed to audit what ran, not the checkpoints themselves.
+\end{itemize}
+
+\end{document}

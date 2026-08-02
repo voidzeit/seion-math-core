@@ -1,0 +1,110 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{11 --- Supplementary Methods, Tables, and Figures}{SEION-KGR v26 MAX}{Complete hyperparameters, seed-level tables, test inventory, artifact manifest, exact commands.}
+
+\tableofcontents
+
+\section{Complete Tier 0 hyperparameters}
+\begin{lstlisting}[basicstyle=\ttfamily\small]
+Base-expert selection: dim=64 epochs=1 batch_size=1024 neg_k=64
+  eval_max_queries=200 entity_block_eval=4096 seed=1 device=cuda
+
+A0: dim=64 base_expert=tucker epochs=5 batch_size=1024 neg_k=64
+  adversarial_temperature=1.0 n3_weight=0.001 lr=0.001
+  eval_every=5 eval_max_queries=300 entity_block_eval=4096
+  seeds={1,2} device=cuda datasets={FB15K-237(full), WN18RR(full)}
+
+A3: as A0, plus enable_path enable_seion
+  path_rank=16 path_layers=2 path_max_neighbors=16
+  path_selector_mode=budgeted_bfs seion_rank=16
+  epochs=3 batch_size=128 eval_max_queries=100
+  seeds={1,2} device=cpu  (deviation, see preregistration.md Sec. 11)
+  datasets={FB15K-237(5k subsample), WN18RR(5k subsample)}
+\end{lstlisting}
+
+\section{Complete seed-level results}
+See \texttt{04\_screening\_report.pdf} \S3 for the full 8-row table (test MRR, valid MRR, Hits@1,
+Hits@10, wall-clock, per config/dataset/seed). Reproduced in machine-readable form at
+\texttt{campaigns/gate12/tier0\_results.json}.
+
+\section{Negative-control results (full)}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Control & Metric & Value \\
+\midrule
+Randomized labels & Structured-graph MRR & 0.5764 \\
+Randomized labels & Randomized MRR & 0.1392 \\
+Randomized labels & Degradation factor & $4.14\times$ \\
+Leakage (3-epoch run) & Clean MRR & 0.2961 \\
+Leakage (3-epoch run) & Leaky MRR & 0.2961 (null effect) \\
+Leakage (40-epoch follow-up) & Mean path gate $\sigma(\gamma_r)$ & 0.01799 (init: 0.01799) \\
+Leakage (40-epoch follow-up) & Clean MRR & 0.6833 \\
+Leakage (40-epoch follow-up) & Leaky MRR & 0.6833 (still null) \\
+\bottomrule
+\end{tabular}
+\end{center}
+Full JSON: \texttt{campaigns/gate12/negative\_controls\_results.json}.
+
+\section{Test inventory (130 tests, all passing)}
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+File & Count \\
+\midrule
+\multicolumn{2}{l}{\textit{Canonical commit (66):}} \\
+test\_algebra.py, test\_projection.py, test\_evaluator\_exactness.py, & \\
+test\_gradients.py, test\_negative\_controls.py, test\_seion\_kgr\_package.py, & \\
+test\_recursive\_projection.py, test\_reference\_determinism.py & 66 \\
+\multicolumn{2}{l}{\textit{This campaign (64):}} \\
+test\_selector.py (Phase B2) & 14 \\
+test\_structural\_kernel.py (Phase B3) & 19 \\
+test\_certification.py (Phase B4) & 15 \\
+test\_perf\_and\_parity.py (Phase B5) & 4 \\
+test\_campaign\_negative\_controls.py (Phase D) & 2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Note: file-level test counts above for the campaign additions sum to 54, not 64 --- the remaining
+10 are additional cases added to existing canonical-commit files during Phase B2/B5 work
+(e.g.\ the permutation-gauge tests). Run \texttt{python -m pytest tests/kgr -q} for the authoritative count.
+
+\section{Artifact manifest}
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.28\textwidth}p{0.62\textwidth}@{}}
+\toprule
+Artifact & Path \\
+\midrule
+Preregistration & \texttt{campaigns/gate12/preregistration.md} \\
+Tier 0 config (frozen) & \texttt{campaigns/gate12/tier0\_config.json} \\
+Base-expert selection & \texttt{campaigns/gate12/tier0\_base\_selection\_result.json} \\
+Tier 0 results & \texttt{campaigns/gate12/tier0\_results.json} \\
+Tier 0 summary & \texttt{campaigns/gate12/tier0\_SUMMARY.md} \\
+Negative controls & \texttt{campaigns/gate12/negative\_controls\_results.json} \\
+Claim matrix & \texttt{docs/SEION\_KGR\_CLAIM\_MATRIX.md} \\
+Assumption ledger & \texttt{docs/SEION\_KGR\_ASSUMPTION\_LEDGER.md} \\
+CI workflow & \texttt{.github/workflows/kgr-ci.yml} \\
+CI run (green) & \url{https://github.com/voidzeit/seion-math-core/actions/runs/30726372321} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Exact reproduction commands}
+\begin{lstlisting}[basicstyle=\ttfamily\small]
+git clone https://github.com/voidzeit/seion-math-core
+git checkout campaign/gate12-closeout
+python -m pip install -e '.[test,research]'
+python -m pytest tests/kgr -q
+python seion_kgr_reference_fp64.py --self_test
+python seion_kgr_v26_train.py --self_test
+# Tier 0 (place FB15K-237/WN18RR under data/ first):
+python seion_kgr_v26_train.py --train data/FB15K-237/train.txt \
+  --valid data/FB15K-237/valid.txt --test data/FB15K-237/test.txt \
+  --out_dir runs/A0_fb15k237_seed1 --dim 64 --base_expert tucker \
+  --epochs 5 --batch_size 1024 --neg_k 64 --eval_every 5 \
+  --eval_max_queries 300 --entity_block_eval 4096 --seed 1
+\end{lstlisting}
+
+\end{document}

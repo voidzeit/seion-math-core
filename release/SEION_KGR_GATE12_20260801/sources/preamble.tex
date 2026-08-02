@@ -1,0 +1,60 @@
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage[T1]{fontenc}
+\usepackage[htt]{hyphenat}  % allow \texttt (file paths) to break at /, _, . instead of overflowing the margin
+\sloppy
+
+\hypersetup{
+  colorlinks=true, linkcolor=blue!50!black, citecolor=blue!50!black, urlcolor=blue!60!black,
+  pdfauthor={Eliuth Chavero Jasso},
+}
+
+\newcommand{\CampaignID}{gate12-closeout-2026-08-01}
+\newcommand{\CanonicalSHA}{6af3c35271ae2ffab41ecba2aad098d1988fdc0c}
+\newcommand{\CampaignBranch}{campaign/gate12-closeout}
+\newcommand{\PkgDate}{2026-08-01}
+
+\newcommand{\Proved}{\textsc{Proved}}
+\newcommand{\ProvedU}{\textsc{Proved\_Under\_Assumptions}}
+\newcommand{\NumTested}{\textsc{Numerically\_Tested}}
+\newcommand{\Explor}{\textsc{Exploratory}}
+\newcommand{\OpenC}{\textsc{Open}}
+\newcommand{\DefC}{\textsc{Definition}}
+
+\newenvironment{statuslabel}[1]{\par\noindent\textbf{Status: }\texttt{#1}\par}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{SEION-KGR Gate 12 Package}
+\rhead{\CampaignID}
+\cfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\newcommand{\TitlePage}[3]{%
+  \begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\Huge\bfseries #1\par}
+  \vspace{1cm}
+  {\Large #2\par}
+  \vspace{2cm}
+  {\large Campaign ID: \CampaignID \par}
+  {\large Canonical commit: \texttt{\CanonicalSHA} \par}
+  {\large Branch: \texttt{\CampaignBranch} \par}
+  {\large Date: \PkgDate \par}
+  \vfill
+  {\normalsize #3\par}
+  \end{titlepage}
+}

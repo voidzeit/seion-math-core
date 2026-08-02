@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{03 --- System Architecture and Implementation}{SEION-KGR v26 MAX}{Purpose: describe the actual code structure as it exists at the end of this campaign, module by module, with file paths.}
+
+\tableofcontents
+
+\section{Package layout}
+\begin{verbatim}
+seion_kgr_reference_fp64.py   Fase 1: FP64/CPU/no-AMP independent reference oracle
+seion_kgr_v26_train.py        thin CLI entrypoint -> seion_kgr.train.main()
+seion_kgr/
+  data.py             reciprocal KG loading, filters, negative sampling
+  scorers.py           DistMult / ComplEx / CP / TuckER base experts
+  reasoner.py           budgeted-BFS query-conditioned path reasoner
+  selector.py            [NEW] learned sparse path selector (Phase B2)
+  kernels.py            batched CP ternary law, Stiefel projector, seionic scorer
+  structural_kernel.py  [NEW] E8 / matched-control residual branch (Phase B3)
+  certification.py      [NEW] state->score->ranking certification chain (Phase B4)
+  projection.py          projector audit, closure-leakage measurement
+  rank_controller.py    6 adaptive rank-allocation policies
+  geometry.py            associator / Filippov-identity curriculum (weight-gated)
+  metaencoder.py        relation-graph co-occurrence encoder
+  losses.py               1-vs-all / BCE + N3 regularizer
+  evaluate.py             blocked filtered evaluator (reciprocal head/tail trick)
+  reproducibility.py     manifests, checkpoints, [NEW] config/exec identity (B5)
+  model.py               SeionKGRv26: wires branches behind a near-zero-init router
+  train.py                CLI, training loop, [NEW] out-dir guard (B5)
+tests/kgr/                 130 tests (66 canonical + 64 added this campaign)
+.github/workflows/kgr-ci.yml  [NEW] CI (Phase B1)
+\end{verbatim}
+
+\section{Data flow}
+A training query $(h,r,t)$ is always scored as $(h,r,?)$ \emph{tail}-ranking; the backward/head
+direction is trained and evaluated as $(t, r^{-1}, ?)$ tail-ranking with gold $h$ --- there is no
+separately implemented head-scoring code path anywhere in the system (contract \S II.3.2). This is
+the single design decision that eliminates an entire class of duplicated-logic bugs the legacy
+\texttt{seion\_train\_v25.py} had.
+
+\subsection{Scorer composition}
+\[
+  s(h,r,t) = s_{\text{base}}(h,r,t) + \gamma_r\, s_{\text{path}}(h,r,t) + \eta_r\, s_{\text{seion}}(h,r,t) + s_{\text{kernel}}(h,r,t),
+\]
+with $\gamma_r = \sigma(\text{gamma\_raw}_r)$, $\eta_r = \sigma(\text{eta\_raw}_r)$ both initialized
+to $\sigma(-4)\approx 0.018$, and $s_{\text{kernel}}$'s gate internal to
+\texttt{StructuralKernelResidual} (same near-zero-init pattern). The model always starts as the
+base expert alone; every experimental branch must earn its weight.
+
+\subsection{Path reasoner (Phase B2 update)}
+Budgeted BFS frontier expansion, \texttt{num\_layers} hops, queried-edge (and its reciprocal)
+excluded \emph{before} any selector sees the candidate list --- not after, so leakage prevention
+cannot be bypassed by selector mode. Four modes: \texttt{full\_neighborhood},
+\texttt{budgeted\_bfs} (default, unchanged from the canonical commit), \texttt{learned\_topk} (new
+this campaign --- \texttt{LearnedPathSelector} scores each candidate edge from source state, edge
+relation, query relation, destination base embedding, depth, and accumulated path priority; kept
+edges are weighted by a differentiable $\sigma(\text{score})$ gate so gradients reach the selector),
+\texttt{oracle\_or\_gold\_path\_debug\_mode} (synthetic-fixture-only, not CLI-exposed).
+
+\subsection{Structural kernel branch (Phase B3, new)}
+\[
+  \mu_{\text{total}} = \mu_{\text{learned}} + \sigma(\epsilon_r)\, W\big(\mu_{\text{kernel}}(U_x x, U_a a, U_q q)\big),
+\]
+where $\mu_{\text{kernel}}$ reuses the double-contraction construction already validated in
+\texttt{seion\_train\_v25.py}'s \texttt{fixed\_predict}, against one of five frozen $248^3$
+tensors: \texttt{E8\_exact} (real \texttt{E8\_Exact\_v18\_2/f\_E8.npy}, local-only, not committed),
+\texttt{random\_scale\_matched}, \texttt{permuted\_indices}, \texttt{sign\_shuffled},
+\texttt{zero\_kernel}. All five share an identical architecture and trainable-parameter count
+outside the frozen buffer (tested).
+
+\subsection{Certification pass (Phase B4, new)}
+A structurally separate pass from \texttt{evaluate.evaluate()} --- coverage is never blended with
+MRR/Hits@K in the same call. \texttt{certify\_evaluation\_split} runs
+\texttt{certify\_query} per test triple, reporting \texttt{certified\_rank\_stable\_coverage} etc.
+separately per split.
+
+\section{Reproducibility engine (Phase B5 updates)}
+Every run directory gets: \texttt{resolved\_config.json}, \texttt{command.txt},
+\texttt{environment.json}, \texttt{hardware.json}, \texttt{git\_manifest.json},
+\texttt{dataset\_manifest.json}, \texttt{run\_manifest.json} (now carrying
+\texttt{configuration\_id}/\texttt{execution\_id}/\texttt{parent\_execution\_id}/\texttt{resume\_from}),
+\texttt{metrics.jsonl}, \texttt{rank\_history.jsonl}, \texttt{error\_attribution.jsonl},
+\texttt{projection\_audit.json} (when the path branch is enabled), \texttt{kernel\_manifest.json}
+(when the structural-kernel branch is enabled), \texttt{best.pt}/\texttt{last.pt} (each carrying
+the same identity triple), \texttt{final\_metrics.json}. An out-dir reuse guard rejects a
+non-empty \texttt{--out\_dir} unless \texttt{--resume} is set; a resume whose
+\texttt{configuration\_id} does not match the checkpoint's is rejected before
+\texttt{load\_state\_dict}, not after.
+
+\section{What is intentionally NOT in this architecture}
+No global attention mechanism; no learned graph-level search beyond the per-query budgeted
+selector; no multi-dataset joint pretraining loop (the relation metaencoder exists as a library
+module, unit-tested, not wired into \texttt{train.py}'s CLI); no mixed-precision training loop in
+\texttt{train.py} itself (BF16/FP32 parity is verified at the kernel level in
+\texttt{tests/kgr/test\_perf\_and\_parity.py} on the real GPU, but the trainer does not yet expose
+an \texttt{--amp} flag --- an honest, explicit gap, not a silent one).
+
+\end{document}

@@ -1,0 +1,27 @@
+{
+  "campaign_id": "gate12-closeout-2026-08-01",
+  "canonical_commit": "6af3c35271ae2ffab41ecba2aad098d1988fdc0c",
+  "branch": "campaign/gate12-closeout",
+  "repository": "https://github.com/voidzeit/seion-math-core",
+  "package_generated_utc": "2026-08-01",
+  "campaign_artifacts": {
+    "preregistration": "campaigns/gate12/preregistration.md",
+    "tier0_config": "campaigns/gate12/tier0_config.json",
+    "tier0_base_selection_result": "campaigns/gate12/tier0_base_selection_result.json",
+    "tier0_results": "campaigns/gate12/tier0_results.json",
+    "tier0_summary": "campaigns/gate12/tier0_SUMMARY.md",
+    "negative_controls_results": "campaigns/gate12/negative_controls_results.json",
+    "claim_matrix": "docs/SEION_KGR_CLAIM_MATRIX.md",
+    "assumption_ledger": "docs/SEION_KGR_ASSUMPTION_LEDGER.md",
+    "ci_workflow": ".github/workflows/kgr-ci.yml",
+    "ci_run_green": "https://github.com/voidzeit/seion-math-core/actions/runs/30726372321"
+  },
+  "test_suite": {
+    "total_tests": 130,
+    "canonical_commit_tests": 66,
+    "campaign_added_tests": 64,
+    "run_command": "python -m pytest tests/kgr -q",
+    "status_at_package_time": "130/130 passing"
+  },
+  "note": "Dataset files (data/), individual run directories with checkpoints (runs/, campaigns/gate12/tier0/), and the 59MB E8_Exact_v18_2/f_E8.npy kernel are NOT included in this package or in git history -- they are large, third-party, or binary artifacts kept local-only per this campaign's own hardware/git-safety rules. Their hashes and provenance ARE recorded in the manifests referenced above."
+}

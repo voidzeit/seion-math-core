@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{01 --- Executive Summary}{SEION-KGR v26 MAX --- Gate 12 Closeout Campaign}{Decision-oriented summary. Read \texttt{09} before acting on anything here.}
+
+\section{What was built}
+Starting from an implementation-complete, smoke-verified system (canonical commit
+\texttt{\CanonicalSHA}), this campaign closed five engineering gaps the canonical commit
+explicitly left open: (1)~a real GitHub Actions CI workflow, executed and green;
+(2)~a genuinely learned sparse path selector, replacing the previous fixed-random budget;
+(3)~a controlled $E_8$ structural-kernel residual branch with four matched controls, using the
+real $E_8$ Lie-algebra structure-constant tensor; (4)~a state-to-score-to-ranking certification
+chain that correctly and honestly refuses to certify anything it cannot check; (5)~a reproducibility
+audit that caught and fixed two real bugs (a configuration-identity hash that wrongly blocked
+ordinary training-extension resumes; a projector orthonormality bug introduced by an unnecessary
+sign-correction). Test count grew from 66 to 130, all passing; three real bugs were caught by
+tests written for other purposes and fixed during this session, not deferred.
+
+\section{What improved}
+Engineering correctness and auditability improved substantially and measurably (CI is green;
+reproducibility identity is enforced and tested; certification honestly reports near-zero coverage
+rather than an inflated one). The base-expert-only architecture (TuckER, selected via a real
+1-epoch screening pass) reproduces expected qualitative KGE behavior on both FB15K-237
+(test MRR 0.278/0.277 across 2 seeds) and WN18RR (0.441/0.424).
+
+\section{What did not improve, or was not tested}
+\textbf{No claim is made that any of SEION-KGR's experimental branches (path reasoner, seionic
+branch, projection, rank controller, $E_8$ residual) improve link-prediction quality.} The one
+architectural comparison executed this campaign (base expert alone vs.\ base + path + seionic) is
+confounded by a large, logged training-data-size difference and is not informative about the
+architectural question it was meant to probe (\S04, \S09). No $E_8$-vs-controls comparison was run
+on benchmark data. No confirmatory statistical campaign (5 seeds, full ablation ladder) was
+executed --- this was declared as out of scope for a single session \emph{before} the campaign
+began (\texttt{preregistration.md} \S0), not discovered as a shortfall afterward.
+
+\section{Strongest valid result}
+The engineering closure itself: a real, CI-verified, 130-test, multi-branch KGE system with a
+working learned selector, a working $E_8$/control residual branch, and a certification chain that
+is honest about its own limits, verified end-to-end on real benchmark data and real GPU hardware.
+This is a valid, load-bearing result. The benchmark numbers in \S04 are not.
+
+\section{Readiness classification}
+\begin{center}
+\begin{tabular}{@{}p{0.38\textwidth}p{0.52\textwidth}@{}}
+\toprule
+Dimension & Status \\
+\midrule
+Engineering / reproducibility & \textbf{Closed} --- CI green, 130/130 tests pass, real GPU parity verified \\
+Screening-tier benchmark evidence & \textbf{Partial} --- 2 datasets, 2 ladder points, confounded comparison \\
+Confirmatory statistical evidence & \textbf{Not started} \\
+Causal ablation (full 13-point ladder) & \textbf{Not started} (2/13 points at screening scale only) \\
+$E_8$ causal attribution & \textbf{Not started} \\
+General-case certification & \textbf{Open} (narrow zero-compression case only) \\
+Publication package & \textbf{This document and its 11 companions} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Next decision}
+Before any benchmark or ablation claim can be made: (a)~resolve the path-reasoner scaling problem
+(\S09) so A3-class configurations can run at full dataset scale within a tractable compute budget;
+(b)~re-run the A0/A3 comparison on matched data scale and epoch budget; (c)~only then proceed to
+the full preregistered screening/confirmatory protocol. Estimated compute for that full protocol,
+extrapolating from this campaign's measurements, is multi-day, not multi-hour --- a genuinely
+separate resourcing decision from this campaign.
+
+\end{document}

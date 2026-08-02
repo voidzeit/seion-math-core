@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{00 --- Package Index}{SEION-KGR v26 MAX --- Gate 12 Closeout Campaign}{Purpose: map this package, state the canonical commit, list checksums, explain how to reproduce every table and figure.}
+
+\tableofcontents
+
+\section{Purpose}
+This package documents the \texttt{gate12-closeout} campaign executed against
+\texttt{voidzeit/seion-math-core}, branch \texttt{\CampaignBranch}, starting from canonical commit
+\texttt{\CanonicalSHA}. Its scope, per the campaign mandate's own Section~X priority order under
+limited compute, is: full engineering closure (CI, learned selector, E8 residual branch,
+certification chain, evaluator/performance audit), a bounded and explicitly non-confirmatory
+screening pass on real benchmark data, real negative-control integration evidence, and this
+publication package. It is \textbf{not} a Gate 12 confirmatory statistical campaign --- see
+\texttt{09\_negative\_results\_limitations\_and\_open\_problems.pdf} for the exact scope statement,
+repeated wherever a number could otherwise be misread.
+
+\section{Document map}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Document & Contents \\
+\midrule
+00 & This index \\
+01 & Decision-oriented executive summary \\
+02 & Mathematical foundations, epistemic status of every claim touched \\
+03 & Architecture, module-by-module, as it exists at campaign end \\
+04 & Screening-tier benchmark report (Tier 0) --- explicitly not confirmatory \\
+05 & Ablations executed vs. preregistered, causal-control limitations \\
+06 & Projection/rank-controller: what exists and is tested, Pareto study status \\
+07 & Certification chain: what is certified, what is honestly not \\
+08 & Reproducibility, software, CI, parity checks, regeneration commands \\
+09 & Negative results, limitations, open problems --- read this one \\
+10 & Full research-paper-style writeup \\
+11 & Supplement: hyperparameters, seed-level tables, artifact manifest \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Canonical identifiers}
+\begin{itemize}
+  \item Campaign ID: \texttt{\CampaignID}
+  \item Starting commit: \texttt{\CanonicalSHA}
+  \item Branch: \texttt{\CampaignBranch}
+  \item Repository: \url{https://github.com/voidzeit/seion-math-core}
+\end{itemize}
+
+\section{Artifact locations (outside this package, referenced by path + hash)}
+\begin{itemize}
+  \item \texttt{campaigns/gate12/preregistration.md} --- frozen protocol, deviations log
+  \item \texttt{campaigns/gate12/tier0\_config.json}, \texttt{tier0\_base\_selection\_result.json}
+  \item \texttt{campaigns/gate12/negative\_controls\_results.json}
+  \item \texttt{campaigns/gate12/tier0/} --- run directories (gitignored, local evidence only;
+        compact summaries committed separately)
+  \item \texttt{docs/SEION\_KGR\_CLAIM\_MATRIX.md}, \texttt{docs/SEION\_KGR\_ASSUMPTION\_LEDGER.md}
+        --- updated this campaign with an explicit changelog section
+  \item \texttt{tests/kgr/} --- 130 tests, all passing at campaign end
+  \item \texttt{.github/workflows/kgr-ci.yml} --- real, executed CI (run id \texttt{30726372321})
+\end{itemize}
+
+\section{How to reproduce}
+See \texttt{08\_reproducibility\_software\_and\_artifacts.pdf} for exact commands. In brief:
+\texttt{python -m pytest tests/kgr -q} for the test suite;
+\texttt{python seion\_kgr\_v26\_train.py --self\_test} for the 16-combination trainer self-test;
+the Tier~0 commands are listed verbatim in that document and in \texttt{11\_supplement.pdf}.
+
+\section{This document's own status}
+\DefC. It is an index, not a claim.
+
+\end{document}

@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{05 --- Ablations and Causal Controls}{SEION-KGR v26 MAX}{Purpose: report exactly which points of the preregistered 13-point causal ladder were executed, and what the executed subset can and cannot support.}
+
+\tableofcontents
+
+\section{Preregistered ladder vs. executed}
+The full mandate causal ladder is 13 points (\texttt{A0}--\texttt{A12}) plus a 5-variant E8/control
+block (\texttt{K0}--\texttt{K4}), frozen verbatim in \texttt{preregistration.md} \S4. This campaign
+executed exactly 2 of the 13 points, at screening scale:
+\begin{center}
+\begin{tabular}{@{}p{0.12\textwidth}p{0.30\textwidth}p{0.50\textwidth}@{}}
+\toprule
+Point & Definition & Executed this campaign? \\
+\midrule
+A0 & best\_base & Yes --- full dataset scale, 2 seeds, FB15K-237 + WN18RR \\
+A1 & +path\_reasoner\_standard\_message & No --- baseline variant not implemented \\
+A2 & +seionic\_scalar & No \\
+A3 & +path\_reasoner+seionic\_message & Yes --- 5,000-triple subsample, 2 seeds, both datasets \\
+A4--A12 & +projection/\allowbreak rank/\allowbreak selector/\allowbreak curricula/\allowbreak metaencoder & No --- components exist and are unit-tested (Phases B2--B4, Fase 6--9) but not benchmarked at dataset scale in this campaign \\
+K0--K4 & E8/control block & No --- implemented and unit-tested (Phase B3) but not run on benchmark data \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Why only A0/A3}
+Per the mandate's own Section~X priority order, engineering closure (CI, selector, E8 branch,
+certification, evaluator audit) was prioritized above the full ablation ladder, and within Phase C,
+A0/A3 were chosen as the two most informative single comparison (does the combined path+seionic
+branch help at all, holding everything else fixed) given the compute available. Running the
+intermediate points (A1, A2 alone) or the projection/rank/curriculum/selector combinations
+(A4--A12) at dataset scale was not attempted --- correctly reported here as \texttt{OPEN}, not
+silently absorbed into the A0/A3 comparison.
+
+\section{What the A0/A3 comparison can and cannot support}
+\textbf{Can:} demonstrate the architecture executes correctly end to end on real data with both
+branches active (already shown extensively in engineering smoke tests, Phases B2--B5); give a
+first, non-confirmatory look at whether adding the path+seionic branches moves validation MRR in
+either direction on two real datasets.
+
+\textbf{Cannot:} support any causal claim. Two seeds is explicitly insufficient for a variance
+estimate (reported per-seed only, \S04); the A3 configuration ran on a 5,000-triple subsample of
+each dataset's training split (a compute-budget deviation logged \emph{before} any A3 result was
+generated, \texttt{preregistration.md} \S11), not the full training set A0 used --- so any MRR
+difference between A0 and A3 is confounded with the training-data-size difference and cannot be
+attributed to the architectural change alone. This confound is stated explicitly here, not hidden
+in a footnote, and \texttt{04\_gate12\_confirmatory\_benchmark\_report.tex} repeats it next to the
+actual numbers.
+
+\section{Selector, geometric-loss, and E8 comparisons}
+Each of these has real, executed evidence at the \emph{unit/engineering} level (learned selector:
+14 tests including gold-path preservation after supervised warmup, \texttt{test\_selector.py};
+geometric-loss weight-gating: 4 regression tests proving zero compute at zero weight,
+\texttt{test\_seion\_kgr\_package.py}; E8 vs. 4 matched controls: 19 tests including 2 against the
+real kernel, \texttt{test\_structural\_kernel.py}) but \textbf{none at dataset/ablation scale}.
+Reported as \texttt{OPEN} for the causal question ("does X measurably help on real KG link
+prediction"), \texttt{NUMERICALLY\_TESTED}/\texttt{DEFINITION} for the engineering-correctness
+question ("does X work as specified").
+
+\section{Causal interpretation limits, stated once more}
+No result in this document, or this package, supports a statement of the form "SEION-KGR's
+\{path reasoner / seionic branch / projection / E8 residual\} causes better link prediction." That
+statement requires the full preregistered ladder at confirmatory scale (5 seeds, matched compute,
+statistical testing per \texttt{preregistration.md} \S8) --- not executed in this campaign.
+
+\end{document}

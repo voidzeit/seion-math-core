@@ -1,0 +1,74 @@
+{
+  "00_package_index.pdf": {
+    "sha256": "e870815ecefc122cb75688dc4de48061961638acfd4735a821025ac79c3e7dac",
+    "size_bytes": 117764,
+    "page_count": 3,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "01_executive_summary.pdf": {
+    "sha256": "89aec30aa91dd23bbb96f3d7d1b2bd6cc78ef419949997b15ad1ac3c7e67e72b",
+    "size_bytes": 125780,
+    "page_count": 3,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "02_mathematical_foundations.pdf": {
+    "sha256": "0c42df3221aaf9c31757b6c3eb4e76d985f51ec0c519b5a5bed95f58c6b02f1d",
+    "size_bytes": 273967,
+    "page_count": 4,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "03_architecture.pdf": {
+    "sha256": "25605b23f4bf19cf7aed7ccd8f413b07c2be5783d17eecbbc481e868b3e56c62",
+    "size_bytes": 206794,
+    "page_count": 4,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "04_screening_report.pdf": {
+    "sha256": "593aafeff0e85d0ef5dd4ccdbb46385b6a9ddbf4ec88ec6f59faea1b3948e25d",
+    "size_bytes": 169573,
+    "page_count": 4,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "05_ablations.pdf": {
+    "sha256": "896a2ac89e7f71c0ab7291f00afb1f7832b8bd74b44447c9189b5e3b3689f5e9",
+    "size_bytes": 114422,
+    "page_count": 3,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "06_projection_and_rank.pdf": {
+    "sha256": "e3f4d79b313cb9bbb925b38ba9afebb29eeb9d0a5ced8e7d8bebbd09f78aec22",
+    "size_bytes": 156885,
+    "page_count": 3,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "07_certification.pdf": {
+    "sha256": "6eb2d4f00acfaa0249c912053ca072452a74677a1d4f21725b27a6d75ffde922",
+    "size_bytes": 195745,
+    "page_count": 3,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "08_reproducibility.pdf": {
+    "sha256": "d3d7b1eaa9188ca56a9310cba47735699ffe90047a5b91e92502bd1e1f7a5429",
+    "size_bytes": 185252,
+    "page_count": 4,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "09_negative_results.pdf": {
+    "sha256": "51b4d293c4abdcadf2d71534f9af2344fe9a99d7596adb711da507dd210a9a0b",
+    "size_bytes": 175972,
+    "page_count": 4,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "10_full_paper.pdf": {
+    "sha256": "200183a43aa2685719a9b2f34191566553fbbf7b7b1f754a2aaa9fad03f01451",
+    "size_bytes": 266175,
+    "page_count": 5,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  },
+  "11_supplement.pdf": {
+    "sha256": "268ec04198e0dee9b420127c5ed541266ab64ffdb1c9d47047e178a32df8a088",
+    "size_bytes": 187320,
+    "page_count": 4,
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+  }
+}

@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{10 --- SEION-KGR v26 MAX: Engineering Closure of a Certified, Ablatable Knowledge-Graph Reasoner}{A Gate 12 Closeout Report}{This is a submission-style writeup of what was built and executed, not a claim of state-of-the-art results. Read \S10 (Limitations) before any other section if short on time.}
+
+\begin{abstract}
+We report the engineering closure of SEION-KGR v26 MAX, a knowledge-graph link-prediction system
+combining reciprocal KGE base experts (DistMult/ComplEx/CP/TuckER), a budgeted-BFS
+query-conditioned path reasoner with both a fixed-random and a newly implemented learned edge
+selector, a CP-ternary "seionic" scalar branch, an orthogonal projection layer with six adaptive
+rank-allocation policies, a controlled structural-kernel residual branch (the real $E_8$ Lie-algebra
+structure-constant tensor, plus four matched controls: zero, random-scale-matched, permuted-index,
+sign-shuffled), and a state-to-score-to-ranking certification chain. All components are unit- and
+integration-tested (130 tests), CI-verified on real GitHub Actions infrastructure, and smoke- to
+screening-tested on real FB15K-237/WN18RR data using a real RTX PRO 5000 Blackwell GPU. We report a
+bounded, explicitly non-confirmatory 2-seed screening comparison of a base expert alone versus the
+same expert with the path and seionic branches enabled, two real negative-control integration runs
+(one showing the expected 4.1$\times$ MRR collapse under randomized training labels; one showing a
+null leakage effect that we investigate rather than accept, tracing it to an under-trained
+near-zero-init residual gate), and we report honestly that no Gate 12 confirmatory statistical
+campaign, no $E_8$-vs-controls comparison, and no full 13-point causal ablation ladder was executed
+at benchmark scale in this session. We do not claim state-of-the-art performance.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+Knowledge-graph embedding (KGE) systems predict missing edges in a knowledge graph. The
+SEION-KGR line of work (contract: \texttt{docs/SEION\_KGR\_MATHEMATICAL\_CONTRACT.md}) proposes
+combining standard KGE experts with a ternary "seionic" algebraic law, projection-based
+compression with certified error propagation, and an optional structural-kernel residual inspired
+by the $E_8$ Lie algebra's structure constants. Prior work on this repository (canonical commit
+\texttt{\CanonicalSHA}) delivered an implementation-complete, smoke-verified system across nine
+build phases plus checkpointing. This report documents the subsequent \texttt{gate12-closeout}
+campaign: closing the remaining engineering gaps that prior work explicitly left open, and
+executing as much real benchmark evidence as a single session's compute budget allowed.
+
+\section{Related problem setting and scope}
+We do not attempt a literature-comparable benchmark run in this campaign (\S\ref{sec:limits}). The
+base experts implemented (DistMult, ComplEx, CP/canonical-decomposition, TuckER) are standard;
+readers should consult the original papers for those architectures. The path reasoner is a
+budgeted-BFS message passer in the NBFNet/A*Net family, explicitly \emph{not} claimed to
+faithfully reproduce either (the repository's own naming convention forbids borrowing those names
+for an approximation, per its engineering mandate).
+
+\section{Mathematical formulation}
+See \texttt{02\_mathematical\_foundations\_and\_claim\_status.pdf} for the complete, precisely
+labeled statement. In summary: a typed CP ternary law $\mu(x,a,q)=O[(Ax)\odot(Ba)\odot(Cq)]$,
+proved equal to its dense tensor contraction; an orthogonal projector $P=QQ^*$ via Stiefel-manifold
+QR retraction; the exact local subset-expansion identity for typed multilinear trees (inherited,
+\Proved, with a new conformance test against the concrete implementation); the $(k{-}1)$
+projected-root error coefficient (inherited, \ProvedU); and this campaign's new
+state$\to$score$\to$ranking certification chain, which certifies only the case where nothing is
+approximated in the score path.
+
+\section{SEION-KGR architecture}
+\[
+  s(h,r,t) = s_{\text{base}}(h,r,t) + \gamma_r s_{\text{path}}(h,r,t) + \eta_r s_{\text{seion}}(h,r,t) + s_{\text{kernel}}(h,r,t),
+\]
+every experimental term gated near zero at initialization. Reciprocal relations collapse
+head-ranking into tail-ranking of the inverse relation --- one evaluator code path, not two. Full
+module map in \texttt{03\_system\_architecture\_and\_implementation.pdf}.
+
+\subsection{Learned path selector (new this campaign)}
+\texttt{LearnedPathSelector} scores each candidate outgoing edge from source state, edge relation,
+query relation, destination base embedding, depth, and accumulated path priority; the top-$k$ kept
+edges are weighted by a differentiable $\sigma(\text{score})$ gate. Verified: exact budget
+compliance, determinism under fixed inputs, an explicit tie policy (lowest original index wins
+under an exact tie), permutation invariance of neighbor ordering, gradients reaching the selector's
+parameters, and --- the property that matters most --- gold-path preservation after 200 steps of
+supervised warmup on a synthetic fixture where only one of six candidate edges is correct.
+
+\subsection{Structural kernel residual (new this campaign)}
+Five variants of $\mu_{\text{total}} = \mu_{\text{learned}} + \sigma(\epsilon_r)\,W(\mu_{\text{kernel}}(U_x x,U_a a,U_q q))$
+share an identical architecture and trainable-parameter count: the real $E_8$ structure-constant
+tensor (\texttt{E8\_Exact\_v18\_2/f\_E8.npy}, $248^3$, Killing rank 248, Jacobi residual
+$\sim2\times10^{-13}$ per its own provenance record) and four matched controls. Every kernel gets a
+SHA-256 + Frobenius-norm + source provenance record.
+
+\section{Error and ranking certification}
+See \texttt{07\_certification\_error\_bounds\_and\_rank\_stability.pdf}. We certify exactly the
+case where no approximation occurs in the score path; we \emph{correctly refuse} to certify the
+moment a rank-reducing projector or the path reasoner's nonlinear envelope is present, verified
+with a margin of 2000 that still fails to certify --- proving the refusal is assumption-driven, not
+margin-driven.
+
+\section{Experimental protocol}
+Preregistered in \texttt{campaigns/gate12/preregistration.md} before any Phase C result was
+generated, including an explicit compute-budget declaration stating that the full 3-seed
+screening/5-seed confirmatory protocol across 13 ablation points would not be executed this
+session. What was executed instead (Tier 0, defined and frozen before results were seen): a
+1-epoch, 4-way base-expert screening pass on FB15K-237 (selecting TuckER), followed by a 2-seed
+comparison of TuckER alone (A0, full dataset) versus TuckER+path+seion (A3, 5,000-triple subsample
+--- a compute-budget deviation logged \emph{before} this A3 run, after a live timing probe showed
+the full-scale configuration did not complete a single epoch within 8 minutes).
+
+\section{Results}
+\label{sec:results}
+See \texttt{04\_gate12\_confirmatory\_benchmark\_report.pdf} for the numbers in full, and
+\texttt{11\_supplement.pdf} for every seed-level value. Headline (screening-tier, 2 seeds,
+non-confirmatory, A0/A3 confounded by the training-subset-size difference --- see
+\S\ref{sec:limits}): base-expert screening selected TuckER on FB15K-237 valid MRR
+($0.2534$ vs.\ ComplEx $0.2210$, DistMult $0.2195$, CP $0.2092$, 1 epoch, capped eval).
+
+\section{Ablations and controls}
+\label{sec:ablations}
+2 of the preregistered 13 causal-ladder points executed at dataset scale (A0, A3); the remaining
+11, plus the 5-point E8/control block, are implemented and unit-tested but not run at dataset
+scale this campaign. Full breakdown: \texttt{05\_ablations\_and\_causal\_controls.pdf}.
+
+\section{Efficiency and compression}
+Base-expert-only training on full FB15K-237 (dim 64, GPU): $\sim$80s for 5 epochs including
+evaluation. The path-reasoner-enabled configuration does not scale to full-dataset batches within
+this session's compute budget (\S\ref{sec:limits}) --- a real, measured, architectural finding
+(per-sample Python-loop BFS, GPU actively \emph{hurts} due to kernel-launch overhead on tiny
+per-sample operations, consistent with this repository's own prior finding of $3.2$--$3.5\times$
+GPU slowdown on small operations).
+
+\section{Limitations and negative results}
+\label{sec:limits}
+Full detail: \texttt{09\_negative\_results\_limitations\_and\_open\_problems.pdf}. Headline items:
+(1) the path-reasoner residual gate did not measurably open in a real 40-epoch training run,
+confounding the negative-control leakage test and, more importantly, raising an open question about
+whether the near-zero-init router design activates within realistic training budgets at all; (2)
+the path reasoner does not scale to full benchmark-dataset batches within a session's compute
+budget; (3) certification coverage is honestly $0\%$ for any model using the path reasoner; (4) no
+$E_8$-causal-attribution evidence was collected; (5) no confirmatory statistical campaign was run.
+
+\section{Conclusion}
+This campaign closes the engineering gaps the canonical commit explicitly left open (learned
+selector, $E_8$ residual with matched controls, certification chain, CI, several reproducibility
+correctness bugs caught and fixed by real execution rather than inspection) and executes a bounded,
+honestly-labeled first look at benchmark-scale behavior. It does not, and should not be read to,
+establish that any of SEION-KGR's experimental branches improve knowledge-graph link prediction.
+That question is open, and \S\ref{sec:limits} states plainly what would be required to answer it.
+
+\appendix
+\section{Appendix: reproduction}
+\texttt{08\_reproducibility\_software\_and\_artifacts.pdf} and \texttt{11\_supplement.pdf} carry
+every command and seed-level value needed to regenerate every number in this document.
+
+\end{document}
