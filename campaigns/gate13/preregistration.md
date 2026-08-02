@@ -331,14 +331,106 @@ starting attribution work:
    — the acceptance conditions tested are exactly the three the mission
    brief states (nonzero gradient, displacement, RMS ratio), no more.
 
-## 5. Gate 13.3 / 13.4 (attribution, certification)
+## 5. Gate 13.3 — Attribution Engine (executed, scoped)
 
-Deferred to a follow-up commit on this same campaign branch once 13.1/13.2
-land and their acceptance gates pass — recorded here as `OPEN` with the
-exact file list from the mission brief (`seion_kgr/attribution.py`,
-`seion_kgr/module_graph.py`, `tests/kgr/test_attribution.py`; the CP-closure
-/ LayerNorm / selector-stability bounds already partially exist in
-`seion_kgr/projection.py`, `seion_kgr/certification.py`).
+**Scope decision (read first):** the mission brief's per-layer module list
+(`path.layer_0.message`, `path.layer_1.projector`, ...) does not map onto
+this codebase — every reasoning layer reuses the SAME `mu`/`U`/`V`/`W`/
+`projector` weights (`PathReasoner.message` is called identically at
+every layer), so per-layer components are not independently ablatable
+parameters. Two decompositions are implemented instead:
+
+- **Path-internal** (`mu`, `residual`=`U+V+W`, `projector`) — genuinely
+  nonlinear: components are mean-aggregated across incoming edges then
+  passed through `LayerNorm(tanh(.))` at every hop, so telescoping here is
+  order-dependent in general and Shapley's averaging is doing real work.
+- **Branch-level** (`path`, `seion`, `structural_kernel`) — the total
+  score is a plain sum (`s = s_base + gamma*s_path + eta*s_seion +
+  s_kernel`), so this decomposition is EXACTLY order-independent by
+  construction — reported as a verified structural property, not
+  something attribution needed to discover.
+
+**New files:** `seion_kgr/module_graph.py` (module registry +
+`ablate_path_components`/`corrupt_module` context managers, both
+try/finally-safe), `seion_kgr/attribution.py` (`local_innovation`,
+`path_internal_score`, `path_internal_telescoping`, `path_internal_shapley`,
+`branch_level_telescoping`, `rank_flip_attribution`).
+
+**A real masking bug found while building this (same family as Gate
+13.2b's queried-edge fixture bug):** `path_internal_score` originally read
+the GATED total score; at a freshly-initialized model the router gate is
+exactly 0 (Gate 13.1), which multiplies away ALL internal-composition
+differences identically across every ablation subset, making every
+telescoping/Shapley number trivially zero regardless of what the
+internal components actually compute. Fixed by reading
+`breakdown["gamma_path_raw"]` (the PRE-gate path score) instead — the
+router gate itself is already separately tested
+(`PASS_ROUTER_ACTIVATION`); attribution over path-internal composition is
+a different question and must not be re-masked by the same gate.
+`rank_flip_attribution` legitimately DOES need the gated total score
+(real-world ranking), so its test manually opens the gate first rather
+than bypassing it in the function itself.
+
+**A second real finding — Shapley diffusion under multiplicative
+interaction:** corrupting the projector (via the coalition/Shapley game)
+made `mu`, not `projector`, receive the largest Shapley value. This is not
+a bug: the projector is a TRANSFORM applied to `mu+residual`'s sum, not a
+third additive term, so corrupting it creates genuine interaction that
+Shapley's averaged-over-orderings marginal contribution partly diffuses
+onto whatever the corrupted transform is applied to. The corrupted-module
+negative control test therefore uses `local_innovation` (each component's
+own direct, un-gated output magnitude) instead of Shapley for
+localization — Shapley remains the right tool for the conservation/
+efficiency/dummy-module properties, which don't hit this issue. A third
+finding: scaling the projector's `raw` parameter does NOT corrupt it,
+because `StiefelProjector.Q()`'s QR retraction is scale-invariant
+(`qr(c*raw)` gives the same `Q` as `qr(raw)` for any `c>0`) — `corrupt_module`
+corrupts the projector by monkeypatching `.apply` instead.
+
+**Tests** (`tests/kgr/test_gate13_attribution.py`, 7 tests, all pass):
+telescoping conservation (state+score, all 3! path-internal orders, all
+3! branch-level orders — max reconstruction error `< 1e-5`, the FP32
+tolerance frozen in the mission brief §13.3.3); Shapley efficiency
+(`sum(phi_i) == F_full - F_empty`, same tolerance); a dummy
+(zero-weight) module receiving exactly-zero attribution; the corrupted-
+module negative control for ALL THREE path-internal modules (not just
+one example), each correctly localized via `local_innovation`'s relative
+increase, each restoring to its EXACT pre-corruption value; rank-flip
+attribution (structure + at least one real flip across the fixture); and
+legacy/batched attribution parity (`path_internal_shapley` agrees to
+`< 1e-5` between backends — verified, since `ablate_path_components` only
+monkeypatches `.message()`, present with an identical signature on both
+`PathReasoner` and `BatchedPathReasoner`).
+
+**`PASS_ATTRIBUTION_CONSERVATION`:** `telescoping_state_conservation=PASS`,
+`telescoping_score_conservation=PASS`, `shapley_efficiency=PASS`,
+`dummy_module_attribution_zero=PASS`, `corrupted_module_localization=PASS`,
+`signed_gate_attribution=PASS` (via the Gate 13.1 precision's signed-gate
+diagnostics, §4c), `legacy_batched_attribution_parity=PASS`,
+`rank_flip_reconstruction=PASS`, `tests_failed=0` (145/145 across
+`tests/kgr`, this file's 7 included).
+
+**Explicitly deferred, logged `OPEN` (Gate 13.3b, a follow-up analogous to
+13.2b):**
+- The `runs/<run_id>/{module_error_attribution,query_error_attribution,
+  rank_flip_attribution,shapley_attribution}.jsonl` +
+  `{module_interactions,attribution_summary,attribution_manifest}.json` +
+  `bound_vs_observed.csv` output-file pipeline. The COMPUTATION functions
+  that would produce these exist and are tested; there is no CLI
+  entrypoint yet that runs attribution over a real trained checkpoint on
+  a real dataset and writes them to disk (this campaign's attribution
+  work is exercised entirely through small synthetic-fixture unit tests,
+  same convention as Gate 13.1/13.2's acceptance tests before their own
+  13.2b production-integration follow-up).
+- `certified_bound_contribution` / `bound_vs_observed.csv` (mission brief
+  §13.3.6): this requires the CP-closure/LayerNorm/selector-stability
+  bound machinery that is Gate 13.4's subject (`projection.py`,
+  `certification.py` already have partial building blocks) — not
+  duplicated here, per the mission brief's own phase separation
+  (13.3 attribution, THEN 13.4 certification).
+- Monte Carlo Shapley (64-256 permutations) for `m > 8` modules — not
+  needed yet since the current module sets (`3` path-internal, `3`
+  branch-level) are small enough for full enumeration (`3! = 6`).
 
 ## 6. What this campaign does not claim
 
@@ -358,3 +450,8 @@ as it was at the end of Gate 12, pending a separately budgeted Gate
 | Gate 13.2b execution | A real device-placement bug (CSR adjacency tensors stuck on CPU; `budgeted_bfs`'s RNG generator hardcoded to a CPU device) was found only when the acceptance run exercised the actual CUDA path — every earlier Gate 13.2/13.2b test ran on CPU and would not have caught it | Fixed: `CSRAdjacency.to(device)` (new method, called once in `train.py` alongside `model.to(device)`), and the `budgeted_bfs` generator is now constructed on `head_ids.device` instead of a hardcoded `"cpu"`. Recorded here as a concrete argument for why an end-to-end real-hardware acceptance run matters beyond unit-level parity tests. |
 | Gate 13.2b execution | `path_backend` default left at `"legacy"`, NOT flipped to `"batched"` | The mission brief's own sequencing treats "flip the default" as a decision made only after parity evidence is reviewed, not an automatic consequence of tests passing — deliberately left as a separate, explicit follow-up decision, logged `OPEN` |
 | Gate 13.2 execution | Only `selector_mode in {"full_neighborhood", "budgeted_bfs"}` implemented in `BatchedPathReasoner`; `"learned_topk"` and `"oracle_or_gold_path_debug_mode"` remain legacy-only | Not required by the preregistered parity/scaling acceptance conditions (§4); vectorizing the learned selector's MLP score is separable follow-up work, logged as `OPEN` rather than claimed done |
+| Gate 13.3 execution | Module granularity scoped to path-internal (`mu`/`residual`/`projector`) + branch-level (`path`/`seion`/`structural_kernel`), NOT the mission brief's per-layer list (`path.layer_0.message`, etc.) | Every reasoning layer reuses the SAME `mu`/`U`/`V`/`W`/`projector` weights in this codebase — per-layer components are not independently ablatable parameters as written; attributing to the components that ARE independently ablatable is the honest scope |
+| Gate 13.3 execution | `path_internal_score`/`path_internal_telescoping`/`path_internal_shapley` read the PRE-gate `gamma_path_raw` breakdown field, not the gated total score | The router gate is exactly 0 at a fresh model (Gate 13.1), which would multiply away every ablation subset's difference identically, masking the entire internal-composition question this machinery exists to answer — the gate itself is already separately tested |
+| Gate 13.3 execution | The corrupted-module negative control uses `local_innovation` (direct per-component magnitude), not `path_internal_shapley`, to test localization | Verified empirically: corrupting the projector via the Shapley coalition game made `mu`, not `projector`, receive the largest Shapley value — a real diffusion effect under multiplicative interaction (the projector is a TRANSFORM applied to mu+residual's sum, not a third additive term), not an implementation bug. Shapley remains correct and used for conservation/efficiency/dummy-module properties, which don't hit this issue |
+| Gate 13.3 execution | The `runs/<run_id>/*.jsonl`/`*.json`/`*.csv` output-file pipeline from the mission brief §13.3.4-13.3.6 is NOT implemented — the underlying computation functions are, and are tested via synthetic fixtures only | Same pattern as Gate 13.2 before its own 13.2b production-integration follow-up: proving the mechanism is correct comes before wiring it into a real run-producing CLI entrypoint. Logged `OPEN` as Gate 13.3b |
+| Gate 13.3 execution | `certified_bound_contribution`/`bound_vs_observed.csv` (mission brief §13.3.6) not implemented here | That machinery is Gate 13.4's subject (CP-closure/LayerNorm/selector-stability bounds) per the mission brief's own phase ordering (13.3 attribution, then 13.4 certification) — not duplicated ahead of that gate |
