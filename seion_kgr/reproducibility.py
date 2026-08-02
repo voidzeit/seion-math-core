@@ -123,8 +123,47 @@ def set_seed(seed: int) -> None:
         torch.cuda.manual_seed_all(seed)
 
 
-def build_run_contract(out_dir: str | Path, command: Sequence[str], dataset_paths: Mapping[str, str]) -> Dict[str, Any]:
-    out = ensure_dir(out_dir)
+RUN_CONTROL_FIELDS = (
+    "seed", "out_dir", "resume", "self_test", "cpu",
+    "epochs", "eval_every", "eval_batch", "eval_subset", "eval_max_queries", "entity_block_eval",
+)
+
+
+def config_identity_hash(resolved_config: Mapping[str, Any], exclude: Sequence[str] = RUN_CONTROL_FIELDS) -> str:
+    """Mandate §I.5: configuration identity is not execution identity. A
+    resume/retry/CPU-vs-GPU duplicate, or a run continued for more
+    epochs, must hash to the SAME `configuration_id` — only the
+    architecture/data/optimization hyperparameters that actually change
+    what is being learned count as "configuration"; run-control knobs
+    (seed, device, epoch budget, eval cadence/subset) do not. Each
+    actual invocation still gets its own `execution_id`."""
+    filtered = {k: v for k, v in sorted(resolved_config.items()) if k not in exclude}
+    blob = json.dumps(filtered, sort_keys=True, default=str).encode("utf-8")
+    return hashlib.sha256(blob).hexdigest()[:16]
+
+
+def new_execution_id() -> str:
+    import uuid
+
+    return uuid.uuid4().hex[:16]
+
+
+def build_run_contract(
+    out_dir: str | Path,
+    command: Sequence[str],
+    dataset_paths: Mapping[str, str],
+    resolved_config: Optional[Mapping[str, Any]] = None,
+    resume_from: Optional[str] = None,
+    allow_existing: bool = False,
+) -> Dict[str, Any]:
+    out = Path(out_dir)
+    if out.exists() and any(out.iterdir()) and not allow_existing and resume_from is None:
+        raise FileExistsError(
+            f"--out_dir {out} already exists and is not empty. Reusing an output directory silently "
+            "mixes provenance across configurations (mandate §I.5) — use a fresh --out_dir, or pass "
+            "--resume to explicitly continue the SAME configuration."
+        )
+    ensure_dir(out)
     datasets = {name: file_manifest(path) for name, path in dataset_paths.items() if path}
     git = git_manifest(Path(__file__).resolve().parent)
     environment = environment_manifest()
@@ -134,6 +173,9 @@ def build_run_contract(out_dir: str | Path, command: Sequence[str], dataset_path
     save_json(datasets, out / "dataset_manifest.json")
     save_json(git, out / "git_manifest.json")
     atomic_write_text(out / "command.txt", " ".join(command) + "\n")
+
+    configuration_id = config_identity_hash(resolved_config) if resolved_config else None
+    execution_id = new_execution_id()
     manifest = {
         "schema": "seion-kgr-run-v26.0",
         "created_utc": utc_now(),
@@ -141,12 +183,20 @@ def build_run_contract(out_dir: str | Path, command: Sequence[str], dataset_path
         "command": " ".join(command),
         "datasets": datasets,
         "git": git,
+        "configuration_id": configuration_id,
+        "execution_id": execution_id,
+        "parent_execution_id": None,  # filled in by the caller if this run is a --resume continuation
+        "resume_from": resume_from,
         "scientific_warnings": [
             "A numerical regularizer is not a theorem.",
             "certified_bound and empirical_error_predictor are separate objects; never conflate them.",
             "A smoke-scale run (few epochs, one seed) is not a confirmatory campaign (Gate 12).",
+            "A resume, retry, CPU duplicate, or GPU duplicate is not a new seed (mandate §I.5) — "
+            "compare execution_id, not just configuration_id + seed, when counting independent runs.",
         ],
     }
+    if resolved_config is not None:
+        save_json(dict(resolved_config), out / "resolved_config.json")
     save_json(manifest, out / "run_manifest.json")
     return manifest
 

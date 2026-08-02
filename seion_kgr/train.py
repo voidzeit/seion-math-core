@@ -148,9 +148,11 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
     repro.set_seed(args.seed)
     device = torch.device("cpu" if args.cpu or not torch.cuda.is_available() else "cuda")
 
+    run_manifest = None
     if args.out_dir:
-        repro.build_run_contract(
+        run_manifest = repro.build_run_contract(
             args.out_dir, sys.argv, {"train": args.train, "valid": args.valid, "test": args.test},
+            resolved_config=vars(args), resume_from=args.resume or None, allow_existing=bool(args.resume),
         )
 
     kg = load_knowledge_graph(args.train, args.valid, args.test)
@@ -184,14 +186,28 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
     start_epoch = 0
     global_step = 0
     best_mrr = -math.inf
+    parent_execution_id = None
     if args.resume:
         ckpt = repro.load_checkpoint(args.resume)
+        parent_execution_id = ckpt.get("args", {}).get("_execution_id")
+        parent_config_id = ckpt.get("args", {}).get("_configuration_id")
+        this_config_id = run_manifest["configuration_id"] if run_manifest else None
+        if parent_config_id is not None and this_config_id is not None and parent_config_id != this_config_id:
+            raise ValueError(
+                f"--resume checkpoint's configuration_id ({parent_config_id}) does not match this "
+                f"run's resolved configuration_id ({this_config_id}) — mandate §I.5 forbids treating "
+                "a config change as a resume; start a fresh --out_dir instead. (Checked BEFORE loading "
+                "the state dict, so this fails with a clear message instead of a raw shape-mismatch error.)"
+            )
         model.load_state_dict(ckpt["model_state"])
         optimizer.load_state_dict(ckpt["optimizer_state"])
         start_epoch = int(ckpt["epoch"]) + 1
         global_step = int(ckpt["global_step"])
         best_mrr = float(ckpt["best_mrr"])
-        print(f"[resume] loaded {args.resume}: start_epoch={start_epoch} best_mrr={best_mrr}", file=sys.stderr)
+        if run_manifest is not None:
+            run_manifest["parent_execution_id"] = parent_execution_id
+            repro.save_json(run_manifest, Path(args.out_dir) / "run_manifest.json")
+        print(f"[resume] loaded {args.resume}: start_epoch={start_epoch} best_mrr={best_mrr} parent_execution_id={parent_execution_id}", file=sys.stderr)
 
     for epoch in range(start_epoch, args.epochs):
         model.train()
@@ -287,6 +303,9 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         if args.out_dir:
             rng_state = repro.rng_state_snapshot(args.seed, rng)
             args_dict = {k: v for k, v in vars(args).items()}
+            args_dict["_configuration_id"] = run_manifest["configuration_id"] if run_manifest else None
+            args_dict["_execution_id"] = run_manifest["execution_id"] if run_manifest else None
+            args_dict["_parent_execution_id"] = parent_execution_id
             repro.save_checkpoint(Path(args.out_dir) / "last.pt", model.state_dict(), optimizer.state_dict(), epoch, global_step, best_mrr, args_dict, rng_state)
             if is_eval_epoch and record.get("new_best"):
                 repro.save_checkpoint(Path(args.out_dir) / "best.pt", model.state_dict(), optimizer.state_dict(), epoch, global_step, best_mrr, args_dict, rng_state)
