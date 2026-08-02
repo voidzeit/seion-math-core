@@ -35,6 +35,18 @@ constructed with the other — `path_backend` is an execution detail, not a
 different architecture. Score computation always reads off a
 `PathReasonerOutput` (`path_reasoner_output.py`), so this file has exactly
 ONE readout implementation regardless of which backend produced it.
+
+Signed-gate declaration (post-Gate-13.2b precision, `campaigns/gate13/`):
+`gamma_r = gate_g_max * tanh(alpha_r)` ranges over `(-gate_g_max,
+gate_g_max)`, NOT `(0, 1)` like the old `sigmoid`. **The Gate 13 routers
+are signed residual gates, not convex-mixing weights** — a trained
+`gamma_r < 0` is not a failure mode, it means the branch learned to
+SUBTRACT a residual correction from the base score for that relation, not
+to blend the two additively. Any downstream reporting (attribution,
+diagnostics) must track `signed` and `absolute` contributions separately
+(see `compute_gate_diagnostics` in `train.py`) — reducing a gate to "how
+much did it contribute" without a sign is a category error for this
+architecture.
 """
 from __future__ import annotations
 
@@ -182,7 +194,7 @@ class SeionKGRv26(nn.Module):
         r = self.relation(r_ids)
         t = self._tail_embed(t_ids)
         s = self.base.score_positive(h, r, t)
-        breakdown: Dict[str, torch.Tensor] = {}
+        breakdown: Dict[str, torch.Tensor] = {"s_base": s}
 
         if self.enable_path and adjacency is not None:
             output = self._run_path_reasoner(h_ids, r_ids, t_ids, adjacency, r, seed, training)
@@ -193,6 +205,7 @@ class SeionKGRv26(nn.Module):
             s = s + gamma * s_path
             breakdown["gamma_path"] = gamma * s_path
             breakdown["gamma_path_gate"] = gamma
+            breakdown["gamma_path_raw"] = s_path  # PRE-gate branch score (signed-gate diagnostics)
 
         if self.enable_seion:
             seion_t = self.entity(t_ids)  # always the shared table, see score_tail_candidates note
@@ -201,12 +214,17 @@ class SeionKGRv26(nn.Module):
             s = s + eta * s_seion
             breakdown["eta_seion"] = eta * s_seion
             breakdown["eta_seion_gate"] = eta
+            breakdown["eta_seion_raw"] = s_seion  # PRE-gate branch score
 
         if self.enable_structural_kernel:
             kernel_t = self.entity(t_ids)  # shared table, same convention as the seionic branch
-            raw = self.structural_kernel(h, r, r, r_ids)  # gate is internal to the module (near-zero init)
-            s_kernel = (raw * kernel_t).sum(dim=-1) / math.sqrt(self.dim)
+            gated_vec, kernel_breakdown = self.structural_kernel(h, r, r, r_ids, return_breakdown=True)
+            s_kernel = (gated_vec * kernel_t).sum(dim=-1) / math.sqrt(self.dim)
+            s_kernel_raw = (kernel_breakdown["raw_branch_output"] * kernel_t).sum(dim=-1) / math.sqrt(self.dim)
             s = s + s_kernel
+            breakdown["kernel_structural"] = s_kernel
+            breakdown["kernel_structural_gate"] = kernel_breakdown["gate"]
+            breakdown["kernel_structural_raw"] = s_kernel_raw
 
         if return_breakdown:
             breakdown["s_total"] = s

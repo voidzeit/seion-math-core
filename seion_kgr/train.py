@@ -121,17 +121,43 @@ def compute_path_reasoner_perf(
     }
 
 
+def _pearson_corr(x: torch.Tensor, y: torch.Tensor) -> float:
+    x = x - x.mean()
+    y = y - y.mean()
+    denom = (x.pow(2).sum().sqrt() * y.pow(2).sum().sqrt()).clamp_min(1e-12)
+    return float((x * y).sum() / denom)
+
+
+# Gate 13 signed-gate declaration (see model.py's module docstring): each
+# entry is (breakdown key for the GATED contribution, breakdown key for the
+# RAW pre-gate branch score, a getter returning (raw_alpha_weight, gate_g_max)
+# for that branch's router parameter — the kernel branch's gate lives inside
+# `model.structural_kernel`, not on `model` itself, hence the getter indirection).
+_GATE_BRANCHES = (
+    ("gamma_path", "gamma_path_raw", lambda m: (m.gamma_raw.weight, m.gate_g_max)),
+    ("eta_seion", "eta_seion_raw", lambda m: (m.eta_raw.weight, m.gate_g_max)),
+    ("kernel_structural", "kernel_structural_raw", lambda m: (m.structural_kernel.epsilon_raw.weight, m.structural_kernel.gate_g_max)),
+)
+
+
 def compute_gate_diagnostics(
     model: SeionKGRv26, kg: KnowledgeGraph, adjacency, device: torch.device, seed: int, epoch: int, sample_size: int = 512,
 ) -> list:
-    """Gate 13.1 acceptance evidence: per-branch gate displacement from its
-    zero init and the RMS share of the total score the gated branch
-    actually contributes, sampled on real validation triples (not the
-    training batch, so this never influences gradients). Returns one
-    record per active branch, or ``[]`` if neither the path nor seion
-    branch is enabled."""
+    """Gate 13.1 acceptance evidence + signed-gate diagnostics (post-13.2b
+    precision): per-branch gate displacement from its zero init and the RMS
+    share of the total score the gated branch actually contributes, sampled
+    on real validation triples (not the training batch, so this never
+    influences gradients). Returns one record per active branch (path,
+    seion, structural kernel), or ``[]`` if none are enabled.
+
+    **The gates are signed** (`gamma_r = gate_g_max * tanh(alpha_r) in
+    (-gate_g_max, gate_g_max)`, not a `(0,1)` mixing weight — see model.py's
+    docstring), so this reports `signed_*` and `absolute_*` contributions
+    separately: a negative `signed_branch_contribution` means the branch
+    learned to SUBTRACT from the base score for that relation, which is not
+    a failure mode."""
     records = []
-    if not (model.enable_path or model.enable_seion):
+    if not (model.enable_path or model.enable_seion or model.enable_structural_kernel):
         return records
     sample = kg.valid[:sample_size] if len(kg.valid) > sample_size else kg.valid
     if not sample:
@@ -144,18 +170,27 @@ def compute_gate_diagnostics(
         _, breakdown = model.score_positive(h, r, t, adjacency, seed, training=False, return_breakdown=True)
     model.train()
     s_total_rms = float(breakdown["s_total"].pow(2).mean().sqrt().item()) if "s_total" in breakdown else 0.0
-    for branch, raw_name in (("gamma_path", "gamma_raw"), ("eta_seion", "eta_raw")):
-        if branch not in breakdown:
+    s_base = breakdown["s_base"].detach()
+    for gated_key, raw_key, getter in _GATE_BRANCHES:
+        if gated_key not in breakdown:
             continue
-        raw = getattr(model, raw_name).weight.squeeze(-1).detach()
-        gamma = model.gate_g_max * torch.tanh(raw)
-        branch_rms = float(breakdown[branch].pow(2).mean().sqrt().item())
+        alpha_weight, gate_g_max = getter(model)
+        alpha = alpha_weight.squeeze(-1).detach()
+        gamma = gate_g_max * torch.tanh(alpha)
+        gated_contribution = breakdown[gated_key].detach()  # gamma * s_branch_raw, per-query
+        raw_branch_score = breakdown[raw_key].detach()  # s_branch_raw (pre-gate), per-query
+        branch_rms = float(gated_contribution.pow(2).mean().sqrt().item())
         records.append({
             "epoch": epoch,
-            "branch": branch,
-            "alpha_mean": float(raw.mean().item()),
-            "gamma_mean": float(gamma.mean().item()),
-            "gamma_displacement_mean": float(gamma.abs().mean().item()),  # gamma(0) == 0 exactly, so |gamma - gamma(0)| == |gamma|
+            "branch": gated_key,
+            "alpha_mean": float(alpha.mean().item()),
+            "gate_signed_mean": float(gamma.mean().item()),
+            "gate_absolute_mean": float(gamma.abs().mean().item()),
+            "gamma_displacement_mean": float(gamma.abs().mean().item()),  # gamma(0) == 0 exactly, so |gamma - gamma(0)| == gate_absolute_mean
+            "branch_score_rms": float(raw_branch_score.pow(2).mean().sqrt().item()),
+            "signed_branch_contribution": float(gated_contribution.mean().item()),
+            "absolute_branch_contribution": float(gated_contribution.abs().mean().item()),
+            "correlation_with_base_score": _pearson_corr(gated_contribution, s_base),
             "rms_contribution_ratio": branch_rms / s_total_rms if s_total_rms > 0 else 0.0,
         })
     return records
@@ -278,6 +313,16 @@ def _module_diagnostics(model: SeionKGRv26, args: argparse.Namespace, last_batch
 
 
 def train(args: argparse.Namespace) -> Dict[str, Any]:
+    if args.path_backend == "batched" and args.path_selector_mode == "learned_topk":
+        # Explicit rejection, not a silent fallback to a different mode or
+        # to the legacy backend: BatchedPathReasoner's constructor already
+        # raises on this combination (see reasoner_batched.py's
+        # SUPPORTED_SELECTOR_MODES), but failing here — before any KG
+        # loading or model construction — gives a fast, unambiguous error
+        # instead of burning wall-clock first.
+        raise NotImplementedError(
+            "learned_topk is not yet supported by the batched path backend"
+        )
     repro.set_seed(args.seed)
     device = torch.device("cpu" if args.cpu or not torch.cuda.is_available() else "cuda")
 
@@ -414,6 +459,8 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                 last_batch_grad_norms["gamma_raw"] = float(model.gamma_raw.weight.grad.norm().item())
             if args.enable_seion and model.eta_raw.weight.grad is not None:
                 last_batch_grad_norms["eta_raw"] = float(model.eta_raw.weight.grad.norm().item())
+            if model.enable_structural_kernel and model.structural_kernel.epsilon_raw.weight.grad is not None:
+                last_batch_grad_norms["epsilon_raw"] = float(model.structural_kernel.epsilon_raw.weight.grad.norm().item())
             optimizer.step()
             global_step += 1
 
@@ -454,7 +501,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
 
             gate_records = compute_gate_diagnostics(model, kg, adjacency, device, args.seed, epoch)
             if gate_records and gate_diagnostics_path is not None:
-                grad_key = {"gamma_path": "gamma_raw", "eta_seion": "eta_raw"}
+                grad_key = {"gamma_path": "gamma_raw", "eta_seion": "eta_raw", "kernel_structural": "epsilon_raw"}
                 for rec in gate_records:
                     rec["grad_alpha_norm"] = last_batch_grad_norms.get(grad_key[rec["branch"]], 0.0)
                     repro.append_jsonl(rec, gate_diagnostics_path)

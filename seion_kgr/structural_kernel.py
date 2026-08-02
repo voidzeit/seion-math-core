@@ -186,14 +186,23 @@ class StructuralKernelResidual(nn.Module):
         matrix = torch.einsum("afd,...f->...ad", self.K, inner)
         return torch.einsum("...ad,...a->...d", matrix, x)
 
-    def forward(self, x: torch.Tensor, a: torch.Tensor, q: torch.Tensor, relation_ids: torch.Tensor) -> torch.Tensor:
+    def forward(self, x: torch.Tensor, a: torch.Tensor, q: torch.Tensor, relation_ids: torch.Tensor, return_breakdown: bool = False):
+        """``return_breakdown=True`` additionally returns ``{"raw_branch_output":
+        out, "gate": eps}`` (both PRE the final ``eps * out`` gating) —
+        used by ``model.py``'s signed-gate diagnostics, so the kernel
+        branch's un-gated contribution can be measured the same way the
+        path/seion branches' is."""
         xk, ak, qk = self.Ux(x), self.Ua(a), self.Uq(q)
         raw = self.mu_kernel(xk, ak, qk)
         out = self.W(raw)
         eps = self.gate_g_max * torch.tanh(self.epsilon_raw(relation_ids).squeeze(-1))
-        while eps.ndim < out.ndim:
-            eps = eps.unsqueeze(-1)
-        return eps * out
+        eps_broadcast = eps
+        while eps_broadcast.ndim < out.ndim:
+            eps_broadcast = eps_broadcast.unsqueeze(-1)
+        gated = eps_broadcast * out
+        if return_breakdown:
+            return gated, {"raw_branch_output": out, "gate": eps}
+        return gated
 
     def parameter_count_outside_kernel(self) -> int:
         """For matched-control accounting: trainable parameter count

@@ -275,6 +275,62 @@ component.
   (`selector_scores`/`selector_margins`/`reached_gold`);
   `expanded_edges_per_second`/`selector_keep_ratio` perf fields.
 
+## 4c. Precisions applied before Gate 13.3 (executed)
+
+Three corrections made after reviewing the Gate 13.2b evidence, before
+starting attribution work:
+
+1. **Explicit rejection, not silent fallback.** `train.py`'s `train()` now
+   raises `NotImplementedError("learned_topk is not yet supported by the
+   batched path backend")` immediately (before any dataset load or model
+   construction) when `--path_backend batched --path_selector_mode
+   learned_topk` are combined — this complements (does not replace)
+   `BatchedPathReasoner`'s own constructor-level `ValueError` for the same
+   combination. Tested in
+   `tests/kgr/test_gate13_2b_production_integration.py::test_batched_backend_with_learned_topk_is_explicitly_rejected`.
+   `path_backend` stays `"legacy"` by default; only flip it once
+   `learned_topk` has parity+scaling evidence on the batched backend too.
+2. **Signed-gate declaration.** `model.py`'s module docstring now states
+   explicitly: **the Gate 13 routers are signed residual gates
+   (`gamma_r in (-gate_g_max, gate_g_max)`), not `(0,1)` convex-mixing
+   weights** — a trained `gamma_r < 0` means the branch learned to
+   SUBTRACT a residual correction, not a failure mode. `score_positive`'s
+   `return_breakdown` now additionally exposes each branch's RAW (pre-gate)
+   score and the base score (`s_base`, `gamma_path_raw`, `eta_seion_raw`,
+   `kernel_structural_raw`/`kernel_structural`/`kernel_structural_gate` —
+   the kernel branch's own `StructuralKernelResidual.forward` also grew a
+   `return_breakdown` option to expose its pre-gate output). `train.py`'s
+   `compute_gate_diagnostics` now reports, per branch (path, seion, AND
+   structural kernel — previously only path/seion were logged):
+   `gate_signed_mean`, `gate_absolute_mean`, `branch_score_rms`,
+   `signed_branch_contribution`, `absolute_branch_contribution`,
+   `correlation_with_base_score`, alongside the existing `alpha_mean`,
+   `rms_contribution_ratio`, `grad_alpha_norm`. Schema updated in
+   `artifact_schema.json`.
+3. **Per-branch router activation micro-tests.** `PASS_ROUTER_ACTIVATION`
+   (Gate 13.1) was demonstrated on the path branch only.
+   `tests/kgr/test_gate13_seion_router_activation.py` and
+   `tests/kgr/test_gate13_structural_kernel_router_activation.py` add
+   `PASS_SEION_ROUTER_ACTIVATION` and
+   `PASS_STRUCTURAL_KERNEL_ROUTER_ACTIVATION`: a frozen "teacher" of the
+   SAME functional form as each branch (a `SeionicScalarScorer` for the
+   seion test; a `StructuralKernelResidual` sharing the SAME frozen kernel
+   tensor `K` as the student, since `K` is a non-trainable buffer — only
+   the teacher's adapters/gate differ, and its gate must be manually
+   opened away from its own 0-init to have any preference to teach)
+   generates gold-tail labels a bare ComplEx base cannot represent in
+   general. Both tests pass: SEION gate reaches `eta in [-0.297,
+   -0.255]` across the two relations after 200 epochs; structural-kernel
+   gate reaches `eps in [-0.352, -0.120]` — both `> delta_gate=0.05` in
+   absolute value, both with nonzero router gradient, both with RMS
+   contribution ratio `> 0.05`. Unlike the path test, neither attempts a
+   held-out-generalization claim: SEION/structural-kernel have no graph
+   structure to exploit independently of direct supervision (unlike the
+   path branch, whose entities receive indirect structural signal from
+   OTHER edges even for held-out queries), so that framing does not apply
+   — the acceptance conditions tested are exactly the three the mission
+   brief states (nonzero gradient, displacement, RMS ratio), no more.
+
 ## 5. Gate 13.3 / 13.4 (attribution, certification)
 
 Deferred to a follow-up commit on this same campaign branch once 13.1/13.2

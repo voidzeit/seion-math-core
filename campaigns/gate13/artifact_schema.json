@@ -1,15 +1,21 @@
 {
   "gate_diagnostics.jsonl": {
-    "produced_by": "seion_kgr/train.py (Gate 13.1)",
-    "one_record_per": "eval epoch",
+    "produced_by": "seion_kgr/train.py (Gate 13.1; signed-gate fields added post-13.2b)",
+    "one_record_per": "eval epoch x active branch",
+    "signed_gate_note": "Gate 13 routers are SIGNED residual gates (gamma_r in (-g_max,g_max)), not (0,1) convex-mixing weights -- a negative signed_branch_contribution means the branch learned to SUBTRACT from the base score, not a failure mode. See model.py's module docstring.",
     "fields": {
       "epoch": "int",
-      "branch": "string, one of ['gamma_path', 'eta_seion']",
+      "branch": "string, one of ['gamma_path', 'eta_seion', 'kernel_structural']",
       "alpha_mean": "float, mean pre-activation alpha_r across relations",
-      "gamma_mean": "float, mean gate value g_max*tanh(alpha_r)",
-      "gamma_displacement_mean": "float, mean |gamma_r - gamma_r(0)|",
-      "grad_alpha_norm": "float, gradient norm on the router embedding this step",
-      "rms_contribution_ratio": "float, RMS(gamma_r * s_branch) / RMS(s_total), computed on the eval batch"
+      "gate_signed_mean": "float, mean signed gate value g_max*tanh(alpha_r) -- can be negative",
+      "gate_absolute_mean": "float, mean |gate value|",
+      "gamma_displacement_mean": "float, mean |gamma_r - gamma_r(0)| -- identical to gate_absolute_mean since gamma_r(0)=0 exactly",
+      "branch_score_rms": "float, RMS of the RAW (pre-gate) branch score s_branch",
+      "signed_branch_contribution": "float, mean(gamma_r * s_branch) -- SIGNED, can be negative",
+      "absolute_branch_contribution": "float, mean(|gamma_r * s_branch|)",
+      "correlation_with_base_score": "float in [-1,1], Pearson correlation between the gated branch contribution and the base expert's score s_base, per query",
+      "rms_contribution_ratio": "float, RMS(gamma_r * s_branch) / RMS(s_total), computed on the eval batch",
+      "grad_alpha_norm": "float, gradient norm on the router embedding this step"
     }
   },
   "module_error_attribution.jsonl": {

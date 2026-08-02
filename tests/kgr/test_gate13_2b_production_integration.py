@@ -13,10 +13,13 @@ from __future__ import annotations
 
 import torch
 
+import pytest
+
 from seion_kgr.frontier_ops import build_csr_adjacency
 from seion_kgr.losses import negative_sampling_loss
 from seion_kgr.model import SeionKGRv26
 from seion_kgr.reasoner import Adjacency
+from seion_kgr.train import build_parser, train
 
 TOLERANCE = 1e-4  # campaigns/gate13/preregistration.md §2 NONINFERIORITY_MARGIN
 
@@ -246,3 +249,20 @@ def test_checkpoint_trained_with_legacy_loads_into_batched_and_matches():
         pos_legacy = legacy.score_positive(h, r, t, adjacency, seed=0, training=False)
         pos_batched = batched.score_positive(h, r, t, csr, seed=0, training=False)
     assert (pos_legacy - pos_batched).abs().max().item() < TOLERANCE
+
+
+# ------------------------------------------------------------------ explicit rejection, not silent fallback
+
+
+def test_batched_backend_with_learned_topk_is_explicitly_rejected(tmp_path):
+    """``learned_topk`` is not vectorized (Gate 13.2's documented scope
+    cut). Combining it with ``--path_backend batched`` must fail loudly and
+    immediately — not silently fall back to a different selector mode or to
+    the legacy backend, and not waste time loading a dataset first."""
+    args = build_parser().parse_args([
+        "--train", "dummy_train.txt", "--valid", "dummy_valid.txt", "--test", "dummy_test.txt",
+        "--out_dir", str(tmp_path), "--enable_path",
+        "--path_backend", "batched", "--path_selector_mode", "learned_topk",
+    ])
+    with pytest.raises(NotImplementedError, match="learned_topk"):
+        train(args)  # must raise before ever touching --train/--valid/--test (which don't even exist on disk)
