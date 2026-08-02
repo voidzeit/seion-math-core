@@ -28,10 +28,23 @@ from .losses import n3_regularizer, negative_sampling_loss
 from .model import SeionKGRv26
 from .rank_controller import ModuleDiagnostics
 from .reasoner import Adjacency
+from .structural_kernel import StructuralKernelResidual, build_kernel, load_e8_info, load_e8_kernel
 
 
 def _inverse_relation(r: int, num_rel_orig: int) -> int:
     return r + num_rel_orig if r < num_rel_orig else r - num_rel_orig
+
+
+def build_structural_kernel(variant: str, dim: int, num_relations_total: int, seed: int, kernel_dim: int) -> Any:
+    """Contract CLM_KGR_018 control battery, wired for CLI use. Returns
+    ``None`` for ``variant="none"`` (the default — branch disabled)."""
+    if variant == "none":
+        return None
+    needs_real_e8 = variant in ("E8_exact", "permuted_indices", "sign_shuffled")
+    e8_kernel = load_e8_kernel() if needs_real_e8 else None
+    e8_info = load_e8_info() if variant == "E8_exact" else None
+    K, provenance = build_kernel(variant, e8_kernel=e8_kernel, dim=kernel_dim, seed=seed, e8_info=e8_info)
+    return StructuralKernelResidual(dim=dim, K=K, num_relations_total=num_relations_total, provenance=provenance)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -56,6 +69,16 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--enable_seion", action="store_true")
     p.add_argument("--seion_rank", type=int, default=32)
+
+    p.add_argument(
+        "--structural_kernel_variant",
+        choices=["none", "zero_kernel", "random_scale_matched", "permuted_indices", "sign_shuffled", "E8_exact"],
+        default="none",
+        help="none = branch disabled (default). E8_exact/permuted_indices/sign_shuffled require "
+             "E8_Exact_v18_2/f_E8.npy on local disk (not committed to git).",
+    )
+    p.add_argument("--structural_kernel_dim", type=int, default=248, help="ignored for E8_exact/permuted_indices/sign_shuffled (kernel_dim is fixed by the loaded file)")
+    p.add_argument("--structural_kernel_seed", type=int, default=0)
 
     p.add_argument("--epochs", type=int, default=3)
     p.add_argument("--batch_size", type=int, default=256)
@@ -131,14 +154,19 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         )
 
     kg = load_knowledge_graph(args.train, args.valid, args.test)
+    structural_kernel = build_structural_kernel(
+        args.structural_kernel_variant, args.dim, kg.num_relations_total, args.structural_kernel_seed, args.structural_kernel_dim,
+    )
     model = SeionKGRv26(
         num_entities=kg.num_entities, num_relations_total=kg.num_relations_total, dim=args.dim,
         base_expert=args.base_expert, enable_path=args.enable_path, enable_seion=args.enable_seion,
         seion_rank=args.seion_rank, path_rank=args.path_rank, path_layers=args.path_layers,
         path_max_neighbors=args.path_max_neighbors, path_proj_rank=args.path_proj_rank,
-        path_selector_mode=args.path_selector_mode,
+        path_selector_mode=args.path_selector_mode, structural_kernel=structural_kernel,
     ).to(device)
     adjacency = Adjacency.build(kg) if args.enable_path else None
+    if structural_kernel is not None and args.out_dir:
+        repro.save_json(structural_kernel.provenance.to_dict(), Path(args.out_dir) / "kernel_manifest.json")
 
     dataset = TripleDataset(kg.train)
     loader = torch.utils.data.DataLoader(dataset, batch_size=args.batch_size, shuffle=True, drop_last=False)

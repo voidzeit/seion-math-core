@@ -1,14 +1,17 @@
 """Contract §XI/§XX: SeionKGRv26 — base expert + path branch + seionic
-branch, combined by a per-relation residual router initialized near zero
-(contract §XX.4: "el modelo empieza como el baseline fuerte").
+branch + optional structural-kernel (E8/control) residual, combined by
+per-relation residual gates initialized near zero (contract §XX.4: "el
+modelo empieza como el baseline fuerte").
 
-E8 residual (contract source note "VI. E8 as prior residual") is
-deliberately NOT implemented here: the contract's own numbered build
-sequence (`docs/SEION_KGR_MATHEMATICAL_CONTRACT.md` §VIII, Fase 0-9)
-does not list it as a phase, and CLM_KGR_018 requires a full control
-battery (random/permuted/sign-shuffled/zero/frozen) before it can be
-included honestly. Scoping it out here, rather than shipping a fake or
-untested branch, is the CLM_KGR_018-compliant choice.
+Campaign Phase B3 update: the structural-kernel branch (E8 or one of its
+matched controls, `structural_kernel.py`) is now implemented, closing
+the CLM_KGR_018 gap the canonical commit deliberately left open. It
+remains OFF by default (`enable_structural_kernel=False`) and, when
+enabled, still starts near-zero via its own internal per-relation gate
+— it never becomes the default predictor. Its own module docstring
+carries the CLM_KGR_018-compliant warning: no causal claim is licensed
+by this wiring alone, only by the matched-control comparison it makes
+possible.
 """
 from __future__ import annotations
 
@@ -22,6 +25,7 @@ from .data import KnowledgeGraph
 from .kernels import SeionicScalarScorer
 from .reasoner import Adjacency, PathReasoner
 from .scorers import ComplExExpert, CPExpert, DistMultExpert, TuckERExpert
+from .structural_kernel import KernelProvenance, StructuralKernelResidual
 
 BASE_EXPERTS = ("complex", "distmult", "cp", "tucker")
 
@@ -41,6 +45,7 @@ class SeionKGRv26(nn.Module):
         path_max_neighbors: int = 32,
         path_proj_rank: int = 0,
         path_selector_mode: str = "budgeted_bfs",
+        structural_kernel: Optional[StructuralKernelResidual] = None,
     ):
         super().__init__()
         if base_expert not in BASE_EXPERTS:
@@ -82,6 +87,12 @@ class SeionKGRv26(nn.Module):
         else:
             self.seion_scorer = None
 
+        # Caller-constructed: loading a specific kernel variant (E8_exact
+        # needs a file, the controls need a seed/shape) is a policy
+        # decision that belongs in train.py, not hidden inside the model.
+        self.structural_kernel = structural_kernel
+        self.enable_structural_kernel = structural_kernel is not None
+
         # Near-zero-init residual router (contract §XX.4).
         self.gamma_raw = nn.Embedding(num_relations_total, 1)
         self.eta_raw = nn.Embedding(num_relations_total, 1)
@@ -118,6 +129,12 @@ class SeionKGRv26(nn.Module):
             s_seion = self.seion_scorer.score_positive(h, r, r, seion_t)
             eta = torch.sigmoid(self.eta_raw(r_ids).squeeze(-1))
             s = s + eta * s_seion
+
+        if self.enable_structural_kernel:
+            kernel_t = self.entity(t_ids)  # shared table, same convention as the seionic branch
+            raw = self.structural_kernel(h, r, r, r_ids)  # gate is internal to the module (near-zero init)
+            s_kernel = (raw * kernel_t).sum(dim=-1) / math.sqrt(self.dim)
+            s = s + s_kernel
         return s
 
     def score_tail_candidates(
@@ -160,4 +177,15 @@ class SeionKGRv26(nn.Module):
             s_seion = self.seion_scorer.score_tail_candidates(h, r, r, seion_cand)
             eta = torch.sigmoid(self.eta_raw(r_ids).squeeze(-1)).unsqueeze(-1)
             s = s + eta * s_seion
+
+        if self.enable_structural_kernel:
+            # Same efficient pattern as the seionic branch: run the
+            # kernel ONCE per query row -> [B,dim], then a single dot
+            # product against candidates -> [B,K]. Never materializes a
+            # [B,K,kernel_dim] intermediate.
+            kernel_cand = self.entity(candidates_ids)
+            raw = self.structural_kernel(h, r, r, r_ids)  # [B, dim]
+            kernel_cand_full = kernel_cand if kernel_cand.ndim == 3 else kernel_cand.unsqueeze(0).expand(h.shape[0], -1, -1)
+            s_kernel = torch.einsum("bd,bkd->bk", raw, kernel_cand_full) / math.sqrt(self.dim)
+            s = s + s_kernel
         return s
