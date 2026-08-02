@@ -1,74 +1,74 @@
 {
   "00_package_index.pdf": {
-    "sha256": "e870815ecefc122cb75688dc4de48061961638acfd4735a821025ac79c3e7dac",
+    "sha256": "80b140f49b000f4a3d2748527d237648f3ba600944d994b086399144a838a93f",
     "size_bytes": 117764,
     "page_count": 3,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "01_executive_summary.pdf": {
-    "sha256": "89aec30aa91dd23bbb96f3d7d1b2bd6cc78ef419949997b15ad1ac3c7e67e72b",
+    "sha256": "f2960373b31ba431af7757aff56757fad649c05a26096389bd7104eb68a2a7be",
     "size_bytes": 125780,
     "page_count": 3,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "02_mathematical_foundations.pdf": {
-    "sha256": "0c42df3221aaf9c31757b6c3eb4e76d985f51ec0c519b5a5bed95f58c6b02f1d",
-    "size_bytes": 273967,
+    "sha256": "8ab996f8efc2e57ebec536bc811d55021f0728326f1504c751a73deae1ed3ddd",
+    "size_bytes": 273969,
     "page_count": 4,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "03_architecture.pdf": {
-    "sha256": "25605b23f4bf19cf7aed7ccd8f413b07c2be5783d17eecbbc481e868b3e56c62",
-    "size_bytes": 206794,
+    "sha256": "ba22e52c4d4e061951b9e6d3a71cc6895370cfe01e7497ca2dcbdfea97c3b2e4",
+    "size_bytes": 206797,
     "page_count": 4,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "04_screening_report.pdf": {
-    "sha256": "593aafeff0e85d0ef5dd4ccdbb46385b6a9ddbf4ec88ec6f59faea1b3948e25d",
-    "size_bytes": 169573,
+    "sha256": "da9075f5cece0756192aec6cc11c42884642418aa1be31e38282dd228b558e78",
+    "size_bytes": 169569,
     "page_count": 4,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "05_ablations.pdf": {
-    "sha256": "896a2ac89e7f71c0ab7291f00afb1f7832b8bd74b44447c9189b5e3b3689f5e9",
+    "sha256": "370f4ef651f2c4867213847d51c5477dce41dbbebc5492936f309f3478a76bda",
     "size_bytes": 114422,
     "page_count": 3,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "06_projection_and_rank.pdf": {
-    "sha256": "e3f4d79b313cb9bbb925b38ba9afebb29eeb9d0a5ced8e7d8bebbd09f78aec22",
-    "size_bytes": 156885,
+    "sha256": "7c3726f62fd6d48df49fc5b7f1d6f453fd97bf8d004b93f17f72892831d3df23",
+    "size_bytes": 156886,
     "page_count": 3,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "07_certification.pdf": {
-    "sha256": "6eb2d4f00acfaa0249c912053ca072452a74677a1d4f21725b27a6d75ffde922",
+    "sha256": "937b5501527442f82c6db26b04f11e2faf410a3a19b081879faca0756863bf07",
     "size_bytes": 195745,
     "page_count": 3,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "08_reproducibility.pdf": {
-    "sha256": "d3d7b1eaa9188ca56a9310cba47735699ffe90047a5b91e92502bd1e1f7a5429",
-    "size_bytes": 185252,
+    "sha256": "b6e50aa89872decc6de6fcdb0f08b0f03738c9bc7e3783bc4e760298b20dcb56",
+    "size_bytes": 185254,
     "page_count": 4,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "09_negative_results.pdf": {
-    "sha256": "51b4d293c4abdcadf2d71534f9af2344fe9a99d7596adb711da507dd210a9a0b",
-    "size_bytes": 175972,
+    "sha256": "6b76642f84e6de13682463d9e540970d3f06b1ba1c44c64332be159fbaf17811",
+    "size_bytes": 175968,
     "page_count": 4,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "10_full_paper.pdf": {
-    "sha256": "200183a43aa2685719a9b2f34191566553fbbf7b7b1f754a2aaa9fad03f01451",
-    "size_bytes": 266175,
+    "sha256": "cb7ae4f0c0722288ba514c1168260eb78b2b972ddf0c2962c3d3dc1f083ae644",
+    "size_bytes": 266174,
     "page_count": 5,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   },
   "11_supplement.pdf": {
-    "sha256": "268ec04198e0dee9b420127c5ed541266ab64ffdb1c9d47047e178a32df8a088",
-    "size_bytes": 187320,
+    "sha256": "99539d787147d8f7e147007050612c16348d70a8610b0b7371b1e58febce5a34",
+    "size_bytes": 187685,
     "page_count": 4,
-    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI (44 pages total); compile logs checked for zero LaTeX 'Overfull \\hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected by reading the rendered PNG, catching and fixing two real defects (a texttt filename overflowing the margin; three tables with unwrapped long cells) before this manifest was written -- not every single page of every document was individually eyeballed"
+    "visual_qa": "PASS - all 12 PDFs rendered to PNG at 150 DPI; compile logs checked for zero LaTeX 'Overfull hbox' warnings across all pages (objective, exhaustive check); a representative sample of pages (every title page, every page containing a table or display equation) was visually inspected -- caught and fixed a factual error (test count stated as 130, corrected to the actual pytest-verified 120) in addition to the earlier layout defects, by re-running the test suite and grepping the whole package for the wrong number before finalizing"
   }
 }

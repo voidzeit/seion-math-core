@@ -33,7 +33,7 @@ produced this campaign (a real, stated gap — see `09_negative_results.pdf`).
 git clone https://github.com/voidzeit/seion-math-core
 git checkout campaign/gate12-closeout
 python -m pip install -e '.[test,research]'
-python -m pytest tests/kgr -q                      # 130 tests
+python -m pytest tests/kgr -q                      # 120 tests
 python seion_kgr_reference_fp64.py --self_test
 python seion_kgr_v26_train.py --self_test
 ```

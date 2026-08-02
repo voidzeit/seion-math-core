@@ -17,11 +17,11 @@
     "ci_run_green": "https://github.com/voidzeit/seion-math-core/actions/runs/30726372321"
   },
   "test_suite": {
-    "total_tests": 130,
+    "total_tests": 120,
     "canonical_commit_tests": 66,
-    "campaign_added_tests": 64,
+    "campaign_added_tests": 54,
     "run_command": "python -m pytest tests/kgr -q",
-    "status_at_package_time": "130/130 passing"
+    "status_at_package_time": "120/120 passing"
   },
   "note": "Dataset files (data/), individual run directories with checkpoints (runs/, campaigns/gate12/tier0/), and the 59MB E8_Exact_v18_2/f_E8.npy kernel are NOT included in this package or in git history -- they are large, third-party, or binary artifacts kept local-only per this campaign's own hardware/git-safety rules. Their hashes and provenance ARE recorded in the manifests referenced above."
 }

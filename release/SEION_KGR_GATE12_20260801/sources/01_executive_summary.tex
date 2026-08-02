@@ -13,7 +13,7 @@ real $E_8$ Lie-algebra structure-constant tensor; (4)~a state-to-score-to-rankin
 chain that correctly and honestly refuses to certify anything it cannot check; (5)~a reproducibility
 audit that caught and fixed two real bugs (a configuration-identity hash that wrongly blocked
 ordinary training-extension resumes; a projector orthonormality bug introduced by an unnecessary
-sign-correction). Test count grew from 66 to 130, all passing; three real bugs were caught by
+sign-correction). Test count grew from 66 to 120, all passing; three real bugs were caught by
 tests written for other purposes and fixed during this session, not deferred.
 
 \section{What improved}
@@ -34,7 +34,7 @@ executed --- this was declared as out of scope for a single session \emph{before
 began (\texttt{preregistration.md} \S0), not discovered as a shortfall afterward.
 
 \section{Strongest valid result}
-The engineering closure itself: a real, CI-verified, 130-test, multi-branch KGE system with a
+The engineering closure itself: a real, CI-verified, 120-test, multi-branch KGE system with a
 working learned selector, a working $E_8$/control residual branch, and a certification chain that
 is honest about its own limits, verified end-to-end on real benchmark data and real GPU hardware.
 This is a valid, load-bearing result. The benchmark numbers in \S04 are not.
@@ -45,7 +45,7 @@ This is a valid, load-bearing result. The benchmark numbers in \S04 are not.
 \toprule
 Dimension & Status \\
 \midrule
-Engineering / reproducibility & \textbf{Closed} --- CI green, 130/130 tests pass, real GPU parity verified \\
+Engineering / reproducibility & \textbf{Closed} --- CI green, 120/120 tests pass, real GPU parity verified \\
 Screening-tier benchmark evidence & \textbf{Partial} --- 2 datasets, 2 ladder points, confounded comparison \\
 Confirmatory statistical evidence & \textbf{Not started} \\
 Causal ablation (full 13-point ladder) & \textbf{Not started} (2/13 points at screening scale only) \\
