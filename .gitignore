@@ -52,3 +52,12 @@ runs/
 # DB100K+, YAGO3-10). Not committed — large third-party data, not
 # repository source. Fetch/place locally before running seion_kgr_v26_train.py.
 data/
+
+# campaigns/*/tier*/ and campaigns/*/*_run/: individual run output
+# directories (checkpoints, per-run manifests) from the Gate 12 campaign.
+# Compact summaries, preregistration, and logs directly under
+# campaigns/gate12/ ARE committed; per-run .pt checkpoints are not.
+campaigns/*/*_run/
+campaigns/*/tier*/
+campaigns/*/screening/
+campaigns/*/confirmatory/

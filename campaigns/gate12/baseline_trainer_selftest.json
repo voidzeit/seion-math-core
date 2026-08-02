@@ -1,0 +1,83 @@
+{
+  "complex_path0_seion0": {
+    "status": "PASS",
+    "score_path_max_error": 7.450580596923828e-09,
+    "grad_total": 0.36420512199401855
+  },
+  "complex_path0_seion1": {
+    "status": "PASS",
+    "score_path_max_error": 7.450580596923828e-09,
+    "grad_total": 0.36760737959411927
+  },
+  "complex_path1_seion0": {
+    "status": "PASS",
+    "score_path_max_error": 7.450580596923828e-09,
+    "grad_total": 0.3788493805041071
+  },
+  "complex_path1_seion1": {
+    "status": "PASS",
+    "score_path_max_error": 7.450580596923828e-09,
+    "grad_total": 0.3851301837421488
+  },
+  "distmult_path0_seion0": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 0.35522904992103577
+  },
+  "distmult_path0_seion1": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 0.3593672685092315
+  },
+  "distmult_path1_seion0": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 0.3749072632926982
+  },
+  "distmult_path1_seion1": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 0.38271185927442275
+  },
+  "cp_path0_seion0": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 0.46584174036979675
+  },
+  "cp_path0_seion1": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 0.480509094777517
+  },
+  "cp_path1_seion0": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 0.4900147411681246
+  },
+  "cp_path1_seion1": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 0.4930400849552825
+  },
+  "tucker_path0_seion0": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 1.48603755235672
+  },
+  "tucker_path0_seion1": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 1.4893475612188922
+  },
+  "tucker_path1_seion0": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 1.48940595071781
+  },
+  "tucker_path1_seion1": {
+    "status": "PASS",
+    "score_path_max_error": 0.0,
+    "grad_total": 1.495579055145754
+  },
+  "status": "PASS_SEION_KGR_V26_SELF_TESTS"
+}

@@ -1,0 +1,38 @@
+{
+  "gate1_projector": "PASS",
+  "gate0_type_reject": "PASS",
+  "clm_kgr_002_cp_dense_equivalence": {
+    "status": "PASS",
+    "max_abs_error": 8.881784197001252e-16
+  },
+  "clm_kgr_003_gauge_invariance": {
+    "status": "PASS",
+    "max_abs_error": 4.440892098500626e-16
+  },
+  "clm_kgr_005_cyclic_idempotent": {
+    "status": "PASS",
+    "max_abs_error": 2.220446049250313e-16
+  },
+  "reciprocal_closure_structural": "PASS",
+  "gate3_1vsall_vs_individual": {
+    "status": "PASS",
+    "max_abs_error": 0.0
+  },
+  "gate3_brute_force_rank_range": {
+    "status": "PASS",
+    "rank_tail": 1.0
+  },
+  "gate7_filter_monotonicity": {
+    "status": "PASS",
+    "rank_filtered": 1.0,
+    "rank_unfiltered": 1.0
+  },
+  "clm_kgr_019_margin_certified_case": "PASS",
+  "clm_kgr_019_negative_control_order_flips_below_margin": "PASS",
+  "message_passing_one_hop": "PASS",
+  "closure_leakage_full_rank": {
+    "status": "PASS",
+    "norm": 0.0
+  },
+  "status": "PASS_KGR_V26_FASE1_SELF_TESTS"
+}
