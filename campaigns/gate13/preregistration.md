@@ -121,19 +121,44 @@ NONINFERIORITY_MARGIN   H_SCALING parity tolerance: 1e-4 max abs error in
 ## 4. Gate 13.2 — Vectorized reasoner (executed)
 
 - **New files:** `seion_kgr/frontier_ops.py` (CSR adjacency build + batched
-  neighbor expansion), `seion_kgr/segment_topk.py` (segment-wise top-k over
-  a ragged `[F]`-indexed candidate-edge tensor keyed by `query_id`),
-  `seion_kgr/reasoner_batched.py` (`BatchedPathReasoner`, tensor-only
-  frontier state, no per-sample Python loop, no dict).
-- **Parity test:** `tests/kgr/test_reasoner_batched_parity.py` runs the
-  legacy `PathReasoner.run_batch_frontiers` and the new
-  `BatchedPathReasoner` on the same small synthetic graph, same weights,
-  same RNG seed, `selector_mode="full_neighborhood"` (no randomness in
-  edge selection) and asserts max abs state difference `< 1e-4` (§2
-  `NONINFERIORITY_MARGIN`).
-- **Scaling test:** a full-WN18RR-epoch smoke test using
-  `BatchedPathReasoner`, asserting completion and reporting wall-clock,
-  gated by `PASS_PATH_SCALING`.
+  neighbor expansion via the standard ragged-expand primitive), `seion_kgr/
+  segment_topk.py` (segment-wise top-k over a ragged `[F]`-indexed
+  candidate-edge tensor keyed by frontier row, via a composite-key global
+  argsort — no per-group Python loop), `seion_kgr/reasoner_batched.py`
+  (`BatchedPathReasoner`, tensor-only frontier state as a `FrontierBatch`
+  dataclass, no per-sample Python loop, no dict; submodule names match
+  `PathReasoner` exactly so a trained legacy reasoner's weights transfer
+  via a plain `load_state_dict()`).
+- **Scope:** only `selector_mode in {"full_neighborhood", "budgeted_bfs"}`
+  are implemented (`"learned_topk"`/`"oracle_or_gold_path_debug_mode"`
+  remain legacy-only — vectorizing the learned selector's per-edge MLP is a
+  follow-up, not required to close the scaling blocker). Wiring
+  `BatchedPathReasoner` into `SeionKGRv26`/`train.py` as the production
+  default is **also deferred** (§11 deviation) — this campaign proves the
+  mechanism is correct and fast; switching the training entrypoint to use
+  it is a separate step with its own validation (checkpoint/API
+  compatibility, `run_self_test` parity, etc.) that was not executed here.
+- **Parity test:** `tests/kgr/test_reasoner_batched_parity.py` (5 cases:
+  1/2/3 layers, projector on/off, train/eval exclusion modes, plus a
+  dedicated `states_for_candidates_batch` check) runs the legacy
+  `PathReasoner.run_batch_frontiers` and the new `BatchedPathReasoner` on
+  the same small synthetic graph (includes nodes with two incoming edges
+  in the same layer, to exercise mean-aggregation, and a node with no
+  outgoing edges, to exercise the empty-frontier path), same weights (via
+  `load_state_dict`), same RNG seed, `selector_mode="full_neighborhood"`.
+  **Result: all 5 cases pass, max abs state difference well under 1e-4**
+  (§2 `NONINFERIORITY_MARGIN`) — `PASS_PATH_SCALING` parity half satisfied.
+- **Scaling test:** `tests/kgr/test_reasoner_batched_scaling.py` drives
+  `BatchedPathReasoner` (dim=64, rank=32, 2 layers, max_neighbors=32,
+  `selector_mode="budgeted_bfs"` — the real `train.py` defaults) over
+  every training batch (`batch_size=256`) of the full, hash-verified
+  WN18RR train split (173,670 reciprocal-closed triples, 40,943 entities,
+  679 batches) for one full epoch's worth of `run_batch_frontiers` calls.
+  **Result: 679 batches complete in 11.8 seconds** (CPU, this session's
+  hardware), against an explicit 180-second ceiling and the legacy
+  reasoner's measured 8+ minutes *without completing a single epoch* on
+  the same workload (Gate 12 preregistration §11). `PASS_PATH_SCALING`
+  scaling half satisfied.
 
 ## 5. Gate 13.3 / 13.4 (attribution, certification)
 
@@ -158,3 +183,5 @@ as it was at the end of Gate 12, pending a separately budgeted Gate
 | Timestamp (UTC) | Deviation | Reason |
 |---|---|---|
 | campaign start | Branch cut from `campaign/gate12-closeout` tip rather than `main` | Gate 13 is a direct continuation of Gate 12's engineering state (same model.py/reasoner.py); rebasing onto main would require re-deciding whether to merge Gate 12 first, which is out of scope for this campaign |
+| Gate 13.2 execution | `BatchedPathReasoner` is validated standalone (parity + full-WN18RR-epoch scaling tests) but NOT wired into `SeionKGRv26`/`train.py` as the production reasoner in this campaign | Switching the training entrypoint's default reasoner is a distinct, separately-validated change (checkpoint compatibility, `run_self_test` parity across all base experts, CLI flag design) and was not necessary to satisfy this campaign's preregistered `PASS_PATH_SCALING` condition, which only requires proving the vectorized mechanism is correct and fast. Logged as `OPEN` (Gate 13.2b) rather than silently treated as done. |
+| Gate 13.2 execution | Only `selector_mode in {"full_neighborhood", "budgeted_bfs"}` implemented in `BatchedPathReasoner`; `"learned_topk"` and `"oracle_or_gold_path_debug_mode"` remain legacy-only | Not required by the preregistered parity/scaling acceptance conditions (§4); vectorizing the learned selector's MLP score is separable follow-up work, logged as `OPEN` rather than claimed done |
