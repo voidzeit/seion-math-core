@@ -36,5 +36,12 @@
     "path_selector_mode": "budgeted_bfs",
     "seion_rank": 16
   },
-  "honesty_statement": "This is a 2-seed, 5-epoch screening pass on two datasets. It is NOT a Gate 12 confirmatory result (needs 5 seeds, full epoch budget, and the full 13-point ablation ladder with statistical testing per preregistration.md §5/§8). Every artifact and report referencing these runs must say SCREENING (reduced), never CONFIRMATORY."
+  "A3_deviation_subsample": {
+    "reason": "A live timing probe (full WN18RR, batch_size=256, A3 config, 1 epoch) ran 8+ minutes without completing before being stopped. Logged as a preregistration deviation BEFORE any A3 result was generated -- see preregistration.md §11.",
+    "train_subsample_size": 5000,
+    "batch_size": 128,
+    "epochs": 3,
+    "eval_max_queries": 100
+  },
+  "honesty_statement": "This is a 2-seed screening pass on two datasets: A0 at full dataset scale, A3 on a 5,000-triple subsample (both deviations logged BEFORE results were seen). It is NOT a Gate 12 confirmatory result (needs 5 seeds, full dataset scale, full epoch budget, and the full 13-point ablation ladder with statistical testing per preregistration.md §5/§8). Every artifact and report referencing these runs must say SCREENING (reduced), never CONFIRMATORY."
 }
