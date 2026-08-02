@@ -40,6 +40,7 @@ class SeionKGRv26(nn.Module):
         path_layers: int = 2,
         path_max_neighbors: int = 32,
         path_proj_rank: int = 0,
+        path_selector_mode: str = "budgeted_bfs",
     ):
         super().__init__()
         if base_expert not in BASE_EXPERTS:
@@ -71,6 +72,7 @@ class SeionKGRv26(nn.Module):
             self.path_reasoner = PathReasoner(
                 dim=dim, rank=path_rank, num_layers=path_layers,
                 max_neighbors=path_max_neighbors, proj_rank=path_proj_rank,
+                selector_mode=path_selector_mode,
             )
         else:
             self.path_reasoner = None
@@ -102,6 +104,7 @@ class SeionKGRv26(nn.Module):
         if self.enable_path and adjacency is not None:
             frontiers = self.path_reasoner.run_batch_frontiers(
                 adjacency, self.relation.weight, h_ids, r_ids, t_ids, r, seed, training,
+                entity_embed=self.entity.weight,
             )
             reached = torch.stack(
                 [self.path_reasoner.state_for_node(f, int(t_ids[b])) for b, f in enumerate(frontiers)], dim=0,
@@ -136,6 +139,7 @@ class SeionKGRv26(nn.Module):
             t_for_frontier = gold_tail_ids if gold_tail_ids is not None else torch.zeros_like(h_ids)
             frontiers = self.path_reasoner.run_batch_frontiers(
                 adjacency, self.relation.weight, h_ids, r_ids, t_for_frontier, r, seed, training,
+                entity_embed=self.entity.weight,
             )
             batch = h_ids.shape[0]
             cand_ids_2d = candidates_ids if candidates_ids.ndim == 2 else candidates_ids.unsqueeze(0).expand(batch, -1)

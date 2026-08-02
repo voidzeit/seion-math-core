@@ -48,6 +48,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--path_layers", type=int, default=2)
     p.add_argument("--path_max_neighbors", type=int, default=32)
     p.add_argument("--path_proj_rank", type=int, default=0)
+    p.add_argument(
+        "--path_selector_mode",
+        choices=["full_neighborhood", "budgeted_bfs", "learned_topk"],
+        default="budgeted_bfs",
+        help="oracle_or_gold_path_debug_mode is intentionally not CLI-exposed: synthetic-fixture-only",
+    )
     p.add_argument("--enable_seion", action="store_true")
     p.add_argument("--seion_rank", type=int, default=32)
 
@@ -130,6 +136,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         base_expert=args.base_expert, enable_path=args.enable_path, enable_seion=args.enable_seion,
         seion_rank=args.seion_rank, path_rank=args.path_rank, path_layers=args.path_layers,
         path_max_neighbors=args.path_max_neighbors, path_proj_rank=args.path_proj_rank,
+        path_selector_mode=args.path_selector_mode,
     ).to(device)
     adjacency = Adjacency.build(kg) if args.enable_path else None
 
