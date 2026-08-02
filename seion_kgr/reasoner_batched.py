@@ -106,7 +106,7 @@ class BatchedPathReasoner(nn.Module):
 
         if self.selector_mode == "budgeted_bfs":
             counts = torch.bincount(fr, minlength=frontier.query_id.numel())
-            scores = torch.rand(cq.numel(), generator=generator) if generator is not None else torch.rand(cq.numel())
+            scores = torch.rand(cq.numel(), generator=generator, device=cq.device)
             budget_keep = segment_topk(scores, counts, self.max_neighbors)
             cq, fr, src, rel, tgt = cq[budget_keep], fr[budget_keep], src[budget_keep], rel[budget_keep], tgt[budget_keep]
         # "full_neighborhood": no further filtering.
@@ -151,7 +151,13 @@ class BatchedPathReasoner(nn.Module):
         batch = int(head_ids.numel())
         num_rel = relation_embed.shape[0] // 2
         r_inv_ids = torch.where(relation_ids < num_rel, relation_ids + num_rel, relation_ids - num_rel)
-        generator = torch.Generator(device="cpu").manual_seed(int(seed)) if self.selector_mode == "budgeted_bfs" else None
+        # A CUDA generator cannot seed a CPU tensor and vice versa (PyTorch
+        # raises), so the generator's device must match head_ids' device —
+        # this is why it is constructed here, not at module-import time.
+        generator = (
+            torch.Generator(device=head_ids.device).manual_seed(int(seed))
+            if self.selector_mode == "budgeted_bfs" else None
+        )
 
         frontier = FrontierBatch(
             query_id=torch.arange(batch, device=head_ids.device), node=head_ids.clone(), state=query_vecs,
@@ -169,32 +175,17 @@ class BatchedPathReasoner(nn.Module):
         frontier: FrontierBatch, query_ids: torch.Tensor, node_ids: torch.Tensor, num_nodes: int, unreached_state: torch.Tensor,
     ) -> torch.Tensor:
         """Vectorized counterpart of ``PathReasoner.state_for_node`` for a
-        whole batch at once: sort the (typically small) final frontier once,
-        then look up every ``(query_id, node_id)`` pair via
-        ``searchsorted`` — no per-query dict lookup."""
-        dim = unreached_state.shape[0]
-        if frontier.query_id.numel() == 0:
-            return unreached_state.unsqueeze(0).expand(query_ids.numel(), dim).clone()
-        frontier_key = frontier.query_id * num_nodes + frontier.node
-        order = torch.argsort(frontier_key)
-        sorted_keys = frontier_key[order]
-        sorted_state = frontier.state[order]
-
-        query_key = query_ids * num_nodes + node_ids
-        idx = torch.searchsorted(sorted_keys, query_key)
-        idx_clamped = idx.clamp(max=sorted_keys.numel() - 1)
-        found = (idx < sorted_keys.numel()) & (sorted_keys[idx_clamped] == query_key)
-        gathered = sorted_state[idx_clamped]
-        default = unreached_state.unsqueeze(0).expand_as(gathered)
-        return torch.where(found.unsqueeze(-1), gathered, default)
+        whole batch at once. Delegates to ``PathReasonerOutput`` (Gate
+        13.2b) — the single implementation of this lookup shared with the
+        legacy backend, so ``model.py`` never needs backend-specific
+        readout code."""
+        from .path_reasoner_output import PathReasonerOutput
+        return PathReasonerOutput.from_batched_frontier(frontier, num_nodes, unreached_state).state_for(query_ids, node_ids)
 
     @classmethod
     def states_for_candidates_batch(
         cls, frontier: FrontierBatch, query_ids: torch.Tensor, candidates_ids_2d: torch.Tensor, num_nodes: int, unreached_state: torch.Tensor,
     ) -> torch.Tensor:
         """``candidates_ids_2d``: ``[B, K]``. Returns ``[B, K, dim]``."""
-        B, K = candidates_ids_2d.shape
-        flat_query_ids = query_ids.unsqueeze(1).expand(B, K).reshape(-1)
-        flat_candidates = candidates_ids_2d.reshape(-1)
-        flat_states = cls.state_for_node_batch(frontier, flat_query_ids, flat_candidates, num_nodes, unreached_state)
-        return flat_states.view(B, K, -1)
+        from .path_reasoner_output import PathReasonerOutput
+        return PathReasonerOutput.from_batched_frontier(frontier, num_nodes, unreached_state).states_for_candidates(query_ids, candidates_ids_2d)

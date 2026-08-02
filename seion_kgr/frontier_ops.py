@@ -32,6 +32,17 @@ class CSRAdjacency:
     def num_edges(self) -> int:
         return int(self.edge_relation.numel())
 
+    def to(self, device: torch.device) -> "CSRAdjacency":
+        """CSR tensors are built once on CPU (``build_csr_adjacency`` does
+        real Python-level dict traversal that gains nothing from a GPU) —
+        the caller must move them to the model's device before use, exactly
+        once per run, the same way ``model.to(device)`` is a one-time
+        call."""
+        return CSRAdjacency(
+            row_ptr=self.row_ptr.to(device), edge_relation=self.edge_relation.to(device),
+            edge_target=self.edge_target.to(device), num_nodes=self.num_nodes,
+        )
+
 
 def build_csr_adjacency(adjacency: Adjacency, num_nodes: int) -> CSRAdjacency:
     """Converts the legacy dict-of-lists ``Adjacency`` (``reasoner.py``)

@@ -23,22 +23,38 @@ starving the path/seion branches of gradient signal. The gate is now
 exactly (same "starts as the baseline" property) but
 `d(gamma_r)/d(alpha_r)(0) = gate_g_max`, i.e. a `gate_g_max`-sized gradient
 at init rather than `~0.0177`.
+
+Gate 13.2b update (production integration, `campaigns/gate13/`):
+`path_backend` selects which reasoner implementation the path branch
+uses — `"legacy"` (default, `reasoner.PathReasoner`, unchanged behavior)
+or `"batched"` (`reasoner_batched.BatchedPathReasoner`, CSR + vectorized
+frontier expansion, Gate 13.2). Both expose identical submodule names
+(`mu`, `U`, `V`, `W`, `projector`, `ln`, `unreached_state`), so a
+checkpoint trained with one backend loads directly into a model
+constructed with the other — `path_backend` is an execution detail, not a
+different architecture. Score computation always reads off a
+`PathReasonerOutput` (`path_reasoner_output.py`), so this file has exactly
+ONE readout implementation regardless of which backend produced it.
 """
 from __future__ import annotations
 
 import math
-from typing import Dict, List, Optional
+from typing import Dict, Optional, Union
 
 import torch
 import torch.nn as nn
 
 from .data import KnowledgeGraph
+from .frontier_ops import CSRAdjacency
 from .kernels import SeionicScalarScorer
+from .path_reasoner_output import PathReasonerOutput
 from .reasoner import Adjacency, PathReasoner
+from .reasoner_batched import BatchedPathReasoner
 from .scorers import ComplExExpert, CPExpert, DistMultExpert, TuckERExpert
 from .structural_kernel import KernelProvenance, StructuralKernelResidual
 
 BASE_EXPERTS = ("complex", "distmult", "cp", "tucker")
+PATH_BACKENDS = ("legacy", "batched")
 
 
 class SeionKGRv26(nn.Module):
@@ -58,10 +74,13 @@ class SeionKGRv26(nn.Module):
         path_selector_mode: str = "budgeted_bfs",
         structural_kernel: Optional[StructuralKernelResidual] = None,
         gate_g_max: float = 1.0,
+        path_backend: str = "legacy",
     ):
         super().__init__()
         if base_expert not in BASE_EXPERTS:
             raise ValueError(f"base_expert must be one of {BASE_EXPERTS}, got {base_expert!r}")
+        if path_backend not in PATH_BACKENDS:
+            raise ValueError(f"path_backend must be one of {PATH_BACKENDS}, got {path_backend!r}")
         if base_expert == "complex" and dim % 2 != 0:
             raise ValueError("--dim must be even for the complex base expert")
         self.dim = dim
@@ -85,8 +104,10 @@ class SeionKGRv26(nn.Module):
             self.entity_tail = nn.Embedding(num_entities, dim)
             nn.init.xavier_uniform_(self.entity_tail.weight)
 
+        self.path_backend = path_backend
         if enable_path:
-            self.path_reasoner = PathReasoner(
+            reasoner_cls = PathReasoner if path_backend == "legacy" else BatchedPathReasoner
+            self.path_reasoner = reasoner_cls(
                 dim=dim, rank=path_rank, num_layers=path_layers,
                 max_neighbors=path_max_neighbors, proj_rank=path_proj_rank,
                 selector_mode=path_selector_mode,
@@ -121,6 +142,31 @@ class SeionKGRv26(nn.Module):
     def _tail_embed(self, ids: torch.Tensor) -> torch.Tensor:
         return self.entity_tail(ids) if self.base_expert_name == "cp" else self.entity(ids)
 
+    def _run_path_reasoner(
+        self,
+        h_ids: torch.Tensor, r_ids: torch.Tensor, t_ids: torch.Tensor,
+        adjacency: Union[Adjacency, CSRAdjacency], query_vecs: torch.Tensor, seed: int, training: bool,
+    ) -> PathReasonerOutput:
+        """Gate 13.2b: the ONE call site that dispatches to whichever
+        reasoner backend is active and returns a backend-agnostic
+        ``PathReasonerOutput`` — callers (``score_positive``,
+        ``score_tail_candidates``) never branch on backend themselves.
+        ``adjacency`` must already be the type the active backend expects
+        (``Adjacency`` for ``"legacy"``, ``CSRAdjacency`` for
+        ``"batched"``) — the caller (``train.py``) builds the matching one
+        once per run, per ``args.path_backend``."""
+        num_nodes = self.entity.num_embeddings
+        if self.path_backend == "legacy":
+            frontiers = self.path_reasoner.run_batch_frontiers(
+                adjacency, self.relation.weight, h_ids, r_ids, t_ids, query_vecs, seed, training,
+                entity_embed=self.entity.weight,
+            )
+            return PathReasonerOutput.from_legacy_frontiers(frontiers, num_nodes, self.path_reasoner.unreached_state)
+        frontier = self.path_reasoner.run_batch_frontiers(
+            adjacency, self.relation.weight, h_ids, r_ids, t_ids, query_vecs, seed, training,
+        )
+        return PathReasonerOutput.from_batched_frontier(frontier, num_nodes, self.path_reasoner.unreached_state)
+
     def score_positive(
         self,
         h_ids: torch.Tensor, r_ids: torch.Tensor, t_ids: torch.Tensor,
@@ -139,13 +185,9 @@ class SeionKGRv26(nn.Module):
         breakdown: Dict[str, torch.Tensor] = {}
 
         if self.enable_path and adjacency is not None:
-            frontiers = self.path_reasoner.run_batch_frontiers(
-                adjacency, self.relation.weight, h_ids, r_ids, t_ids, r, seed, training,
-                entity_embed=self.entity.weight,
-            )
-            reached = torch.stack(
-                [self.path_reasoner.state_for_node(f, int(t_ids[b])) for b, f in enumerate(frontiers)], dim=0,
-            )
+            output = self._run_path_reasoner(h_ids, r_ids, t_ids, adjacency, r, seed, training)
+            query_ids = torch.arange(h_ids.shape[0], device=h_ids.device)
+            reached = output.state_for(query_ids, t_ids)
             s_path = (reached * t).sum(dim=-1) / math.sqrt(self.dim)
             gamma = self._gate(self.gamma_raw, r_ids)
             s = s + gamma * s_path
@@ -188,15 +230,11 @@ class SeionKGRv26(nn.Module):
 
         if self.enable_path and adjacency is not None:
             t_for_frontier = gold_tail_ids if gold_tail_ids is not None else torch.zeros_like(h_ids)
-            frontiers = self.path_reasoner.run_batch_frontiers(
-                adjacency, self.relation.weight, h_ids, r_ids, t_for_frontier, r, seed, training,
-                entity_embed=self.entity.weight,
-            )
+            output = self._run_path_reasoner(h_ids, r_ids, t_for_frontier, adjacency, r, seed, training)
             batch = h_ids.shape[0]
             cand_ids_2d = candidates_ids if candidates_ids.ndim == 2 else candidates_ids.unsqueeze(0).expand(batch, -1)
-            states = torch.stack(
-                [self.path_reasoner.states_for_candidates(frontiers[b], cand_ids_2d[b]) for b in range(batch)], dim=0,
-            )  # [B,K,dim]
+            query_ids = torch.arange(batch, device=h_ids.device)
+            states = output.states_for_candidates(query_ids, cand_ids_2d)  # [B,K,dim]
             cand_full = cand_emb if cand_emb.ndim == 3 else cand_emb.unsqueeze(0).expand(batch, -1, -1)
             s_path = (states * cand_full).sum(dim=-1) / math.sqrt(self.dim)
             gamma = self._gate(self.gamma_raw, r_ids).unsqueeze(-1)

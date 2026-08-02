@@ -160,6 +160,121 @@ NONINFERIORITY_MARGIN   H_SCALING parity tolerance: 1e-4 max abs error in
   the same workload (Gate 12 preregistration §11). `PASS_PATH_SCALING`
   scaling half satisfied.
 
+## 4b. Gate 13.2b — Production integration (executed)
+
+Closes the deviation logged in §11 above: `BatchedPathReasoner` is now the
+model's actual path branch when requested, not just a standalone-tested
+component.
+
+- **New file:** `seion_kgr/path_reasoner_output.py` — a single
+  `PathReasonerOutput(query_ids, node_ids, states, num_nodes,
+  unreached_state)` representation with `state_for()`/
+  `states_for_candidates()`/`reached_mask()`, plus adapters from the legacy
+  dict-frontier list and from `BatchedPathReasoner`'s `FrontierBatch`.
+  `BatchedPathReasoner`'s own `state_for_node_batch`/
+  `states_for_candidates_batch` now delegate to it (single implementation,
+  no duplicated searchsorted logic). Scope cut from the mission brief's
+  fuller schema: `selector_scores`/`selector_margins`/`reached_gold` are
+  NOT implemented (would be unused plumbing until Gate 13.3's attribution
+  work and learned-selector vectorization exist) — logged as `OPEN`, not
+  silently dropped.
+- **`model.py`:** `SeionKGRv26(path_backend="legacy"|"batched", ...)`.
+  Both backends already used identical submodule names (`mu`, `U`, `V`,
+  `W`, `projector`, `ln`, `unreached_state`) from Gate 13.2, so
+  checkpoints trained with one load directly into the other via a plain
+  `load_state_dict()` — verified, not just assumed (see below). A single
+  `_run_path_reasoner()` call site dispatches to whichever backend is
+  active and returns a `PathReasonerOutput`; `score_positive`/
+  `score_tail_candidates` now contain exactly ONE readout implementation
+  regardless of backend (the previous per-sample `[... for b in
+  range(batch)]` list-comprehension readout loops in `model.py` itself
+  are gone for both backends, not just for the batched one).
+- **`train.py`:** `--path_backend {legacy,batched}` (default `legacy`),
+  builds the matching adjacency representation (`Adjacency` or
+  `CSRAdjacency`) once per run and moves the CSR one to the model's device
+  (`CSRAdjacency.to(device)`, new method — see the real bug found below).
+  Adds `compute_path_reasoner_perf()` -> `path_reasoner_perf.jsonl` per
+  eval epoch: `path_backend`, `wall_seconds`, `queries_per_second`,
+  `mean_frontier_size`, `p95_frontier_size`, `gold_reach_rate`,
+  `cpu_ram_mb` (coarse before/after-max proxy via `psutil`, not a true
+  continuous peak), `gpu_allocated_peak_mb` (true peak via
+  `torch.cuda.max_memory_allocated`). `expanded_edges_per_second` and
+  `selector_keep_ratio` are logged as `null` — not exposed by the current
+  reasoner APIs, honestly reported rather than approximated.
+- **Real bug found and fixed during this integration:** running the
+  batched backend on GPU (`--cpu` not passed) crashed with `RuntimeError:
+  indices should be either on cpu or on the same device as the indexed
+  tensor` — `build_csr_adjacency` always builds CPU tensors (real,
+  Python-level dict traversal that gains nothing from a GPU) but was never
+  moved to the model's device, and separately, `BatchedPathReasoner`'s
+  `budgeted_bfs` RNG used a hardcoded `torch.Generator(device="cpu")`,
+  which PyTorch refuses to use for generating a CUDA tensor
+  (`torch.rand(..., generator=cpu_gen, device='cuda')` raises). Fixed by
+  adding `CSRAdjacency.to(device)` (called once in `train.py`, same
+  pattern as `model.to(device)`) and constructing the RNG generator on
+  `head_ids.device` instead of a hardcoded `"cpu"`. This was caught
+  precisely because the acceptance run (below) exercises the real GPU
+  path — none of the earlier Gate 13.2/13.2b CPU-only tests would have
+  caught it, which is itself evidence for why an end-to-end acceptance run
+  through the real CLI entrypoint (not just unit tests) was worth doing.
+- **Score/gradient/checkpoint parity tests:**
+  `tests/kgr/test_gate13_2b_production_integration.py` (7 tests, all
+  model-level, not bare-reasoner): score parity legacy vs batched (full
+  neighborhood train/eval, with projector+seion enabled, and a
+  budgeted_bfs case constructed so no node's degree exceeds the budget —
+  active random-cut parity is explicitly out of scope, see below);
+  queried-edge-removal exclusion mechanism (via direct
+  `_run_path_reasoner`/`PathReasonerOutput` reads, not total score, since
+  a freshly-initialized zero gate would multiply away any score-level
+  difference regardless of whether exclusion works); gradient parity
+  across every shared named parameter (CP law, U/V/W, projector, relation
+  embeddings, entity embeddings, router gate — max abs diff and cosine
+  similarity, both within tolerance for every checked parameter);
+  checkpoint cross-backend load after 10 real optimizer steps on the
+  legacy backend. **All 7 pass.**
+- **Scope note on `budgeted_bfs` parity:** legacy uses `numpy`
+  `rng.choice`, batched uses `torch.rand` + segment top-k — different RNG
+  streams. These are NOT expected to select the same random subset when a
+  real budget cut is active; what is tested (and holds) is that math is
+  identical whenever the SAME set of edges is kept (which is exactly what
+  happens when no frontier row's degree exceeds `max_neighbors`, the
+  fast-path both implementations share). Parity under an actively
+  different random subset is out of scope — not a claim made here.
+- **`selector_gradient_connected`:** only meaningful for `learned_topk`,
+  which `BatchedPathReasoner` does not implement (Gate 13.2's stated
+  scope cut, unchanged). Already covered on the legacy backend by the
+  pre-existing `tests/kgr/test_selector.py` suite; not re-verified here
+  for the batched backend since the mode doesn't exist there.
+- **Real acceptance run:** `tests/kgr/test_gate13_2b_acceptance_run.py`
+  drives the actual `seion_kgr.train.train()` entrypoint (not a bespoke
+  script) with `--path_backend batched`, `--dim 64`, real 2-layer path
+  reasoner, `budgeted_bfs`, one full training epoch (forward + backward +
+  optimizer step over every batch) plus a capped (`--eval_max_queries
+  200`) validation/test evaluation, on real hash-verified data, on this
+  session's actual hardware (CUDA available, RTX-class GPU). **Results:**
+  WN18RR (173,670 triples) completed in **48.0s**; FB15K-237 (544,230
+  triples) completed in **218.1s** — both against a 300s ceiling.
+  `path_reasoner_perf.jsonl` and `gate_diagnostics.jsonl` both produced
+  correctly for both runs. This is an ENGINEERING completion check, not a
+  confirmatory MRR result — the MRR/Hits numbers printed during these
+  runs are single-seed, one-epoch, capped-eval numbers and carry no
+  statistical weight; they are not cited as evidence for or against any
+  Gate 13.5+ hypothesis.
+- **`PASS_PATH_PRODUCTION_INTEGRATION`:** `full_epoch_completed=true`,
+  `legacy_batched_score_parity=PASS`, `legacy_batched_gradient_parity=PASS`,
+  `checkpoint_cross_backend=PASS`, `queried_edge_removal=PASS`,
+  `selector_gradient_connected=PASS (legacy only, batched N/A — mode not implemented)`,
+  `tests_failed=0` (137/137 across the full `tests/kgr` suite, including
+  the two full-scale acceptance runs).
+- **Still deferred, logged `OPEN`:** `path_backend` default remains
+  `"legacy"` (not flipped to `"batched"`) — the mission brief's own
+  sequencing ("Después de cerrar toda la paridad... default = batched")
+  implies flipping the default is a distinct decision after this evidence
+  is reviewed, not an automatic consequence of the tests passing; `learned_topk`
+  vectorization; the fuller `PathReasonerOutput` schema
+  (`selector_scores`/`selector_margins`/`reached_gold`);
+  `expanded_edges_per_second`/`selector_keep_ratio` perf fields.
+
 ## 5. Gate 13.3 / 13.4 (attribution, certification)
 
 Deferred to a follow-up commit on this same campaign branch once 13.1/13.2
@@ -183,5 +298,7 @@ as it was at the end of Gate 12, pending a separately budgeted Gate
 | Timestamp (UTC) | Deviation | Reason |
 |---|---|---|
 | campaign start | Branch cut from `campaign/gate12-closeout` tip rather than `main` | Gate 13 is a direct continuation of Gate 12's engineering state (same model.py/reasoner.py); rebasing onto main would require re-deciding whether to merge Gate 12 first, which is out of scope for this campaign |
-| Gate 13.2 execution | `BatchedPathReasoner` is validated standalone (parity + full-WN18RR-epoch scaling tests) but NOT wired into `SeionKGRv26`/`train.py` as the production reasoner in this campaign | Switching the training entrypoint's default reasoner is a distinct, separately-validated change (checkpoint compatibility, `run_self_test` parity across all base experts, CLI flag design) and was not necessary to satisfy this campaign's preregistered `PASS_PATH_SCALING` condition, which only requires proving the vectorized mechanism is correct and fast. Logged as `OPEN` (Gate 13.2b) rather than silently treated as done. |
+| Gate 13.2 execution | `BatchedPathReasoner` is validated standalone (parity + full-WN18RR-epoch scaling tests) but NOT wired into `SeionKGRv26`/`train.py` as the production reasoner in this campaign | Switching the training entrypoint's default reasoner is a distinct, separately-validated change (checkpoint compatibility, `run_self_test` parity across all base experts, CLI flag design) and was not necessary to satisfy this campaign's preregistered `PASS_PATH_SCALING` condition, which only requires proving the vectorized mechanism is correct and fast. Logged as `OPEN` (Gate 13.2b) rather than silently treated as done. **RESOLVED in Gate 13.2b (§4b): `--path_backend {legacy,batched}` is now wired end-to-end through `train.py`/`model.py`, with model-level score/gradient/checkpoint parity tests and a real full-epoch acceptance run on WN18RR + FB15K-237.** |
+| Gate 13.2b execution | A real device-placement bug (CSR adjacency tensors stuck on CPU; `budgeted_bfs`'s RNG generator hardcoded to a CPU device) was found only when the acceptance run exercised the actual CUDA path — every earlier Gate 13.2/13.2b test ran on CPU and would not have caught it | Fixed: `CSRAdjacency.to(device)` (new method, called once in `train.py` alongside `model.to(device)`), and the `budgeted_bfs` generator is now constructed on `head_ids.device` instead of a hardcoded `"cpu"`. Recorded here as a concrete argument for why an end-to-end real-hardware acceptance run matters beyond unit-level parity tests. |
+| Gate 13.2b execution | `path_backend` default left at `"legacy"`, NOT flipped to `"batched"` | The mission brief's own sequencing treats "flip the default" as a decision made only after parity evidence is reviewed, not an automatic consequence of tests passing — deliberately left as a separate, explicit follow-up decision, logged `OPEN` |
 | Gate 13.2 execution | Only `selector_mode in {"full_neighborhood", "budgeted_bfs"}` implemented in `BatchedPathReasoner`; `"learned_topk"` and `"oracle_or_gold_path_debug_mode"` remain legacy-only | Not required by the preregistered parity/scaling acceptance conditions (§4); vectorizing the learned selector's MLP score is separable follow-up work, logged as `OPEN` rather than claimed done |

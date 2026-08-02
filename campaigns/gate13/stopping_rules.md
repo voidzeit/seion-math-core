@@ -26,6 +26,13 @@ does not start early).
   directly (unlike H1-H4, which are frozen at preregistration).
 - **13.2 Vectorized reasoner** — stop condition: `PASS_PATH_SCALING`
   (parity + full-epoch completion, see `preregistration.md` §4).
+- **13.2b Production integration** — stop condition:
+  `PASS_PATH_PRODUCTION_INTEGRATION` (model-level score/gradient/checkpoint
+  parity between `path_backend` values, plus a real full-epoch acceptance
+  run through `train.py` on WN18RR and FB15K-237, see
+  `preregistration.md` §4b). Flipping the CLI default from `"legacy"` to
+  `"batched"` is a separate, explicit decision made after reviewing this
+  evidence, not an automatic next step.
 - **13.3 Attribution** — stop condition: `PASS_ATTRIBUTION_CONSERVATION`
   (telescoping sum reconstructs the observed error exactly; Shapley
   efficiency holds; a corrupted module concentrates attribution; an

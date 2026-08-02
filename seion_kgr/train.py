@@ -24,11 +24,17 @@ import torch
 from . import geometry, projection, rank_controller, reproducibility as repro
 from .data import KnowledgeGraph, TripleDataset, load_knowledge_graph, sample_negatives, tiny_kg
 from .evaluate import evaluate
+from .frontier_ops import build_csr_adjacency
 from .losses import n3_regularizer, negative_sampling_loss
 from .model import SeionKGRv26
 from .rank_controller import ModuleDiagnostics
 from .reasoner import Adjacency
 from .structural_kernel import StructuralKernelResidual, build_kernel, load_e8_info, load_e8_kernel
+
+try:
+    import psutil
+except ImportError:  # pragma: no cover — perf logging degrades gracefully without it
+    psutil = None
 
 
 def _inverse_relation(r: int, num_rel_orig: int) -> int:
@@ -53,6 +59,66 @@ def build_optimizer_param_groups(model: SeionKGRv26, lr: float, router_lr_multip
         {"params": other_params, "lr": lr},
         {"params": router_params, "lr": lr * router_lr_multiplier},
     ]
+
+
+def compute_path_reasoner_perf(
+    model: SeionKGRv26, kg: KnowledgeGraph, adjacency, device: torch.device, seed: int, epoch: int, sample_size: int = 256,
+) -> Dict[str, Any]:
+    """Gate 13.2b performance instrumentation: times ONE
+    ``_run_path_reasoner`` call (forward only, no grad) on a sample of real
+    validation triples, and reports what is directly measurable from a
+    ``PathReasonerOutput`` without further instrumenting the reasoner's
+    internals. Deliberately narrower than the full field list the mission
+    brief sketches (no ``expanded_edges_per_second``/``selector_keep_ratio``
+    — those would need per-layer candidate counts the current
+    ``BatchedPathReasoner``/``PathReasoner`` APIs don't expose externally;
+    logged here as ``None`` rather than approximated). ``cpu_ram_mb`` is
+    ``max(rss_before, rss_after)`` around the timed call — a coarse proxy,
+    not a continuously-sampled true peak (``gpu_allocated_peak_mb`` IS a
+    true peak, via ``torch.cuda.max_memory_allocated``)."""
+    if not model.enable_path:
+        return {}
+    sample = kg.valid[:sample_size] if len(kg.valid) > sample_size else kg.valid
+    if not sample:
+        return {}
+    h = torch.tensor([t[0] for t in sample], device=device)
+    r = torch.tensor([t[1] for t in sample], device=device)
+    t = torch.tensor([t[2] for t in sample], device=device)
+    query_vecs = model.relation(r)
+
+    rss_before = float(psutil.Process().memory_info().rss) / 1e6 if psutil is not None else None
+    if device.type == "cuda":
+        torch.cuda.reset_peak_memory_stats(device)
+    model.eval()
+    start = time.time()
+    with torch.no_grad():
+        output = model._run_path_reasoner(h, r, t, adjacency, query_vecs, seed, False)
+    wall_sec = time.time() - start
+    model.train()
+    gpu_peak_mb = float(torch.cuda.max_memory_allocated(device)) / 1e6 if device.type == "cuda" else None
+    rss_after = float(psutil.Process().memory_info().rss) / 1e6 if psutil is not None else None
+    cpu_ram_mb = max(rss_before, rss_after) if psutil is not None else None
+
+    n = int(h.numel())
+    per_query_counts = torch.bincount(output.query_ids, minlength=n).float() if output.query_ids.numel() else torch.zeros(n)
+    mean_frontier_size = float(per_query_counts.mean().item())
+    p95_frontier_size = float(torch.quantile(per_query_counts, 0.95).item()) if n > 0 else 0.0
+    gold_reach_rate = float(output.reached_mask(torch.arange(n, device=device), t).float().mean().item())
+
+    return {
+        "epoch": epoch,
+        "path_backend": model.path_backend,
+        "sample_size": n,
+        "wall_seconds": wall_sec,
+        "queries_per_second": n / wall_sec if wall_sec > 0 else float("inf"),
+        "mean_frontier_size": mean_frontier_size,
+        "p95_frontier_size": p95_frontier_size,
+        "gold_reach_rate": gold_reach_rate,
+        "expanded_edges_per_second": None,  # not exposed by the current reasoner APIs, see docstring
+        "selector_keep_ratio": None,  # not exposed by the current reasoner APIs, see docstring
+        "cpu_ram_mb": cpu_ram_mb,
+        "gpu_allocated_peak_mb": gpu_peak_mb,
+    }
 
 
 def compute_gate_diagnostics(
@@ -126,6 +192,11 @@ def build_parser() -> argparse.ArgumentParser:
         choices=["full_neighborhood", "budgeted_bfs", "learned_topk"],
         default="budgeted_bfs",
         help="oracle_or_gold_path_debug_mode is intentionally not CLI-exposed: synthetic-fixture-only",
+    )
+    p.add_argument(
+        "--path_backend", choices=["legacy", "batched"], default="legacy",
+        help="Gate 13.2b: legacy=reasoner.PathReasoner (default, unchanged), "
+             "batched=reasoner_batched.BatchedPathReasoner (CSR + vectorized, learned_topk not yet supported)",
     )
     p.add_argument("--enable_seion", action="store_true")
     p.add_argument("--seion_rank", type=int, default=32)
@@ -228,9 +299,21 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         seion_rank=args.seion_rank, path_rank=args.path_rank, path_layers=args.path_layers,
         path_max_neighbors=args.path_max_neighbors, path_proj_rank=args.path_proj_rank,
         path_selector_mode=args.path_selector_mode, structural_kernel=structural_kernel,
-        gate_g_max=args.gate_g_max,
+        gate_g_max=args.gate_g_max, path_backend=args.path_backend,
     ).to(device)
-    adjacency = Adjacency.build(kg) if args.enable_path else None
+    # Gate 13.2b: `adjacency` must be the type the active path_backend
+    # expects — model.py's `_run_path_reasoner` dispatches on
+    # `self.path_backend` alone and trusts the caller to have passed the
+    # matching adjacency representation.
+    if args.enable_path:
+        adjacency = Adjacency.build(kg)
+        if args.path_backend == "batched":
+            # CSR tensors are built on CPU (real Python-level dict traversal
+            # gains nothing from a GPU) — move once, here, to match the
+            # model's device, exactly like `.to(device)` above.
+            adjacency = build_csr_adjacency(adjacency, kg.num_entities).to(device)
+    else:
+        adjacency = None
     if structural_kernel is not None and args.out_dir:
         repro.save_json(structural_kernel.provenance.to_dict(), Path(args.out_dir) / "kernel_manifest.json")
 
@@ -245,6 +328,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
     rank_history_path = Path(args.out_dir) / "rank_history.jsonl" if args.out_dir else None
     error_attribution_path = Path(args.out_dir) / "error_attribution.jsonl" if args.out_dir else None
     gate_diagnostics_path = Path(args.out_dir) / "gate_diagnostics.jsonl" if args.out_dir else None
+    path_reasoner_perf_path = Path(args.out_dir) / "path_reasoner_perf.jsonl" if args.out_dir else None
     start = time.time()
     history: list[Dict[str, Any]] = []
 
@@ -363,6 +447,10 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                     seed=args.seed,
                 )
                 repro.append_jsonl({"epoch": epoch, "diagnostics": [d.__dict__ for d in diagnostics], "policy_comparison": comparison}, rank_history_path)
+
+            perf_record = compute_path_reasoner_perf(model, kg, adjacency, device, args.seed, epoch)
+            if perf_record and path_reasoner_perf_path is not None:
+                repro.append_jsonl(perf_record, path_reasoner_perf_path)
 
             gate_records = compute_gate_diagnostics(model, kg, adjacency, device, args.seed, epoch)
             if gate_records and gate_diagnostics_path is not None:
