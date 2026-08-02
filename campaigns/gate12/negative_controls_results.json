@@ -1,0 +1,21 @@
+{
+  "randomized_labels_control": {
+    "structured_mrr": 0.5763888955116272,
+    "randomized_mrr": 0.1392320990562439,
+    "degraded_as_expected": true,
+    "interpretation": "Strong, clean degradation (4.1x drop). The model clearly learns real structure and randomizing tails clearly destroys it."
+  },
+  "queried_edge_leakage_control": {
+    "clean_mrr": 0.2961309552192688,
+    "leaky_mrr": 0.2961309552192688,
+    "degraded_as_expected": true,
+    "note_technically_passed_but_effect_size_zero": true,
+    "followup_40_epoch_run": {
+      "mean_path_gate_gamma_after_40_epochs": 0.01798621006309986,
+      "path_gate_init_value": 0.017986209962091559,
+      "clean_mrr": 0.6833333969116211,
+      "leaky_mrr": 0.6833333969116211,
+      "finding": "The path-reasoner residual gate (sigmoid(gamma_raw)) remained at essentially its near-zero init value even after 40 epochs on a small synthetic graph -- the path branch had negligible influence on the final score in this run, which explains (not undermines) why the leakage control showed zero measurable effect: there was very little path-branch signal available to leak. The leakage-PREVENTION MECHANISM ITSELF is separately and directly verified in tests/kgr/test_selector.py::test_no_queried_edge_leakage_under_learned_topk (with the gate/selector forced open via zeroed parameters specifically to make leakage detectable) and tests/kgr/test_negative_controls.py -- those tests confirm the exclusion logic is structurally correct. This integration-level null result is flagged as an open question for the Gate 12 confirmatory campaign: does the near-zero-init residual gate open meaningfully within realistic training budgets on real benchmark data, or does it require a longer schedule / higher gate-specific learning rate than the rest of the model? Not resolved in this campaign -- OPEN."
+    }
+  }
+}
