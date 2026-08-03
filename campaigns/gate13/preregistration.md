@@ -432,6 +432,74 @@ diagnostics, §4c), `legacy_batched_attribution_parity=PASS`,
   needed yet since the current module sets (`3` path-internal, `3`
   branch-level) are small enough for full enumeration (`3! = 6`).
 
+## 5b. Gate 13.3b — Real-run attribution pipeline (executed)
+
+Closes the deviation logged at the end of §5: attribution now runs over a
+real trained checkpoint via a real CLI entrypoint, not just synthetic-
+fixture unit tests.
+
+- **New file:** `seion_kgr/run_attribution.py` — a SEPARATE pass (never
+  invoked during training), with its own CLI: `--checkpoint`,
+  `--attribution_split {valid,test}`, `--attribution_mode
+  {fixed_trace,end_to_end}`, `--attribution_max_queries`,
+  `--attribution_shapley_samples` (`0` = full enumeration, sufficient for
+  the current `<=3`-module sets), `--attribution_seed`,
+  `--attribution_include_branches`/`--attribution_include_path_internal`.
+  Reconstructs the EXACT architecture a checkpoint was trained as from the
+  checkpoint's own saved `args` (never from freshly-supplied flags, so
+  attribution can never silently run against a mismatched model).
+- **Frozen, versioned coalition semantics** (`coalition_semantics_version
+  = "gate13-v1"`, recorded in every manifest): `mu`/`residual` ablate to
+  zero, `projector` ablates to identity (bypass), `path`/`seion`/
+  `structural_kernel` (branch-level) ablate to zero. Defined once, used
+  identically everywhere — never redefined per test or per call site.
+- **Raw vs effective, never conflated:** every path-internal record in
+  `module_error_attribution.jsonl` carries BOTH `raw_contribution`
+  (pre-router-gate) and `effective_contribution = gate_value *
+  raw_contribution`; branch-level records only have `effective_contribution`
+  (there is no independent "raw" branch score to report at that
+  granularity — that is exactly what path-internal attribution measures).
+- **`--attribution_mode`:** for the currently-supported selector modes
+  (`full_neighborhood`, `budgeted_bfs`), edge selection never depends on
+  which message components are ablated, so `fixed_trace` and `end_to_end`
+  provably coincide today — verified, not merely asserted, by the
+  acceptance test (identical `module_interactions` and manifests across
+  both modes on the same checkpoint). The distinction becomes real once
+  `learned_topk` is vectorized (its edge selection DOES depend on
+  message-derived scores) — until then, `learned_topk` is explicitly
+  rejected here (checked directly against the checkpoint's saved args,
+  BEFORE any dataset load or model construction — the same fail-fast
+  precedent as Gate 13.2b's `train.py` guard).
+- **Artifacts written** under `<out_dir>/attribution/`:
+  `module_error_attribution.jsonl`, `shapley_attribution.jsonl`,
+  `rank_flip_attribution.jsonl`, `module_interactions.json`,
+  `attribution_summary.json`, `attribution_manifest.json`,
+  `attribution_failures.jsonl` (failures recorded, never silently
+  swallowed).
+- **Real acceptance run**
+  (`tests/kgr/test_gate13_3b_attribution_real_run.py`): trains a real
+  model (2 epochs, `path_backend=batched`, `dim=16` — kept small
+  deliberately for test speed; the same `train.py`/`run_attribution.py`
+  entrypoints work unchanged at production scale) on a real 20,000-triple
+  WN18RR subsample via `train.py`, then runs `run_attribution.py` over the
+  resulting checkpoint on 100 real validation queries. **Results:**
+  path-internal reconstruction error
+  `5.96e-8` (forward order), `7.45e-9` (reverse order), Shapley efficiency
+  error `5.96e-8` — all `< 1e-5` (the FP32 tolerance frozen in §2) on REAL
+  data with a REAL (partially open, `gamma_path` up to `0.91` for some
+  relations) trained gate, not a degenerate all-zero case. All 7 artifact
+  files written, manifest complete, `fixed_trace`/`end_to_end` verified
+  identical, deterministic re-execution verified byte-identical
+  (`shapley_attribution.jsonl` reproduced exactly), and raw-vs-effective
+  distinction verified non-degenerate (`effective != raw` whenever
+  `gate_value != 1`).
+- **`PASS_ATTRIBUTION_REAL_RUN`:** checkpoint loaded, `>=100` real WN18RR
+  queries processed, all files written, telescoping/Shapley within
+  tolerance, hashes+config present in the manifest, deterministic
+  re-execution confirmed, zero raw/effective mixing, zero
+  `fixed_trace`/`end_to_end` mixing (both computed, both verified
+  identical, both recorded distinctly in their own manifests).
+
 ## 6. What this campaign does not claim
 
 No MRR effect, no E8 causal claim, no SOTA claim. This campaign's only
@@ -453,5 +521,7 @@ as it was at the end of Gate 12, pending a separately budgeted Gate
 | Gate 13.3 execution | Module granularity scoped to path-internal (`mu`/`residual`/`projector`) + branch-level (`path`/`seion`/`structural_kernel`), NOT the mission brief's per-layer list (`path.layer_0.message`, etc.) | Every reasoning layer reuses the SAME `mu`/`U`/`V`/`W`/`projector` weights in this codebase — per-layer components are not independently ablatable parameters as written; attributing to the components that ARE independently ablatable is the honest scope |
 | Gate 13.3 execution | `path_internal_score`/`path_internal_telescoping`/`path_internal_shapley` read the PRE-gate `gamma_path_raw` breakdown field, not the gated total score | The router gate is exactly 0 at a fresh model (Gate 13.1), which would multiply away every ablation subset's difference identically, masking the entire internal-composition question this machinery exists to answer — the gate itself is already separately tested |
 | Gate 13.3 execution | The corrupted-module negative control uses `local_innovation` (direct per-component magnitude), not `path_internal_shapley`, to test localization | Verified empirically: corrupting the projector via the Shapley coalition game made `mu`, not `projector`, receive the largest Shapley value — a real diffusion effect under multiplicative interaction (the projector is a TRANSFORM applied to mu+residual's sum, not a third additive term), not an implementation bug. Shapley remains correct and used for conservation/efficiency/dummy-module properties, which don't hit this issue |
-| Gate 13.3 execution | The `runs/<run_id>/*.jsonl`/`*.json`/`*.csv` output-file pipeline from the mission brief §13.3.4-13.3.6 is NOT implemented — the underlying computation functions are, and are tested via synthetic fixtures only | Same pattern as Gate 13.2 before its own 13.2b production-integration follow-up: proving the mechanism is correct comes before wiring it into a real run-producing CLI entrypoint. Logged `OPEN` as Gate 13.3b |
+| Gate 13.3 execution | The `runs/<run_id>/*.jsonl`/`*.json`/`*.csv` output-file pipeline from the mission brief §13.3.4-13.3.6 is NOT implemented — the underlying computation functions are, and are tested via synthetic fixtures only | Same pattern as Gate 13.2 before its own 13.2b production-integration follow-up: proving the mechanism is correct comes before wiring it into a real run-producing CLI entrypoint. Logged `OPEN` as Gate 13.3b. **RESOLVED in Gate 13.3b (§5b): `seion_kgr/run_attribution.py` runs the full pipeline over a real trained checkpoint on real WN18RR queries, writing all artifact files, with a real acceptance test.** |
+| Gate 13.3b execution | Artifact directory is `<out_dir>/attribution/` (a subdirectory), not literally `runs/<execution_id>/attribution/` as sketched in the mission brief | `run_attribution.py` takes `--out_dir` as a plain CLI argument (matching `train.py`'s own convention) rather than assuming a fixed `runs/` root — the caller decides the run's execution-id-keyed directory, exactly as `train.py --out_dir` already works today |
+| Gate 13.3b execution | `bound_vs_observed.csv` and `certified_bound_contribution` still NOT produced by `run_attribution.py` | Confirmed still Gate 13.4's subject (CP-closure/LayerNorm/selector-stability bounds), not duplicated here, per the mission brief's own phase ordering |
 | Gate 13.3 execution | `certified_bound_contribution`/`bound_vs_observed.csv` (mission brief §13.3.6) not implemented here | That machinery is Gate 13.4's subject (CP-closure/LayerNorm/selector-stability bounds) per the mission brief's own phase ordering (13.3 attribution, then 13.4 certification) — not duplicated ahead of that gate |
