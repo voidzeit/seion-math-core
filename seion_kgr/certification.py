@@ -40,11 +40,14 @@ too loose, report the low coverage honestly").
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 import torch
 
 from .kernels import CPTernaryLaw, StiefelProjector
+
+if TYPE_CHECKING:
+    from .certified_bounds import CertifiedBound  # deferred at runtime — see certify_path_query's own import (circular otherwise)
 
 
 @dataclass
@@ -260,3 +263,77 @@ def coverage_report(results: List[CertificationResult]) -> Dict[str, Any]:
         "certified_top10_coverage": sum(r.certified_top10 for r in results) / n,
         "mean_ranking_margin": sum(r.ranking_margin for r in results) / n,
     }
+
+
+# ---------------------------------------------------------------------------
+# Gate 13.4: path-branch certification (state_error_bound supplied externally
+# by certified_path.py's multi-hop recurrence, computed over the REAL
+# compressed batched reasoner — this is the piece the module docstring above
+# says did not exist yet anywhere in this repo). Kept as separate functions
+# from certify_query/certify_evaluation_split above (which remain exactly as
+# they were, still correct for their original narrow base+SEION-only scope)
+# rather than overloading that simpler function with path-specific plumbing.
+
+
+def certify_path_query(
+    query_id: Any,
+    scores: torch.Tensor,  # [N] scores for all candidates, gold included
+    gold_index: int,
+    state_error_bound: Optional["CertifiedBound"],  # B_v for the gold candidate's path state (None if not computed/not reached)
+    gamma_r: float,  # this query's relation's SIGNED router gate value (Gate 13.1) — may be negative
+    entity_weight: torch.Tensor,
+    dim: int,
+) -> CertificationResult:
+    """Contract §13.4.6/13.4.7: ``epsilon_path <= |gamma_r| * C_E/sqrt(dim)
+    * B_v``, certified only when ``state_error_bound`` was actually
+    computed (a query whose gold candidate was never reached by the
+    traversal has no state-error bound to certify against, not an
+    implicit zero) AND is a genuine ``CertifiedBound`` whose own
+    assumptions all pass. Passing anything else (an `EmpiricalMajorant`,
+    an `EmpiricalErrorPredictor`, a bare float) for ``state_error_bound``
+    raises `TypeError` immediately — this is the concrete enforcement of
+    "never implicitly convert a proxy into a CertifiedBound". If base/
+    SEION/kernel are identical between reference and compressed (this
+    campaign's own scope, §2 of ``campaigns/gate13/preregistration.md``'s
+    frozen values), no additional error term from those branches is
+    added — only the path branch was perturbed."""
+    from .certified_bounds import CertifiedBound  # deferred: certified_bounds.py imports FROM this module (AssumptionCheck, operator_norm)
+    if state_error_bound is not None and not isinstance(state_error_bound, CertifiedBound):
+        raise TypeError(
+            f"state_error_bound must be a CertifiedBound or None, got {type(state_error_bound).__name__} — "
+            "a proxy/empirical value can never stand in for a certified one here"
+        )
+
+    gold_score = float(scores[gold_index].item())
+    sorted_scores, sorted_idx = torch.sort(scores, descending=True)
+    gold_rank_pos = int((sorted_idx == gold_index).nonzero(as_tuple=True)[0].item())
+    if gold_rank_pos == 0:
+        nearest_competitor = float(sorted_scores[1].item()) if scores.numel() > 1 else -float("inf")
+    else:
+        nearest_competitor = float(sorted_scores[0].item())
+    ranking_margin = abs(gold_score - nearest_competitor)
+
+    score_linf_bound: Optional[float] = None
+    reason = "NOT_CERTIFIED: see assumption_checks for the specific failing assumption(s)"
+    bound_assumptions: List[AssumptionCheck] = state_error_bound.assumptions if state_error_bound is not None else []
+
+    if state_error_bound is not None and state_error_bound.valid():
+        C_E = entity_norm_bound(entity_weight)
+        epsilon_path = abs(gamma_r) * (C_E / (dim ** 0.5)) * state_error_bound.value
+        score_linf_bound = epsilon_path
+        reason = "CERTIFIED: path-branch state-error bound propagated through the signed router gate"
+    elif state_error_bound is None:
+        reason = "NOT_CERTIFIED: gold candidate never reached by the traversal (no state-error bound to certify against)"
+
+    epsilon = score_linf_bound if score_linf_bound is not None else float("inf")
+    certified_rank_stable = (score_linf_bound is not None) and (ranking_margin > 2.0 * epsilon)
+    certified_top1 = certified_rank_stable and gold_rank_pos == 0
+    certified_top3 = certified_rank_stable and gold_rank_pos < 3
+    certified_top10 = certified_rank_stable and gold_rank_pos < 10
+
+    return CertificationResult(
+        query_id=query_id, state_error_bound=state_error_bound, score_linf_bound=score_linf_bound,
+        ranking_margin=ranking_margin, certified_rank_stable=certified_rank_stable,
+        certified_top1=certified_top1, certified_top3=certified_top3, certified_top10=certified_top10,
+        certificate_reason=reason, assumption_checks=bound_assumptions, empirical_majorant=None,
+    )

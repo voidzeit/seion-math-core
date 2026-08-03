@@ -72,6 +72,47 @@ class BatchedPathReasoner(nn.Module):
         m_tilde = self.mu(x_u, a_edge, q_query) + self.U(x_u) + self.V(a_edge) + self.W(q_query)
         return self.projector.apply(m_tilde) if self.projector.enabled else m_tilde
 
+    def _select_step_edges(
+        self,
+        frontier: FrontierBatch,
+        csr: CSRAdjacency,
+        head_ids: torch.Tensor, relation_ids: torch.Tensor, tail_ids: torch.Tensor, r_inv_ids: torch.Tensor,
+        training: bool,
+        generator: Optional[torch.Generator],
+    ):
+        """Expansion + queried-edge exclusion + selector budget, factored
+        out of ``_step`` so Gate 13.4's certified-bound recurrence
+        (``certified_path.py``) can compute bounds over EXACTLY the same
+        trace the real forward pass takes — never a separately
+        re-implemented (and possibly silently divergent) copy of this
+        selection logic. Returns ``(cq, fr, src, rel, tgt)``, all possibly
+        empty (``numel()==0``)."""
+        if frontier.query_id.numel() == 0:
+            empty = torch.zeros(0, dtype=torch.long, device=frontier.state.device)
+            return empty, empty, empty, empty, empty
+        cq, fr, src, rel, tgt = expand_frontier(csr, frontier)
+        if cq.numel() == 0:
+            return cq, fr, src, rel, tgt
+
+        # Leakage prevention (Gate 6, matches reasoner.py exactly): the
+        # queried edge and, during training, its reciprocal, are excluded
+        # BEFORE any budget/selector ever sees the candidate.
+        exclude = (src == head_ids[cq]) & (rel == relation_ids[cq]) & (tgt == tail_ids[cq])
+        if training:
+            exclude = exclude | ((src == tail_ids[cq]) & (rel == r_inv_ids[cq]) & (tgt == head_ids[cq]))
+        keep = ~exclude
+        cq, fr, src, rel, tgt = cq[keep], fr[keep], src[keep], rel[keep], tgt[keep]
+        if cq.numel() == 0:
+            return cq, fr, src, rel, tgt
+
+        if self.selector_mode == "budgeted_bfs":
+            counts = torch.bincount(fr, minlength=frontier.query_id.numel())
+            scores = torch.rand(cq.numel(), generator=generator, device=cq.device)
+            budget_keep = segment_topk(scores, counts, self.max_neighbors)
+            cq, fr, src, rel, tgt = cq[budget_keep], fr[budget_keep], src[budget_keep], rel[budget_keep], tgt[budget_keep]
+        # "full_neighborhood": no further filtering.
+        return cq, fr, src, rel, tgt
+
     def _step(
         self,
         frontier: FrontierBatch,
@@ -82,35 +123,9 @@ class BatchedPathReasoner(nn.Module):
         training: bool,
         generator: Optional[torch.Generator],
     ) -> FrontierBatch:
-        if frontier.query_id.numel() == 0:
-            return frontier
-        cq, fr, src, rel, tgt = expand_frontier(csr, frontier)
-        if cq.numel() == 0:
-            return FrontierBatch(
-                query_id=cq, node=tgt, state=torch.zeros(0, self.dim, device=frontier.state.device),
-            )
-
-        # Leakage prevention (Gate 6, matches reasoner.py exactly): the
-        # queried edge and, during training, its reciprocal, are excluded
-        # BEFORE any budget/selector ever sees the candidate.
-        exclude = (src == head_ids[cq]) & (rel == relation_ids[cq]) & (tgt == tail_ids[cq])
-        if training:
-            exclude = exclude | ((src == tail_ids[cq]) & (rel == r_inv_ids[cq]) & (tgt == head_ids[cq]))
-        keep = ~exclude
-        cq, fr, src, rel, tgt = cq[keep], fr[keep], src[keep], rel[keep], tgt[keep]
-
-        if cq.numel() == 0:
-            return FrontierBatch(
-                query_id=cq, node=tgt, state=torch.zeros(0, self.dim, device=frontier.state.device),
-            )
-
-        if self.selector_mode == "budgeted_bfs":
-            counts = torch.bincount(fr, minlength=frontier.query_id.numel())
-            scores = torch.rand(cq.numel(), generator=generator, device=cq.device)
-            budget_keep = segment_topk(scores, counts, self.max_neighbors)
-            cq, fr, src, rel, tgt = cq[budget_keep], fr[budget_keep], src[budget_keep], rel[budget_keep], tgt[budget_keep]
-        # "full_neighborhood": no further filtering.
-
+        cq, fr, src, rel, tgt = self._select_step_edges(
+            frontier, csr, head_ids, relation_ids, tail_ids, r_inv_ids, training, generator,
+        )
         if cq.numel() == 0:
             return FrontierBatch(
                 query_id=cq, node=tgt, state=torch.zeros(0, self.dim, device=frontier.state.device),

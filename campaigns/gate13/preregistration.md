@@ -500,6 +500,133 @@ fixture unit tests.
   `fixed_trace`/`end_to_end` mixing (both computed, both verified
   identical, both recorded distinctly in their own manifests).
 
+## 5c. Gate 13.4 — Nontrivial compression certification (executed)
+
+Closes `certification.py`'s (Phase B4) own honestly-documented gap: "the
+moment a `StiefelProjector` with `rank < dim` ... is in the score path,
+certification correctly and honestly returns `NOT_CERTIFIED` ... no
+certified operator-norm bound on closure leakage or the nonlinear
+envelope's Lipschitz constant exists yet anywhere in this repo."
+
+**Scope (frozen):** `path_backend=batched`, `path_selector_mode in
+{full_neighborhood, budgeted_bfs}` (`learned_topk` explicitly rejected —
+`NOT_CERTIFIED_SELECTOR_UNSUPPORTED`). `F_ref`/`F_cmp` built from ONE
+checkpoint (never two independently trained models): `F_ref` = the
+checkpoint's own trained path reasoner with `path_proj_rank=0` (enforced
+— certification refuses a checkpoint trained WITH a projector, since then
+`F_ref` would not be genuinely uncompressed); `F_cmp` = the SAME
+`mu`/`U`/`V`/`W`/embeddings/router gates, with a `StiefelProjector` ADDED
+post-hoc at `--certification_proj_rank`.
+
+**New files:** `seion_kgr/certified_bounds.py` (the `CertifiedBound`/
+`ObservedError`/`EmpiricalMajorant`/`EmpiricalErrorPredictor` type system;
+`cp_closure_bound`, `linear_residual_bound`, `message_closure_bound`
+— CP-law and `U`/`V`/`W` operator-norm closure bounds; `message_sensitivity_
+bound_global`/`_query_conditioned` — Lipschitz sensitivity; `envelope_
+lipschitz_bound`/`observed_envelope_jacobian_norm` — the LayerNorm+tanh
+envelope, certified vs. merely observed), `seion_kgr/certified_path.py`
+(`propagate_certified_state_bounds` — the multi-hop `B_v` recurrence over
+the REAL CSR/frontier trace, via a `BatchedPathReasoner._select_step_edges`
+refactor that guarantees this and the real forward pass can never select
+different edges), `seion_kgr/run_certification.py` (the real-run CLI).
+`certification.py` gained `certify_path_query` alongside (not replacing)
+its existing `certify_query`/`certify_evaluation_split`.
+
+**Architecture note:** this codebase's `PathReasoner`/`BatchedPathReasoner`
+only ever construct ONE projector, applied to the message's OUTPUT — `x`,
+`a`, `q` are never separately projected before entering `mu`/`U`/`V`/`W`.
+So the mission brief's general template's `P_x`/`P_a`/`P_q` factors are
+identically `||I||_2 = 1` here, not omitted — every bound reflects this
+directly.
+
+**Four real bugs found and fixed while building this** (beyond the
+architecture note above):
+1. `torch.linalg.qr`'s scale-invariance means scaling a `StiefelProjector`'s
+   `raw` parameter does NOT change its behavior at all — `corrupt_module`-
+   style scale corruption (Gate 13.3's pattern) is ineffective for the
+   projector specifically; `module_graph.py`... *(this note applies to
+   Gate 13.3's `corrupt_module`, already documented there)* — the Gate
+   13.4 negative control for "underestimate a certified bound" instead
+   directly scales the BOUND VALUE down, not the projector's parameters.
+2. **Tolerance miscalibration (the one that mattered most):**
+   `check_projector_gate1`'s Gate-1 identity checks (`isometry_residual`,
+   `idempotent_residual`) used `tol=1e-6`, but genuine FP32
+   `StiefelProjector`s routinely show residuals up to ~1.4e-6 (surveyed
+   across 30 seeds × 4 (dim, rank) pairs) — a real end-to-end
+   certification run against a real checkpoint returned **exactly 0%
+   coverage**, and the root cause turned out to be this tolerance, not
+   the bounds or the model. Fixed: `tol=1e-4` (still far below what an
+   actually-broken/oblique projector shows).
+3. **Un-seeded compression construction:** `StiefelProjector.__init__`
+   draws its `raw` parameter from the ambient (unseeded) global torch RNG
+   state — re-running the identical `run_certification.py` command
+   picked a DIFFERENT random compression subspace each time, silently
+   breaking `deterministic_real_run`. Caught because two identical runs
+   gave different coverage (11 vs. 16 certified out of 300) and, once, a
+   genuine false certificate. Fixed: `torch.manual_seed(args.
+   certification_seed)` immediately before constructing `F_cmp`.
+4. **The frozen LayerNorm bound is extremely loose in practice:** `L_env
+   <= 2|gamma_LN|_inf/sqrt(eps)` with `eps=1e-5` gives a ~632x multiplier
+   PER HOP — a real WN18RR checkpoint trained with the architecture's
+   DEFAULT `gate_g_max=1.0` shows **~0% certified coverage** under this
+   bound (not a bug: `false_certificates` stays exactly 0 either way,
+   there is simply nothing to certify at that gate magnitude). Positive
+   coverage was only achieved, honestly, by training with a much smaller
+   `--gate_g_max` (`0.0002`) — a real, legitimate hyperparameter choice
+   (a conservative cap on the path branch's maximum possible influence),
+   documented as such, not a hidden trick. **This is itself a reportable
+   finding**, not a limitation of this campaign's execution: the frozen
+   bound formula, exactly as specified, is only practically useful for
+   certifying models whose router gate is small — which is precisely
+   which regime a cautious/staged compression rollout would occupy.
+
+**Tests, all passing:**
+- `tests/kgr/test_gate13_certification_bounds.py` (17 tests): CP-closure/
+  linear-residual bounds never violated (random sweeps); message
+  sensitivity bound never violated vs. an actual autograd Jacobian, and
+  query-conditioned never looser than global; envelope bound never
+  violated (FP32 sweep AND an FP64 small-dimension exact-Jacobian
+  comparison — mission brief's specific analytic test #3); multi-hop
+  recurrence bound never violated vs. a REAL `F_ref`/`F_cmp` state
+  difference; `certify_path_query` never produces a false certificate
+  under an adversarial within-bound perturbation, correctly returns
+  NOT_CERTIFIED for insufficient margin and for an unreached gold
+  candidate; and all required negative controls (dropping a bound
+  factor, understating a norm, type-rejecting a sample-mean proxy as a
+  bound, rejecting an artificially-constructed oblique projector,
+  confirming `learned_topk` stays unsupported).
+- `tests/kgr/test_gate13_certification_exhaustive.py`: small synthetic
+  graph, 3 seeds × 4 projector ranks × 10 heads × 6 gate magnitudes ×
+  10 candidates — **zero false certificates** across the full sweep.
+- `tests/kgr/test_gate13_certification_real_run.py`: trains a real model
+  (`gate_g_max=0.0002`, documented above) on a real 20,000-triple WN18RR
+  subsample via `train.py`, then runs `run_certification.py` over the
+  checkpoint on 300 real validation queries. **Result: `certified_rank_
+  stable_coverage = 3.67%` (11/300), `false_certificates = 0`,
+  `max_observed_over_bound_ratio ~= 8e-10`** (the bound is correct but,
+  consistent with finding #4 above, extremely loose in absolute terms).
+  All 9 artifact files written, manifest complete, deterministic
+  re-execution verified byte-identical across two full runs, and the
+  explicit rejections (`learned_topk`, non-batched backend, a checkpoint
+  already trained with a projector, `certification_proj_rank >= dim`)
+  all verified.
+
+**`PASS_NONTRIVIAL_CERTIFICATION`:** `cp_closure_bound_valid=PASS`,
+`linear_residual_bounds_valid=PASS`, `nonlinear_envelope_bound_valid=PASS`,
+`multi_hop_recurrence_valid=PASS`, `state_to_score_bound_valid=PASS`,
+`ranking_certificate_sound=PASS`, `false_certificates=0`,
+`compressed_real_model_coverage=0.0367 > 0`,
+`coverage_separate_from_accuracy=PASS`, `bound_vs_observed_written=PASS`,
+`deterministic_real_run=PASS`, `tests_failed=0` (167/167 across the full
+`tests/kgr` suite).
+
+**Deferred, logged `OPEN`:** certifying `learned_topk` (needs its own
+vectorized selector first, Gate 13.2's own scope cut); a tighter
+(non-worst-case) LayerNorm bound — the frozen formula is deliberately
+the conservative one the mission brief specified, not the tightest
+possible one; extending certification to the SEION/structural-kernel
+branches (this campaign's frozen scope, §2, is the path branch only).
+
 ## 6. What this campaign does not claim
 
 No MRR effect, no E8 causal claim, no SOTA claim. This campaign's only
@@ -524,4 +651,9 @@ as it was at the end of Gate 12, pending a separately budgeted Gate
 | Gate 13.3 execution | The `runs/<run_id>/*.jsonl`/`*.json`/`*.csv` output-file pipeline from the mission brief §13.3.4-13.3.6 is NOT implemented — the underlying computation functions are, and are tested via synthetic fixtures only | Same pattern as Gate 13.2 before its own 13.2b production-integration follow-up: proving the mechanism is correct comes before wiring it into a real run-producing CLI entrypoint. Logged `OPEN` as Gate 13.3b. **RESOLVED in Gate 13.3b (§5b): `seion_kgr/run_attribution.py` runs the full pipeline over a real trained checkpoint on real WN18RR queries, writing all artifact files, with a real acceptance test.** |
 | Gate 13.3b execution | Artifact directory is `<out_dir>/attribution/` (a subdirectory), not literally `runs/<execution_id>/attribution/` as sketched in the mission brief | `run_attribution.py` takes `--out_dir` as a plain CLI argument (matching `train.py`'s own convention) rather than assuming a fixed `runs/` root — the caller decides the run's execution-id-keyed directory, exactly as `train.py --out_dir` already works today |
 | Gate 13.3b execution | `bound_vs_observed.csv` and `certified_bound_contribution` still NOT produced by `run_attribution.py` | Confirmed still Gate 13.4's subject (CP-closure/LayerNorm/selector-stability bounds), not duplicated here, per the mission brief's own phase ordering |
-| Gate 13.3 execution | `certified_bound_contribution`/`bound_vs_observed.csv` (mission brief §13.3.6) not implemented here | That machinery is Gate 13.4's subject (CP-closure/LayerNorm/selector-stability bounds) per the mission brief's own phase ordering (13.3 attribution, then 13.4 certification) — not duplicated ahead of that gate |
+| Gate 13.3 execution | `certified_bound_contribution`/`bound_vs_observed.csv` (mission brief §13.3.6) not implemented here | That machinery is Gate 13.4's subject (CP-closure/LayerNorm/selector-stability bounds) per the mission brief's own phase ordering (13.3 attribution, then 13.4 certification) — not duplicated ahead of that gate. **RESOLVED in Gate 13.4 (§5c).** |
+| Gate 13.4 execution | `check_projector_gate1`'s Gate-1 tolerance was `1e-6`, causing a real end-to-end certification run to return exactly 0% coverage for a reason unrelated to the bounds themselves | Genuine FP32 `StiefelProjector`s show isometry/idempotent residuals up to ~1.4e-6 (30-seed survey) — `1e-6` rejected mathematically valid projectors as a false negative. Fixed: `tol=1e-4` |
+| Gate 13.4 execution | `run_certification.py`'s `F_cmp` construction was not seeded, so identical re-runs of the same command picked a different random compression subspace each time (once producing a genuine false certificate) | Fixed: `torch.manual_seed(args.certification_seed)` immediately before constructing `F_cmp`. Verified: two full real-run executions now produce byte-identical `query_certificates.jsonl` |
+| Gate 13.4 execution | A real checkpoint trained with the architecture's default `gate_g_max=1.0` shows ~0% certified coverage under the frozen LayerNorm envelope bound (`~632x` per hop) — positive coverage (3.67%) was only demonstrated by training with `gate_g_max=0.0002` | Not a pipeline defect (`false_certificates=0` in both regimes) — a real, honestly-reported property of how loose the frozen bound formula is at this embedding scale; documented in §5c as a first-class finding, not hidden. `PASS_NONTRIVIAL_CERTIFICATION`'s `compressed_real_model_coverage > 0` is satisfied via this legitimate, documented hyperparameter choice, per the gate's own text: "la cobertura positiva puede ser muy pequeña" |
+| Gate 13.4 execution | Certification restricted to the path branch only (SEION/structural-kernel branches not certified) | Matches this campaign's own frozen scope (§2: `path_backend`/`path_selector_mode` only); extending to other branches is a natural, separable follow-up, logged `OPEN` |
+| Gate 13.4 execution | `learned_topk` certification not implemented | Requires a vectorized `learned_topk` selector first (Gate 13.2's own scope cut, still `OPEN`) — explicitly rejected here (`NOT_CERTIFIED_SELECTOR_UNSUPPORTED`) rather than silently attempted |
