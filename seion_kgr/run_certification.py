@@ -21,6 +21,7 @@ dataset load or model construction, same fail-fast precedent as Gate
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -28,6 +29,7 @@ import torch
 
 from . import reproducibility as repro
 from .certification import certify_path_query, coverage_report
+from .certified_bounds import GATE1_TOLERANCE
 from .certified_path import propagate_certified_state_bounds
 from .data import load_knowledge_graph
 from .frontier_ops import build_csr_adjacency
@@ -125,6 +127,25 @@ def run_certification(args: argparse.Namespace) -> Dict[str, Any]:
     t_ids = torch.tensor([t[2] for t in sample], device=device)
     query_vecs = cmp.relation(r_ids)
 
+    # Identifies EXACTLY which (h,r,t) triples were certified, independent of
+    # dataset_hashes (which only identifies the split files) and of
+    # certification_max_queries (which only identifies the count) — needed to
+    # tell apart two runs over the same split with different sampling.
+    query_subset_hash = repro.sha256_bytes(
+        json.dumps([list(t) for t in sample], sort_keys=False).encode("utf-8")
+    )
+
+    # Projector "raw" param is the ONLY randomly-initialized, never-trained
+    # state in F_cmp (see _build_ref_and_cmp's manual_seed comment) — hashed
+    # separately from checkpoint_sha256 (which covers F_ref's trained
+    # weights only) so a silent change in the seeded compression subspace
+    # is independently auditable.
+    projector = cmp.path_reasoner.projector
+    if projector.enabled:
+        projector_state_sha256 = repro.sha256_bytes(projector.raw.detach().cpu().numpy().tobytes())
+    else:
+        projector_state_sha256 = None
+
     bounds, ledger, closure_terms = propagate_certified_state_bounds(
         cmp.path_reasoner, csr, cmp.relation.weight, h_ids, r_ids, t_ids, query_vecs, args.certification_seed, training=False,
     )
@@ -201,22 +222,31 @@ def run_certification(args: argparse.Namespace) -> Dict[str, Any]:
     repro.save_json(coverage_summary, out_dir / "coverage_summary.json")
 
     max_ratio = max((rec["ratio"] for rec in bound_vs_observed if rec["ratio"] is not None), default=None)
+    commit_sha = repro.git_manifest(Path(__file__).resolve().parent).get("commit")
     manifest = {
-        "model_commit": repro.git_manifest(Path(__file__).resolve().parent).get("commit"),
+        "model_commit": commit_sha,
+        "commit_sha": commit_sha,  # exact field name required by the campaign run-record contract
         "checkpoint_path": str(args.checkpoint),
         "checkpoint_sha256": repro.sha256_file(args.checkpoint),
+        "projector_state_sha256": projector_state_sha256,
         "dataset_hashes": {
             "train": repro.sha256_file(args.train), "valid": repro.sha256_file(args.valid), "test": repro.sha256_file(args.test),
         },
+        "query_subset_hash": query_subset_hash,
         "reference_rank": ckpt_args.get("path_proj_rank", 0),
         "compressed_rank": args.certification_proj_rank,
+        "projector_rank": args.certification_proj_rank,  # exact field name required by the campaign run-record contract
         "dim": ckpt_args["dim"],
         "path_backend": ckpt_args.get("path_backend", "legacy"),
         "selector_mode": ckpt_args.get("path_selector_mode"),
         "dtype": "float32",
         "seed": args.certification_seed,
+        "projector_seed": args.certification_seed,  # exact field name required by the campaign run-record contract; the same seed gates the projector's torch.manual_seed in _build_ref_and_cmp
+        "gate_g_max": cmp.gate_g_max,
+        "layernorm_eps": float(cmp.path_reasoner.ln.eps),
+        "gate1_tolerance": GATE1_TOLERANCE,
         "bound_formula_version": BOUND_FORMULA_VERSION,
-        "numeric_tolerances": {"fp32_reconstruction": 1e-5},
+        "numeric_tolerances": {"fp32_reconstruction": 1e-5, "gate1_tolerance": GATE1_TOLERANCE},
         "coverage": coverage_summary,
         "max_observed_over_bound_ratio": max_ratio,
     }

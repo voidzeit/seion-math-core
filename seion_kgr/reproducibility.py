@@ -62,6 +62,10 @@ def sha256_file(path: str | Path, chunk_size: int = 1 << 20) -> str:
     return h.hexdigest()
 
 
+def sha256_bytes(blob: bytes) -> str:
+    return hashlib.sha256(blob).hexdigest()
+
+
 def file_manifest(path: str | Path) -> Dict[str, Any]:
     p = Path(path).resolve()
     return {

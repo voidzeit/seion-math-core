@@ -44,6 +44,12 @@ from .kernels import CPTernaryLaw, StiefelProjector
 
 BOUND_FORMULA_VERSION = "gate13.4-v1"
 
+# Gate-1 identity tolerance (isometry/idempotent/symmetry residuals) used by
+# every real certification run via check_projector_gate1's default below —
+# named here so run_certification.py can record the exact value it used in
+# its manifest instead of duplicating the magic number.
+GATE1_TOLERANCE = 1e-4
+
 
 @dataclass(frozen=True)
 class CertifiedBound:
@@ -108,7 +114,7 @@ def _identity_minus_output_projection(weight: torch.Tensor, projector: Optional[
     return (eye - p) @ weight
 
 
-def check_projector_gate1(projector: Optional[StiefelProjector], tol: float = 1e-4) -> List[AssumptionCheck]:
+def check_projector_gate1(projector: Optional[StiefelProjector], tol: float = GATE1_TOLERANCE) -> List[AssumptionCheck]:
     """Gate-1 identities (`Q^T Q = I`, `P^2 = P`) PLUS a symmetry check
     (`P = P^T`) that `StiefelProjector.P() = Q Q^T` always satisfies by
     construction, but which an artificially-constructed OBLIQUE projector
