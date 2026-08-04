@@ -273,6 +273,14 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--cpu", action="store_true")
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--resume", type=str, default="", help="path to a last.pt/best.pt checkpoint to resume from")
+    p.add_argument(
+        "--init_from_checkpoint", type=str, default="",
+        help="Gate 13.5 §8: seed this run's OVERLAPPING params (entity/relation embeddings, base-expert "
+             "weights) from a DIFFERENT (typically smaller-architecture, e.g. A0) checkpoint via a "
+             "strict=False partial load -- unlike --resume, this starts epoch 0 / a fresh optimizer and "
+             "does not require matching configuration_id. Params absent from the source checkpoint "
+             "(e.g. a fresh A1/A2/A3's path_reasoner/seion submodules) keep their own random init.",
+    )
     return p
 
 
@@ -346,6 +354,24 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         path_selector_mode=args.path_selector_mode, structural_kernel=structural_kernel,
         gate_g_max=args.gate_g_max, path_backend=args.path_backend,
     ).to(device)
+    if args.init_from_checkpoint:
+        if args.resume:
+            raise ValueError("--init_from_checkpoint and --resume are mutually exclusive (partial cross-config seeding vs. identical-config continuation)")
+        src_ckpt = repro.load_checkpoint(args.init_from_checkpoint)
+        incompatible = model.load_state_dict(src_ckpt["model_state"], strict=False)
+        if incompatible.unexpected_keys:
+            raise ValueError(
+                f"--init_from_checkpoint source has params this model does not: {incompatible.unexpected_keys} "
+                "-- expected the source to be an architectural SUBSET of this run (e.g. A0 seeding A1/A2/A3), "
+                "never the other way around"
+            )
+        if args.out_dir:
+            repro.save_json({
+                "source_checkpoint": str(args.init_from_checkpoint),
+                "source_checkpoint_sha256": repro.sha256_file(args.init_from_checkpoint),
+                "loaded_keys": sorted(set(src_ckpt["model_state"].keys()) - set(incompatible.missing_keys)),
+                "fresh_init_keys": sorted(incompatible.missing_keys),
+            }, Path(args.out_dir) / "init_from_checkpoint_manifest.json")
     # Gate 13.2b: `adjacency` must be the type the active path_backend
     # expects — model.py's `_run_path_reasoner` dispatches on
     # `self.path_backend` alone and trusts the caller to have passed the
@@ -363,7 +389,18 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         repro.save_json(structural_kernel.provenance.to_dict(), Path(args.out_dir) / "kernel_manifest.json")
 
     dataset = TripleDataset(kg.train)
-    loader = torch.utils.data.DataLoader(dataset, batch_size=args.batch_size, shuffle=True, drop_last=False)
+    # Gate 13.5 §8: an explicit generator seeded directly from args.seed, NOT
+    # DataLoader's default (RandomSampler auto-seeds itself by drawing one
+    # value off the AMBIENT global torch RNG, whose position at this point
+    # depends on how many parameters were just randomly initialized above —
+    # a different count for A0 vs. A1/A2/A3 under enable_path/enable_seion.
+    # Without this, the same --seed would silently shuffle train triples in
+    # a DIFFERENT order per config, breaking the paired-seed design the
+    # ablation matrix depends on. +1000 offset keeps it clear of `rng`
+    # (seed+1) and `gen` (seed+2) below.
+    data_gen = torch.Generator()
+    data_gen.manual_seed(args.seed + 1000)
+    loader = torch.utils.data.DataLoader(dataset, batch_size=args.batch_size, shuffle=True, drop_last=False, generator=data_gen)
     optimizer = torch.optim.AdamW(build_optimizer_param_groups(model, args.lr, args.router_lr_multiplier), weight_decay=args.weight_decay)
     rng = np.random.default_rng(args.seed + 1)
     gen = torch.Generator(device=device)
