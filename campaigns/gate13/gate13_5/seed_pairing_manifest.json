@@ -1,0 +1,18 @@
+{
+  "pairing_mechanism": {
+    "batch_order": "explicit torch.Generator seeded at args.seed+1000, decoupled from model-construction RNG consumption (train.py, commit 5094d44)",
+    "base_initialization": "A0 trained first per seed; A1/A2/A3 for that seed use --init_from_checkpoint <that seed's A0 best.pt> (train.py, commit 5094d44), sharing tucker/embedding weights at step 0",
+    "verification_tests": [
+      "tests/kgr/test_gate13_5_paired_seeding.py::test_dataloader_batch_order_independent_of_prior_rng_consumption",
+      "tests/kgr/test_gate13_5_paired_seeding.py::test_init_from_checkpoint_seeds_overlap_and_leaves_new_branches_fresh",
+      "tests/kgr/test_gate13_5_paired_seeding.py::test_init_from_checkpoint_rejects_reverse_direction_and_resume_combo"
+    ],
+    "verification_status": "all 3 pass, full tests/kgr suite 170/170 at commit 5094d44"
+  },
+  "pairs": [
+    {"seed": 1, "order": ["A0", "A1", "A2", "A3"], "a0_checkpoint": null},
+    {"seed": 2, "order": ["A0", "A1", "A2", "A3"], "a0_checkpoint": null},
+    {"seed": 3, "order": ["A0", "A1", "A2", "A3"], "a0_checkpoint": null}
+  ],
+  "note": "a0_checkpoint fields are filled in by the runner (run_gate13_5.py) with each seed's actual A0 best.pt path once Stage 4 executes -- null here since this file is written before any Stage 4 run exists."
+}

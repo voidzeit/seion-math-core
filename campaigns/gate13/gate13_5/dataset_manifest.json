@@ -1,0 +1,19 @@
+{
+  "primary_screening_dataset": "FB15K-237",
+  "diagnostic_only_dataset": "WN18RR",
+  "splits": {
+    "FB15K-237": {
+      "train": {"path": "data/FB15K-237/train.txt", "lines": 272115, "sha256": "6e4c2782169af21e9743f3b1d200886f5d595bf6bc504ec1351720949c5cdfae"},
+      "valid": {"path": "data/FB15K-237/valid.txt", "lines": 17535, "sha256": "cf6309010852f6a8d47a45df830a426415d1ee6f7a3970a8376ff1fb81db4a5c"},
+      "test":  {"path": "data/FB15K-237/test.txt",  "lines": 20466, "sha256": "5711cf41623ceb4eacc50eb6108a3ca6565c7492e3caaf82a3e355cc660d1574"}
+    },
+    "WN18RR": {
+      "train": {"path": "data/WN18RR/train.txt", "lines": 86835, "sha256": "038612e783c215ee5f3ca9fbfca27b8d0739be1028fe4ee7c174aecf0b83d5df"},
+      "valid": {"path": "data/WN18RR/valid.txt", "lines": 3034, "sha256": "453ce7202afa58094a04d2b1560ee2b02660f1c260b32ce6651c8ccedd1028ab"},
+      "test":  {"path": "data/WN18RR/test.txt",  "lines": 3134, "sha256": "0383bceaaa1096cf3c03ec021ed0048068e2355dbfc0239b292cefdac821cec5"}
+    }
+  },
+  "subsampling_policy": "none in any A0-A3 primary run; a subsample is ENGINEERING_SMOKE_ONLY and never enters the causal contrasts (preregistration.md sec4)",
+  "hashed_on": "2026-08-04",
+  "hash_tool": "python hashlib.sha256, 1MiB chunks, same routine as seion_kgr.reproducibility.sha256_file"
+}

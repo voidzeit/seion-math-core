@@ -1,0 +1,5 @@
+config_id,enable_path,enable_seion,structural_kernel_variant,base_expert,description
+A0,false,false,none,tucker,base expert alone
+A1,true,false,none,tucker,base + path branch
+A2,false,true,none,tucker,base + SEION scalar branch
+A3,true,true,none,tucker,base + path + SEION
