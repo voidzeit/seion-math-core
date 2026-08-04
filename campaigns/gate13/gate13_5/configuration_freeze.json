@@ -9,6 +9,7 @@
   "path_layers": 2,
   "path_max_neighbors": 16,
   "path_proj_rank": 0,
+  "seion_rank": 32,
   "dim": 64,
   "batch_size": 256,
   "entity_block_eval": 2048,

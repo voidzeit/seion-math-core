@@ -13,6 +13,11 @@ mechanisms that did not exist, or were not verified, before this campaign.
    fresh init, and reject the reverse direction (a source with params this
    model does not have) as an explicit error rather than silently dropping
    them.
+3. --skip_test_eval must make a screening run's final_metrics.json report
+   "test": null / "test_eval_skipped": true instead of silently opening the
+   test split — the test-set discipline (preregistration.md sec10) that a
+   12-run screening campaign, unlike a single confirmatory run, must not
+   inspect test once per run.
 """
 from __future__ import annotations
 
@@ -149,3 +154,31 @@ def test_init_from_checkpoint_rejects_reverse_direction_and_resume_combo(tmp_pat
     ])
     with pytest.raises(ValueError, match="mutually exclusive"):
         train(combo_args)
+
+
+@pytest.mark.skipif(not DATA_ROOT.is_dir(), reason="data/WN18RR not present in this checkout")
+def test_skip_test_eval_reports_null_test_and_flag(tmp_path):
+    data_dir = _write_subsample(tmp_path)
+
+    args_skipped = build_train_parser().parse_args([
+        "--train", str(data_dir / "train.txt"), "--valid", str(data_dir / "valid.txt"), "--test", str(data_dir / "test.txt"),
+        "--out_dir", str(tmp_path / "skipped_run"), "--dim", "16", "--base_expert", "tucker",
+        "--epochs", "1", "--batch_size", "64", "--eval_max_queries", "50", "--seed", "3", "--cpu", "--skip_test_eval",
+    ])
+    result_skipped = train(args_skipped)
+    assert result_skipped["test"] is None
+    assert result_skipped["test_eval_skipped"] is True
+    import json
+    final_metrics = json.loads((tmp_path / "skipped_run" / "final_metrics.json").read_text())
+    assert final_metrics["test"] is None
+    assert final_metrics["test_eval_skipped"] is True
+
+    args_normal = build_train_parser().parse_args([
+        "--train", str(data_dir / "train.txt"), "--valid", str(data_dir / "valid.txt"), "--test", str(data_dir / "test.txt"),
+        "--out_dir", str(tmp_path / "normal_run"), "--dim", "16", "--base_expert", "tucker",
+        "--epochs", "1", "--batch_size", "64", "--eval_max_queries", "50", "--seed", "3", "--cpu",
+    ])
+    result_normal = train(args_normal)
+    assert result_normal["test"] is not None
+    assert result_normal["test_eval_skipped"] is False
+    assert "MRR" in result_normal["test"]["combined"]

@@ -269,6 +269,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--entity_block_eval", type=int, default=2048)
     p.add_argument("--eval_subset", type=float, default=1.0)
     p.add_argument("--eval_max_queries", type=int, default=0, help="0 = no cap; smoke runs should set this")
+    p.add_argument(
+        "--skip_test_eval", action="store_true",
+        help="Gate 13.5 test-set discipline: skip the end-of-run test evaluation "
+             "(final_metrics.json's \"test\" field is null, \"test_eval_skipped\" is true) "
+             "-- for screening campaigns where test must be opened exactly once, across "
+             "all frozen configs, not once per run",
+    )
 
     p.add_argument("--cpu", action="store_true")
     p.add_argument("--seed", type=int, default=42)
@@ -333,6 +340,8 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         )
     repro.set_seed(args.seed)
     device = torch.device("cpu" if args.cpu or not torch.cuda.is_available() else "cuda")
+    if device.type == "cuda":
+        torch.cuda.reset_peak_memory_stats(device)
 
     run_manifest = None
     if args.out_dir:
@@ -563,17 +572,32 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
             repro.append_jsonl(record, metrics_path)
         print(json.dumps(record, default=str), flush=True)
 
-    test_subset = args.eval_subset
-    if args.eval_max_queries > 0:
-        test_subset = min(test_subset, args.eval_max_queries / max(len(kg.test), 1))
-    test_metrics = evaluate(model, kg, "test", device, args.eval_batch, args.entity_block_eval, adjacency, test_subset, args.seed)
+    if args.skip_test_eval:
+        # Gate 13.5 test-set discipline (campaigns/gate13/gate13_5/preregistration.md
+        # sec10): a screening campaign that evaluates test at the end of EVERY run
+        # opens it once per run, not once total. "test": null here is a deliberate,
+        # visible placeholder -- not a silently-skipped field -- so a screening
+        # run's final_metrics.json can never be mistaken for a completed
+        # confirmatory one. A separate one-time pass (run_gate13_5.py's
+        # evaluate_test_frozen stage) computes real test metrics after all
+        # configs' best epochs are frozen from validation alone.
+        test_metrics = None
+    else:
+        test_subset = args.eval_subset
+        if args.eval_max_queries > 0:
+            test_subset = min(test_subset, args.eval_max_queries / max(len(kg.test), 1))
+        test_metrics = evaluate(model, kg, "test", device, args.eval_batch, args.entity_block_eval, adjacency, test_subset, args.seed)
     result = {
         "status": "COMPLETED",
         "base_expert": args.base_expert,
         "enable_path": args.enable_path,
         "enable_seion": args.enable_seion,
         "test": test_metrics,
+        "test_eval_skipped": bool(args.skip_test_eval),
         "wall_sec": time.time() - start,
+        # whole-run peak, tracked since immediately after device selection above --
+        # distinct from measure_path_reasoner_perf's own narrower probe-scoped peak.
+        "gpu_peak_mb": float(torch.cuda.max_memory_allocated(device)) / 1e6 if device.type == "cuda" else None,
     }
     if args.out_dir:
         if args.enable_path:
