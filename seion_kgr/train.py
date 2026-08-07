@@ -112,7 +112,7 @@ def compute_path_reasoner_perf(
         "path_backend": model.path_backend,
         "sample_size": n,
         "wall_seconds": wall_sec,
-        "queries_per_second": n / wall_sec if wall_sec > 0 else float("inf"),
+        "queries_per_second": n / wall_sec if wall_sec > 0 else None,
         "mean_frontier_size": mean_frontier_size,
         "p95_frontier_size": p95_frontier_size,
         "gold_reach_rate": gold_reach_rate,
@@ -478,6 +478,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
     rng = np.random.default_rng(args.seed + 1)
     gen = torch.Generator(device=device)
     gen.manual_seed(args.seed + 2)
+    rng_generators = {"data_loader": data_gen, "geometry": gen}
 
     metrics_path = Path(args.out_dir) / "metrics.jsonl" if args.out_dir else None
     rank_history_path = Path(args.out_dir) / "rank_history.jsonl" if args.out_dir else None
@@ -496,6 +497,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
     parent_execution_id = None
     if args.resume:
         ckpt = repro.load_checkpoint(args.resume)
+        repro.restore_rng_state(ckpt.get("rng_state", {}), numpy_rng=rng, generators=rng_generators)
         parent_execution_id = ckpt.get("args", {}).get("_execution_id")
         parent_config_id = ckpt.get("args", {}).get("_configuration_id")
         this_config_id = run_manifest["configuration_id"] if run_manifest else None
@@ -511,6 +513,8 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         start_epoch = int(ckpt["epoch"]) + 1
         global_step = int(ckpt["global_step"])
         best_mrr = float(ckpt["best_mrr"])
+        best_epoch = ckpt.get("best_epoch")
+        evals_without_improvement = int(ckpt.get("evaluations_without_improvement", 0))
         if run_manifest is not None:
             run_manifest["parent_execution_id"] = parent_execution_id
             repro.save_json(run_manifest, Path(args.out_dir) / "run_manifest.json")
@@ -649,14 +653,20 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                 repro.append_jsonl({"epoch": epoch, "closure_leakage": leak}, error_attribution_path)
 
         if args.out_dir:
-            rng_state = repro.rng_state_snapshot(args.seed, rng)
+            rng_state = repro.rng_state_snapshot(args.seed, rng, generators=rng_generators)
             args_dict = {k: v for k, v in vars(args).items()}
             args_dict["_configuration_id"] = run_manifest["configuration_id"] if run_manifest else None
             args_dict["_execution_id"] = run_manifest["execution_id"] if run_manifest else None
             args_dict["_parent_execution_id"] = parent_execution_id
-            repro.save_checkpoint(Path(args.out_dir) / "last.pt", model.state_dict(), optimizer.state_dict(), epoch, global_step, best_mrr, args_dict, rng_state)
+            repro.save_checkpoint(
+                Path(args.out_dir) / "last.pt", model.state_dict(), optimizer.state_dict(), epoch,
+                global_step, best_mrr, args_dict, rng_state, best_epoch, evals_without_improvement,
+            )
             if is_eval_epoch and record.get("new_best"):
-                repro.save_checkpoint(Path(args.out_dir) / "best.pt", model.state_dict(), optimizer.state_dict(), epoch, global_step, best_mrr, args_dict, rng_state)
+                repro.save_checkpoint(
+                    Path(args.out_dir) / "best.pt", model.state_dict(), optimizer.state_dict(), epoch,
+                    global_step, best_mrr, args_dict, rng_state, best_epoch, evals_without_improvement,
+                )
 
         history.append(record)
         if metrics_path is not None:

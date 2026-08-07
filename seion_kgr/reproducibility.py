@@ -214,6 +214,8 @@ def save_checkpoint(
     best_mrr: float,
     args: Mapping[str, Any],
     rng_state: Mapping[str, Any],
+    best_epoch: Optional[int] = None,
+    evaluations_without_improvement: int = 0,
 ) -> None:
     path = Path(path)
     ensure_dir(path.parent)
@@ -225,6 +227,8 @@ def save_checkpoint(
             "epoch": int(epoch),
             "global_step": int(global_step),
             "best_mrr": float(best_mrr),
+            "best_epoch": best_epoch,
+            "evaluations_without_improvement": int(evaluations_without_improvement),
             "args": dict(args),
             "rng_state": dict(rng_state),
         },
@@ -237,12 +241,41 @@ def load_checkpoint(path: str | Path) -> Dict[str, Any]:
     return torch.load(path, map_location="cpu", weights_only=False)
 
 
-def rng_state_snapshot(seed: int, numpy_rng: Optional[np.random.Generator] = None) -> Dict[str, Any]:
+def rng_state_snapshot(
+    seed: int,
+    numpy_rng: Optional[np.random.Generator] = None,
+    generators: Optional[Mapping[str, torch.Generator]] = None,
+) -> Dict[str, Any]:
+    """Capture every stochastic stream owned by the trainer."""
     return {
+        "python": random.getstate(),
         "torch": torch.get_rng_state(),
+        "torch_cuda": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None,
         "numpy": numpy_rng.bit_generator.state if numpy_rng is not None else None,
+        "generators": {name: generator.get_state() for name, generator in (generators or {}).items()},
         "seed": seed,
     }
+
+
+def restore_rng_state(
+    state: Mapping[str, Any],
+    numpy_rng: Optional[np.random.Generator] = None,
+    generators: Optional[Mapping[str, torch.Generator]] = None,
+) -> None:
+    """Restore the state captured by :func:`rng_state_snapshot`."""
+    if state.get("python") is not None:
+        random.setstate(state["python"])
+    if state.get("torch") is not None:
+        torch.set_rng_state(state["torch"])
+    cuda_state = state.get("torch_cuda")
+    if cuda_state is not None and torch.cuda.is_available():
+        torch.cuda.set_rng_state_all(cuda_state)
+    if numpy_rng is not None and state.get("numpy") is not None:
+        numpy_rng.bit_generator.state = state["numpy"]
+    saved_generators = state.get("generators") or {}
+    for name, generator in (generators or {}).items():
+        if name in saved_generators:
+            generator.set_state(saved_generators[name])
 
 
 def mark_completed(out_dir: str | Path, final_metrics: Mapping[str, Any]) -> None:

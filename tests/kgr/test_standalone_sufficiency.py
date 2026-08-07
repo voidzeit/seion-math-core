@@ -87,6 +87,32 @@ def test_warm_started_decoder_mode_has_zero_base_contribution_and_finite_scores(
     assert float(scores.std().item()) > 0.0
 
 
+def test_standalone_path_and_seion_scores_use_matching_dimension_scaling():
+    torch.manual_seed(19)
+    path = SeionKGRv26(
+        num_entities=4, num_relations_total=4, dim=8, base_expert="tucker",
+        enable_path=True, path_rank=4, path_layers=1, path_max_neighbors=4,
+        path_selector_mode="full_neighborhood", standalone_mode="warm_started_decoder",
+    )
+    seion = SeionKGRv26(
+        num_entities=4, num_relations_total=4, dim=8, base_expert="tucker",
+        enable_seion=True, seion_rank=4, standalone_mode="warm_started_decoder",
+    )
+    h, r, t = _triples()
+    _, path_breakdown = path.score_positive(h, r, t, _adjacency(), seed=0, training=False, return_breakdown=True)
+    _, seion_breakdown = seion.score_positive(h, r, t, return_breakdown=True)
+    expected_path = path_breakdown["gamma_path_gate"] * path_breakdown["gamma_path_raw"]
+    expected_seion = seion_breakdown["eta_seion_gate"] * seion_breakdown["eta_seion_raw"]
+    h_e, r_e, t_e = seion.entity(h), seion.relation(r), seion.entity(t)
+    q_e = seion.seion_query_norm(seion.seion_scorer.q_seion(h_e, r_e, r_e))
+    target_e = seion.seion_target_norm(seion.seion_scorer.T(t_e))
+    expected_seion_raw = (q_e * target_e).sum(dim=-1) / (seion.dim ** 0.5)
+    assert torch.allclose(path_breakdown["gamma_path"], expected_path)
+    assert torch.allclose(seion_breakdown["eta_seion"], expected_seion)
+    assert torch.allclose(seion_breakdown["eta_seion_raw"], expected_seion_raw)
+    assert torch.isfinite(seion_breakdown["eta_seion"]).all()
+
+
 def test_generic_residual_is_parameter_matched_and_has_internal_gradient():
     torch.manual_seed(17)
     seion = SeionKGRv26(

@@ -250,7 +250,7 @@ class SeionKGRv26(nn.Module):
         if self.enable_seion:
             seion_t = self.entity(t_ids)  # always the shared table, see score_tail_candidates note
             if self.seion_query_norm is not None:
-                s_seion = (self.seion_query_norm(self.seion_scorer.q_seion(h, r, r)) * self.seion_target_norm(self.seion_scorer.T(seion_t))).sum(dim=-1)
+                s_seion = (self.seion_query_norm(self.seion_scorer.q_seion(h, r, r)) * self.seion_target_norm(self.seion_scorer.T(seion_t))).sum(dim=-1) / math.sqrt(self.dim)
             else:
                 s_seion = self.seion_scorer.score_positive(h, r, r, seion_t)
             eta = self._positive_scale(self.seion_scale_raw, r_ids) if self.seion_scale_raw is not None else self._gate(self.eta_raw, r_ids)
@@ -321,7 +321,7 @@ class SeionKGRv26(nn.Module):
             if self.seion_query_norm is not None:
                 q = self.seion_query_norm(self.seion_scorer.q_seion(h, r, r))
                 target = self.seion_target_norm(self.seion_scorer.T(seion_cand))
-                s_seion = torch.einsum("bd,bkd->bk", q, target) if target.ndim == 3 else q @ target.T
+                s_seion = (torch.einsum("bd,bkd->bk", q, target) if target.ndim == 3 else q @ target.T) / math.sqrt(self.dim)
             else:
                 s_seion = self.seion_scorer.score_tail_candidates(h, r, r, seion_cand)
             eta = (self._positive_scale(self.seion_scale_raw, r_ids) if self.seion_scale_raw is not None else self._gate(self.eta_raw, r_ids)).unsqueeze(-1)
