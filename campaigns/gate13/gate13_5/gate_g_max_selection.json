@@ -1,0 +1,25 @@
+{
+  "candidates": [
+    {
+      "gate_g_max": 0.25,
+      "best_valid_mrr": 0.3310651183128357,
+      "out_dir": "campaigns\\gate13\\gate13_5\\runs\\pilot\\gate_g_max_selection_A3_g0.25"
+    },
+    {
+      "gate_g_max": 0.5,
+      "best_valid_mrr": 0.3311591148376465,
+      "out_dir": "campaigns\\gate13\\gate13_5\\runs\\pilot\\gate_g_max_selection_A3_g0.5"
+    },
+    {
+      "gate_g_max": 1.0,
+      "best_valid_mrr": 0.33107420802116394,
+      "out_dir": "campaigns\\gate13\\gate13_5\\runs\\pilot\\gate_g_max_selection_A3_g1.0"
+    }
+  ],
+  "selected": {
+    "gate_g_max": 0.5,
+    "best_valid_mrr": 0.3311591148376465,
+    "out_dir": "campaigns\\gate13\\gate13_5\\runs\\pilot\\gate_g_max_selection_A3_g0.5"
+  },
+  "selection_procedure": "max validation MRR, A3, seed 1, reduced 6-epoch budget"
+}

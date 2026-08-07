@@ -67,6 +67,7 @@ from .structural_kernel import KernelProvenance, StructuralKernelResidual
 
 BASE_EXPERTS = ("complex", "distmult", "cp", "tucker")
 PATH_BACKENDS = ("legacy", "batched")
+STANDALONE_MODES = ("residual", "warm_started_decoder", "end_to_end")
 
 
 class SeionKGRv26(nn.Module):
@@ -87,18 +88,23 @@ class SeionKGRv26(nn.Module):
         structural_kernel: Optional[StructuralKernelResidual] = None,
         gate_g_max: float = 1.0,
         path_backend: str = "legacy",
+        standalone_mode: str = "residual",
     ):
         super().__init__()
         if base_expert not in BASE_EXPERTS:
             raise ValueError(f"base_expert must be one of {BASE_EXPERTS}, got {base_expert!r}")
         if path_backend not in PATH_BACKENDS:
             raise ValueError(f"path_backend must be one of {PATH_BACKENDS}, got {path_backend!r}")
+        if standalone_mode not in STANDALONE_MODES:
+            raise ValueError(f"standalone_mode must be one of {STANDALONE_MODES}, got {standalone_mode!r}")
         if base_expert == "complex" and dim % 2 != 0:
             raise ValueError("--dim must be even for the complex base expert")
         self.dim = dim
         self.base_expert_name = base_expert
         self.enable_path = enable_path
         self.enable_seion = enable_seion
+        self.standalone_mode = standalone_mode
+        self.use_base_scorer = standalone_mode == "residual"
 
         self.entity = nn.Embedding(num_entities, dim)
         self.relation = nn.Embedding(num_relations_total, dim)
@@ -115,6 +121,10 @@ class SeionKGRv26(nn.Module):
             self.base = CPExpert()
             self.entity_tail = nn.Embedding(num_entities, dim)
             nn.init.xavier_uniform_(self.entity_tail.weight)
+
+        if not self.use_base_scorer:
+            for parameter in self.base.parameters():
+                parameter.requires_grad_(False)
 
         self.path_backend = path_backend
         if enable_path:
@@ -148,11 +158,31 @@ class SeionKGRv26(nn.Module):
         nn.init.constant_(self.gamma_raw.weight, 0.0)
         nn.init.constant_(self.eta_raw.weight, 0.0)
 
+        self.path_score_norm = None
+        self.seion_query_norm = None
+        self.seion_target_norm = None
+        self.path_scale_raw = None
+        self.seion_scale_raw = None
+        if standalone_mode != "residual":
+            if enable_path:
+                self.path_score_norm = nn.LayerNorm(dim)
+                self.path_scale_raw = nn.Embedding(num_relations_total, 1)
+                nn.init.constant_(self.path_scale_raw.weight, math.log(math.expm1(1.0)))
+            if enable_seion:
+                self.seion_query_norm = nn.LayerNorm(dim)
+                self.seion_target_norm = nn.LayerNorm(dim)
+                self.seion_scale_raw = nn.Embedding(num_relations_total, 1)
+                nn.init.constant_(self.seion_scale_raw.weight, math.log(math.expm1(1.0)))
+
     def _gate(self, raw: nn.Embedding, r_ids: torch.Tensor) -> torch.Tensor:
         return self.gate_g_max * torch.tanh(raw(r_ids).squeeze(-1))
 
     def _tail_embed(self, ids: torch.Tensor) -> torch.Tensor:
         return self.entity_tail(ids) if self.base_expert_name == "cp" else self.entity(ids)
+
+    @staticmethod
+    def _positive_scale(raw: nn.Embedding, r_ids: torch.Tensor) -> torch.Tensor:
+        return torch.nn.functional.softplus(raw(r_ids).squeeze(-1)) + 1e-6
 
     def _run_path_reasoner(
         self,
@@ -193,15 +223,17 @@ class SeionKGRv26(nn.Module):
         h = self.entity(h_ids)
         r = self.relation(r_ids)
         t = self._tail_embed(t_ids)
-        s = self.base.score_positive(h, r, t)
+        s = self.base.score_positive(h, r, t) if self.use_base_scorer else torch.zeros(h.shape[0], device=h.device)
         breakdown: Dict[str, torch.Tensor] = {"s_base": s}
 
         if self.enable_path and adjacency is not None:
             output = self._run_path_reasoner(h_ids, r_ids, t_ids, adjacency, r, seed, training)
             query_ids = torch.arange(h_ids.shape[0], device=h_ids.device)
             reached = output.state_for(query_ids, t_ids)
-            s_path = (reached * t).sum(dim=-1) / math.sqrt(self.dim)
-            gamma = self._gate(self.gamma_raw, r_ids)
+            path_vec = self.path_score_norm(reached) if self.path_score_norm is not None else reached
+            path_target = self.path_score_norm(t) if self.path_score_norm is not None else t
+            s_path = (path_vec * path_target).sum(dim=-1) / math.sqrt(self.dim)
+            gamma = self._positive_scale(self.path_scale_raw, r_ids) if self.path_scale_raw is not None else self._gate(self.gamma_raw, r_ids)
             s = s + gamma * s_path
             breakdown["gamma_path"] = gamma * s_path
             breakdown["gamma_path_gate"] = gamma
@@ -209,8 +241,11 @@ class SeionKGRv26(nn.Module):
 
         if self.enable_seion:
             seion_t = self.entity(t_ids)  # always the shared table, see score_tail_candidates note
-            s_seion = self.seion_scorer.score_positive(h, r, r, seion_t)
-            eta = self._gate(self.eta_raw, r_ids)
+            if self.seion_query_norm is not None:
+                s_seion = (self.seion_query_norm(self.seion_scorer.q_seion(h, r, r)) * self.seion_target_norm(self.seion_scorer.T(seion_t))).sum(dim=-1)
+            else:
+                s_seion = self.seion_scorer.score_positive(h, r, r, seion_t)
+            eta = self._positive_scale(self.seion_scale_raw, r_ids) if self.seion_scale_raw is not None else self._gate(self.eta_raw, r_ids)
             s = s + eta * s_seion
             breakdown["eta_seion"] = eta * s_seion
             breakdown["eta_seion_gate"] = eta
@@ -244,7 +279,7 @@ class SeionKGRv26(nn.Module):
         h = self.entity(h_ids)
         r = self.relation(r_ids)
         cand_emb = self._tail_embed(candidates_ids)
-        s = self.base.score_tail_candidates(h, r, cand_emb)
+        s = self.base.score_tail_candidates(h, r, cand_emb) if self.use_base_scorer else torch.zeros(h.shape[0], cand_emb.shape[-2], device=h.device)
 
         if self.enable_path and adjacency is not None:
             t_for_frontier = gold_tail_ids if gold_tail_ids is not None else torch.zeros_like(h_ids)
@@ -254,8 +289,10 @@ class SeionKGRv26(nn.Module):
             query_ids = torch.arange(batch, device=h_ids.device)
             states = output.states_for_candidates(query_ids, cand_ids_2d)  # [B,K,dim]
             cand_full = cand_emb if cand_emb.ndim == 3 else cand_emb.unsqueeze(0).expand(batch, -1, -1)
-            s_path = (states * cand_full).sum(dim=-1) / math.sqrt(self.dim)
-            gamma = self._gate(self.gamma_raw, r_ids).unsqueeze(-1)
+            path_states = self.path_score_norm(states) if self.path_score_norm is not None else states
+            path_cand = self.path_score_norm(cand_full) if self.path_score_norm is not None else cand_full
+            s_path = (path_states * path_cand).sum(dim=-1) / math.sqrt(self.dim)
+            gamma = (self._positive_scale(self.path_scale_raw, r_ids) if self.path_scale_raw is not None else self._gate(self.gamma_raw, r_ids)).unsqueeze(-1)
             s = s + gamma * s_path
 
         if self.enable_seion:
@@ -264,8 +301,13 @@ class SeionKGRv26(nn.Module):
             # an independent scalar expert, not tied to CPExpert's
             # asymmetric embedding convention.
             seion_cand = self.entity(candidates_ids)
-            s_seion = self.seion_scorer.score_tail_candidates(h, r, r, seion_cand)
-            eta = self._gate(self.eta_raw, r_ids).unsqueeze(-1)
+            if self.seion_query_norm is not None:
+                q = self.seion_query_norm(self.seion_scorer.q_seion(h, r, r))
+                target = self.seion_target_norm(self.seion_scorer.T(seion_cand))
+                s_seion = torch.einsum("bd,bkd->bk", q, target) if target.ndim == 3 else q @ target.T
+            else:
+                s_seion = self.seion_scorer.score_tail_candidates(h, r, r, seion_cand)
+            eta = (self._positive_scale(self.seion_scale_raw, r_ids) if self.seion_scale_raw is not None else self._gate(self.eta_raw, r_ids)).unsqueeze(-1)
             s = s + eta * s_seion
 
         if self.enable_structural_kernel:

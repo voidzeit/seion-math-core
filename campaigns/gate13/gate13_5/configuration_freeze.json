@@ -27,8 +27,16 @@
   "fi_weight": 0.0,
   "assoc_weight": 0.0,
   "device": "cuda",
-  "seeds": [1, 2, 3],
-  "gate_g_max_candidates": [0.25, 0.5, 1.0],
-  "gate_g_max_selected": null,
-  "gate_g_max_selection_run": null
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "gate_g_max_candidates": [
+    0.25,
+    0.5,
+    1.0
+  ],
+  "gate_g_max_selected": 0.5,
+  "gate_g_max_selection_run": "campaigns\\gate13\\gate13_5\\runs\\pilot\\gate_g_max_selection_A3_g0.5"
 }

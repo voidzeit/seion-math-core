@@ -1,0 +1,37 @@
+{
+  "save_dir": "E8_Exact_v18_2",
+  "kernel_path": "E8_Exact_v18_2\\f_E8.npy",
+  "gram_rcond": 1e-12,
+  "rank_gram_so16": 120,
+  "real_structure": {
+    "comm_res": 6.077487747597818e-13,
+    "SS_dev": 3.0355206330179987e-13,
+    "method": "no_kron_gd"
+  },
+  "SS_minus_I_rel": 3.0355206144247714e-13,
+  "fixed_point_error": 1.524184572704128e-13,
+  "J_representation_diag": {
+    "max_rel_imag": 8.145494111091791e-13,
+    "max_rel_sym": 6.968253124924167e-16
+  },
+  "best_cfg": {
+    "block_type": "mp",
+    "transpose_C": true,
+    "use_J_for_K": false,
+    "X_variant": "plain",
+    "phase_K": 1.0,
+    "u": -2.0,
+    "v": -2.0,
+    "alpha": -1.0,
+    "beta": -1.0
+  },
+  "jac_gpu_mean": 2.012835902286844e-13,
+  "jac_cpu_subset": 2.0784529653618185e-13,
+  "jac_mc_mean": 3.3307584439377514e-12,
+  "center_dim_est": 0,
+  "antisym_ratio": 0.0,
+  "killing_rank": 248,
+  "is_e8_like": true,
+  "not_e8_reasons": [],
+  "notes": "v18.2: normalized S phase to enforce J^2~I; fixed-point basis via projector (v+S v*)/2 with re-projection each GS step; improves realification and Jacobi."
+}

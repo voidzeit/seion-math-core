@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "audited_at": "2026-07-30T18:08:47.801279+00:00",
+  "audited_at": "2026-08-06T07:44:16.788306+00:00",
   "status": "yellow",
   "strict": false,
   "git": {
-    "branch": "infra/agent-graph-loop-v1",
-    "commit": "427ad529e7793b604cdb23bda089534420a6aee6",
+    "branch": "campaign/gate13-closeout",
+    "commit": "f52f898b8e6e9a7bcf637f8b046107c19b511fb3",
     "dirty": true
   },
   "required_files": {
@@ -19,17 +19,17 @@
     "status": "green"
   },
   "runs": {
-    "historical_run_count": 105,
+    "historical_run_count": 150,
     "unique_scientific_instance_count": 9,
     "duplicate_group_count": 8,
-    "duplicate_record_count": 96,
+    "duplicate_record_count": 141,
     "artifact_contract": {
-      "run_count": 105,
-      "contract_complete_count": 105,
+      "run_count": 150,
+      "contract_complete_count": 150,
       "contract_incomplete_count": 0,
       "missing_artifacts": {},
       "statuses": {
-        "COMPLETE": 103,
+        "COMPLETE": 148,
         "FAILED_RUNTIME": 2
       }
     }

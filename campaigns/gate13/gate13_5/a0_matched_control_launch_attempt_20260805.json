@@ -1,0 +1,21 @@
+{
+  "schema": "gate13.5-matched-control-launch-attempt-v1",
+  "attempt_id": "a0-matched-control-launch-20260805-standalone-script",
+  "classification": "FAILED_PRETRAINING_LAUNCH",
+  "interruption_classification": "INTERRUPTED_RECOVERABLE",
+  "execution_id": null,
+  "pid": 68876,
+  "output_directory": "campaigns/gate13/gate13_5/runs/pilot/seed1_A0_matched_control_20260805",
+  "output_directory_created": false,
+  "failure": {
+    "type": "python_relative_import_error",
+    "message": "attempted relative import with no known parent package",
+    "cause": "train.py was invoked as a standalone script instead of the preregistered python -m seion_kgr.train module entrypoint",
+    "stderr_log": "campaigns/gate13/gate13_5/a0_matched_control_20260805.stderr.log"
+  },
+  "numerical_training_started": false,
+  "test_evaluation_opened": false,
+  "artifacts_overwritten": false,
+  "corrective_action": "Use python -m seion_kgr.train with a new execution ID and a new empty output directory.",
+  "recorded_utc": "2026-08-06T03:23:17.6252863Z"
+}

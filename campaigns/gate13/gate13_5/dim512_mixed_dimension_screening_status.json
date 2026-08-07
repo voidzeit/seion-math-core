@@ -1,0 +1,29 @@
+{
+  "schema": "gate13.5-mixed-dimension-screening-v1",
+  "status": "STOPPED_RUNTIME_LIMIT",
+  "seed": 1,
+  "a0": {
+    "role": "TUCKER_ONLY_CONTROL_DIM64",
+    "execution_id": "78db52b2dac24f4d",
+    "final_valid_mrr": 0.3197874426841736,
+    "test_closed": true
+  },
+  "a1": {
+    "role": "PATH_DIM512",
+    "execution_id": "a766168407914585",
+    "status": "FAILED_RUNTIME",
+    "batch_size": 1024,
+    "completed_epochs": 0,
+    "metrics_rows": 0,
+    "peak_observed_vram_mb": 23979,
+    "test_opened": false
+  },
+  "a2": {"role": "SEION_DIM512", "status": "NOT_LAUNCHED"},
+  "a3": {"role": "PATH_SEION_DIM512", "status": "NOT_LAUNCHED"},
+  "comparability": {
+    "a0_vs_a1_a2_a3": "INVALID_FOR_CAUSAL_ATTRIBUTION",
+    "reason": "A0 uses dim64 while A1-A3 request dim512; additionally A1 did not complete",
+    "test_opened": false
+  },
+  "next_action": "require_explicit_authorization_to_retry_path_arms_with_lower_batch_size_or_lower_dimension"
+}

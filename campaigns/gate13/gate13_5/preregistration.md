@@ -188,3 +188,18 @@ design ran correctly.
 
 None as of this writing. Any change to the above after Stage 3 begins is
 appended to `campaigns/gate13/deviations_log.md`, not made silently.
+
+## 14. PROTOCOL_CORRECTION_BEFORE_STAGE4
+
+Reason: `missing matched second-stage A0 control`.
+
+The original seed-1 A0 execution is preserved as `PRETRAIN_BASE_SEED1` and is
+not a matched second-stage control. Before Stage 4, create a seed-specific
+pretraining baseline `B_s`, freeze `B_s/best.pt`, and launch A0, A1, A2, and
+A3 from that same frozen checkpoint. Reset the optimizer identically for all
+four arms and use the same DataLoader generator seed and batch order for all
+four arms. The corrected causal contrasts are computed against the matched
+second-stage A0; contrasts against the pretraining baseline are
+`INVALID_FOR_CAUSAL_ATTRIBUTION`. This correction changes no branch
+hyperparameters, does not open the test set, and applies to seeds 2 and 3
+before any Stage 4 launch.

@@ -41,7 +41,7 @@ def _inverse_relation(r: int, num_rel_orig: int) -> int:
     return r + num_rel_orig if r < num_rel_orig else r - num_rel_orig
 
 
-ROUTER_PARAM_NAMES = ("gamma_raw", "eta_raw", "epsilon_raw")
+ROUTER_PARAM_NAMES = ("gamma_raw", "eta_raw", "epsilon_raw", "path_scale_raw", "seion_scale_raw")
 
 
 def build_optimizer_param_groups(model: SeionKGRv26, lr: float, router_lr_multiplier: float) -> list:
@@ -53,6 +53,8 @@ def build_optimizer_param_groups(model: SeionKGRv26, lr: float, router_lr_multip
     also inflating the LR for the base/path/seion weight matrices."""
     router_params, other_params = [], []
     for name, param in model.named_parameters():
+        if not param.requires_grad:
+            continue
         leaf = name.rsplit(".", 1)[-1]
         (router_params if leaf in ROUTER_PARAM_NAMES else other_params).append(param)
     return [
@@ -116,6 +118,12 @@ def compute_path_reasoner_perf(
         "gold_reach_rate": gold_reach_rate,
         "expanded_edges_per_second": None,  # not exposed by the current reasoner APIs, see docstring
         "selector_keep_ratio": None,  # not exposed by the current reasoner APIs, see docstring
+        "frontier_empty_rate": float((per_query_counts == 0).float().mean().item()),
+        "gold_unreached_rate": 1.0 - gold_reach_rate,
+        "candidate_reachable_rate": None,
+        "effective_depth": None,
+        "neighbors_explored": None,
+        "fallback_used": None,
         "cpu_ram_mb": cpu_ram_mb,
         "gpu_allocated_peak_mb": gpu_peak_mb,
     }
@@ -171,6 +179,32 @@ def compute_gate_diagnostics(
     model.train()
     s_total_rms = float(breakdown["s_total"].pow(2).mean().sqrt().item()) if "s_total" in breakdown else 0.0
     s_base = breakdown["s_base"].detach()
+    if model.standalone_mode != "residual":
+        standalone_branches = (
+            ("gamma_path", "gamma_path_raw", model.path_scale_raw),
+            ("eta_seion", "eta_seion_raw", model.seion_scale_raw),
+        )
+        for contribution_key, raw_key, scale_embedding in standalone_branches:
+            if contribution_key not in breakdown or scale_embedding is None:
+                continue
+            scale = model._positive_scale(scale_embedding, r_ids).detach()
+            contribution = breakdown[contribution_key].detach()
+            raw_branch_score = breakdown[raw_key].detach()
+            records.append({
+                "epoch": epoch,
+                "branch": contribution_key,
+                "mode": model.standalone_mode,
+                "gate_signed_mean": None,
+                "gate_absolute_mean": None,
+                "scale_mean": float(scale.mean().item()),
+                "scale_absolute_mean": float(scale.abs().mean().item()),
+                "branch_score_rms": float(raw_branch_score.pow(2).mean().sqrt().item()),
+                "signed_branch_contribution": float(contribution.mean().item()),
+                "absolute_branch_contribution": float(contribution.abs().mean().item()),
+                "correlation_with_base_score": _pearson_corr(contribution, s_base),
+                "rms_contribution_ratio": float(contribution.pow(2).mean().sqrt().item()) / s_total_rms if s_total_rms > 0 else 0.0,
+            })
+        return records
     for gated_key, raw_key, getter in _GATE_BRANCHES:
         if gated_key not in breakdown:
             continue
@@ -233,6 +267,10 @@ def build_parser() -> argparse.ArgumentParser:
         help="Gate 13.2b: legacy=reasoner.PathReasoner (default, unchanged), "
              "batched=reasoner_batched.BatchedPathReasoner (CSR + vectorized, learned_topk not yet supported)",
     )
+    p.add_argument(
+        "--standalone_mode", choices=["residual", "warm_started_decoder", "end_to_end"], default="residual",
+        help="Standalone sufficiency regime: residual keeps the base scorer; warm_started_decoder/end_to_end disable it and use positive non-residual branch scales.",
+    )
     p.add_argument("--enable_seion", action="store_true")
     p.add_argument("--seion_rank", type=int, default=32)
 
@@ -247,6 +285,18 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--structural_kernel_seed", type=int, default=0)
 
     p.add_argument("--epochs", type=int, default=3)
+    p.add_argument(
+        "--early_stopping_patience", type=int, default=0,
+        help="Stop after this many consecutive validation evaluations without improvement; 0 disables early stopping.",
+    )
+    p.add_argument(
+        "--early_stopping_min_delta", type=float, default=0.0,
+        help="Minimum validation-MRR increase required to reset early-stopping patience.",
+    )
+    p.add_argument(
+        "--early_stopping_min_epochs", type=int, default=0,
+        help="Do not early-stop before this many completed epochs.",
+    )
     p.add_argument("--batch_size", type=int, default=256)
     p.add_argument("--neg_k", type=int, default=32)
     p.add_argument("--adversarial_temperature", type=float, default=1.0)
@@ -345,9 +395,15 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
 
     run_manifest = None
     if args.out_dir:
+        resolved_config = vars(args).copy()
+        # The default residual mode is the legacy Stage 4 behavior. Keep its
+        # configuration identity stable after adding standalone-only CLI
+        # modes, while retaining the field for explicit W/E runs.
+        if args.standalone_mode == "residual":
+            resolved_config.pop("standalone_mode", None)
         run_manifest = repro.build_run_contract(
             args.out_dir, sys.argv, {"train": args.train, "valid": args.valid, "test": args.test},
-            resolved_config=vars(args), resume_from=args.resume or None, allow_existing=bool(args.resume),
+            resolved_config=resolved_config, resume_from=args.resume or None, allow_existing=bool(args.resume),
         )
 
     kg = load_knowledge_graph(args.train, args.valid, args.test)
@@ -361,7 +417,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         seion_rank=args.seion_rank, path_rank=args.path_rank, path_layers=args.path_layers,
         path_max_neighbors=args.path_max_neighbors, path_proj_rank=args.path_proj_rank,
         path_selector_mode=args.path_selector_mode, structural_kernel=structural_kernel,
-        gate_g_max=args.gate_g_max, path_backend=args.path_backend,
+        gate_g_max=args.gate_g_max, path_backend=args.path_backend, standalone_mode=args.standalone_mode,
     ).to(device)
     if args.init_from_checkpoint:
         if args.resume:
@@ -426,6 +482,9 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
     start_epoch = 0
     global_step = 0
     best_mrr = -math.inf
+    best_epoch = None
+    evals_without_improvement = 0
+    stopped_early = False
     parent_execution_id = None
     if args.resume:
         ckpt = repro.load_checkpoint(args.resume)
@@ -526,9 +585,24 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
             valid = evaluate(model, kg, "valid", device, args.eval_batch, args.entity_block_eval, adjacency, eval_subset, args.seed)
             record["valid"] = valid
             current_mrr = valid["combined"]["MRR"]
+            # Preserve exact best-checkpoint semantics.  ``min_delta`` only
+            # controls whether patience resets; it must not suppress a
+            # smaller strict improvement from becoming the true best.pt.
             record["new_best"] = current_mrr > best_mrr
-            if current_mrr > best_mrr:
+            meaningful_improvement = current_mrr > best_mrr + args.early_stopping_min_delta
+            if record["new_best"]:
                 best_mrr = current_mrr
+                best_epoch = epoch
+            if meaningful_improvement:
+                evals_without_improvement = 0
+            else:
+                evals_without_improvement += 1
+            record["early_stopping"] = {
+                "patience": args.early_stopping_patience,
+                "min_delta": args.early_stopping_min_delta,
+                "min_epochs": args.early_stopping_min_epochs,
+                "evaluations_without_improvement": evals_without_improvement,
+            }
 
             diagnostics = _module_diagnostics(model, args, last_batch_grad_norms)
             if diagnostics and rank_history_path is not None:
@@ -572,6 +646,15 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
             repro.append_jsonl(record, metrics_path)
         print(json.dumps(record, default=str), flush=True)
 
+        if (
+            args.early_stopping_patience > 0
+            and is_eval_epoch
+            and evals_without_improvement >= args.early_stopping_patience
+            and epoch + 1 >= args.early_stopping_min_epochs
+        ):
+            stopped_early = True
+            break
+
     if args.skip_test_eval:
         # Gate 13.5 test-set discipline (campaigns/gate13/gate13_5/preregistration.md
         # sec10): a screening campaign that evaluates test at the end of EVERY run
@@ -592,8 +675,18 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         "base_expert": args.base_expert,
         "enable_path": args.enable_path,
         "enable_seion": args.enable_seion,
+        "standalone_mode": args.standalone_mode,
         "test": test_metrics,
         "test_eval_skipped": bool(args.skip_test_eval),
+        "early_stopping": {
+            "enabled": args.early_stopping_patience > 0,
+            "patience": args.early_stopping_patience,
+            "min_delta": args.early_stopping_min_delta,
+            "min_epochs": args.early_stopping_min_epochs,
+            "stopped_early": stopped_early,
+            "best_epoch": best_epoch,
+            "evaluations_without_improvement": evals_without_improvement,
+        },
         "wall_sec": time.time() - start,
         # whole-run peak, tracked since immediately after device selection above --
         # distinct from measure_path_reasoner_perf's own narrower probe-scoped peak.

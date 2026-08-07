@@ -1,0 +1,20 @@
+{
+  "schema": "gate13.5-dim512-seed1-campaign-status-v1",
+  "status": "BLOCKED_AFTER_B1_INTERRUPTION",
+  "seed": 1,
+  "dim": 512,
+  "batch_size": 1024,
+  "max_epochs": 60,
+  "early_stopping": {"patience": 5, "min_delta": 0.0001, "min_epochs": 15, "eval_every": 3},
+  "b1_execution_id": "c8162703e3c445d2",
+  "b1_configuration_id": "be9097f9ed508d01",
+  "b1_status": "INTERRUPTED_NONRESUMABLE",
+  "b1_best_epoch": 20,
+  "b1_best_valid_mrr": 0.37972116470336914,
+  "b1_last_epoch": 21,
+  "b1_best_checkpoint_sha256": "8348cc30768fecdfc89ca7560ca505a95f61ad9c982c5663185ec11cfe9aeeef",
+  "b1_last_checkpoint_sha256": "96358b14df7b34f7af0e3f3a5d186494885e103b445e6fe9ad3f8ba16edd38e1",
+  "a0_a3_launched": false,
+  "test_opened": false,
+  "next_action": "require_explicit_authorization_for_clean_B1_rerun_before_A0_A3"
+}
