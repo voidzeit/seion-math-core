@@ -1,0 +1,54 @@
+{
+  "schema": "gate13.5-standalone-extension-contrasts-v1",
+  "test_opened": false,
+  "historical_reference_best_valid_mrr_means": {
+    "A0_matched": 0.32129964232444763,
+    "A1_tucker_plus_path": 0.3609754939874013,
+    "A2_tucker_plus_seion": 0.3550289074579875,
+    "A3_tucker_plus_path_plus_seion": 0.35823896527290344,
+    "W2_seion_standalone_warm_started": 0.3073916832605998,
+    "R2_tucker_plus_generic_residual": 0.3563245137532552,
+    "W1_path_standalone_warm_started": 0.139898836612701
+  },
+  "historical_reference_sample_sd": {
+    "A0_matched": 0.00153136678983664,
+    "A1_tucker_plus_path": 0.00157752399084855,
+    "A2_tucker_plus_seion": 0.00101703669743139,
+    "A3_tucker_plus_path_plus_seion": 0.000940824535645736,
+    "W2_seion_standalone_warm_started": 0.00219066480388276,
+    "R2_tucker_plus_generic_residual": 0.00179613614389362,
+    "W1_path_standalone_warm_started": 0.00161359941181846
+  },
+  "contrasts_using_best_validation_mrr": {
+    "R2_minus_A2": {
+      "mean": 0.00129560629526774,
+      "per_seed": [0.00187018513679504, 0.00205850601196289, -0.000041872262954712]
+    },
+    "R2_minus_A0": {
+      "mean": 0.0350248714288076,
+      "per_seed": [0.0382823944091797, 0.0335726737976074, 0.0332195460796356]
+    },
+    "R2_minus_W2": {
+      "mean": 0.0489328304926554,
+      "per_seed": [0.0481707751750946, 0.0505736470222473, 0.0480540692806244]
+    },
+    "W1_minus_A0": {
+      "mean": -0.181400805711746,
+      "per_seed": [-0.180479556322098, -0.184185460209846, -0.179537400603294]
+    },
+    "W1_minus_A1": {
+      "mean": -0.2210766573747,
+      "per_seed": [-0.221925437450409, -0.223744198679924, -0.217560335993767]
+    },
+    "W1_minus_W2": {
+      "mean": -0.167492846647898,
+      "per_seed": [-0.170591175556183, -0.167184486985207, -0.164702877402306]
+    }
+  },
+  "scientific_status": {
+    "R2_generic_control": "SEION structural advantage not demonstrated by this matched screen; R2 is close to A2.",
+    "W1_path_standalone": "Path branch is active but not scorer-sufficient under this warm-started decoder design.",
+    "scope": "screening evidence only; no finalist, test result, or confirmatory claim",
+    "test_rows_created": false
+  }
+}

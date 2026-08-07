@@ -1,0 +1,23 @@
+{
+  "schema": "gate13.5-claim-freeze-v1",
+  "status": "FROZEN_HISTORICAL_EVIDENCE",
+  "test_status": "CLOSED",
+  "numerical_artifacts_mutable": false,
+  "claims": {
+    "tucker_plus_path_gt_tucker": "PASS",
+    "tucker_plus_seion_gt_tucker": "PASS",
+    "path_plus_seion_additive": "NO",
+    "seion_residual_gt_matched_generic_residual": "NO_DEMONSTRATED",
+    "seion_warm_started_can_rank_without_tucker_decoder": "PASS_FUNCTIONAL",
+    "seion_warm_started_at_least_tucker": "NO",
+    "path_warm_started_standalone_competitive": "NO",
+    "final_test": "CLOSED",
+    "complete_seion_structural_specificity": "OPEN"
+  },
+  "historical_labels": {
+    "W1_W2": "WARM_STARTED_STANDALONE_V1",
+    "R2": "GENERIC_RESIDUAL_MATCHED_V1"
+  },
+  "next_campaign": "Gate 14 — Structural Specificity and True Triadic SEION",
+  "prohibition": "Do not re-run or replace Gate 13.5 A2/R2 results to force a favorable outcome."
+}
