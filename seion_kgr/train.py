@@ -567,8 +567,12 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                 )
             if args.enable_path and model.gamma_raw.weight.grad is not None:
                 last_batch_grad_norms["gamma_raw"] = float(model.gamma_raw.weight.grad.norm().item())
+            if args.enable_path and model.standalone_mode != "residual" and model.path_scale_raw.weight.grad is not None:
+                last_batch_grad_norms["path_scale_raw"] = float(model.path_scale_raw.weight.grad.norm().item())
             if args.enable_seion and model.eta_raw.weight.grad is not None:
                 last_batch_grad_norms["eta_raw"] = float(model.eta_raw.weight.grad.norm().item())
+            if args.enable_seion and model.standalone_mode != "residual" and model.seion_scale_raw.weight.grad is not None:
+                last_batch_grad_norms["seion_scale_raw"] = float(model.seion_scale_raw.weight.grad.norm().item())
             if model.enable_structural_kernel and model.structural_kernel.epsilon_raw.weight.grad is not None:
                 last_batch_grad_norms["epsilon_raw"] = float(model.structural_kernel.epsilon_raw.weight.grad.norm().item())
             optimizer.step()
@@ -626,7 +630,10 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
 
             gate_records = compute_gate_diagnostics(model, kg, adjacency, device, args.seed, epoch)
             if gate_records and gate_diagnostics_path is not None:
-                grad_key = {"gamma_path": "gamma_raw", "eta_seion": "eta_raw", "kernel_structural": "epsilon_raw"}
+                if args.standalone_mode == "residual":
+                    grad_key = {"gamma_path": "gamma_raw", "eta_seion": "eta_raw", "kernel_structural": "epsilon_raw"}
+                else:
+                    grad_key = {"gamma_path": "path_scale_raw", "eta_seion": "seion_scale_raw", "kernel_structural": "epsilon_raw"}
                 for rec in gate_records:
                     rec["grad_alpha_norm"] = last_batch_grad_norms.get(grad_key[rec["branch"]], 0.0)
                     repro.append_jsonl(rec, gate_diagnostics_path)
