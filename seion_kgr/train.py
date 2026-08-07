@@ -144,6 +144,7 @@ def _pearson_corr(x: torch.Tensor, y: torch.Tensor) -> float:
 _GATE_BRANCHES = (
     ("gamma_path", "gamma_path_raw", lambda m: (m.gamma_raw.weight, m.gate_g_max)),
     ("eta_seion", "eta_seion_raw", lambda m: (m.eta_raw.weight, m.gate_g_max)),
+    ("eta_generic", "eta_generic_raw", lambda m: (m.eta_raw.weight, m.gate_g_max)),
     ("kernel_structural", "kernel_structural_raw", lambda m: (m.structural_kernel.epsilon_raw.weight, m.structural_kernel.gate_g_max)),
 )
 
@@ -165,7 +166,7 @@ def compute_gate_diagnostics(
     learned to SUBTRACT from the base score for that relation, which is not
     a failure mode."""
     records = []
-    if not (model.enable_path or model.enable_seion or model.enable_structural_kernel):
+    if not (model.enable_path or model.enable_seion or model.enable_generic_residual or model.enable_structural_kernel):
         return records
     sample = kg.valid[:sample_size] if len(kg.valid) > sample_size else kg.valid
     if not sample:
@@ -277,6 +278,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Standalone sufficiency regime: residual keeps the base scorer; warm_started_decoder/end_to_end disable it and use positive non-residual branch scales.",
     )
     p.add_argument("--enable_seion", action="store_true")
+    p.add_argument("--enable_generic_residual", action="store_true", help="Use the parameter-matched additive low-rank residual control instead of SEION")
     p.add_argument("--seion_rank", type=int, default=32)
 
     p.add_argument(
@@ -419,6 +421,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
     model = SeionKGRv26(
         num_entities=kg.num_entities, num_relations_total=kg.num_relations_total, dim=args.dim,
         base_expert=args.base_expert, enable_path=args.enable_path, enable_seion=args.enable_seion,
+        enable_generic_residual=args.enable_generic_residual,
         seion_rank=args.seion_rank, path_rank=args.path_rank, path_layers=args.path_layers,
         path_max_neighbors=args.path_max_neighbors, path_proj_rank=args.path_proj_rank,
         path_selector_mode=args.path_selector_mode, structural_kernel=structural_kernel,
@@ -571,6 +574,8 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                 last_batch_grad_norms["path_scale_raw"] = float(model.path_scale_raw.weight.grad.norm().item())
             if args.enable_seion and model.eta_raw.weight.grad is not None:
                 last_batch_grad_norms["eta_raw"] = float(model.eta_raw.weight.grad.norm().item())
+            if args.enable_generic_residual and model.eta_raw.weight.grad is not None:
+                last_batch_grad_norms["eta_raw"] = float(model.eta_raw.weight.grad.norm().item())
             if args.enable_seion and model.standalone_mode != "residual" and model.seion_scale_raw.weight.grad is not None:
                 last_batch_grad_norms["seion_scale_raw"] = float(model.seion_scale_raw.weight.grad.norm().item())
             if model.enable_structural_kernel and model.structural_kernel.epsilon_raw.weight.grad is not None:
@@ -631,9 +636,9 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
             gate_records = compute_gate_diagnostics(model, kg, adjacency, device, args.seed, epoch)
             if gate_records and gate_diagnostics_path is not None:
                 if args.standalone_mode == "residual":
-                    grad_key = {"gamma_path": "gamma_raw", "eta_seion": "eta_raw", "kernel_structural": "epsilon_raw"}
+                    grad_key = {"gamma_path": "gamma_raw", "eta_seion": "eta_raw", "eta_generic": "eta_raw", "kernel_structural": "epsilon_raw"}
                 else:
-                    grad_key = {"gamma_path": "path_scale_raw", "eta_seion": "seion_scale_raw", "kernel_structural": "epsilon_raw"}
+                    grad_key = {"gamma_path": "path_scale_raw", "eta_seion": "seion_scale_raw", "eta_generic": "eta_raw", "kernel_structural": "epsilon_raw"}
                 for rec in gate_records:
                     rec["grad_alpha_norm"] = last_batch_grad_norms.get(grad_key[rec["branch"]], 0.0)
                     repro.append_jsonl(rec, gate_diagnostics_path)
@@ -687,6 +692,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         "base_expert": args.base_expert,
         "enable_path": args.enable_path,
         "enable_seion": args.enable_seion,
+        "enable_generic_residual": args.enable_generic_residual,
         "standalone_mode": args.standalone_mode,
         "test": test_metrics,
         "test_eval_skipped": bool(args.skip_test_eval),

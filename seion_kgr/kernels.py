@@ -157,3 +157,38 @@ class SeionicScalarScorer(nn.Module):
             TE = self.T(candidates)  # [B, K, dim_q]
             return torch.einsum("bd,bkd->bk", q, TE)
         raise ValueError(f"candidates must be [K,D] or [B,K,D], got {tuple(candidates.shape)}")
+
+
+class GenericLowRankResidualScorer(nn.Module):
+    """Parameter-matched non-ternary control for the SEION residual branch.
+
+    It preserves SEION's input slots, rank, readout, and parameter count, but
+    replaces the multiplicative ternary interaction with an additive low-rank
+    composition followed by a bounded nonlinearity.  This is a control for
+    ``TuckER + SEION``: it is deliberately not a standalone architecture and
+    is always combined through the model's signed residual gate.
+    """
+
+    def __init__(self, dim_e: int, dim_r: int, dim_q: int, rank: int):
+        super().__init__()
+        self.A = nn.Linear(dim_e, rank, bias=False)
+        self.B = nn.Linear(dim_r, rank, bias=False)
+        self.C = nn.Linear(dim_r, rank, bias=False)
+        self.O = nn.Linear(rank, dim_q, bias=False)
+        self.T = nn.Linear(dim_e, dim_q, bias=False)
+        for layer in (self.A, self.B, self.C, self.O, self.T):
+            nn.init.xavier_uniform_(layer.weight)
+
+    def q_generic(self, h: torch.Tensor, r: torch.Tensor, c: torch.Tensor) -> torch.Tensor:
+        return self.O(torch.tanh(self.A(h) + self.B(r) + self.C(c)))
+
+    def score_positive(self, h: torch.Tensor, r: torch.Tensor, c: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
+        return (self.q_generic(h, r, c) * self.T(t)).sum(dim=-1)
+
+    def score_tail_candidates(self, h: torch.Tensor, r: torch.Tensor, c: torch.Tensor, candidates: torch.Tensor) -> torch.Tensor:
+        q = self.q_generic(h, r, c)
+        if candidates.ndim == 2:
+            return q @ self.T(candidates).T
+        if candidates.ndim == 3:
+            return torch.einsum("bd,bkd->bk", q, self.T(candidates))
+        raise ValueError(f"candidates must be [K,D] or [B,K,D], got {tuple(candidates.shape)}")

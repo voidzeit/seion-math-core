@@ -85,3 +85,23 @@ def test_warm_started_decoder_mode_has_zero_base_contribution_and_finite_scores(
     assert torch.allclose(breakdown["s_base"], torch.zeros_like(breakdown["s_base"]))
     assert torch.isfinite(breakdown["eta_seion"]).all()
     assert float(scores.std().item()) > 0.0
+
+
+def test_generic_residual_is_parameter_matched_and_has_internal_gradient():
+    torch.manual_seed(17)
+    seion = SeionKGRv26(
+        num_entities=4, num_relations_total=4, dim=8, base_expert="tucker",
+        enable_seion=True, seion_rank=4,
+    )
+    generic = SeionKGRv26(
+        num_entities=4, num_relations_total=4, dim=8, base_expert="tucker",
+        enable_generic_residual=True, seion_rank=4,
+    )
+    assert sum(p.numel() for p in seion.parameters()) == sum(p.numel() for p in generic.parameters())
+    with torch.no_grad():
+        generic.eta_raw.weight.fill_(0.1)
+    loss, generic = _one_step(generic)
+    assert torch.isfinite(loss)
+    assert generic.generic_residual_scorer.A.weight.grad is not None
+    assert generic.generic_residual_scorer.A.weight.grad.norm().item() > 0.0
+    assert generic.eta_raw.weight.grad is not None

@@ -58,7 +58,7 @@ import torch.nn as nn
 
 from .data import KnowledgeGraph
 from .frontier_ops import CSRAdjacency
-from .kernels import SeionicScalarScorer
+from .kernels import GenericLowRankResidualScorer, SeionicScalarScorer
 from .path_reasoner_output import PathReasonerOutput
 from .reasoner import Adjacency, PathReasoner
 from .reasoner_batched import BatchedPathReasoner
@@ -79,6 +79,7 @@ class SeionKGRv26(nn.Module):
         base_expert: str = "complex",
         enable_path: bool = False,
         enable_seion: bool = False,
+        enable_generic_residual: bool = False,
         seion_rank: int = 32,
         path_rank: int = 32,
         path_layers: int = 2,
@@ -103,6 +104,9 @@ class SeionKGRv26(nn.Module):
         self.base_expert_name = base_expert
         self.enable_path = enable_path
         self.enable_seion = enable_seion
+        self.enable_generic_residual = enable_generic_residual
+        if enable_seion and enable_generic_residual:
+            raise ValueError("enable_seion and enable_generic_residual are mutually exclusive controls")
         self.standalone_mode = standalone_mode
         self.use_base_scorer = standalone_mode == "residual"
 
@@ -141,6 +145,10 @@ class SeionKGRv26(nn.Module):
             self.seion_scorer = SeionicScalarScorer(dim_e=dim, dim_r=dim, dim_q=dim, rank=seion_rank)
         else:
             self.seion_scorer = None
+        if enable_generic_residual:
+            self.generic_residual_scorer = GenericLowRankResidualScorer(dim_e=dim, dim_r=dim, dim_q=dim, rank=seion_rank)
+        else:
+            self.generic_residual_scorer = None
 
         # Caller-constructed: loading a specific kernel variant (E8_exact
         # needs a file, the controls need a seed/shape) is a policy
@@ -251,6 +259,15 @@ class SeionKGRv26(nn.Module):
             breakdown["eta_seion_gate"] = eta
             breakdown["eta_seion_raw"] = s_seion  # PRE-gate branch score
 
+        if self.enable_generic_residual:
+            generic_t = self.entity(t_ids)
+            s_generic = self.generic_residual_scorer.score_positive(h, r, r, generic_t)
+            eta = self._gate(self.eta_raw, r_ids)
+            s = s + eta * s_generic
+            breakdown["eta_generic"] = eta * s_generic
+            breakdown["eta_generic_gate"] = eta
+            breakdown["eta_generic_raw"] = s_generic
+
         if self.enable_structural_kernel:
             kernel_t = self.entity(t_ids)  # shared table, same convention as the seionic branch
             gated_vec, kernel_breakdown = self.structural_kernel(h, r, r, r_ids, return_breakdown=True)
@@ -309,6 +326,12 @@ class SeionKGRv26(nn.Module):
                 s_seion = self.seion_scorer.score_tail_candidates(h, r, r, seion_cand)
             eta = (self._positive_scale(self.seion_scale_raw, r_ids) if self.seion_scale_raw is not None else self._gate(self.eta_raw, r_ids)).unsqueeze(-1)
             s = s + eta * s_seion
+
+        if self.enable_generic_residual:
+            generic_cand = self.entity(candidates_ids)
+            s_generic = self.generic_residual_scorer.score_tail_candidates(h, r, r, generic_cand)
+            eta = self._gate(self.eta_raw, r_ids).unsqueeze(-1)
+            s = s + eta * s_generic
 
         if self.enable_structural_kernel:
             # Same efficient pattern as the seionic branch: run the
