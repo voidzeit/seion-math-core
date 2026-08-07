@@ -184,6 +184,11 @@ def compute_gate_diagnostics(
             ("gamma_path", "gamma_path_raw", model.path_scale_raw),
             ("eta_seion", "eta_seion_raw", model.seion_scale_raw),
         )
+        # Standalone scales are relation-indexed.  Diagnostics are computed
+        # from a validation sample, but the scale summary must use an
+        # explicit relation index tensor rather than an undefined batch-local
+        # variable (there is no ``r_ids`` in this function's scope).
+        r_ids = torch.arange(kg.num_relations_total, device=device)
         for contribution_key, raw_key, scale_embedding in standalone_branches:
             if contribution_key not in breakdown or scale_embedding is None:
                 continue
