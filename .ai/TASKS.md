@@ -63,3 +63,17 @@
 - [ ] Establish theorem-level novelty through a comprehensive independent
   literature review, or retain the output as a research draft/software
   companion.
+
+## Projected-tree theory v4
+
+- [x] Reproduce the current projected-tree baseline and freeze a truth ledger.
+- [x] Audit equality/slack conditions for the projected `(k-1)` bound; general
+  fixed-eta compatibility remains open.
+- [x] Narrow fixed-eta sharpness for k=2 with the exact restricted class and
+  preserve the general-class open boundary.
+- [x] Prove the scalar DAG-native source-resolved certificate in `O(|V|+|E|)`.
+- [x] Prove P6A first-order source-aware vector DAG propagation; higher-order
+  source interactions remain open.
+- [x] Prove P7A first-order signed-source aggregation and strict cancellation
+  witness; nonlinear signed-identity constants remain open.
+- [ ] Implement P6B higher-order DAG source-polynomial expansion.

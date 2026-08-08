@@ -110,3 +110,57 @@ changed paths, and limitations. Historical artifact runs remain under
 - Limitations:
   - Fixed-eta sharpness, theorem-level novelty, complete independent certification, the extended matrix, and independent human review remain unresolved.
   - The pre-existing .obsidian/workspace.json change was preserved and no external repository was edited.
+
+## 2026-08-08T09:34:44.299483+00:00 — Projected-tree theory v4 P0 baseline and truth ledger
+
+- Command: `python research/math_closure/k3/certificates/chain_and_branching_closed_forms.py`
+- Branch/commit: `campaign/gate13-closeout` / `c491c032579b9239f2c7216801d174f86c11c4de`
+- Outcome: **P0_COMPLETE_BASELINE_REPRODUCED**
+- Summary: Reproduced the current projected-tree mathematical baseline and created an epistemically separated truth ledger without modifying Gate 13.5 or Gate 14 artifacts.
+- Validation: 30 research_v3 tests passed; k2 exact construction passed; k3 closed-form construction passed; governance audit passed yellow; run deduplication completed.
+- Changed files:
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.md`
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.json`
+  - `.ai/TASKS.md`
+- Limitations:
+  - Fixed-eta sharpness, DAG-native certificates, cancellation-aware constants, and theorem-level novelty remain open.
+
+## 2026-08-08T09:40:54.488028+00:00 — Projected-tree theory v4 P1-P5 equality, sharpness, dimension/rank, topology, and DAG scalar certificate
+
+- Command: `python research/math_closure/k3/certificates/chain_and_branching_closed_forms.py`
+- Branch/commit: `campaign/gate13-closeout` / `c491c032579b9239f2c7216801d174f86c11c4de`
+- Outcome: **P1_P5_SCOPED_PROGRESS**
+- Summary: Audited equality/slack conditions, formalized restricted k2/k3 sharpness and dimension/rank boundaries, and implemented/tested a scalar DAG-native source-resolved certificate without changing historical KGE/Gate14 evidence.
+- Validation: 34 tests passed across research_v3 and research_v4; k2 and k3 exact scripts passed; governance audit passed yellow; deduplication completed.
+- Changed files:
+  - `src/seion_core/research_v4/equality_slack.py`
+  - `src/seion_core/research_v4/dag_certificate.py`
+  - `tests/research_v4/test_frontier.py`
+  - `research/projected_trees_v4`
+  - `.ai/TASKS.md`
+- Limitations:
+  - General fixed-eta sharpness, universal dimension/rank reduction, correlation-aware/cancellation-aware DAG certificates, and theorem-level novelty remain open.
+
+## 2026-08-08T09:51:57.064230+00:00 — Projected-tree theory v4 P6A first-order source-aware vector DAG and P7A signed-source certificate
+
+- Command: `python -m pytest tests/research_v3 tests/research_v4 -q; python research/math_closure/k2/exact_examples/chain_gated_rotation_eta_squared.py; python research/math_closure/k3/certificates/chain_and_branching_closed_forms.py; python -m seion_core.cli.main governance audit --json; python -m seion_core.cli.main governance dedupe-runs`
+- Branch/commit: `campaign/gate13-closeout` / `c491c032579b9239f2c7216801d174f86c11c4de`
+- Outcome: **P6A_P7A_SCOPED_PROGRESS**
+- Summary: Implemented and tested first-order source-aware vector DAG propagation and signed source aggregation with strict cancellation witnesses; P1-P5 and historical Gate evidence preserved.
+- Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 40 passed; k2 exact construction PASS; k3 chain/branching exact constructions PASS; governance audit passed yellow; JSON validation and git diff --check passed
+- Changed files:
+  - `src/seion_core/research_v4/source_aware_dag.py`
+  - `src/seion_core/research_v4/signed_certificate.py`
+  - `src/seion_core/research_v4/__init__.py`
+  - `tests/research_v4/test_source_aware.py`
+  - `research/projected_trees_v4/dag/source_aware/proof/P6A_first_order_source_aware.md`
+  - `research/projected_trees_v4/dag/source_aware/P6A_status.md`
+  - `research/projected_trees_v4/dag/source_aware/P6A_first_order_status.json`
+  - `research/projected_trees_v4/cancellation/associator/P7A_signed_source_certificate.md`
+  - `research/projected_trees_v4/cancellation/associator/P7A_status.json`
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.md`
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.json`
+  - `.ai/TASKS.md`
+- Limitations:
+  - P6A/P7A are first-order source-linear results; higher-order source polynomials, nonlinear associator constants, universal sharpness, and theorem-level novelty remain open.
+  - The worktree remains dirty and no commit or push was requested.

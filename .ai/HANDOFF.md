@@ -87,3 +87,27 @@
 - Validation: 69 tests passed; 81445 tree occurrences; 80870 unique hashes; 15493 unique A-I instances; 37 PDF pages visually inspected; 9/15 release gates pass.
 - Resume from commit: `b718f4e5178590d1f8b6a090fb696545eb3bfcd4` on `research/nodewise-tree-constants-v3`
 - Limitation: Fixed-eta sharpness, theorem-level novelty, complete independent certification, the extended matrix, and independent human review remain unresolved.
+
+## Latest postflight: Projected-tree theory v4 P0 baseline and truth ledger
+
+- Timestamp: 2026-08-08T09:34:44.299483+00:00
+- Outcome: **P0_COMPLETE_BASELINE_REPRODUCED**
+- Validation: 30 research_v3 tests passed; k2 exact construction passed; k3 closed-form construction passed; governance audit passed yellow; run deduplication completed.
+- Resume from commit: `c491c032579b9239f2c7216801d174f86c11c4de` on `campaign/gate13-closeout`
+- Limitation: Fixed-eta sharpness, DAG-native certificates, cancellation-aware constants, and theorem-level novelty remain open.
+
+## Latest postflight: Projected-tree theory v4 P1-P5 equality, sharpness, dimension/rank, topology, and DAG scalar certificate
+
+- Timestamp: 2026-08-08T09:40:54.488028+00:00
+- Outcome: **P1_P5_SCOPED_PROGRESS**
+- Validation: 34 tests passed across research_v3 and research_v4; k2 and k3 exact scripts passed; governance audit passed yellow; deduplication completed.
+- Resume from commit: `c491c032579b9239f2c7216801d174f86c11c4de` on `campaign/gate13-closeout`
+- Limitation: General fixed-eta sharpness, universal dimension/rank reduction, correlation-aware/cancellation-aware DAG certificates, and theorem-level novelty remain open.
+
+## Latest postflight: Projected-tree theory v4 P6A first-order source-aware vector DAG and P7A signed-source certificate
+
+- Timestamp: 2026-08-08T09:51:57.064230+00:00
+- Outcome: **P6A_P7A_SCOPED_PROGRESS**
+- Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 40 passed; k2 exact construction PASS; k3 chain/branching exact constructions PASS; governance audit passed yellow; JSON validation and git diff --check passed
+- Resume from commit: `c491c032579b9239f2c7216801d174f86c11c4de` on `campaign/gate13-closeout`
+- Limitation: P6A/P7A are first-order source-linear results; higher-order source polynomials, nonlinear associator constants, universal sharpness, and theorem-level novelty remain open.

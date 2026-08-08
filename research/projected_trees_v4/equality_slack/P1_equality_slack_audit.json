@@ -1,0 +1,15 @@
+{
+  "schema": "projected-tree-equality-slack-audit-v1",
+  "theorem_target": "E_proj <= (k-1) rho M^(k-1) L_T",
+  "status": "AUDITED_NOT_SHARP",
+  "exact_cancellation": "P(I-P) removes the root local residual exactly",
+  "inequality_steps": [
+    "projection contractivity",
+    "multilinear telescoping triangle inequality",
+    "operator norm bound",
+    "closure-map norm bound",
+    "child magnitude induction",
+    "source accumulation"
+  ],
+  "conclusion": "All non-root equality conditions must be simultaneously compatible for fixed-eta sharpness; that compatibility remains open in the general class."
+}

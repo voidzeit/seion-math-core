@@ -1,0 +1,19 @@
+{
+  "schema": "projected-trees-p6a-status-v1",
+  "status": "PROVED_UNDER_ASSUMPTIONS",
+  "scope": "finite-dimensional first-order source-linearized vector propagation on a finite DAG",
+  "result": "same-source path operators are aggregated before norm; source-aware bound is no larger than pathwise triangle bound",
+  "complexity": "O(|V|+|E|) graph traversals, excluding matrix multiplication cost",
+  "strict_cancellation_witness": {
+    "graph": "diamond fan-out/fan-in",
+    "source_aware_bound": 0.0,
+    "pathwise_triangle_bound_for_epsilon_2": 4.0
+  },
+  "implementation": "src/seion_core/research_v4/source_aware_dag.py",
+  "tests": "tests/research_v4/test_source_aware.py",
+  "limitations": [
+    "higher-order source interactions remain P6B",
+    "full nonlinear multilinear DAG expansion is not claimed",
+    "universal sharpness is not claimed"
+  ]
+}

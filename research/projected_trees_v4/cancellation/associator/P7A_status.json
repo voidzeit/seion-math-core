@@ -1,0 +1,18 @@
+{
+  "schema": "projected-trees-p7a-status-v1",
+  "status": "PROVED_UNDER_ASSUMPTIONS",
+  "scope": "finite-dimensional first-order signed source operators",
+  "result": "signed source aggregation is bounded by the treewise triangle certificate",
+  "strict_cancellation_witness": {
+    "terms": ["+A", "-A"],
+    "signed_bound": 0.0,
+    "naive_treewise_bound_for_epsilon_2": 4.0
+  },
+  "implementation": "src/seion_core/research_v4/signed_certificate.py",
+  "tests": "tests/research_v4/test_source_aware.py",
+  "limitations": [
+    "not a nonlinear universal associator constant",
+    "Jacobiator and Filippov cancellation remain open",
+    "higher-order source interactions remain P6B"
+  ]
+}
