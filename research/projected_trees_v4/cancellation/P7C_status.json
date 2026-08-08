@@ -3,6 +3,7 @@
   "status": "PROVED_UNDER_ASSUMPTIONS",
   "scope": "generic finite signed expressions over exact or truncated P6B source polynomials",
   "engine": "src/seion_core/research_v4/signed_compositional_expression.py",
+  "source_commit": "c7300be1fbd97b46ef6cc3c4724840812c9fce9c",
   "soundness": "B_actual <= B_signed <= B_treewise",
   "instantiations": {
     "P7B_associator_regression": "ASSOCIATOR_CERTIFICATE",
