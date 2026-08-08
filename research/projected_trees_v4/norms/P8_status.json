@@ -2,6 +2,7 @@
   "schema": "projected-trees-p8-status-v1",
   "status": "PROVED_UNDER_ASSUMPTIONS",
   "implementation": "src/seion_core/research_v4/operator_norm_enclosures.py",
+  "source_commit": "1f3303de1e929db6000c3d87de73976dfe4a881c",
   "methods": [
     "exact_rank_one",
     "validated_interval_frobenius",
