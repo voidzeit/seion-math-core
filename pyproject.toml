@@ -32,6 +32,7 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py", "research_v5_test_*.py"]
 addopts = "-ra"
 markers = [
   "slow: extended numerical experiments",
