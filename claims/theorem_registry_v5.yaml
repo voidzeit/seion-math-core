@@ -215,17 +215,44 @@ theorems:
       src/seion_core/research_v5/v5b_extremal.py (conditional_scalar_reduction_upper_bound),
       whose assumptions were never proved and were dimensionally
       inconsistent with the actual witness value.
-  - id: OPEN_V5_K3_FIXED_ETA_SHARPNESS
-    title: Fixed-eta k=3 sharpness (gap narrowed, not closed)
+  - id: THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED
+    title: M9's upper envelope U_3(eta) is not attained (M10)
     statement: >-
-      L_3(eta) <= C_3,ind^P(eta) <= U_3(eta) < 2 for every eta in (0,1];
-      the certified gap narrowed substantially (e.g. at eta=1, relative gap
-      50%->29%) via THM_V5_K3_GENERAL_UPPER_ENVELOPE but did not close.
-      Fixed-eta global sharpness remains open.
+      For the k=3 chain (and branching) class, C_3,ind^P(eta) < U_3(eta)
+      strictly for every eta in (0,1). Proved by applying a standard
+      operator-norm-attaining-direction lemma twice (once at node 2, once
+      at node 3): saturating T1 at both nodes forces S1 perp S2 and then
+      mu3(S1,d) perp mu3(S2,d), which is incompatible with the
+      triangle-inequality equality needed for E_proj=T1+T2.
+    scope:
+      - same class as THM_V5_K3_GENERAL_UPPER_ENVELOPE
+      - 0 < eta < 1
+    dependencies:
+      - THM_V5_K3_GENERAL_UPPER_ENVELOPE
+    proof_location: research/math_closure/k3/m10_non_sharpness_of_m9.tex
+    implementation: src/seion_core/research_v5/k3_non_sharpness.py
+    tests: [tests/research_v5_test_k3_non_sharpness.py]
+    epistemic_status: PROVED
+    sharpness_status: PROVES_NON_SHARPNESS_ONLY_NO_TIGHTENED_VALUE
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: OPEN_V5_K3_FIXED_ETA_SHARPNESS
+    title: Fixed-eta k=3 sharpness (gap narrowed, U_3 proved not attained, exact value still open)
+    statement: >-
+      L_3(eta) <= C_3,ind^P(eta) < U_3(eta) < 2 for every eta in (0,1);
+      the certified gap narrowed substantially via
+      THM_V5_K3_GENERAL_UPPER_ENVELOPE (e.g. at eta=1, relative gap
+      50%->29%), and THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED further proves
+      U_3(eta) itself cannot be reached exactly -- but no exact tightened
+      value or matching construction is known. The precise open problem is
+      now a well-posed joint optimization over the magnitude allocation q
+      and the angle between the two propagated-error terms, not a vague
+      "improve the bound" question.
     scope: [independent-law k=3 chain and branching, 0 < eta <= 1]
     dependencies:
       - LB_V5_K3_PIECEWISE_SCALAR_CURVE
       - THM_V5_K3_GENERAL_UPPER_ENVELOPE
+      - THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED
     epistemic_status: OPEN_WITH_CERTIFIED_GAP
     novelty_status: NOVELTY_NOT_ESTABLISHED
   - id: OPEN_V5_DIMENSION_RANK_REDUCTION

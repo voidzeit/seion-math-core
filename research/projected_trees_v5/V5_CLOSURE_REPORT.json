@@ -17,6 +17,14 @@
       "approval_status": "PENDING_HUMAN_REVIEW",
       "proof_location": "research/math_closure/k3/general_upper_envelope.tex",
       "supersedes": "v5b_extremal.py conditional_scalar_reduction_upper_bound (CONDITIONAL_ON_UNPROVED_SCALAR_REDUCTION, unproved, dimensionally inconsistent)"
+    },
+    {
+      "id": "THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED",
+      "epistemic_status": "PROVED",
+      "novelty_status": "NOVELTY_NOT_ESTABLISHED",
+      "approval_status": "PENDING_HUMAN_REVIEW",
+      "proof_location": "research/math_closure/k3/m10_non_sharpness_of_m9.tex",
+      "note": "proves C_3,ind^P(eta) < U_3(eta) strictly for every eta in (0,1); does not produce a replacement tightened value. Joint (magnitude, angle) optimization identified as the precise open successor problem."
     }
   ],
   "corrections": [
@@ -50,15 +58,20 @@
     "status": "BLOCKED_BY_MISSING_TOOLING",
     "reason": "lean and lake not found on PATH on this machine"
   },
+  "test_discovery_bug_found_and_fixed": {
+    "problem": "pyproject.toml had no python_files override, so pytest's default discovery pattern silently excluded every research_v5_test_*.py file (7 files, 72 tests) from plain `pytest -q` runs, in this session and every prior one -- only explicit-path invocations ever exercised them",
+    "fix": "added research_v5_test_*.py to [tool.pytest.ini_options] python_files in pyproject.toml",
+    "corrected_collected_count": 437
+  },
   "test_status": {
-    "collected": 365,
-    "executed": 365,
-    "passed": 364,
+    "collected": 437,
+    "executed": 437,
+    "passed": 436,
     "failed": 1,
     "skipped": 0,
     "xfailed": 0,
     "timeout": 0,
-    "elapsed_seconds": 444.13,
+    "elapsed_seconds": 468.51,
     "failure_detail": {
       "test": "tests/kgr/test_campaign_negative_controls.py::test_queried_edge_leakage_inflates_metrics_when_deliberately_enabled",
       "pre_existing": true,

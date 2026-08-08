@@ -251,6 +251,41 @@ entries:
       eta=0.9, ~44%->26%) but OPEN_WITH_CERTIFIED_GAP remains the correct
       terminal status for fixed-eta k=3 sharpness.
 
+  - id: M10_k3_upper_envelope_not_attained
+    question: >
+      Can M9's upper envelope U_3(eta) be exactly attained by some
+      admissible k=3 independent-law chain/branching configuration, i.e.
+      are all inequalities in the M9 derivation simultaneously tight?
+    status: PROVED
+    admissible_class: >
+      same finite-dimensional real (or complex) binary k=3 chain class as
+      M9, arbitrary dimension/rank.
+    evidence:
+      - research/math_closure/k3/m10_non_sharpness_of_m9.tex
+      - src/seion_core/research_v5/k3_non_sharpness.py
+      - tests/research_v5_test_k3_non_sharpness.py
+    result: >
+      No. A standard fact about operator-norm-attaining directions (a
+      linear map attaining its operator norm exactly at a unit direction
+      u-hat must send the orthogonal complement direction v-hat to a
+      vector orthogonal to N(u-hat)) applied twice -- once at node 2
+      (forcing S1 perp S2 whenever T1 saturates there), once at node 3
+      (forcing mu3(S1,d) perp mu3(S2,d) whenever T1 also saturates at the
+      root) -- directly contradicts the triangle-inequality equality
+      (parallel vectors) needed for E_proj to equal T1+T2 exactly. Hence
+      C_3,ind^P(eta) < U_3(eta) strictly for every eta in (0,1) (both
+      terms are generically nonzero at the M9 optimum).
+    remaining_gap: >
+      Proves non-sharpness, does NOT produce an exact tightened value.
+      The natural next step -- a joint optimization over the magnitude
+      allocation q and the angle phi between S1,S2 -- was set up
+      (pareto_frontier_two_direction_norm_budget quantifies how the
+      jointly-supportable magnitude pair shrinks as phi->0) but not
+      solved this session. A separate gradient-based numerical search
+      (m10_k3_search.py, not committed) failed to even recover the
+      already-known L_3(eta) lower witness and is explicitly flagged as
+      an unreliable, discarded attempt, not evidence of anything.
+
   - id: M7_pseudodifferential_microlocal_program
     question: >
       Symbol class stability, projector composition stability, associator

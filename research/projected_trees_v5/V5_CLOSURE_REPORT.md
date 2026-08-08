@@ -1,4 +1,4 @@
-# V5 theorem-closure campaign — closure report (2026-08-08)
+# V5 theorem-closure campaign — closure report (2026-08-08, updated same day: M10 + test-discovery fix)
 
 Scope executed: a single autonomous session against the 33-section,
 16-phase mission brief ("SEION / Projected Multilinear Graphs — Theorem-
@@ -26,8 +26,22 @@ Two new theorems, both mechanically verified and numerically corroborated
   U_3(eta)`, strictly below the trivial universal bound `2` for every
   `eta>0`, proved unconditionally (no rank-one restriction, arbitrary
   dimension/rank), identical for chain and branching topologies.
+- **k=3 upper envelope is not attained (M10)**
+  (`research/math_closure/k3/m10_non_sharpness_of_m9.tex`,
+  `src/seion_core/research_v5/k3_non_sharpness.py`). Answering the
+  natural follow-up question (can `U_3(eta)` actually be reached?): no.
+  `C_3,ind^P(eta) < U_3(eta)` strictly for every `eta` in `(0,1)`, proved
+  by applying a standard operator-norm-attaining-direction lemma twice
+  (once at node 2, once at node 3 of the chain) to show the two
+  propagated-error terms are forced orthogonal whenever both individually
+  saturate their bounds -- directly contradicting the parallel-vectors
+  requirement for the triangle inequality (M9's last step) to be tight.
+  This is a proof of non-sharpness, not a replacement tightened value; the
+  natural next problem (a joint optimization over the magnitude
+  allocation and the angle between the two error terms) is precisely
+  set up but not solved.
 
-Both are new proofs, not restatements of prior registry entries.
+Three new proofs total, not restatements of prior registry entries.
 
 ## 2. Under exactly which admissible class is each theorem proved?
 
@@ -139,12 +153,25 @@ above, not yet incorporated into any `papers/` manuscript.
 
 ## 16. What tests were actually executed and passed?
 
-Full honest reconstruction (Section XXVI discipline):
+Full honest reconstruction (Section XXVI discipline) -- **corrected mid-session**:
 
-- `pytest --collect-only -q`: **365 tests collected**.
-- Full suite executed with a 580s budget (no partitioning needed): **365
-  executed, 364 passed, 1 failed, 0 skipped/xfailed, elapsed 444.13s**
-  (`0:07:24`).
+- Initial `pytest --collect-only -q` reported **365 tests collected**.
+  This number was **wrong** in a way that predates this session: `pyproject.toml`
+  had no `python_files` override, so pytest's default discovery pattern
+  (`test_*.py`, `*_test.py`) silently **excluded every
+  `research_v5_test_*.py` file** -- 7 files, 72 tests, including all of
+  this session's new theorem tests and every pre-existing V5 test from
+  prior sessions. `pytest -q` (no explicit path) had never actually run
+  this entire test family, in this session or any prior one; only
+  explicit-path invocations (`pytest tests/research_v5_test_*.py`) ever
+  exercised them, which is how they kept passing without the gap being
+  noticed. **Fixed** by adding `research_v5_test_*.py` to `python_files`
+  in `pyproject.toml` (one-line change, `python_files = ["test_*.py",
+  "*_test.py", "research_v5_test_*.py"]`).
+- **Corrected full-suite numbers**: `pytest --collect-only -q` now reports
+  **437 tests collected** (365+72). Full suite executed with no
+  partitioning: **437 executed, 436 passed, 1 failed, 0 skipped/xfailed,
+  elapsed 468.51s** (`0:07:48`).
 - The one failure —
   `tests/kgr/test_campaign_negative_controls.py::test_queried_edge_leakage_inflates_metrics_when_deliberately_enabled`
   (`TypeError: ...leaky_score_tail_candidates() got an unexpected keyword
@@ -154,11 +181,12 @@ Full honest reconstruction (Section XXVI discipline):
   point. Per the mission's explicit instruction to preserve Gate 13.5,
   Gate 14, and KGR untouched, this failure was **not fixed** and no KGR
   file was modified this session.
-- The 8 new/modified tests specific to this session's theorems
+- The 20 new/modified tests specific to this session's theorems
   (`tests/research_v5_test_k2_characterization.py`,
-  `tests/research_v5_test_k3_upper_bound.py`, plus the corrected
+  `tests/research_v5_test_k3_upper_bound.py`,
+  `tests/research_v5_test_k3_non_sharpness.py`, plus the corrected
   `tests/research_v5_test_equality_conditions.py`) all pass, re-confirmed
-  after every registry edit.
+  after every registry edit and after the discovery-pattern fix.
 - No test in this session's scope timed out or was skipped.
 
 ## 17. What timed out?

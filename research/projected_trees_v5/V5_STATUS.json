@@ -15,17 +15,19 @@
   "closed_in_theorem_closure_campaign_2026_08_08": [
     "k=2 necessary-and-sufficient saturation characterization (EQ1-EQ3), arbitrary dimension/rank, independent or repeated laws",
     "stale K2-EQ-05 repeated-law audit status corrected (was OPEN_IF_REPEATED, already resolved by the V5-B witness)",
-    "unconditional (non-scalar-reduction-dependent) tightened k=3 upper envelope U_3(eta) for chain and branching topologies, superseding the CONDITIONAL_ON_UNPROVED_SCALAR_REDUCTION bookkeeping entry"
+    "unconditional (non-scalar-reduction-dependent) tightened k=3 upper envelope U_3(eta) for chain and branching topologies, superseding the CONDITIONAL_ON_UNPROVED_SCALAR_REDUCTION bookkeeping entry",
+    "M10: proof that U_3(eta) is not attained (strict non-sharpness of the M9 envelope), via a forced-orthogonality obstruction"
   ],
   "open": [
+    "exact tightened k=3 envelope (M10 proves U_3(eta) not attained but does not derive the replacement; the joint magnitude/angle optimization is set up, not solved)",
     "gated-planar repeated-law k=2 sharpness",
-    "independent-law k=3 global sharpness (gap narrowed by U_3(eta) but not closed)",
+    "independent-law k=3 global sharpness (gap narrowed by U_3(eta), and U_3 itself proved not attained, but exact value still unknown)",
     "independent-law (k-1) sharpness for arbitrary finite trees",
     "universal dimension/rank reduction",
     "global k=3 topology sharpness",
     "globally tight multilinear spectral norms",
     "theorem-level novelty",
-    "formal proof assistant implementation (Lean 4 availability not yet checked)"
+    "formal proof assistant implementation (Lean/lake confirmed not installed on this machine)"
   ],
   "preservation": ["research_projected_trees_v4", "Gate 13.5", "Gate 14", "KGR", "historical artifacts"]
 }
