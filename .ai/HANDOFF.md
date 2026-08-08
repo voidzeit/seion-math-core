@@ -119,3 +119,11 @@
 - Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 47 passed; JSON validation PASS; git diff --check PASS; P1-P7A freeze commit aba0b13 preserved; P6B implementation commits 8b3341f and 9adc7aa
 - Resume from commit: `9adc7aa2b6d91944f3aa2573531107b871cbf658` on `campaign/gate13-closeout`
 - Limitation: P6B is exact for finite declared numeric DAGs with fixed source directions and formal scalar amplitudes; scalable tail envelopes, nonlinear signed associator P7B, validated norms P8, and global sharpness remain open.
+
+## Latest postflight: Projected-tree theory v4 D2 P7B nonlinear signed source-polynomial certificate
+
+- Timestamp: 2026-08-08T10:12:34.960315+00:00
+- Outcome: **D2_P7B_COMPLETE_P7C_P8_DEFERRED**
+- Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 53 passed; JSON validation PASS; git diff --check PASS; P7B commits 5c12adb and 26345c1
+- Resume from commit: `26345c1aaa5231accca852c6e208492ee8fcb74f` on `campaign/gate13-closeout`
+- Limitation: P7B is sound for finite signed expressions over exact finite P6B polynomials; P7C identity instantiations, universal nonlinear sharpness, validated norms, and approximate-law error remain open.

@@ -183,3 +183,22 @@ changed paths, and limitations. Historical artifact runs remain under
 - Limitations:
   - P6B is exact for finite declared numeric DAGs with fixed source directions and formal scalar amplitudes; scalable tail envelopes, nonlinear signed associator P7B, validated norms P8, and global sharpness remain open.
   - No Gate 13.5/Gate 14/KGR artifacts were modified.
+
+## 2026-08-08T10:12:34.960315+00:00 — Projected-tree theory v4 D2 P7B nonlinear signed source-polynomial certificate
+
+- Command: `python -m pytest tests/research_v3 tests/research_v4 -q; python -m seion_core.cli.main governance audit --json; python -m seion_core.cli.main governance dedupe-runs`
+- Branch/commit: `campaign/gate13-closeout` / `26345c1aaa5231accca852c6e208492ee8fcb74f`
+- Outcome: **D2_P7B_COMPLETE_P7C_P8_DEFERRED**
+- Summary: Implemented generic nonlinear signed source-polynomial aggregation over P6B multi-indices, with exact and truncated certified bounds, higher-order cancellation witnesses, projected-root semantics, and direct-evaluation validation.
+- Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 53 passed; JSON validation PASS; git diff --check PASS; P7B commits 5c12adb and 26345c1
+- Changed files:
+  - `src/seion_core/research_v4/signed_source_polynomial.py`
+  - `tests/research_v4/test_signed_source_polynomial.py`
+  - `research/projected_trees_v4/cancellation/associator/P7B_nonlinear_signed_source_polynomial.md`
+  - `research/projected_trees_v4/cancellation/associator/P7B_status.json`
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.json`
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.md`
+  - `.ai/TASKS.md`
+- Limitations:
+  - P7B is sound for finite signed expressions over exact finite P6B polynomials; P7C identity instantiations, universal nonlinear sharpness, validated norms, and approximate-law error remain open.
+  - Gate 13.5, Gate 14, KGR, and historical artifacts were not modified.

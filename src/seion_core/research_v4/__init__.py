@@ -23,6 +23,15 @@ from .signed_source_polynomial import (
     SignedSourcePolynomialCertificate,
     certify_signed_source_polynomial,
 )
+from .signed_compositional_expression import (
+    CompositionalTerm,
+    SignedCompositionalExpression,
+    SignedCompositionalExpressionCertificate,
+    certify_signed_compositional_expression,
+    make_associator_expression,
+    make_filippov_defect_expression,
+    make_jacobiator_expression,
+)
 
 __all__ = [
     "DAGCertificate",
@@ -48,4 +57,11 @@ __all__ = [
     "SignedPolynomialTerm",
     "SignedSourcePolynomialCertificate",
     "certify_signed_source_polynomial",
+    "CompositionalTerm",
+    "SignedCompositionalExpression",
+    "SignedCompositionalExpressionCertificate",
+    "certify_signed_compositional_expression",
+    "make_associator_expression",
+    "make_jacobiator_expression",
+    "make_filippov_defect_expression",
 ]

@@ -1,0 +1,21 @@
+{
+  "schema": "projected-trees-p7c-status-v1",
+  "status": "PROVED_UNDER_ASSUMPTIONS",
+  "scope": "generic finite signed expressions over exact or truncated P6B source polynomials",
+  "engine": "src/seion_core/research_v4/signed_compositional_expression.py",
+  "soundness": "B_actual <= B_signed <= B_treewise",
+  "instantiations": {
+    "P7B_associator_regression": "ASSOCIATOR_CERTIFICATE",
+    "jacobiator": "JACOBIATOR_CERTIFICATE",
+    "filippov_defect": "FILIPPOV_DEFECT_CERTIFICATE"
+  },
+  "jacobiator_convention": "[x,[y,z]] + [y,[z,x]] + [z,[x,y]]",
+  "filippov_convention": "T_fundamental - sum_i T_insertion_i",
+  "tests": "tests/research_v4/test_signed_compositional_expression.py",
+  "limitations": [
+    "certifies defects and does not assert universal identity satisfaction",
+    "bracket arity/construction is caller-specified",
+    "universal nonlinear sharpness remains open",
+    "validated multilinear norms remain P8"
+  ]
+}

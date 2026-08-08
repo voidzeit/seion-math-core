@@ -80,5 +80,6 @@
   with repeated-source multi-indices and certified order truncation.
 - [x] Implement P7B nonlinear signed source-polynomial certificate over
   retained and exact higher-order terms.
-- [ ] Instantiate P7C for associator, Jacobiator, and Filippov defects.
+- [x] Instantiate P7C generic signed expressions for associator, Jacobiator,
+  and Filippov defects without assuming identity satisfaction.
 - [ ] Implement P8 validated multilinear operator-norm enclosures.
