@@ -13,6 +13,7 @@
   },
   "implementation": "src/seion_core/research_v4/higher_order_source_polynomial.py",
   "tests": "tests/research_v4/test_higher_order_source_polynomial.py",
+  "source_commit": "8b3341f8a08049b6a67bfea27dc338b9beeffe86",
   "limitations": [
     "fixed numeric source directions with formal scalar amplitudes",
     "finite exact polynomial only; no implicit infinite tail theorem",
