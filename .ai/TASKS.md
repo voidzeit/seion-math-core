@@ -89,3 +89,23 @@
 - [x] Register finite topology metrics and monotone sharpness bands without
   declaring global sharpness.
 - [ ] Resolve global fixed-eta sharpness and dimension/rank reduction.
+
+## Projected-graph theory v5
+
+- [x] Freeze the finite projected-graph core at scientific commit
+  `1f4984ec8e741049789e0035c7a3ba84c86d3f29`; preserve operational HEAD
+  `f88f75bdf3f44407392d6c55dd2affb37d3185ab` as governance history.
+- [x] Establish exact `k=2` saturation for the declared real binary chain with
+  independent node laws: `C_2^P(eta)=1` for `0 < eta <= 1`.
+- [x] Audit simultaneous equality conditions for independent laws and keep
+  repeated-law compatibility explicitly open.
+- [x] Create the V5 theorem-consolidation, formalization-target, and
+  theorem-to-theorem novelty ledgers without asserting novelty.
+- [ ] Resolve repeated/shared-law `k=2` fixed-eta sharpness.
+- [ ] Prove universal dimension/rank reduction or produce a certified
+  higher-dimensional counterexample.
+- [ ] Resolve global `k=3` topology-specific sharpness.
+- [ ] Obtain exact or validated multilinear norm results beyond the finite
+  enclosure implementation.
+- [ ] Complete theorem-to-theorem novelty review and independent human review.
+- [ ] Formalize the finite algebraic kernel in a proof assistant.

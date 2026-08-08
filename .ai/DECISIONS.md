@@ -71,3 +71,17 @@
 - **Evidence:** `artifacts/research_v3/extended_progress_v3.json`,
   `scripts/tree_constants_v3_extended.py`.
 - **Status:** accepted
+
+## D-0007 — Start projected-graphs V5 after the finite core freeze
+
+- **Date:** 2026-08-08
+- **Decision:** Freeze the finite projected-graphs core at scientific commit
+  `1f4984ec8e741049789e0035c7a3ba84c86d3f29` and place theorem-level
+  extremal, proof-consolidation, novelty, and formalization work under
+  `research/projected_trees_v5` and `src/seion_core/research_v5`.
+- **Reason:** The finite computational core is complete; further work must
+  distinguish proved restricted-class results from open global sharpness and
+  must not silently expand `research_v4` or alter Gate 13.5/Gate 14/KGR.
+- **Evidence:** `research/projected_trees_v5/BASELINE_FREEZE.json`,
+  `claims/theorem_registry_v5.yaml`, and the V5 truth ledger.
+- **Status:** accepted

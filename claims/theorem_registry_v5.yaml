@@ -1,0 +1,64 @@
+version: 5
+track: projected_graphs_v5
+governance_note: >-
+  V5 theorem entries are scoped to their declared finite-dimensional classes.
+  Independent human review and theorem-level novelty review remain pending.
+theorems:
+  - id: THM_V5_K2_INDEPENDENT_LAW_PROJECTED_SHARPNESS
+    title: Exact k=2 projected-root sharpness for independent binary laws
+    statement: >-
+      For the real binary k=2 chain with independent node laws, an orthogonal
+      rank-one projector, unit leaves, uniform operator norm M, and closure
+      ratio eta=rho/M in (0,1], the projected-root constant satisfies
+      C_2^P(eta)=1. An explicit two-dimensional construction attains
+      E_proj=rho M.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - binary chain with two independently chosen bilinear laws
+      - orthogonal rank-one projector
+      - unit leaf norms
+      - uniform M and rho
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V3_PROJECTED_ROOT_K_MINUS_ONE
+    proof_location: research/projected_trees_v5/extremal/K2_EQUALITY_AND_SATURATION.md
+    implementation: src/seion_core/research_v5/k2_sharpness.py
+    tests:
+      - tests/research_v5_test_k2_sharpness.py
+      - tests/research_v5_test_equality_conditions.py
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_FOR_DECLARED_INDEPENDENT_LAW_CLASS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K2_EQUALITY_COMPATIBILITY_INDEPENDENT_LAWS
+    title: Equality-condition compatibility for the independent-law construction
+    statement: >-
+      The operator-norm, closure, propagated-normal-error, and projected-root
+      equality requirements for the k=2 projected bound are simultaneously
+      compatible when the inner and outer laws may be chosen independently.
+    scope:
+      - same finite-dimensional real binary-chain class as THM_V5_K2_INDEPENDENT_LAW_PROJECTED_SHARPNESS
+    dependencies:
+      - THM_V5_K2_INDEPENDENT_LAW_PROJECTED_SHARPNESS
+    proof_location: research/projected_trees_v5/extremal/K2_EQUALITY_AND_SATURATION.md
+    implementation: src/seion_core/research_v5/equality_conditions.py
+    tests: [tests/research_v5_test_equality_conditions.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: OPEN_V5_K2_REPEATED_LAW_SHARPNESS
+    title: Fixed-eta k=2 sharpness with a repeated/shared law
+    statement: >-
+      It remains open whether the independent-law saturation construction can
+      be made compatible with one repeated law under the same hypotheses.
+    scope: [repeated/shared node law, fixed eta]
+    epistemic_status: OPEN
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: OPEN_V5_DIMENSION_RANK_REDUCTION
+    title: Universal dimension/rank reduction for projected sharpness
+    statement: >-
+      It remains open whether the relevant projected sharpness supremum can be
+      reduced to a finite universal ambient dimension and projector rank.
+    scope: [general projected multilinear trees]
+    epistemic_status: OPEN
+    novelty_status: NOVELTY_NOT_ESTABLISHED

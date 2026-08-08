@@ -1,0 +1,34 @@
+{
+  "schema": "projected-graphs-v5-truth-ledger-v1",
+  "baseline_scientific_commit": "1f4984ec8e741049789e0035c7a3ba84c86d3f29",
+  "operational_head": "f88f75bdf3f44407392d6c55dd2affb37d3185ab",
+  "entries": [
+    {
+      "id": "V5-K2-IND-001",
+      "statement": "For the general real binary k=2 chain with independent node laws, C_2^P(eta)=1 for 0<eta<=1.",
+      "status": "PROVED_UNDER_ASSUMPTIONS",
+      "evidence": [
+        "research/projected_trees_v5/truth_ledger/PROJECTED_GRAPHS_V5_TRUTH_LEDGER.md",
+        "src/seion_core/research_v5/k2_sharpness.py",
+        "tests/research_v5_test_k2_sharpness.py"
+      ],
+      "assumptions": ["real field", "binary chain", "independent node laws", "orthogonal rank-one projector", "0<eta<=1"]
+    },
+    {
+      "id": "V5-K2-REP-001",
+      "statement": "The earlier eta^2 construction remains valid only for the narrower repeated gated-planar law family.",
+      "status": "EXACT_CONSTRUCTION",
+      "evidence": ["research/math_closure/k2/classification_theorem.tex", "research/projected_trees_v4/sharpness/k2/P2_k2_status.md"]
+    },
+    {
+      "id": "V5-K2-EQ-001",
+      "statement": "The k=2 projected-bound equality conditions are compatible for independent node laws; repeated-law compatibility remains open.",
+      "status": "PROVED_UNDER_ASSUMPTIONS",
+      "evidence": ["src/seion_core/research_v5/equality_conditions.py", "tests/research_v5_test_equality_conditions.py", "research/projected_trees_v5/extremal/K2_EQUALITY_AND_SATURATION.md"]
+    },
+    {"id":"V5-O-001","statement":"repeated-law/shared-map k=2 sharpness","status":"OPEN"},
+    {"id":"V5-O-002","statement":"universal dimension/rank reduction","status":"OPEN"},
+    {"id":"V5-O-003","statement":"global k=3 topology-specific sharpness","status":"OPEN"},
+    {"id":"V5-O-004","statement":"theorem-level novelty","status":"NOVELTY_NOT_ESTABLISHED"}
+  ]
+}
