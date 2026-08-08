@@ -1,7 +1,7 @@
 {
   "schema": "projected-graphs-v5-truth-ledger-v1",
   "baseline_scientific_commit": "1f4984ec8e741049789e0035c7a3ba84c86d3f29",
-  "v5_scientific_commit": "10078f4ce2d591cf7901a2e552d8a45926409a6c",
+  "v5_scientific_commit": "5e8384a9382ad54edfe5341d128b6a016e8d5684",
   "operational_head": "f88f75bdf3f44407392d6c55dd2affb37d3185ab",
   "entries": [
     {
@@ -27,9 +27,30 @@
       "status": "PROVED_UNDER_ASSUMPTIONS",
       "evidence": ["src/seion_core/research_v5/equality_conditions.py", "tests/research_v5_test_equality_conditions.py", "research/projected_trees_v5/extremal/K2_EQUALITY_AND_SATURATION.md"]
     },
+    {
+      "id": "V5-K3-IND-LOWER-CHAIN",
+      "statement": "For the declared independent-law k=3 binary chain witness, the certified lower bound is E_proj=2 M q sqrt(M^2-q^2), with q=min(rho,M/sqrt(2)).",
+      "status": "CERTIFIED_LOWER_BOUND",
+      "evidence": ["src/seion_core/research_v5/k3_independent_candidates.py", "tests/research_v5_test_k3_independent_candidates.py"],
+      "limitations": ["This is a construction lower bound, not global sharpness."]
+    },
+    {
+      "id": "V5-K3-IND-LOWER-BRANCH",
+      "statement": "For the declared independent-law k=3 binary branching witness, the same certified lower bound is achieved by a separate branching construction.",
+      "status": "CERTIFIED_LOWER_BOUND",
+      "evidence": ["src/seion_core/research_v5/k3_independent_candidates.py", "tests/research_v5_test_k3_independent_candidates.py"],
+      "limitations": ["This is a construction lower bound, not global sharpness."]
+    },
+    {
+      "id": "V5-K2-REP-BAND",
+      "statement": "For the repeated-law class, the known eta^2 construction gives the normalized lower bound C_2,rep^P(eta)>=eta, while the universal theorem gives C_2,rep^P(eta)<=1.",
+      "status": "CERTIFIED_LOWER_BOUND",
+      "evidence": ["research/projected_trees_v4/sharpness/k2/P2_k2_status.md", "research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.json"]
+    },
     {"id":"V5-O-001","statement":"repeated-law/shared-map k=2 sharpness","status":"OPEN"},
     {"id":"V5-O-002","statement":"universal dimension/rank reduction","status":"OPEN"},
     {"id":"V5-O-003","statement":"global k=3 topology-specific sharpness","status":"OPEN"},
-    {"id":"V5-O-004","statement":"theorem-level novelty","status":"NOVELTY_NOT_ESTABLISHED"}
+    {"id":"V5-O-004","statement":"theorem-level novelty","status":"NOVELTY_NOT_ESTABLISHED"},
+    {"id":"V5-CONJ-001","statement":"For sufficiently free independent laws, C_T,ind^P(eta)=k(T)-1 for finite trees.","status":"OPEN","type":"conjecture","evidence":["research/projected_trees_v5/truth_ledger/PROJECTED_GRAPHS_V5_TRUTH_LEDGER.md"]}
   ]
 }

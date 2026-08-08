@@ -1,7 +1,7 @@
 {
   "schema": "projected-graphs-v5-status-v1",
   "finite_core_freeze": "1f4984ec8e741049789e0035c7a3ba84c86d3f29",
-  "v5_scientific_commit": "10078f4ce2d591cf7901a2e552d8a45926409a6c",
+  "v5_scientific_commit": "5e8384a9382ad54edfe5341d128b6a016e8d5684",
   "operational_head_at_start": "f88f75bdf3f44407392d6c55dd2affb37d3185ab",
   "track": "theorem-level extremal theory, proof consolidation, novelty, formalization",
   "closed_in_this_increment": [
