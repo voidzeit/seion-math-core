@@ -102,6 +102,24 @@ specific to a single internal-node pair and does not extend mechanically
 (see \texttt{k3/general\_upper\_envelope.tex} for the $k=3$ analysis, which
 needed a materially different argument).
 
+\textbf{Non-saturating example (necessity exercised negatively).} Take
+$M=1$, $\rho=0.4$, dimension 3, $P=\mathrm{diag}(1,1,0)$ (rank 2),
+$P_{\mathrm{out}}=\mathrm{diag}(1,0,0)$ (rank 1), $\mu_{\mathrm{in}}(x,y)=
+0.3\,x\otimes y$-type random small-magnitude tensors (operator norm well
+under $M$ by construction, not saturating), unit random leaves $a,b,d$.
+Mechanically checked (\texttt{test\_non\_extremal\_configuration\_fails\_
+at\_least\_one\_condition\_and\_does\_not\_saturate}): $E_T^{\mathrm{proj}}
+\le\rho M\|a\|\|b\|\|d\|$ holds (never violated, consistent with the
+universal bound), but the ratio is strictly below $1$ and at least one of
+EQ1--EQ3 is strictly slack -- concretely, since $\|\mu_{\mathrm{in}}\|_{
+\mathrm{op}}<\rho$ for this instance, EQ2 fails immediately (the closure
+map cannot saturate $\rho$ if the whole law's magnitude is already below
+$\rho$), which is enough on its own to block saturation regardless of the
+other two conditions. This confirms the theorem's necessity direction is
+not vacuous: generic, non-adversarial configurations genuinely fail to
+reach the bound, and the failure is traceable to a specific named
+condition rather than being a diffuse aggregate shortfall.
+
 \textbf{Status.} \texttt{PROVED} (unconditional real-number chain-of-
 inequalities argument, no floating-point-only evidence). Admissible class:
 finite-dimensional real (identical argument holds verbatim over
