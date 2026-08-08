@@ -23,6 +23,15 @@ $\rho_{\mathrm{in}}:=\|(I-P)\mu_{\mathrm{in}}\|_{\mathrm{op}}\le\rho$. No
 restriction on ambient dimension, projector rank, or whether
 $\mu_{\mathrm{in}}=\mu_{\mathrm{out}}$.
 
+Leaves carry no separate reduction projector of their own: per the
+canonical setup (mission Section III), a leaf's lifted/reduced
+representations coincide, $F_\ell=R_\ell=Qz_\ell$, so $a,b$ enter
+$\mu_{\mathrm{in}}$ identically in both the ambient and reduced
+evaluations -- there is no ``$P_aa,P_bb$'' to separately track, and
+$\rho_{\mathrm{in}}$'s definition $\|(I-P)\mu_{\mathrm{in}}\|_{\mathrm{op}}$
+is already the closure map applied to genuinely clean (leaf) inputs, with
+no further projector composed into it.
+
 \textbf{Theorem.} Write $D:=(I-P)\mu_{\mathrm{in}}(a,b)$. Then
 \[
   E_T^{\mathrm{proj}} \;=\; \big\| P_{\mathrm{out}}\,\mu_{\mathrm{out}}(D,d) \big\|,
@@ -36,12 +45,33 @@ following hold simultaneously:
   \text{(EQ3)}\quad & \mu_{\mathrm{out}}(D,d)\in\mathrm{Range}(P_{\mathrm{out}}) \tag{root projection loses nothing}
 \end{align}
 
-\textbf{Proof.} Bilinearity gives $F_{\mathrm{out}}-R_{\mathrm{out}}=
-\mu_{\mathrm{out}}(F_{\mathrm{in}},d)-\mu_{\mathrm{out}}(R_{\mathrm{in}},d)=
-\mu_{\mathrm{out}}(F_{\mathrm{in}}-R_{\mathrm{in}},d)=\mu_{\mathrm{out}}(D,d)$
-(using $F_{\mathrm{in}}=\mu_{\mathrm{in}}(a,b)$, $R_{\mathrm{in}}=P\mu_{\mathrm
-{in}}(a,b)$, so $F_{\mathrm{in}}-R_{\mathrm{in}}=D$), so
-$E_T^{\mathrm{proj}}=\|P_{\mathrm{out}}\mu_{\mathrm{out}}(D,d)\|$ as claimed.
+\textbf{Proof.} Note first that $R_{\mathrm{out}}=P_{\mathrm{out}}\mu_{
+\mathrm{out}}(R_{\mathrm{in}},d)\ne\mu_{\mathrm{out}}(R_{\mathrm{in}},d)$ in
+general -- the root projector is applied to the whole ambient value
+$\mu_{\mathrm{out}}(R_{\mathrm{in}},d)$, not absent. So $F_{\mathrm{out}}-
+R_{\mathrm{out}}$ itself is \emph{not} simply $\mu_{\mathrm{out}}(D,d)$; by
+bilinearity it expands as
+\[
+  F_{\mathrm{out}}-R_{\mathrm{out}}
+  = \mu_{\mathrm{out}}(F_{\mathrm{in}},d)-P_{\mathrm{out}}\mu_{\mathrm{out}}(R_{\mathrm{in}},d)
+  = \underbrace{\mu_{\mathrm{out}}(D,d)}_{\text{uses }F_{\mathrm{in}}-R_{\mathrm{in}}=D}
+  \;+\; (I-P_{\mathrm{out}})\mu_{\mathrm{out}}(R_{\mathrm{in}},d).
+\]
+What \emph{is} exactly $\mu_{\mathrm{out}}(D,d)$, with no leftover term, is
+$P_{\mathrm{out}}$ applied to this whole expression:
+\[
+  P_{\mathrm{out}}(F_{\mathrm{out}}-R_{\mathrm{out}})
+  = P_{\mathrm{out}}\mu_{\mathrm{out}}(D,d)
+  + \underbrace{P_{\mathrm{out}}(I-P_{\mathrm{out}})}_{=\,0}\mu_{\mathrm{out}}(R_{\mathrm{in}},d)
+  = P_{\mathrm{out}}\mu_{\mathrm{out}}(D,d),
+\]
+using $P_{\mathrm{out}}(I-P_{\mathrm{out}})=0$ (idempotence). Since
+$R_{\mathrm{out}}\in\mathrm{Range}(P_{\mathrm{out}})$ already (by its own
+definition), $P_{\mathrm{out}}R_{\mathrm{out}}=R_{\mathrm{out}}$, so
+$E_T^{\mathrm{proj}}=\|P_{\mathrm{out}}F_{\mathrm{out}}-R_{\mathrm{out}}\|=
+\|P_{\mathrm{out}}(F_{\mathrm{out}}-R_{\mathrm{out}})\|=\|P_{\mathrm{out}}
+\mu_{\mathrm{out}}(D,d)\|$ as claimed -- the $(I-P_{\mathrm{out}})$ term
+cancels only \emph{after} $P_{\mathrm{out}}$ is applied, not before.
 The universal bound is then obtained from the chain of non-negative
 inequalities
 \[

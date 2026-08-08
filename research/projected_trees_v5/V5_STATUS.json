@@ -16,12 +16,13 @@
     "k=2 necessary-and-sufficient saturation characterization (EQ1-EQ3), arbitrary dimension/rank, independent or repeated laws",
     "stale K2-EQ-05 repeated-law audit status corrected (was OPEN_IF_REPEATED, already resolved by the V5-B witness)",
     "unconditional (non-scalar-reduction-dependent) tightened k=3 upper envelope U_3(eta) for chain and branching topologies, superseding the CONDITIONAL_ON_UNPROVED_SCALAR_REDUCTION bookkeeping entry",
-    "M10: proof that U_3(eta) is not attained (strict non-sharpness of the M9 envelope), via a forced-orthogonality obstruction"
+    "M10 (revised after review): proof that no single admissible configuration attains U_3(eta) exactly (PROVED_NON_ATTAINMENT) -- NOT a proof that C_3,ind^P(eta) < U_3(eta) strictly; that stronger claim was found to be an overclaim in the first version and is now tracked as a separate open item"
   ],
   "open": [
-    "exact tightened k=3 envelope (M10 proves U_3(eta) not attained but does not derive the replacement; the joint magnitude/angle optimization is set up, not solved)",
+    "whether C_3,ind^P(eta) is strictly below U_3(eta) as a supremum, or only unattained pointwise (M10 proves the latter only; needs a compactness argument or an explicit quantitative gap -- see the tex proof's Route A / Route B)",
+    "exact tightened k=3 envelope if the strict-gap question resolves affirmatively (the joint magnitude/angle optimization is set up via pareto_frontier_two_direction_norm_budget, not solved)",
     "gated-planar repeated-law k=2 sharpness",
-    "independent-law k=3 global sharpness (gap narrowed by U_3(eta), and U_3 itself proved not attained, but exact value still unknown)",
+    "independent-law k=3 global sharpness (gap narrowed by U_3(eta); M10 proves U_3 not pointwise-attained; exact value/strict-gap status still unknown)",
     "independent-law (k-1) sharpness for arbitrary finite trees",
     "universal dimension/rank reduction",
     "global k=3 topology sharpness",

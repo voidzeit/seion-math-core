@@ -1,16 +1,20 @@
 \section*{M10: M9's upper envelope $U_3(\eta)$ is not attained}
 \label{sec:k3-m10}
 
-\textbf{Motivation.} M9 (\texttt{k3/general\_upper\_envelope.tex}) proves
-$C_{3,\mathrm{ind}}^P(\eta)\le U_3(\eta)<2$ by bounding
-$E_T^{\mathrm{proj}}\le T_1+T_2$ (triangle inequality) with
-$T_1\le M^2q$, $T_2\le M\rho\sqrt{M^2-q^2}$ individually bounded via
-operator-norm and closure-residual caps, then maximizing over
-$q\in[0,\rho]$. This note asks the natural next question: can a single
-configuration attain $U_3(\eta)$ exactly, i.e.\ can all of the
-inequalities used in the derivation be simultaneously tight? The answer is
-\textbf{no}, for a precise, provable, structural reason -- not merely
-"not yet found."
+\textbf{Revision note (this version repairs two errors found under
+review; see \texttt{V5\_CLOSURE\_REPORT.md} for the full record).} The
+first version of this note claimed a step ``$S_1\perp S_2$'' that does
+not follow from the cited lemma alone -- the lemma gives $S_1\perp B$
+for the \emph{un}-projected precursor $B:=\mu_2(R_1,c)$, and orthogonality
+to $B$ does not survive an arbitrary projection $Q=I-P_2$ in general.
+Section~\ref{sec:m10-step1} below replaces that step with a correct,
+projector-independent argument. Second, and more importantly, the
+original conclusion overclaimed a \emph{strict supremum} inequality
+$C_{3,\mathrm{ind}}^P(\eta)<U_3(\eta)$ from a \emph{non-attainment} fact
+alone -- a supremum can be approached without being attained (e.g.\
+$\sup_{0<x<1}x=1$), so non-attainment at every point does not by itself
+imply the supremum is strictly below $U_3(\eta)$. Section~\ref{sec:m10-conclusion}
+states only what is actually proved.
 
 \subsection*{A lemma about operator-norm-attaining directions}
 
@@ -20,86 +24,136 @@ $\|N(\cos\psi\,\hat u+\sin\psi\,\hat v)\|\le M$ for all $\psi$. If
 $\|N(\hat u)\|=M$ exactly, then $N(\hat u)\perp N(\hat v)$.
 
 \textit{Proof.} $f(\psi):=\|N(\cos\psi\,\hat u+\sin\psi\,\hat v)\|^2$
-attains its maximum $M^2$ at $\psi=0$ (given). A smooth function on the
-circle has zero derivative at an interior maximum, so
-$f'(0)=2\langle N(\hat u),N(\hat v)\rangle\cos(0)\cdot(-\sin0)+\ldots=
-2\langle N(\hat u),N(\hat v)\rangle=0$ (direct expansion of $f(\psi)=
-\cos^2\psi\|N\hat u\|^2+\sin^2\psi\|N\hat v\|^2+2\sin\psi\cos\psi\langle
-N\hat u,N\hat v\rangle$, differentiate, evaluate at $\psi=0$).
-$\blacksquare$
+attains its maximum $M^2$ at $\psi=0$ (given), so $f'(0)=0$; direct
+expansion $f(\psi)=\cos^2\psi\|N\hat u\|^2+\sin^2\psi\|N\hat v\|^2+
+2\sin\psi\cos\psi\langle N\hat u,N\hat v\rangle$ gives
+$f'(0)=2\langle N\hat u,N\hat v\rangle=0$. $\blacksquare$
 
-This is a standard fact (a norm-attaining direction of a linear map is a
-top right-singular vector, whose image is orthogonal to the image of any
-right-singular vector for a different singular direction) -- the content
-of this note is not the lemma itself but its two-fold application to the
-k=3 chain's own telescoping structure.
+\subsection*{Step 1 (repaired): $S_1$ and $S_2$ are never parallel}
+\label{sec:m10-step1}
 
-\subsection*{Application at node 2}
+Setup as in M9: $D_1\perp R_1$ (Pythagorean, node 1), $N:=\mu_2(\cdot,c)$,
+$\hat u:=D_1/\|D_1\|$, $\hat v:=R_1/\|R_1\|$. Suppose $T_1$ saturates
+exactly at node 2, i.e.\ $\|N(\hat u)\|=M$. By the Lemma,
+$S_1':=N(\hat u)\perp B:=N(\hat v)$. Let $Q:=I-P_2$ (\emph{any} orthogonal
+projector complement -- no assumption on how $P_2$ is chosen) and
+$S_2':=QB$ (the node-2-level precursor of $S_2$, before scaling by
+$\|R_1\|$; $S_1=\|D_1\|S_1'$, $S_2=\|R_1\|S_2'$, and scaling by positive
+reals never changes (non-)parallelism, so it suffices to argue about
+$S_1',S_2'$).
 
-Recall (\texttt{general\_upper\_envelope.tex}) $D_1\perp R_1$
-(Pythagorean, at node 1), $\|D_1\|=q$, $\|R_1\|=\sqrt{M^2-q^2}$ (when
-$\mu_1$ saturates its own bound $M$ at $(a,b)$ -- WLOG for an upper-bound
-argument). Let $N(x):=\mu_2(x,c)$. Attaining $T_1=M^2q$ exactly requires
-$\|S_1\|=\|N(D_1)\|=M\|D_1\|$, i.e.\ $N$ attains $M$ exactly at
-$\hat u:=D_1/\|D_1\|$. By the Lemma (with $\hat v:=R_1/\|R_1\|$),
+\textbf{Claim.} If $S_1'\ne0$, then $S_2'$ is never a nonzero scalar
+multiple of $S_1'$.
+
+\textit{Proof.} Suppose $S_2'=\lambda S_1'$ for some scalar $\lambda\ne0$.
+Since $S_2'=QB\in\mathrm{Range}(Q)$ and $\mathrm{Range}(Q)$ is a subspace,
+$S_1'=S_2'/\lambda\in\mathrm{Range}(Q)$ too, so $QS_1'=S_1'$ (idempotence).
+Using $Q$ self-adjoint ($Q^*=(I-P_2)^*=I-P_2=Q$, since $P_2$ is an
+orthogonal projector):
 \[
-  N(\hat u)\;\perp\;N(\hat v).
+  \langle S_2',S_1'\rangle = \langle QB,S_1'\rangle = \langle B,QS_1'\rangle
+  = \langle B,S_1'\rangle = \langle S_1',B\rangle^* = 0,
 \]
-Writing $p:=N(\hat u)$, $r:=N(\hat v)$: $S_1=qp$ and (choosing $P_2$ to
-project onto $\mathrm{span}(p)$, which kills $p$ and preserves $r$ exactly
-since $r\perp p$, without violating the closure-residual cap on
-$(I-P_2)N$ -- see \texttt{k3\_non\_sharpness.py} for the explicit
-construction) $S_2=\sqrt{M^2-q^2}\,r$. Since $p\perp r$:
+the last equality because $S_1'\perp B$ (the Lemma). But also
+$\langle S_2',S_1'\rangle=\langle\lambda S_1',S_1'\rangle=\lambda\|S_1'\|^2$
+(real case; the complex case gives $\bar\lambda\|S_1'\|^2$, same
+conclusion), which is nonzero since $\lambda\ne0$ and $S_1'\ne0$. This
+contradicts the previous line. $\blacksquare$
+
+This argument holds for \emph{any} $P_2$ -- it does not rely on a
+specific construction of $P_2$, repairing the original version's gap.
+Numerically stress-tested: 20{,}000 random trials (random $N$ built via
+explicit SVD to genuinely saturate $M$ at $\hat u$, random orthogonal
+projector $Q$ of random rank) found zero cases of $S_2'\parallel S_1'$
+when $S_2'\ne0$ (\texttt{verify\_step1\_repair.py}, this session's
+scratch directory -- not committed, purely a sanity check of the already-
+complete proof above, not itself evidence).
+
+\subsection*{Step 2: the root cannot realign them}
+
+Let $N_3:=\mu_3(\cdot,d)$, $\hat s_1:=S_1/\|S_1\|$. Suppose $T_1$
+\emph{also} saturates at the root: $\|N_3(\hat s_1)\|=M$. Decompose
+(always possible, for any vector) $S_2=\alpha S_1+\beta\hat w$ with
+$\hat w\perp S_1$, $\|\hat w\|=1$. Step 1 shows $\beta\ne0$ (a nonzero
+orthogonal component -- exactly what ``$S_2$ not parallel to $S_1$''
+means). By the Lemma applied at node 3 (with $\hat u=\hat s_1$,
+$\hat v=\hat w$): $N_3(\hat w)\perp N_3(\hat s_1)$.
+
+By linearity, $N_3(S_2)=\alpha N_3(S_1)+\beta N_3(\hat w)$, a sum of a
+component parallel to $N_3(S_1)$ and a component orthogonal to it. We
+check both possible cases for whether $N_3(\hat w)$ vanishes:
+
+\textbf{Case A ($N_3(\hat w)\ne0$).} $N_3(S_2)\parallel N_3(S_1)$ requires
+the orthogonal component to vanish: $\beta N_3(\hat w)=0$, so $\beta=0$
+(since $N_3(\hat w)\ne0$) -- contradicting Step 1's $\beta\ne0$.
+
+\textbf{Case B ($N_3(\hat w)=0$, a genuine degeneracy).} Here
+$N_3(S_2)=\alpha N_3(S_1)$ automatically, parallel regardless of $\beta$
+-- so triangle-parallelism alone does not force a contradiction in this
+case. But we also need $T_2$ to saturate exactly at the root,
+$\|N_3(S_2)\|=M\|S_2\|$. Compute both sides using $\|S_2\|^2=|\alpha|^2
+\|S_1\|^2+|\beta|^2$ (Pythagorean, $S_1\perp\hat w$) and $\|N_3(S_1)\|=
+M\|S_1\|$ (given):
 \[
-  \boxed{S_1\perp S_2 \quad\text{whenever $T_1$ is saturated exactly at node 2.}}
+  \|N_3(S_2)\| = |\alpha|\,\|N_3(S_1)\| = |\alpha|\,M\|S_1\|,
+  \qquad
+  M\|S_2\| = M\sqrt{|\alpha|^2\|S_1\|^2+|\beta|^2}.
 \]
+Equality forces $|\alpha|^2\|S_1\|^2=|\alpha|^2\|S_1\|^2+|\beta|^2$, i.e.\
+$\beta=0$ -- again contradicting Step 1.
 
-\subsection*{Application at node 3 -- the contradiction}
+Either way: \textbf{$T_1$ saturating at both node 2 and the root,
+together with $T_2$ saturating at the root, is incompatible with the
+triangle-inequality equality M9's derivation needs.} $\blacksquare$
 
-Attaining $T_1=M^2q$ \emph{at the root} additionally requires
-$\|\mu_3(S_1,d)\|=M\|S_1\|$, i.e.\ $L(x):=\mu_3(x,d)$ attains $M$ exactly
-at $\hat s_1:=S_1/\|S_1\|$. Since $S_1\perp S_2$ (just shown), apply the
-Lemma again with $\hat u=\hat s_1$, $\hat v=\hat s_2:=S_2/\|S_2\|$:
-\[
-  \mu_3(S_1,d)\;\perp\;\mu_3(S_2,d).
-\]
-But attaining the \emph{triangle-inequality} equality
-$\|P_3\mu_3(S_1,d)+P_3\mu_3(S_2,d)\|=\|\mu_3(S_1,d)\|+\|\mu_3(S_2,d)\|$
-(needed for $E_T^{\mathrm{proj}}=T_1+T_2$, the last step of the M9
-derivation) requires $\mu_3(S_1,d)$ and $\mu_3(S_2,d)$ to be
-\textbf{parallel, same-direction} (and both preserved by $P_3$).
-Two nonzero orthogonal vectors are never parallel. \textbf{Contradiction.}
-
-\subsection*{Conclusion}
+\subsection*{Conclusion (corrected scope)}
+\label{sec:m10-conclusion}
 
 \[
-  \boxed{\text{$h(q)$ -- hence $U_3(\eta)$ -- is never exactly attained
-  whenever both $T_1,T_2$ are nonzero at the optimum.}}
+  \boxed{\text{No admissible configuration attains $E_T^{\mathrm{proj}}=U_3(\eta)\rho M^2L_T$ exactly}}
 \]
-The optimal $q^\star$ from M9 (either $q^\star=\rho$ or
-$q^\star=M^2/\sqrt{M^2+\rho^2}$) is strictly positive for every
-$\eta\in(0,1]$, and $T_2$'s coefficient $M\rho\sqrt{M^2-q^2}$ is nonzero
-whenever $q<M$ (always true, since $q\le\rho\le M$ with equality only in
-the degenerate $\eta=1,q=M$ boundary). So for every $\eta\in(0,1)$, both
-terms are generically active at the optimum, and the obstruction applies:
-\[
-  \boxed{C_{3,\mathrm{ind}}^P(\eta) \;<\; U_3(\eta) \quad\text{strictly, for every } \eta\in(0,1).}
-\]
+whenever the optimal $q^\star$ from M9 is interior or the boundary value
+$q^\star=\rho$ with $\rho<M$ (i.e.\ whenever both $T_1,T_2$ are nonzero at
+the optimum -- true for every $\eta\in(0,1)$). This is a genuine, proved
+\texttt{PROVED\_NON\_ATTAINMENT} result: the supremum defining
+$C_{3,\mathrm{ind}}^P(\eta)$, if it equals $U_3(\eta)$ at all, is not a
+maximum -- no single configuration realizes it.
 
-\textbf{What this does not establish.} This is a negative result about
-\emph{this specific decomposition-and-saturation mechanism} (the one M9's
-own proof uses) -- it does not yet produce an exact tightened value
-$U_{10}(\eta)<U_3(\eta)$. The natural next step is a genuine joint
-optimization over the pair (magnitude allocation $q$, angle $\varphi$
-between $S_1,S_2$), since \texttt{pareto\_frontier\_two\_direction\_norm\_
-budget} (\texttt{k3\_non\_sharpness.py}) quantifies how the maximum
-jointly-supportable magnitude pair shrinks as $\varphi\to0$ (full
-alignment): at $\varphi=\pi/2$ the joint cap recovers the independent
-per-term caps used by M9 (i.e.\ $U_3$'s own derivation), while at
-$\varphi=0$ the cap drops to $M/\sqrt{1+\text{ratio}^2}$ -- a strictly
-smaller number whenever the ratio is nonzero. \textbf{This joint
-$(q,\varphi)$ optimization was set up but not solved this session}; it is
-recorded as the precise open problem, not vaguely as "improve the bound."
+\textbf{What this does NOT establish (corrected from the previous
+version).}
+\[
+  C_{3,\mathrm{ind}}^P(\eta) < U_3(\eta)
+\]
+is \textbf{not} proved by the above. Non-attainment at every individual
+point is logically consistent with the supremum still equalling
+$U_3(\eta)$, approached by a sequence of configurations that get
+arbitrarily close without any single one reaching it (exactly as
+$\sup_{0<x<1}x=1$ despite no $x<1$ attaining $1$). Closing this requires
+one of:
+\begin{description}
+  \item[Route A (compactness)] restrict to a class where the extremal
+    problem is known to live on a compact set (e.g.\ fixed ambient
+    dimension and projector rank, closed and bounded law/leaf
+    parameters) -- then a continuous objective attains its max on a
+    compact set, and non-attainment at every point of that compact set
+    would then force a strict gap \emph{for that restricted class}. This
+    route needs the (currently open) dimension/rank reduction result to
+    extend to the fully general class.
+  \item[Route B (quantitative gap)] derive an explicit
+    $E_T^{\mathrm{proj}}\le U_3(\eta)-\delta(\eta)$ with $\delta(\eta)>0$,
+    which would give the strict inequality unconditionally, for every
+    dimension/rank, without needing compactness at all. This is the
+    stronger, more valuable route.
+\end{description}
+Neither route is completed by this note. \texttt{pareto\_frontier\_two\_
+direction\_norm\_budget} (\texttt{k3\_non\_sharpness.py}) quantifies the
+underlying trade-off (how the maximum jointly-supportable magnitude pair
+for $(S_1,S_2)$ shrinks as their angle moves from $90^\circ$, M9's
+regime, toward $0^\circ$, needed for triangle equality) and is exactly
+the tool Route B would need, but the joint optimization over the pair
+(magnitude allocation $q$, angle $\varphi$ between $S_1,S_2$) implied by
+that trade-off has \textbf{not been solved} -- it is the natural next
+problem (``M11'').
 
 \textbf{A numerical search was also attempted and was inconclusive.} A
 gradient-based (Adam + penalty method) adversarial search over raw
@@ -108,13 +162,11 @@ the repository because its results are not trustworthy) failed to even
 recover the already-known certified lower witness $L_3(\eta)$ at any
 tested point -- e.g.\ at $\eta=0.5$ it found a normalized value of
 $0.51$ against a known-achievable $L_3(0.5)=1.73$. This indicates a
-methodology problem (poor differentiable operator-norm surrogates via
-power iteration, bad initialization scale, or insufficient steps), not a
-mathematical finding, and is reported here only so a future session does
-not repeat the same broken setup without knowing it was already tried and
-discarded.
+methodology problem, not a mathematical finding, and is reported here
+only so a future session does not repeat the same broken setup without
+knowing it was already tried and discarded.
 
-\textbf{Status.} \texttt{PROVED} (the non-sharpness of $U_3(\eta)$, via
-the two-fold Lemma application above). The exact tightened envelope
-remains \texttt{OPEN} -- a well-posed joint optimization, not an
-unscoped question.
+\textbf{Status.} \texttt{PROVED\_NON\_ATTAINMENT} (Steps 1-2 above,
+repaired and numerically stress-tested). The strict supremum inequality
+$C_{3,\mathrm{ind}}^P(\eta)<U_3(\eta)$ remains \texttt{OPEN} -- a
+well-posed problem (Route A or B above), not established by this note.

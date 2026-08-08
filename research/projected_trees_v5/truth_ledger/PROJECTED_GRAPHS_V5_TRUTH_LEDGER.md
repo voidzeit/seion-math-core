@@ -140,21 +140,26 @@ Fixed-eta k=3 sharpness remains open; the certified gap narrowed but did
 not close. See `V5B_EXTREMAL_STATUS.md`'s "Superseded" section for the
 exact numbers.
 
-**M10 (same-day follow-up): U_3(eta) itself is proved not attained.**
-Deriving the equality conditions of M9 (per the natural next question:
-can the new upper bound actually be reached?) uncovered a genuine
-structural obstruction: a standard operator-norm-attaining-direction
-lemma, applied once at node 2 and once at node 3 of the chain, shows that
-saturating T1 at both nodes forces the two propagated-error terms to be
-orthogonal -- directly contradicting the parallel-vectors requirement for
-the triangle inequality (M9's last step) to be tight. So
-`C_3,ind^P(eta) < U_3(eta)` strictly for every `eta` in `(0,1)`. This is a
-proof of non-sharpness, not a new tightened value: the natural next step
-(a joint optimization over the magnitude allocation and the angle between
-the two error terms) is set up but not solved. A separate gradient-based
-numerical search attempt failed to even recover the known `L_3(eta)`
-witness and was discarded as methodologically unreliable, not as
-evidence. `research/math_closure/k3/m10_non_sharpness_of_m9.tex`.
+**M10 (same-day follow-up, then revised after review found two errors):
+no single configuration attains U_3(eta).** Deriving the equality
+conditions of M9 uncovered a genuine structural obstruction, but the
+first write-up had two bugs an external review caught: (1) it claimed
+`S1 perp S2` from a lemma step that doesn't actually survive an arbitrary
+projection -- repaired with a projector-independent self-adjointness
+argument giving the weaker, sufficient fact "`S2` is never a nonzero
+multiple of `S1`"; (2) it concluded the strict supremum inequality
+`C_3,ind^P(eta) < U_3(eta)` from mere non-attainment, which is an invalid
+inference (a supremum can be approached without being attained). The
+corrected result is `PROVED_NON_ATTAINMENT` only: no single admissible
+configuration reaches `U_3(eta)` exactly. Whether the *supremum* itself
+is strictly below `U_3(eta)`, or merely unreachable pointwise while still
+equal to it in the limit, is now tracked as a separate, explicitly open
+question (`OPEN_V5_K3_STRICT_SUPREMUM_GAP`) requiring either a
+compactness argument or an explicit quantitative gap -- neither
+completed. A separate gradient-based numerical search attempt failed to
+even recover the known `L_3(eta)` witness and was discarded as
+methodologically unreliable, not as evidence.
+`research/math_closure/k3/m10_non_sharpness_of_m9.tex`.
 
 ## Conjectural direction
 

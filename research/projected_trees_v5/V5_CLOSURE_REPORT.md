@@ -1,4 +1,34 @@
-# V5 theorem-closure campaign — closure report (2026-08-08, updated same day: M10 + test-discovery fix)
+# V5 theorem-closure campaign — closure report (2026-08-08, updated same day: M10 + test-discovery fix; corrected same day after external review)
+
+## Correction record (same-day external review of M8/M9/M10)
+
+An external review of this document's own claims found two real errors,
+both now fixed at the source (`.tex` proofs, code, tests, registries) and
+recorded here for the historical trail, not just patched silently:
+
+1. **M8's proof had a wrong intermediate line.** It claimed
+   $F_{\text{out}}-R_{\text{out}}=\mu_{\text{out}}(D,d)$ directly; the
+   correct statement is $F_{\text{out}}-R_{\text{out}}=\mu_{\text{out}}(D,d)
+   +(I-P_{\text{out}})\mu_{\text{out}}(R_{\text{in}},d)$, with the second
+   term vanishing only *after* $P_{\text{out}}$ is applied (via
+   $P_{\text{out}}(I-P_{\text{out}})=0$). The theorem statement and final
+   formula were already correct (and matched the code docstring, which
+   had it right); only the `.tex` derivation was fixed.
+2. **M10 had two real gaps, one of them consequential.** (a) The claimed
+   step "$S_1\perp S_2$" does not follow from the cited lemma for an
+   arbitrary projector — repaired with a projector-independent
+   self-adjointness argument giving the weaker, sufficient fact that
+   $S_2$ is never a nonzero scalar multiple of $S_1$. (b) **The
+   conclusion overclaimed** $C_{3,\text{ind}}^P(\eta)<U_3(\eta)$ **from a
+   non-attainment fact alone** — a supremum can be approached without
+   being attained, so proving no single configuration reaches $U_3(\eta)$
+   does not by itself prove the supremum is strictly below it. M10's
+   status is downgraded from `PROVED` to `PROVED_NON_ATTAINMENT`, and the
+   strict-supremum question is now tracked separately as
+   `OPEN_V5_K3_STRICT_SUPREMUM_GAP` (open, not established either way).
+
+M8's theorem and M9's bound (including its previously terse branching
+section, now given an explicit derivation) survived review intact.
 
 Scope executed: a single autonomous session against the 33-section,
 16-phase mission brief ("SEION / Projected Multilinear Graphs — Theorem-
@@ -26,20 +56,21 @@ Two new theorems, both mechanically verified and numerically corroborated
   U_3(eta)`, strictly below the trivial universal bound `2` for every
   `eta>0`, proved unconditionally (no rank-one restriction, arbitrary
   dimension/rank), identical for chain and branching topologies.
-- **k=3 upper envelope is not attained (M10)**
+- **k=3 upper envelope is not attained (M10, revised)**
   (`research/math_closure/k3/m10_non_sharpness_of_m9.tex`,
   `src/seion_core/research_v5/k3_non_sharpness.py`). Answering the
-  natural follow-up question (can `U_3(eta)` actually be reached?): no.
-  `C_3,ind^P(eta) < U_3(eta)` strictly for every `eta` in `(0,1)`, proved
-  by applying a standard operator-norm-attaining-direction lemma twice
-  (once at node 2, once at node 3 of the chain) to show the two
-  propagated-error terms are forced orthogonal whenever both individually
-  saturate their bounds -- directly contradicting the parallel-vectors
-  requirement for the triangle inequality (M9's last step) to be tight.
-  This is a proof of non-sharpness, not a replacement tightened value; the
-  natural next problem (a joint optimization over the magnitude
-  allocation and the angle between the two error terms) is precisely
-  set up but not solved.
+  natural follow-up question (can `U_3(eta)` actually be reached?): no
+  single admissible configuration attains it exactly. Proved by a
+  projector-independent self-adjointness argument (node 2) plus a
+  decomposition-and-lemma argument (node 3) showing the requirements for
+  T1, T2 to both saturate exactly *and* the triangle inequality to be
+  tight are mutually contradictory. **This is `PROVED_NON_ATTAINMENT`
+  only** -- it does *not* establish `C_3,ind^P(eta) < U_3(eta)` as a
+  strict supremum inequality (see the correction record above); that
+  remains a separate open question. Nor does it produce a replacement
+  tightened value; the natural next problem (a joint optimization over
+  the magnitude allocation and the angle between the two error terms) is
+  precisely set up but not solved.
 
 Three new proofs total, not restatements of prior registry entries.
 
@@ -67,8 +98,11 @@ Unchanged: `lim_{eta->0} C_3,ind^P(eta)=2` (prior work, V5-B).
 
 - k=3 fixed-eta: `L_3(eta) <= C_3,ind^P(eta) <= U_3(eta) < 2`. Gap
   narrowed this session (e.g. at `eta=1`: relative gap `50%->29%`; at
-  `eta=0.9`: `44%->26%`) but **did not close**. New terminal status entry
-  `OPEN_V5_K3_FIXED_ETA_SHARPNESS` records this precisely.
+  `eta=0.9`: `44%->26%`) but **did not close**, and M10 does *not* narrow
+  it further in a proved sense (see correction record) -- it only shows
+  the upper endpoint isn't attained pointwise. Terminal status entries
+  `OPEN_V5_K3_FIXED_ETA_SHARPNESS` and `OPEN_V5_K3_STRICT_SUPREMUM_GAP`
+  record this precisely.
 - Signed-forest associator/Filippov/GJI-general constants: unchanged,
   still `OPEN_WITH_CERTIFIED_GAP` (not revisited this session).
 
@@ -266,14 +300,20 @@ be read as complete. Each remains at its pre-session status:
 ## Overall scientific status
 
 `EXTREMAL_PROGRAM_PARTIALLY_CLOSED` — two genuine, non-trivial theorem-
-level results were added (a complete k=2 saturation characterization, and
-an unconditional, non-trivial-margin k=3 upper-bound improvement), both
-mechanically verified and numerically corroborated. The large majority of
-the mission brief's 16 phases remain unattempted or open, most
-consequentially: fixed-eta k=3 sharpness, the arbitrary-tree conjecture,
-signed-forest exact constants, source-calculus consolidation, novelty, and
-formal verification. This status label should be read literally — not as
-`FINITE_CORE_CLOSED` and not as `CLOSED` in any broader sense.
+level results were added and survived external review (a complete k=2
+saturation characterization, and an unconditional, non-trivial-margin
+k=3 upper-bound improvement), plus a third, narrower result (M10: no
+single configuration attains the k=3 upper envelope) that survived review
+only after two corrections — one to its proof (repaired), one to its
+conclusion (downgraded from a strict supremum inequality to a
+non-attainment fact, since the former was not actually established). The
+large majority of the mission brief's 16 phases remain unattempted or
+open, most consequentially: fixed-eta k=3 sharpness (still open even
+after M10), whether the k=3 supremum strictly excludes `U_3(eta)`, the
+arbitrary-tree conjecture, signed-forest exact constants, source-calculus
+consolidation, novelty, and formal verification. This status label should
+be read literally — not as `FINITE_CORE_CLOSED` and not as `CLOSED` in
+any broader sense.
 
 `novelty_status: NOVELTY_NOT_ESTABLISHED` and `approval_status:
 PENDING_HUMAN_REVIEW` apply to every result mentioned in this report

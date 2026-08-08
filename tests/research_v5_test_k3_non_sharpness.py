@@ -4,6 +4,7 @@ import pytest
 from seion_core.research_v5.k3_non_sharpness import (
     forced_orthogonality_holds,
     pareto_frontier_two_direction_norm_budget,
+    precursor_never_parallel_after_projection,
 )
 
 
@@ -43,6 +44,41 @@ def test_a_map_not_attaining_its_norm_at_u_hat_raises():
     v_hat = np.array([0.0, 1.0])
     with pytest.raises(ValueError):
         forced_orthogonality_holds(N, u_hat, v_hat)
+
+
+def _random_orthogonal_projector(dim_out, rank, rng):
+    A = rng.normal(size=(dim_out, rank))
+    Qm, _ = np.linalg.qr(A)
+    Qm = Qm[:, :rank]
+    return Qm @ Qm.T
+
+
+@pytest.mark.parametrize("sigma2", [0.0, 0.3, 0.7, 1.0])
+@pytest.mark.parametrize("rank", [1, 2, 4])
+def test_repaired_step1_holds_for_arbitrary_projectors(sigma2, rank):
+    # This is the repaired argument (M10 revision): the ORIGINAL claim
+    # "S1 perp S2" only held for a specifically constructed P2. This
+    # weaker but sufficient claim -- S2 is never a nonzero multiple of
+    # S1 -- must hold for EVERY choice of projector Q, which this test
+    # exercises directly (unlike the original single-construction check).
+    rng = np.random.default_rng(hash((sigma2, rank)) % (2**32))
+    dim_in, dim_out = 4, 6
+    u_hat = rng.normal(size=dim_in); u_hat /= np.linalg.norm(u_hat)
+    w = rng.normal(size=dim_in)
+    w -= np.dot(w, u_hat) * u_hat
+    v_hat = w / np.linalg.norm(w)
+    N = _svd_aligned_map(dim_out, u_hat, v_hat, 1.0, sigma2, rng)
+    Q = _random_orthogonal_projector(dim_out, rank, rng)
+    assert precursor_never_parallel_after_projection(N, u_hat, v_hat, Q)
+
+
+def test_repaired_step1_rejects_when_S1_attains_only_locally_not_globally():
+    N = np.array([[1.0, 0.5], [0.0, 0.0]])
+    u_hat = np.array([1.0, 0.0])
+    v_hat = np.array([0.0, 1.0])
+    Q = np.eye(2)
+    with pytest.raises(ValueError):
+        precursor_never_parallel_after_projection(N, u_hat, v_hat, Q)
 
 
 def test_pareto_frontier_orthogonal_case_recovers_independent_budgets():

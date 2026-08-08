@@ -46,18 +46,56 @@ $\|R_1\|\le\|a\|\|b\|\sqrt{M^2-q^2}$. Substituting,
   \boxed{\;E_T^{\mathrm{proj}}/L_T \;\le\; h(q) := M^2q + M\rho\sqrt{M^2-q^2}, \qquad q\in[0,\rho].\;}
 \]
 
-\textbf{Branching topology gives the identical function $h$.} For root
-combining two independent children $u_1=\mu_1(a,b)$, $u_2=\mu_2(c,d)$: the
-same telescoping trick (splitting on the second slot instead) gives
-$E_T^{\mathrm{proj}}\le M\|D_{u_1}\|\|F_{u_2}\|+M\|R_{u_1}\|\|D_{u_2}\|$,
-and bounding $\|F_{u_2}\|\le M\|c\|\|d\|$, $\|D_{u_2}\|\le\rho\|c\|\|d\|$,
-with $q_1:=\|D_{u_1}\|/(\|a\|\|b\|)\le\rho$ and $\|R_{u_1}\|\le\|a\|\|b\|
-\sqrt{M^2-q_1^2}$ by the same Pythagorean argument at node $u_1$, gives
-exactly $E_T^{\mathrm{proj}}/L_T\le M^2q_1+M\rho\sqrt{M^2-q_1^2}=h(q_1)$.
-\textbf{The topologies are not distinguished by this bound}; whether the
-true supremum distinguishes them (as the restricted gated-planar family
-does: chain best ratio $3/4$ vs.\ branch $1/4$, M3) remains open at this
-level of generality.
+\textbf{Branching topology -- separate, explicit derivation.} Root
+combines two independent children: $u_1=\mu_1(a,b)$ (children $a,b$),
+$u_2=\mu_2(c,d)$ (children $c,d$), root value $\mu_3(u_1,u_2)$; orthogonal
+projectors $P_{u_1},P_{u_2},P_3$. Write
+$D_{u_1}:=(I-P_{u_1})\mu_1(a,b)$, $R_{u_1}:=P_{u_1}\mu_1(a,b)$,
+$F_{u_2}:=\mu_2(c,d)$ (ambient, ungprojected), $R_{u_2}:=P_{u_2}\mu_2(c,d)$,
+$D_{u_2}:=F_{u_2}-R_{u_2}=(I-P_{u_2})\mu_2(c,d)$.
+
+By the same logic as M8's proof (Section~\ref{sec:k2-iff}): $E_T^{
+\mathrm{proj}}=\|P_3(F_3-R_3)\|$ where $F_3=\mu_3(F_{u_1},F_{u_2})$,
+$R_3=P_3\mu_3(R_{u_1},R_{u_2})$. Bilinearity gives the exact expansion
+(add and subtract $\mu_3(R_{u_1},F_{u_2})$ -- \emph{not} the naive
+three-term expansion $\mu_3(D_{u_1},R_{u_2})+\mu_3(R_{u_1},D_{u_2})+
+\mu_3(D_{u_1},D_{u_2})$, which double-counts):
+\[
+  F_3-R_3'
+  = \mu_3(F_{u_1},F_{u_2})-\mu_3(R_{u_1},R_{u_2})
+  = \big[\mu_3(F_{u_1},F_{u_2})-\mu_3(R_{u_1},F_{u_2})\big]
+  + \big[\mu_3(R_{u_1},F_{u_2})-\mu_3(R_{u_1},R_{u_2})\big],
+\]
+where $R_3':=\mu_3(R_{u_1},R_{u_2})$ is the \emph{unprojected} ambient
+value at $(R_{u_1},R_{u_2})$ (so $R_3=P_3R_3'$; the identity above holds
+before $P_3$ is applied, exactly as in M8's proof, and $P_3$ is applied to
+both sides afterward). Each bracket collapses by bilinearity in one slot
+at a time (second slot fixed at $F_{u_2}$ in the first bracket, first
+slot fixed at $R_{u_1}$ in the second):
+\[
+  F_3-R_3' = \mu_3(D_{u_1},F_{u_2}) + \mu_3(R_{u_1},D_{u_2}),
+\]
+so, applying $P_3$ (using $P_3(F_3-R_3)=P_3(F_3-R_3')$ since
+$R_3=P_3R_3'$ means $P_3R_3=P_3P_3R_3'=P_3R_3'$):
+\[
+  E_T^{\mathrm{proj}} = \big\|P_3\mu_3(D_{u_1},F_{u_2}) + P_3\mu_3(R_{u_1},D_{u_2})\big\|
+  \le \underbrace{\|\mu_3(D_{u_1},F_{u_2})\|}_{T_1'} + \underbrace{\|\mu_3(R_{u_1},D_{u_2})\|}_{T_2'}.
+\]
+Bound each term exactly as in the chain case: $T_1'\le M\|D_{u_1}\|\|F_{u_2}\|
+\le M(q_1\|a\|\|b\|)(M\|c\|\|d\|)=M^2q_1L_T$ (using $\|F_{u_2}\|=
+\|\mu_2(c,d)\|\le M\|c\|\|d\|$ and $q_1:=\|D_{u_1}\|/(\|a\|\|b\|)\le\rho$);
+$T_2'\le M\|R_{u_1}\|\|D_{u_2}\|\le M(\|a\|\|b\|\sqrt{M^2-q_1^2})(\rho\|c\|\|d\|)$
+(using the \emph{same} Pythagorean bound $\|R_{u_1}\|\le\|a\|\|b\|
+\sqrt{M^2-q_1^2}$ at node $u_1$, since $P_{u_1}$ is orthogonal, and
+$\|D_{u_2}\|\le\rho\|c\|\|d\|$). Summing:
+\[
+  E_T^{\mathrm{proj}}/L_T \le M^2q_1 + M\rho\sqrt{M^2-q_1^2} = h(q_1),
+\]
+\textbf{the identical function $h$ as the chain}, now derived explicitly
+rather than asserted. \textbf{The topologies are not distinguished by
+this bound}; whether the true supremum distinguishes them (as the
+restricted gated-planar family does: chain best ratio $3/4$ vs.\ branch
+$1/4$, M3) remains open at this level of generality.
 
 \textbf{Maximizing $h$.} $h'(q)=M^2-M\rho q/\sqrt{M^2-q^2}=0$ at
 $q_c=M^2/\sqrt{M^2+\rho^2}$ (from $M^2(M^2-q^2)=\rho^2q^2$). Writing

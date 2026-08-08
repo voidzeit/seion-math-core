@@ -256,7 +256,22 @@ entries:
       Can M9's upper envelope U_3(eta) be exactly attained by some
       admissible k=3 independent-law chain/branching configuration, i.e.
       are all inequalities in the M9 derivation simultaneously tight?
-    status: PROVED
+    status: PROVED_NON_ATTAINMENT
+    revision_note: >
+      This entry was revised after review found two errors in the first
+      version: (1) the original proof claimed S1 perp S2 (node 2),
+      derived incorrectly from "S1 perp B" surviving an arbitrary
+      projection Q=I-P2, which does not follow in general; repaired with
+      a projector-independent self-adjointness/contradiction argument
+      giving the weaker but sufficient fact "S2 is never a nonzero
+      multiple of S1". (2) the original conclusion claimed the STRICT
+      SUPREMUM inequality C_3,ind^P(eta) < U_3(eta) from a NON-ATTAINMENT
+      fact alone -- these are logically different (a supremum can be
+      approached without being attained), so the strict inequality is
+      NOT established and status is downgraded from PROVED to
+      PROVED_NON_ATTAINMENT accordingly. See
+      research/projected_trees_v5/V5_CLOSURE_REPORT.md for the full
+      record of both corrections.
     admissible_class: >
       same finite-dimensional real (or complex) binary k=3 chain class as
       M9, arbitrary dimension/rank.
@@ -265,26 +280,42 @@ entries:
       - src/seion_core/research_v5/k3_non_sharpness.py
       - tests/research_v5_test_k3_non_sharpness.py
     result: >
-      No. A standard fact about operator-norm-attaining directions (a
-      linear map attaining its operator norm exactly at a unit direction
-      u-hat must send the orthogonal complement direction v-hat to a
-      vector orthogonal to N(u-hat)) applied twice -- once at node 2
-      (forcing S1 perp S2 whenever T1 saturates there), once at node 3
-      (forcing mu3(S1,d) perp mu3(S2,d) whenever T1 also saturates at the
-      root) -- directly contradicts the triangle-inequality equality
-      (parallel vectors) needed for E_proj to equal T1+T2 exactly. Hence
-      C_3,ind^P(eta) < U_3(eta) strictly for every eta in (0,1) (both
-      terms are generically nonzero at the M9 optimum).
+      No single admissible configuration attains E_proj=U_3(eta)*rho*M^2*L_T
+      exactly. Repaired argument: (Step 1, node 2) if T1 saturates exactly,
+      the base lemma gives S1 perp B where B:=mu2(R1,c) is the unprojected
+      precursor; a self-adjointness argument (Q=I-P2 self-adjoint for ANY
+      orthogonal projector) then shows S2:=Q@B can never be a nonzero
+      scalar multiple of S1, without assuming any specific P2. (Step 2,
+      node 3) decomposing S2=alpha*S1+beta*w (w perp S1, beta!=0 by Step
+      1), the base lemma gives N3(w) perp N3(S1) when T1 also saturates at
+      the root; requiring BOTH triangle-parallelism (needs beta*N3(w)=0)
+      AND T2 exact saturation at the root (needs beta=0 even if N3(w)=0,
+      by a direct norm computation) forces beta=0, contradicting Step 1
+      either way.
+    NOT_established: >
+      C_3,ind^P(eta) < U_3(eta) as a strict SUPREMUM inequality is NOT
+      proved by the above (this was the second error in the original
+      version). Non-attainment at every point does not by itself rule out
+      the supremum equalling U_3(eta), approached but never reached by
+      any single configuration (cf. sup_{0<x<1} x = 1). Closing this needs
+      either a compactness argument (Route A, restricting to a class where
+      the extremal problem is known to live on a compact set -- itself
+      blocked on the still-open dimension/rank reduction result) or an
+      explicit quantitative gap E_proj <= U_3(eta)-delta(eta), delta>0
+      (Route B, unconditional, the stronger and more valuable route).
+      Recorded as a new, precisely-scoped open item, not conflated with
+      the proved non-attainment result above.
     remaining_gap: >
-      Proves non-sharpness, does NOT produce an exact tightened value.
-      The natural next step -- a joint optimization over the magnitude
-      allocation q and the angle phi between S1,S2 -- was set up
-      (pareto_frontier_two_direction_norm_budget quantifies how the
-      jointly-supportable magnitude pair shrinks as phi->0) but not
-      solved this session. A separate gradient-based numerical search
-      (m10_k3_search.py, not committed) failed to even recover the
-      already-known L_3(eta) lower witness and is explicitly flagged as
-      an unreliable, discarded attempt, not evidence of anything.
+      Proves non-attainment only, does NOT produce an exact tightened
+      value or a proved strict gap. The natural next step -- a joint
+      optimization over the magnitude allocation q and the angle phi
+      between S1,S2 -- was set up (pareto_frontier_two_direction_norm_
+      budget quantifies how the jointly-supportable magnitude pair
+      shrinks as phi->0) but not solved this session. A separate
+      gradient-based numerical search (m10_k3_search.py, not committed)
+      failed to even recover the already-known L_3(eta) lower witness and
+      is explicitly flagged as an unreliable, discarded attempt, not
+      evidence of anything.
 
   - id: M7_pseudodifferential_microlocal_program
     question: >

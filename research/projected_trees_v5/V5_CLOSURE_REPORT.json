@@ -20,11 +20,11 @@
     },
     {
       "id": "THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED",
-      "epistemic_status": "PROVED",
+      "epistemic_status": "PROVED_NON_ATTAINMENT",
       "novelty_status": "NOVELTY_NOT_ESTABLISHED",
       "approval_status": "PENDING_HUMAN_REVIEW",
       "proof_location": "research/math_closure/k3/m10_non_sharpness_of_m9.tex",
-      "note": "proves C_3,ind^P(eta) < U_3(eta) strictly for every eta in (0,1); does not produce a replacement tightened value. Joint (magnitude, angle) optimization identified as the precise open successor problem."
+      "note": "REVISED after review: proves no single admissible configuration attains U_3(eta) exactly. Does NOT prove C_3,ind^P(eta) < U_3(eta) as a strict supremum inequality -- that was an overclaim in the first version (non-attainment does not imply a strict sup gap; a sup can be approached without being attained). The strict-gap question is tracked separately as OPEN_V5_K3_STRICT_SUPREMUM_GAP. Does not produce a replacement tightened value either way."
     }
   ],
   "corrections": [
@@ -33,6 +33,26 @@
       "was": "OPEN_IF_REPEATED",
       "now": "COMPATIBLE",
       "reason": "already resolved by the pre-existing V5-B repeated-law witness; the audit function was stale"
+    },
+    {
+      "target": "research/math_closure/k2/saturation_iff_theorem.tex (M8 proof)",
+      "problem": "an intermediate line claimed F_out-R_out = mu_out(D,d) directly; the correct identity has an extra (I-P_out)mu_out(R_in,d) term that only vanishes after P_out is applied",
+      "fix": "derivation corrected to show P_out(F_out-R_out)=P_out mu_out(D,d) via P_out(I-P_out)=0; theorem statement and final formula were already correct and unaffected",
+      "found_by": "external review"
+    },
+    {
+      "target": "research/math_closure/k3/m10_non_sharpness_of_m9.tex (M10 proof and conclusion)",
+      "problem_1": "Step 1 claimed S1 perp S2, which does not follow from the cited lemma for an arbitrary projector P2",
+      "fix_1": "repaired with a projector-independent self-adjointness/contradiction argument giving the weaker, sufficient fact that S2 is never a nonzero scalar multiple of S1; verified numerically across 20000 random trials with zero counterexamples",
+      "problem_2": "the conclusion inferred the strict supremum inequality C_3,ind^P(eta) < U_3(eta) from non-attainment alone -- an invalid inference (sup_{0<x<1} x = 1 despite no x<1 attaining 1)",
+      "fix_2": "epistemic_status downgraded PROVED -> PROVED_NON_ATTAINMENT; strict-gap claim removed and re-registered as a separate open item (OPEN_V5_K3_STRICT_SUPREMUM_GAP) requiring a compactness argument or an explicit quantitative gap, neither completed",
+      "found_by": "external review"
+    }
+  ],
+  "new_open_items_from_review": [
+    {
+      "id": "OPEN_V5_K3_STRICT_SUPREMUM_GAP",
+      "statement": "Whether C_3,ind^P(eta) < U_3(eta) strictly, or the supremum equals U_3(eta) approached-but-unattained, is open. Route A: compactness argument (blocked on open dimension/rank reduction). Route B: explicit quantitative gap E_proj <= U_3(eta)-delta(eta) (stronger, unconditional, not attempted)."
     }
   ],
   "remaining_gap_k3_fixed_eta": {
