@@ -1,7 +1,7 @@
 {
   "schema": "projected-graphs-v5b-extremal-analysis-v1",
-  "generated_utc": "2026-08-08T11:21:57.388660+00:00",
-  "source_commit": "d26b4b0462611050c3274ee9cd367e7e3e0d26a9",
+  "generated_utc": "2026-08-08T11:22:15.143002+00:00",
+  "source_commit": "b1713b9a7e5a49641b877d8d577614c97a1a64bf",
   "scope": {
     "k3": "real binary rank-one independent-law V5-A witness family",
     "k2_repeated": "known repeated/shared-law band only"
