@@ -245,3 +245,35 @@ changed paths, and limitations. Historical artifact runs remain under
 - Limitations:
   - Finite-scope P8/P10 and registry work is complete; global fixed-eta sharpness, universal dimension/rank reduction, globally tight multilinear spectral norms, and theorem-level novelty remain open.
   - Gate 13.5, Gate 14, KGR, and historical artifacts were not modified.
+
+## 2026-08-08T10:45:35.394842+00:00 — Projected-graphs V5 finite-core freeze and k2 independent-law sharpness
+
+- Command: `python -m pytest tests/research_v3 tests/research_v4 tests/research_v5_test_k2_sharpness.py tests/research_v5_test_equality_conditions.py -q; python -m seion_core.cli.main governance audit --json; python -m seion_core.cli.main governance dedupe-runs`
+- Branch/commit: `campaign/gate13-closeout` / `773fa9c4d4d3d77f3a52cf7e1adf5a0dc781ff05`
+- Outcome: **PASS_WITH_KNOWN_GOVERNANCE_WARNINGS**
+- Summary: Frozen finite projected-graph core and registered V5 theorem-level k2 independent-law saturation package.
+- Validation: 77 pytest tests passed; git diff --check clean before generated governance outputs; governance audit passed with 0 missing required artifacts; V5 ledger and theorem registry updated.
+- Changed files:
+  - `claims/theorem_registry_v5.yaml`
+  - `research/projected_trees_v5`
+  - `src/seion_core/research_v5`
+  - `tests/research_v5_test_k2_sharpness.py`
+  - `tests/research_v5_test_equality_conditions.py`
+- Limitations:
+  - This proves the declared independent-law real binary k=2 class only; repeated-law sharpness, universal dimension/rank reduction, global k=3 sharpness, theorem-level novelty, and independent human review remain open. No Gate13.5, Gate14, KGR, or historical artifacts were modified.
+
+## 2026-08-08T10:54:48.436514+00:00 — Projected-graphs V5-A independent-law k3 lower witnesses
+
+- Command: `python -m pytest tests/research_v3 tests/research_v4 tests/research_v5_test_k2_sharpness.py tests/research_v5_test_equality_conditions.py tests/research_v5_test_k3_independent_candidates.py -q; python -m seion_core.cli.main governance audit --json; python -m seion_core.cli.main governance dedupe-runs`
+- Branch/commit: `campaign/gate13-closeout` / `997e745265cad8131e3122f192ce373c79ae57e4`
+- Outcome: **LOWER_BOUNDS_CERTIFIED_GLOBAL_SHARPNESS_OPEN**
+- Summary: Added analytic lower-bound witnesses for independent-law k3 binary chain and branching topologies; recorded repeated-law band and finite-tree sharpness conjecture as open.
+- Validation: 85 pytest tests passed; git diff --check clean before generated governance outputs; JSON validation passed; governance audit passed with 0 missing required artifacts; deduplicated run index regenerated.
+- Changed files:
+  - `src/seion_core/research_v5/k3_independent_candidates.py`
+  - `tests/research_v5_test_k3_independent_candidates.py`
+  - `claims/theorem_registry_v5.yaml`
+  - `research/projected_trees_v5`
+  - `.ai/TASKS.md`
+- Limitations:
+  - The k3 results are certified construction lower bounds only; independent-law global sharpness, repeated-law k2 sharpness, finite-tree induction, dimension/rank reduction, theorem-level novelty, and independent human review remain open. Gate13.5, Gate14, KGR, and historical artifacts were not modified.

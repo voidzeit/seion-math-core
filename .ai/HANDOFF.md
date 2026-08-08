@@ -143,3 +143,19 @@
 - Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 68 passed; all research_projected_trees JSON parsed; git diff --check PASS; completion commits 1f3303d and 1f4984e
 - Resume from commit: `1f4984ec8e741049789e0035c7a3ba84c86d3f29` on `campaign/gate13-closeout`
 - Limitation: Finite-scope P8/P10 and registry work is complete; global fixed-eta sharpness, universal dimension/rank reduction, globally tight multilinear spectral norms, and theorem-level novelty remain open.
+
+## Latest postflight: Projected-graphs V5 finite-core freeze and k2 independent-law sharpness
+
+- Timestamp: 2026-08-08T10:45:35.394842+00:00
+- Outcome: **PASS_WITH_KNOWN_GOVERNANCE_WARNINGS**
+- Validation: 77 pytest tests passed; git diff --check clean before generated governance outputs; governance audit passed with 0 missing required artifacts; V5 ledger and theorem registry updated.
+- Resume from commit: `773fa9c4d4d3d77f3a52cf7e1adf5a0dc781ff05` on `campaign/gate13-closeout`
+- Limitation: This proves the declared independent-law real binary k=2 class only; repeated-law sharpness, universal dimension/rank reduction, global k=3 sharpness, theorem-level novelty, and independent human review remain open. No Gate13.5, Gate14, KGR, or historical artifacts were modified.
+
+## Latest postflight: Projected-graphs V5-A independent-law k3 lower witnesses
+
+- Timestamp: 2026-08-08T10:54:48.436514+00:00
+- Outcome: **LOWER_BOUNDS_CERTIFIED_GLOBAL_SHARPNESS_OPEN**
+- Validation: 85 pytest tests passed; git diff --check clean before generated governance outputs; JSON validation passed; governance audit passed with 0 missing required artifacts; deduplicated run index regenerated.
+- Resume from commit: `997e745265cad8131e3122f192ce373c79ae57e4` on `campaign/gate13-closeout`
+- Limitation: The k3 results are certified construction lower bounds only; independent-law global sharpness, repeated-law k2 sharpness, finite-tree induction, dimension/rank reduction, theorem-level novelty, and independent human review remain open. Gate13.5, Gate14, KGR, and historical artifacts were not modified.
