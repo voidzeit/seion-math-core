@@ -11,6 +11,7 @@ reciprocal relation ids — this mirrors a documented v25 limitation
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import sys
@@ -23,6 +24,7 @@ import torch
 
 from . import geometry, projection, rank_controller, reproducibility as repro
 from .data import KnowledgeGraph, TripleDataset, load_knowledge_graph, sample_negatives, tiny_kg
+from .context import build_context_adjacency, build_context_index, build_query_context, context_spec_dict
 from .evaluate import evaluate
 from .frontier_ops import build_csr_adjacency
 from .losses import n3_regularizer, negative_sampling_loss
@@ -280,6 +282,14 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--enable_seion", action="store_true")
     p.add_argument("--enable_generic_residual", action="store_true", help="Use the parameter-matched additive low-rank residual control instead of SEION")
     p.add_argument("--seion_rank", type=int, default=32)
+    p.add_argument(
+        "--enable_true_triadic_context", action="store_true",
+        help="Gate 14A: use the deterministic query-conditioned context c_(h,r) for SEION/Generic",
+    )
+    p.add_argument(
+        "--context_max_neighbors", type=int, default=32,
+        help="Gate 14A fixed context budget; neighbors are sorted by (relation,target)",
+    )
 
     p.add_argument(
         "--structural_kernel_variant",
@@ -312,6 +322,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--weight_decay", type=float, default=0.0)
     p.add_argument("--grad_clip", type=float, default=1.0)
     p.add_argument("--gate_g_max", type=float, default=1.0, help="Gate 13.1: max |gamma_r|/|eta_r| residual gate magnitude (gamma_r = gate_g_max * tanh(alpha_r))")
+    p.add_argument("--gate_init", type=float, default=0.0, help="Initial signed residual gate; historical Gate 13 defaults to zero")
     p.add_argument("--router_lr_multiplier", type=float, default=5.0, help="Gate 13.1: LR multiplier for the router (gamma_raw/eta_raw) optimizer param group, relative to --lr")
 
     p.add_argument("--fi_weight", type=float, default=0.0)
@@ -425,8 +436,12 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         seion_rank=args.seion_rank, path_rank=args.path_rank, path_layers=args.path_layers,
         path_max_neighbors=args.path_max_neighbors, path_proj_rank=args.path_proj_rank,
         path_selector_mode=args.path_selector_mode, structural_kernel=structural_kernel,
-        gate_g_max=args.gate_g_max, path_backend=args.path_backend, standalone_mode=args.standalone_mode,
+        gate_g_max=args.gate_g_max, gate_init=args.gate_init, path_backend=args.path_backend, standalone_mode=args.standalone_mode,
     ).to(device)
+    if args.enable_true_triadic_context and not (args.enable_seion or args.enable_generic_residual):
+        raise ValueError("--enable_true_triadic_context requires --enable_seion or --enable_generic_residual")
+    if args.context_max_neighbors <= 0:
+        raise ValueError("--context_max_neighbors must be positive")
     if args.init_from_checkpoint:
         if args.resume:
             raise ValueError("--init_from_checkpoint and --resume are mutually exclusive (partial cross-config seeding vs. identical-config continuation)")
@@ -444,7 +459,13 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                 "source_checkpoint_sha256": repro.sha256_file(args.init_from_checkpoint),
                 "loaded_keys": sorted(set(src_ckpt["model_state"].keys()) - set(incompatible.missing_keys)),
                 "fresh_init_keys": sorted(incompatible.missing_keys),
+                "gate_init_preserved": bool(args.gate_init != 0.0),
             }, Path(args.out_dir) / "init_from_checkpoint_manifest.json")
+        if args.gate_init != 0.0:
+            raw_init = math.atanh(args.gate_init / args.gate_g_max)
+            with torch.no_grad():
+                model.gamma_raw.weight.fill_(raw_init)
+                model.eta_raw.weight.fill_(raw_init)
     # Gate 13.2b: `adjacency` must be the type the active path_backend
     # expects — model.py's `_run_path_reasoner` dispatches on
     # `self.path_backend` alone and trusts the caller to have passed the
@@ -458,6 +479,10 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
             adjacency = build_csr_adjacency(adjacency, kg.num_entities).to(device)
     else:
         adjacency = None
+    context_adjacency = build_context_adjacency(kg) if args.enable_true_triadic_context else None
+    context_index = build_context_index(kg, args.context_max_neighbors).to(device) if args.enable_true_triadic_context else None
+    if context_adjacency is not None and args.out_dir:
+        repro.save_json({"spec": context_spec_dict(), "max_neighbors": args.context_max_neighbors}, Path(args.out_dir) / "context_manifest.json")
     if structural_kernel is not None and args.out_dir:
         repro.save_json(structural_kernel.provenance.to_dict(), Path(args.out_dir) / "kernel_manifest.json")
 
@@ -487,6 +512,8 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
     path_reasoner_perf_path = Path(args.out_dir) / "path_reasoner_perf.jsonl" if args.out_dir else None
     start = time.time()
     history: list[Dict[str, Any]] = []
+    batch_order_hasher = hashlib.sha256()
+    negative_sample_hasher = hashlib.sha256()
 
     start_epoch = 0
     global_step = 0
@@ -532,12 +559,28 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
             )
             tail_negs = sample_negatives(h_ids, r_ids, t_ids, kg, args.neg_k, rng, device)
             head_negs = sample_negatives(t_ids, r_inv_ids, h_ids, kg, args.neg_k, rng, device)  # unfiltered, see docstring
+            batch_order_hasher.update(torch.stack((h_ids, r_ids, t_ids), dim=1).detach().cpu().contiguous().numpy().tobytes())
+            negative_sample_hasher.update(torch.cat((tail_negs, head_negs), dim=1).detach().cpu().contiguous().numpy().tobytes())
+
+            forward_context = None
+            backward_context = None
+            forward_context_stats = None
+            backward_context_stats = None
+            if context_adjacency is not None:
+                forward_context, forward_context_stats = build_query_context(
+                    h_ids, r_ids, t_ids, kg, model.entity.weight, model.relation.weight,
+                    max_neighbors=args.context_max_neighbors, adjacency=context_adjacency, context_index=context_index,
+                )
+                backward_context, backward_context_stats = build_query_context(
+                    t_ids, r_inv_ids, h_ids, kg, model.entity.weight, model.relation.weight,
+                    max_neighbors=args.context_max_neighbors, adjacency=context_adjacency, context_index=context_index,
+                )
 
             optimizer.zero_grad(set_to_none=True)
-            pos_fwd = model.score_positive(h_ids, r_ids, t_ids, adjacency, args.seed, training=True)
-            neg_fwd = model.score_tail_candidates(h_ids, r_ids, tail_negs, adjacency, args.seed, training=True, gold_tail_ids=t_ids)
-            pos_bwd = model.score_positive(t_ids, r_inv_ids, h_ids, adjacency, args.seed, training=True)
-            neg_bwd = model.score_tail_candidates(t_ids, r_inv_ids, head_negs, adjacency, args.seed, training=True, gold_tail_ids=h_ids)
+            pos_fwd = model.score_positive(h_ids, r_ids, t_ids, adjacency, args.seed, training=True, context=forward_context)
+            neg_fwd = model.score_tail_candidates(h_ids, r_ids, tail_negs, adjacency, args.seed, training=True, gold_tail_ids=t_ids, context=forward_context)
+            pos_bwd = model.score_positive(t_ids, r_inv_ids, h_ids, adjacency, args.seed, training=True, context=backward_context)
+            neg_bwd = model.score_tail_candidates(t_ids, r_inv_ids, head_negs, adjacency, args.seed, training=True, gold_tail_ids=h_ids, context=backward_context)
 
             loss_fwd = negative_sampling_loss(pos_fwd, neg_fwd, args.adversarial_temperature)
             loss_bwd = negative_sampling_loss(pos_bwd, neg_bwd, args.adversarial_temperature)
@@ -594,13 +637,27 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
 
         epoch_metrics = {name: v / max(n, 1) for name, v in sums.items()}
         record: Dict[str, Any] = {"epoch": epoch, "train": epoch_metrics, "wall_sec": time.time() - epoch_start}
+        if context_adjacency is not None:
+            context_probe_h = torch.tensor([x[0] for x in kg.valid[: min(len(kg.valid), 256)]], device=device, dtype=torch.long)
+            context_probe_r = torch.tensor([x[1] for x in kg.valid[: min(len(kg.valid), 256)]], device=device, dtype=torch.long)
+            context_probe_t = torch.tensor([x[2] for x in kg.valid[: min(len(kg.valid), 256)]], device=device, dtype=torch.long)
+            with torch.no_grad():
+                _, context_probe_stats = build_query_context(
+                    context_probe_h, context_probe_r, context_probe_t, kg, model.entity.weight, model.relation.weight,
+                    max_neighbors=args.context_max_neighbors, adjacency=context_adjacency, context_index=context_index,
+                )
+            record["context"] = context_probe_stats
 
         is_eval_epoch = (epoch + 1) % args.eval_every == 0 or epoch == args.epochs - 1
         if is_eval_epoch:
             eval_subset = args.eval_subset
             if args.eval_max_queries > 0:
                 eval_subset = min(eval_subset, args.eval_max_queries / max(len(kg.valid), 1))
-            valid = evaluate(model, kg, "valid", device, args.eval_batch, args.entity_block_eval, adjacency, eval_subset, args.seed)
+            valid = evaluate(
+                model, kg, "valid", device, args.eval_batch, args.entity_block_eval, adjacency,
+                eval_subset, args.seed, context_adjacency=context_adjacency,
+                context_max_neighbors=args.context_max_neighbors, context_index=context_index,
+            )
             record["valid"] = valid
             current_mrr = valid["combined"]["MRR"]
             # Preserve exact best-checkpoint semantics.  ``min_delta`` only
@@ -696,7 +753,11 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         test_subset = args.eval_subset
         if args.eval_max_queries > 0:
             test_subset = min(test_subset, args.eval_max_queries / max(len(kg.test), 1))
-        test_metrics = evaluate(model, kg, "test", device, args.eval_batch, args.entity_block_eval, adjacency, test_subset, args.seed)
+        test_metrics = evaluate(
+            model, kg, "test", device, args.eval_batch, args.entity_block_eval, adjacency,
+            test_subset, args.seed, context_adjacency=context_adjacency,
+            context_max_neighbors=args.context_max_neighbors, context_index=context_index,
+        )
     result = {
         "status": "COMPLETED",
         "base_expert": args.base_expert,
@@ -719,6 +780,9 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         # whole-run peak, tracked since immediately after device selection above --
         # distinct from measure_path_reasoner_perf's own narrower probe-scoped peak.
         "gpu_peak_mb": float(torch.cuda.max_memory_allocated(device)) / 1e6 if device.type == "cuda" else None,
+        "batch_order_sha256": batch_order_hasher.hexdigest(),
+        "negative_sample_sha256": negative_sample_hasher.hexdigest(),
+        "context_spec": context_spec_dict() if context_adjacency is not None else None,
     }
     if args.out_dir:
         if args.enable_path:

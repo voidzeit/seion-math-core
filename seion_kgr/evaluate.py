@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Mapping, Sequence, Tuple
 import torch
 
 from .data import KnowledgeGraph
+from .context import ContextIndex, build_query_context
 from .reasoner import Adjacency
 
 
@@ -40,6 +41,9 @@ def _tail_ranks_for_query_set(
     entity_block: int,
     adjacency: Adjacency | None,
     seed: int,
+    context_adjacency=None,
+    context_max_neighbors: int = 32,
+    context_index: ContextIndex | None = None,
 ) -> torch.Tensor:
     all_ranks: List[torch.Tensor] = []
     eps_tie = 1e-7
@@ -49,7 +53,13 @@ def _tail_ranks_for_query_set(
         r_ids = torch.tensor([x[1] for x in chunk], device=device, dtype=torch.long)
         t_ids = torch.tensor([x[2] for x in chunk], device=device, dtype=torch.long)
 
-        true_scores = model.score_positive(h_ids, r_ids, t_ids, adjacency, seed, training=False).unsqueeze(1)
+        context = None
+        if context_adjacency is not None:
+            context, _ = build_query_context(
+                h_ids, r_ids, t_ids, kg, model.entity.weight, model.relation.weight,
+                max_neighbors=context_max_neighbors, adjacency=context_adjacency, context_index=context_index,
+            )
+        true_scores = model.score_positive(h_ids, r_ids, t_ids, adjacency, seed, training=False, context=context).unsqueeze(1)
         ranks = torch.ones(len(chunk), device=device, dtype=torch.float32)
         keys = [(int(h), int(r)) for h, r, _ in chunk]
 
@@ -57,7 +67,7 @@ def _tail_ranks_for_query_set(
             end = min(start + entity_block, kg.num_entities)
             candidates = torch.arange(start, end, device=device, dtype=torch.long)
             scores = model.score_tail_candidates(
-                h_ids, r_ids, candidates, adjacency, seed, training=False, gold_tail_ids=t_ids,
+                h_ids, r_ids, candidates, adjacency, seed, training=False, gold_tail_ids=t_ids, context=context,
             ).float()
 
             rows: List[torch.Tensor] = []
@@ -99,6 +109,9 @@ def evaluate(
     adjacency: Adjacency | None = None,
     subset: float = 1.0,
     seed: int = 0,
+    context_adjacency=None,
+    context_max_neighbors: int = 32,
+    context_index: ContextIndex | None = None,
 ) -> Dict[str, Any]:
     model.eval()
     data_full = kg.valid if split == "valid" else kg.test
@@ -116,6 +129,8 @@ def evaluate(
 
     tail_ranks = _tail_ranks_for_query_set(
         model, kg, data, kg.tails_of_hr, device, batch_size, entity_block, adjacency, seed,
+        context_adjacency, context_max_neighbors,
+        context_index,
     )
 
     # Head-ranking via the reciprocal trick: (?,r,t) tail-ranks as (t,r^-1,?).
@@ -124,6 +139,8 @@ def evaluate(
     # heads_of_rt values are already np arrays keyed by (r,t); reuse directly under the inverse-query key.
     head_ranks = _tail_ranks_for_query_set(
         model, kg, inv_queries, head_filter, device, batch_size, entity_block, adjacency, seed + 1,
+        context_adjacency, context_max_neighbors,
+        context_index,
     )
 
     combined = torch.cat((tail_ranks, head_ranks))

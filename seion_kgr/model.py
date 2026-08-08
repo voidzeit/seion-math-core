@@ -88,6 +88,7 @@ class SeionKGRv26(nn.Module):
         path_selector_mode: str = "budgeted_bfs",
         structural_kernel: Optional[StructuralKernelResidual] = None,
         gate_g_max: float = 1.0,
+        gate_init: float = 0.0,
         path_backend: str = "legacy",
         standalone_mode: str = "residual",
     ):
@@ -161,10 +162,14 @@ class SeionKGRv26(nn.Module):
         # alpha_r, not a pre-sigmoid logit, despite the unchanged attribute names
         # (kept so checkpoints/optimizer-group lookups by name stay stable).
         self.gate_g_max = gate_g_max
+        if abs(gate_init) >= gate_g_max:
+            raise ValueError("gate_init must satisfy abs(gate_init) < gate_g_max")
+        self.gate_init = gate_init
         self.gamma_raw = nn.Embedding(num_relations_total, 1)
         self.eta_raw = nn.Embedding(num_relations_total, 1)
-        nn.init.constant_(self.gamma_raw.weight, 0.0)
-        nn.init.constant_(self.eta_raw.weight, 0.0)
+        raw_init = math.atanh(gate_init / gate_g_max) if gate_init != 0.0 else 0.0
+        nn.init.constant_(self.gamma_raw.weight, raw_init)
+        nn.init.constant_(self.eta_raw.weight, raw_init)
 
         self.path_score_norm = None
         self.seion_query_norm = None
@@ -221,7 +226,7 @@ class SeionKGRv26(nn.Module):
         self,
         h_ids: torch.Tensor, r_ids: torch.Tensor, t_ids: torch.Tensor,
         adjacency: Optional[Adjacency] = None, seed: int = 0, training: bool = True,
-        return_breakdown: bool = False,
+        return_breakdown: bool = False, context: Optional[torch.Tensor] = None,
     ):
         """Gate 13.1: ``return_breakdown=True`` additionally returns a dict of
         per-branch GATED contributions (``gamma * s_path``, ``eta * s_seion``)
@@ -249,10 +254,11 @@ class SeionKGRv26(nn.Module):
 
         if self.enable_seion:
             seion_t = self.entity(t_ids)  # always the shared table, see score_tail_candidates note
+            seion_context = r if context is None else context
             if self.seion_query_norm is not None:
-                s_seion = (self.seion_query_norm(self.seion_scorer.q_seion(h, r, r)) * self.seion_target_norm(self.seion_scorer.T(seion_t))).sum(dim=-1) / math.sqrt(self.dim)
+                s_seion = (self.seion_query_norm(self.seion_scorer.q_seion(h, r, seion_context)) * self.seion_target_norm(self.seion_scorer.T(seion_t))).sum(dim=-1) / math.sqrt(self.dim)
             else:
-                s_seion = self.seion_scorer.score_positive(h, r, r, seion_t)
+                s_seion = self.seion_scorer.score_positive(h, r, seion_context, seion_t)
             eta = self._positive_scale(self.seion_scale_raw, r_ids) if self.seion_scale_raw is not None else self._gate(self.eta_raw, r_ids)
             s = s + eta * s_seion
             breakdown["eta_seion"] = eta * s_seion
@@ -261,7 +267,8 @@ class SeionKGRv26(nn.Module):
 
         if self.enable_generic_residual:
             generic_t = self.entity(t_ids)
-            s_generic = self.generic_residual_scorer.score_positive(h, r, r, generic_t)
+            generic_context = r if context is None else context
+            s_generic = self.generic_residual_scorer.score_positive(h, r, generic_context, generic_t)
             eta = self._gate(self.eta_raw, r_ids)
             s = s + eta * s_generic
             breakdown["eta_generic"] = eta * s_generic
@@ -288,6 +295,7 @@ class SeionKGRv26(nn.Module):
         h_ids: torch.Tensor, r_ids: torch.Tensor, candidates_ids: torch.Tensor,
         adjacency: Optional[Adjacency] = None, seed: int = 0, training: bool = True,
         gold_tail_ids: Optional[torch.Tensor] = None,
+        context: Optional[torch.Tensor] = None,
     ) -> torch.Tensor:
         """``candidates_ids``: ``[K]`` (shared) or ``[B,K]`` (per-row).
         ``gold_tail_ids`` is only needed to exclude the queried edge from
@@ -318,18 +326,20 @@ class SeionKGRv26(nn.Module):
             # an independent scalar expert, not tied to CPExpert's
             # asymmetric embedding convention.
             seion_cand = self.entity(candidates_ids)
+            seion_context = r if context is None else context
             if self.seion_query_norm is not None:
-                q = self.seion_query_norm(self.seion_scorer.q_seion(h, r, r))
+                q = self.seion_query_norm(self.seion_scorer.q_seion(h, r, seion_context))
                 target = self.seion_target_norm(self.seion_scorer.T(seion_cand))
                 s_seion = (torch.einsum("bd,bkd->bk", q, target) if target.ndim == 3 else q @ target.T) / math.sqrt(self.dim)
             else:
-                s_seion = self.seion_scorer.score_tail_candidates(h, r, r, seion_cand)
+                s_seion = self.seion_scorer.score_tail_candidates(h, r, seion_context, seion_cand)
             eta = (self._positive_scale(self.seion_scale_raw, r_ids) if self.seion_scale_raw is not None else self._gate(self.eta_raw, r_ids)).unsqueeze(-1)
             s = s + eta * s_seion
 
         if self.enable_generic_residual:
             generic_cand = self.entity(candidates_ids)
-            s_generic = self.generic_residual_scorer.score_tail_candidates(h, r, r, generic_cand)
+            generic_context = r if context is None else context
+            s_generic = self.generic_residual_scorer.score_tail_candidates(h, r, generic_context, generic_cand)
             eta = self._gate(self.eta_raw, r_ids).unsqueeze(-1)
             s = s + eta * s_generic
 

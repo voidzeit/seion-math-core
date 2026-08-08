@@ -1,0 +1,51 @@
+{
+  "schema": "gate14a-frozen-config-v1",
+  "status": "SEED1_AUDITED_PROMOTE_TO_MULTI_SEED",
+  "code_commit": "9e3f3fe711ea1386ba80a14e21312d16cf2ef855",
+  "dataset": "FB15K-237-full",
+  "dataset_sha256": {
+    "train": "6e4c2782169af21e9743f3b1d200886f5d595bf6bc504ec1351720949c5cdfae",
+    "valid": "cf6309010852f6a8d47a45df830a426415d1ee6f7a3970a8376ff1fb81db4a5c",
+    "test": "5711cf41623ceb4eacc50eb6108a3ca6565c7492e3caaf82a3e355cc660d1574"
+  },
+  "source_checkpoint": "campaigns/gate13/gate13_5/runs/pilot/seed1_A0/best.pt",
+  "source_checkpoint_sha256": "2622dfd5cc699f0b71c1e57de23c929cbfe88bd9c402355d55c35872c079e0d",
+  "arms": [
+    {"id": "T14-S", "enable_seion": true, "enable_generic_residual": false},
+    {"id": "T14-G", "enable_seion": false, "enable_generic_residual": true}
+  ],
+  "shared": {
+    "seed": 1,
+    "dim": 64,
+    "base_expert": "tucker",
+    "batch_size": 256,
+    "neg_k": 64,
+    "adversarial_temperature": 1.0,
+    "n3_weight": 0.001,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "router_lr_multiplier": 5.0,
+    "gate_g_max": 0.5,
+    "gate_init": 0.1,
+    "max_epochs": 50,
+    "eval_every": 2,
+    "early_stopping_patience": 8,
+    "early_stopping_min_epochs": 16,
+    "early_stopping_min_delta": 0.0,
+    "entity_block_eval": 2048,
+    "skip_test_eval": true,
+    "context": {
+      "direction_policy": "outgoing_over_reciprocal_closed_train_graph",
+      "target_edge_exclusion": "query_and_reciprocal_before_selection",
+      "max_neighbors": 32,
+      "neighbor_selection": "lexicographic_relation_then_target_first",
+      "aggregation": "mean_entity_plus_relation",
+      "normalization": "layernorm_no_affine_eps_1e-5",
+      "dimension_policy": "same_as_model_dim",
+      "trainable": false,
+      "empty_neighborhood": "zero_vector"
+    },
+    "promotion_rule": "engineering_gates_only; no seed-1 MRR threshold",
+    "primary_contrast": "best_valid_MRR(T14-S) - best_valid_MRR(T14-G)"
+  }
+}

@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pytest
 import torch
 
 from seion_kgr import reproducibility as repro
@@ -94,4 +95,47 @@ def test_cpu_resume_matches_uninterrupted_run(tmp_path: Path):
     full_state = repro.load_checkpoint(full_dir / "last.pt")["model_state"]
     resumed_state = repro.load_checkpoint(resumed_dir / "last.pt")["model_state"]
     assert full_state.keys() == resumed_state.keys()
+    assert all(torch.equal(full_state[name], resumed_state[name]) for name in full_state)
+
+
+@pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA is not available")
+def test_cuda_resume_matches_short_uninterrupted_run(tmp_path: Path):
+    data_dir = tmp_path / "kg_cuda"
+    data_dir.mkdir()
+    triples = {
+        "train": ["a\tr0\tb", "b\tr1\tc", "c\tr0\td", "d\tr1\ta"],
+        "valid": ["a\tr0\tc", "b\tr1\td"],
+        "test": ["a\tr1\td", "d\tr0\tb"],
+    }
+    for split, rows in triples.items():
+        (data_dir / f"{split}.txt").write_text("\n".join(rows) + "\n", encoding="utf-8")
+
+    def args(out_dir: Path, epochs: int, resume: Path | None = None):
+        values = [
+            "--train", str(data_dir / "train.txt"), "--valid", str(data_dir / "valid.txt"),
+            "--test", str(data_dir / "test.txt"), "--out_dir", str(out_dir),
+            "--dim", "8", "--base_expert", "tucker", "--epochs", str(epochs),
+            "--batch_size", "4", "--neg_k", "2", "--eval_every", "1",
+            "--eval_batch", "8", "--entity_block_eval", "8", "--n3_weight", "0",
+            "--seed", "23", "--skip_test_eval",
+        ]
+        if resume is not None:
+            values += ["--resume", str(resume)]
+        return build_parser().parse_args(values)
+
+    full_dir = tmp_path / "full_cuda"
+    partial_dir = tmp_path / "partial_cuda"
+    resumed_dir = tmp_path / "resumed_cuda"
+    train(args(full_dir, 2))
+    train(args(partial_dir, 1))
+    train(args(resumed_dir, 2, partial_dir / "last.pt"))
+
+    full_rows = [json.loads(line) for line in (full_dir / "metrics.jsonl").read_text().splitlines()]
+    resumed_rows = [json.loads(line) for line in (resumed_dir / "metrics.jsonl").read_text().splitlines()]
+    assert [row["epoch"] for row in resumed_rows] == [1]
+    assert [{key: value for key, value in row.items() if key != "wall_sec"} for row in resumed_rows] == [
+        {key: value for key, value in full_rows[1].items() if key != "wall_sec"}
+    ]
+    full_state = repro.load_checkpoint(full_dir / "last.pt")["model_state"]
+    resumed_state = repro.load_checkpoint(resumed_dir / "last.pt")["model_state"]
     assert all(torch.equal(full_state[name], resumed_state[name]) for name in full_state)
