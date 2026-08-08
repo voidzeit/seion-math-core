@@ -89,6 +89,36 @@ projected error is `eta^2` and its normalized value is `eta`. Thus the
 remaining open problem is restricted repeated-law subclasses (for example,
 the gated-planar family), not the explicitly declared same-map class above.
 
+## Superseded: unconditional k=3 upper envelope (2026-08-08 theorem-closure campaign)
+
+The "conditional upper-bound attempt" above is **superseded**. Its stated
+assumptions (`E_proj<=2*A*B`, `A^2+B^2<=M^2`) were never proved and are
+dimensionally inconsistent with the actual witness value
+`2*M*q*sqrt(M^2-q^2)` (missing a factor of `M`). A correct, unconditional
+proof is now available:
+
+```text
+U_3(eta) = 1 + sqrt(1-eta^2),   0 < eta <= eta_star
+U_3(eta) = sqrt(1+eta^2)/eta,   eta_star < eta <= 1
+eta_star = sqrt((sqrt(5)-1)/2) ~= 0.786151   (both branches equal the golden ratio there)
+```
+
+proved directly from the exact local-error telescoping identity plus a
+Pythagorean coupling between the two propagated-error terms at the first
+internal node (`research/math_closure/k3/general_upper_envelope.tex`,
+`src/seion_core/research_v5/k3_upper_bound.py`). It applies unconditionally
+(no rank-one restriction, arbitrary dimension/rank) and identically to both
+chain and branching topologies. `U_3(eta)<2` strictly for every `eta>0`;
+`U_3(1)=sqrt(2)~=1.41421`, a 29% reduction from the trivial bound.
+
+```text
+L3(eta) <= C_3,ind^P(eta) <= U_3(eta) < 2   for every eta in (0,1]
+```
+
+The gap narrowed substantially (e.g. at `eta=1`: relative gap `50%->29%`;
+at `eta=0.9`: `44%->26%`) but did **not** close. Fixed-eta global sharpness
+for k=3 remains `OPEN_WITH_CERTIFIED_GAP`.
+
 ## Reproducible execution
 
 Run:

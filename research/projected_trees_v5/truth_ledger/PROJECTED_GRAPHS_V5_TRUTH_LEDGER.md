@@ -116,6 +116,30 @@ gated-planar repeated-law family remains narrower, with exact projected error
 `eta^2` and normalized value `eta`. Sharpness for that restricted subclass
 remains open.
 
+## Theorem-closure campaign (2026-08-08): k=2 iff characterization and k=3 upper envelope
+
+Two new theorem-level results close the campaign's two highest-priority
+open targets to the extent tractable in a single pass:
+
+1. **k=2 saturation is now characterized, not just witnessed.** For the
+   binary k=2 chain (any dimension, any projector rank, laws independent or
+   repeated), `E_proj=rho*M*L_T` holds iff three explicit local conditions
+   (EQ1: outer-law operator-norm saturation, EQ2: closure-map saturation,
+   EQ3: root-projection alignment) hold simultaneously. Proved by an
+   elementary chain-of-inequalities argument. Both prior witnesses verified
+   as instances; a third, independently constructed witness (not matching
+   either prior form) predicted and verified to saturate.
+   `research/math_closure/k2/saturation_iff_theorem.tex`.
+2. **The k=3 upper bound is now tightened unconditionally.** The
+   `CONDITIONAL_ON_UNPROVED_SCALAR_REDUCTION` bookkeeping entry above is
+   superseded by a proved envelope `U_3(eta)` (chain and branching, any
+   dimension/rank), strictly below the trivial bound `2` for every `eta>0`.
+   `research/math_closure/k3/general_upper_envelope.tex`.
+
+Fixed-eta k=3 sharpness remains open; the certified gap narrowed but did
+not close. See `V5B_EXTREMAL_STATUS.md`'s "Superseded" section for the
+exact numbers.
+
 ## Conjectural direction
 
 The finite-tree independent-law statement

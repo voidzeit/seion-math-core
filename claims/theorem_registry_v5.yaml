@@ -156,6 +156,78 @@ theorems:
     scope: [finite projected multilinear trees, independent laws]
     epistemic_status: OPEN
     novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: THM_V5_K2_SATURATION_IFF_CHARACTERIZATION
+    title: Necessary-and-sufficient characterization of k=2 saturation
+    statement: >-
+      For a binary k=2 chain (arbitrary finite dimension, arbitrary
+      orthogonal-projector rank, laws independent or repeated), writing
+      D=(I-P)mu_in(a,b), the configuration attains E_proj=rho*M*L_T exactly
+      iff EQ1 (mu_out saturates M on (D,d)), EQ2 (the closure map (I-P)mu_in
+      saturates rho on (a,b)), and EQ3 (mu_out(D,d) already lies in
+      Range(P_out)) hold simultaneously. Proved by an elementary chain-of-
+      inequalities argument; both known k=2 witnesses verified as instances,
+      and a third, independently constructed instance predicted and
+      verified to saturate.
+    scope:
+      - finite-dimensional real or complex Hilbert spaces
+      - binary k=2 chain, arbitrary ambient dimension and projector rank
+      - independent or repeated bilinear laws
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V5_K2_INDEPENDENT_LAW_PROJECTED_SHARPNESS
+      - THM_V5_K2_SAME_LAW_PROJECTED_SHARPNESS
+    proof_location: research/math_closure/k2/saturation_iff_theorem.tex
+    implementation: src/seion_core/research_v5/k2_characterization.py
+    tests: [tests/research_v5_test_k2_characterization.py]
+    epistemic_status: PROVED
+    sharpness_status: COMPLETE_IFF_CHARACTERIZATION_FOR_DECLARED_CLASS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_GENERAL_UPPER_ENVELOPE
+    title: Unconditional tightened k=3 upper bound for chain and branching topologies
+    statement: >-
+      For the independent-law k=3 chain and branching classes (arbitrary
+      finite dimension, arbitrary projector rank, no rank-one restriction),
+      C_3,ind^P(eta) <= U_3(eta), where U_3(eta)=1+sqrt(1-eta^2) for
+      0<eta<=eta_star and sqrt(1+eta^2)/eta for eta_star<eta<=1, with
+      eta_star=sqrt((sqrt5-1)/2). U_3(eta)<2 strictly for every eta>0 and
+      U_3(1)=sqrt(2), a 29% reduction from the trivial universal bound.
+      Derived from exact local-error telescoping plus a Pythagorean
+      coupling between the two propagated-error terms at the first internal
+      node; identical bound for both topologies.
+    scope:
+      - finite-dimensional real or complex Hilbert spaces
+      - binary k=3 chain and branching trees, arbitrary dimension/rank
+      - independently chosen bilinear laws bounded by M, closure residual <= rho
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V3_PROJECTED_ROOT_K_MINUS_ONE
+      - LB_V5_K3_PIECEWISE_SCALAR_CURVE
+    proof_location: research/math_closure/k3/general_upper_envelope.tex
+    implementation: src/seion_core/research_v5/k3_upper_bound.py
+    tests: [tests/research_v5_test_k3_upper_bound.py]
+    epistemic_status: PROVED
+    sharpness_status: CERTIFIED_UPPER_BOUND_GAP_NARROWED_NOT_CLOSED
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+    supersedes: >-
+      The CONDITIONAL_ON_UNPROVED_SCALAR_REDUCTION bookkeeping entry in
+      src/seion_core/research_v5/v5b_extremal.py (conditional_scalar_reduction_upper_bound),
+      whose assumptions were never proved and were dimensionally
+      inconsistent with the actual witness value.
+  - id: OPEN_V5_K3_FIXED_ETA_SHARPNESS
+    title: Fixed-eta k=3 sharpness (gap narrowed, not closed)
+    statement: >-
+      L_3(eta) <= C_3,ind^P(eta) <= U_3(eta) < 2 for every eta in (0,1];
+      the certified gap narrowed substantially (e.g. at eta=1, relative gap
+      50%->29%) via THM_V5_K3_GENERAL_UPPER_ENVELOPE but did not close.
+      Fixed-eta global sharpness remains open.
+    scope: [independent-law k=3 chain and branching, 0 < eta <= 1]
+    dependencies:
+      - LB_V5_K3_PIECEWISE_SCALAR_CURVE
+      - THM_V5_K3_GENERAL_UPPER_ENVELOPE
+    epistemic_status: OPEN_WITH_CERTIFIED_GAP
+    novelty_status: NOVELTY_NOT_ESTABLISHED
   - id: OPEN_V5_DIMENSION_RANK_REDUCTION
     title: Universal dimension/rank reduction for projected sharpness
     statement: >-
