@@ -47,13 +47,36 @@ theorems:
     novelty_status: NOVELTY_NOT_ESTABLISHED
     approval_status: PENDING_HUMAN_REVIEW
   - id: OPEN_V5_K2_REPEATED_LAW_SHARPNESS
-    title: Fixed-eta k=2 sharpness with a repeated/shared law
+    title: Fixed-eta k=2 sharpness for the gated-planar repeated-law subclass
     statement: >-
-      It remains open whether the independent-law saturation construction can
-      be made compatible with one repeated law under the same hypotheses.
-    scope: [repeated/shared node law, fixed eta]
+      It remains open whether the earlier gated-planar repeated-law subclass
+      can attain its ambient same-law upper bound at fixed eta.
+    scope: [gated-planar repeated/shared node law, fixed eta]
     epistemic_status: OPEN
     novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: THM_V5_K2_SAME_LAW_PROJECTED_SHARPNESS
+    title: Exact k=2 projected-root sharpness for an explicitly repeated bilinear law
+    statement: >-
+      For the real binary k=2 chain with one bilinear law reused at both
+      internal nodes, an orthogonal rank-one projector, unit leaves, uniform
+      operator norm M, and rho=eta*M in (0,1], the explicitly declared same-law
+      class has C_2^P(eta)=1. The map mu(x,y)=M*x1*y0*e0+rho*x0*y0*e1 attains
+      E_proj=rho*M.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - binary chain with one repeated bilinear law
+      - orthogonal rank-one projector
+      - unit leaf norms
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V3_PROJECTED_ROOT_K_MINUS_ONE
+    proof_location: research/projected_trees_v5/extremal/V5B_EXTREMAL_STATUS.md
+    implementation: src/seion_core/research_v5/k2_sharpness.py
+    tests: [tests/research_v5_test_k2_sharpness.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_FOR_DECLARED_SAME_LAW_CLASS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
   - id: LB_V5_K3_INDEPENDENT_CHAIN
     title: Independent-law k=3 chain lower construction
     statement: >-
@@ -66,6 +89,49 @@ theorems:
     tests: [tests/research_v5_test_k3_independent_candidates.py]
     epistemic_status: CERTIFIED_LOWER_BOUND
     sharpness_status: GLOBAL_SHARPNESS_OPEN
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: LB_V5_K3_PIECEWISE_SCALAR_CURVE
+    title: Piecewise V5-A lower curve from the exact scalar optimizer
+    statement: >-
+      For the declared V5-A independent-law k=3 witness family, optimizing
+      2*M*q*sqrt(M^2-q^2) over 0 <= q <= rho=eta*M gives the normalized lower
+      curve L_3(eta)=2*sqrt(1-eta^2) for eta <= 1/sqrt(2), and L_3(eta)=1/eta
+      for eta > 1/sqrt(2).
+    scope:
+      - finite real binary k=3 witness family
+      - independently chosen bilinear laws
+      - rank-one orthogonal projector
+      - 0 < eta <= 1
+    dependencies:
+      - LB_V5_K3_INDEPENDENT_CHAIN
+      - LB_V5_K3_INDEPENDENT_BRANCH
+    proof_location: research/projected_trees_v5/extremal/V5B_EXTREMAL_STATUS.md
+    implementation: src/seion_core/research_v5/v5b_extremal.py
+    tests: [tests/research_v5_test_v5b_extremal.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: CERTIFIED_LOWER_BOUND_ONLY
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_ASYMPTOTIC_SHARPNESS_INDEPENDENT
+    title: Asymptotic k=3 sharpness as eta tends to zero
+    statement: >-
+      For the declared independent-law k=3 class covered by the V5-A witness
+      and the universal projected-root bound, lim_{eta downarrow 0}
+      C_{3,ind}^P(eta)=2. The lower limit follows from the V5-A curve and the
+      upper limit from the universal k-1 bound.
+    scope:
+      - finite real binary k=3 independent-law class covered by V5-A
+      - 0 < eta <= 1
+      - asymptotic eta -> 0 only
+    dependencies:
+      - THM_V3_PROJECTED_ROOT_K_MINUS_ONE
+      - LB_V5_K3_PIECEWISE_SCALAR_CURVE
+    proof_location: research/projected_trees_v5/extremal/V5B_EXTREMAL_STATUS.md
+    implementation: src/seion_core/research_v5/v5b_extremal.py
+    tests: [tests/research_v5_test_v5b_extremal.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: ASYMPTOTIC_ONLY_FIXED_ETA_OPEN
     novelty_status: NOVELTY_NOT_ESTABLISHED
     approval_status: PENDING_HUMAN_REVIEW
   - id: LB_V5_K3_INDEPENDENT_BRANCH

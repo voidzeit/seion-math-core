@@ -43,14 +43,30 @@
     },
     {
       "id": "V5-K2-REP-BAND",
-      "statement": "For the repeated-law class, the known eta^2 construction gives the normalized lower bound C_2,rep^P(eta)>=eta, while the universal theorem gives C_2,rep^P(eta)<=1.",
-      "status": "CERTIFIED_LOWER_BOUND",
-      "evidence": ["research/projected_trees_v4/sharpness/k2/P2_k2_status.md", "research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.json"]
+      "statement": "For the explicitly declared real binary same-map class, C_2,same-law^P(eta)=1 for 0<eta<=1; the narrower gated-planar repeated-law family still has normalized value eta.",
+      "status": "PROVED_UNDER_ASSUMPTIONS",
+      "evidence": ["src/seion_core/research_v5/k2_sharpness.py", "tests/research_v5_test_k2_sharpness.py", "research/projected_trees_v5/extremal/V5B_EXTREMAL_STATUS.md"],
+      "limitations": ["The gated-planar repeated-law subclass remains open for fixed-eta global sharpness."]
     },
-    {"id":"V5-O-001","statement":"repeated-law/shared-map k=2 sharpness","status":"OPEN"},
+    {
+      "id": "V5-K3-PIECEWISE-SCALAR-LOWER",
+      "statement": "The V5-A witness family has the exact normalized lower curve L3(eta)=2*sqrt(1-eta^2) for eta<=1/sqrt(2), and L3(eta)=1/eta for eta>1/sqrt(2).",
+      "status": "PROVED_UNDER_ASSUMPTIONS",
+      "evidence": ["src/seion_core/research_v5/v5b_extremal.py", "tests/research_v5_test_v5b_extremal.py", "research/projected_trees_v5/extremal/V5B_EXTREMAL_STATUS.md", "artifacts/research_v5/v5b_extremal_analysis.json"],
+      "limitations": ["Exact for the declared witness family; not a global fixed-eta upper bound."]
+    },
+    {
+      "id": "V5-K3-ASYMPTOTIC-SHARPNESS",
+      "statement": "For the declared independent-law k=3 class covered by the V5-A lower witness and the universal projected bound, lim_{eta downarrow 0} C_3,ind^P(eta)=2.",
+      "status": "PROVED_UNDER_ASSUMPTIONS",
+      "evidence": ["research/projected_trees_v5/extremal/V5B_EXTREMAL_STATUS.md", "artifacts/research_v5/v5b_extremal_analysis.json"],
+      "limitations": ["Asymptotic eta->0 result only; fixed-eta global sharpness remains open."]
+    },
+    {"id":"V5-O-001","statement":"fixed-eta sharpness for the narrower gated-planar repeated-law subclass","status":"OPEN"},
     {"id":"V5-O-002","statement":"universal dimension/rank reduction","status":"OPEN"},
     {"id":"V5-O-003","statement":"global k=3 topology-specific sharpness","status":"OPEN"},
     {"id":"V5-O-004","statement":"theorem-level novelty","status":"NOVELTY_NOT_ESTABLISHED"},
+    {"id":"V5-O-005","statement":"fixed-eta universal scalar reduction for the V5-B k=3 candidate envelope","status":"OPEN"},
     {"id":"V5-CONJ-001","statement":"For sufficiently free independent laws, C_T,ind^P(eta)=k(T)-1 for finite trees.","status":"OPEN","type":"conjecture","evidence":["research/projected_trees_v5/truth_ledger/PROJECTED_GRAPHS_V5_TRUTH_LEDGER.md"]}
   ]
 }

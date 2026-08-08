@@ -13,6 +13,9 @@ prior-art review is completed.
 | signed source cancellation | finite signed source-polynomial expression | NOT_ESTABLISHED |
 | truncation remainder | finite omitted multi-index norm envelope | NOT_ESTABLISHED |
 | separated approximate-law budget | closure/representation/interaction decomposition | NOT_ESTABLISHED |
+| exact V5-A k=3 scalar lower curve | fixed defect-budget optimization inside a declared witness family | NOT_ESTABLISHED |
+| k=3 asymptotic sharpness as eta tends to zero | squeeze of the V5-A lower curve with the universal coefficient two | NOT_ESTABLISHED |
+| repeated-law k=2 fixed-eta band | shared-law projected chain with eta <= C <= 1 | NOT_ESTABLISHED |
 
 The audit must compare hypotheses, object class, constants, tree/DAG scope,
 source attribution, signed cancellation, truncation, and validation status.

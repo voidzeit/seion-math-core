@@ -51,12 +51,14 @@ def test_conditional_upper_bound_is_not_mislabeled_as_global():
 
 
 @pytest.mark.parametrize("eta", [0.1, 1.0 / math.sqrt(2.0), 1.0])
-def test_repeated_law_band_is_explicitly_open(eta):
+def test_repeated_law_same_map_class_is_exact(eta):
     result = repeated_law_k2_band(eta)
-    assert result.known_lower_bound == pytest.approx(eta)
+    assert result.known_lower_bound == pytest.approx(1.0)
     assert result.universal_upper_bound == pytest.approx(1.0)
     assert result.gated_planar_exact_value == pytest.approx(eta * eta)
-    assert result.status == "OPEN_FIXED_ETA_SHARPNESS"
+    assert result.gated_planar_normalized_value == pytest.approx(eta)
+    assert result.same_law_saturation_value == pytest.approx(1.0)
+    assert result.status == "EXACT_FOR_DECLARED_SAME_LAW_CLASS"
 
 
 def test_scalar_objective_rejects_invalid_domain():

@@ -1,0 +1,214 @@
+{
+  "schema": "projected-graphs-v5b-extremal-analysis-v1",
+  "generated_utc": "2026-08-08T11:21:57.388660+00:00",
+  "source_commit": "d26b4b0462611050c3274ee9cd367e7e3e0d26a9",
+  "scope": {
+    "k3": "real binary rank-one independent-law V5-A witness family",
+    "k2_repeated": "known repeated/shared-law band only"
+  },
+  "closed": [
+    "exact scalar maximizer q*=min(rho,M/sqrt(2))",
+    "piecewise V5-A lower curve L3(eta)",
+    "asymptotic squeeze lim eta->0 C_3,ind^P(eta)=2",
+    "exact C_2^P(eta)=1 for the explicitly declared same-map class"
+  ],
+  "conditional": [
+    "candidate k=3 upper envelope under the unproved scalar reduction"
+  ],
+  "open": [
+    "fixed-eta global k=3 sharpness",
+    "universal proof of E_proj<=2AB with the required scalar constraints",
+    "fixed-eta sharpness for the narrower gated-planar repeated-law subclass"
+  ],
+  "rows": [
+    {
+      "eta": 0.01,
+      "regime": "constraint_active",
+      "rho": 0.01,
+      "q_star": 0.01,
+      "projected_error_lower_witness": 0.019998999974998752,
+      "L3_lower_bound": 1.9998999974998752,
+      "closed_form_L3": 1.999899997499875,
+      "universal_k3_upper_bound": 0.02,
+      "gap_to_universal": 1.0000250012486e-06,
+      "conditional_scalar_upper_bound": 0.019998999974998752,
+      "same_law_exact_constant": 1.0,
+      "same_law_upper_bound": 1.0,
+      "gated_planar_repeated_law_lower_bound": 0.01,
+      "scalar_grid_sanity": {
+        "points": 10001,
+        "sampled_max": 0.019998999974998752,
+        "analytic_max": 0.019998999974998752,
+        "sampled_does_not_exceed_analytic": true
+      }
+    },
+    {
+      "eta": 0.05,
+      "regime": "constraint_active",
+      "rho": 0.05,
+      "q_star": 0.05,
+      "projected_error_lower_witness": 0.0998749217771909,
+      "L3_lower_bound": 1.997498435543818,
+      "closed_form_L3": 1.997498435543818,
+      "universal_k3_upper_bound": 0.1,
+      "gap_to_universal": 0.0001250782228091052,
+      "conditional_scalar_upper_bound": 0.0998749217771909,
+      "same_law_exact_constant": 1.0,
+      "same_law_upper_bound": 1.0,
+      "gated_planar_repeated_law_lower_bound": 0.05,
+      "scalar_grid_sanity": {
+        "points": 10001,
+        "sampled_max": 0.0998749217771909,
+        "analytic_max": 0.0998749217771909,
+        "sampled_does_not_exceed_analytic": true
+      }
+    },
+    {
+      "eta": 0.1,
+      "regime": "constraint_active",
+      "rho": 0.1,
+      "q_star": 0.1,
+      "projected_error_lower_witness": 0.198997487421324,
+      "L3_lower_bound": 1.98997487421324,
+      "closed_form_L3": 1.98997487421324,
+      "universal_k3_upper_bound": 0.2,
+      "gap_to_universal": 0.001002512578676007,
+      "conditional_scalar_upper_bound": 0.198997487421324,
+      "same_law_exact_constant": 1.0,
+      "same_law_upper_bound": 1.0,
+      "gated_planar_repeated_law_lower_bound": 0.1,
+      "scalar_grid_sanity": {
+        "points": 10001,
+        "sampled_max": 0.198997487421324,
+        "analytic_max": 0.198997487421324,
+        "sampled_does_not_exceed_analytic": true
+      }
+    },
+    {
+      "eta": 0.25,
+      "regime": "constraint_active",
+      "rho": 0.25,
+      "q_star": 0.25,
+      "projected_error_lower_witness": 0.4841229182759271,
+      "L3_lower_bound": 1.9364916731037085,
+      "closed_form_L3": 1.9364916731037085,
+      "universal_k3_upper_bound": 0.5,
+      "gap_to_universal": 0.015877081724072872,
+      "conditional_scalar_upper_bound": 0.4841229182759271,
+      "same_law_exact_constant": 1.0,
+      "same_law_upper_bound": 1.0,
+      "gated_planar_repeated_law_lower_bound": 0.25,
+      "scalar_grid_sanity": {
+        "points": 10001,
+        "sampled_max": 0.4841229182759271,
+        "analytic_max": 0.4841229182759271,
+        "sampled_does_not_exceed_analytic": true
+      }
+    },
+    {
+      "eta": 0.5,
+      "regime": "constraint_active",
+      "rho": 0.5,
+      "q_star": 0.5,
+      "projected_error_lower_witness": 0.8660254037844386,
+      "L3_lower_bound": 1.7320508075688772,
+      "closed_form_L3": 1.7320508075688772,
+      "universal_k3_upper_bound": 1.0,
+      "gap_to_universal": 0.1339745962155614,
+      "conditional_scalar_upper_bound": 0.8660254037844386,
+      "same_law_exact_constant": 1.0,
+      "same_law_upper_bound": 1.0,
+      "gated_planar_repeated_law_lower_bound": 0.5,
+      "scalar_grid_sanity": {
+        "points": 10001,
+        "sampled_max": 0.8660254037844386,
+        "analytic_max": 0.8660254037844386,
+        "sampled_does_not_exceed_analytic": true
+      }
+    },
+    {
+      "eta": 0.7071067811865475,
+      "regime": "interior_extremum",
+      "rho": 0.7071067811865475,
+      "q_star": 0.7071067811865475,
+      "projected_error_lower_witness": 1.0,
+      "L3_lower_bound": 1.4142135623730951,
+      "closed_form_L3": 1.4142135623730951,
+      "universal_k3_upper_bound": 1.414213562373095,
+      "gap_to_universal": 0.4142135623730949,
+      "conditional_scalar_upper_bound": 1.0,
+      "same_law_exact_constant": 1.0,
+      "same_law_upper_bound": 1.0,
+      "gated_planar_repeated_law_lower_bound": 0.7071067811865475,
+      "scalar_grid_sanity": {
+        "points": 10001,
+        "sampled_max": 1.0,
+        "analytic_max": 1.0,
+        "sampled_does_not_exceed_analytic": true
+      }
+    },
+    {
+      "eta": 0.8,
+      "regime": "interior_extremum",
+      "rho": 0.8,
+      "q_star": 0.7071067811865475,
+      "projected_error_lower_witness": 1.0,
+      "L3_lower_bound": 1.25,
+      "closed_form_L3": 1.25,
+      "universal_k3_upper_bound": 1.6,
+      "gap_to_universal": 0.6000000000000001,
+      "conditional_scalar_upper_bound": 1.0,
+      "same_law_exact_constant": 1.0,
+      "same_law_upper_bound": 1.0,
+      "gated_planar_repeated_law_lower_bound": 0.8,
+      "scalar_grid_sanity": {
+        "points": 10001,
+        "sampled_max": 0.9999999993010388,
+        "analytic_max": 1.0,
+        "sampled_does_not_exceed_analytic": true
+      }
+    },
+    {
+      "eta": 0.9,
+      "regime": "interior_extremum",
+      "rho": 0.9,
+      "q_star": 0.7071067811865475,
+      "projected_error_lower_witness": 1.0,
+      "L3_lower_bound": 1.1111111111111112,
+      "closed_form_L3": 1.1111111111111112,
+      "universal_k3_upper_bound": 1.8,
+      "gap_to_universal": 0.8,
+      "conditional_scalar_upper_bound": 1.0,
+      "same_law_exact_constant": 1.0,
+      "same_law_upper_bound": 1.0,
+      "gated_planar_repeated_law_lower_bound": 0.9,
+      "scalar_grid_sanity": {
+        "points": 10001,
+        "sampled_max": 0.999999997843476,
+        "analytic_max": 1.0,
+        "sampled_does_not_exceed_analytic": true
+      }
+    },
+    {
+      "eta": 1.0,
+      "regime": "interior_extremum",
+      "rho": 1.0,
+      "q_star": 0.7071067811865475,
+      "projected_error_lower_witness": 1.0,
+      "L3_lower_bound": 1.0,
+      "closed_form_L3": 1.0,
+      "universal_k3_upper_bound": 2.0,
+      "gap_to_universal": 1.0,
+      "conditional_scalar_upper_bound": 1.0,
+      "same_law_exact_constant": 1.0,
+      "same_law_upper_bound": 1.0,
+      "gated_planar_repeated_law_lower_bound": 1.0,
+      "scalar_grid_sanity": {
+        "points": 10001,
+        "sampled_max": 0.9999999998160639,
+        "analytic_max": 1.0,
+        "sampled_does_not_exceed_analytic": true
+      }
+    }
+  ]
+}

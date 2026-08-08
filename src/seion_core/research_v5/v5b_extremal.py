@@ -144,27 +144,35 @@ def conditional_scalar_reduction_upper_bound(
 
 @dataclass(frozen=True, slots=True)
 class RepeatedLawK2Band:
-    """Current certified band for the repeated/shared-law k=2 class."""
+    """Certified repeated-law k=2 result and historical restricted witness."""
 
     eta: float
     known_lower_bound: float
     universal_upper_bound: float
     gated_planar_exact_value: float
     gated_planar_normalized_value: float
-    status: str = "OPEN_FIXED_ETA_SHARPNESS"
+    same_law_saturation_value: float
+    status: str = "EXACT_FOR_DECLARED_SAME_LAW_CLASS"
 
 
 def repeated_law_k2_band(eta: float) -> RepeatedLawK2Band:
-    """Return ``eta <= C_2,rep^P(eta) <= 1`` and the known eta^2 witness."""
+    """Return exact same-law saturation plus the narrower gated-planar value.
+
+    The same-law map in ``construct_k2_repeated_map_saturation`` attains the
+    universal upper bound, so the declared same-law class has constant one.
+    The earlier gated-planar family remains a narrower historical family with
+    normalized value ``eta``.
+    """
 
     if not 0.0 < eta <= 1.0:
         raise ValueError("require 0 < eta <= 1")
     return RepeatedLawK2Band(
         eta=eta,
-        known_lower_bound=eta,
+        known_lower_bound=1.0,
         universal_upper_bound=1.0,
         gated_planar_exact_value=eta * eta,
         gated_planar_normalized_value=eta,
+        same_law_saturation_value=1.0,
     )
 
 

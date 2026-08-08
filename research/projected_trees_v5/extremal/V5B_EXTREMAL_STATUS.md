@@ -70,15 +70,24 @@ is the next theorem-level target.
 
 ## Repeated/shared-law `k=2`
 
-The currently certified band is
+The broader same-map class is now closed at the universal value. With the
+single repeated law
+
+```text
+mu(x,y) = M*x1*y0*e0 + rho*x0*y0*e1,
+```
+
+the two-node chain attains `E_proj=rho*M` for every `0<eta<=1`. Combined
+with the universal upper bound, this gives
 
 \[
-  \eta\le C_{2,\mathrm{rep}}^P(\eta)\le1.
+  C_{2,\mathrm{same\ law}}^P(\eta)=1.
 \]
 
-The lower bound comes from the known repeated gated-planar construction,
-whose exact projected error is `eta^2` and whose normalized value is `eta`.
-The fixed-eta constant remains `OPEN_FIXED_ETA_SHARPNESS`.
+This does not change the narrower historical gated-planar result: its exact
+projected error is `eta^2` and its normalized value is `eta`. Thus the
+remaining open problem is restricted repeated-law subclasses (for example,
+the gated-planar family), not the explicitly declared same-map class above.
 
 ## Reproducible execution
 

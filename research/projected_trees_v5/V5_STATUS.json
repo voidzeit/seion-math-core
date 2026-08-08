@@ -7,11 +7,15 @@
   "closed_in_this_increment": [
     "k=2 general independent-law saturation",
     "k=2 equality compatibility audit for independent laws",
-    "k=3 independent-law chain and branching lower-bound witnesses"
+    "k=3 independent-law chain and branching lower-bound witnesses",
+    "V5-B exact scalar optimizer for the k=3 witness family",
+    "V5-B asymptotic sharpness as eta tends to zero",
+    "k=2 exact saturation for the explicitly declared same-map class"
   ],
   "open": [
-    "repeated-law k=2 sharpness",
+    "gated-planar repeated-law k=2 sharpness",
     "independent-law k=3 global sharpness",
+    "universal scalar reduction for the candidate k=3 upper envelope",
     "independent-law (k-1) sharpness for arbitrary finite trees",
     "universal dimension/rank reduction",
     "global k=3 topology sharpness",

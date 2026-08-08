@@ -60,8 +60,9 @@ def main() -> None:
                 "universal_k3_upper_bound": result.universal_bound,
                 "gap_to_universal": result.gap_to_universal,
                 "conditional_scalar_upper_bound": conditional.bound,
-                "repeated_law_lower_bound": repeated.known_lower_bound,
-                "repeated_law_upper_bound": repeated.universal_upper_bound,
+                "same_law_exact_constant": repeated.same_law_saturation_value,
+                "same_law_upper_bound": repeated.universal_upper_bound,
+                "gated_planar_repeated_law_lower_bound": repeated.gated_planar_normalized_value,
                 "scalar_grid_sanity": grid_upper_sanity(eta),
             }
         )
@@ -78,6 +79,7 @@ def main() -> None:
             "exact scalar maximizer q*=min(rho,M/sqrt(2))",
             "piecewise V5-A lower curve L3(eta)",
             "asymptotic squeeze lim eta->0 C_3,ind^P(eta)=2",
+            "exact C_2^P(eta)=1 for the explicitly declared same-map class",
         ],
         "conditional": [
             "candidate k=3 upper envelope under the unproved scalar reduction",
@@ -85,7 +87,7 @@ def main() -> None:
         "open": [
             "fixed-eta global k=3 sharpness",
             "universal proof of E_proj<=2AB with the required scalar constraints",
-            "fixed-eta repeated-law k=2 sharpness",
+            "fixed-eta sharpness for the narrower gated-planar repeated-law subclass",
         ],
         "rows": rows,
     }

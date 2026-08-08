@@ -2,7 +2,10 @@ import math
 
 import pytest
 
-from seion_core.research_v5.k2_sharpness import construct_k2_independent_map_saturation
+from seion_core.research_v5.k2_sharpness import (
+    construct_k2_independent_map_saturation,
+    construct_k2_repeated_map_saturation,
+)
 
 
 @pytest.mark.parametrize("eta", [0.1, 0.5, math.sqrt(0.5), 1.0])
@@ -31,3 +34,15 @@ def test_k2_saturation_rejects_out_of_domain_parameters():
         construct_k2_independent_map_saturation(1.1)
     with pytest.raises(ValueError):
         construct_k2_independent_map_saturation(0.5, M=0.0)
+
+
+@pytest.mark.parametrize("eta", [0.01, 0.25, 0.5, 1.0])
+def test_k2_repeated_map_also_saturates_the_projected_bound(eta):
+    result = construct_k2_repeated_map_saturation(eta)
+    assert result.inner_operator_norm == pytest.approx(1.0)
+    assert result.outer_operator_norm == pytest.approx(1.0)
+    assert result.inner_closure_norm == pytest.approx(eta)
+    assert result.outer_closure_norm == pytest.approx(eta)
+    assert result.projected_error == pytest.approx(eta)
+    assert result.universal_projected_bound == pytest.approx(eta)
+    assert result.normalized_ratio == pytest.approx(1.0)
