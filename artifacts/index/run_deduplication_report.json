@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "generated_utc": "2026-08-08T10:54:37.756087+00:00",
-  "historical_run_count": 150,
+  "generated_utc": "2026-08-08T19:55:41.182485+00:00",
+  "historical_run_count": 153,
   "unique_scientific_instance_count": 9,
   "duplicate_group_count": 8,
-  "duplicate_record_count": 141,
+  "duplicate_record_count": 144,
   "status_counts_historical": {
-    "COMPLETE": 148,
+    "COMPLETE": 151,
     "FAILED_RUNTIME": 2
   },
   "status_counts_unique": {

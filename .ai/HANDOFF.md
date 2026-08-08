@@ -159,3 +159,19 @@
 - Validation: 85 pytest tests passed; git diff --check clean before generated governance outputs; JSON validation passed; governance audit passed with 0 missing required artifacts; deduplicated run index regenerated.
 - Resume from commit: `997e745265cad8131e3122f192ce373c79ae57e4` on `campaign/gate13-closeout`
 - Limitation: The k3 results are certified construction lower bounds only; independent-law global sharpness, repeated-law k2 sharpness, finite-tree induction, dimension/rank reduction, theorem-level novelty, and independent human review remain open. Gate13.5, Gate14, KGR, and historical artifacts were not modified.
+
+## Latest postflight: V5-B extremal tightening
+
+- Timestamp: 2026-08-08T11:21:32.373674+00:00
+- Outcome: **PARTIAL_COMPLETION**
+- Validation: full pytest timed out at 120s; heavy V3 exact/adversarial/GPU segments not completed
+- Resume from commit: `d26b4b0462611050c3274ee9cd367e7e3e0d26a9` on `campaign/gate13-closeout`
+- Limitation: The conditional k=3 scalar upper envelope is not a global theorem until the reduction inequalities are proved.
+
+## Latest postflight: V5 theorem-closure campaign (M8/M9)
+
+- Timestamp: 2026-08-08T19:56:01.068976Z
+- Outcome: **EXTREMAL_PROGRAM_PARTIALLY_CLOSED**
+- Validation: full (unpartitioned) pytest suite executed to completion, no timeout: 365 collected, 365 executed, 364 passed, 1 pre-existing out-of-scope KGR failure, 444.13s elapsed; governance audit passed yellow (same two pre-existing warnings as before this session); JSON/YAML registry edits validated; `git diff --check` clean.
+- Resume from commit: `b817624b5a9be5c6f1c0d0df859d56fb4c655671` on `campaign/gate13-closeout`
+- Limitation: Proved M8 (k=2 saturation iff characterization) and M9 (unconditional k=3 upper envelope, chain and branching); fixed-eta k=3 sharpness gap narrowed but not closed. Formal verification blocked (Lean/lake not installed). Novelty audit, manuscript rebuild, dimension/rank reduction, source-calculus consolidation, signed-forest exact constants, growing-tree theorem, and independent human review were not attempted this session -- see `research/projected_trees_v5/V5_CLOSURE_REPORT.md` for the complete phase-by-phase accounting. No theorem in this repository is self-approved; every result remains `PENDING_HUMAN_REVIEW`.

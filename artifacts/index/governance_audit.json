@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "audited_at": "2026-08-08T10:54:37.231777+00:00",
+  "audited_at": "2026-08-08T19:55:41.184486+00:00",
   "status": "yellow",
   "strict": false,
   "git": {
     "branch": "campaign/gate13-closeout",
-    "commit": "997e745265cad8131e3122f192ce373c79ae57e4",
+    "commit": "b817624b5a9be5c6f1c0d0df859d56fb4c655671",
     "dirty": true
   },
   "required_files": {
@@ -19,17 +19,17 @@
     "status": "green"
   },
   "runs": {
-    "historical_run_count": 150,
+    "historical_run_count": 153,
     "unique_scientific_instance_count": 9,
     "duplicate_group_count": 8,
-    "duplicate_record_count": 141,
+    "duplicate_record_count": 144,
     "artifact_contract": {
-      "run_count": 150,
-      "contract_complete_count": 150,
+      "run_count": 153,
+      "contract_complete_count": 153,
       "contract_incomplete_count": 0,
       "missing_artifacts": {},
       "statuses": {
-        "COMPLETE": 148,
+        "COMPLETE": 151,
         "FAILED_RUNTIME": 2
       }
     }

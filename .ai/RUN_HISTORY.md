@@ -277,3 +277,55 @@ changed paths, and limitations. Historical artifact runs remain under
   - `.ai/TASKS.md`
 - Limitations:
   - The k3 results are certified construction lower bounds only; independent-law global sharpness, repeated-law k2 sharpness, finite-tree induction, dimension/rank reduction, theorem-level novelty, and independent human review remain open. Gate13.5, Gate14, KGR, and historical artifacts were not modified.
+
+## 2026-08-08T11:21:32.373674+00:00 — V5-B extremal tightening
+
+- Command: `python -m seion_core.cli.main governance dedupe-runs`
+- Branch/commit: `campaign/gate13-closeout` / `d26b4b0462611050c3274ee9cd367e7e3e0d26a9`
+- Outcome: **PARTIAL_COMPLETION**
+- Summary: Implemented exact scalar V5-A k=3 optimization, certified piecewise lower curve and eta->0 asymptotic sharpness; added exact same-map repeated-law k=2 saturation; fixed-eta global k=3 upper bound and gated-planar repeated-law sharpness remain open.
+- Validation: full pytest timed out at 120s; heavy V3 exact/adversarial/GPU segments not completed
+- Changed files:
+  - `src/seion_core/research_v5/v5b_extremal.py`
+  - `src/seion_core/research_v5/k2_sharpness.py`
+  - `tests/research_v5_test_v5b_extremal.py`
+  - `tests/research_v5_test_k2_sharpness.py`
+  - `claims/theorem_registry_v5.yaml`
+  - `research/projected_trees_v5/V5_STATUS.json`
+  - `research/projected_trees_v5/truth_ledger/PROJECTED_GRAPHS_V5_TRUTH_LEDGER.md`
+  - `research/projected_trees_v5/truth_ledger/PROJECTED_GRAPHS_V5_TRUTH_LEDGER.json`
+  - `research/projected_trees_v5/extremal/V5B_EXTREMAL_STATUS.md`
+  - `artifacts/research_v5/v5b_extremal_analysis.json`
+- Limitations:
+  - The conditional k=3 scalar upper envelope is not a global theorem until the reduction inequalities are proved.
+  - Gated-planar repeated-law subclass remains open.
+
+## 2026-08-08T19:56:01.068976Z — V5 theorem-closure campaign (M8/M9)
+
+- Command: `python -m pytest -q --durations=15` (full suite); `python -m seion_core.cli.main governance audit`; `python -m seion_core.cli.main governance dedupe-runs`
+- Branch/commit: `campaign/gate13-closeout` / `b817624b5a9be5c6f1c0d0df859d56fb4c655671`
+- Outcome: **EXTREMAL_PROGRAM_PARTIALLY_CLOSED**
+- Summary: Proved a necessary-and-sufficient saturation characterization for the k=2 chain (M8; EQ1-EQ3, arbitrary dimension/rank, independent or repeated laws), and an unconditional tightened k=3 upper envelope U_3(eta) for chain and branching topologies (M9), superseding the prior unproved, dimensionally inconsistent conditional-scalar-reduction bookkeeping entry. Fixed a stale K2-EQ-05 audit status in `equality_conditions.py`. Fixed-eta k=3 sharpness gap narrowed (relative gap 50%->29% at eta=1) but remains open. Full closure accounting in `research/projected_trees_v5/V5_CLOSURE_REPORT.md`.
+- Validation: full pytest suite executed (not partitioned, no timeout): 365 collected, 365 executed, 364 passed, 1 failed, 444.13s elapsed. The one failure (`tests/kgr/test_campaign_negative_controls.py::test_queried_edge_leakage_inflates_metrics_when_deliberately_enabled`) is pre-existing (last touched commit `49e4bfc`, 2026-08-01), lives entirely in the Gate12/KGR track, and was left unmodified per the mission's explicit preserve-KGR instruction. Governance audit passed yellow (same two pre-existing warnings: duplicate_runs_detected, paper_not_release_ready). Lean 4/`lake` not installed on this machine; formal verification (mission Phase 11) is `BLOCKED_BY_MISSING_TOOLING`, not attempted.
+- Changed files:
+  - `research/math_closure/k2/saturation_iff_theorem.tex`
+  - `research/math_closure/k3/general_upper_envelope.tex`
+  - `research/math_closure/status_registry.yaml`
+  - `src/seion_core/research_v5/k2_characterization.py`
+  - `src/seion_core/research_v5/k3_upper_bound.py`
+  - `src/seion_core/research_v5/equality_conditions.py`
+  - `tests/research_v5_test_k2_characterization.py`
+  - `tests/research_v5_test_k3_upper_bound.py`
+  - `tests/research_v5_test_equality_conditions.py`
+  - `scripts/verify_k3_bound.py`
+  - `claims/theorem_registry_v5.yaml`
+  - `research/projected_trees_v5/V5_STATUS.json`
+  - `research/projected_trees_v5/extremal/V5B_EXTREMAL_STATUS.md`
+  - `research/projected_trees_v5/truth_ledger/PROJECTED_GRAPHS_V5_TRUTH_LEDGER.md`
+  - `research/projected_trees_v5/V5_CLOSURE_REPORT.md`
+  - `research/projected_trees_v5/V5_CLOSURE_REPORT.json`
+- Limitations:
+  - Fixed-eta k=3 global sharpness remains open (gap narrowed, not closed).
+  - The large majority of the mission brief's 16 phases were not attempted this session (gated-planar exact extremal, dimension/rank reduction theorem, arbitrary-tree conjecture, signed-forest exact constants, source-calculus consolidation, growing-tree theorem, P8/P10 hardening, novelty audit, manuscript rebuild, application theorem, clean-room package, external review package) -- see `research/projected_trees_v5/V5_CLOSURE_REPORT.md` for the full accounting.
+  - No theorem-level novelty or independent human review performed; every new result carries `approval_status: PENDING_HUMAN_REVIEW`.
+  - Gate13.5, Gate14, KGR, and historical artifacts were not modified. No push, no PR.
