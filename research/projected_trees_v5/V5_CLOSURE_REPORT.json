@@ -1,0 +1,76 @@
+{
+  "schema": "projected-graphs-v5-closure-report-v1",
+  "campaign": "theorem-closure-2026-08-08",
+  "overall_status": "EXTREMAL_PROGRAM_PARTIALLY_CLOSED",
+  "new_theorems": [
+    {
+      "id": "THM_V5_K2_SATURATION_IFF_CHARACTERIZATION",
+      "epistemic_status": "PROVED",
+      "novelty_status": "NOVELTY_NOT_ESTABLISHED",
+      "approval_status": "PENDING_HUMAN_REVIEW",
+      "proof_location": "research/math_closure/k2/saturation_iff_theorem.tex"
+    },
+    {
+      "id": "THM_V5_K3_GENERAL_UPPER_ENVELOPE",
+      "epistemic_status": "PROVED",
+      "novelty_status": "NOVELTY_NOT_ESTABLISHED",
+      "approval_status": "PENDING_HUMAN_REVIEW",
+      "proof_location": "research/math_closure/k3/general_upper_envelope.tex",
+      "supersedes": "v5b_extremal.py conditional_scalar_reduction_upper_bound (CONDITIONAL_ON_UNPROVED_SCALAR_REDUCTION, unproved, dimensionally inconsistent)"
+    }
+  ],
+  "corrections": [
+    {
+      "target": "src/seion_core/research_v5/equality_conditions.py K2-EQ-05",
+      "was": "OPEN_IF_REPEATED",
+      "now": "COMPATIBLE",
+      "reason": "already resolved by the pre-existing V5-B repeated-law witness; the audit function was stale"
+    }
+  ],
+  "remaining_gap_k3_fixed_eta": {
+    "id": "OPEN_V5_K3_FIXED_ETA_SHARPNESS",
+    "at_eta_1": {"lower": 1.0, "old_upper": 2.0, "new_upper": 1.4142135623730951, "old_relative_gap": 0.5, "new_relative_gap": 0.2928932188134525},
+    "at_eta_0_9": {"lower": 1.1111111111111112, "old_upper": 2.0, "new_upper": 1.4949081074941816, "old_relative_gap": 0.4444444444444444, "new_relative_gap": 0.25675020400234}
+  },
+  "phases_not_attempted": [
+    "Phase 3 gated-planar exact extremal",
+    "Phase 4 dimension/rank reduction theorem",
+    "Phase 5 same-law and arbitrary-tree conjecture",
+    "Phase 6 signed-forest exact extremal constants",
+    "Phase 7 source-calculus theorem consolidation",
+    "Phase 8 growing-tree corrected theorem",
+    "Phase 9 P8/P10 rigorous hardening",
+    "Phase 10 novelty audit",
+    "Phase 12 manuscript rebuild",
+    "Phase 13 application theorem",
+    "Phase 14 clean-room reproduction package",
+    "Phase 15 external review package"
+  ],
+  "phase_11_formal_verification": {
+    "status": "BLOCKED_BY_MISSING_TOOLING",
+    "reason": "lean and lake not found on PATH on this machine"
+  },
+  "test_status": {
+    "collected": 365,
+    "executed": 365,
+    "passed": 364,
+    "failed": 1,
+    "skipped": 0,
+    "xfailed": 0,
+    "timeout": 0,
+    "elapsed_seconds": 444.13,
+    "failure_detail": {
+      "test": "tests/kgr/test_campaign_negative_controls.py::test_queried_edge_leakage_inflates_metrics_when_deliberately_enabled",
+      "pre_existing": true,
+      "introduced_this_session": false,
+      "last_touched_commit": "49e4bfc19dd3bb1ef1a1c7fe43369e9517d8d0fb",
+      "last_touched_date": "2026-08-01",
+      "in_scope": false,
+      "reason_out_of_scope": "lives in Gate 12/KGR track; mission explicitly preserves Gate 13.5, Gate 14, KGR untouched"
+    }
+  },
+  "preservation_confirmed": ["Gate 13.5", "Gate 14", "KGR", "historical evidence ledger (append-only)", ".obsidian/workspace.json and other unrelated user-owned files"],
+  "push_performed": false,
+  "pr_opened": false,
+  "destructive_operations_performed": false
+}
