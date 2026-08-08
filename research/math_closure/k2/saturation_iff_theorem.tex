@@ -1,0 +1,112 @@
+\section*{M8: Necessary-and-sufficient characterization of $k=2$ saturation}
+\label{sec:k2-iff}
+
+\textbf{Motivation.} Two structurally different constructions
+(\texttt{construct\_k2\_independent\_map\_saturation},
+\texttt{construct\_k2\_repeated\_map\_saturation}, both in
+\texttt{src/seion\_core/research\_v5/k2\_sharpness.py}) are already known to
+attain $E_T^{\mathrm{proj}}=\rho M L_T$ exactly for every $\eta\in(0,1]$.
+Prior work (\texttt{equality\_conditions.py}) audits each construction
+against an informal checklist but never states or proves the underlying
+\emph{iff} theorem those checklists are instances of, and its repeated-law
+audit was stale (marked \texttt{OPEN\_IF\_REPEATED} even after the repeated-
+law witness had already resolved it -- corrected alongside this theorem,
+\S k2/equality\_conditions.py \texttt{K2-EQ-05}).
+
+\textbf{Setup.} Binary $k=2$ chain: node \texttt{in} combines leaves
+$a,b$; node \texttt{out} (the root) combines node \texttt{in}'s output and
+leaf $d$. Laws $\mu_{\mathrm{in}},\mu_{\mathrm{out}}$ bilinear,
+$\|\mu_{\mathrm{in}}\|_{\mathrm{op}}\le M$, $\|\mu_{\mathrm{out}}\|_{\mathrm
+{op}}\le M$, orthogonal projector $P$ at node \texttt{in}, orthogonal
+projector $P_{\mathrm{out}}$ at the root, closure-residual operator norm
+$\rho_{\mathrm{in}}:=\|(I-P)\mu_{\mathrm{in}}\|_{\mathrm{op}}\le\rho$. No
+restriction on ambient dimension, projector rank, or whether
+$\mu_{\mathrm{in}}=\mu_{\mathrm{out}}$.
+
+\textbf{Theorem.} Write $D:=(I-P)\mu_{\mathrm{in}}(a,b)$. Then
+\[
+  E_T^{\mathrm{proj}} \;=\; \big\| P_{\mathrm{out}}\,\mu_{\mathrm{out}}(D,d) \big\|,
+\]
+and $E_T^{\mathrm{proj}} = \rho M \|a\|\|b\|\|d\|$ (i.e.\ the universal
+bound is attained with equality) \textbf{if and only if} all three of the
+following hold simultaneously:
+\begin{align}
+  \text{(EQ1)}\quad & \|\mu_{\mathrm{out}}(D,d)\| = M\|D\|\|d\| \tag{outer law saturates $M$ on $(D,d)$}\\
+  \text{(EQ2)}\quad & \|D\| = \rho\|a\|\|b\| \tag{closure map saturates $\rho$ on $(a,b)$}\\
+  \text{(EQ3)}\quad & \mu_{\mathrm{out}}(D,d)\in\mathrm{Range}(P_{\mathrm{out}}) \tag{root projection loses nothing}
+\end{align}
+
+\textbf{Proof.} Bilinearity gives $F_{\mathrm{out}}-R_{\mathrm{out}}=
+\mu_{\mathrm{out}}(F_{\mathrm{in}},d)-\mu_{\mathrm{out}}(R_{\mathrm{in}},d)=
+\mu_{\mathrm{out}}(F_{\mathrm{in}}-R_{\mathrm{in}},d)=\mu_{\mathrm{out}}(D,d)$
+(using $F_{\mathrm{in}}=\mu_{\mathrm{in}}(a,b)$, $R_{\mathrm{in}}=P\mu_{\mathrm
+{in}}(a,b)$, so $F_{\mathrm{in}}-R_{\mathrm{in}}=D$), so
+$E_T^{\mathrm{proj}}=\|P_{\mathrm{out}}\mu_{\mathrm{out}}(D,d)\|$ as claimed.
+The universal bound is then obtained from the chain of non-negative
+inequalities
+\[
+  E_T^{\mathrm{proj}}
+  \;\overset{(\mathrm a)}{\le}\; \|\mu_{\mathrm{out}}(D,d)\|
+  \;\overset{(\mathrm b)}{\le}\; M\|D\|\|d\|
+  \;\overset{(\mathrm c)}{\le}\; M\rho\|a\|\|b\|\|d\|,
+\]
+where (a) is projection contractivity ($\|P_{\mathrm{out}}x\|\le\|x\|$),
+(b) is the definition of $\|\mu_{\mathrm{out}}\|_{\mathrm{op}}\le M$, and
+(c) is the definition of $\rho_{\mathrm{in}}\le\rho$. For real numbers
+$0\le x\le y\le z\le w$, $x=w$ forces $x=y=z=w$ (a non-decreasing sequence
+cannot return to its start value without every step being flat). Hence
+$E_T^{\mathrm{proj}}=w$ iff (a), (b), (c) are individually equalities, which
+are exactly EQ3, EQ1, EQ2 respectively (in that order). $\blacksquare$
+
+\textbf{Both known witnesses are instances.} Checked mechanically
+(\texttt{certify\_k2\_saturation}, \texttt{tests/research\_v5\_test\_k2\_
+characterization.py}):
+\begin{itemize}
+  \item Independent-law witness: $D=\rho e_1$ (EQ2 tight since
+  $(I-P)\mu_{\mathrm{in}}(x,y)=\rho x_0y_0e_1$ attains $\rho$ at $x=y=e_0$);
+  $\mu_{\mathrm{out}}(D,d)=M\rho e_0$ (EQ1 tight, since $\mu_{\mathrm{out}}(x,y)
+  =Mx_1y_0e_0$ attains $M$ at $x=e_1,y=e_0=d$); output already in
+  $\mathrm{Range}(P_{\mathrm{out}})=\mathrm{span}(e_0)$ (EQ3 tight).
+  \item Repeated-law witness: identical computation with
+  $\mu_{\mathrm{in}}=\mu_{\mathrm{out}}=\mu$, $\mu(x,y)=Mx_1y_0e_0+\rho
+  x_0y_0e_1$ -- same $D=\rho e_1$, same $\mu(D,d)=M\rho e_0$, all three
+  conditions tight. Weight-sharing does not violate EQ1--EQ3 because a
+  single bilinear map can have distinct norm-attaining input pairs for its
+  structurally different terms ($x_0y_0$ term attains $\rho$ at $(e_0,e_0)$;
+  $x_1y_0$ term attains $M$ at $(e_1,e_0)$) -- this is the precise mechanism
+  behind the informal Section IX remark that ``weight sharing by itself
+  does not destroy sharpness.''
+\end{itemize}
+
+\textbf{Sufficiency exercised predictively.} A third, independently
+constructed instance not matching either prior witness's exact form
+(ambient dimension 3, $\mathrm{rank}(P)=2$, $\mathrm{rank}(P_{\mathrm
+{out}})=1$ on a different axis than $P$, $M=2$, $\rho=0.6$) is built purely
+by satisfying EQ1--EQ3 directly and verified to saturate
+(\texttt{test\_theorem\_predicts\_a\_novel\_saturating\_configuration\_
+not\_in\_prior\_registries}), exercising the theorem's predictive content
+rather than only re-deriving already-known cases.
+
+\textbf{What this does and does not establish.} This is a complete
+characterization of saturation \emph{for the binary $k=2$ chain with the
+stated hypotheses} -- it reduces ``does this configuration saturate?'' to
+three independently checkable local conditions, and explains (does not
+merely tabulate) why both known witnesses work and why weight-sharing per
+se is not an obstruction. It does \textbf{not} determine whether EQ1--EQ3
+are simultaneously satisfiable within any further-restricted subclass (e.g.\
+the gated-planar-rotation family, where they demonstrably are not fully
+compatible -- that family's exact value is $\eta^2$, not $\rho M$, see M2
+class B); that remains a separate, class-specific question. It also says
+nothing about $k\ge3$: the argument is a two-term telescoping identity
+specific to a single internal-node pair and does not extend mechanically
+(see \texttt{k3/general\_upper\_envelope.tex} for the $k=3$ analysis, which
+needed a materially different argument).
+
+\textbf{Status.} \texttt{PROVED} (unconditional real-number chain-of-
+inequalities argument, no floating-point-only evidence). Admissible class:
+finite-dimensional real (identical argument holds verbatim over
+$\mathbb{C}$ with the same norms) binary $k=2$ chain, arbitrary ambient
+dimension and projector rank, arbitrary bilinear laws bounded by $M$ with
+closure-residual $\le\rho$, independent or repeated. \texttt{approval\_
+status: PENDING\_HUMAN\_REVIEW} per project policy -- this is a repository-
+internal proof, not an externally reviewed one.
