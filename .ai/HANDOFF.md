@@ -135,3 +135,11 @@
 - Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 59 passed; JSON validation PASS; git diff --check PASS; P7C commits c7300be and 5168782
 - Resume from commit: `51687822e03e542c29881ac907ec562480f716be` on `campaign/gate13-closeout`
 - Limitation: P7C certifies calculated defects under explicit conventions; it does not prove universal Jacobi or Filippov identity satisfaction, nonlinear sharpness, validated norms, or approximate-law bounds.
+
+## Latest postflight: Projected-tree theory v4 completion package P8 P10 topology and extremal registry
+
+- Timestamp: 2026-08-08T10:28:39.622823+00:00
+- Outcome: **FINITE_SCOPE_COMPLETE_GLOBAL_THEOREMS_OPEN**
+- Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 68 passed; all research_projected_trees JSON parsed; git diff --check PASS; completion commits 1f3303d and 1f4984e
+- Resume from commit: `1f4984ec8e741049789e0035c7a3ba84c86d3f29` on `campaign/gate13-closeout`
+- Limitation: Finite-scope P8/P10 and registry work is complete; global fixed-eta sharpness, universal dimension/rank reduction, globally tight multilinear spectral norms, and theorem-level novelty remain open.

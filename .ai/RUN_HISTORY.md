@@ -221,3 +221,27 @@ changed paths, and limitations. Historical artifact runs remain under
 - Limitations:
   - P7C certifies calculated defects under explicit conventions; it does not prove universal Jacobi or Filippov identity satisfaction, nonlinear sharpness, validated norms, or approximate-law bounds.
   - P8 and sharpness remain deferred; Gate 13.5, Gate 14, KGR, and historical artifacts were not modified.
+
+## 2026-08-08T10:28:39.622823+00:00 — Projected-tree theory v4 completion package P8 P10 topology and extremal registry
+
+- Command: `python -m pytest tests/research_v3 tests/research_v4 -q; python -m seion_core.cli.main governance audit --json; python -m seion_core.cli.main governance dedupe-runs`
+- Branch/commit: `campaign/gate13-closeout` / `1f4984ec8e741049789e0035c7a3ba84c86d3f29`
+- Outcome: **FINITE_SCOPE_COMPLETE_GLOBAL_THEOREMS_OPEN**
+- Summary: Completed all remaining finite-scope implementation work: validated norm enclosures, sound certificate selector, separated approximate-law budget, topology metrics, and monotone sharpness bands. Global sharpness and universal spectral optima remain explicitly open.
+- Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 68 passed; all research_projected_trees JSON parsed; git diff --check PASS; completion commits 1f3303d and 1f4984e
+- Changed files:
+  - `src/seion_core/research_v4/operator_norm_enclosures.py`
+  - `src/seion_core/research_v4/certificate_selector.py`
+  - `src/seion_core/research_v4/approximate_law_error.py`
+  - `src/seion_core/research_v4/topology_registry.py`
+  - `src/seion_core/research_v4/extremal_registry.py`
+  - `tests/research_v4/test_p8_p10_registry.py`
+  - `tests/research_v4/test_extremal_registry.py`
+  - `research/projected_trees_v4/norms/P8_validated_norms.md`
+  - `research/projected_trees_v4/approximation/P10_approximate_law_error.md`
+  - `research/projected_trees_v4/sharpness/extremal_registry.json`
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.json`
+  - `.ai/TASKS.md`
+- Limitations:
+  - Finite-scope P8/P10 and registry work is complete; global fixed-eta sharpness, universal dimension/rank reduction, globally tight multilinear spectral norms, and theorem-level novelty remain open.
+  - Gate 13.5, Gate 14, KGR, and historical artifacts were not modified.
