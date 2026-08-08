@@ -9,6 +9,15 @@ from .source_aware_dag import (
     VectorDAGNode,
     certify_source_aware_dag,
 )
+from .higher_order_source_polynomial import (
+    MultiIndex,
+    PolynomialDAGNode,
+    SourcePolynomial,
+    SourcePolynomialCertificate,
+    TruncationResult,
+    certify_source_polynomial_dag,
+    multiindex_degree,
+)
 
 __all__ = [
     "DAGCertificate",
@@ -24,4 +33,11 @@ __all__ = [
     "SignedSourceCertificate",
     "SignedSourceTerm",
     "certify_signed_source_forest",
+    "MultiIndex",
+    "PolynomialDAGNode",
+    "SourcePolynomial",
+    "SourcePolynomialCertificate",
+    "TruncationResult",
+    "certify_source_polynomial_dag",
+    "multiindex_degree",
 ]

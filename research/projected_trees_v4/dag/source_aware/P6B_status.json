@@ -1,0 +1,22 @@
+{
+  "schema": "projected-trees-p6b-status-v1",
+  "status": "PROVED_UNDER_ASSUMPTIONS",
+  "scope": "finite-dimensional finite DAGs with multilinear laws and fixed labelled source directions",
+  "result": "exact finite vector-valued source polynomial indexed by source multi-indices",
+  "multiindex": "alpha=(alpha_s), |alpha|=sum_s alpha_s",
+  "repeated_source": "supported; repeated use in two slots creates alpha_s=2",
+  "tree_reduction": "tree subset expansion is recovered when sources are not reused",
+  "reference_implementation": "recursive dependency-unrolled evaluator agrees coefficient-by-coefficient",
+  "truncation": {
+    "orders_supported": [1, 2, 3],
+    "remainder": "sum of norm-weighted omitted finite monomials"
+  },
+  "implementation": "src/seion_core/research_v4/higher_order_source_polynomial.py",
+  "tests": "tests/research_v4/test_higher_order_source_polynomial.py",
+  "limitations": [
+    "fixed numeric source directions with formal scalar amplitudes",
+    "finite exact polynomial only; no implicit infinite tail theorem",
+    "nonlinear signed associator remains P7B",
+    "validated operator norms remain P8"
+  ]
+}

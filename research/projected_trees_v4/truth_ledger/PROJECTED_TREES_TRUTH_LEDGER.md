@@ -57,6 +57,7 @@ full 15-stage campaign in this P0 pass.
 | PT-011 | Scalar DAG recurrence admits an `O(|V|+|E|)` source-resolved reverse dynamic program without tree unrolling | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/dag/proof/dag_native_source_resolved.md`; `src/seion_core/research_v4/dag_certificate.py` |
 | PT-012 | First-order source-aware vector DAG coefficients aggregate all paths carrying the same source before norm; the resulting bound is no larger than the pathwise triangle certificate | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/dag/source_aware/proof/P6A_first_order_source_aware.md`; `src/seion_core/research_v4/source_aware_dag.py`; `tests/research_v4/test_source_aware.py` |
 | PT-013 | First-order signed source aggregation for a signed forest is no larger than the treewise triangle certificate and can be strictly smaller | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/cancellation/associator/P7A_signed_source_certificate.md`; `src/seion_core/research_v4/signed_certificate.py`; `tests/research_v4/test_source_aware.py` |
+| PT-014 | Finite multilinear DAG errors admit an exact finite source polynomial indexed by multi-indices; repeated source use is preserved and order truncation has an omitted-term norm bound | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/dag/source_aware/proof/P6B_exact_source_polynomial.md`; `src/seion_core/research_v4/higher_order_source_polynomial.py`; `tests/research_v4/test_higher_order_source_polynomial.py` |
 
 ## Restricted exact constructions
 
@@ -87,8 +88,8 @@ not determine the global fixed-eta extremal constants.
 | PT-O-002 | Whether dimension 2/rank 1 is universally sufficient for k=2 extremizers | `OPEN` | Restricted planar family is not a dimension-reduction theorem |
 | PT-O-003 | General k=3 sharpness by topology, dimension, rank, field, and repeated-map policy | `OPEN` | Chain/branching restricted forms do not close class A |
 | PT-O-004 | Exact nonlinear cancellation-aware constants for associator, Jacobiator, Filippov, and general GJI | `OPEN` | P7A closes only the first-order signed-source inequality; nonlinear sharp constants remain open |
-| PT-O-005 | Higher-order correlation-aware/vector DAG source expansion without tree unrolling | `OPEN` | P6A closes the first-order source-linear layer; shared-source higher-order interactions remain open |
-| PT-O-006 | Shared-source/correlation-aware provenance polynomial for DAGs | `OPEN` | P6B remains a proposed research direction, not current evidence |
+| PT-O-005 | Scalable higher-order/correlation-aware vector DAG source expansion without tree unrolling | `OPEN` | P6B closes the exact finite polynomial layer for small declared DAGs; scalable tail envelopes and broader correlation theory remain open |
+| PT-O-006 | Scalable shared-source/correlation-aware provenance polynomial for DAGs | `OPEN` | P6B exact finite multi-index propagation is implemented; scalable provenance compression remains open |
 | PT-O-007 | Validated multilinear spectral/operator norm enclosures tighter than Frobenius fallback | `OPEN` | Existing numerical searches are lower-bound/conjecture engines |
 | PT-O-008 | Universal dominance ordering among nodewise, pathwise, mixed-mask, and telescoping certificates | `OPEN` | Current documents explicitly avoid a universal dominance claim |
 | PT-O-009 | Nonlinear Lipschitz envelope for LayerNorm, gates, top-k, and neural modules | `OPEN` | Outside the finite multilinear core theorem scope |

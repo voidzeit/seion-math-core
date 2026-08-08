@@ -76,4 +76,8 @@
   source interactions remain open.
 - [x] Prove P7A first-order signed-source aggregation and strict cancellation
   witness; nonlinear signed-identity constants remain open.
-- [ ] Implement P6B higher-order DAG source-polynomial expansion.
+- [x] Implement P6B exact finite higher-order DAG source-polynomial expansion
+  with repeated-source multi-indices and certified order truncation.
+- [ ] Implement P7B nonlinear signed associator certificate over retained
+  source-polynomial orders.
+- [ ] Implement P8 validated multilinear operator-norm enclosures.
