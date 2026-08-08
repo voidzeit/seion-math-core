@@ -9,6 +9,7 @@
   "strict_higher_order_cancellation": ["pure_second_order", "mixed_second_order"],
   "implementation": "src/seion_core/research_v4/signed_source_polynomial.py",
   "tests": "tests/research_v4/test_signed_source_polynomial.py",
+  "source_commit": "5c12adb8567c3676e89c3c450b18a5be79a76207",
   "limitations": [
     "Jacobiator and Filippov instantiation remain P7C",
     "universal nonlinear associator sharpness remains open",
