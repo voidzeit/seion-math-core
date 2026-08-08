@@ -78,6 +78,7 @@
   witness; nonlinear signed-identity constants remain open.
 - [x] Implement P6B exact finite higher-order DAG source-polynomial expansion
   with repeated-source multi-indices and certified order truncation.
-- [ ] Implement P7B nonlinear signed associator certificate over retained
-  source-polynomial orders.
+- [x] Implement P7B nonlinear signed source-polynomial certificate over
+  retained and exact higher-order terms.
+- [ ] Instantiate P7C for associator, Jacobiator, and Filippov defects.
 - [ ] Implement P8 validated multilinear operator-norm enclosures.

@@ -111,3 +111,11 @@
 - Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 40 passed; k2 exact construction PASS; k3 chain/branching exact constructions PASS; governance audit passed yellow; JSON validation and git diff --check passed
 - Resume from commit: `c491c032579b9239f2c7216801d174f86c11c4de` on `campaign/gate13-closeout`
 - Limitation: P6A/P7A are first-order source-linear results; higher-order source polynomials, nonlinear associator constants, universal sharpness, and theorem-level novelty remain open.
+
+## Latest postflight: Projected-tree theory v4 D1 P6B exact higher-order source polynomial
+
+- Timestamp: 2026-08-08T10:05:14.183167+00:00
+- Outcome: **D1_P6B_COMPLETE_P7B_P8_DEFERRED**
+- Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 47 passed; JSON validation PASS; git diff --check PASS; P1-P7A freeze commit aba0b13 preserved; P6B implementation commits 8b3341f and 9adc7aa
+- Resume from commit: `9adc7aa2b6d91944f3aa2573531107b871cbf658` on `campaign/gate13-closeout`
+- Limitation: P6B is exact for finite declared numeric DAGs with fixed source directions and formal scalar amplitudes; scalable tail envelopes, nonlinear signed associator P7B, validated norms P8, and global sharpness remain open.

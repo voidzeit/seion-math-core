@@ -1,0 +1,17 @@
+{
+  "schema": "projected-trees-p7b-status-v1",
+  "status": "PROVED_UNDER_ASSUMPTIONS",
+  "scope": "finite signed expressions over exact finite P6B source polynomials",
+  "result": "signed coefficients are aggregated by complete source multi-index before norm",
+  "soundness_chain": "B_actual <= B_signed <= B_treewise",
+  "modes": ["exact_finite", "truncated_certified"],
+  "truncation_orders_tested": [1, 2, 3],
+  "strict_higher_order_cancellation": ["pure_second_order", "mixed_second_order"],
+  "implementation": "src/seion_core/research_v4/signed_source_polynomial.py",
+  "tests": "tests/research_v4/test_signed_source_polynomial.py",
+  "limitations": [
+    "Jacobiator and Filippov instantiation remain P7C",
+    "universal nonlinear associator sharpness remains open",
+    "validated multilinear norms remain P8"
+  ]
+}

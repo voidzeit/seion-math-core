@@ -164,3 +164,22 @@ changed paths, and limitations. Historical artifact runs remain under
 - Limitations:
   - P6A/P7A are first-order source-linear results; higher-order source polynomials, nonlinear associator constants, universal sharpness, and theorem-level novelty remain open.
   - The worktree remains dirty and no commit or push was requested.
+
+## 2026-08-08T10:05:14.183167+00:00 — Projected-tree theory v4 D1 P6B exact higher-order source polynomial
+
+- Command: `python -m pytest tests/research_v3 tests/research_v4 -q; python -m seion_core.cli.main governance audit --json; python -m seion_core.cli.main governance dedupe-runs`
+- Branch/commit: `campaign/gate13-closeout` / `9adc7aa2b6d91944f3aa2573531107b871cbf658`
+- Outcome: **D1_P6B_COMPLETE_P7B_P8_DEFERRED**
+- Summary: Implemented exact finite higher-order source provenance on multilinear DAGs using source multi-indices, repeated-source convolution, recursive reference agreement, and certified finite truncation bounds for orders 1–3.
+- Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 47 passed; JSON validation PASS; git diff --check PASS; P1-P7A freeze commit aba0b13 preserved; P6B implementation commits 8b3341f and 9adc7aa
+- Changed files:
+  - `src/seion_core/research_v4/higher_order_source_polynomial.py`
+  - `tests/research_v4/test_higher_order_source_polynomial.py`
+  - `research/projected_trees_v4/dag/source_aware/proof/P6B_exact_source_polynomial.md`
+  - `research/projected_trees_v4/dag/source_aware/P6B_status.json`
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.json`
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.md`
+  - `.ai/TASKS.md`
+- Limitations:
+  - P6B is exact for finite declared numeric DAGs with fixed source directions and formal scalar amplitudes; scalable tail envelopes, nonlinear signed associator P7B, validated norms P8, and global sharpness remain open.
+  - No Gate 13.5/Gate 14/KGR artifacts were modified.

@@ -18,6 +18,11 @@ from .higher_order_source_polynomial import (
     certify_source_polynomial_dag,
     multiindex_degree,
 )
+from .signed_source_polynomial import (
+    SignedPolynomialTerm,
+    SignedSourcePolynomialCertificate,
+    certify_signed_source_polynomial,
+)
 
 __all__ = [
     "DAGCertificate",
@@ -40,4 +45,7 @@ __all__ = [
     "TruncationResult",
     "certify_source_polynomial_dag",
     "multiindex_degree",
+    "SignedPolynomialTerm",
+    "SignedSourcePolynomialCertificate",
+    "certify_signed_source_polynomial",
 ]
