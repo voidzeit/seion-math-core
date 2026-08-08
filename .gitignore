@@ -31,6 +31,9 @@ artifacts/release/*
 *.out
 *.synctex.gz
 
+# Projected-graphs-v5 PDF visual-QA renders; final PDFs and manifests are kept.
+tmp/pdfs/projected_graphs_v5*/
+
 # spectral/runs/: legacy A-N v17 run evidence, deliberately preserved as
 # local historical evidence rather than committed canonical source (see
 # spectral/legacy/v17/ on research/spectral-a-to-n-v18 for the immutable,

@@ -1,0 +1,249 @@
+\documentclass[11pt]{amsart}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs,tabularx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+\graphicspath{{../tree_stability_v4/figures/}}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black,
+  pdftitle={Projected Multilinear Trees: Exact Error Decomposition and Fixed-eta Sharpness},
+  pdfauthor={Eliuth Chavero Jasso},
+  pdfsubject={Finite-dimensional multilinear tree projection error},
+  pdfkeywords={multilinear trees, recursive projection, closure defect, sharpness}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\cV}{\mathcal V}
+
+\title[Projected multilinear trees]{Projected Multilinear Trees: Exact Error Decomposition, Universal Bounds, and Independent-Law Sharpness}
+\author{Eliuth Chavero Jasso}
+\address{Independent Researcher, Apizaco, Tlaxcala, Mexico}
+\thanks{Research manuscript. The theorem statuses in this paper are scoped to the stated hypotheses. Independent human review and theorem-level novelty review remain pending.}
+\date{8 August 2026 -- v5 research manuscript}
+
+\begin{document}
+\begin{abstract}
+We study finite typed trees whose internal vertices apply multilinear laws and whose recursively evaluated outputs are orthogonally projected onto reduced subspaces. An exact child-error expansion separates local closure leakage from propagated and higher-order branch interactions. This yields the universal ambient and projected-root coefficients $k$ and $k-1$. We then close a fixed-parameter sharpness question that was previously unresolved: for real binary two-node chains with independent bilinear laws, rank-one orthogonal projection, unit leaves, and $\rho=\eta M$, the projected coefficient is exactly sharp, $C_{2,\mathrm{ind}}^P(\eta)=1$ for $0<\eta\le1$. The earlier $\eta^2$ family is retained as a restricted repeated-law construction, not as evidence against the general theorem. For $k=3$ we provide certified independent-law lower witnesses for chain and branching topologies while leaving global sharpness open.\end{abstract}
+\subjclass[2020]{15A69, 17A42, 18M60, 65G50}
+\keywords{multilinear tree, recursive orthogonal projection, closure defect, fixed-eta sharpness, typed composition}
+\maketitle
+
+\section{Scope and epistemic status}
+
+This paper is the mathematical core of a larger repository. Executable
+behavior is governed by the source and tests; mathematical status is governed
+by the theorem registries and proof dossiers. Numerical residuals and finite
+checks are reported as evidence, not promoted to universal theorems. The
+finite computational core is frozen at commit
+\texttt{1f4984ec8e741049789e0035c7a3ba84c86d3f29}; the v5 theorem package is
+recorded at the subsequent scientific commits listed in the reproducibility
+companion.
+
+\section{Typed projected trees}
+
+Let $\mathcal T$ be a finite rooted tree. For every type $\tau$, let $V_\tau$
+and $W_\tau$ be finite-dimensional real or complex Hilbert spaces and let
+$Q_\tau:W_\tau\to V_\tau$ be an isometry. Put
+\[
+ P_\tau=Q_\tau Q_\tau^*,\qquad P_\tau^2=P_\tau=P_\tau^*.
+\]
+An internal vertex $v$ of arity $a_v$ carries a bounded typed law
+\[
+ \mu_v:\prod_{j=1}^{a_v}V_{\tau(v,j)}\longrightarrow V_{\tau(v)}.
+\]
+Write $M_v=\norm{\mu_v}_\op$ and define the local closure map
+\[
+ r_v=(I-P_v)\mu_v(P_{c_1}\cdot,\ldots,P_{c_{a_v}}\cdot),
+ \qquad \rho_v=\norm{r_v}_\op.
+\]
+
+For reduced leaves $z_\ell\in W_{\tau(\ell)}$, define the ambient and
+recursively projected evaluations by
+\[
+ F_\ell=R_\ell=Q_{\tau(\ell)}z_\ell,\quad
+ F_v=\mu_v(F_{c_1},\ldots,F_{c_{a_v}}),\quad
+ R_v=P_v\mu_v(R_{c_1},\ldots,R_{c_{a_v}}).
+\]
+At the root, define
+\[
+ E^A=\norm{F-R},\quad E^P=\norm{PF-R},\quad
+ E^N=\norm{(I-P)F},\quad E^{\mathrm{red}}=\norm{Q^*F-Q^*R}.
+\]
+
+\begin{proposition}[Exact root geometry]
+For every valid typed tree,
+\[
+ (E^A)^2=(E^P)^2+(E^N)^2,
+ \qquad E^{\mathrm{red}}=E^P.
+\]
+\end{proposition}
+
+The first identity is the orthogonal decomposition
+$F-R=(PF-R)+(I-P)F$; the second follows from the isometry of $Q$ on the
+projected range.
+
+\section{Exact local error algebra}
+
+Let $D_v=F_v-R_v$, and for a nonempty subset $S$ of child slots let
+$y_i^S=D_i$ when $i\in S$ and $y_i^S=R_i$ otherwise. Multilinearity gives
+the exact identity
+\begin{equation}
+ D_v=r_v(R_1,\ldots,R_{a_v})+
+ \sum_{\varnothing\ne S\subseteq[a_v]}\mu_v(y_1^S,\ldots,y_{a_v}^S).
+ \label{eq:subset}
+\end{equation}
+Applying $P_v$ annihilates the new local normal residual because
+$P_v(I-P_v)=0$. Equation~\eqref{eq:subset} is an identity, not a bound; the
+inequalities begin only after taking norms and applying operator estimates.
+
+\section{Universal coefficients}
+
+Let $k$ be the number of internal vertices and
+$L=\prod_\ell\norm{z_\ell}$. Under $M_v\le M$ and $\rho_v\le\rho$,
+induction on the tree gives
+\begin{theorem}[Universal ambient and projected bounds]
+\label{thm:universal}
+\[
+ E^A\le k\rho M^{k-1}L,\qquad E^N\le k\rho M^{k-1}L,
+ \qquad E^P=E^{\mathrm{red}}\le(k-1)\rho M^{k-1}L.
+\]
+\end{theorem}
+
+The root source contributes to ambient and normal error but not to the
+projected-root error. This is the exact origin of the coefficient change
+$k\to k-1$. The theorem is conditional only on the finite-dimensional typed
+Hilbert-space, orthogonal-projector, multilinearity, and uniform norm/defect
+hypotheses stated above.
+
+\section{Fixed-eta sharpness for two-node chains}
+
+For a fixed binary chain define the normalized projected constant
+\[
+ C_T^P(\eta)=\sup\frac{E^P}{\rho M L},\qquad \eta=\rho/M.
+\]
+The supremum is over the declared admissible class. The universal theorem
+implies $C_T^P(\eta)\le1$ for $k=2$.
+
+\begin{theorem}[Sharpness for independent binary laws]
+\label{thm:k2sharp}
+Consider real two-dimensional spaces, the rank-one projector
+$P=\operatorname{diag}(1,0)$, unit leaves $e_0,e_0,e_0$, and independently
+chosen bilinear laws. For every $0<\eta\le1$, there are laws with
+$\norm{\mu_1}_\op=\norm{\mu_2}_\op=M$, closure defects at most
+$\rho=\eta M$, and
+\[
+ E^P=\rho M.
+\]
+Consequently,
+\[
+ \boxed{C_{2,\mathrm{ind}}^P(\eta)=1},\qquad 0<\eta\le1.
+\]
+\end{theorem}
+
+\begin{proof}
+Let $e_0=(1,0)$ and $e_1=(0,1)$. Define
+\[
+ \mu_1(x,y)=M x_1y_1e_0+\rho x_0y_0e_1,
+ \qquad
+ \mu_2(x,y)=M x_1y_0e_0.
+\]
+For unit $x,y$, the two output components of $\mu_1$ have squared norm at
+most $M^2(x_1^2y_1^2+\eta^2x_0^2y_0^2)\le M^2$; equality is attained on
+the normal-normal input. The second law has norm $M$ and the same estimate is
+immediate. On projected inputs, the first closure map has norm $\rho$ and
+the second has norm zero. The ambient first-node value on $(e_0,e_0)$ is
+$\rho e_1$, while its projected value is zero. The second law maps this
+normal error with gain $M$ into $\ran P$. Hence $E^P=M\rho$. The upper
+bound in Theorem~\ref{thm:universal} supplies the matching inequality.
+\end{proof}
+
+\begin{remark}[Parameter sharing changes the extremal problem]
+The earlier gated-planar/repeated-law construction gives
+$E^P=\eta^2M^2$, hence only the lower bound
+$C_{2,\mathrm{rep}}^P(\eta)\ge\eta$ after normalization. The universal
+upper remains $C_{2,\mathrm{rep}}^P(\eta)\le1$. Thus independent-law and
+repeated-law sharpness are distinct extremal problems.
+\end{remark}
+
+\section{Independent-law k=3 lower witnesses}
+
+The v5 construction package supplies separate chain and branching witnesses.
+With $q=\min(\rho,M/\sqrt2)$, both yield
+\[
+ E^P=2Mq\sqrt{M^2-q^2}.
+\]
+Therefore, relative to the $k=3$ normalization $\rho M^2$,
+\[
+ C_{3,\mathrm{ind}}^P(\eta)\ge
+ \begin{cases}
+ 2\sqrt{1-\eta^2}, & 0<\eta\le1/\sqrt2,\\
+ 1/\eta, & 1/\sqrt2<\eta\le1.
+ \end{cases}
+\]
+These are certified construction lower bounds. They do not close the global
+constant $C_T^P(\eta)\le2$, and equality remains open for both topologies.
+
+\begin{table}[t]
+\centering
+\small
+\caption{V5 sharpness status.}
+\begin{tabularx}{.96\textwidth}{@{}lXl@{}}
+\toprule
+class & result & status\\
+\midrule
+$k=2$, independent laws & $C_{2,\mathrm{ind}}^P(\eta)=1$ & exact under assumptions\\
+$k=2$, repeated law & $\eta\le C_{2,\mathrm{rep}}^P(\eta)\le1$ & open\\
+$k=3$, independent chain & stated analytic lower bound & certified lower bound\\
+$k=3$, independent branching & stated analytic lower bound & certified lower bound\\
+finite-tree independent conjecture & $C_{T,\mathrm{ind}}^P(\eta)=k(T)-1$ & open conjecture\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Nodewise and topology-aware directions}
+
+The exact subset expansion supports mixed-mask dynamic programming, source
+path sums, and scalar telescoping-order optimization. These certificates
+attribute responsibility but do not imply a universal topology-only sharp
+constant. Chain, branching, depth, fan-out, fan-in, and operator-sharing
+patterns must be treated as separate coordinates of the extremal problem.
+The v5 conjecture that sufficiently free independent laws attain $k-1$ for
+all finite trees is recorded as open rather than silently inferred from the
+$k=2$ theorem.
+
+\section{Limitations and conclusion}
+
+The results are finite-dimensional and scoped. Repeated-law sharpness,
+dimension/rank reduction, global $k=3$ sharpness, globally tight multilinear
+norms, theorem-level novelty, and independent human review remain open. The
+paper therefore reports a closed theorem for one natural class, certified
+lower constructions for the next case, and a precise map of the unresolved
+extremal frontier.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=.90\textwidth]{fig11_extremizer_geometry}
+\caption{Registered projected-tree extremizer geometry reused from the finite v4 evidence package.}
+\end{figure}
+
+\nocite{Yau2016,LodayVallette2012,Higham2002,MooreKearfottCloud2009,EggerEtAl2018}
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

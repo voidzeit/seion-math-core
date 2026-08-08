@@ -1,0 +1,48 @@
+﻿{
+    "schema":  "projected-graphs-v5-render-audit-v1",
+    "generated_utc":  "2026-08-08T11:07:44.4812176Z",
+    "renderer":  "pdftoppm",
+    "papers":  [
+                   {
+                       "paper":  "projected_multilinear_trees_v5",
+                       "pdf":  "output/pdf/projected_multilinear_trees_v5.pdf",
+                       "sha256":  "8880f9d737605f8043f1e9289e7e97ee77ea59fe8a3226866fc08fabdb68b36a",
+                       "expected_pages":  5,
+                       "rendered_pages":  5,
+                       "render_directory":  "tmp/pdfs/projected_graphs_v5_postflight",
+                       "visual_review":  "MANUAL_REVIEW_COMPLETED_2026-08-08",
+                       "defects_observed":  [
+
+                                            ]
+                   },
+                   {
+                       "paper":  "source_resolved_error_calculus_v5",
+                       "pdf":  "output/pdf/source_resolved_error_calculus_v5.pdf",
+                       "sha256":  "acce46d858ab71ebd0a4f187f1320e07da78f3f8ee718a69bf1aa8fe7820d23c",
+                       "expected_pages":  5,
+                       "rendered_pages":  5,
+                       "render_directory":  "tmp/pdfs/projected_graphs_v5_postflight",
+                       "visual_review":  "MANUAL_REVIEW_COMPLETED_2026-08-08",
+                       "defects_observed":  [
+
+                                            ]
+                   },
+                   {
+                       "paper":  "software_reproducibility_v5",
+                       "pdf":  "output/pdf/software_reproducibility_v5.pdf",
+                       "sha256":  "95e9593130c6308494c70976adaa2e2361857eb646e96f520652e1dd50dba357",
+                       "expected_pages":  4,
+                       "rendered_pages":  4,
+                       "render_directory":  "tmp/pdfs/projected_graphs_v5_postflight",
+                       "visual_review":  "MANUAL_REVIEW_COMPLETED_2026-08-08",
+                       "defects_observed":  [
+
+                                            ]
+                   }
+               ],
+    "result":  "PASS",
+    "limitations":  [
+                        "Visual review is a human inspection of rendered PNG pages.",
+                        "Theorem-level novelty and independent human review remain pending."
+                    ]
+}

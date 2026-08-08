@@ -1,0 +1,36 @@
+﻿{
+    "papers":  [
+                   {
+                       "source":  "projected_multilinear_trees_v5.tex",
+                       "output":  "output/pdf/projected_multilinear_trees_v5.pdf",
+                       "sha256":  "8880f9d737605f8043f1e9289e7e97ee77ea59fe8a3226866fc08fabdb68b36a",
+                       "pdfinfo":  "Title:           Projected Multilinear Trees: Exact Error Decomposition and Fixed-eta Sharpness\r\nSubject:         Finite-dimensional multilinear tree projection error\r\nKeywords:        multilinear trees, recursive projection, closure defect, sharpness\r\nAuthor:          Eliuth Chavero Jasso\r\nCreator:         LaTeX with hyperref\r\nProducer:        MiKTeX pdfTeX-1.40.29\r\nCreationDate:    Sat Aug  8 07:03:31 2026 Eastern Daylight Time\r\nModDate:         Sat Aug  8 07:03:31 2026 Eastern Daylight Time\r\nCustom Metadata: yes\r\nMetadata Stream: no\r\nTagged:          no\r\nUserProperties:  no\r\nSuspects:        no\r\nForm:            none\r\nJavaScript:      no\r\nPages:           5\r\nEncrypted:       no\r\nPage size:       612 x 792 pts (letter)\r\nPage rot:        0\r\nFile size:       320496 bytes\r\nOptimized:       no\r\nPDF version:     1.5"
+                   },
+                   {
+                       "source":  "source_resolved_error_calculus_v5.tex",
+                       "output":  "output/pdf/source_resolved_error_calculus_v5.pdf",
+                       "sha256":  "acce46d858ab71ebd0a4f187f1320e07da78f3f8ee718a69bf1aa8fe7820d23c",
+                       "pdfinfo":  "Title:           Source-Resolved Error Calculus for Projected Multilinear Computational Graphs\r\nSubject:         DAG provenance, higher-order source polynomials, and signed cancellation certificates\r\nKeywords:        computational DAG, error provenance, source polynomial, cancellation certificate\r\nAuthor:          Eliuth Chavero Jasso\r\nCreator:         LaTeX with hyperref\r\nProducer:        MiKTeX pdfTeX-1.40.29\r\nCreationDate:    Sat Aug  8 07:03:36 2026 Eastern Daylight Time\r\nModDate:         Sat Aug  8 07:03:36 2026 Eastern Daylight Time\r\nCustom Metadata: yes\r\nMetadata Stream: no\r\nTagged:          no\r\nUserProperties:  no\r\nSuspects:        no\r\nForm:            none\r\nJavaScript:      no\r\nPages:           5\r\nEncrypted:       no\r\nPage size:       612 x 792 pts (letter)\r\nPage rot:        0\r\nFile size:       295059 bytes\r\nOptimized:       no\r\nPDF version:     1.5"
+                   },
+                   {
+                       "source":  "software_reproducibility_v5.tex",
+                       "output":  "output/pdf/software_reproducibility_v5.pdf",
+                       "sha256":  "95e9593130c6308494c70976adaa2e2361857eb646e96f520652e1dd50dba357",
+                       "pdfinfo":  "Title:           SEION Math Core v5: Software, Evidence, and Reproducibility\r\nSubject:         Research software and artifact protocol for projected multilinear tree and graph certificates\r\nKeywords:        research software, reproducibility, artifact governance, multilinear graphs\r\nAuthor:          Eliuth Chavero Jasso\r\nCreator:         LaTeX with hyperref\r\nProducer:        MiKTeX pdfTeX-1.40.29\r\nCreationDate:    Sat Aug  8 07:06:51 2026 Eastern Daylight Time\r\nModDate:         Sat Aug  8 07:06:51 2026 Eastern Daylight Time\r\nCustom Metadata: yes\r\nMetadata Stream: no\r\nTagged:          no\r\nUserProperties:  no\r\nSuspects:        no\r\nForm:            none\r\nJavaScript:      no\r\nPages:           4\r\nEncrypted:       no\r\nPage size:       612 x 792 pts (letter)\r\nPage rot:        0\r\nFile size:       201099 bytes\r\nOptimized:       no\r\nPDF version:     1.5"
+                   }
+               ],
+    "generated_utc":  "2026-08-08T11:06:52.2148434Z",
+    "source_directory":  "papers/projected_graphs_v5",
+    "schema":  "projected-graphs-v5-paper-package-v1",
+    "limitations":  [
+                        "Theorem-level novelty and independent human review remain pending.",
+                        "Global repeated-law and k=3 sharpness remain open.",
+                        "This package does not modify Gate 13.5, Gate 14, KGR, or historical artifacts."
+                    ],
+    "output_directory":  "output/pdf",
+    "validation":  [
+                       "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error",
+                       "pdfinfo",
+                       "pdftoppm visual rendering"
+                   ]
+}
