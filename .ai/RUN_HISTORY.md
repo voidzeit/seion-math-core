@@ -330,6 +330,30 @@ changed paths, and limitations. Historical artifact runs remain under
   - No theorem-level novelty or independent human review performed; every new result carries `approval_status: PENDING_HUMAN_REVIEW`.
   - Gate13.5, Gate14, KGR, and historical artifacts were not modified. No push, no PR.
 
+## 2026-08-08T21:05:03.952610Z — External review corrections to M8/M10
+
+- Command: `python -m pytest -q` (full suite, no partitioning)
+- Branch/commit: `campaign/gate13-closeout` / `9c8e755866684194bc09b4a51db34466fe01790c`
+- Outcome: **EXTREMAL_PROGRAM_PARTIALLY_CLOSED** (unchanged label; corrects, does not add, mathematical claims)
+- Summary: An external review of the M8/M9/M10 write-ups found two real, concrete errors. M8: the theorem and final formula were correct, but the .tex proof's intermediate line wrongly claimed F_out-R_out=mu_out(D,d) directly (missing a (I-P_out)mu_out(R_in,d) term that only vanishes after P_out is applied) -- fixed; also expanded M9's previously-terse branching-topology section into an explicit derivation. M10: (1) Step 1's claim "S1 perp S2" did not follow from the cited lemma for an arbitrary projector -- repaired with a projector-independent self-adjointness/contradiction argument, verified across 20,000 random trials; (2) the conclusion invalidly inferred the strict supremum inequality C_3,ind^P(eta) < U_3(eta) from mere non-attainment (a supremum can be approached without being attained) -- downgraded epistemic_status PROVED -> PROVED_NON_ATTAINMENT throughout every registry, and the strict-gap question is now a separate, explicitly open item (OPEN_V5_K3_STRICT_SUPREMUM_GAP). A correction record is in V5_CLOSURE_REPORT.md/.json.
+- Validation: full pytest suite, no timeout: 450 collected, 450 executed, 449 passed, 1 pre-existing out-of-scope KGR failure (same one, unmodified), 457.36s elapsed.
+- Changed files:
+  - `research/math_closure/k2/saturation_iff_theorem.tex`
+  - `research/math_closure/k3/general_upper_envelope.tex`
+  - `research/math_closure/k3/m10_non_sharpness_of_m9.tex`
+  - `research/math_closure/status_registry.yaml`
+  - `src/seion_core/research_v5/k3_non_sharpness.py`
+  - `tests/research_v5_test_k3_non_sharpness.py`
+  - `claims/theorem_registry_v5.yaml`
+  - `research/projected_trees_v5/V5_STATUS.json`
+  - `research/projected_trees_v5/truth_ledger/PROJECTED_GRAPHS_V5_TRUTH_LEDGER.md`
+  - `research/projected_trees_v5/V5_CLOSURE_REPORT.md`
+  - `research/projected_trees_v5/V5_CLOSURE_REPORT.json`
+- Limitations:
+  - Whether C_3,ind^P(eta) is strictly below U_3(eta) (vs. equal to it as an unattained supremum) remains genuinely open -- M10 does not resolve this, only non-attainment pointwise.
+  - No other section of the 12-point follow-up list was attempted this pass; this was purely a correctness pass on the prior session's own claims.
+  - Gate13.5, Gate14, KGR, and historical artifacts were not modified. No push, no PR.
+
 ## 2026-08-08T20:38:04.673628Z — M10 non-sharpness proof and pytest discovery fix
 
 - Command: `python -m pytest --collect-only -q`; `python -m pytest -q` (full suite, no partitioning)
