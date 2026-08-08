@@ -54,3 +54,27 @@ repeated gated-planar law family, not the general independent-law class.
 The simultaneous equality conditions are compatible for independent node laws,
 as witnessed by the exact construction. The additional same-law constraint is
 not resolved: the repeated-law equality system remains `OPEN`.
+
+## V5-A: independent-law k=3 lower witnesses
+
+The chain and branching constructions in
+`src/seion_core/research_v5/k3_independent_candidates.py` are certified lower
+witnesses, not global sharpness results. With a defect budget `rho=eta*M`,
+they choose
+
+```text
+q = min(rho, M/sqrt(2))
+E_proj = 2*M*q*sqrt(M^2-q^2)
+```
+
+For `0 < eta <= 1/sqrt(2)`, the realized defect equals the budget and the
+normalized lower bound is `2*sqrt(1-eta^2)`. For larger eta, the witness uses
+the budget maximum of its family and reports the realized defect separately.
+The global independent-law constants for `k=3` remain `OPEN`.
+
+## Conjectural direction
+
+The finite-tree independent-law statement
+`C_{T,ind}^P(eta)=k(T)-1` for sufficiently free laws is recorded as an open
+conjecture only. No theorem or numerical construction in this repository
+establishes it beyond the exact k=2 independent-law class.

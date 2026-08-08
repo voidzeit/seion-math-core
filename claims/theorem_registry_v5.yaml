@@ -54,6 +54,42 @@ theorems:
     scope: [repeated/shared node law, fixed eta]
     epistemic_status: OPEN
     novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: LB_V5_K3_INDEPENDENT_CHAIN
+    title: Independent-law k=3 chain lower construction
+    statement: >-
+      For the declared rank-one real binary chain witness with independent
+      bilinear laws and defect budget rho=eta*M, E_proj equals
+      2*M*q*sqrt(M^2-q^2), where q=min(rho,M/sqrt(2)).
+    scope: [finite real binary chain, independent laws, rank-one orthogonal projector]
+    proof_location: research/projected_trees_v5/truth_ledger/PROJECTED_GRAPHS_V5_TRUTH_LEDGER.md
+    implementation: src/seion_core/research_v5/k3_independent_candidates.py
+    tests: [tests/research_v5_test_k3_independent_candidates.py]
+    epistemic_status: CERTIFIED_LOWER_BOUND
+    sharpness_status: GLOBAL_SHARPNESS_OPEN
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: LB_V5_K3_INDEPENDENT_BRANCH
+    title: Independent-law k=3 branching lower construction
+    statement: >-
+      A separate declared rank-one real binary branching witness with
+      independent bilinear laws attains the same certified lower-bound value
+      as the V5-A chain witness.
+    scope: [finite real binary branching, independent laws, rank-one orthogonal projector]
+    proof_location: research/projected_trees_v5/truth_ledger/PROJECTED_GRAPHS_V5_TRUTH_LEDGER.md
+    implementation: src/seion_core/research_v5/k3_independent_candidates.py
+    tests: [tests/research_v5_test_k3_independent_candidates.py]
+    epistemic_status: CERTIFIED_LOWER_BOUND
+    sharpness_status: GLOBAL_SHARPNESS_OPEN
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: CONJ_V5_INDEPENDENT_TREE_SHARPNESS
+    title: Independent-law finite-tree sharpness conjecture
+    statement: >-
+      For sufficiently free independent laws, C_T,ind^P(eta) may equal
+      k(T)-1 for finite trees; this remains a conjecture and is not a theorem.
+    scope: [finite projected multilinear trees, independent laws]
+    epistemic_status: OPEN
+    novelty_status: NOVELTY_NOT_ESTABLISHED
   - id: OPEN_V5_DIMENSION_RANK_REDUCTION
     title: Universal dimension/rank reduction for projected sharpness
     statement: >-

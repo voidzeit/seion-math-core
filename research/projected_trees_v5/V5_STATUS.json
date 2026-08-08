@@ -6,10 +6,13 @@
   "track": "theorem-level extremal theory, proof consolidation, novelty, formalization",
   "closed_in_this_increment": [
     "k=2 general independent-law saturation",
-    "k=2 equality compatibility audit for independent laws"
+    "k=2 equality compatibility audit for independent laws",
+    "k=3 independent-law chain and branching lower-bound witnesses"
   ],
   "open": [
     "repeated-law k=2 sharpness",
+    "independent-law k=3 global sharpness",
+    "independent-law (k-1) sharpness for arbitrary finite trees",
     "universal dimension/rank reduction",
     "global k=3 topology sharpness",
     "globally tight multilinear spectral norms",

@@ -99,9 +99,14 @@
   independent node laws: `C_2^P(eta)=1` for `0 < eta <= 1`.
 - [x] Audit simultaneous equality conditions for independent laws and keep
   repeated-law compatibility explicitly open.
+- [x] Produce certified lower-bound witnesses for independent-law `k=3`
+  chain and branching topologies without claiming global sharpness.
 - [x] Create the V5 theorem-consolidation, formalization-target, and
   theorem-to-theorem novelty ledgers without asserting novelty.
 - [ ] Resolve repeated/shared-law `k=2` fixed-eta sharpness.
+- [ ] Resolve independent-law `k=3` global sharpness for chain and branching.
+- [ ] Prove or refute the finite-tree independent-law `(k-1)` sharpness
+  conjecture.
 - [ ] Prove universal dimension/rank reduction or produce a certified
   higher-dimensional counterexample.
 - [ ] Resolve global `k=3` topology-specific sharpness.
