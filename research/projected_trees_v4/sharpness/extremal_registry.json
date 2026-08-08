@@ -1,0 +1,36 @@
+{
+  "schema": "projected-trees-extremal-registry-v1",
+  "normalization": "C=E_proj/(rho*M^(k-1)*L)",
+  "records": [
+    {
+      "topology": "chain_gated_planar",
+      "k": 2,
+      "eta": 0.5,
+      "lower_bound": 0.5,
+      "upper_bound": 1.0,
+      "lower_certificate": "E_proj=eta^2 restricted construction",
+      "upper_certificate": "projected k-1 theorem",
+      "proof_status": "OPEN_AT_FIXED_ETA_GLOBAL"
+    },
+    {
+      "topology": "chain_gated_planar",
+      "k": 3,
+      "eta": 0.7071067811865476,
+      "lower_bound": 1.5,
+      "upper_bound": 2.0,
+      "lower_certificate": "3*eta^2*sqrt(1-eta^2) restricted construction",
+      "upper_certificate": "projected k-1 theorem",
+      "proof_status": "OPEN_AT_FIXED_ETA_GLOBAL"
+    },
+    {
+      "topology": "branching_gated_planar",
+      "k": 3,
+      "eta": 0.7071067811865476,
+      "lower_bound": 0.5,
+      "upper_bound": 2.0,
+      "lower_certificate": "eta^2*sqrt(1-eta^2) restricted construction",
+      "upper_certificate": "projected k-1 theorem",
+      "proof_status": "OPEN_AT_FIXED_ETA_GLOBAL"
+    }
+  ]
+}

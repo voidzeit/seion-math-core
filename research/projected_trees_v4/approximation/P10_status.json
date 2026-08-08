@@ -1,0 +1,13 @@
+{
+  "schema": "projected-trees-p10-status-v1",
+  "status": "PROVED_UNDER_ASSUMPTIONS",
+  "implementation": "src/seion_core/research_v4/approximate_law_error.py",
+  "tests": "tests/research_v4/test_p8_p10_registry.py",
+  "components": ["closure", "representation", "interaction"],
+  "nodewise_mode": "conservative maximum reduction to homogeneous bound",
+  "limitations": [
+    "nodewise optimal telescoping is not yet implemented",
+    "nonlinear envelope modules remain outside this finite multilinear budget",
+    "universal sharpness is not claimed"
+  ]
+}

@@ -32,6 +32,19 @@ from .signed_compositional_expression import (
     make_filippov_defect_expression,
     make_jacobiator_expression,
 )
+from .operator_norm_enclosures import (
+    NormEnclosure,
+    cp_enclosure,
+    enclose_multilinear_norm,
+    exact_rank_one_enclosure,
+    flattening_enclosure,
+    frobenius_enclosure,
+    validated_interval_enclosure,
+)
+from .certificate_selector import CertificateCandidate, CertificateSelection, select_best_sound_certificate
+from .approximate_law_error import ApproximateLawBudget, homogeneous_approximate_law_budget, nodewise_approximate_law_budget
+from .topology_registry import TopologyMetrics, compute_topology_metrics, universal_topology_bound
+from .extremal_registry import ExtremalRecord, merge_extremal_records
 
 __all__ = [
     "DAGCertificate",
@@ -64,4 +77,22 @@ __all__ = [
     "make_associator_expression",
     "make_jacobiator_expression",
     "make_filippov_defect_expression",
+    "NormEnclosure",
+    "frobenius_enclosure",
+    "flattening_enclosure",
+    "validated_interval_enclosure",
+    "cp_enclosure",
+    "exact_rank_one_enclosure",
+    "enclose_multilinear_norm",
+    "CertificateCandidate",
+    "CertificateSelection",
+    "select_best_sound_certificate",
+    "ApproximateLawBudget",
+    "homogeneous_approximate_law_budget",
+    "nodewise_approximate_law_budget",
+    "TopologyMetrics",
+    "compute_topology_metrics",
+    "universal_topology_bound",
+    "ExtremalRecord",
+    "merge_extremal_records",
 ]

@@ -82,4 +82,10 @@
   retained and exact higher-order terms.
 - [x] Instantiate P7C generic signed expressions for associator, Jacobiator,
   and Filippov defects without assuming identity satisfaction.
-- [ ] Implement P8 validated multilinear operator-norm enclosures.
+- [x] Implement P8 validated multilinear operator-norm enclosures and a
+  sound certificate selector.
+- [x] Separate approximate-law representation, closure, and interaction
+  budgets (P10).
+- [x] Register finite topology metrics and monotone sharpness bands without
+  declaring global sharpness.
+- [ ] Resolve global fixed-eta sharpness and dimension/rank reduction.

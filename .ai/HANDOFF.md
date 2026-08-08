@@ -127,3 +127,11 @@
 - Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 53 passed; JSON validation PASS; git diff --check PASS; P7B commits 5c12adb and 26345c1
 - Resume from commit: `26345c1aaa5231accca852c6e208492ee8fcb74f` on `campaign/gate13-closeout`
 - Limitation: P7B is sound for finite signed expressions over exact finite P6B polynomials; P7C identity instantiations, universal nonlinear sharpness, validated norms, and approximate-law error remain open.
+
+## Latest postflight: Projected-tree theory v4 P7C generic signed compositional expressions
+
+- Timestamp: 2026-08-08T10:19:51.747702+00:00
+- Outcome: **P7C_COMPLETE_P8_DEFERRED**
+- Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 59 passed; JSON validation PASS; git diff --check PASS; P7C commits c7300be and 5168782
+- Resume from commit: `51687822e03e542c29881ac907ec562480f716be` on `campaign/gate13-closeout`
+- Limitation: P7C certifies calculated defects under explicit conventions; it does not prove universal Jacobi or Filippov identity satisfaction, nonlinear sharpness, validated norms, or approximate-law bounds.

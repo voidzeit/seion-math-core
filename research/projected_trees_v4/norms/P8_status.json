@@ -1,0 +1,20 @@
+{
+  "schema": "projected-trees-p8-status-v1",
+  "status": "PROVED_UNDER_ASSUMPTIONS",
+  "implementation": "src/seion_core/research_v4/operator_norm_enclosures.py",
+  "methods": [
+    "exact_rank_one",
+    "validated_interval_frobenius",
+    "flattening_induced",
+    "cp_structural",
+    "frobenius"
+  ],
+  "selector": "src/seion_core/research_v4/certificate_selector.py",
+  "tests": "tests/research_v4/test_p8_p10_registry.py",
+  "guarantee": "selected bound is the minimum among individually certified upper bounds",
+  "limitations": [
+    "general multilinear spectral norm sharpness remains open",
+    "power iteration is never labelled exact",
+    "floating-point lower values are attained witnesses, not global optima"
+  ]
+}

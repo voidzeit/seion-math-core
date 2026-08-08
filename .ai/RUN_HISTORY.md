@@ -202,3 +202,22 @@ changed paths, and limitations. Historical artifact runs remain under
 - Limitations:
   - P7B is sound for finite signed expressions over exact finite P6B polynomials; P7C identity instantiations, universal nonlinear sharpness, validated norms, and approximate-law error remain open.
   - Gate 13.5, Gate 14, KGR, and historical artifacts were not modified.
+
+## 2026-08-08T10:19:51.747702+00:00 — Projected-tree theory v4 P7C generic signed compositional expressions
+
+- Command: `python -m pytest tests/research_v3 tests/research_v4 -q; python -m seion_core.cli.main governance audit --json; python -m seion_core.cli.main governance dedupe-runs`
+- Branch/commit: `campaign/gate13-closeout` / `51687822e03e542c29881ac907ec562480f716be`
+- Outcome: **P7C_COMPLETE_P8_DEFERRED**
+- Summary: Frozen a single generic signed compositional-expression engine over P6B/P7B source polynomials, with associator regression, Jacobiator certificate, and Filippov-defect certificate under explicit conventions and conservative truncation.
+- Validation: python -m pytest tests/research_v3 tests/research_v4 -q => 59 passed; JSON validation PASS; git diff --check PASS; P7C commits c7300be and 5168782
+- Changed files:
+  - `src/seion_core/research_v4/signed_compositional_expression.py`
+  - `tests/research_v4/test_signed_compositional_expression.py`
+  - `research/projected_trees_v4/cancellation/P7C_generic_signed_compositional_expression.md`
+  - `research/projected_trees_v4/cancellation/P7C_status.json`
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.json`
+  - `research/projected_trees_v4/truth_ledger/PROJECTED_TREES_TRUTH_LEDGER.md`
+  - `.ai/TASKS.md`
+- Limitations:
+  - P7C certifies calculated defects under explicit conventions; it does not prove universal Jacobi or Filippov identity satisfaction, nonlinear sharpness, validated norms, or approximate-law bounds.
+  - P8 and sharpness remain deferred; Gate 13.5, Gate 14, KGR, and historical artifacts were not modified.
