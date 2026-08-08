@@ -329,3 +329,27 @@ changed paths, and limitations. Historical artifact runs remain under
   - The large majority of the mission brief's 16 phases were not attempted this session (gated-planar exact extremal, dimension/rank reduction theorem, arbitrary-tree conjecture, signed-forest exact constants, source-calculus consolidation, growing-tree theorem, P8/P10 hardening, novelty audit, manuscript rebuild, application theorem, clean-room package, external review package) -- see `research/projected_trees_v5/V5_CLOSURE_REPORT.md` for the full accounting.
   - No theorem-level novelty or independent human review performed; every new result carries `approval_status: PENDING_HUMAN_REVIEW`.
   - Gate13.5, Gate14, KGR, and historical artifacts were not modified. No push, no PR.
+
+## 2026-08-08T20:38:04.673628Z — M10 non-sharpness proof and pytest discovery fix
+
+- Command: `python -m pytest --collect-only -q`; `python -m pytest -q` (full suite, no partitioning)
+- Branch/commit: `campaign/gate13-closeout` / `23a2b1a21e78f9dd4cd7f089c492a4c0625043ab`
+- Outcome: **EXTREMAL_PROGRAM_PARTIALLY_CLOSED** (unchanged label; M10 strengthens the k=3 gap, does not close it)
+- Summary: Derived the equality conditions of M9's k=3 upper envelope by hand and proved they cannot be simultaneously satisfied -- U_3(eta) is not attained, C_3,ind^P(eta) < U_3(eta) strictly for every eta in (0,1) (M10). Proof: a standard operator-norm-attaining-direction lemma applied twice (node 2, then node 3) forces the two propagated-error terms orthogonal whenever both individually saturate, contradicting the triangle-inequality equality M9's derivation needs. Does not produce a replacement tightened value; the joint (magnitude, angle) trade-off optimization is set up (`pareto_frontier_two_direction_norm_budget`) but not solved. A separate gradient-based numerical search was attempted and discarded as unreliable (failed to recover the already-known L_3(eta) witness). Also fixed a real, repo-wide bug found in the course of honest test accounting: `pyproject.toml` had no `python_files` override, so pytest's default discovery silently excluded every `research_v5_test_*.py` file (7 files, 72 tests, present since prior sessions) from plain `pytest -q` runs -- fixed with a one-line config addition.
+- Validation: `pytest --collect-only -q` now reports 437 tests (was 365 before the fix). Full suite: 437 collected, 437 executed, 436 passed, 1 pre-existing out-of-scope KGR failure (same one as the prior entry, unchanged, unmodified), 468.51s elapsed, no timeout, no skips.
+- Changed files:
+  - `pyproject.toml`
+  - `research/math_closure/k2/saturation_iff_theorem.tex` (added non-saturating example)
+  - `research/math_closure/k3/m10_non_sharpness_of_m9.tex`
+  - `research/math_closure/status_registry.yaml`
+  - `src/seion_core/research_v5/k3_non_sharpness.py`
+  - `tests/research_v5_test_k3_non_sharpness.py`
+  - `claims/theorem_registry_v5.yaml`
+  - `research/projected_trees_v5/V5_STATUS.json`
+  - `research/projected_trees_v5/truth_ledger/PROJECTED_GRAPHS_V5_TRUTH_LEDGER.md`
+  - `research/projected_trees_v5/V5_CLOSURE_REPORT.md`
+  - `research/projected_trees_v5/V5_CLOSURE_REPORT.json`
+- Limitations:
+  - Fixed-eta k=3 global sharpness remains open; M10 narrows what "open" means (U_3 provably unreachable) but does not supply the true value.
+  - Points 3-12 of the user's own follow-up priority list (gated-planar exact optimum, dimension/rank reduction, arbitrary-tree/same-law k=3 conjectures, signed-forest exact constants, source-calculus consolidation, growing-tree theorem, formal verification, novelty audit, human review, manuscript rebuild) were not attempted this pass.
+  - Gate13.5, Gate14, KGR, and historical artifacts were not modified. No push, no PR.
