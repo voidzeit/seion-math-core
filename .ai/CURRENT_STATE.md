@@ -946,6 +946,62 @@ unqualified present-tense statement.
   missing required files; run deduplication completed. No TEST, SOTA,
   generalization, or hardware claim is made.
 
+## 2026-08-10 postflight — new sealed SRATM training from zero
+
+- Added `SRATM_SEALED_TRAINING_V1`, a runner with no `--test` argument,
+  TRAIN+VALID-only vocabulary/filters, fail-closed open sentinel, random
+  initialization, frequent checkpoints, and explicit provenance.
+- The new run started from random weights, reached checkpoint step `192`, was
+  resumed under the same sealed protocol, and was paused immediately after
+  checkpoint step `704` at user request. No historical SRATM checkpoint was
+  loaded and TEST was not read, hashed, or opened.
+- The completed canary evaluation at step `256` used 2,048 validation queries
+  and reported pilot MRR `0.1573365927`; this is an early empirical training
+  signal, not a quality claim. The authoritative current state is the paused
+  step-704 checkpoint.
+- Peak allocated GPU memory was `18,182,203,392` bytes (~16.93 GiB); peak
+  reserved memory was `18,863,882,240` bytes (~17.57 GiB). The configured cap
+  was 23 GiB. No agent thermal gate was applied.
+- Artifact:
+  `runs/SRATM_FB15K237_SEALED_FROM_ZERO_D256_B512_23GB_2026-08-10/`.
+
+## 2026-08-10 postflight — full VALID audit of sealed step 704
+
+- Executed a full filtered VALID audit on the new sealed checkpoint `step=704`
+  over 35,070 queries and 14,541 entities using GPU. The checkpoint SHA256 is
+  `7afd916f7171587cc74654005353734c9fcfc4f381ef720ef7464ca7d6154306`.
+- Metrics under the sealed TRAIN+VALID-only protocol: MRR `0.3273196220`,
+  H@1 `0.2674365637`, H@3 `0.3516110778`, H@10 `0.4477331042`, mean rank
+  `2214.8643`. Tail MRR was `0.4206288457`; head MRR was `0.2340104431`.
+- Relative to the reproducible historical sealed control `0.3958612331`,
+  the new step-704 checkpoint is `-0.0685416110` MRR. Relative to historical
+  `0.6116475463`, the delta is `-0.2843279243`, but that comparison remains
+  `NOT_ESTABLISHED_PROTOCOL_MISMATCH`.
+- Runtime sentinel recorded zero forbidden accesses; only TRAIN, VALID, and
+  the new checkpoint were opened. No TEST was read, hashed, or opened. Peak
+  audit memory was `1,146,633,216` bytes allocated and `1,713,373,184` bytes
+  reserved.
+- Artifact:
+  `runs/SRATM_FB15K237_SEALED_FROM_ZERO_D256_B512_23GB_2026-08-10/audit_step704_full_valid/`.
+
+## 2026-08-10 postflight — sealed teacher closure provenance gate
+
+- The controlled resume gate inspected the step-704 checkpoint without opening,
+  reading, stat-ing, or hashing TEST. The checkpoint is structurally complete:
+  model, EMA teacher, optimizer, RNG, epoch, step, and sealed protocol are
+  present; all persisted floating-point state is finite; no scheduler is
+  configured in the runner.
+- Resume was stopped fail-closed as `RESUME_PROVENANCE_FAILURE`. The run
+  manifest records git `cf663bc6…`, but that commit does not contain the sealed
+  trainer; the current checkout is `77f2dfe…`. The run's persisted
+  `config.json` also conflicts with the checkpoint protocol (`max_steps=256`
+  versus `1024`).
+- No continuation, new checkpoint, convergence claim, teacher freeze, spectral
+  audit, compression, or G6 result was produced from this ambiguous state.
+- Evidence: `runs/SRATM_FB15K237_SEALED_FROM_ZERO_D256_B512_23GB_2026-08-10/resume_manifest.json`.
+- Scientific status remains `NOT_ESTABLISHED`; the step-704 result remains
+  `CLEAN_INTERMEDIATE`, not `SEALED_TEACHER_FROZEN`.
+
 ## 2026-08-10 postflight — SRATM certified compression and no-leakage audit
 
 - Executed `SRATM_CERTIFIED_COMPRESSION_V1` on the immutable SRATM step4600

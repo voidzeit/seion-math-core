@@ -1,42 +1,48 @@
-{
-  "schema": "projected-graphs-v5-render-audit-v1",
-  "generated_utc": "2026-08-09T17:37:22.6463229Z",
-  "renderer": "pdftoppm",
-  "papers": [
-    {
-      "paper": "projected_multilinear_trees_v5",
-      "pdf": "output/pdf/projected_multilinear_trees_v5.pdf",
-      "sha256": "069585f2e0b47c4b87884203c623ee260a4b1f77a4f390ceb939e138f2133854",
-      "expected_pages": 9,
-      "rendered_pages": 9,
-      "render_directory": "tmp/pdfs/projected_graphs_v5_postflight",
-      "visual_review": "MANUAL_REVIEW_COMPLETED_2026-08-08",
-      "defects_observed": []
-    },
-    {
-      "paper": "source_resolved_error_calculus_v5",
-      "pdf": "output/pdf/source_resolved_error_calculus_v5.pdf",
-      "sha256": "dee1036bfa5cf5f98a5cd2e17cd8fb33c5b7b2f786bd26f38859c36a79b92f17",
-      "expected_pages": 5,
-      "rendered_pages": 5,
-      "render_directory": "tmp/pdfs/projected_graphs_v5_postflight",
-      "visual_review": "MANUAL_REVIEW_COMPLETED_2026-08-08",
-      "defects_observed": []
-    },
-    {
-      "paper": "software_reproducibility_v5",
-      "pdf": "output/pdf/software_reproducibility_v5.pdf",
-      "sha256": "8650fffce64ad4b765c88a95e9bf3899e229a72403faf3c08b6df8646e99f6d8",
-      "expected_pages": 4,
-      "rendered_pages": 4,
-      "render_directory": "tmp/pdfs/projected_graphs_v5_postflight",
-      "visual_review": "MANUAL_REVIEW_COMPLETED_2026-08-08",
-      "defects_observed": []
-    }
-  ],
-  "result": "PASS",
-  "limitations": [
-    "Visual review is a human inspection of rendered PNG pages.",
-    "Theorem-level novelty and independent human review remain pending."
-  ]
+﻿{
+    "schema":  "projected-graphs-v5-render-audit-v1",
+    "generated_utc":  "2026-08-10T10:18:35.8911769Z",
+    "renderer":  "pdftoppm",
+    "papers":  [
+                   {
+                       "paper":  "projected_multilinear_trees_v5",
+                       "pdf":  "output/pdf/projected_multilinear_trees_v5.pdf",
+                       "sha256":  "069585f2e0b47c4b87884203c623ee260a4b1f77a4f390ceb939e138f2133854",
+                       "expected_pages":  9,
+                       "rendered_pages":  9,
+                       "render_directory":  "tmp/pdfs/projected_graphs_v5_postflight",
+                       "visual_review":  "MANUAL_REVIEW_COMPLETED_2026-08-08",
+                       "defects_observed":  [
+
+                                            ]
+                   },
+                   {
+                       "paper":  "source_resolved_error_calculus_v5",
+                       "pdf":  "output/pdf/source_resolved_error_calculus_v5.pdf",
+                       "sha256":  "dee1036bfa5cf5f98a5cd2e17cd8fb33c5b7b2f786bd26f38859c36a79b92f17",
+                       "expected_pages":  5,
+                       "rendered_pages":  5,
+                       "render_directory":  "tmp/pdfs/projected_graphs_v5_postflight",
+                       "visual_review":  "MANUAL_REVIEW_COMPLETED_2026-08-08",
+                       "defects_observed":  [
+
+                                            ]
+                   },
+                   {
+                       "paper":  "software_reproducibility_v5",
+                       "pdf":  "output/pdf/software_reproducibility_v5.pdf",
+                       "sha256":  "8650fffce64ad4b765c88a95e9bf3899e229a72403faf3c08b6df8646e99f6d8",
+                       "expected_pages":  4,
+                       "rendered_pages":  4,
+                       "render_directory":  "tmp/pdfs/projected_graphs_v5_postflight",
+                       "visual_review":  "MANUAL_REVIEW_COMPLETED_2026-08-08",
+                       "defects_observed":  [
+
+                                            ]
+                   }
+               ],
+    "result":  "PASS",
+    "limitations":  [
+                        "Visual review is a human inspection of rendered PNG pages.",
+                        "Theorem-level novelty and independent human review remain pending."
+                    ]
 }

@@ -305,3 +305,15 @@
   tie-policy, and command provenance hypotheses explicitly.
 - [ ] Recover an archived historical command, rank trace, filter counts, or
   runtime snapshot sufficient to reconcile `0.6116475` without opening TEST.
+- [x] Start a new `SRATM_SEALED_TRAINING_V1` from random initialization with
+  TRAIN+VALID-only loading and a fail-closed runtime sentinel; pause at the
+  next checkpoint on user request.
+- [x] Audit the new sealed step-704 checkpoint on full VALID with the same
+  TRAIN+VALID-only filtered evaluator and compare it separately against the
+  reproducible sealed control and the unreconciled historical metric.
+- [ ] Reconcile the sealed step-704 resume provenance before any continuation:
+  the original git/source identity and the checkpoint/config `max_steps`
+  conflict must be resolved without opening TEST.
+- [ ] Only after the resume gate passes, execute the predeclared full-VALID
+  checkpoint schedule, freeze `SEALED_TEACHER_FREEZE_V1`, then launch fresh
+  spectral/compression/G6 campaigns descended only from that freeze.
