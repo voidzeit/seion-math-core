@@ -260,3 +260,27 @@
   batching and re-run the matched-kernel benchmark at stress size.
 - [ ] Resume staged D128 training only after the Windows dump/driver safety
   blocker is resolved; preserve the 23 GB ceiling and frequent checkpoints.
+- [x] Register a separate accuracy-first KGE SOTA discovery protocol with
+  validation-only selection, hard-negative/EMA primitives, explicit targets,
+  and staged GPU safety limits.
+- [x] Implement and benchmark the first full-entity spectral-mixture
+  discovery runner with blockwise hard-negative mining and no external text
+  dependency; structural-context mining remains a separate pending extension.
+- [x] Formalize Program A teacher versus Program B frozen student/certification
+  boundaries and add leakage-aware split, retriever, EMA, gate, ensemble, and
+  distillation primitives.
+- [ ] Add the structural contextual reranker and validation-fitted retriever
+  union runner; external text remains disabled pending provenance.
+- [x] Run the bounded VRAM ramp through 16 GB and preserve the 20 GB thermal
+  evidence; the agent-side thermal threshold is removed, while long runs still
+  require B-0012 review.
+- [x] Remove the agent-side thermal threshold from the discovery protocol while
+  preserving system/driver protection behavior.
+- [x] Integrate and benchmark the first spectral conditional Tucker mixture
+  scorer/trainer; quality finalist selection and full validation remain open.
+- [x] Execute `SRATM_CERTIFIED_COMPRESSION_V1` on frozen SRATM step4600 without
+  opening TEST; preserve bounded certificate/CCR results and B-0012 hardware hold.
+- [x] Execute `SRATM_NO_LEAKAGE_AUDIT_V1` with static scan, runtime sentinel,
+  split provenance, reciprocal audit, duplicate report, and artifact DAG.
+- [ ] Reconstruct and archive the checkpoint-selection selector log before any
+  final TEST confirmation.

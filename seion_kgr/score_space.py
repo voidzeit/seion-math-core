@@ -147,13 +147,11 @@ class CandidateWhitening:
         values = values[order].clamp_min(0)
         vectors = vectors[:, order]
         support = self.support_projector.to(device=vectors.device, dtype=vectors.dtype)
-        # Numerical eigensolvers may leave tiny components outside the Gram
-        # support. Project and re-orthogonalize before selecting the basis.
-        vectors = support @ vectors
-        vectors, _ = torch.linalg.qr(vectors, mode="reduced")
-        # QR does not preserve eigenvalue order; select the Ky-Fan directions
-        # directly when the support is full, and use the stable support-aware
-        # eigenspace fallback for singular Grams.
+        # For a full-support Gram matrix, ``vectors`` already contains the
+        # ordered orthonormal eigenvectors.  Applying QR here would preserve
+        # the span but destroy the eigenvalue ordering, so selecting the first
+        # columns afterwards would no longer be Ky-Fan optimal.  Only the
+        # singular-support branch needs a fresh support-restricted solve.
         if self.support_rank == self.sqrt.shape[0]:
             basis = vectors[:, :rank]
             selected = values[:rank]

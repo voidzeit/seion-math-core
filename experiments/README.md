@@ -20,6 +20,17 @@ single final test confirmation, same-backend hardware comparisons, seed-level
 replication, WN18RR replication, and a mandatory run artifact contract. Its
 status is `declared_not_executed`; the current B-0012 Windows stability hold
 prevents long GPU training until dump/driver review is resolved.
+
+The accuracy-first discovery track is separately declared in
+`configs/KGE_SOTA_DISCOVERY_V1.yaml`. It permits larger models, dynamic hard
+negatives, momentum queues, structural context, and later teacher/student
+distillation. It is exploratory: its targets are not claims, it cannot alter
+the confirmatory protocol, and test remains closed until finalists are frozen.
+The current implementation exposes the Program-A primitives (split contract,
+hard-negative filtering, EMA teacher, retriever union, query gate, ensemble
+normalization, and listwise/margin distillation losses). Text retrieval and a
+contextual reranker remain explicitly disabled until their data provenance is
+registered.
 ## 2026-08-09 — shared-DAG certificate probe
 
 The exploratory shared-DAG tensor-network probe is defined by

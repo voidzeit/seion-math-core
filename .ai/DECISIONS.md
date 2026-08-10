@@ -102,3 +102,47 @@
   `.ai/CURRENT_STATE.md`, and the score-space benchmark artifacts under
   `runs/TTN_FB15K237_TTN_V2_D128_E10_2026-08-09/`.
 - **Status:** accepted_with_B-0012_execution_hold
+
+## D-0011 — Seal TEST and audit provenance before all-entity confirmation
+
+- **Date:** 2026-08-10
+- **Decision:** Require `SRATM_NO_LEAKAGE_AUDIT_V1` to pass observed runtime
+  access, reciprocal isolation, calibration provenance, and artifact ancestry
+  before any future official all-entity/test confirmation. Keep TEST sealed.
+- **Reason:** Absence of a direct `test.txt` read is insufficient when
+  vocabulary, filters, mining, whitening, projectors, allocator choices,
+  checkpoint selection, and hardware policy can leak indirectly.
+- **Evidence:** `runs/SRATM_NO_LEAKAGE_AUDIT_V1D_20260810/`,
+  `seion_kgr/no_leakage_audit.py`, and
+  `tests/kgr/test_no_leakage_audit.py`.
+- **Status:** observed_pass_with_declared_limitations
+
+## D-0009 — Separate accuracy-first SOTA discovery from certification
+
+- **Date:** 2026-08-10
+- **Decision:** Create a separate exploratory discovery track for maximizing
+  validation MRR/Hits with larger models, dynamic hard negatives, EMA queues,
+  structural context, and optional teacher/student distillation. The certified
+  confirmatory protocol remains unchanged and cannot be selected or rewritten
+  from discovery test results.
+- **Reason:** A model optimized for SOTA accuracy should not be constrained by
+  compression or certification before its predictive ceiling is measured.
+  Separation preserves causal interpretation and prevents test leakage.
+- **Evidence:** `experiments/configs/KGE_SOTA_DISCOVERY_V1.yaml` and
+  `seion_kgr/sota_discovery.py`.
+- **Status:** accepted_with_B-0012_execution_hold
+
+## D-0010 — Formalize teacher/student programs and fail closed on leakage
+
+- **Date:** 2026-08-10
+- **Decision:** Treat quality maximization and predictor compression as two
+  sequential programs. Program A may use larger structural models, hard
+  negatives, EMA teachers, retriever unions and validation-fitted ensembles.
+  Program B starts only after the teacher is frozen and may not modify it.
+  Test identifiers are rejected from discovery/calibration code paths.
+- **Reason:** Accuracy, compression, certification, and deployment latency
+  are different optimization problems. A single mutable pipeline would make
+  leakage and causal attribution difficult to audit.
+- **Evidence:** `experiments/configs/KGE_SOTA_DISCOVERY_V1.yaml`,
+  `seion_kgr/sota/`, and `tests/kgr/test_sota_components.py`.
+- **Status:** accepted_with_B-0012_execution_hold

@@ -266,10 +266,13 @@ def restore_rng_state(
     if state.get("python") is not None:
         random.setstate(state["python"])
     if state.get("torch") is not None:
-        torch.set_rng_state(state["torch"])
+        # Checkpoints loaded with ``map_location=cuda`` can turn the CPU RNG
+        # byte tensor into a CUDA tensor.  The CPU generator only accepts a
+        # CPU ByteTensor, so normalize it here without changing semantics.
+        torch.set_rng_state(state["torch"].detach().cpu())
     cuda_state = state.get("torch_cuda")
     if cuda_state is not None and torch.cuda.is_available():
-        torch.cuda.set_rng_state_all(cuda_state)
+        torch.cuda.set_rng_state_all([item.detach().cpu() for item in cuda_state])
     if numpy_rng is not None and state.get("numpy") is not None:
         numpy_rng.bit_generator.state = state["numpy"]
     saved_generators = state.get("generators") or {}

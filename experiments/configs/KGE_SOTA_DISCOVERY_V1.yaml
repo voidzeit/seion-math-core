@@ -1,0 +1,104 @@
+schema: sota_discovery_protocol_v1
+status: declared_not_executed
+authority: declared
+purpose: >-
+  Accuracy-first discovery track. This track may use larger models, dynamic
+  hard negatives, momentum queues, context and optional auxiliary text. It is
+  exploratory and must not modify or replace the certified confirmatory V1.
+
+programs:
+  program_a_teacher:
+    objective: maximize_validation_MRR_then_report_Hits
+    outputs: frozen_teacher_checkpoint_and_validation_report
+    may_use: [larger_tensor_models, hard_negatives, ema_teacher, structural_context]
+    external_text: disabled_until_data_provenance_is_registered
+  program_b_student:
+    objective: distill_frozen_teacher_then_certify_frozen_student
+    starts_after: program_a_teacher_freeze
+    outputs: student_checkpoint_spectral_audit_certificate_hardware_frontier
+    may_not_modify: [teacher_checkpoint, certified_confirmatory_protocol_v1]
+
+data_roles:
+  train: gradients_and_model_updates
+  calibration: train_derived_only_for_mining_normalization_and_projectors
+  valid: hyperparameter_checkpoint_and_gate_selection
+  test: one_final_read_after_freeze
+  test_leakage_rule: reject_any_test_identifier_in_discovery_or_calibration
+
+datasets:
+  primary:
+    - FB15K-237
+    - WN18RR
+  splits: official
+  test_policy: test_is_read_once_after_selection
+  calibration_policy: train_only_for_teacher_queue_and_candidate_statistics
+
+model_search:
+  dimensions: [128, 256, 512]
+  base_experts: [complex, tucker, distmult]
+  context: [off, structural_neighbors]
+  relation_conditioning: [off, static_experts]
+  text_features: off
+  text_features_status: unavailable_until_provenance_is_registered
+  reranker: not_implemented
+  query_gate: implemented_primitive_not_enabled_by_default
+
+training:
+  negative_sources:
+    - in_batch
+    - filtered_random
+    - model_topk
+    - structural_neighbors
+    - momentum_queue
+  hard_negative_counts: [64, 128, 256]
+  queue_sizes: [4096, 8192, 16384, 32768]
+  momentum: [0.99, 0.995, 0.999, 0.9995]
+  losses:
+    - pairwise_margin
+    - infonce
+    - weighted_topk_margin
+    - score_distillation_optional
+    - margin_distillation_optional
+  validation_metric: MRR
+  secondary_metrics: [Hits@1, Hits@3, Hits@10]
+  selection: validation_only
+  finalists: 5
+  final_seeds: 10
+
+targets_not_claims:
+  FB15K-237:
+    MRR: 0.54
+    Hits@1: 0.48
+    Hits@10: 0.64
+  WN18RR:
+    MRR: 0.755
+    Hits@1: 0.68
+    Hits@10: 0.89
+
+hardware_safety:
+  max_vram_gb: 23
+  staged_caps_gb: [4, 8, 12, 16, 20, 23]
+  long_run_requires_dump_review: true
+  checkpoint_interval_minutes: 5
+  thermal_policy: system_managed_only_no_agent_threshold
+  amp: bf16_if_validated_else_fp32
+  no_unbounded_launches: true
+
+gates:
+  - discovery_canary_finite
+  - validation_improves_over_current_baseline
+  - no_nan_inf
+  - checkpoint_resume
+  - finalist_selection_without_test
+  - one_final_test_read
+
+artifacts:
+  required:
+    - manifest.json
+    - config.yaml
+    - environment.json
+    - training_metrics.jsonl
+    - validation_metrics.jsonl
+    - checkpoint_best.pt
+    - checkpoint_last.pt
+    - FINAL_STATUS.md

@@ -1,13 +1,92 @@
 # Current state
 
+## 2026-08-10 postflight — accuracy-first spectral-mixture discovery runs
+
+- Implemented and exercised the first full-entity,
+  relation-adaptive spectral Tucker mixture trainer. The online miner uses
+  blockwise all-entity scoring and retains only a `[B, hard_k]` frontier;
+  it does not materialize `[B,N,D]` candidate tensors. Reciprocal relation
+  filtering was corrected to use `heads_of_rt` for inverse ids.
+- A D256 / 8-expert / 2-active / rank-64 / 4-core-basis GPU smoke passed with
+  finite loss and released CUDA allocations after completion. A bounded
+  23 GB-cap canary also completed without OOM or BSOD; the cap is an upper
+  bound and was not forced to consume 23 GB.
+- Discovery run `D256 / batch256 / hardK64 / 1024 steps` reached pilot
+  validation MRR `0.114995` at step 512 and `0.090420` at step 1024 on
+  256 head/tail queries. A resumed `batch512 / 2048-step` run reached pilot
+  MRR `0.133131` at step 1536 and `0.109595` at step 2048; peak allocation
+  was about `17.06 GB` and peak reservation about `18.23 GB`.
+- A second `lr=3e-4 / hardK128 / 512-step` run reached pilot MRR
+  `0.076279` on 256 queries, so it is not a quality finalist. These are
+  discovery observations only: no SOTA, full-validation, test, certificate,
+  or ranking-preservation claim is made. The best pilot remains far below
+  the preregistered SOTA-discovery targets.
+- The current gate is therefore **implementation/stability pass, quality
+  gate pending**. WN18RR replication, teacher freeze, student distillation,
+  compression certification, and final test evaluation remain unopened.
+- No agent-side thermal threshold is used. System/driver protections remain
+  authoritative, the process cap remains at most 23 GB, and the two Windows
+  bugchecks in B-0012 remain preserved and unresolved.
+
+## 2026-08-10 postflight — user-stopped 8192-step discovery continuation
+
+- The resumed D256 run was stopped on explicit user request after checkpoint
+  step `4800`; the GPU returned to `0 MiB` usage. Both `checkpoint_best.pt`
+  and `checkpoint_last.pt` were preserved, together with
+  `run_interrupted.json`.
+- The best and latest validation record was step `4608` on a 512-query pilot:
+  MRR `0.177815`, H@1 `0.152344`, H@3 `0.195313`, H@10 `0.216797`, and mean
+  rank `3130.69`. This improves the earlier pilot maximum `0.133131`.
+- This remains discovery-only evidence. The official full validation set,
+  test set, SOTA comparison, student freeze, compression certificate, and
+  hardware-speedup gates remain pending.
+
+## 2026-08-10 postflight — SRATM paused at checkpoint 3100
+
+- SRATM was paused on explicit user request immediately after
+  `checkpoint_last.pt` reached step `3100`; CUDA usage returned to `0 MiB`.
+- The preceding validation at step `3072` reached pilot MRR `0.578075`, H@1
+  `0.537109`, H@3 `0.596680`, H@10 `0.657227`, with mean rank `500.70` over
+  1024 queries. This is the current best pilot result.
+- The run is resumable from the preserved checkpoint. It remains discovery
+  evidence only; official full validation, test, certification, and hardware
+  gates are not closed.
+
+## 2026-08-10 postflight — complete SRATM audit at checkpoint 4600
+
+- SRATM was paused after `checkpoint_last.pt` reached step `4600`; GPU usage
+  returned to `0 MiB`. Full filtered validation over `35,070` queries gave
+  MRR `0.611648`, H@1 `0.578072`, H@3 `0.623325`, H@10 `0.677645`, and mean
+  rank `375.85`.
+- Integrity checks passed: all checkpoint floating-point parameters finite,
+  sample positive/candidate scores finite, candidate shape `[4,128]`, fusion
+  row-sum error `1.19e-7`, and orthonormality error `8.94e-7`.
+- Focused tests passed `36/36`; governance audit passed structurally with
+  status `yellow` and no missing required files. Test data was intentionally
+  not opened. Compression/certificate and external SOTA audit remain open.
+
+## 2026-08-10 postflight — official full validation of SRATM step 3100
+
+- Evaluated `checkpoint_last.pt` from step `3100` on all official FB15K-237
+  validation triples with filtered tail and reciprocal head ranking: `35,070`
+  queries total. Runtime was `22.38 s`; peak allocation was about `2.70 GB`.
+- Full validation result: MRR `0.589047`, H@1 `0.550585`, H@3 `0.603678`,
+  H@10 `0.663131`, mean rank `417.11`. Tail MRR was `0.611336` and head
+  MRR was `0.566757`.
+- This confirms that the pilot quality was not caused by a small favorable
+  subset for this checkpoint. It remains a validation observation, not a
+  test/SOTA claim; the frozen teacher and certification gates are still open.
+
 ## Safety hold — two recent Windows bugchecks
 
 - Read-only System event inspection found bugchecks at **2026-08-09 22:30**
   (`0x00020001`, dump `C:\WINDOWS\MEMORY.DMP`) and **22:37** (`0x0000001E`,
   dump `C:\WINDOWS\Minidump\080926-21015-01.dmp`).
 - GPU/driver status currently reports `OK`, but that does not establish
-  stability. No further training, benchmark, CUDA stress test, or large
-  memory allocation should run until the dumps/driver path are reviewed.
+  stability. Since this entry was recorded, only bounded, user-authorized
+  discovery/canary runs under the 23 GB process cap have been executed;
+  unbounded stress and final long-run claims remain disallowed until the
+  dumps/driver path are reviewed.
 - WER groups the `0x00020001` event as
   `INTEL_IOMMU_TIMEOUT_IMAGE_GenuineIntel.sys`. The `0x0000001E` event is
   grouped as `AV_nt!ExpPoolTrackerChargeEntry` with access violation
@@ -799,6 +878,89 @@ unqualified present-tense statement.
   tight norms, novelty, independent human review, Lean/lake, and
   resource-gated schedules remain open or blocked. No release, push, or PR
   was performed.
+
+## 2026-08-10 postflight — SRATM certified compression and no-leakage audit
+
+- Executed `SRATM_CERTIFIED_COMPRESSION_V1` on the immutable SRATM step4600
+  checkpoint without reading, hashing, or opening TEST. Full-rank factor
+  equivalence passed with max absolute error `7.7486e-7` and rank equality
+  `1.0`. The bounded candidate-pool certificate pass had zero violations for
+  uniform low/medium/high policies; official all-entity MRR preservation and
+  matched GPU speedup remain open/blocked.
+- Executed `SRATM_NO_LEAKAGE_AUDIT_V1D_20260810`. Runtime sentinel recorded
+  train, valid, and checkpoint accesses only; forbidden TEST accesses were
+  zero. Train-valid exact overlap was zero; reciprocal closure failures were
+  zero. The audit is observed execution evidence, not a universal proof.
+- Static scan still finds TEST defaults in alternative TTN/hardware loaders;
+  those paths were not executed by the sealed SRATM campaign. Vocabulary is
+  explicitly `TRAIN_PLUS_VALID` under a declared transductive-universe rule,
+  not train-only. Checkpoint selector reconstruction remains pending.
+- Evidence:
+  `runs/SRATM_CERTIFIED_COMPRESSION_V1_20260810_CPU_OPT5/result/`,
+  `runs/SRATM_NO_LEAKAGE_AUDIT_V1D_20260810/`,
+  `seion_kgr/sratm_certified_compression.py`, and
+  `seion_kgr/no_leakage_audit.py`.
+
+## 2026-08-10 postflight — accuracy-first KGE discovery track
+
+- Declared a separate exploratory `KGE_SOTA_DISCOVERY_V1` protocol. It does
+  not modify the frozen certified confirmatory protocol and keeps test closed
+  until validation-only finalist selection is complete.
+- Added reusable discovery primitives for dynamic hard-negative mining,
+  InfoNCE, weighted top-k margin loss, EMA teacher updates, and an entity
+  snapshot queue in `seion_kgr/sota_discovery.py`.
+- Added `seion_kgr/train_sota_discovery.py`, a bounded structural-only runner
+  using an EMA teacher to mine hard negatives and an online tensor scorer to
+  optimize InfoNCE plus top-k margin loss. External text is intentionally off
+  until its provenance and data contract are registered.
+- Validation: focused discovery, score-space, and TTN tests passed **19/19**;
+  the tiny CPU discovery canary completed two steps and wrote a resumable
+  checkpoint/result artifact.
+- Limitations: no SOTA accuracy result, no external-text result, no WN18RR
+  discovery result, and no long GPU run. B-0012 remains an execution hold for
+  sustained GPU escalation.
+
+## 2026-08-10 update — formal teacher/student boundary
+
+- Program A and Program B are now explicit in the SOTA discovery protocol.
+  Program A selects a high-capacity teacher on validation; Program B starts
+  only after teacher freeze and handles distillation, spectral compression,
+  certification, and hardware allocation.
+- Added leakage-aware split contracts, deterministic retriever unions,
+  filtered hard-negative mining, no-gradient EMA teacher, convex query gate,
+  validation score normalization/ensemble, listwise loss, and margin
+  distillation loss under `seion_kgr/sota/`.
+- Text retrieval and contextual reranking remain disabled until a provenance
+  and data-access contract exists. No SOTA claim is created.
+
+## 2026-08-10 update — thermal safety stop during VRAM ramp
+
+- The 12 GB repeat canary passed with the stable 8 GB workload: 2,048 steps,
+  finite loss `0.0724854`, peak `754.5 MB allocated / 914.4 MB reserved`, and
+  post-run GPU `0 MB`.
+- The 16 GB canary with batch `4096` passed 512 steps with finite loss
+  `0.11931`, peak `1.37 GB allocated / 1.75 GB reserved`, and post-run GPU
+  `0 MB`.
+- The 20 GB / batch `8192` canary reached `89 C` at `92%` utilization, above
+  the declared `85 C` thermal gate. It was terminated, its partial checkpoint
+  and logs were preserved, and the post-termination GPU returned to `0 MB` and
+  `72 C`. No BSOD or OOM occurred in this attempt.
+- The agent-side thermal threshold has been removed per user instruction. A
+  bounded 23 GB canary may use the system/driver protections only; long runs
+  remain subject to B-0012 review.
+- Added the first `SpectralConditionalTensorMixture` scorer with sparse
+  relation routing, orthonormal spectral bases, Tucker core mixtures and
+  log-sum-exp fusion. CPU shape/parity/Lipschitz/gradient tests passed `28/28`;
+  a D256 GPU smoke test with 8 experts and 1,024 candidates also completed.
+
+## 2026-08-10 update — 23 GB-cap system-managed canary
+
+- With the agent-side thermal threshold removed, a bounded 23 GB-cap canary
+  ran for 256 steps at batch `8192` without OOM, BSOD, or non-finite loss.
+- Result: loss `0.17527`, duration `92.8 s`, peak `2.61 GB allocated / 3.38 GB
+  reserved`, and post-run GPU `0 MB` at `71 C`.
+- This validates only bounded execution under the system/driver protections;
+  the cap did not force 23 GB allocation and no quality/SOTA claim follows.
 
 ## 2026-08-09 postflight — matched-tolerance DAG resource study
 
