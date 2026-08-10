@@ -879,6 +879,73 @@ unqualified present-tense statement.
   resource-gated schedules remain open or blocked. No release, push, or PR
   was performed.
 
+## 2026-08-10 postflight — SRATM G6 all-entity VALID
+
+- Executed the frozen SRATM step4600 compression evaluator on all 35,070
+  reciprocal VALID queries against all 14,541 entities, CPU-only, candidate
+  blocks of 1,024 and query batches of 256. TEST was not read, hashed, or
+  opened.
+- Candidate-specific certificate validity passed at full scale: 0 observed
+  violations over 509,952,870 candidate scores; max(error-bound) was
+  `3.2186508e-06` under the declared numerical tolerance.
+- Under the sealed TRAIN+VALID-only filter protocol, full-rank control MRR was
+  `0.3958612331` and uniform-medium compressed MRR was `0.3674372365`
+  (`delta=-0.0284239966`).
+- G6 preservation against the historical teacher reference MRR `0.6116475463`
+  is **BLOCKED_REFERENCE_PROTOCOL_MISMATCH** (`delta=-0.2157863132`). The
+  historical reference filter provenance was not reconstructed because TEST
+  remains sealed; no TEST read was used to resolve the discrepancy.
+- Artifact: `runs/SRATM_CERTIFIED_COMPRESSION_V1_G6_ALL_ENTITY_VALID_FINAL2_20260810/result/`.
+- Focused regression suite passed `6/6`; no hardware timing was run and
+  B-0012 remains active. This is pre-test validation, not a TEST or hardware
+  claim.
+
+## 2026-08-10 postflight — historical VALID reconciliation differential audit
+
+- Executed `HISTORICAL_VALIDATION_RECONCILIATION_V1` on 64 deterministic
+  VALID rows with a 551-candidate pool including every gold entity. TEST was
+  not read, hashed, or opened.
+- Current SRATM branch-wise scorer and official model scorer agreed to max
+  absolute error `7.15e-7`; positive-score versus candidate extraction agreed
+  to `5.96e-7`; reciprocal construction had `0` errors.
+- The sealed sample produced combined MRR `0.3730595` under TRAIN+VALID
+  filters and `0.3440464` under TRAIN-only filters. The historical reference
+  remains `0.6116475`, but its exact loader/filter/rank provenance is not
+  reconstructed. Code inspection shows the historical trainer loader required
+  a test path; this is evidence to investigate, not proof that the historical
+  run used TEST-derived information.
+- G6 is now tracked as G6A certificate scalability PASS, G6B uniform-medium
+  predictive preservation FAIL, and G6C historical reconciliation BLOCKED.
+- Artifact: `runs/HISTORICAL_VALIDATION_RECONCILIATION_V1_20260810_FINAL/result/`.
+
+- Checkpoint forensics: `checkpoint_last.pt` is embedded step `4600`, SHA256
+  `aae9c67b...d462f085`, and matches the hash in `audit_step4600.json`;
+  `checkpoint_best.pt` is a distinct step `4608` artifact with SHA256
+  `00963b77...4730d45`. The historical audit therefore points to `last`, not
+  `best`.
+
+## 2026-08-10 postflight — historical evaluator provenance forensic audit
+
+- Executed `HISTORICAL_EVALUATOR_PROVENANCE_V1` without opening, reading, or
+  hashing TEST. The historical run directory contains no launch command,
+  stdout, evaluator manifest, filter counts, rank trace, or source snapshot.
+- Source evidence confirms the historical SRATM trainer path required
+  `--test`; its normal loader read `test_path`, built entity/relation maps from
+  TRAIN+VALID+TEST, and built filters from TRAIN+VALID+TEST. The sealed
+  compression loader uses TRAIN+VALID only. This is a high-priority open
+  protocol discrepancy, not proof that the historical run consumed TEST.
+- Checkpoint identity, current branch score path, positive/gold extraction,
+  and reciprocal construction are ruled out on available evidence. Tie policy,
+  historical candidate universe, exact command/runtime, and actual TEST
+  consumption remain unknown.
+- Artifact:
+  `runs/HISTORICAL_EVALUATOR_PROVENANCE_V1_20260810/result/`.
+
+- Verification: focused forensic/KGE suite passed **8/8**; `git diff --check`
+  passed; governance audit passed non-strict with status `yellow` and no
+  missing required files; run deduplication completed. No TEST, SOTA,
+  generalization, or hardware claim is made.
+
 ## 2026-08-10 postflight — SRATM certified compression and no-leakage audit
 
 - Executed `SRATM_CERTIFIED_COMPRESSION_V1` on the immutable SRATM step4600

@@ -284,3 +284,24 @@
   split provenance, reciprocal audit, duplicate report, and artifact DAG.
 - [ ] Reconstruct and archive the checkpoint-selection selector log before any
   final TEST confirmation.
+- [x] Execute G6 all-entity VALID with the frozen SRATM step4600 and
+  TRAIN+VALID-only filtered positives, including candidate-wise certificate
+  validation over all 35,070 queries and 14,541 entities.
+- [ ] Reconcile the historical `0.6116475` validation protocol with the
+  sealed TRAIN+VALID-only control (`0.3958612`) before declaring G6 MRR
+  preservation; TEST remains sealed.
+- [x] Run `HISTORICAL_VALIDATION_RECONCILIATION_V1` on a deterministic
+  sealed sample: scorer-path equivalence, positive/gold extraction,
+  reciprocal construction, and TRAIN+VALID versus TRAIN-only filters.
+- [ ] Locate the remaining historical-baseline cause from archived rank traces
+  or provenance without opening TEST; until then classify `0.6116475` as
+  observed-but-protocol-not-reconciled.
+- [x] Inventory historical checkpoint identities: `checkpoint_last.pt` is
+  step 4600 and matches the audit SHA; `checkpoint_best.pt` is a distinct
+  step 4608 artifact and is not the audited reference.
+- [x] Execute `HISTORICAL_EVALUATOR_PROVENANCE_V1` over the historical run
+  directory, relevant source history, checkpoint identities, and available
+  PowerShell history without opening TEST; classify loader/filter, vocabulary,
+  tie-policy, and command provenance hypotheses explicitly.
+- [ ] Recover an archived historical command, rank trace, filter counts, or
+  runtime snapshot sufficient to reconcile `0.6116475` without opening TEST.

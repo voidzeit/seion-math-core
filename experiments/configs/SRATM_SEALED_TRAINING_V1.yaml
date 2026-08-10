@@ -1,0 +1,44 @@
+protocol_id: sratm_sealed_training_v1
+version: "1.0"
+status: declared_and_executable
+authority: declared
+purpose: >-
+  Train a new SRATM teacher from random initialization while making any TEST
+  split access fail closed and recording runtime provenance.
+data:
+  allowed_inputs:
+    - data/FB15K-237/train.txt
+    - data/FB15K-237/valid.txt
+  forbidden_inputs:
+    - data/FB15K-237/test.txt
+  loader: load_train_valid_only
+  vocabulary_source: TRAIN_PLUS_VALID_ONLY
+  filter_source: TRAIN_PLUS_VALID_ONLY
+  reciprocal_training: true
+model:
+  architecture: sratm
+  dimensions: {entity_dim: 256, relation_dim: 256}
+  experts: 8
+  active_experts: 2
+  expert_rank: 64
+  core_basis: 4
+training:
+  initialization: random
+  student_distillation: false
+  seed: 42
+  batch_size: 512
+  candidate_block: 2048
+  hard_k: 128
+  max_steps: 1024
+  checkpoint_every: 64
+  eval_every: 256
+  max_vram_gb: 23.0
+leakage_controls:
+  static_test_path_argument: absent
+  runtime_open_sentinel: required
+  test_hashing: forbidden
+  test_evaluation: forbidden
+  test_selection: forbidden
+claim_policy:
+  allowed: [EMPIRICAL, NUMERICALLY_VERIFIED]
+  forbidden: [SOTA, GENERALIZATION, TEST_CONFIRMATION]

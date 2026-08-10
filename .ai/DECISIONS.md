@@ -146,3 +146,32 @@
 - **Evidence:** `experiments/configs/KGE_SOTA_DISCOVERY_V1.yaml`,
   `seion_kgr/sota/`, and `tests/kgr/test_sota_components.py`.
 - **Status:** accepted_with_B-0012_execution_hold
+
+## D-0012 — Split G6 into certificate, predictive, and historical gates
+
+- **Date:** 2026-08-10
+- **Decision:** Report G6A (all-entity certificate validity), G6B
+  (predictive preservation under the same sealed protocol), and G6C
+  (historical metric reconciliation) separately.
+- **Reason:** The all-entity run has zero candidate-bound violations, while
+  `uniform_medium` loses MRR against the sealed full-rank control and the
+  historical `0.6116475` protocol cannot yet be reconstructed without TEST.
+- **Status:** declared_observed; historical cause remains OPEN.
+
+## D-0013 — Treat historical SRATM VALID MRR as unreconciled
+
+- **Date:** 2026-08-10
+- **Decision:** Keep `0.6116475462913513` as an observed historical artifact,
+  but do not use it for model selection, compression selection, or claims
+  until its loader, filter, candidate-universe, tie-policy, command, and
+  runtime provenance are reconstructed. Keep TEST sealed.
+- **Reason:** The audited checkpoint identity is confirmed and scorer/gold/
+  reciprocal differential checks pass, but the historical trainer source
+  requires a TEST path and its normal loader includes TRAIN+VALID+TEST in
+  vocabulary and filters. The exact historical command and access trace are
+  absent, so actual TEST-derived influence is unknown rather than proven.
+- **Evidence:**
+  `runs/HISTORICAL_EVALUATOR_PROVENANCE_V1_20260810/result/`,
+  `runs/HISTORICAL_VALIDATION_RECONCILIATION_V1_20260810_FINAL2/result/`,
+  `seion_kgr/data.py`, `seion_kgr/train_spectral_mixture.py`.
+- **Status:** accepted_open_cause.

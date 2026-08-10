@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "audited_at": "2026-08-10T08:38:40.700724+00:00",
+  "audited_at": "2026-08-10T10:09:36.092343+00:00",
   "status": "yellow",
   "strict": false,
   "git": {
     "branch": "campaign/gate13-closeout",
-    "commit": "198d424b0cff0e9fc9e8e87e172c5b222da9d4b6",
+    "commit": "cf663bc6ece731b76a3eb8b8b8b315aa56c72ceb",
     "dirty": true
   },
   "required_files": {
