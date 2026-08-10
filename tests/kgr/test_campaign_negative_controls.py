@@ -130,8 +130,28 @@ def test_queried_edge_leakage_inflates_metrics_when_deliberately_enabled():
     # OPPOSITE -- i.e. disables the exclusion) regardless of caller intent.
     original = model.score_tail_candidates
 
-    def leaky_score_tail_candidates(h_ids, r_ids, candidates_ids, adjacency=None, seed=0, training=True, gold_tail_ids=None):
-        return original(h_ids, r_ids, candidates_ids, adjacency, seed, training=True, gold_tail_ids=gold_tail_ids)
+    def leaky_score_tail_candidates(
+        h_ids,
+        r_ids,
+        candidates_ids,
+        adjacency=None,
+        seed=0,
+        training=True,
+        gold_tail_ids=None,
+        context=None,
+    ):
+        # Keep the negative-control intervention (force training=True), while
+        # forwarding the current evaluator's optional query context.
+        return original(
+            h_ids,
+            r_ids,
+            candidates_ids,
+            adjacency,
+            seed,
+            training=True,
+            gold_tail_ids=gold_tail_ids,
+            context=context,
+        )
 
     model.score_tail_candidates = leaky_score_tail_candidates
     try:

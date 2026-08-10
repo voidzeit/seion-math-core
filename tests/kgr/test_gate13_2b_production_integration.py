@@ -112,6 +112,66 @@ def test_score_parity_budgeted_bfs_when_no_node_exceeds_the_budget():
     _run_score_parity_case(enable_seion=False, proj_rank=0, selector_mode="budgeted_bfs", training=True)
 
 
+def test_reusing_path_output_preserves_positive_and_candidate_scores():
+    """The training loop may reuse one direction's frontier for its positive
+    and negative scores; this must be numerically identical to two fresh
+    backend calls under the same seeded query."""
+    adjacency, num_nodes = _graph()
+    csr = build_csr_adjacency(adjacency, num_nodes)
+    _, model = _build_pair(seed=4, enable_seion=True, proj_rank=3, selector_mode="budgeted_bfs")
+    h, r, t = _queries()
+    candidates = torch.arange(num_nodes)
+
+    query_vecs = model.relation(r)
+    output = model._run_path_reasoner(h, r, t, csr, query_vecs, seed=7, training=True)
+    uncached_positive = model.score_positive(h, r, t, csr, seed=7, training=True)
+    cached_positive = model.score_positive(h, r, t, csr, seed=7, training=True, path_output=output)
+    uncached_candidates = model.score_tail_candidates(
+        h, r, candidates, csr, seed=7, training=True, gold_tail_ids=t,
+    )
+    cached_candidates = model.score_tail_candidates(
+        h, r, candidates, csr, seed=7, training=True, gold_tail_ids=t, path_output=output,
+    )
+
+    assert torch.allclose(cached_positive, uncached_positive, atol=1e-6, rtol=1e-6)
+    assert torch.allclose(cached_candidates, uncached_candidates, atol=1e-6, rtol=1e-6)
+
+
+def test_reusing_path_output_preserves_training_gradients():
+    """Sharing the frontier must preserve the summed autograd contribution
+    from positive and candidate readouts, not only their forward values."""
+    adjacency, num_nodes = _graph()
+    csr = build_csr_adjacency(adjacency, num_nodes)
+    _, uncached = _build_pair(seed=5, enable_seion=False, proj_rank=0, selector_mode="budgeted_bfs")
+    _, cached = _build_pair(seed=5, enable_seion=False, proj_rank=0, selector_mode="budgeted_bfs")
+    cached.load_state_dict(uncached.state_dict())
+    h, r, t = _queries()
+    candidates = torch.arange(num_nodes)
+
+    uncached_loss = (
+        uncached.score_positive(h, r, t, csr, seed=9, training=True).mean()
+        + uncached.score_tail_candidates(h, r, candidates, csr, seed=9, training=True, gold_tail_ids=t).mean()
+    )
+    uncached_loss.backward()
+
+    output = cached._run_path_reasoner(h, r, t, csr, cached.relation(r), seed=9, training=True)
+    cached_loss = (
+        cached.score_positive(h, r, t, csr, seed=9, training=True, path_output=output).mean()
+        + cached.score_tail_candidates(
+            h, r, candidates, csr, seed=9, training=True, gold_tail_ids=t, path_output=output,
+        ).mean()
+    )
+    cached_loss.backward()
+
+    for (name_a, parameter_a), (name_b, parameter_b) in zip(
+        uncached.named_parameters(), cached.named_parameters(), strict=True,
+    ):
+        assert name_a == name_b
+        assert (parameter_a.grad is None) == (parameter_b.grad is None), name_a
+        if parameter_a.grad is not None:
+            assert torch.allclose(parameter_a.grad, parameter_b.grad, atol=1e-6, rtol=1e-6), name_a
+
+
 # ------------------------------------------------------------------ queried-edge removal
 
 

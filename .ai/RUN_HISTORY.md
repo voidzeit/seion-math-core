@@ -1,5 +1,408 @@
 # Run history
 
+## 2026-08-09T20:54:20Z — global domain-certified allocator
+
+- Commands: `python -m pytest applications/adaptive_tensor_network/tests/test_global_certificate.py -q`;
+  `python -m pytest applications/adaptive_tensor_network/tests -q`;
+  `python applications/adaptive_tensor_network/experiments/run_global_certificate_probe.py`;
+  `git diff --check`.
+- Environment: Windows PowerShell, Python 3.12, branch
+  `campaign/gate13-closeout`, source commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **GLOBAL_DOMAIN_CERTIFICATE_ALLOCATOR_ADDED_AND_PROBED**. The
+  240-record normalized-leaf probe found certificate-holds fraction `1.0` in
+  both topologies and mean RMS reductions `0.0148` and `0.0135` versus the
+  empirical pathwise heuristic.
+- Limitations: domain bound `||x_leaf||<=1` was declared by normalization;
+  Frobenius enclosures are conservative; no universal superiority or release
+  claim was made.
+
+## 2026-08-09T20:49:14Z — finite-batch validated certificate allocator
+
+- Commands: `python -m pytest applications/adaptive_tensor_network/tests/test_validated_certificate.py -q`;
+  `python -m pytest applications/adaptive_tensor_network/tests -q`;
+  `python applications/adaptive_tensor_network/experiments/run_validated_certificate_probe.py`;
+  `git diff --check`.
+- Environment: Windows PowerShell, Python 3.12, branch
+  `campaign/gate13-closeout`, source commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **FINITE_BATCH_VALIDATED_CERTIFICATE_ALLOCATOR_ADDED_AND_PROBED**.
+  The 360-record artifact reports validated-bound no-worse fraction `1.0` in
+  both topologies and mean held-out RMS reductions `0.2432` and `0.2250`.
+- Limitations: fitting-batch certificate only; Frobenius enclosure is
+  conservative; small-case exhaustive allocator is not scalable; no true-error
+  superiority or universal-input claim was made.
+
+## 2026-08-09T20:44:35Z — exact fitted-majorant allocation probe
+
+- Commands: `python -m pytest applications/adaptive_tensor_network/tests/test_majorant_optimizer.py -q`;
+  `python -m pytest applications/adaptive_tensor_network/tests -q`;
+  `python applications/adaptive_tensor_network/experiments/run_majorant_optimizer_probe.py`;
+  `python -m compileall -q applications/adaptive_tensor_network/src applications/adaptive_tensor_network/tests`;
+  `git diff --check`.
+- Environment: Windows PowerShell, Python 3.12, branch
+  `campaign/gate13-closeout`, source commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **EXACT_FITTED_MAJORANT_OPTIMIZER_ADDED_AND_PROBED**. The dynamic
+  program exactly minimized the declared fitted-data majorant; the probe
+  generated 240 records, with mean true-error reductions `0.3400` and `0.3560`
+  for chain and balanced topologies respectively.
+- Limitations: exploratory and not preregistered; empirical path factors are
+  not validated global operator norms; no allocator-optimality, technology
+  superiority, or historical Level 1 result was promoted.
+
+## 2026-08-09T20:37:21Z — growing-tree dimension obstruction certified
+
+- Commands: `python -m pytest tests/math_closure/test_growing_tree_dimension_counterexample.py -q`;
+  `python research/math_closure/dimension_rank/growing_tree_dimension_counterexample.py`;
+  `git diff --check`.
+- Environment: Windows PowerShell, Python 3.12, branch
+  `campaign/gate13-closeout`, source commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **GROWING_TREE_NODEWISE_SUPPORT_OBSTRUCTION_CERTIFIED**. The
+  executable family requires support ranks `2,3,5,9` at depths `1,2,4,8`.
+- Limitations: this is a negative result for nodewise value-preserving support
+  compression under independent laws; it does not settle root-only reductions,
+  same-law classes, exact higher-`k` constants, novelty, or human review. No
+  release, push, or PR was performed.
+
+## 2026-08-09T17:55:02Z — review snapshot drift detected and repaired
+
+- Commands: `scripts/verify_projected_trees_v5_review_manifest.ps1` (first run
+  failed on the stale objective-audit hash); `Get-FileHash` refresh; the same
+  gate rerun; JSON/YAML parsing; `git diff --check`.
+- Environment: Windows PowerShell, branch `campaign/gate13-closeout`, source
+  commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **REVIEW_MANIFEST_DRIFT_DETECTED_AND_REPAIRED**. The stale hash was
+  corrected and the final gate passed **19/19**.
+- Limitations: this validates snapshot integrity only; external mathematical
+  review and novelty determination remain absent. No release, push, or PR was
+  performed.
+
+## 2026-08-09T17:54:07Z — completion audit and external blocker confirmation
+
+- Commands: review-manifest gate; JSON/YAML parsing; `git diff --check`.
+- Environment: Windows PowerShell, branch `campaign/gate13-closeout`, source
+  commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **INTERNAL_COMPLETION_AUDIT_CONFIRMED_EXTERNAL_BLOCKER**. The six
+  requirements were re-audited against current evidence. Internal manuscript,
+  scope, and reproducibility requirements are ready; independent review and
+  expert novelty determination remain absent.
+- Limitations: this is not a release or completion approval. No release, push,
+  or PR was performed.
+
+## 2026-08-09T17:52:37Z — neutral external-reviewer shortlist
+
+- Commands: public-profile/source comparison; refresh of the template SHA-256;
+  `scripts/verify_projected_trees_v5_review_manifest.ps1`; JSON/YAML parsing;
+  `git diff --check`.
+- Environment: Windows PowerShell, branch `campaign/gate13-closeout`, source
+  commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **EXTERNAL_REVIEWER_SHORTLIST_PREPARED**. Added a neutral shortlist
+  mapping research profiles to theorem, prior-art, MOR, and provenance review
+  roles, with explicit non-endorsement safeguards.
+- Limitations: no outreach or review occurred; `PENDING_HUMAN_REVIEW` and
+  `NOVELTY_NOT_ESTABLISHED` remain. No release, push, or PR was performed.
+
+## 2026-08-09T17:50:51Z — deterministic review-manifest gate
+
+- Commands: `scripts/verify_projected_trees_v5_review_manifest.ps1`; JSON/YAML
+  parsing; `git diff --check`.
+- Environment: Windows PowerShell, branch `campaign/gate13-closeout`, source
+  commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **REVIEW_MANIFEST_GATE_ADDED_AND_PASSING**. The gate parses the
+  review manifest and verifies all 19 declared hashes and paths.
+- Limitations: the gate is reproducibility infrastructure, not independent
+  human review, novelty approval, or publication readiness. No release, push,
+  or PR was performed.
+
+## 2026-08-09T17:49:19Z — frozen external-review artifact manifest
+
+- Commands: `Get-FileHash -Algorithm SHA256` over the declared review inputs;
+  JSONL/YAML parsing; `git diff --check`.
+- Environment: Windows PowerShell, branch `campaign/gate13-closeout`, source
+  commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **REVIEW_ARTIFACT_MANIFEST_FROZEN**. The exact manuscript, theorem
+  dossiers, registry, novelty records, and review documents are now
+  hash-identifiable for a future independent reviewer.
+- Limitations: the snapshot is an internal reproducibility aid, not human
+  review, novelty approval, or publication readiness. No release, push, or PR
+  was performed.
+
+## 2026-08-09T17:46:09Z — external-review normalization and scope sheet
+
+- Commands: cross-read the M8/M14--M20 proof dossiers and
+  `claims/theorem_registry_v5.yaml`; JSON/YAML parsing; `git diff --check`.
+- Environment: Windows PowerShell, branch `campaign/gate13-closeout`, source
+  commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **EXTERNAL_REVIEW_SCOPE_SHEET_ADDED**. Added a compact scope map
+  and normalization sheet covering the universal theorem, M8, M13--M20, and
+  optional M21--M23, including explicit exclusions and reviewer checks.
+- Limitations: this is an internal preparation artifact, not independent
+  human review or novelty approval. No release, push, or PR was performed.
+
+## 2026-08-09T17:41:54Z — systematic theorem-by-theorem novelty audit expansion
+
+- Commands: web searches restricted to primary/publisher records for
+  hierarchical/tree projection, multilinear truncation, TTN integration,
+  bilinear MOR, semiring provenance, and adaptive-rank HT; source pages were
+  opened and recorded in the novelty audit; `git diff --check`.
+- Environment: Windows PowerShell, branch `campaign/gate13-closeout`, source
+  commit `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **NOVELTY_AUDIT_EXPANDED_WITH_CONSERVATIVE_VERDICT**. The targeted
+  audit and theorem matrix now contain theorem-family dispositions for the
+  universal bound, M8, M13--M23, and the source-resolved DAG calculus.
+- Result: adjacent prior art was found, but no exact match was verified for
+  the combined V5 object, constants, hypotheses, and equality classes.
+- Limitations: this is still a bounded search record, not an exhaustive expert
+  novelty determination or publication decision. All novelty fields remain
+  `NOVELTY_NOT_ESTABLISHED`; no release, push, or PR was performed.
+
+## 2026-08-09T17:38:01Z — self-contained analytic proof spine in main manuscript
+
+- Commands: `scripts/build_projected_graphs_v5_papers.ps1`;
+  `scripts/verify_projected_graphs_v5_papers.ps1`; `python -m pytest
+  tests/math_closure -q`; `python -m pytest
+  applications/adaptive_tensor_network/tests -q`; M20, M21, and M23 module
+  entry points; `git diff --check`.
+- Environment: Windows PowerShell, Python 3.12, branch
+  `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **MAIN_MANUSCRIPT_ANALYTIC_PROOF_SPINE_ADDED**. The main paper now
+  contains the analytic Gram estimate, `W_3` scalar optimization, branching
+  nuclear/operator-norm reduction, and finite-arity effective-law argument.
+  The main PDF rebuilt successfully at **9 pages**.
+- Validation: math closure **60/60 passed**; applied tests **16/16 passed**;
+  all three PDFs rendered/audited; M20/M21/M23 module entry points passed;
+  `git diff --check` passed. Final `governance audit --json` passed
+  non-strict with status `yellow`: 177 historical runs, 9 unique scientific
+  instances, 8 duplicate groups, and no missing required files; deduplication
+  completed.
+- Limitations: this improves internal self-containedness but is not
+  independent human review, novelty determination, or publication approval.
+  No release, push, or PR was performed.
+
+## 2026-08-09T06:03:33Z — M23 exact operator reduction for strict same-law chain
+
+- Commands: `python research/math_closure/k3/m23_rank_one_same_law_chain_operator_reduction.py`;
+  focused M23 pytest; full `tests/math_closure`; KGR non-slow suite; and
+  `pytest --collect-only -q`.
+- Environment: Windows PowerShell, Python 3.12, CUDA RTX PRO 5000 Blackwell
+  Laptop GPU; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M23_RANK_ONE_SAME_LAW_CHAIN_OPERATOR_REDUCTION_PROVED**. The
+  exact reduction passed 3/3 focused tests and 59/59 math closure tests; KGR
+  non-slow tests passed 180/180; collection is 493 tests.
+- Limitations: the reduction does not evaluate the low-eta supremum. Branching,
+  broader same-law/gated classes, fixed-eta independent-law `k>=4`, novelty,
+  human review, Lean/lake, and FB15K237 performance remain open or blocked.
+  No release, push, or PR was performed.
+
+## 2026-08-09T05:53:11Z — FB15K237 precision/backend probe
+
+- Commands: FB15K237 acceptance with process-level
+  `torch.set_float32_matmul_precision('high')`; `python -m pytest -q
+  tests/math_closure`; `python -m pytest -q tests/kgr -m 'not slow'`; and
+  `python -m pytest --collect-only -q`.
+- Environment: Windows PowerShell, Python 3.12, CUDA RTX PRO 5000 Blackwell
+  Laptop GPU; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **FB15K237_COMPLETES_BUT_PERFORMANCE_GATE_REMAINS_OPEN**. The
+  acceptance epoch completed in **456.6 s** against the preregistered 300 s
+  ceiling. The process-level precision probe was not retained as a production
+  change.
+- Validation: math closure **56/56 passed**, KGR non-slow **180/180 passed**,
+  and total collection **490 tests**. The low-eta same-law search was
+  exploratory numerical evidence only and did not change theorem status.
+- Limitations: the performance gate remains open; novelty, human review,
+  formal proof-assistant verification, and unresolved mathematical classes
+  remain blocked or open. No release, push, or PR was performed.
+
+## 2026-08-09T05:33:52Z — KGR path-frontier reuse and FB15K237 performance gate
+
+- Commands: score/gradient reuse tests; KGR non-slow suite; WN18RR and
+  FB15K237 full acceptance tests; paper build and PDF verification; JSON/YAML
+  parse; governance audit and run deduplication.
+- Environment: Windows PowerShell, Python 3.12, CUDA RTX PRO 5000 Blackwell
+  Laptop GPU; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **KGR_PATH_OUTPUT_REUSE_CORRECT_FB15K237_PERFORMANCE_GATE_OPEN**.
+- Validation: 490 tests collected, 489 passed, 1 failed because FB15K237
+  completed in 424.8 s against the preregistered 300 s ceiling; WN18RR passed
+  in 123.16 s. The failure is an engineering performance result, not a
+  correctness failure.
+- Limitations: the performance gate remains open; no causal, MRR, novelty,
+  theorem, release, push, or PR claim was promoted.
+
+## 2026-08-09T05:05:26Z — M22 high-eta rank-one/common-leaf same-law chain closure
+
+- Commands: focused M13--M22 tests; segmented pytest verification for all
+  non-slow selections; `pytest --collect-only -q`; paper build and PDF
+  verification; JSON/YAML parse; `git diff --check`; governance audit and run
+  deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M22_RANK_ONE_SAME_LAW_HIGH_ETA_CHAIN_EXACT_CLOSED_487_OF_488_TESTS**.
+- Summary: a repeated gated rotation law with common projected leaf and
+  rank-one projector attains the exact high-eta value `W_3(eta)` for the
+  strict binary chain.
+- Validation: focused checks **26/26 passed**; **488/489** collected tests
+  passed through segmented execution and individual slow-test checks.
+  WN18RR full batched training passed in 123.16 s; FB15K237 completed but
+  exceeded the preregistered 300 s ceiling at 424.8 s in the optimized run.
+  Three PDFs rebuilt/audited;
+  no overfull box in the main paper; governance `yellow`, 177 historical
+  runs, 9 unique instances, 8 duplicate groups, and 177 complete contracts.
+- Limitations: low-eta rank-one/common-leaf same-law, branching/gated
+  variants, fixed-eta independent-law sharpness for `k>=4`, growing-tree
+  uniformity, signed-forest constants, globally tight norms, novelty, human
+  review, Lean/lake, and resource-gated schedules remain open or blocked.
+  No release, push, or PR was performed.
+
+## 2026-08-09T03:41:12Z — M21 tagged same-law binary k=3 closure
+
+- Commands: focused M13--M21 tests; full `python -m pytest -q`; paper build
+  and PDF verification; JSON/YAML parse; governance audit and run
+  deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M21_TAGGED_SAME_LAW_K3_EXACT_FIXED_ETA_CLOSED_FULL_SUITE_GREEN**.
+- Summary: a single repeated bilinear law with orthogonal projected leaf tags
+  uses direct-sum blocks to reproduce the exact M14 chain and M15 branching
+  witnesses, preserving norm one and closure defect at most `eta`.
+- Validation: focused checks **25/25 passed**; full suite **487/487 passed**
+  in 428.82s; three PDFs rebuilt and audited; no overfull box in the main
+  paper; governance status `yellow`, 174 historical runs, 9 unique instances,
+  8 duplicate groups, and 174 complete artifact contracts.
+- Limitations: rank-one/common-leaf same-law and gated variants, fixed-eta
+  independent-law sharpness for `k>=4`, growing-tree uniformity, signed-forest
+  constants, globally tight norms, novelty, human review, Lean/lake, and
+  resource-gated schedules remain open or blocked. No release, push, or PR was
+  performed.
+
+## 2026-08-09T03:23:19Z — M20 exact k=3 all-finite-arity constant
+
+- Commands: focused M14--M20 tests; full `python -m pytest -q`; paper build
+  and PDF verification; JSON/YAML parse; governance audit and run
+  deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M20_K3_ALL_FINITE_ARITY_EXACT_FIXED_ETA_CLOSED_FULL_SUITE_GREEN**.
+- Summary: freezing unit leaf slots reduces every finite k=3 arity profile to
+  the M14 chain or M15 branching effective class; unit `e0` gates transfer the
+  matching witnesses, giving `C_{T,ind}^P(eta)=W_3(eta)` for `0<eta<=1`.
+- Validation: focused checks **22/22 passed**; full suite **486/486 passed**
+  in 430.78s; three PDFs rebuilt and audited; no overfull box in the main
+  paper; governance status `yellow`, 173 historical runs, 9 unique instances,
+  8 duplicate groups, and 173 complete artifact contracts.
+- Limitations: same-law/gated variants, fixed-eta independent-law sharpness
+  for `k>=4`, growing-tree uniformity, signed-forest constants, globally tight
+  norms, novelty, human review, Lean/lake, and resource-gated schedules remain
+  open or blocked. No release, push, or PR was performed.
+
+## 2026-08-09T03:00:11Z — M19 finite-arity asymptotic sharpness
+
+- Commands: focused M18/M19 evaluators and tests; full 'python -m pytest -q';
+  paper build and PDF verification; YAML/JSON parse; 'git diff --check';
+  governance audit and run deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch 'campaign/gate13-closeout', source commit
+  'cbb6ddb0a050882249054f9044c905e442a561ab'.
+- Outcome: **M19_FINITE_ARITY_ASYMPTOTIC_K_MINUS_ONE_CLOSED_FULL_SUITE_GREEN**.
+- Summary: real-plane product laws at non-root vertices and the imaginary-part
+  root law give the exact witness
+  'E_proj=|sin((k-1) arcsin(eta))|' for every finite arity profile.
+- Validation: full suite **485/485 passed** in 442.92s; three PDFs rebuilt and
+  audited; no overfull box in the main paper; governance status 'yellow',
+  172 historical runs, 9 unique instances, 8 duplicate groups, and 172
+  complete artifact contracts.
+- Limitations: fixed-eta sharpness, broader same-law/gated classes, growing-tree
+  uniformity, signed-forest constants, globally tight norms, novelty, human
+  review, Lean/lake, and resource-gated schedules remain open or blocked. No
+  release, push, or PR was performed.
+
+## 2026-08-09T02:39:46Z — M18 finite-binary asymptotic sharpness
+
+- Commands: M18 focused evaluator/test; full `python -m pytest -q`; paper
+  build and PDF verification; YAML/JSON parse; `git diff --check`; governance
+  audit and run deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M18_BINARY_ASYMPTOTIC_K_MINUS_ONE_CLOSED_FULL_SUITE_GREEN**.
+- Summary: for every fixed finite ordered full-binary topology, the complex
+  two-dimensional witness gives `E_proj=|sin((k-1) arcsin(eta))|`; the
+  universal projected-root theorem yields the matching asymptotic limit.
+- Validation: full suite **483/483 passed** in 456.41s; three PDFs rebuilt and
+  audited; no new overfull box; governance status `yellow`, 171 historical
+  runs, 9 unique instances, 8 duplicate groups, and 171 complete artifact
+  contracts.
+- Limitations: fixed-eta, higher-arity and growing-tree extensions, broader
+  same-law/gated variants, signed-forest constants, globally tight norms,
+  novelty, human review, Lean/lake, and resource-gated schedules remain open
+  or blocked. No release, push, or PR was performed.
+
+## 2026-08-09T02:16:47Z — M17 contractive gated-planar repeated-law closure
+
+- Commands: M17 focused evaluator/test; full `python -m pytest -q`; paper
+  build and PDF verification; YAML/JSON parse; `git diff --check`; governance
+  audit and run deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M17_CONTRACTIVE_GATED_REPEATED_CLOSED_FULL_SUITE_GREEN**.
+- Summary: proved the exact identity `P*A*(I-P)*A*e0`, upper bounded it by
+  `M*rho`, and attained equality with an off-diagonal planar contraction.
+- Validation: full suite **481/481 passed** in 460.50s; three PDFs rebuilt and
+  audited; governance status `yellow`, 170 historical runs, 9 unique
+  instances, 8 duplicate groups, and 170 complete artifact contracts.
+- Limitations: variable-gate/arbitrary-leaf/non-planar variants, higher-arity
+  and arbitrary finite topologies, growing-tree sharpness, signed-forest
+  constants, norms, novelty, human review, Lean/lake, and resource-gated
+  schedules remain open or blocked. No release, push, or PR was performed.
+
+## 2026-08-09T02:03:39Z — M16 arbitrary-node-law binary k=3 corollary
+
+- Commands: focused M16/M14/M15 tests; full `python -m pytest -q`; PDF build
+  and verification; YAML/JSON parse; `git diff --check`; governance audit
+  and run deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M16_BINARY_GENERAL_NODE_LAW_CLASS_CLOSED_FULL_SUITE_GREEN**.
+- Summary: made explicit that the M14/M15 independently selectable-node-law
+  convention is the full arbitrary-node-law binary class, so both chain and
+  branching constants are exactly `W_3(eta)`.
+- Validation: focused checks **16/16**; full suite **480/480 passed** in
+  414.50s; three PDFs rebuilt/audited; governance status `yellow`, 169
+  historical runs, 9 unique instances, 8 duplicate groups, and 169 complete
+  artifact contracts.
+- Limitations: repeated same-law/gated subclasses, higher-arity/arbitrary
+  finite topologies, growing-tree sharpness, signed-forest constants, norms,
+  novelty, human review, Lean/lake, and resource-gated schedules remain open
+  or blocked. No release, push, or PR was performed.
+
+## 2026-08-09T01:48:13Z — k=2 class-A closure and M14/M15 final verification
+
+- Commands: focused `k=2` class-A and M14/M15 tests; full
+  `python -m pytest -q`; PDF build and verification; YAML/JSON parse;
+  governance audit and run deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **K2_CLASS_A_M14_M15_CLOSED_FULL_SUITE_GREEN**.
+- Summary: closed the declared finite-dimensional real binary `k=2`
+  class-level constant at `C_{2,A}^P(eta)=1` by matching the universal upper
+  bound with the embedded repeated-law witness; corrected superseded current
+  ledger formulations without deleting historical provenance.
+- Validation: focused checks **18/18**; full suite **479/479 passed** in
+  426.02s; three V5 PDFs rebuilt/audited; governance status `yellow`, 168
+  historical runs, 9 unique instances, 8 duplicate groups, and 168 complete
+  artifact contracts.
+- Limitations: broader gated-planar repeated-law classes, same-law/gated k=3,
+  arbitrary-tree sharpness, unbounded-tree uniformity, globally tight norms,
+  novelty, human review, Lean/lake, and resource-gated schedules remain open
+  or blocked. No release, push, or PR was performed.
+
 This file is append-only. Each entry must be produced or reviewed after an
 executed command and must include command, date, branch, commit, outcome,
 changed paths, and limitations. Historical artifact runs remain under
@@ -377,3 +780,453 @@ changed paths, and limitations. Historical artifact runs remain under
   - Fixed-eta k=3 global sharpness remains open; M10 narrows what "open" means (U_3 provably unreachable) but does not supply the true value.
   - Points 3-12 of the user's own follow-up priority list (gated-planar exact optimum, dimension/rank reduction, arbitrary-tree/same-law k=3 conjectures, signed-forest exact constants, source-calculus consolidation, growing-tree theorem, formal verification, novelty audit, human review, manuscript rebuild) were not attempted this pass.
   - Gate13.5, Gate14, KGR, and historical artifacts were not modified. No push, no PR.
+
+## 2026-08-08T22:25:19.218645Z — Projected-graphs V5 completion pass
+
+- Commands: bounded context compilation; YAML/JSON parse validation; focused
+  V5 pytest command; `scripts/build_projected_graphs_v5_papers.ps1`;
+  `scripts/verify_projected_graphs_v5_papers.ps1`; governance audit and run
+  deduplication; `git diff --check`.
+- Environment: Windows PowerShell, Python project environment, MiKTeX/pdfLaTeX;
+  branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **INTERNAL_COMPLETION_WITH_EXTERNAL_BLOCKERS**.
+- Summary: Added the weighted-summability growing-tree theorem, updated the
+  V5 status/task records, added a bounded novelty-audit record and references,
+  rebuilt and render-audited the mathematical, source-calculus, and software
+  manuscripts, and prepared
+  `research/projected_trees_v5/review/REVIEW_PACKET_2026-08-08.md`.
+- Validation: YAML/JSON parsing passed; 85 focused V5 tests passed; a fresh
+  full `python -m pytest -q` run completed with 450 collected, 449 passed,
+  and 1 pre-existing out-of-scope KGR negative-control failure in 431.87s;
+  all three V5 PDFs rendered and audited; governance audit passed yellow in
+  non-strict mode; the final audit found 157 historical runs, 9 unique
+  scientific instances, 8 duplicate groups, and 157 complete artifact
+  contracts; the deduplicated run index was regenerated.
+- Changed areas: `.ai/` postflight/task/evidence records; governance-derived
+  run indexes; V5 mathematical and software paper sources and PDFs; theorem
+  status and task registries; growing-tree theorem; novelty audit and
+  bibliography; independent-review packet.
+- Limitations: exact fixed-eta k=3 value, strict supremum gap, gated-planar
+  repeated-law sharpness, dimension/rank reduction, arbitrary-tree/topology
+  sharpness, globally tight norms, novelty, human review, Lean/lake, and
+  resource-gated V3 schedules remain open or blocked. No Gate13.5, Gate14,
+  KGR, historical artifacts, push, or PR were modified.
+
+## 2026-08-08T22:52:22.350205Z — M10b compactness refinement and full-suite repair
+
+- Commands: bounded M10b proof/registry edits; focused theorem and KGR tests;
+  `scripts/build_projected_graphs_v5_papers.ps1`;
+  `scripts/verify_projected_graphs_v5_papers.ps1`; full `python -m pytest -q`;
+  YAML/JSON parsing; `git diff --check`; governance audit and run
+  deduplication.
+- Environment: Windows PowerShell, Python project environment, MiKTeX/pdfLaTeX;
+  branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **FINITE_FIXED_CLASS_GAP_CLOSED_FULL_SUITE_GREEN**.
+- Summary: Added the compactness-based M10b theorem and its scope boundary;
+  clarified the declared gated-planar exact value versus the broader open
+  subclass; corrected stale V5 truth-ledger entries; and updated the KGR
+  leakage negative control for the context-aware evaluator signature.
+- Validation: full suite **450/450 passed** in 418.75s; focused checks passed;
+  registries parsed; all three V5 PDFs rebuilt, rendered, and audited;
+  governance audit passed yellow with no missing required files.
+- Current evidence after the new run: 158 historical runs, 9 unique
+  scientific instances, 8 duplicate groups, and 158 complete artifact
+  contracts.
+- Limitations: M10b is not uniform over dimensions/ranks; global fixed-eta
+  k=3 sharpness, arbitrary-tree/topology sharpness, globally tight norms,
+  novelty, independent human review, Lean/lake, and resource-gated schedules
+  remain open or blocked. No Gate13.5, Gate14, historical artifacts, push, or
+  PR were modified.
+
+## 2026-08-08T23:04:34.617999Z — Restricted Jacobiator theorem and full-suite expansion
+
+- Commands: exact restricted-Jacobiator script; focused signed-identity tests;
+  registry parsing; `git diff --check`; full `python -m pytest -q`;
+  `scripts/build_projected_graphs_v5_papers.ps1`;
+  `scripts/verify_projected_graphs_v5_papers.ps1`; governance audit and run
+  deduplication.
+- Environment: Windows PowerShell, Python project environment, MiKTeX/pdfLaTeX;
+  branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **RESTRICTED_SIGNED_IDENTITY_CLOSED_FULL_SUITE_GREEN**.
+- Summary: Proved and registered exact zero projected error for the declared
+  gated-planar rotation Jacobiator class, added symbolic evaluator coverage,
+  and explicitly retained the generic-law extremal problem as open.
+- Validation: full suite **451/451 passed** in 405.87s; exact script and
+  focused tests passed; registries parsed; all three V5 PDFs rendered and
+  audited; governance audit passed yellow with no missing required files.
+- Current evidence after the new run: 159 historical runs, 9 unique
+  scientific instances, 8 duplicate groups, and 159 complete artifact
+  contracts.
+- Limitations: generic signed-forest constants, global fixed-eta k=3,
+  dimension/rank-uniform bounds, arbitrary-tree/topology sharpness, globally
+  tight norms, novelty, human review, Lean/lake, and resource-gated schedules
+  remain open or blocked. No Gate13.5, Gate14, historical artifacts, push, or
+  PR were modified.
+
+## 2026-08-08T23:17:28Z — All-finite-k left-comb gated-rotation formula
+
+- Commands: exact all-k gated-rotation script; focused all-k test; full
+  `python -m pytest -q`; PDF build/verify scripts; YAML/JSON parse;
+  `git diff --check`; governance audit and run deduplication.
+- Environment: Windows PowerShell, Python project environment, MiKTeX/pdfLaTeX;
+  branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **ALL_FINITE_K_LEFT_COMB_RESTRICTED_FORMULA_CLOSED_FULL_SUITE_GREEN**.
+- Summary: proved and registered the exact Chebyshev formula for every finite
+  left-comb chain under the declared gated-planar rotation law, while keeping
+  global extremal and non-left-comb questions open.
+- Validation: full suite **452/452 passed** in 409.83s; exact script and
+  focused test passed; registries parsed; all three V5 PDFs rendered/audited;
+  governance audit passed yellow with no missing required files.
+- Current evidence: 160 historical runs, 9 unique scientific instances,
+  8 duplicate groups, and 160 complete artifact contracts.
+- Limitations: global fixed-eta k=3, dimension/rank-uniform reduction,
+  arbitrary-tree/topology sharpness, generic signed constants, global norm
+  sharpness, novelty, human review, Lean/lake, and resource-gated schedules
+  remain open or blocked. No Gate13.5, Gate14, historical artifacts, push,
+  or PR were modified.
+
+## 2026-08-08T23:44:28Z — Topology-wide and variable-arity gated-rotation closure
+
+- Commands: exact full-binary and general-arity scripts; focused tests; full
+  `python -m pytest -q`; PDF verification; YAML/JSON parse; `git diff --check`;
+  governance audit and run deduplication.
+- Environment: Windows PowerShell, Python project environment, MiKTeX/pdfLaTeX;
+  branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **TOPOLOGY_WIDE_RESTRICTED_GATED_ROTATION_CLOSED_FULL_SUITE_GREEN**.
+- Summary: proved and registered the exact recursive projected-error formula
+  for every finite ordered full-binary topology and its arity-compatible
+  extension to every finite ordered rooted tree with arity at least two.
+- Validation: full suite **454/454 passed** in 437.57s; exact scripts and
+  focused tests passed; registries parsed; all three V5 PDFs rendered/audited;
+  governance audit passed yellow with no missing required files.
+- Current evidence: 162 historical runs, 9 unique scientific instances,
+  8 duplicate groups, and 162 complete artifact contracts.
+- Limitations: global independent-law fixed-eta sharpness, dimension/rank-
+  uniform reduction, arbitrary-law constants, generic signed constants,
+  global norm sharpness, novelty, human review, Lean/lake, and resource-gated
+  schedules remain open or blocked. No Gate13.5, Gate14, historical artifacts,
+  push, or PR were modified.
+
+## 2026-08-09T00:01:58Z — M11 conditional quantitative k=3 gap
+
+- Commands: exact M11 script; focused M11 test; full `python -m pytest -q`;
+  PDF verification; YAML/JSON parse; `git diff --check`; governance audit
+  and run deduplication.
+- Environment: Windows PowerShell, Python project environment, MiKTeX/pdfLaTeX;
+  branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M11_CONDITIONAL_K3_GAP_CLOSED_FULL_SUITE_GREEN**.
+- Summary: derived the explicit angle–magnitude bound under exact
+  first-propagator saturation and retained the unrestricted fixed-eta
+  supremum as open.
+- Validation: full suite **455/455 passed** in 442.90s; exact script and
+  focused test passed; registries parsed; all three V5 PDFs rendered/audited;
+  governance audit passed yellow with no missing required files.
+- Current evidence: 163 historical runs, 9 unique scientific instances,
+  8 duplicate groups, and 163 complete artifact contracts.
+- Limitations: global fixed-eta k=3, dimension/rank-uniform reduction,
+  arbitrary-law sharpness, generic signed constants, global norm sharpness,
+  novelty, human review, Lean/lake, and resource-gated schedules remain open
+  or blocked. No Gate13.5, Gate14, historical artifacts, push, or PR were
+  modified.
+
+## 2026-08-09T01:26:56Z — M14/M15 exact independent-law k=3 constants
+
+- Commands: M14/M15 scripts and focused tests; regression tests; full
+  `python -m pytest -q`; paper build and PDF verification; YAML/JSON parse;
+  `git diff --check`; governance audit and run deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M14_M15_EXACT_INDEPENDENT_K3_CONSTANTS_CLOSED_FULL_SUITE_GREEN**.
+- Summary: M14 attains the M13 chain envelope; M15 proves and attains the
+  same branching envelope using scalarization and nuclear/operator-norm
+  duality. Both independent-law binary `k=3` constants equal `W_3(eta)`.
+- Validation: full suite **478/478 passed** in 416.33s; all three V5 PDFs
+  rebuilt and audited; governance audit passed yellow with no missing files;
+  167 historical runs, 9 unique instances, 8 duplicate groups, and 167
+  complete artifact contracts.
+- Remaining boundary: same-law/gated subclasses, arbitrary-tree sharpness,
+  globally tight norms, novelty, human review, Lean/lake, and resource-gated
+  schedules. No release, push, or PR.
+
+## 2026-08-09T01:00:23Z — M13 unconditional chain quantitative envelope
+
+- Commands: M13 focused script/test; focused regression tests; full
+  `python -m pytest -q`; paper build and PDF verification; YAML/JSON parse;
+  `git diff --check`; governance audit and run deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M13_UNCONDITIONAL_CHAIN_ENVELOPE_CLOSED_FULL_SUITE_GREEN**.
+- Summary: removed M11's first-propagator saturation hypothesis for the
+  ordered binary k=3 chain using a contraction Gram-matrix cross-term bound,
+  obtaining explicit `W_3<U_3` on `0<eta<=1`.
+- Validation: full suite **463/463 passed** in 470.42s; all three V5 PDFs
+  rebuilt and audited; governance audit passed yellow with no missing files;
+  166 historical runs, 9 unique instances, 8 duplicate groups, and 166
+  complete artifact contracts.
+- Remaining boundary: branching quantitative tightening, exact chain/
+  branching constants, unbounded-tree uniformity, norms, novelty, human
+  review, Lean/lake, and resource-gated schedules. No release, push, or PR.
+
+## 2026-08-09T00:41:29Z — finite source calculus and endpoint k=3 gap
+
+- Commands: source-calculus and endpoint scripts/tests; full
+  `python -m pytest -q`; paper build and PDF verification; YAML/JSON parse;
+  `git diff --check`; governance audit and run deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **FINITE_SOURCE_CALCULUS_ENDPOINT_K3_GAP_CLOSED_FULL_SUITE_GREEN**.
+- Summary: consolidated P6A/P6B/P7B into one finite theorem package and
+  extended the strict k=3 gap to `0<eta<=1`, with endpoint upper value
+  `U_3(1)=sqrt(2)` and nonquantitative strictness.
+- Validation: full suite **461/461 passed** in 411.30s; all three V5 PDFs
+  rebuilt and audited; governance audit passed yellow with no missing files;
+  165 historical runs, 9 unique instances, 8 duplicate groups, and 165
+  complete artifact contracts.
+- Remaining boundary: exact `C_3`, explicit delta, broader sharpness classes,
+  unbounded-tree uniformity, norms, novelty, human review, Lean/lake, and
+  resource-gated schedules remain open or blocked. No release, push, or PR.
+
+## 2026-08-09T00:20:31Z — fixed-tree support compression and global k=3 gap
+
+- Commands: support-compression script; focused support-compression tests;
+  full `python -m pytest -q`; PDF verification; YAML/JSON parse;
+  `git diff --check`; governance audit and run deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **FIXED_TREE_COMPRESSION_GLOBAL_K3_STRICT_GAP_CLOSED_FULL_SUITE_GREEN**.
+- Summary: fixed-tree projector-invariant support compression was proved with
+  explicit per-type dimension bound `2*(leaves + 2*nodes)`. For binary `k=3`
+  this is `20` (`22` with proper-projector padding), and compactness plus M10
+  yields `C_3,ind^P(eta) < U_3(eta)` for `0 < eta < 1`.
+- Validation: full suite **457/457 passed** in 410.61s; all three V5 PDFs
+  rendered/audited; governance audit passed yellow with no missing required
+  files; 164 historical runs, 9 unique instances, 8 duplicate groups, and
+  164 complete artifact contracts.
+- Limitations: exact `C_3^P`, explicit delta, endpoint `eta=1`, unbounded-tree
+  uniformity, broader sharpness classes, norms, novelty, human review,
+  Lean/lake, and resource-gated schedules remain open or blocked. No release,
+  push, or PR was performed.
+
+## 2026-08-09T00:00:08Z — M11 conditional quantitative k=3 gap
+
+- Commands: exact M11 script; focused M11 test; full `python -m pytest -q`;
+  PDF verification; YAML/JSON parse; `git diff --check`; governance audit
+  and run deduplication.
+- Environment: Windows PowerShell, Python project environment, MiKTeX/pdfLaTeX;
+  branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **M11_CONDITIONAL_K3_GAP_CLOSED_FULL_SUITE_GREEN**.
+- Summary: derived the explicit angle–magnitude bound under exact
+  first-propagator saturation and retained the unrestricted fixed-eta
+  supremum as open.
+- Validation: full suite **455/455 passed** in 442.90s; exact script and
+  focused test passed; registries parsed; all three V5 PDFs rendered/audited;
+  governance audit passed yellow with no missing required files.
+- Current evidence: 163 historical runs, 9 unique scientific instances,
+  8 duplicate groups, and 163 complete artifact contracts.
+- Limitations: global fixed-eta k=3, dimension/rank-uniform reduction,
+  arbitrary-law sharpness, generic signed constants, global norm sharpness,
+  novelty, human review, Lean/lake, and resource-gated schedules remain open
+  or blocked. No Gate13.5, Gate14, historical artifacts, push, or PR were
+  modified.
+
+## 2026-08-09T17:15:57Z — manuscript concentration, novelty addendum, and review refresh
+
+- Commands: bounded primary-source novelty search; concentrated mathematical
+  manuscript update; M23 scope clarification; all three PDF builds and render
+  audit; `python -m pytest tests/math_closure -q`; focused V5 regression tests;
+  `git diff --check`; governance audit and run deduplication.
+- Environment: Windows PowerShell, Python 3.12 project environment,
+  MiKTeX/pdfLaTeX; branch `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **MANUSCRIPT_NOVELTY_REVIEW_PACKET_REFRESHED**.
+- Validation: math closure **59/59 passed**; focused V5 regression suite
+  **85/85 passed**; all three V5 PDFs rebuilt and audited; `git diff --check`
+  passed; governance audit passed with status `yellow`, no missing required
+  files; run deduplication completed.
+- Changes: the main paper now states the independent/same-law/rank-one/common-
+  leaf scope distinctions and places M21--M23 after the main finite-arity
+  spine; the novelty audit adds bounded comparisons for TTN dynamics,
+  stability, randomized rounding, and projection-based MOR; the theorem matrix
+  and reviewer packet include M23 and current test counts.
+- Limitations: the audit remains bounded and does not establish novelty;
+  independent human review, formal proof-assistant verification, publication
+  approval, applied allocator superiority, low-eta M23 value, broader same-law
+  classes, and unbounded-tree fixed-eta sharpness remain open or blocked. No
+  release, push, or PR was performed.
+
+## 2026-08-09T17:22:32Z — internal theorem consistency audit and M20/M21 evidence repair
+
+- Commands: bounded source/proof audit for the universal theorem and M8/M14--M23;
+  M20/M21/M23 module checks; focused M20/M21/M23 tests; full
+  `python -m pytest tests/math_closure -q`; theorem-registry YAML and ledger
+  JSON validation; `git diff --check`.
+- Environment: Windows PowerShell, Python 3.12 project environment; branch
+  `campaign/gate13-closeout`, source commit
+  `cbb6ddb0a050882249054f9044c905e442a561ab`.
+- Outcome: **INTERNAL_THEOREM_AUDIT_COMPLETED_WITH_M21_CERTIFICATE_REPAIR**.
+- Finding and repair: converting M21's structural norm/defect values from
+  declarations to computed direct-sum certificates initially exposed the
+  expected high-eta distinction between the realized defect and the external
+  cap. The verifier now checks `defect=min(eta,sqrt(2/3))` while preserving
+  admissibility `defect<=eta`; no theorem scope was widened.
+- Validation: focused M20/M21/M23 tests **6/6 passed**; full math-closure
+  suite **60/60 passed**; M20, M21, and M23 module entry points passed; YAML,
+  JSON, and `git diff --check` gates passed.
+- Deliverables: explicit effective-law budget lemma in M20; computed direct-sum
+  certificate and regression test for M21; internal pre-review audit at
+  `research/projected_trees_v5/review/INTERNAL_THEOREM_AUDIT_2026-08-09.md`;
+  registry scope clarification for M20/M23.
+- Limitations: this is not independent human review or a novelty decision;
+  those remain pending, as do the M23 low-eta value, broader shared-law
+  classes, applied allocator superiority, formalization, and publication
+  approval. No release, push, or PR was performed.
+
+## 2026-08-09T17:24:00Z — exact-phrase novelty search extension
+
+- Command: bounded web search for exact/fixed-constant matches to the M14--M20
+  projected-root and `W_3` statements, followed by an additive novelty-audit
+  update.
+- Outcome: **NOVELTY_AUDIT_EXTENDED_WITH_ADJACENT_TTN_RECORDS**.
+- Finding: the additional records concern TTN dynamics, stochastic projection,
+  and tensor-network/multilinear contraction theory; no exact theorem match was
+  verified in the bounded search. `NOVELTY_NOT_ESTABLISHED` remains unchanged.
+- Limitations: this is not an exhaustive independent literature review and
+  search absence is not evidence of novelty. No theorem status or publication
+  status changed.
+
+## 2026-08-09T17:26:02Z — six-requirement completion audit
+
+- Commands: objective-file reread; requirement-by-requirement evidence audit;
+  local evidence path checks; focused M20/M21/M23 tests; PDF render audit;
+  governance audit and run deduplication.
+- Outcome: **OBJECTIVE_REQUIREMENTS_AUDIT_RECORDED**.
+- Result: concentrated manuscript, explicit scope, and internal supporting
+  reproducibility are verified; bounded novelty review is recorded but not
+  exhaustive; independent mathematical review is still missing; applied
+  superiority is correctly not claimed.
+- Deliverable: `research/projected_trees_v5/review/OBJECTIVE_REQUIREMENTS_AUDIT_2026-08-09.md`.
+- Validation: all referenced local evidence paths exist; focused M20/M21/M23
+  tests **6/6 passed**; three PDFs rendered/audited successfully.
+- Limitations: the matrix does not upgrade novelty, theorem status, or review
+  authority. The goal remains active because the external review and exhaustive
+  novelty determination have not occurred. No release, push, or PR was done.
+
+## 2026-08-09T17:28:49Z — external review request made actionable
+
+- Deliverable: `research/projected_trees_v5/review/EXTERNAL_REVIEW_REQUEST_TEMPLATE.md`.
+- Contents: minimum theorem spine, optional M21--M23 addendum, minimal reading
+  set, hypothesis/normalization/admissibility questions, verdict vocabulary,
+  novelty-review prompts, and an unfilled reviewer record.
+- Authority: preparation only. No human verdict, novelty upgrade, or publication
+  recommendation was inferred.
+
+## 2026-08-09T17:30:56Z — canonical review hub
+
+- Added `research/projected_trees_v5/review/README.md` as the single entry point
+  for the external review packet, theorem sources, novelty records, and
+  verification commands.
+- Validation: all review-hub files exist; governance audit passed with status
+  `yellow`; deduplication completed; `git diff --check` passed.
+- Limitation: the hub organizes a review but does not supply a reviewer or
+  approval. No theorem, novelty, or publication status changed.
+
+## 2026-08-09T17:32:46Z — applied validation status separated and rechecked
+
+- Added `applications/adaptive_tensor_network/results/APPLIED_VALIDATION_STATUS_2026-08-09.md`.
+- The note records Level 1's mixed/negative allocator result, Level 2's null
+  result, Level 3's exploratory partial positive result, and the exact
+  matched-error memory/runtime study required before any technology claim.
+- Re-ran the registered Level 1 analysis from raw records: Pearson
+  `0.9334132264`, Spearman `0.9216239741`; primary comparisons supported only
+  against `singular_energy`, not `uniform` or `local_error_greedy`.
+- Application tests: **16/16 passed**. No applied-superiority claim was added.
+
+## 2026-08-09T21:10:00Z — finite DAG bounded-domain certificate
+
+- Added a V5 finite-DAG enclosure calculus with topological value/error
+  recurrence, repeated-slot accounting, reverse downstream gains, and exact
+  finite rank-budget DP under rank-independent enclosures.
+- Added theorem and truth-ledger records plus
+  `research/math_closure/dag/global_domain_certificate.tex`.
+- Validation: DAG plus `tests/math_closure` **69/69**; application tests
+  **22/22**; full `python -m pytest -q` **502/503**. The only failure was the
+  existing FB15K-237 batched performance ceiling at **406.3 s** versus 300 s;
+  the epoch completed. Registry parsing, governance audit, deduplication, and
+  `git diff --check` passed.
+- Limitations: finite declared DAGs and rank tables only; no sharpness claim,
+  universal empirical norm certificate, novelty upgrade, or human approval.
+
+## 2026-08-09T21:35:00Z — shared-DAG tensor-network validation
+
+- Added a numerical shared-subexpression DAG backend and a held-out diamond
+  probe driven by the global bounded-domain certificate allocator.
+- The probe has 420 records (20 seeds, seven budgets, three methods); both the
+  rank-independent and rank-aware certificates held on 140/140 matched cases.
+  The rank-aware allocator beat uniform on 16.4% of sup-error comparisons and
+  had mean reduction -0.007448, a negative control against universal
+  allocator-superiority claims.
+- Validation: adaptive tests **28/28**, math plus DAG tests **70/70**, and
+  YAML/JSON artifact parsing passed. No applied or theorem status was upgraded.
+
+## 2026-08-09T22:05:00Z — exact nonnegative DAG path constant
+
+- Added the exact path-product constant for the declared nonnegative
+  first-order DAG channel class, including shared fan-out and parallel slot
+  multiplicity. Registered the theorem, proof note, implementation, and tests.
+- Validation: DAG/path/math suite **73/73**; theorem/truth-ledger parsing
+  passed. Limitation: this is sharpness of the first-order channel envelope,
+  not simultaneous sharpness of the original multilinear operator class.
+
+## 2026-08-09T22:20:00Z — shared-diamond DAG asymptotic sharpness
+
+- Proved and registered the exact asymptotic coefficient 4 for the fixed
+  independent-law shared diamond DAG. The planar complex-multiplication
+  witness has exact error `|exp(4 i theta)-cos(theta)^4|` with
+  `theta=arcsin(eta)` and ratio tending to 4.
+- Validation: dedicated tests **2/2**; combined DAG/path/math suite **75/75**;
+  registry/truth-ledger parsing passed. Fixed-eta and arbitrary-DAG sharpness
+  remain open.
+
+## 2026-08-09T22:40:00Z — fixed-DAG independent-law asymptotic sharpness
+
+- Generalized the asymptotic coefficient-4 diamond theorem to every fixed
+  finite ordered acyclic independent-law DAG. The coefficient is the total
+  projected source-to-root slot-path multiplicity `K(G)`; the planar product
+  witness attains the limit as eta tends to zero.
+- Validation: combined DAG/path/math suite **77/77** and theorem/truth-ledger
+  parsing passed. Fixed-eta and unbounded-family sharpness remain open.
+
+## 2026-08-09T22:55:00Z — numerical fixed-DAG witness verification
+
+- Added explicit real tensor-core evaluations for chain, shared-diamond, and
+  repeated-slot DAGs. Their observed root errors match the exact complex
+  witness formula based on `K(G)`.
+- Validation: adaptive application tests **31/31**, theory DAG/path tests
+  **77/77**, compile, registry parse, and diff checks passed.
+
+## 2026-08-09T21:59:04Z — matched-tolerance DAG resource study
+
+- Added exact compressed-coordinate execution and a liveness-aware analytical
+  resource proxy to the shared-DAG tensor backend.
+- Commands: `python applications/adaptive_tensor_network/experiments/run_dag_matched_tolerance_probe.py`;
+  `python -m pytest applications/adaptive_tensor_network/tests -q`;
+  `python -m pytest tests/research_v5_test_dag_asymptotic_sharpness.py tests/research_v5_test_dag_path_constant.py tests/research_v5_test_dag_domain_certificate.py tests/math_closure -q`;
+  `python -m compileall -q src/seion_core/research_v5 applications/adaptive_tensor_network/src applications/adaptive_tensor_network/tests applications/adaptive_tensor_network/experiments/run_dag_matched_tolerance_probe.py`;
+  deterministic JSON hash rerun; registry parse; governance audit; run
+  deduplication; `git diff --check`.
+- Results: 33/33 application tests, 77/77 DAG/path/math tests, 180 candidate
+  records, 97 selected records, 100% selected-test certificate coverage, and
+  partial tolerance transfer. The comparison is negative/context-dependent:
+  certificate methods used more contraction units than uniform on average in
+  the matched pairs. Resource values are not hardware timings.

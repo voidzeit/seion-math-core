@@ -1,0 +1,36 @@
+\section{Exact path constant for the nonnegative first-order DAG channel class}
+\label{sec:exact-dag-path-constant}
+
+The multilinear telescoping recurrence produces a nonnegative first-order
+envelope.  Fix a finite acyclic DAG, nonnegative edge gains $g_e$, and local
+source bounds $0\le s_v\le\bar s_v$.  The associated channel class is
+\begin{equation*}
+ d_v=s_v+\sum_{e:u\to v}g_e d_u,
+ \qquad d_{\mathrm{root}}\text{ the certified output error}.
+\end{equation*}
+Parallel edges are retained and represent repeated input slots.  Let $w_v$ be
+the total gain of all directed paths from $v$ to the root, with the empty path
+at the root having weight one.  Reverse topological propagation gives
+\begin{equation*}
+ w_{\mathrm{root}}=1,
+ \qquad
+ w_u=\sum_{e:u\to v}g_e w_v.
+\end{equation*}
+Substitution, or induction in topological order, yields the identity
+\begin{equation*}
+ d_{\mathrm{root}}=\sum_v w_v s_v.
+\end{equation*}
+Because every coefficient is nonnegative, the exact supremum over the declared
+box of source amplitudes is therefore
+\begin{equation*}
+ C_{\mathrm{channel}}(G,g,\bar s)
+   =\sum_v w_v\bar s_v.
+\end{equation*}
+It is attained by the admissible realization $s_v=\bar s_v$ at every source.
+Thus the path constant is sharp for the nonnegative channel class, including
+shared subexpressions and repeated slots.  When the gains are instantiated by
+multilinear operator and value enclosures, this is an exact sharpness result
+for the first-order envelope, not automatically for the original multilinear
+operator class: simultaneous attainment of all operator and normal-residual
+equalities remains a separate compatibility question.
+

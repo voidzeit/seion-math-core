@@ -40,7 +40,8 @@
 
 \begin{document}
 \begin{abstract}
-We study finite typed trees whose internal vertices apply multilinear laws and whose recursively evaluated outputs are orthogonally projected onto reduced subspaces. An exact child-error expansion separates local closure leakage from propagated and higher-order branch interactions. This yields the universal ambient and projected-root coefficients $k$ and $k-1$. We then close a fixed-parameter sharpness question that was previously unresolved: for real binary two-node chains with independent bilinear laws, rank-one orthogonal projection, unit leaves, and $\rho=\eta M$, the projected coefficient is exactly sharp, $C_{2,\mathrm{ind}}^P(\eta)=1$ for $0<\eta\le1$. The earlier $\eta^2$ family is retained as a restricted repeated-law construction, not as evidence against the general theorem. For $k=3$ we provide certified independent-law lower witnesses for chain and branching topologies while leaving global sharpness open.\end{abstract}
+We study finite typed trees whose internal vertices apply multilinear laws and whose recursively evaluated outputs are orthogonally projected onto reduced subspaces. An exact child-error expansion separates local closure leakage from propagated and higher-order branch interactions. This yields the universal ambient and projected-root coefficients $k$ and $k-1$. We close the independent-law $k=2$ sharpness question, give a necessary-and-sufficient equality characterization valid for independent or repeated laws, and solve an explicitly defined contractive gated repeated-law subclass. For $k=3$ we provide certified lower witnesses, an unconditional tightened upper envelope, a corrected chain-only non-attainment argument, and the exact independent-law fixed-$\eta$ constant $W_3$ for every finite arity profile. Finally, every fixed finite ordered rooted topology with arities at least two is shown to be asymptotically sharp with coefficient $k-1$ as $\eta\downarrow0$. Same-law/gated, $k\ge4$ fixed-$\eta$, and growing-tree variants remain open.
+\end{abstract}
 \subjclass[2020]{15A69, 17A42, 18M60, 65G50}
 \keywords{multilinear tree, recursive orthogonal projection, closure defect, fixed-eta sharpness, typed composition}
 \maketitle
@@ -55,6 +56,15 @@ finite computational core is frozen at commit
 \texttt{1f4984ec8e741049789e0035c7a3ba84c86d3f29}; the v5 theorem package is
 recorded at the subsequent scientific commits listed in the reproducibility
 companion.
+
+Throughout, ``independent laws'' means that the bounded multilinear law at
+each internal vertex is freely selectable, subject only to the declared
+operator-norm and local closure-defect budgets. ``Same law'' means that one
+bilinear map is reused at every occurrence of the declared topology; it does
+not by itself impose rank-one projectors or common leaves. ``Fixed tree'' and
+``finite arity'' always mean a single finite ordered rooted topology, while
+the limits in this paper are taken only after that topology has been fixed.
+These distinctions are part of every extremal constant's definition.
 
 \section{Typed projected trees}
 
@@ -182,6 +192,52 @@ upper remains $C_{2,\mathrm{rep}}^P(\eta)\le1$. Thus independent-law and
 repeated-law sharpness are distinct extremal problems.
 \end{remark}
 
+There is, however, a canonical broader gated subclass for which the repeated
+law can be optimized exactly. Let
+$\mu_A(x,y)=Ax\langle e_0,y\rangle$, with $A$ supported on the active
+two-plane, $\|A\|\le M$, and $\|(I-P)AP\|\le\rho$. The exact two-node
+identity is
+\[
+ P A^2e_0-PAPAe_0=PA(I-P)Ae_0.
+\]
+Consequently $E^P\le M\rho$, and the contractive off-diagonal matrix
+$A=\left(\begin{smallmatrix}0&M\\\rho&0\end{smallmatrix}\right)$ attains
+equality. Hence this explicitly defined contractive gated-planar repeated
+subclass has normalized constant one; the value $\eta^2$ is a consequence of
+the additional orthogonality constraint in the canonical rotation family.
+The proof and evaluator are recorded in
+\texttt{research/math\_closure/k2/m17\_broader\_gated\_contraction\_exact.tex}.
+
+\section{The $k=2$ equality characterization}
+
+The construction above proves sharpness, but the equality mechanism can be
+classified without choosing a particular coordinate model. Consider a binary
+chain with inner input $(a,b)$, outer input $(D,d)$, and
+$D=(I-P_{\rm in})\mu_{\rm in}(a,b)$. Equality in the projected-root theorem
+requires equality in every link of the proof chain.
+
+\begin{theorem}[Necessary and sufficient conditions for $k=2$ saturation]
+\label{thm:k2iff}
+The identity $E^P=\rho M L_T$ holds if and only if all three conditions hold:
+\begin{enumerate}
+  \item[(EQ1)] $\mu_{\rm out}$ attains its norm bound $M$ on $(D,d)$;
+  \item[(EQ2)] the inner closure map attains its bound $\rho$ on $(a,b)$;
+  \item[(EQ3)] $\mu_{\rm out}(D,d)$ lies in the range of the root projector.
+\end{enumerate}
+This statement allows independent or repeated bilinear laws, arbitrary finite
+dimension, and arbitrary orthogonal-projector rank.
+\end{theorem}
+
+The proof is an equality-of-endpoints argument applied to the elementary
+chain of inequalities: if the endpoint equals the product of the declared
+upper bounds, every intermediate inequality is an equality. Conversely,
+EQ1--EQ3 make every link tight. The proof dossier and implementation
+cross-check are recorded in
+\texttt{research/math\_closure/k2/saturation\_iff\_theorem.tex} and
+\texttt{src/seion\_core/research\_v5/k2\_characterization.py}. This theorem
+does not assert sharpness for every restricted subclass: the specific
+gated-planar family has the separate exact value $E^P=\eta^2$.
+
 \section{Independent-law k=3 lower witnesses}
 
 The v5 construction package supplies separate chain and branching witnesses.
@@ -197,8 +253,312 @@ Therefore, relative to the $k=3$ normalization $\rho M^2$,
  1/\eta, & 1/\sqrt2<\eta\le1.
  \end{cases}
 \]
-These are certified construction lower bounds. They do not close the global
-constant $C_T^P(\eta)\le2$, and equality remains open for both topologies.
+These are certified construction lower bounds. They do not determine the exact
+global constant for either topology.
+
+\section{An unconditional $k=3$ upper envelope}
+
+The elementary coefficient two can be improved without a rank-one or scalar
+reduction assumption. For independent bilinear laws on the binary chain and
+branching topologies, arbitrary finite dimension and arbitrary orthogonal
+projector rank, define
+\[
+ \eta_* = \sqrt{\frac{\sqrt5-1}{2}},\qquad
+ U_3(\eta)=
+ \begin{cases}
+  1+\sqrt{1-\eta^2}, & 0<\eta\le\eta_*,\\[1mm]
+  \dfrac{\sqrt{1+\eta^2}}{\eta}, & \eta_*<\eta\le1.
+ \end{cases}
+\]
+
+\begin{theorem}[Tightened projected-root envelope for $k=3$]
+\label{thm:k3envelope}
+For both declared topologies,
+\[
+ C_{3,\mathrm{ind}}^P(\eta)\le U_3(\eta)<2
+ \qquad (0<\eta\le1).
+\]
+In particular $U_3(1)=\sqrt2$. The bound follows from the exact local-error
+telescoping identity and a Pythagorean coupling of the two propagated-error
+terms at the first internal node.
+\end{theorem}
+
+This replaces the earlier conditional scalar-reduction bookkeeping entry,
+whose assumptions were not proved. The certified lower curve from the
+previous section approaches the old coefficient two as $\eta\downarrow0$,
+so the new envelope gives a strict finite-defect improvement while retaining
+\[
+ \lim_{\eta\downarrow0}C_{3,\mathrm{ind}}^P(\eta)=2.
+\]
+
+\section{Non-attainment, finite support, and the remaining $k=3$ problem}
+
+\begin{proposition}[Pointwise non-attainment of the envelope]
+\label{prop:k3nonattainment}
+No individual configuration in the declared independent-law chain or
+branching class attains $E^P=U_3(\eta)\rho M^2L_T$ for $0<\eta\le1$.
+\end{proposition}
+
+The proof uses a projector-independent self-adjointness argument at the second
+node and then the incompatibility between the required triangle alignment and
+the norm-saturation conditions at the root. The endpoint $\eta=1$ is covered
+separately because the M9 optimizer is then the interior point
+$q^*=M/\sqrt2$, with both equality contributions nonzero. The corrected proof
+files are
+\texttt{research/math\_closure/k3/m10\_non\_sharpness\_of\_m9.tex} and
+\texttt{research/math\_closure/k3/m10\_endpoint\_eta\_one.tex}.
+
+Non-attainment alone would not rule out a supremum approached by a sequence.
+Here the fixed-tree support-compression theorem supplies a uniform finite
+dimension bound: for each type,
+\[
+\dim W_\tau\le2(\mathrm{leaf\_count}_\tau+2\,\mathrm{node\_count}_\tau),
+\]
+which is $20$ for a one-type binary $k=3$ tree (or $22$ with proper-projector
+padding). The resulting finite union of tensor/projector parameter spaces is
+compact and the objective is continuous. Combining this with M10 gives
+\[
+  C_{3,\mathrm{ind}}^P(\eta)<U_3(\eta),
+  \qquad 0<\eta\le1.
+\]
+The gap is strict; before the topology-specific M13--M15 refinements below,
+the support-compression route supplied only a nonquantitative statement. The
+support-compression proof is in
+\texttt{dimension\_rank/fixed\_tree\_support\_compression.tex}.
+
+For the ordered chain, the same cross-term geometry yields a stronger
+quantitative statement without any saturation assumption. Writing
+\[
+ W_3(\eta)=
+ \begin{cases}
+ \sqrt{4-3\eta^2}, & 0<\eta\le\sqrt{2/3},\\[1mm]
+ \dfrac{2}{\sqrt3\,\eta}, & \sqrt{2/3}\le\eta\le1,
+ \end{cases}
+\]
+the contraction Gram matrix at the second node gives
+\[
+ C_{3,\mathrm{ind},\mathrm{chain}}^P(\eta)\le W_3(\eta)<U_3(\eta)
+ \qquad (0<\eta\le1).
+\]
+The strict inequality is explicit on each interval. This is a chain-only
+envelope: it does not extend to branching without a separate cross-term
+argument. The proof is recorded in
+\texttt{research/math\_closure/k3/m13\_unconditional\_chain\_envelope.tex}.
+
+The chain envelope is in fact exact. Set
+$t=\min\{\eta,\sqrt{2/3}\}$, use a two-dimensional rank-one projector, let
+the first node produce $t e_1+\sqrt{1-t^2}e_0$, and let the second node be
+the orthogonal two-plane rotation with projected leakage $t$. A rank-one
+root map sends the resulting error sum isometrically to the projected root
+line while having zero root residual. Thus
+\[
+ C_{3,\mathrm{ind},\mathrm{chain}}^P(\eta)=W_3(\eta),
+ \qquad 0<\eta\le1.
+\]
+The explicit construction and verification are in
+\texttt{m14\_exact\_chain\_constant.tex}. This
+is complemented by the branching result below.
+
+For branching, scalarize the root law and apply nuclear/operator-norm duality
+to the two error terms. Their first factors are orthogonal, while the angle
+of their second factors is fixed by the child residual. This gives the same
+upper envelope $W_3$. A polar-factor root law in dimension two attains the
+nuclear norm, so
+\[
+ C_{3,\mathrm{ind},\mathrm{branch}}^P(\eta)=W_3(\eta),
+ \qquad 0<\eta\le1.
+\]
+The proof and executable witness are in
+\texttt{m15\_exact\_branching\_constant.tex}.
+
+\section{Asymptotic sharpness for every finite binary topology}
+
+The fixed-eta constants above do not exhaust the binary-tree asymptotic
+question. For every fixed ordered full-binary tree $T$ with $k$ internal
+vertices, an explicit two-dimensional real-plane witness (the plane identified
+with $\mathbb C$) closes the asymptotic
+coefficient. Set $\theta=\arcsin\eta$, use $P(z)=\operatorname{Re}(z)$ and unit
+leaves, apply $\mu_\theta(z,w)=e^{i\theta}zw$ at each non-root vertex, and use
+the scalar off-diagonal law
+\[
+ \mu_\star(z,w)=\bigl(\operatorname{Im}z\operatorname{Re}w+
+ \operatorname{Re}z\operatorname{Im}w\bigr)1
+\]
+at the root. Complex multiplication makes the ambient value depend only on
+the number of internal vertices, not on the binary shape, and gives
+\[
+ E_T^{\mathrm{proj}}(\eta)=
+ \left|\sin\bigl((k-1)\arcsin\eta\bigr)\right|.
+\]
+The universal projected-root bound therefore yields the theorem
+\[
+ \lim_{\eta\downarrow0}C_{T,\mathrm{ind}}^P(\eta)=k-1
+\]
+for every fixed finite ordered full-binary topology. This is an asymptotic
+statement: fixed-eta equality, higher arity, same-law/gated variants, and
+growing-tree uniformity remain open. The proof and deterministic evaluator are
+in \texttt{m18\_binary\_tree\_asymptotic\_sharpness.tex} under
+\texttt{research/math\_closure/k3}.
+
+The same phase-counting argument does not depend on binary arity. For a node
+of arity $m$, use the real $m$-linear product law
+$\mu_{m,\theta}(z_1,\ldots,z_m)=e^{i\theta}\prod_j z_j$ at every non-root
+vertex, and use $\mu_{\star,d}(z_1,\ldots,z_d)=
+\operatorname{Im}(\prod_j z_j)1$ at a root of arity $d$. Both have norm one;
+the non-root defect is $\eta$ and the root defect is zero. Thus for every
+fixed finite ordered rooted topology with all arities at least two,
+\[
+ E_T^{\mathrm{proj}}(\eta)=
+ \left|\sin\bigl((k-1)\arcsin\eta\bigr)\right|,
+ \qquad
+ \lim_{\eta\downarrow0}C_{T,\mathrm{ind}}^P(\eta)=k-1.
+\]
+The arity-general proof and evaluator are recorded in the M19 dossier.
+
+For $k=3$, the finite-arity question can be closed at fixed $\eta$, not only
+asymptotically. Freeze all leaf inputs at their unit projected values. A node
+with one internal child becomes an effective linear law, while a node with two
+internal children becomes an effective bilinear law; both inherit no larger
+operator-norm or closure-defect budgets. With three internal vertices the
+internal-child skeleton is necessarily a chain or a branching root. M13--M15
+therefore give the upper bound $W_3(\eta)$. Conversely, inserting unit $e_0$
+gates into the additional leaf slots embeds the dimension-two M14/M15
+witnesses. Hence, for every finite ordered arity profile $T$ with $k(T)=3$,
+\[
+ C_{T,\mathrm{ind}}^P(\eta)=W_3(\eta),\qquad 0<\eta\le1.
+\]
+This is the M20 fixed-eta all-arity closure; its proof and evaluator are in
+the M20 dossier.
+
+\subsection{Analytic proof of the fixed-$\eta$ $k=3$ closure}
+The fixed-$\eta$ conclusion above is analytic; the Python evaluator is only a
+check of the formulas.  We record the reduction because it also makes the
+normalization and the equality mechanism explicit.  By homogeneity take
+$M=L_T=1$.  At the first internal node write the exact decomposition
+$F_1=R_1+D_1$ with $D_1\perp R_1$, and put
+
+\[
+ q=\lVert D_1\rVert,\qquad p=\lVert R_1\rVert,
+ \qquad 0\le q\le\eta,\qquad p\le\sqrt{1-q^2}.
+\]
+
+After freezing the sibling leaf at its unit projected value, the next law is
+a contraction $N$.  For the normalized directions of $D_1$ and $R_1$, let
+$s$ be the norm of the leaked component of the latter image; then
+$0\le s\le\eta$.  The two propagated contributions at the projected root,
+the root contraction, and the Gram-matrix estimate
+
+\[
+ |\langle Nu,QNv\rangle|
+ \le s\sqrt{1-s^2}\qquad (u\perp v)
+\]
+
+give the exact scalar envelope
+
+\[
+ \frac{E_T^{\mathrm{proj}}}{\rho M^2L_T}
+ \le
+ \frac{\sqrt{q^2+p^2s^2+2qps\sqrt{1-s^2}}}{\eta}.
+ \tag{20}
+\]
+
+The Gram estimate follows by applying positivity of $K=N^*QN$ and
+$I-K$ to the span of $u,v$: if $K_{vv}=s^2$, then
+$|K_{uv}|^2\le a s^2$ and $|K_{uv}|^2\le(1-a)(1-s^2)$; maximizing over
+$a\in[0,1]$ gives $|K_{uv}|\le s\sqrt{1-s^2}$.  The right side of
+(20) increases with $p$, so set $p=\sqrt{1-q^2}$ and write
+$q=\sin\alpha$, $s=\sin\beta$.  Its square is
+
+\[
+ f(\alpha,\beta)=\sin^2\alpha+\cos^2\alpha\sin^2\beta
+ 2\sin\alpha\cos\alpha\sin\beta\cos\beta.
+\]
+
+With $u=\tan\alpha$ and $v=\tan\beta$,
+
+\[
+ f=\frac{(u+v)^2+u^2v^2}{(1+u^2)(1+v^2)},
+\quad
+ 4(1+u^2)(1+v^2)-3\bigl((u+v)^2+u^2v^2\bigr)
+ = (u-v)^2+(uv-2)^2\ge0.
+\]
+
+Thus $f\le4/3$.  On the square
+$0\le\alpha,\beta\le\arcsin\eta$, both partial derivatives are
+nonnegative up to $\eta=\sqrt{2/3}$, so the maximum is at
+$q=s=\eta$ and equals $\eta^2(4-3\eta^2)$.  Above that threshold the
+square contains the equality point $u=v=\sqrt2$, so the maximum is $4/3$.
+Dividing by $\eta$ yields
+
+\[
+ W_3(\eta)=
+ \begin{cases}
+ \sqrt{4-3\eta^2},&0<\eta\le\sqrt{2/3},\\[1mm]
+ 2/(\sqrt3\,\eta),&\sqrt{2/3}\le\eta\le1.
+ \end{cases}
+\]
+
+For the chain, the two-dimensional M14 witness attains both branches.  For
+the branching root, the two first child factors are orthogonal.  Scalarizing
+the root law and using nuclear/operator-norm duality reduces its two-term
+functional to
+
+\[
+ \sqrt{q^2a^2+p^2b^2+2qpb\sqrt{a^2-b^2}},
+ \qquad 0\le b\le a\le1,
+\]
+
+where $a$ is the norm of the second child value and $b$ its defect.  The
+expression increases with $a$ and $p$, hence $a=1$ and
+$p=\sqrt{1-q^2}$, recovering the same scalar objective.  The M15 polar-factor
+witness attains it, so both binary $k=3$ topologies have constant $W_3$.
+
+Finally, the M20 finite-arity reduction freezes every additional leaf at its
+unit projected value.  A node with one or two internal children then becomes
+an effective linear or bilinear law.  Multilinearity and projector
+contractivity preserve the operator-norm budget, while the projected-input
+closure residual can only decrease.  The internal-child skeleton is therefore
+either the chain or branching skeleton, and the dimension-two witnesses embed
+by adding these frozen slots.  No numerical search is used in this reduction.
+
+The same-law question has a precise scope distinction. If a single bilinear
+law is repeated but the projected leaf vectors and projector rank are allowed
+to vary, orthogonal tags can select blocks of one direct-sum law. M21 uses
+this construction to simulate the M14 chain witness and the M15 branching
+witness without increasing the operator-norm or closure-defect budgets. Thus
+for the tagged same-law binary class,
+\[
+ C_{3,\mathrm{tag\text{-}same}}^P(\eta)=W_3(\eta),
+ \qquad 0<\eta\le1.
+\]
+This does not assert the same value for rank-one/common-leaf same-law or
+gated-planar subclasses.
+
+There is nevertheless an exact regime inside the strict rank-one/common-leaf
+class. M22 repeats a single rotation with leakage
+$\alpha=\sqrt{2/3}$, common leaf $e_0$, and $P=\operatorname{span}(e_0)$.
+For every $\eta\ge\alpha$ the witness is admissible and its normalized error
+is $2/(\sqrt3\,\eta)=W_3(\eta)$. The M14 upper bound therefore proves exact
+equality for this high-$\eta$ chain regime. The low-$\eta$ regime and the
+corresponding branching class remain open.
+
+The remaining strict chain class admits an exact reduction even though its
+low-$\eta$ value is not yet evaluated. For one repeated bilinear law $\mu$,
+common projected leaf $e_0$, and $P=\operatorname{span}(e_0)$, define
+$A x=\mu(x,e_0)$. The ambient chain is $A^3e_0$, whereas the recursively
+projected chain is $PAPAPAe_0$. Since
+$PAP=\langle e_0,Ae_0\rangle P$,
+\[
+ E^P=\left|\langle e_0,A^3e_0\rangle-
+ \langle e_0,Ae_0\rangle^3\right|.
+\]
+Conversely, every finite-dimensional contraction $A$ is realized by the
+gated repeated law $\mu_A(x,y)=Ax\langle e_0,y\rangle$. Thus M23 gives an
+equivalent contraction-operator supremum for the strict class. It is a
+reduction theorem, not a claim that the low-$\eta$ supremum has been solved;
+branching and broader same-law/gated classes remain outside this statement.
+The exact proof and evaluator are recorded in
+\texttt{research/math\_closure/k3/m23\_rank\_one\_same\_law\_chain\_operator\_reduction.tex}.
 
 \begin{table}[t]
 \centering
@@ -209,10 +569,20 @@ constant $C_T^P(\eta)\le2$, and equality remains open for both topologies.
 class & result & status\\
 \midrule
 $k=2$, independent laws & $C_{2,\mathrm{ind}}^P(\eta)=1$ & exact under assumptions\\
-$k=2$, repeated law & $\eta\le C_{2,\mathrm{rep}}^P(\eta)\le1$ & open\\
+$k=2$, explicit repeated map & $C_{2,\mathrm{same-law}}^P(\eta)=1$ & exact under declared class\\
+$k=2$, canonical gated rotation & $E^P=\eta^2$ & exact narrower value\\
+$k=2$, contractive gated repeated law & $C_{2,\mathrm{gate\text{-}contr}}^P=1$ & exact under explicit definition\\
 $k=3$, independent chain & stated analytic lower bound & certified lower bound\\
 $k=3$, independent branching & stated analytic lower bound & certified lower bound\\
-finite-tree independent conjecture & $C_{T,\mathrm{ind}}^P(\eta)=k(T)-1$ & open conjecture\\
+$k=3$, independent chain/branching & $L_3\le C_{3,\mathrm{ind}}^P=W_3<U_3$ & exact independent-law values\\
+$k=3$, independent chain & $C_{3,\mathrm{ind},\mathrm{chain}}^P\le W_3<U_3$ & explicit quantitative gap\\
+$k=3$, independent chain & $C_{3,\mathrm{ind},\mathrm{chain}}^P=W_3$ & exact fixed-$\eta$ value\\
+$k=3$, independent branching & $C_{3,\mathrm{ind},\mathrm{branch}}^P=W_3$ & exact fixed-$\eta$ value\\
+finite arity-compatible tree, independent laws & $\lim_{\eta\downarrow0}C_{T,\mathrm{ind}}^P(\eta)=k(T)-1$ & exact asymptotic value\\
+$k=3$, all finite arity profiles, independent laws & $C_{T,\mathrm{ind}}^P(\eta)=W_3(\eta)$ & exact fixed-$\eta$ value\\
+$k=3$, tagged same-law binary & $C_{3,\mathrm{tag\text{-}same}}^P(\eta)=W_3(\eta)$ & exact fixed-$\eta$ value\\
+$k=3$, rank-one same-law chain, $\eta\ge\sqrt{2/3}$ & $C=W_3(\eta)$ & exact high-$\eta$ regime\\
+$k=3$, strict rank-one same-law chain & exact unary-operator reduction & value open\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -224,18 +594,22 @@ path sums, and scalar telescoping-order optimization. These certificates
 attribute responsibility but do not imply a universal topology-only sharp
 constant. Chain, branching, depth, fan-out, fan-in, and operator-sharing
 patterns must be treated as separate coordinates of the extremal problem.
-The v5 conjecture that sufficiently free independent laws attain $k-1$ for
-all finite trees is recorded as open rather than silently inferred from the
-$k=2$ theorem.
+The fixed finite arity-compatible asymptotic statement is now proved by the
+preceding construction, and M20 closes its fixed-$\eta$ specialization at
+$k=3$. Fixed-$\eta$ independent-law sharpness for $k\ge4$ and growing-tree
+uniformity remain open rather than being inferred from finite-tree results.
 
 \section{Limitations and conclusion}
 
-The results are finite-dimensional and scoped. Repeated-law sharpness,
-dimension/rank reduction, global $k=3$ sharpness, globally tight multilinear
-norms, theorem-level novelty, and independent human review remain open. The
-paper therefore reports a closed theorem for one natural class, certified
-lower constructions for the next case, and a precise map of the unresolved
-extremal frontier.
+The results are finite-dimensional and scoped. The exact value for the
+explicit repeated-map class does not close every repeated-law subclass;
+variable-gate/arbitrary-leaf gated variants, low-$\eta$ rank-one/common-leaf
+same-law, rank-one/common-leaf branching, fixed-$\eta$ independent-law
+sharpness for $k\ge4$, uniformity over unbounded tree growth, globally tight
+multilinear norms, theorem-level novelty, and independent human review remain
+open. The paper therefore reports a classification at $k=2$, exact
+independent-law constants for every finite $k=3$ arity profile, certified
+constructions, and a precise map of the remaining extremal frontier.
 
 \begin{figure}[p]
 \centering
@@ -243,7 +617,7 @@ extremal frontier.
 \caption{Registered projected-tree extremizer geometry reused from the finite v4 evidence package.}
 \end{figure}
 
-\nocite{Yau2016,LodayVallette2012,Higham2002,MooreKearfottCloud2009,EggerEtAl2018}
+\nocite{Yau2016,LodayVallette2012,Higham2002,MooreKearfottCloud2009,EggerEtAl2018,HackbuschTruncation2021}
 \bibliographystyle{amsplain}
 \bibliography{references}
 \end{document}

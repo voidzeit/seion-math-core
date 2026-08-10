@@ -67,6 +67,14 @@ full 15-stage campaign in this P0 pass.
 | PT-021 | Approximate-law error is separated into representation, closure, and representation/closure interaction contributions | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/approximation/P10_approximate_law_error.md`; `src/seion_core/research_v4/approximate_law_error.py`; `tests/research_v4/test_p8_p10_registry.py` |
 | PT-022 | Finite DAG/tree topology metrics and the universal projected-root bound can be recorded without upgrading topology dependence to sharpness | `PROVED_UNDER_ASSUMPTIONS` | `src/seion_core/research_v4/topology_registry.py`; `tests/research_v4/test_p8_p10_registry.py` |
 | PT-023 | Extremal evidence is maintained as monotone lower/upper bands with explicit gap/status classification | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/sharpness/registry_status.md`; `src/seion_core/research_v4/extremal_registry.py`; `tests/research_v4/test_extremal_registry.py` |
+| PT-024 | Declared gated-planar rotation has exactly zero projected error for the three-term binary Jacobiator convention | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/signed_identities/structured_gated_rotation_jacobiator.tex`; `research/math_closure/signed_identities/structured_gated_rotation_jacobiator.py`; `tests/math_closure/test_structured_gated_rotation_jacobiator.py` |
+| PT-025 | For every finite left-comb binary chain under the declared homogeneous gated-planar rotation law, the projected error is `|T_k(c)-c^k|` in the `M=L=1` normalization, with `c=sqrt(1-eta^2)` | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k3/gated_rotation_chain_general.tex`; `research/math_closure/k3/gated_rotation_chain_general.py`; `tests/math_closure/test_gated_rotation_chain_general.py` |
+| PT-026 | For every finite ordered full-binary topology under the declared homogeneous gated-planar rotation law, `E_proj=|a(T)cos(d(T)theta)-cos(theta)^k|` with the recursive `a,d` invariants | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k3/gated_rotation_full_binary.tex`; `research/math_closure/k3/gated_rotation_full_binary.py`; `tests/math_closure/test_gated_rotation_full_binary.py` |
+| PT-027 | For every finite ordered rooted tree with arities at least two under the arity-compatible homogeneous gated-planar rotation law, the same recursive `a,d` formula gives the exact projected error | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k3/gated_rotation_general_arity.tex`; `research/math_closure/k3/gated_rotation_general_arity.py`; `tests/math_closure/test_gated_rotation_general_arity.py` |
+| PT-028 | Under first-propagator operator-norm saturation in the ordered `k=3` chain, the conditional normalized bound is `sqrt(4-3 eta^2)` below `sqrt(2/3)` and `2/(sqrt(3) eta)` above | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k3/m11_conditional_quantitative_gap.tex`; `research/math_closure/k3/m11_conditional_quantitative_gap.py`; `tests/math_closure/test_m11_conditional_quantitative_gap.py` |
+| PT-029 | Every fixed finite typed tree admits evaluation-preserving finite-support compression with dimension bound `2*(leaf_count+2*node_count)` per type; for binary `k=3`, this yields the global strict gap below `U_3` on `0<eta<1` via compactness and M10 | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/dimension_rank/fixed_tree_support_compression.tex`; `research/math_closure/dimension_rank/fixed_tree_support_compression.py`; `tests/math_closure/test_fixed_tree_support_compression.py` |
+| PT-030 | Finite source-resolved error calculus: exact multi-index DAG polynomials, same-source first-order recombination, finite truncation remainder, and signed bounds `B_actual <= B_signed <= B_treewise` | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/dag/source_resolved_error_calculus.tex`; `research/math_closure/dag/source_resolved_error_calculus.py`; `tests/math_closure/test_source_resolved_error_calculus.py` |
+| PT-031 | At `eta=1`, M10 non-attainment plus fixed-tree compactness gives `C_3,ind^P(1) < U_3(1)=sqrt(2)` for binary chain and branching classes | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k3/m10_endpoint_eta_one.tex`; `research/math_closure/k3/m10_endpoint_eta_one.py`; `tests/math_closure/test_m10_endpoint_eta_one.py` |
 
 ## Restricted exact constructions
 
@@ -103,6 +111,51 @@ not determine the global fixed-eta extremal constants.
 | PT-O-008 | Universal dominance ordering among nodewise, pathwise, mixed-mask, and telescoping certificates | `OPEN` | Current documents explicitly avoid a universal dominance claim |
 | PT-O-009 | Nonlinear Lipschitz envelope for LayerNorm, gates, top-k, and neural modules | `OPEN` | Outside the finite multilinear core theorem scope |
 | PT-O-010 | Theorem-level novelty beyond standard finite-dimensional restriction and perturbation consequences | `NOVELTY_NOT_ESTABLISHED` | Independent human and theorem-to-theorem review pending |
+
+## M13 unconditional chain envelope — 2026-08-09
+
+For the independent-law ordered binary chain with three internal nodes, the
+contraction Gram-matrix argument removes the first-propagator saturation
+hypothesis from the M11 estimate. In the normalized variables, the chain
+constant obeys
+`C_3,ind,chain^P(eta) <= W_3(eta)`, where
+`W_3(eta)=sqrt(4-3 eta^2)` for `0<eta<=sqrt(2/3)` and
+`W_3(eta)=2/(sqrt(3) eta)` for `sqrt(2/3)<=eta<=1`.
+The resulting explicit difference `U_3(eta)-W_3(eta)` is strictly positive
+throughout `0<eta<=1`, so this is an unconditional quantitative chain-only
+gap below the M9 envelope. It does not improve the branching class, establish
+sharpness of `W_3`, or determine the exact chain constant.
+
+The canonical proof, executable scalar check, and focused tests are
+`research/math_closure/k3/m13_unconditional_chain_envelope.tex`,
+`research/math_closure/k3/m13_unconditional_chain_envelope.py`, and
+`tests/math_closure/test_m13_unconditional_chain_envelope.py`.
+
+## M14 exact independent-law chain constant — 2026-08-09
+
+The M13 upper envelope is attained by an explicit two-dimensional real
+independent-law witness with a rank-one coordinate projector. Hence the exact
+ordered-chain constant is `W_3(eta)` for every `0<eta<=1`: it is
+`sqrt(4-3 eta^2)` up to `sqrt(2/3)` and `2/(sqrt(3) eta)` thereafter. The
+construction has operator norm one at all three nodes and residual caps no
+larger than `eta`. This closes the chain fixed-eta problem, not the branching
+problem or the arbitrary-tree conjecture.
+
+Evidence: `research/math_closure/k3/m14_exact_chain_constant.tex`,
+`research/math_closure/k3/m14_exact_chain_constant.py`, and
+`tests/math_closure/test_m14_exact_chain_constant.py`.
+
+## M15 exact independent-law branching constant — 2026-08-09
+
+For binary branching, scalarization of the root and nuclear/operator-norm
+duality give the same `W_3(eta)` upper envelope as M13. An explicit
+dimension-two rank-one polar-factor root witness attains it for every
+`0<eta<=1`. Thus the independent-law branching constant is exactly `W_3`;
+same-law/gated and arbitrary-tree sharpness remain open.
+
+Evidence: `research/math_closure/k3/m15_exact_branching_constant.tex`,
+`research/math_closure/k3/m15_exact_branching_constant.py`, and
+`tests/math_closure/test_m15_exact_branching_constant.py`.
 
 ## P0 conclusion
 

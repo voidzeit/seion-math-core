@@ -112,12 +112,18 @@ def evaluate(
     context_adjacency=None,
     context_max_neighbors: int = 32,
     context_index: ContextIndex | None = None,
+    queries: Sequence[Tuple[int, int, int]] | None = None,
+    return_ranks: bool = False,
 ) -> Dict[str, Any]:
     model.eval()
     data_full = kg.valid if split == "valid" else kg.test
     if not (0 < subset <= 1.0):
         raise ValueError("subset must be in (0,1]")
-    if subset < 1.0:
+    if queries is not None:
+        data = list(queries)
+        if not data:
+            raise ValueError("queries must be non-empty when supplied")
+    elif subset < 1.0:
         import numpy as np
 
         rng = np.random.default_rng(12345 if split == "valid" else 67890)
@@ -144,11 +150,16 @@ def evaluate(
     )
 
     combined = torch.cat((tail_ranks, head_ranks))
-    return {
+    result: Dict[str, Any] = {
         "split": split,
         "combined": ranks_to_metrics(combined),
         "tail": ranks_to_metrics(tail_ranks),
         "head": ranks_to_metrics(head_ranks),
         "eval_subset": float(subset),
+        "eval_query_count": int(len(data)),
         "entity_block": int(entity_block),
     }
+    if return_ranks:
+        result["tail_ranks"] = tail_ranks
+        result["head_ranks"] = head_ranks
+    return result

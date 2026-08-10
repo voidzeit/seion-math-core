@@ -27,6 +27,23 @@
       "note": "REVISED after review: proves no single admissible configuration attains U_3(eta) exactly. Does NOT prove C_3,ind^P(eta) < U_3(eta) as a strict supremum inequality -- that was an overclaim in the first version (non-attainment does not imply a strict sup gap; a sup can be approached without being attained). The strict-gap question is tracked separately as OPEN_V5_K3_STRICT_SUPREMUM_GAP. Does not produce a replacement tightened value either way."
     }
   ],
+  "current_state_addendum_2026_08_09": {
+    "historical_report_preserved": true,
+    "theorem_id": "THM_V5_FIXED_TREE_SUPPORT_COMPRESSION",
+    "statement": "Every fixed finite typed tree admits evaluation-preserving projector-invariant support compression with dim(W_tau) <= 2*(leaf_count_tau + 2*node_count_tau) per type; binary k=3 has bound 20, or 22 with proper-projector padding.",
+    "global_corollary": "For the declared independent-law binary k=3 chain and branching classes, C_3,ind^P(eta) < U_3(eta) for 0 < eta <= 1 by finite support compression, compactness, and M10 non-attainment; eta=1 uses the endpoint addendum.",
+    "status": "PROVED_UNDER_ASSUMPTIONS",
+    "limitations": [
+      "The exact C_3^P(eta) and an explicit quantitative gap remain open; the strict endpoint gap is proved but its exact constant is not.",
+      "No dimension/rank bound uniform over unbounded tree size or arity is claimed.",
+      "Novelty and independent human review remain pending."
+    ],
+    "evidence": [
+      "research/math_closure/dimension_rank/fixed_tree_support_compression.tex",
+      "research/math_closure/dimension_rank/fixed_tree_support_compression.py",
+      "tests/math_closure/test_fixed_tree_support_compression.py"
+    ]
+  },
   "corrections": [
     {
       "target": "src/seion_core/research_v5/equality_conditions.py K2-EQ-05",
@@ -59,6 +76,97 @@
     "id": "OPEN_V5_K3_FIXED_ETA_SHARPNESS",
     "at_eta_1": {"lower": 1.0, "old_upper": 2.0, "new_upper": 1.4142135623730951, "old_relative_gap": 0.5, "new_relative_gap": 0.2928932188134525},
     "at_eta_0_9": {"lower": 1.1111111111111112, "old_upper": 2.0, "new_upper": 1.4949081074941816, "old_relative_gap": 0.4444444444444444, "new_relative_gap": 0.25675020400234}
+  },
+  "followup_addendum_m13_2026_08_09": {
+    "theorem_id": "THM_V5_K3_CHAIN_UNCONDITIONAL_QUANTITATIVE_ENVELOPE",
+    "statement": "For the independent-law ordered binary k=3 chain, C_3,ind,chain^P(eta) <= W_3(eta), where W_3=sqrt(4-3 eta^2) for eta<=sqrt(2/3) and W_3=2/(sqrt(3) eta) above; W_3<U_3 on 0<eta<=1.",
+    "status": "PROVED_UNDER_ASSUMPTIONS",
+    "limitations": ["Chain only; branching, W_3 sharpness, exact C_3, novelty, and independent human review remain open."],
+    "evidence": ["research/math_closure/k3/m13_unconditional_chain_envelope.tex", "research/math_closure/k3/m13_unconditional_chain_envelope.py", "tests/math_closure/test_m13_unconditional_chain_envelope.py"]
+  },
+  "followup_addendum_m14_2026_08_09": {
+    "theorem_id": "THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT",
+    "statement": "For the independent-law ordered binary k=3 chain, C_3,ind,chain^P(eta)=W_3(eta) for every 0<eta<=1; a dimension-two rank-one witness attains the M13 envelope.",
+    "status": "PROVED_UNDER_ASSUMPTIONS",
+    "limitations": ["Branching envelope/constant, same-law/gated subclasses, arbitrary-tree sharpness, novelty, and independent human review remain open."],
+    "evidence": ["research/math_closure/k3/m14_exact_chain_constant.tex", "research/math_closure/k3/m14_exact_chain_constant.py", "tests/math_closure/test_m14_exact_chain_constant.py"]
+  },
+  "followup_addendum_m15_2026_08_09": {
+    "theorem_id": "THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT",
+    "statement": "For the independent-law ordered binary k=3 branching tree, C_3,ind,branch^P(eta)=W_3(eta) for every 0<eta<=1; nuclear/operator-norm duality supplies the upper bound and a dimension-two polar-factor witness attains it.",
+    "status": "PROVED_UNDER_ASSUMPTIONS",
+    "limitations": ["Same-law/gated subclasses, arbitrary-tree sharpness, novelty, and independent human review remain open."],
+    "evidence": ["research/math_closure/k3/m15_exact_branching_constant.tex", "research/math_closure/k3/m15_exact_branching_constant.py", "tests/math_closure/test_m15_exact_branching_constant.py"]
+  },
+  "followup_addendum_m18_2026_08_09": {
+    "theorem_id": "THM_V5_BINARY_TREE_ASYMPTOTIC_K_MINUS_ONE_SHARPNESS",
+    "statement": "For every fixed finite ordered full-binary tree T with k internal vertices, the independent-law projected-root constant satisfies lim_{eta downarrow 0} C_{T,ind}^P(eta)=k-1; the explicit two-dimensional real-plane witness (identified with C) has E_proj=|sin((k-1) arcsin(eta))|.",
+    "status": "PROVED_UNDER_ASSUMPTIONS",
+    "limitations": ["Asymptotic eta downarrow 0 only; fixed-eta equality, higher arity, same-law/gated variants, growing-tree uniformity, novelty, and independent human review remain open."],
+    "evidence": ["research/math_closure/k3/m18_binary_tree_asymptotic_sharpness.tex", "research/math_closure/k3/m18_binary_tree_asymptotic_sharpness.py", "tests/math_closure/test_m18_binary_tree_asymptotic_sharpness.py"]
+  },
+  "followup_addendum_m19_2026_08_09": {
+    "theorem_id": "THM_V5_FINITE_ARITY_TREE_ASYMPTOTIC_K_MINUS_ONE_SHARPNESS",
+    "statement": "For every fixed finite ordered rooted tree T with all internal arities at least two, the independent-law projected-root constant satisfies lim_{eta downarrow 0} C_{T,ind}^P(eta)=k(T)-1; the real-plane witness has E_proj=|sin((k-1) arcsin(eta))|.",
+    "status": "PROVED_UNDER_ASSUMPTIONS",
+    "limitations": ["Asymptotic eta downarrow 0 and fixed finite trees only; fixed-eta equality, same-law/gated sharpness, growing-tree uniformity, novelty, and independent human review remain open."],
+    "evidence": ["research/math_closure/k3/m19_finite_arity_asymptotic_sharpness.tex", "research/math_closure/k3/m19_finite_arity_asymptotic_sharpness.py", "tests/math_closure/test_m19_finite_arity_asymptotic_sharpness.py"]
+  },
+  "followup_addendum_m20_2026_08_09": {
+    "theorem_id": "THM_V5_K3_ALL_FINITE_ARITY_EXACT_FIXED_ETA_CONSTANT",
+    "statement": "For every finite ordered rooted tree T with exactly three internal vertices and all internal arities at least two, the independent-law projected-root constant is C_{T,ind}^P(eta)=W_3(eta) for every 0<eta<=1. Freezing unit leaf slots reduces the internal-child skeleton to M14's chain or M15's branching class, and unit e0 gates embed the matching witness.",
+    "status": "PROVED_UNDER_ASSUMPTIONS",
+    "limitations": ["Same-law/gated variants, fixed-eta independent-law trees with k>=4, growing-tree uniformity, novelty, and independent human review remain open."],
+    "evidence": ["research/math_closure/k3/m20_k3_arbitrary_arity_exact_constant.tex", "research/math_closure/k3/m20_k3_arbitrary_arity_exact_constant.py", "tests/math_closure/test_m20_k3_arbitrary_arity_exact_constant.py"]
+  },
+  "followup_addendum_m21_2026_08_09": {
+    "theorem_id": "THM_V5_K3_TAGGED_SAME_LAW_EXACT_FIXED_ETA_CONSTANT",
+    "statement": "For binary k=3 chain and branching classes with one repeated bilinear law, arbitrary unit projected leaves, and finite projector rank, orthogonal leaf tags select an orthogonal direct-sum block that simulates M14 or M15. The tagged same-law constant is W_3(eta) for every 0<eta<=1.",
+    "status": "PROVED_UNDER_ASSUMPTIONS",
+    "limitations": ["Rank-one/common-leaf same-law restrictions, gated/variable-gate subclasses, fixed-eta independent-law trees with k>=4, growing-tree uniformity, novelty, and independent human review remain open."],
+    "evidence": ["research/math_closure/k3/m21_same_law_tagged_exact_constant.tex", "research/math_closure/k3/m21_same_law_tagged_exact_constant.py", "tests/math_closure/test_m21_same_law_tagged_exact_constant.py"]
+  },
+  "followup_addendum_m22_2026_08_09": {
+    "theorem_id": "THM_V5_K3_RANK_ONE_SAME_LAW_HIGH_ETA_EXACT_CONSTANT",
+    "statement": "For the strict binary k=3 chain with one repeated gated rotation, common unit projected leaf e0, and rank-one projector span(e0), the class constant equals W_3(eta)=2/(sqrt(3) eta) for sqrt(2/3)<=eta<=1. The rotation leakage is fixed at sqrt(2/3), which is admissible throughout the regime.",
+    "status": "PROVED_UNDER_ASSUMPTIONS",
+    "limitations": ["The low-eta rank-one/common-leaf same-law chain, rank-one/common-leaf branching, broader gated/shared-law variants, fixed-eta independent-law trees with k>=4, growing-tree uniformity, novelty, and independent human review remain open."],
+    "evidence": ["research/math_closure/k3/m22_same_law_rank_one_high_eta.tex", "research/math_closure/k3/m22_same_law_rank_one_high_eta.py", "tests/math_closure/test_m22_same_law_rank_one_high_eta.py"]
+  },
+  "followup_addendum_m23_2026_08_09": {
+    "theorem_id": "THM_V5_K3_RANK_ONE_SAME_LAW_CHAIN_OPERATOR_REDUCTION",
+    "statement": "For the strict binary k=3 chain with one repeated real bilinear law, common unit projected leaf e0, and rank-one projector span(e0), the projected error is exactly |<e0,A^3 e0>-<e0,A e0>^3| for A(x)=mu(x,e0). Conversely every finite-dimensional contraction A is realized by the gated repeated law mu_A(x,y)=A x <e0,y>, so the remaining class extremum is exactly the corresponding contraction-operator supremum after normalization.",
+    "status": "PROVED_UNDER_ASSUMPTIONS",
+    "sharpness_status": "EXACT_REDUCTION_VALUE_OPEN",
+    "limitations": ["The reduction does not evaluate the low-eta supremum; rank-one/common-leaf branching, broader same-law/gated variants, fixed-eta independent-law trees with k>=4, novelty, and independent human review remain open."],
+    "evidence": ["research/math_closure/k3/m23_rank_one_same_law_chain_operator_reduction.tex", "research/math_closure/k3/m23_rank_one_same_law_chain_operator_reduction.py", "tests/math_closure/test_m23_rank_one_same_law_chain_operator_reduction.py"]
+  },
+  "current_state_correction_2026_08_09": {
+    "historical_sections_preserved": true,
+    "superseded_items": [
+      "OPEN_V5_K3_STRICT_SUPREMUM_GAP",
+      "OPEN_V5_K3_FIXED_ETA_SHARPNESS",
+      "V5-K3-GLOBAL-STRICT-GAP-001",
+      "V5-K3-ENDPOINT-GAP-001"
+    ],
+    "current_statement": "For every finite ordered k=3 arity profile in the declared independent-law projected-root class, M20 gives the exact normalized constant W_3(eta) for every 0<eta<=1, with W_3=sqrt(4-3 eta^2) below sqrt(2/3) and W_3=2/(sqrt(3) eta) above.",
+    "k2_class_a_correction": "The declared finite-dimensional real binary k=2 class-level constant is C_{2,A}^P(eta)=1 for 0<eta<=1, by the universal upper bound and the embedded repeated-law witness.",
+    "m16_binary_k3_corollary": "Because the M14/M15 independent-law convention freely selects each node law with no sharing constraint, their exact W_3 values also close the arbitrary-node-law binary k=3 chain and branching class.",
+    "m17_k2_gated_contraction": "For the explicitly defined repeated gated law mu_A(x,y)=A*x*<e0,y> with a fixed gate and active planar contraction, the exact normalized k=2 constant is 1; the canonical rotation's eta^2 value is due to its additional orthogonality constraint.",
+    "remaining_boundary": [
+      "low-eta rank-one/common-leaf same-law chain value after the exact M23 operator reduction, rank-one/common-leaf branching, and broader gated-planar k=3 classes",
+      "fixed-eta independent-law sharpness for k>=4 beyond the M20-M22 closures",
+      "uniform bounds over growing tree size or arity",
+      "novelty and independent human review"
+    ],
+    "evidence": [
+      "research/math_closure/k3/m14_exact_chain_constant.tex",
+      "research/math_closure/k3/m15_exact_branching_constant.tex",
+      "research/math_closure/k3/m20_k3_arbitrary_arity_exact_constant.tex",
+      "tests/math_closure/test_m20_k3_arbitrary_arity_exact_constant.py",
+      "tests/math_closure/test_m14_exact_chain_constant.py",
+      "tests/math_closure/test_m15_exact_branching_constant.py"
+    ]
   },
   "phases_not_attempted": [
     "Phase 3 gated-planar exact extremal",

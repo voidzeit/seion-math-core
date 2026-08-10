@@ -1,0 +1,185 @@
+{
+  "aggregate": {
+    "certificate_violation_count": 0,
+    "false_certificate_count": 0,
+    "peak_cuda_allocated_max": 641281536,
+    "peak_cuda_reserved_max": 750780416,
+    "pearson_mean": 0.995092221705602,
+    "pearson_min": 0.9643497045664748,
+    "seed_count": 10,
+    "spearman_mean": 0.904553517286022
+  },
+  "common_budgets": {
+    "16": {
+      "CCR@10_mean": 0.021875,
+      "certificate_bound_max": 0.01390293496736871,
+      "certificate_bound_mean": 0.0036620096129787337,
+      "certificate_violations": 0,
+      "rank_equal_fraction_mean": 0.9921875,
+      "rank_equal_fraction_min": 0.953125,
+      "seed_count": 10,
+      "test_score_error_max": 2.905726432800293e-07
+    },
+    "32": {
+      "CCR@10_mean": 0.584375,
+      "certificate_bound_max": 0.0009581382382824749,
+      "certificate_bound_mean": 0.00014472340276094385,
+      "certificate_violations": 0,
+      "rank_equal_fraction_mean": 1.0,
+      "rank_equal_fraction_min": 1.0,
+      "seed_count": 10,
+      "test_score_error_max": 3.0919909477233887e-07
+    },
+    "64": {
+      "CCR@10_mean": 0.9328125,
+      "certificate_bound_max": 7.041099667485101e-06,
+      "certificate_bound_mean": 4.3657883604715965e-06,
+      "certificate_violations": 0,
+      "rank_equal_fraction_mean": 1.0,
+      "rank_equal_fraction_min": 1.0,
+      "seed_count": 10,
+      "test_score_error_max": 3.0919909477233887e-07
+    },
+    "8": {
+      "CCR@10_mean": 0.0,
+      "certificate_bound_max": 0.07261095771113461,
+      "certificate_bound_mean": 0.023428385650929043,
+      "certificate_violations": 0,
+      "rank_equal_fraction_mean": 0.875,
+      "rank_equal_fraction_min": 0.5625,
+      "seed_count": 10,
+      "test_score_error_max": 3.42298299074173e-05
+    }
+  },
+  "common_policy": "certified_rank_aware",
+  "limitations": [
+    "Ten seeds on one dataset and one TTN topology; seeds 7,17,27,37,47,57,67,77,87 use selected budgets without the full 49-pair grid.",
+    "Per-seed score/CCR observations are sampled; seed 42 has separate full filtered-test validation.",
+    "The aggregate is robustness evidence, not theorem proof or a cross-dataset claim."
+  ],
+  "per_seed": [
+    {
+      "certificate_error_pearson": 0.9643497045664748,
+      "certificate_error_spearman": 0.9180602006688964,
+      "certificate_test_violation_rate": 0.0,
+      "false_certificate_count": 0,
+      "last_loss": 0.10193327130903874,
+      "peak_cuda_allocated_bytes": 641281536,
+      "peak_cuda_reserved_bytes": 750780416,
+      "run": "runs\\TTN_FB15K237_BRANCHING_K3_FINAL_NORMED_E10_2026-08-09",
+      "seed": 42
+    },
+    {
+      "certificate_error_pearson": 0.9984223658472193,
+      "certificate_error_spearman": 0.9781979977753059,
+      "certificate_test_violation_rate": 0.0,
+      "false_certificate_count": 0,
+      "last_loss": 0.10544119954557347,
+      "peak_cuda_allocated_bytes": 641281536,
+      "peak_cuda_reserved_bytes": 750780416,
+      "run": "runs\\TTN_FB15K237_BRANCHING_K3_MULTISEED_S7_2026-08-10",
+      "seed": 7
+    },
+    {
+      "certificate_error_pearson": 0.9987624400426932,
+      "certificate_error_spearman": 0.6729699666295884,
+      "certificate_test_violation_rate": 0.0,
+      "false_certificate_count": 0,
+      "last_loss": 0.09385029198531818,
+      "peak_cuda_allocated_bytes": 641281536,
+      "peak_cuda_reserved_bytes": 750780416,
+      "run": "runs\\TTN_FB15K237_BRANCHING_K3_MULTISEED_S17_2026-08-10",
+      "seed": 17
+    },
+    {
+      "certificate_error_pearson": 0.9977638068098313,
+      "certificate_error_spearman": 0.8620689655172413,
+      "certificate_test_violation_rate": 0.0,
+      "false_certificate_count": 0,
+      "last_loss": 0.11696635119448927,
+      "peak_cuda_allocated_bytes": 641281536,
+      "peak_cuda_reserved_bytes": 750780416,
+      "run": "runs\\TTN_FB15K237_BRANCHING_K3_MULTISEED_S27_2026-08-10",
+      "seed": 27
+    },
+    {
+      "certificate_error_pearson": 0.9994463557574598,
+      "certificate_error_spearman": 0.9737486095661846,
+      "certificate_test_violation_rate": 0.0,
+      "false_certificate_count": 0,
+      "last_loss": 0.10831387206575924,
+      "peak_cuda_allocated_bytes": 641281536,
+      "peak_cuda_reserved_bytes": 750780416,
+      "run": "runs\\TTN_FB15K237_BRANCHING_K3_MULTISEED_S37_2026-08-10",
+      "seed": 37
+    },
+    {
+      "certificate_error_pearson": 0.9992778437873274,
+      "certificate_error_spearman": 0.9728587319243605,
+      "certificate_test_violation_rate": 0.0,
+      "false_certificate_count": 0,
+      "last_loss": 0.13383220057738454,
+      "peak_cuda_allocated_bytes": 641281536,
+      "peak_cuda_reserved_bytes": 750780416,
+      "run": "runs\\TTN_FB15K237_BRANCHING_K3_MULTISEED_S47_2026-08-10",
+      "seed": 47
+    },
+    {
+      "certificate_error_pearson": 0.9992958791608791,
+      "certificate_error_spearman": 0.9448275862068966,
+      "certificate_test_violation_rate": 0.0,
+      "false_certificate_count": 0,
+      "last_loss": 0.11408794447219461,
+      "peak_cuda_allocated_bytes": 641281536,
+      "peak_cuda_reserved_bytes": 750780416,
+      "run": "runs\\TTN_FB15K237_BRANCHING_K3_MULTISEED_S57_2026-08-10",
+      "seed": 57
+    },
+    {
+      "certificate_error_pearson": 0.9963906006223546,
+      "certificate_error_spearman": 0.9301446051167965,
+      "certificate_test_violation_rate": 0.0,
+      "false_certificate_count": 0,
+      "last_loss": 0.11192926910138667,
+      "peak_cuda_allocated_bytes": 641281536,
+      "peak_cuda_reserved_bytes": 750780416,
+      "run": "runs\\TTN_FB15K237_BRANCHING_K3_MULTISEED_S67_2026-08-10",
+      "seed": 67
+    },
+    {
+      "certificate_error_pearson": 0.9975459471812571,
+      "certificate_error_spearman": 0.9697441601779755,
+      "certificate_test_violation_rate": 0.0,
+      "false_certificate_count": 0,
+      "last_loss": 0.11760287093264717,
+      "peak_cuda_allocated_bytes": 641281536,
+      "peak_cuda_reserved_bytes": 750780416,
+      "run": "runs\\TTN_FB15K237_BRANCHING_K3_MULTISEED_S77_2026-08-10",
+      "seed": 77
+    },
+    {
+      "certificate_error_pearson": 0.9996672732805226,
+      "certificate_error_spearman": 0.8229143492769745,
+      "certificate_test_violation_rate": 0.0,
+      "false_certificate_count": 0,
+      "last_loss": 0.13857588922618924,
+      "peak_cuda_allocated_bytes": 641281536,
+      "peak_cuda_reserved_bytes": 750780416,
+      "run": "runs\\TTN_FB15K237_BRANCHING_K3_MULTISEED_S87_2026-08-10",
+      "seed": 87
+    }
+  ],
+  "seeds": [
+    42,
+    7,
+    17,
+    27,
+    37,
+    47,
+    57,
+    67,
+    77,
+    87
+  ],
+  "status": "MULTISEED_TTN_FB15K237_ROBUSTNESS_SUMMARY"
+}

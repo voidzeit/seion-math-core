@@ -1,0 +1,6174 @@
+{
+  "status": "EXPLORATORY_PROBE_NOT_PREREGISTERED",
+  "design": {
+    "topologies": [
+      "chain_depth3",
+      "balanced_binary_4leaf"
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "fit_batch_size": 80,
+    "eval_batch_size": 300,
+    "methods": [
+      "pathwise_global",
+      "pathwise_majorant_optimal",
+      "validated_certificate_small_case"
+    ],
+    "certificate_allocator_uses_fit_batch_only": true
+  },
+  "summary": {
+    "chain_depth3": {
+      "n_pairs": 60,
+      "certificate_allocator_true_rms_reduction": 0.24315911155223205,
+      "certificate_allocator_better_fraction": 0.6,
+      "validated_bound_reduction": 81.55091731125054,
+      "validated_bound_no_worse_fraction": 1.0,
+      "all_candidate_fit_certificates_hold": true
+    },
+    "balanced_binary_4leaf": {
+      "n_pairs": 60,
+      "certificate_allocator_true_rms_reduction": 0.22501074527810178,
+      "certificate_allocator_better_fraction": 0.6333333333333333,
+      "validated_bound_reduction": 73.93937058166767,
+      "validated_bound_no_worse_fraction": 1.0,
+      "all_candidate_fit_certificates_hold": true
+    }
+  },
+  "records": [
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.6852110541727265,
+      "held_out_root_error_sup": 9.539317950536955,
+      "fit_validated_root_bound": 272.6189261626308,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.049796471489942
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.6852110541727265,
+      "held_out_root_error_sup": 9.539317950536955,
+      "fit_validated_root_bound": 272.6189261626308,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.049796471489942
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.6852110541727265,
+      "held_out_root_error_sup": 9.539317950536955,
+      "fit_validated_root_bound": 272.6189261626308,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.049796471489942
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 3
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.6852110541727265,
+      "held_out_root_error_sup": 9.539317950536955,
+      "fit_validated_root_bound": 272.6189261626308,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.049796471489942
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.5104871405981861,
+      "held_out_root_error_sup": 9.410096653110253,
+      "fit_validated_root_bound": 253.72316864224302,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.378741439102258
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.4703996327011026,
+      "held_out_root_error_sup": 6.824834373295527,
+      "fit_validated_root_bound": 117.44211765859606,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.4889452590444225
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.3287002899297733,
+      "held_out_root_error_sup": 7.900481117057195,
+      "fit_validated_root_bound": 153.98656625175965,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.4220155060944935
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.1100674791122032,
+      "held_out_root_error_sup": 7.136165711071887,
+      "fit_validated_root_bound": 131.40688764889958,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.5812867471090583
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.017835584039024,
+      "held_out_root_error_sup": 7.788683056588766,
+      "fit_validated_root_bound": 29.087681961393567,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.8407287589854352
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 1.2130893342318358,
+      "held_out_root_error_sup": 7.8087668938365695,
+      "fit_validated_root_bound": 148.66527751218803,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.052453939223636
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.6989562020680047,
+      "held_out_root_error_sup": 4.435983185655812,
+      "fit_validated_root_bound": 83.32708841772643,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.34672303454216125
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.7509503235968492,
+      "held_out_root_error_sup": 7.442432882344356,
+      "fit_validated_root_bound": 18.830566003969608,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.47116719211457775
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 1.1100674791122032,
+      "held_out_root_error_sup": 7.136165711071887,
+      "fit_validated_root_bound": 131.40688764889958,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.5812867471090583
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.229754512039389,
+      "held_out_root_error_sup": 5.449888958180289,
+      "fit_validated_root_bound": 165.89857333186902,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.8904777287736536
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.229754512039389,
+      "held_out_root_error_sup": 5.449888958180289,
+      "fit_validated_root_bound": 165.89857333186902,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.8904777287736536
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.229754512039389,
+      "held_out_root_error_sup": 5.449888958180289,
+      "fit_validated_root_bound": 165.89857333186902,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.8904777287736536
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.1906051446254817,
+      "held_out_root_error_sup": 5.176201133625232,
+      "fit_validated_root_bound": 164.86999154195166,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.6118422898685694
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.1304500129653934,
+      "held_out_root_error_sup": 4.693122916875801,
+      "fit_validated_root_bound": 152.77910547834523,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.1629571970106252
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.1005472900034503,
+      "held_out_root_error_sup": 5.482655413180868,
+      "fit_validated_root_bound": 96.47179140229737,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.4068914688769336
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.8519162721020768,
+      "held_out_root_error_sup": 4.509969764350838,
+      "fit_validated_root_bound": 136.2952269459277,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.9199529645272089
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.731765911832134,
+      "held_out_root_error_sup": 4.450581701861211,
+      "fit_validated_root_bound": 131.71227228287037,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6472878813582651
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.9213493157712347,
+      "held_out_root_error_sup": 4.6071588224228215,
+      "fit_validated_root_bound": 15.418400450187699,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7215501760268879
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.599655595762654,
+      "held_out_root_error_sup": 4.508315583035703,
+      "fit_validated_root_bound": 77.10901250185385,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6793709371139052
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5225513799364256,
+      "held_out_root_error_sup": 4.502735050337717,
+      "fit_validated_root_bound": 7.86072556797605,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.27266508316894383
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5225513799364256,
+      "held_out_root_error_sup": 4.502735050337717,
+      "fit_validated_root_bound": 7.86072556797605,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.27266508316894383
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.5225513799364256,
+      "held_out_root_error_sup": 4.502735050337717,
+      "fit_validated_root_bound": 7.86072556797605,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.27266508316894383
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.6115577599806978,
+      "held_out_root_error_sup": 8.482905932499612,
+      "fit_validated_root_bound": 269.1881255275604,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.1053956313337103
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.6115577599806978,
+      "held_out_root_error_sup": 8.482905932499612,
+      "fit_validated_root_bound": 269.1881255275604,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.1053956313337103
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.6115577599806978,
+      "held_out_root_error_sup": 8.482905932499612,
+      "fit_validated_root_bound": 269.1881255275604,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.1053956313337103
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.596010403468231,
+      "held_out_root_error_sup": 8.29305673023243,
+      "fit_validated_root_bound": 257.3303614100963,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.713106330053927
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.1574634431519366,
+      "held_out_root_error_sup": 7.048291272711341,
+      "fit_validated_root_bound": 133.9237383627827,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3978652796036257
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.1250371622649966,
+      "held_out_root_error_sup": 6.688087398483663,
+      "fit_validated_root_bound": 117.30073752425574,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.4417516789817373
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.085727674465019,
+      "held_out_root_error_sup": 6.685632767724658,
+      "fit_validated_root_bound": 104.56108461565353,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.049462377701954
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.9553986994304428,
+      "held_out_root_error_sup": 6.309867472521314,
+      "fit_validated_root_bound": 14.784729437982358,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6854728208369539
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.9553986994304428,
+      "held_out_root_error_sup": 6.309867472521314,
+      "fit_validated_root_bound": 14.784729437982358,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6854728208369539
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.9264022634010722,
+      "held_out_root_error_sup": 6.41430464629364,
+      "fit_validated_root_bound": 102.83885110684217,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7411205019162965
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.6772331049317752,
+      "held_out_root_error_sup": 5.058891811477335,
+      "fit_validated_root_bound": 90.07141429755728,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3639895568650002
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.7344654354808258,
+      "held_out_root_error_sup": 6.02201338865248,
+      "fit_validated_root_bound": 7.755141032902445,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3771309450512963
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.9264022634010722,
+      "held_out_root_error_sup": 6.41430464629364,
+      "fit_validated_root_bound": 102.83885110684217,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7411205019162965
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7025568591360656,
+      "held_out_root_error_sup": 9.139548680103774,
+      "fit_validated_root_bound": 287.7862852566723,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.6039714436023496
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7025568591360656,
+      "held_out_root_error_sup": 9.139548680103774,
+      "fit_validated_root_bound": 287.7862852566723,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.6039714436023496
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7025568591360656,
+      "held_out_root_error_sup": 9.139548680103774,
+      "fit_validated_root_bound": 287.7862852566723,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.6039714436023496
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.513523429006424,
+      "held_out_root_error_sup": 10.249716143170856,
+      "fit_validated_root_bound": 246.78734652933775,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9280876891291423
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.5097404770684562,
+      "held_out_root_error_sup": 10.374474751785371,
+      "fit_validated_root_bound": 245.6137656547399,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.525197536686984
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.5451883274552012,
+      "held_out_root_error_sup": 10.377776268639927,
+      "fit_validated_root_bound": 140.8450695091737,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9672703585580624
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.1665036455934148,
+      "held_out_root_error_sup": 7.188786254061777,
+      "fit_validated_root_bound": 243.68664683431254,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.6315248592650349
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.0809374081706125,
+      "held_out_root_error_sup": 5.6290667128895056,
+      "fit_validated_root_bound": 229.8500459138625,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7634949890976487
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.8090059536151732,
+      "held_out_root_error_sup": 6.904422740027592,
+      "fit_validated_root_bound": 30.596236478539126,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.8680298701673862
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 1.1171776904741961,
+      "held_out_root_error_sup": 6.8043272295348896,
+      "fit_validated_root_bound": 241.87756651622027,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2286347068228767
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.7664101942262239,
+      "held_out_root_error_sup": 4.983169861469654,
+      "fit_validated_root_bound": 85.81334194899125,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.42335673391746914
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5285849224955247,
+      "held_out_root_error_sup": 5.013391273906663,
+      "fit_validated_root_bound": 17.428950195103145,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.465139717725228
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.7664101942262239,
+      "held_out_root_error_sup": 4.983169861469654,
+      "fit_validated_root_bound": 85.81334194899125,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.42335673391746914
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.722254117309676,
+      "held_out_root_error_sup": 12.00755458240318,
+      "fit_validated_root_bound": 248.67373608048067,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.7307851217815546
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.722254117309676,
+      "held_out_root_error_sup": 12.00755458240318,
+      "fit_validated_root_bound": 248.67373608048067,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.7307851217815546
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.722254117309676,
+      "held_out_root_error_sup": 12.00755458240318,
+      "fit_validated_root_bound": 248.67373608048067,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.7307851217815546
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.5936091121159435,
+      "held_out_root_error_sup": 9.88836532117405,
+      "fit_validated_root_bound": 244.57214260103223,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.23030054623949
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.513058190862892,
+      "held_out_root_error_sup": 9.87793561489994,
+      "fit_validated_root_bound": 178.8318560560705,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.788187235560044
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.415202986270729,
+      "held_out_root_error_sup": 8.331758988550856,
+      "fit_validated_root_bound": 127.15228933733955,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9113788816652522
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.4193705154038245,
+      "held_out_root_error_sup": 10.27566978751646,
+      "fit_validated_root_bound": 168.68828776070447,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3466292923755252
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.118981929145987,
+      "held_out_root_error_sup": 6.794919331046313,
+      "fit_validated_root_bound": 25.98787769271977,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.8879369409228477
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.118981929145987,
+      "held_out_root_error_sup": 6.794919331046313,
+      "fit_validated_root_bound": 25.98787769271977,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.8879369409228477
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.9329610335895347,
+      "held_out_root_error_sup": 6.897258769634553,
+      "fit_validated_root_bound": 106.70368100870981,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.9693363629386682
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.8439829836710881,
+      "held_out_root_error_sup": 6.880207267953017,
+      "fit_validated_root_bound": 11.167848648917328,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4463789977383288
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.8439829836710881,
+      "held_out_root_error_sup": 6.880207267953017,
+      "fit_validated_root_bound": 11.167848648917328,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4463789977383288
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.8439829836710881,
+      "held_out_root_error_sup": 6.880207267953017,
+      "fit_validated_root_bound": 11.167848648917328,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4463789977383288
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8516665858156112,
+      "held_out_root_error_sup": 16.091108406029935,
+      "fit_validated_root_bound": 246.00491534013742,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.038181459098303
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8516665858156112,
+      "held_out_root_error_sup": 16.091108406029935,
+      "fit_validated_root_bound": 246.00491534013742,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.038181459098303
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8516665858156112,
+      "held_out_root_error_sup": 16.091108406029935,
+      "fit_validated_root_bound": 246.00491534013742,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.038181459098303
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 3
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.8516665858156112,
+      "held_out_root_error_sup": 16.091108406029935,
+      "fit_validated_root_bound": 246.00491534013742,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.038181459098303
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.501867691028208,
+      "held_out_root_error_sup": 9.146749150942755,
+      "fit_validated_root_bound": 232.67584666526764,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3449047057479524
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.7232121004376864,
+      "held_out_root_error_sup": 16.125916899166576,
+      "fit_validated_root_bound": 107.45513162831284,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.4412405553259435
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.3005845517701842,
+      "held_out_root_error_sup": 8.140395493919153,
+      "fit_validated_root_bound": 207.22826168208834,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.4684032034103738
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.8155080799586926,
+      "held_out_root_error_sup": 5.186559134066381,
+      "fit_validated_root_bound": 192.827711523403,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6833548740510601
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.1203921737151936,
+      "held_out_root_error_sup": 5.071438953243302,
+      "fit_validated_root_bound": 17.086186068471342,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7850483293593138
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.9568080610031576,
+      "held_out_root_error_sup": 6.687553504767529,
+      "fit_validated_root_bound": 201.86141638294865,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.0524090005920155
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.41450696671988846,
+      "held_out_root_error_sup": 2.8685307580059076,
+      "fit_validated_root_bound": 10.009469753760461,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3690541265409554
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.41450696671988846,
+      "held_out_root_error_sup": 2.8685307580059076,
+      "fit_validated_root_bound": 10.009469753760461,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3690541265409554
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.7745727848313801,
+      "held_out_root_error_sup": 5.608133294892824,
+      "fit_validated_root_bound": 92.87119639059274,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7479638019755925
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8808404103177747,
+      "held_out_root_error_sup": 11.564669493044818,
+      "fit_validated_root_bound": 279.14950514352006,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.9147353550770023
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8808404103177747,
+      "held_out_root_error_sup": 11.564669493044818,
+      "fit_validated_root_bound": 279.14950514352006,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.9147353550770023
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8808404103177747,
+      "held_out_root_error_sup": 11.564669493044818,
+      "fit_validated_root_bound": 279.14950514352006,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.9147353550770023
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.7417087255542427,
+      "held_out_root_error_sup": 10.464481303344312,
+      "fit_validated_root_bound": 265.32802212187875,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.455948123467503
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.5663581958428157,
+      "held_out_root_error_sup": 7.003126643911445,
+      "fit_validated_root_bound": 264.9051211061316,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.93251212915965
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.7096656121407516,
+      "held_out_root_error_sup": 12.18239961857287,
+      "fit_validated_root_bound": 148.17057651112216,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.058057227635016
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.5663581958428157,
+      "held_out_root_error_sup": 7.003126643911445,
+      "fit_validated_root_bound": 264.9051211061316,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.93251212915965
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.3079998754732498,
+      "held_out_root_error_sup": 6.698542014693952,
+      "fit_validated_root_bound": 250.95475323577796,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.9580276068218447
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.3116184146592655,
+      "held_out_root_error_sup": 9.8395644223027,
+      "fit_validated_root_bound": 34.29605105539329,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.1487024312353062
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 1.3283202496007025,
+      "held_out_root_error_sup": 6.691780554284505,
+      "fit_validated_root_bound": 269.40493469760804,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.583294043749298
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5546578056487647,
+      "held_out_root_error_sup": 3.4793713350510718,
+      "fit_validated_root_bound": 105.26985254976675,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4505675647902107
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.4890954784456767,
+      "held_out_root_error_sup": 1.9554893415925385,
+      "fit_validated_root_bound": 21.30338826326836,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6252664369274532
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.7110111667859574,
+      "held_out_root_error_sup": 3.1843800444601613,
+      "fit_validated_root_bound": 126.59111116046857,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.075834001717664
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.2014339073430818,
+      "held_out_root_error_sup": 7.354680627529147,
+      "fit_validated_root_bound": 246.66664911178154,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9289686386918152
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.2014339073430818,
+      "held_out_root_error_sup": 7.354680627529147,
+      "fit_validated_root_bound": 246.66664911178154,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9289686386918152
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.2014339073430818,
+      "held_out_root_error_sup": 7.354680627529147,
+      "fit_validated_root_bound": 246.66664911178154,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9289686386918152
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.0997530834892941,
+      "held_out_root_error_sup": 7.108091622430155,
+      "fit_validated_root_bound": 243.99406382346336,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.617308757861776
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.044283976429739,
+      "held_out_root_error_sup": 7.354535172370534,
+      "fit_validated_root_bound": 135.293707666123,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3208483625889802
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.183018580662338,
+      "held_out_root_error_sup": 8.598124377213598,
+      "fit_validated_root_bound": 119.15593150389482,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3819700624095026
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.044283976429739,
+      "held_out_root_error_sup": 7.354535172370534,
+      "fit_validated_root_bound": 135.293707666123,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3208483625889802
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.6737942392432407,
+      "held_out_root_error_sup": 5.115778507329274,
+      "fit_validated_root_bound": 114.3717964090679,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6573686460214405
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.8548046524320523,
+      "held_out_root_error_sup": 5.465940331958402,
+      "fit_validated_root_bound": 22.806076975766803,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6634797165675397
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.9995742119568628,
+      "held_out_root_error_sup": 7.473075379948686,
+      "fit_validated_root_bound": 116.91102809280035,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.0703101815794633
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.478432513257463,
+      "held_out_root_error_sup": 3.3240879427198835,
+      "fit_validated_root_bound": 96.85520841145653,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.40683046501192366
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.6230192825383462,
+      "held_out_root_error_sup": 4.061054394984885,
+      "fit_validated_root_bound": 13.00248166602981,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4169986972339305
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.478432513257463,
+      "held_out_root_error_sup": 3.3240879427198835,
+      "fit_validated_root_bound": 96.85520841145653,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.40683046501192366
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 2.0053630615390934,
+      "held_out_root_error_sup": 11.60714072815223,
+      "fit_validated_root_bound": 276.43349933898213,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.319479506912832
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 2.0053630615390934,
+      "held_out_root_error_sup": 11.60714072815223,
+      "fit_validated_root_bound": 276.43349933898213,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.319479506912832
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 2.0053630615390934,
+      "held_out_root_error_sup": 11.60714072815223,
+      "fit_validated_root_bound": 276.43349933898213,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.319479506912832
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.874579797503224,
+      "held_out_root_error_sup": 9.755918956867003,
+      "fit_validated_root_bound": 275.26625441911557,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.0139203031084785
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.6936289810914553,
+      "held_out_root_error_sup": 8.800451896800013,
+      "fit_validated_root_bound": 273.6250641388415,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.654658997208462
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.6839698931983729,
+      "held_out_root_error_sup": 7.50206373452009,
+      "fit_validated_root_bound": 167.24832044967016,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.6903275261086763
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.190943560046472,
+      "held_out_root_error_sup": 7.260949836343284,
+      "fit_validated_root_bound": 238.88019754724874,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3400400075263221
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.1181511747924673,
+      "held_out_root_error_sup": 7.332348562787384,
+      "fit_validated_root_bound": 209.7711797167751,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7895537024609155
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.2793782314105466,
+      "held_out_root_error_sup": 5.479407231050607,
+      "fit_validated_root_bound": 33.302035997230945,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.9097476109654228
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.9569148744045906,
+      "held_out_root_error_sup": 6.082750451576759,
+      "fit_validated_root_bound": 155.6586948737172,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.0255070164043063
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.8279348767786524,
+      "held_out_root_error_sup": 6.324728878178713,
+      "fit_validated_root_bound": 122.78614347041848,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4750207113388997
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.6057266256235543,
+      "held_out_root_error_sup": 3.1168544498779354,
+      "fit_validated_root_bound": 33.26702394892495,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.5504863050654066
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.8279348767786524,
+      "held_out_root_error_sup": 6.324728878178713,
+      "fit_validated_root_bound": 122.78614347041848,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4750207113388997
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8916510538845206,
+      "held_out_root_error_sup": 10.12490282837829,
+      "fit_validated_root_bound": 262.1341720005359,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.467682654890388
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8916510538845206,
+      "held_out_root_error_sup": 10.12490282837829,
+      "fit_validated_root_bound": 262.1341720005359,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.467682654890388
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8916510538845206,
+      "held_out_root_error_sup": 10.12490282837829,
+      "fit_validated_root_bound": 262.1341720005359,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.467682654890388
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.8099920573369794,
+      "held_out_root_error_sup": 10.129358266473204,
+      "fit_validated_root_bound": 196.14304890122025,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.0898700967833013
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.2392950013997392,
+      "held_out_root_error_sup": 5.834396244874827,
+      "fit_validated_root_bound": 182.8697173445437,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.6718177361729878
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.7575070119551872,
+      "held_out_root_error_sup": 10.498871143794762,
+      "fit_validated_root_bound": 164.79506360079563,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.7305020466881973
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.066504922933106,
+      "held_out_root_error_sup": 5.616198726270786,
+      "fit_validated_root_bound": 160.95414996701095,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3124496860778838
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.8313832340119238,
+      "held_out_root_error_sup": 4.038831192980767,
+      "fit_validated_root_bound": 24.48731124325863,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7656978723353098
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.8313832340119238,
+      "held_out_root_error_sup": 4.038831192980767,
+      "fit_validated_root_bound": 24.48731124325863,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7656978723353098
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 1.066504922933106,
+      "held_out_root_error_sup": 5.616198726270786,
+      "fit_validated_root_bound": 160.95414996701095,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3124496860778838
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5860918567730214,
+      "held_out_root_error_sup": 3.26814916881327,
+      "fit_validated_root_bound": 20.082532144244656,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.43444345762540026
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5860918567730214,
+      "held_out_root_error_sup": 3.26814916881327,
+      "fit_validated_root_bound": 20.082532144244656,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.43444345762540026
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.5860918567730214,
+      "held_out_root_error_sup": 3.26814916881327,
+      "fit_validated_root_bound": 20.082532144244656,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.43444345762540026
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.5450902414851497,
+      "held_out_root_error_sup": 11.129849143860786,
+      "fit_validated_root_bound": 493.1756564899512,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9597318888394795
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.5450902414851497,
+      "held_out_root_error_sup": 11.129849143860786,
+      "fit_validated_root_bound": 493.1756564899512,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9597318888394795
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.5450902414851497,
+      "held_out_root_error_sup": 11.129849143860786,
+      "fit_validated_root_bound": 493.1756564899512,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9597318888394795
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.4872831679210263,
+      "held_out_root_error_sup": 11.108261074959751,
+      "fit_validated_root_bound": 398.59439986147936,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.6142768199403101
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.3761575832064061,
+      "held_out_root_error_sup": 10.847007871659399,
+      "fit_validated_root_bound": 281.88551596270594,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2765556009594012
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.3761575832064061,
+      "held_out_root_error_sup": 10.847007871659399,
+      "fit_validated_root_bound": 281.88551596270594,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2765556009594012
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.3761575832064061,
+      "held_out_root_error_sup": 10.847007871659399,
+      "fit_validated_root_bound": 281.88551596270594,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2765556009594012
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.2087628765982814,
+      "held_out_root_error_sup": 12.5796454547663,
+      "fit_validated_root_bound": 131.40688764889958,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6016561127353826
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 2,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.2087628765982814,
+      "held_out_root_error_sup": 12.5796454547663,
+      "fit_validated_root_bound": 131.40688764889958,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6016561127353826
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 1.2220376525039063,
+      "held_out_root_error_sup": 10.425987403139251,
+      "fit_validated_root_bound": 274.7546340925339,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.021746030522188
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.583815346810823,
+      "held_out_root_error_sup": 3.7761598229736504,
+      "fit_validated_root_bound": 83.32708841772642,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.35887285267715635
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.583815346810823,
+      "held_out_root_error_sup": 3.7761598229736504,
+      "fit_validated_root_bound": 83.32708841772642,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.35887285267715635
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.7829209510442062,
+      "held_out_root_error_sup": 5.397023443090539,
+      "fit_validated_root_bound": 226.67483486136075,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7789627704639618
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.2001252140798713,
+      "held_out_root_error_sup": 7.734508093396321,
+      "fit_validated_root_bound": 359.8065199204632,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9417653138778554
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.2001252140798713,
+      "held_out_root_error_sup": 7.734508093396321,
+      "fit_validated_root_bound": 359.8065199204632,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9417653138778554
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.2001252140798713,
+      "held_out_root_error_sup": 7.734508093396321,
+      "fit_validated_root_bound": 359.8065199204632,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9417653138778554
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.159319478699371,
+      "held_out_root_error_sup": 8.613261885523926,
+      "fit_validated_root_bound": 270.4798225012813,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.5616593078754872
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.1405831033463156,
+      "held_out_root_error_sup": 8.320528989928347,
+      "fit_validated_root_bound": 248.98759202282002,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.290287756898639
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.1405831033463156,
+      "held_out_root_error_sup": 8.320528989928347,
+      "fit_validated_root_bound": 248.98759202282002,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.290287756898639
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.0779731139283426,
+      "held_out_root_error_sup": 8.34465803946937,
+      "fit_validated_root_bound": 252.79641402887935,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3241002460649982
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.6912156669799729,
+      "held_out_root_error_sup": 4.244719274404113,
+      "fit_validated_root_bound": 131.71227228287037,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6327836360926864
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.8700681306957614,
+      "held_out_root_error_sup": 7.726034188903037,
+      "fit_validated_root_bound": 121.08414174600895,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6913166099723117
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.9824539232963636,
+      "held_out_root_error_sup": 7.894814181321169,
+      "fit_validated_root_bound": 231.304183550418,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.0527286950881498
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5017305905483541,
+      "held_out_root_error_sup": 2.713348989796149,
+      "fit_validated_root_bound": 71.42143357899877,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3975925032605858
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5017305905483541,
+      "held_out_root_error_sup": 2.713348989796149,
+      "fit_validated_root_bound": 71.42143357899877,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3975925032605858
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.8770704217224616,
+      "held_out_root_error_sup": 7.865561836931148,
+      "fit_validated_root_bound": 171.01334484654643,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.8175375622560493
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7233913033351396,
+      "held_out_root_error_sup": 7.7032775368336495,
+      "fit_validated_root_bound": 428.2077976857575,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.049473768565801
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7233913033351396,
+      "held_out_root_error_sup": 7.7032775368336495,
+      "fit_validated_root_bound": 428.2077976857575,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.049473768565801
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7233913033351396,
+      "held_out_root_error_sup": 7.7032775368336495,
+      "fit_validated_root_bound": 428.2077976857575,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.049473768565801
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.6964826556444352,
+      "held_out_root_error_sup": 7.467442895184033,
+      "fit_validated_root_bound": 308.3016291265672,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.7298014841681193
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.4011015554294892,
+      "held_out_root_error_sup": 5.6379702639058875,
+      "fit_validated_root_bound": 276.8400738200638,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3765012036919653
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.4704169534938454,
+      "held_out_root_error_sup": 7.737287630664905,
+      "fit_validated_root_bound": 247.5974033747559,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.4470127167803422
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.4704169534938454,
+      "held_out_root_error_sup": 7.737287630664905,
+      "fit_validated_root_bound": 247.5974033747559,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.4470127167803422
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.3230346425064803,
+      "held_out_root_error_sup": 6.993535030139435,
+      "fit_validated_root_bound": 121.5329696040607,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7224063121104407
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 2,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.3230346425064803,
+      "held_out_root_error_sup": 6.993535030139435,
+      "fit_validated_root_bound": 121.5329696040607,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7224063121104407
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 1.0175410873655293,
+      "held_out_root_error_sup": 5.7113682110062385,
+      "fit_validated_root_bound": 216.1358480682525,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.093712436304188
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.6706889860481543,
+      "held_out_root_error_sup": 5.64673124630027,
+      "fit_validated_root_bound": 90.07141429755728,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.36910603163428657
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.6706889860481543,
+      "held_out_root_error_sup": 5.64673124630027,
+      "fit_validated_root_bound": 90.07141429755728,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.36910603163428657
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.6706889860481543,
+      "held_out_root_error_sup": 5.64673124630027,
+      "fit_validated_root_bound": 90.07141429755728,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.36910603163428657
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8478456175370737,
+      "held_out_root_error_sup": 14.166202808660898,
+      "fit_validated_root_bound": 443.6073092241005,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.0948798313689614
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8478456175370737,
+      "held_out_root_error_sup": 14.166202808660898,
+      "fit_validated_root_bound": 443.6073092241005,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.0948798313689614
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.8478456175370737,
+      "held_out_root_error_sup": 14.166202808660898,
+      "fit_validated_root_bound": 443.6073092241005,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.0948798313689614
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.8754392763605745,
+      "held_out_root_error_sup": 17.531159800018287,
+      "fit_validated_root_bound": 350.5369445234927,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.6891193441494623
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.7820812500119647,
+      "held_out_root_error_sup": 16.3646509371972,
+      "fit_validated_root_bound": 298.73935744592063,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.3649007633032788
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.4178106891115287,
+      "held_out_root_error_sup": 6.929220593413282,
+      "fit_validated_root_bound": 297.6520770584844,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.4861265706226174
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.2025285092514444,
+      "held_out_root_error_sup": 7.088363407734418,
+      "fit_validated_root_bound": 204.5817123578765,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.0803660834031183
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.9712141447961326,
+      "held_out_root_error_sup": 6.86218499036602,
+      "fit_validated_root_bound": 118.7683704088853,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6755924803971562
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.9712141447961326,
+      "held_out_root_error_sup": 6.86218499036602,
+      "fit_validated_root_bound": 118.7683704088853,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6755924803971562
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 1.2025285092514444,
+      "held_out_root_error_sup": 7.088363407734418,
+      "fit_validated_root_bound": 204.5817123578765,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.0803660834031183
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.4475845586933553,
+      "held_out_root_error_sup": 3.217097549933974,
+      "fit_validated_root_bound": 66.97078333131323,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3513738995509728
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.4475845586933553,
+      "held_out_root_error_sup": 3.217097549933974,
+      "fit_validated_root_bound": 66.97078333131323,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3513738995509728
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.891532263075869,
+      "held_out_root_error_sup": 6.352212772117927,
+      "fit_validated_root_bound": 152.78412528030447,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.756147502556935
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7596266190370065,
+      "held_out_root_error_sup": 12.536716069998409,
+      "fit_validated_root_bound": 431.1876079448666,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.3680460006268724
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7596266190370065,
+      "held_out_root_error_sup": 12.536716069998409,
+      "fit_validated_root_bound": 431.1876079448666,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.3680460006268724
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7596266190370065,
+      "held_out_root_error_sup": 12.536716069998409,
+      "fit_validated_root_bound": 431.1876079448666,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.3680460006268724
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.74288787935801,
+      "held_out_root_error_sup": 12.643744060283558,
+      "fit_validated_root_bound": 363.30226948629064,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9515453367351179
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.6630198866568906,
+      "held_out_root_error_sup": 12.673892638548267,
+      "fit_validated_root_bound": 296.38409883559865,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.580325033436658
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.6630198866568906,
+      "held_out_root_error_sup": 12.673892638548267,
+      "fit_validated_root_bound": 296.38409883559865,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.580325033436658
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.2503121544966715,
+      "held_out_root_error_sup": 5.7799510009393495,
+      "fit_validated_root_bound": 275.9529514414334,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2326417798024314
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.9878500153611375,
+      "held_out_root_error_sup": 3.9609837540493587,
+      "fit_validated_root_bound": 158.22132291661413,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7558948788629745
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.4698962817094738,
+      "held_out_root_error_sup": 13.092941426749361,
+      "fit_validated_root_bound": 138.16277591898452,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.8244301545736835
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.9649551810936048,
+      "held_out_root_error_sup": 5.131943107630812,
+      "fit_validated_root_bound": 214.23459274202847,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.9158478893794755
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5276523874500358,
+      "held_out_root_error_sup": 3.637997854194414,
+      "fit_validated_root_bound": 96.50296421720913,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4391009884400186
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5276523874500358,
+      "held_out_root_error_sup": 3.637997854194414,
+      "fit_validated_root_bound": 96.50296421720913,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4391009884400186
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.5276523874500358,
+      "held_out_root_error_sup": 3.637997854194414,
+      "fit_validated_root_bound": 96.50296421720913,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4391009884400186
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7074837583340592,
+      "held_out_root_error_sup": 9.920278549916212,
+      "fit_validated_root_bound": 406.39245080276265,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.8357704626859128
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7074837583340592,
+      "held_out_root_error_sup": 9.920278549916212,
+      "fit_validated_root_bound": 406.39245080276265,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.8357704626859128
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.7074837583340592,
+      "held_out_root_error_sup": 9.920278549916212,
+      "fit_validated_root_bound": 406.39245080276265,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.8357704626859128
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.0821609471607212,
+      "held_out_root_error_sup": 4.971460488419837,
+      "fit_validated_root_bound": 340.93161060985045,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.5453593516784045
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 0.8085328604501971,
+      "held_out_root_error_sup": 4.251421750832125,
+      "fit_validated_root_bound": 311.94441447911316,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.276110803993931
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.5980178035976407,
+      "held_out_root_error_sup": 10.80077775839143,
+      "fit_validated_root_bound": 266.9512821584546,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2862736032073163
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.7635401641356762,
+      "held_out_root_error_sup": 4.280667356319655,
+      "fit_validated_root_bound": 201.49044196554243,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.9958624921998078
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.5641817701848454,
+      "held_out_root_error_sup": 2.7322235759656612,
+      "fit_validated_root_bound": 192.827711523403,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6290427659211721
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.6619091841145031,
+      "held_out_root_error_sup": 4.946335823104448,
+      "fit_validated_root_bound": 119.11670295571017,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6470680380727588
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.7635401641356762,
+      "held_out_root_error_sup": 4.280667356319655,
+      "fit_validated_root_bound": 201.49044196554243,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.9958624921998078
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.45721332248354335,
+      "held_out_root_error_sup": 2.478110858906514,
+      "fit_validated_root_bound": 82.37373900983226,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.34879445412704896
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.45721332248354335,
+      "held_out_root_error_sup": 2.478110858906514,
+      "fit_validated_root_bound": 82.37373900983226,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.34879445412704896
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.45721332248354335,
+      "held_out_root_error_sup": 2.478110858906514,
+      "fit_validated_root_bound": 82.37373900983226,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.34879445412704896
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.9159079051113583,
+      "held_out_root_error_sup": 11.116769700950918,
+      "fit_validated_root_bound": 427.82290066056834,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.318160376229457
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.9159079051113583,
+      "held_out_root_error_sup": 11.116769700950918,
+      "fit_validated_root_bound": 427.82290066056834,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.318160376229457
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.9159079051113583,
+      "held_out_root_error_sup": 11.116769700950918,
+      "fit_validated_root_bound": 427.82290066056834,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.318160376229457
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.8550327146871648,
+      "held_out_root_error_sup": 9.331886407951105,
+      "fit_validated_root_bound": 427.82282234830774,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.990127006100074
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.5241640948810407,
+      "held_out_root_error_sup": 9.205481553799137,
+      "fit_validated_root_bound": 282.13792166229655,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.5134511558272266
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.5241640948810407,
+      "held_out_root_error_sup": 9.205481553799137,
+      "fit_validated_root_bound": 282.13792166229655,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.5134511558272266
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.1838805629359082,
+      "held_out_root_error_sup": 8.068697495851092,
+      "fit_validated_root_bound": 246.66502350745017,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2439219143448252
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.9618291288478608,
+      "held_out_root_error_sup": 5.861373221243577,
+      "fit_validated_root_bound": 141.39517095768343,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.8206872569087795
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.9618291288478608,
+      "held_out_root_error_sup": 5.861373221243577,
+      "fit_validated_root_bound": 141.39517095768343,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.8206872569087795
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 1.072901189981258,
+      "held_out_root_error_sup": 6.86035067438965,
+      "fit_validated_root_bound": 231.4540396831163,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.9309640032495237
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.7962768342484803,
+      "held_out_root_error_sup": 7.446422215174507,
+      "fit_validated_root_bound": 105.26985254976674,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4232346574360457
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.7962768342484803,
+      "held_out_root_error_sup": 7.446422215174507,
+      "fit_validated_root_bound": 105.26985254976674,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4232346574360457
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.7962768342484803,
+      "held_out_root_error_sup": 7.446422215174507,
+      "fit_validated_root_bound": 105.26985254976674,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4232346574360457
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.1569420153348264,
+      "held_out_root_error_sup": 6.473686353211822,
+      "fit_validated_root_bound": 409.9427936869351,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.8762292677058945
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.1569420153348264,
+      "held_out_root_error_sup": 6.473686353211822,
+      "fit_validated_root_bound": 409.9427936869351,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.8762292677058945
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 1.1569420153348264,
+      "held_out_root_error_sup": 6.473686353211822,
+      "fit_validated_root_bound": 409.9427936869351,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.8762292677058945
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.101759153775888,
+      "held_out_root_error_sup": 6.082922717222223,
+      "fit_validated_root_bound": 295.532830157864,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.5577857012935066
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 0.8941932347424447,
+      "held_out_root_error_sup": 5.562220016380013,
+      "fit_validated_root_bound": 227.2337014881237,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2427655167825171
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 0.8941932347424447,
+      "held_out_root_error_sup": 5.562220016380013,
+      "fit_validated_root_bound": 227.2337014881237,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2427655167825171
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.6269113776500375,
+      "held_out_root_error_sup": 2.9710830364352927,
+      "fit_validated_root_bound": 209.71711349051233,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.9736493948474805
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.558503237605692,
+      "held_out_root_error_sup": 2.754162700836336,
+      "fit_validated_root_bound": 112.8619050790558,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.5366515824267153
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.558503237605692,
+      "held_out_root_error_sup": 2.754162700836336,
+      "fit_validated_root_bound": 112.8619050790558,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.5366515824267153
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5573636723404725,
+      "held_out_root_error_sup": 2.639170572728351,
+      "fit_validated_root_bound": 153.56608304784285,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7055830911534817
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.3336821543145693,
+      "held_out_root_error_sup": 2.2769834171044154,
+      "fit_validated_root_bound": 56.710874636386336,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.2685852787327166
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.3336821543145693,
+      "held_out_root_error_sup": 2.2769834171044154,
+      "fit_validated_root_bound": 56.710874636386336,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.2685852787327166
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.3336821543145693,
+      "held_out_root_error_sup": 2.2769834171044154,
+      "fit_validated_root_bound": 56.710874636386336,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.2685852787327166
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 2.066569321731767,
+      "held_out_root_error_sup": 11.17782948720397,
+      "fit_validated_root_bound": 602.2012095179891,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.4734248105601693
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 2.066569321731767,
+      "held_out_root_error_sup": 11.17782948720397,
+      "fit_validated_root_bound": 602.2012095179891,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.4734248105601693
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 2.066569321731767,
+      "held_out_root_error_sup": 11.17782948720397,
+      "fit_validated_root_bound": 602.2012095179891,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.4734248105601693
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 2.0827902782225705,
+      "held_out_root_error_sup": 12.0774698046413,
+      "fit_validated_root_bound": 366.75730225410086,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.9661684533240913
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.9387685438258049,
+      "held_out_root_error_sup": 12.615577953571295,
+      "fit_validated_root_bound": 302.748772276122,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.5861574896944983
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.9387685438258049,
+      "held_out_root_error_sup": 12.615577953571295,
+      "fit_validated_root_bound": 302.748772276122,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.5861574896944983
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.6046007036965637,
+      "held_out_root_error_sup": 8.88860594921728,
+      "fit_validated_root_bound": 244.0951134699466,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2815861230200933
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.2643721296561967,
+      "held_out_root_error_sup": 8.163220819037308,
+      "fit_validated_root_bound": 121.30896999952812,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7647145316831298
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 1.2643721296561967,
+      "held_out_root_error_sup": 8.163220819037308,
+      "fit_validated_root_bound": 121.30896999952812,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.7647145316831298
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 1.187084929991423,
+      "held_out_root_error_sup": 8.12388496382141,
+      "fit_validated_root_bound": 180.08658349196767,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.9015751593905001
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5678985103489791,
+      "held_out_root_error_sup": 4.443553014836736,
+      "fit_validated_root_bound": 57.30044002154918,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3847035680535366
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5678985103489791,
+      "held_out_root_error_sup": 4.443553014836736,
+      "fit_validated_root_bound": 57.30044002154918,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3847035680535366
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.5678985103489791,
+      "held_out_root_error_sup": 4.443553014836736,
+      "fit_validated_root_bound": 57.30044002154918,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.3847035680535366
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 2.0624057804189366,
+      "held_out_root_error_sup": 12.003700837623475,
+      "fit_validated_root_bound": 445.96213585112184,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.401736036127674
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 3,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 2.0624057804189366,
+      "held_out_root_error_sup": 12.003700837623475,
+      "fit_validated_root_bound": 445.96213585112184,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.401736036127674
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 3,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "true_root_error_rms": 2.0624057804189366,
+      "held_out_root_error_sup": 12.003700837623475,
+      "fit_validated_root_bound": 445.96213585112184,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.401736036127674
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.737063679120667,
+      "held_out_root_error_sup": 11.34033431677793,
+      "fit_validated_root_bound": 384.4984929262168,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 2.014445665550922
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 5,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.5143828181380916,
+      "held_out_root_error_sup": 15.471513895906835,
+      "fit_validated_root_bound": 302.06487647536795,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.6187540132332963
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 5,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 5,
+      "true_root_error_rms": 1.5143828181380916,
+      "held_out_root_error_sup": 15.471513895906835,
+      "fit_validated_root_bound": 302.06487647536795,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.6187540132332963
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.8713807981997889,
+      "held_out_root_error_sup": 4.031354985912813,
+      "fit_validated_root_bound": 271.91731801750063,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2503708499205288
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 7,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.7803522156780861,
+      "held_out_root_error_sup": 4.051898674090262,
+      "fit_validated_root_bound": 136.0921975557006,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6899032105736822
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 7,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 2,
+        "n2": 1
+      },
+      "rank_cost": 7,
+      "true_root_error_rms": 0.7803522156780861,
+      "held_out_root_error_sup": 4.051898674090262,
+      "fit_validated_root_bound": 136.0921975557006,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.6899032105736822
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.8713807981997889,
+      "held_out_root_error_sup": 4.031354985912813,
+      "fit_validated_root_bound": 271.91731801750063,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 1.2503708499205288
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 8,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5641548987651648,
+      "held_out_root_error_sup": 3.960498203160674,
+      "fit_validated_root_bound": 109.37508978414168,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4679860901575572
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 8,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 1
+      },
+      "rank_cost": 8,
+      "true_root_error_rms": 0.5641548987651648,
+      "held_out_root_error_sup": 3.960498203160674,
+      "fit_validated_root_bound": 109.37508978414168,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4679860901575572
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "true_root_error_rms": 0.5641548987651648,
+      "held_out_root_error_sup": 3.960498203160674,
+      "fit_validated_root_bound": 109.37508978414168,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.4679860901575572
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 10,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 10,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 12,
+      "method": "pathwise_majorant_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 12,
+      "method": "validated_certificate_small_case",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 1
+      },
+      "rank_cost": 9,
+      "true_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "fit_validated_root_bound": 0.0,
+      "fit_validated_bound_holds": true,
+      "fit_empirical_majorant": 0.0
+    }
+  ],
+  "limitations": [
+    "The validated bound uses Frobenius enclosures and is conservative.",
+    "The certificate allocator is combinatorial and only tested on small networks.",
+    "No true-error superiority or technology claim is established."
+  ]
+}

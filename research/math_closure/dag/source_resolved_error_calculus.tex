@@ -1,0 +1,121 @@
+\section*{Finite source-resolved error calculus for projected multilinear DAGs}
+\label{sec:finite-source-resolved-error-calculus}
+
+\paragraph{Scope.}
+Let $G=(V,E)$ be a finite acyclic typed graph.  Every internal vertex $v$
+has a finite-dimensional multilinear law $\mu_v$, and every type carries an
+orthogonal projector $P_v$ (the projector may be the same for several
+vertices).  A leaf has a projected baseline $R_v$ and a finite sum of labelled
+local source vectors.  A closure residual at an internal vertex is treated as
+one additional labelled degree-one source with amplitude one.  All source
+labels are finite, and no infinite series or universal sharpness assertion is
+part of this theorem.
+
+\paragraph{The finite polynomial theorem.}
+For a node $v$, write
+\[
+  D_v(t)=\sum_{\alpha\ne0} A_{v,\alpha}t^\alpha
+\]
+for its raw error relative to the recursively projected baseline, where
+multi-indices record source multiplicities.  If the ordered children have
+baselines $R_1,\ldots,R_a$ and errors $D_1,\ldots,D_a$, multilinearity gives
+\[
+\begin{split}
+ D_v(t)={}&
+ \sum_{\varnothing\ne S\subseteq\{1,\ldots,a\}}
+ \mu_v(z^S_1,\ldots,z^S_a)
+ +(I-P_v)\mu_v(R_1,\ldots,R_a)\\
+ &+L_v(t),
+\end{split}
+\tag{1}
+\]
+where $z_i^S=D_i$ for $i\in S$, $z_i^S=R_i$ otherwise, and $L_v$ is the
+explicit local-source polynomial.  At a leaf, $D_v=L_v$.  Since each child
+polynomial is finite and each $\mu_v$ is multilinear, (1) is a finite
+polynomial identity.  Coefficients are obtained by Cartesian convolution of
+the child supports, merging indices by addition; consequently a source used
+twice has multiplicity two rather than being silently identified with a
+degree-one source.
+
+\paragraph{Proof.}
+Expand
+\[
+ \mu_v(R_1+D_1,\ldots,R_a+D_a)
+\]
+by multilinearity.  The all-baseline term is
+$\mu_v(R_1,\ldots,R_a)$.  The recursively projected baseline is
+$P_v\mu_v(R_1,\ldots,R_a)$, so subtracting it leaves the normal residual
+$(I-P_v)\mu_v(R_1,\ldots,R_a)$.  Every other term chooses a nonempty subset
+of erroneous slots, giving the first sum in (1); adding $L_v$ gives the final
+term.  Induction over a topological ordering proves the assertion at every
+node.  The same induction proves that a cached topological evaluator and a
+recursive evaluator that unrolls shared dependencies have identical
+coefficients.  At the projected root,
+\[
+ P_r(I-P_r)\mu_r(R_1,\ldots,R_a)=0,
+\]
+so the root-local normal source is removed exactly by the output projection.
+\qed
+
+\paragraph{First-order source recombination.}
+After retaining only degree-one terms, let $A_{v,s}$ be the coefficient
+operator of source $s$.  If $H_{v,u}$ is the linearized edge operator and
+$L_{v,s}$ the local source operator, then
+\[
+ A_{v,s}=L_{v,s}+\sum_{u\to v}H_{v,u}A_{u,s}.
+\tag{2}
+\]
+Thus all paths carrying the same label are added before taking a norm.  With
+source vectors $\epsilon_s$,
+\[
+ \left\|\sum_s A_{r,s}\epsilon_s\right\|
+ \le B_{\rm source}:=\sum_s\|A_{r,s}\|\,\|\epsilon_s\|
+ \le B_{\rm path},
+\tag{3}
+\]
+where $B_{\rm path}$ takes the norm separately on every path.  Equation (2)
+is a topological dynamic program; its graph traversal is $O(|V|+|E|)$ apart
+from matrix multiplication costs.
+
+\paragraph{Finite truncation.}
+For any order $p$, split $D_r=D_r^{(\le p)}+R_r^{(>p)}$.  For amplitudes
+$t_s$ the exact finite polynomial satisfies
+\[
+ \|R_r^{(>p)}(t)\|
+ \le \sum_{|\alpha|>p}\|A_{r,\alpha}\|
+                 \prod_s|t_s|^{\alpha_s}.
+\tag{4}
+\]
+No omitted term is discarded; (4) is the triangle bound over the finite
+omitted support.
+
+\paragraph{Signed compositional expressions.}
+Let $F=\sum_j c_jT_j$ and let
+$P_j(t)=\sum_{\alpha\ne0}A_{j,\alpha}t^\alpha$ be the finite source
+polynomial of $T_j$.  Define
+\[
+ A_{F,\alpha}=\sum_j c_jA_{j,\alpha},\qquad
+ B_{\rm signed}=\sum_\alpha\|A_{F,\alpha}\|
+                              \prod_s|t_s|^{\alpha_s}.
+\]
+Then
+\[
+ \left\|\sum_jc_jP_j(t)\right\|
+ \le B_{\rm signed}
+ \le B_{\rm treewise}:=
+ \sum_j|c_j|\sum_\alpha\|A_{j,\alpha}\|
+                              \prod_s|t_s|^{\alpha_s}.
+\tag{5}
+\]
+The first inequality is the triangle inequality after coefficient
+aggregation; the second is coefficientwise subadditivity.  Repeated-source
+and mixed-source terms remain distinct multi-indices throughout.  Applying
+(5) to a truncation and its omitted support gives the corresponding signed
+remainder certificate.
+
+\paragraph{Current boundary.}
+The theorem is exact for finite declared DAGs and finite source supports.  It
+does not provide a scalable compression theorem for implicitly generated
+graphs, an infinite-series tail envelope, a universal signed-forest sharp
+constant, or theorem-level novelty.  Those boundaries remain separately
+registered rather than being inferred from the finite calculus.

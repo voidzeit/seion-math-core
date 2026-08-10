@@ -1,0 +1,82 @@
+id: ttn_fb15k237_branching_k3_protocol_2026-08-09
+status: internal_protocol_alignment_before_valid_campaign
+objective: >-
+  Quantify certified post-training projection error and ranking stability for a
+  frozen branching TTN link-prediction scorer on the official FB15K-237 split.
+  This is a compression/certification study, not a benchmark claim against
+  unrelated KGE architectures.
+dataset:
+  name: FB15K-237
+  train: data/FB15K-237/train.txt
+  valid: data/FB15K-237/valid.txt
+  test: data/FB15K-237/test.txt
+  split_policy: official_splits_loaded_once
+  test_policy: test_is_not_used_for_projector_or_rank_selection
+architecture:
+  topology: branching_TTN_k3
+  equation: score = mu3(mu1(h1,r1), mu2(h2,r2), t)
+  truncable_nodes: [branch1, branch2]
+  root_projected: false
+  initial_dim: 32
+  initial_branch_dim: 32
+  full_then_freeze: true
+  compressed_execution: transformed_cores_in_reduced_coordinates
+  training_loss: pairwise_logistic_negative_sampling
+  loss_temperature: 1000.0
+  normalization:
+    entity_relation_row_norm_at_most: 1.0
+    branch_core_frobenius_at_most: 1.0
+    root_core_frobenius_at_most: 1.0
+projection:
+  basis_fit: thin_SVD
+  fit_data: train_only
+  projection_definition: P = Q_r Q_r^T
+  validation_role: rank_and_tolerance_selection_only
+  fine_tuning_after_projection: false
+  algebraic_equivalence_test: projected_score_equals_transformed_core_score
+rank_grid:
+  values: [1, 2, 4, 8, 16, 24, 32]
+  allocation_policy: exhaustive_pair_grid_when_budget_allows
+  first_exploratory_slice_budgets: [2, 4, 8, 16, 32, 48, 64]
+methods:
+  - full_rank
+  - uniform
+  - local_svd_energy
+  - certificate_driven
+  - certificate_rank_aware
+  - validation_driven_oracle
+metrics:
+  score_error:
+    - E_train
+    - E_valid
+    - E_test
+    - certificate_global_bound_B
+    - test_violation_rate
+    - pearson_certificate_error
+    - spearman_certificate_error
+  ranking:
+    protocol: filtered_link_prediction
+    standard: [MRR, Hits@1, Hits@3, Hits@10]
+    stability: [rank_equal_fraction, CCR@1, CCR@3, CCR@10]
+    certified_hits: [certified_Hits@1, certified_Hits@3, certified_Hits@10]
+  resources:
+    analytical: [contraction_units, runtime_core_storage, package_storage, basis_storage]
+    hardware_phase_later: [wall_time, peak_VRAM, peak_RAM, queries_per_second]
+hypotheses:
+  H1_validity: E_test_leq_B_for_all_evaluated_configurations
+  H2_predictive_power: positive_certificate_error_association
+  H3_ranking_utility: lower_B_implies_higher_certified_stability
+  H4_efficiency: certificate_cost_below_uniform_at_matched_tolerance
+  H5_certification_price: Pi_cert = C_certified / C_oracle
+success_criteria:
+  mathematical: zero_observed_test_certificate_violations
+  technological: certificate_selected_cost_below_baseline_at_declared_tolerance
+  ranking: report_certified_coverage_separately_from_MRR_and_Hits
+authoritative_implementation: seion_kgr/run_ttn_fb15k237.py
+raw_output: applications/adaptive_tensor_network/results/TTN_FB15K237_BRANCHING_K3_POSTTRAIN_2026-08-09.json
+limitations:
+  - first probe is one seed and short training
+  - sampled score-gap and ranking queries are exploratory until the full grid campaign
+  - Frobenius operator enclosures may be conservative
+  - resource proxies are not hardware measurements
+  - empirical zero violations do not prove the mathematical theorem

@@ -1,0 +1,119 @@
+\section*{M13: Unconditional quantitative envelope for the independent-law $k=3$ chain}
+\label{sec:m13-unconditional-chain-envelope}
+
+\paragraph{Setup.}
+Consider the ordered binary $k=3$ chain with unit-norm leaves, independent
+bilinear laws of operator norm at most $M$, orthogonal projectors, and local
+closure-residual cap $\rho=\eta M$.  Let
+$C_{3,\mathrm{ind}}^{P,\mathrm{chain}}(\eta)$ denote the projected-root
+constant normalized by $\rho M^2L_T$ for this topology.
+
+\paragraph{Gram-matrix lemma.}
+Let $N$ be a linear map with $\|N\|_{\mathrm{op}}\le M$, let $u,v$ be
+orthonormal, and let $Q$ be an orthogonal projector.  Put
+\[
+  y=Nv,\qquad s=\|Qy\|.
+\]
+Then
+\[
+  |\langle Nu,Qy\rangle|
+  \le M s\sqrt{1-s^2/M^2}.
+\tag{1}
+\]
+Indeed, with $\widetilde N=N/M$ the operator
+$K=\widetilde N^*Q\widetilde N$ satisfies $0\preceq K\preceq I$.  On
+$\operatorname{span}\{u,v\}$, write $K_{vv}=s^2/M^2$ and
+$K_{uu}=a$.  Positivity of $K$ and $I-K$ gives
+\[
+ |K_{uv}|^2\le a(s/M)^2,qquad
+ |K_{uv}|^2\le(1-a)(1-s^2/M^2).
+\]
+Maximizing the minimum of the two right-hand sides over $0\le a\le1$
+occurs at $a=1-s^2/M^2$ and yields (1).  This argument uses no exact
+operator-norm saturation.
+
+\paragraph{Theorem.}
+For every $0<\eta\le1$,
+\[
+ C_{3,\mathrm{ind}}^{P,\mathrm{chain}}(\eta)
+ \le W_3(\eta):=
+ \begin{cases}
+ \sqrt{4-3\eta^2}, & 0<\eta\le\sqrt{2/3},\\[2mm]
+ \dfrac{2}{\sqrt3\,\eta}, & \sqrt{2/3}\le\eta\le1.
+ \end{cases}
+\tag{2}
+\]
+
+\paragraph{Proof.}
+At the first internal node write $D_1\perp R_1$, put
+$q=\|D_1\|/M$ and $p=\|R_1\|/M$.  Then
+\[
+ 0\le q\le\eta,qquad p\le\sqrt{1-q^2}.
+\]
+At the second node freeze the sibling leaf and write
+$N(x)=\mu_2(x,c)$.  For the normalized directions
+$u=D_1/\|D_1\|$ and $v=R_1/\|R_1\|$, put
+$x=N u/M$, $y=N v/M$, $Q=I-P_2$, and
+$s=\|Qy\|\le\eta$.  The exact chain error expansion gives propagated
+contributions proportional to $q x$ and $pQy$.  The root map is a contraction
+after freezing its sibling leaf, so (1) gives
+\[
+ \frac{E_T^P}{M^3L_T}
+ \le
+ \sqrt{q^2+p^2s^2+2qps\sqrt{1-s^2}}.
+\tag{3}
+\]
+Here $\|x\|\le1$ was used in the first term, and the Gram lemma controls the
+cross term.  The right side increases with $p$, so use
+$p=\sqrt{1-q^2}$.  Set $q=\sin\alpha$, $s=\sin\beta$; then its square is
+\[
+ f(\alpha,\beta)=\sin^2\alpha+\cos^2\alpha\sin^2\beta
+ +2\sin\alpha\cos\alpha\sin\beta\cos\beta.
+\]
+With $u=\tan\alpha$, $v=\tan\beta$,
+\[
+ f=\frac{(u+v)^2+u^2v^2}{(1+u^2)(1+v^2)}.
+\]
+The identity
+\[
+ 4(1+u^2)(1+v^2)-3\big((u+v)^2+u^2v^2\big)
+ =u^2v^2+u^2+v^2-6uv+4
+ \ge(uv-2)^2
+\]
+shows $f\le4/3$.  If
+$\eta\le\sqrt{2/3}$, then
+$u,v\le\tan(\arcsin\eta)\le\sqrt2$ and both partial derivatives are
+nonnegative on the square, so the maximum is at $q=s=\eta$.  This gives
+$f\le\eta^2(4-3\eta^2)$.  For larger $\eta$, the square contains the
+global equality point $u=v=\sqrt2$, giving $f\le4/3$.  Dividing (3) by
+$\rho M^2L_T=\eta M^3L_T$ proves (2).  Zero $q$ or $p$ cases follow by
+continuity. $\square$
+
+\paragraph{Explicit improvement over M9.}
+Let $U_3$ be the unconditional M9 envelope.  Then
+\[
+ C_{3,\mathrm{ind}}^{P,\mathrm{chain}}(\eta)
+ \le U_3(\eta)-\delta_{\mathrm{chain}}(\eta),
+\]
+where $\delta_{\mathrm{chain}}(\eta)>0$ is the following explicit function:
+\[
+\delta_{\mathrm{chain}}(\eta)=
+\begin{cases}
+1+\sqrt{1-\eta^2}-\sqrt{4-3\eta^2},
+ &0<\eta\le\eta_*,\\[1mm]
+\dfrac{\sqrt{1+\eta^2}}{\eta}-\sqrt{4-3\eta^2},
+ &\eta_*<\eta\le\sqrt{2/3},\\[3mm]
+\dfrac{\sqrt{1+\eta^2}-2/\sqrt3}{\eta},
+ &\sqrt{2/3}<\eta\le1,
+\end{cases}
+\]
+with $\eta_*=\sqrt{(\sqrt5-1)/2}$.  Positivity follows respectively from
+$2\sqrt{1-\eta^2}(1-\sqrt{1-\eta^2})>0$, from
+$3\eta^4-3\eta^2+1>0$, and from
+$1+\eta^2>4/3$ on the stated intervals.
+
+\paragraph{Boundary.}
+This is an unconditional chain-topology envelope.  Its sharpness is supplied
+by the explicit M14 construction in
+\texttt{m14\_exact\_chain\_constant.tex}; it does not provide the same
+quantitative envelope for branching.

@@ -1,0 +1,44 @@
+\section*{M21: Tagged same-law fixed-$\eta$ constants for binary $k=3$}
+\label{sec:m21-tagged-same-law}
+
+The phrase ``same law'' does not by itself require a rank-one projector or
+identical leaf directions.  Let $\mathcal S_{3,\mathrm{tag}}$ be the finite
+dimensional real binary $k=3$ class with one repeated bilinear law, one fixed
+coordinate projector, and arbitrary unit projected leaf vectors.  Projected
+leaf directions may contain finitely many orthogonal tags.
+
+\textbf{Lemma (tagged direct-sum simulation).}  Given the M14 chain witness,
+there is one bilinear law on a finite orthogonal direct sum whose three
+occurrences act respectively as the M14 bottom, middle, and root laws when
+their leaf-slot tags select the corresponding block.  The blocks have
+orthogonal input supports, so the shared law has operator norm at most one.
+On projected inputs, the only nonzero normal output is the bottom leakage,
+whose norm is $\eta$; the middle leakage is also at most $\eta$ and the root
+output is projected.  The projected and ambient evaluations therefore agree
+with the M14 witness exactly.  The same construction with two bottom tags and
+one bilinear root block simulates M15.
+
+The direct-sum norm estimate is
+\[
+ \left\|\sum_j B_j(x_j,y_j)\right\|^2
+ \le \max_j\|B_j\|_{\mathrm{op}}^2
+       \sum_j\|x_j\|^2\|y_j\|^2
+ \le \max_j\|B_j\|_{\mathrm{op}}^2\|x\|^2\|y\|^2.
+\]
+
+\textbf{Theorem.} For the explicitly declared tagged same-law class,
+\[
+ \boxed{
+ C_{3,\mathrm{tag\text{-}same}}^P(\eta)=W_3(\eta),
+ \qquad 0<\eta\le1,
+ }
+\]
+for both the ordered chain and ordered branching topology. The upper bound
+is inherited from the independent-law class M14/M15, and the tagged
+direct-sum witnesses give equality.
+
+This theorem removes law sharing as an obstruction when finite projected tags
+are admissible. It does not close the stricter rank-one/common-leaf same-law
+class, nor gated-planar repeated-law subclasses, variable-gate variants, or
+fixed-$\eta$ independent-law trees with $k\ge4$.
+\hfill$\square$

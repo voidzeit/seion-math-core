@@ -1,4 +1,4 @@
-\section*{M10: M9's upper envelope $U_3(\eta)$ is not attained}
+\section*{M10: M9's upper envelope $U_3(\eta)$ is not attained for the chain}
 \label{sec:k3-m10}
 
 \textbf{Revision note (this version repairs two errors found under
@@ -110,7 +110,7 @@ triangle-inequality equality M9's derivation needs.} $\blacksquare$
 \label{sec:m10-conclusion}
 
 \[
-  \boxed{\text{No admissible configuration attains $E_T^{\mathrm{proj}}=U_3(\eta)\rho M^2L_T$ exactly}}
+  \boxed{\text{No admissible chain configuration attains $E_T^{\mathrm{proj}}=U_3(\eta)\rho M^2L_T$ exactly}}
 \]
 whenever the optimal $q^\star$ from M9 is interior or the boundary value
 $q^\star=\rho$ with $\rho<M$ (i.e.\ whenever both $T_1,T_2$ are nonzero at
@@ -166,7 +166,18 @@ methodology problem, not a mathematical finding, and is reported here
 only so a future session does not repeat the same broken setup without
 knowing it was already tried and discarded.
 
-\textbf{Status.} \texttt{PROVED\_NON\_ATTAINMENT} (Steps 1-2 above,
+\textbf{Status.} \texttt{PROVED\_NON\_ATTAINMENT} for the ordered chain
+(Steps 1-2 above,
 repaired and numerically stress-tested). The strict supremum inequality
 $C_{3,\mathrm{ind}}^P(\eta)<U_3(\eta)$ remains \texttt{OPEN} -- a
 well-posed problem (Route A or B above), not established by this note.
+
+For the chain, the former open Route-B question is now resolved by M13--M14:
+the exact value is $W_3(\eta)<U_3(\eta)$. The non-attainment statement above
+is retained as provenance for the original M10 equality analysis.
+
+The proof above is a chain proof: its node-2 precursor $N(\cdot,c)$ and
+root map $N_3(\cdot,d)$ use the shared sibling leaves of that topology. It
+does not establish a branching non-attainment theorem. The independent-law
+branching constant is handled separately by the nuclear-duality construction
+in \texttt{m15\_exact\_branching\_constant.tex}.

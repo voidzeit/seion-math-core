@@ -1,0 +1,44 @@
+\section*{Finite-class strict gap below the M9 envelope}
+\label{sec:k3-fixed-dimension-compactness-gap}
+
+\textbf{Theorem.} Fix a binary $k=3$ chain or branching topology, finite
+ambient dimensions for every type, and fixed nontrivial orthogonal-projector
+ranks. Fix $M>0$ and $0<\eta<1$, and impose the independent-law hypotheses
+of M9 with each operator norm bounded by $M$ and each local closure residual
+bounded by $\rho=\eta M$. Then there exists a number
+\[
+  \delta_{\mathbf n,\mathbf r}(\eta)>0
+\]
+such that every admissible unit-leaf configuration satisfies
+\[
+  E_{\mathrm{proj}}
+  \le \bigl(U_3(\eta)-\delta_{\mathbf n,\mathbf r}(\eta)\bigr)
+     \rho M^2 L_T.
+\]
+Here $U_3$ is the unconditional M9 envelope and the gap may depend on the
+fixed dimension/rank tuple, topology, and $\eta$.
+
+\textbf{Proof.} After fixing the finite type dimensions, represent every
+bilinear law by its finite coordinate tensor. The set of tensors with
+operator norm at most $M$ is closed and bounded, hence compact. The set of
+orthogonal projectors of a fixed rank is compact: it is the closed subset of
+the bounded matrix space defined by $P=P^*$, $P^2=P$, and
+$\operatorname{tr}P=r$. Unit leaf spheres are compact as well. Taking the
+finite product over nodes, types, projectors, and leaves gives a compact
+admissible parameter set; the residual constraints are closed because the
+multilinear evaluations and operator norms are continuous in finite
+dimensions.
+
+The projected error is a continuous function of these parameters, so it
+attains a maximum on this compact set. M9 gives the upper bound $U_3(\eta)$.
+For the chain, M10 proves that no individual admissible configuration attains
+that value; for branching, M15 gives the stronger explicit value
+$W_3(\eta)<U_3(\eta)$. In either topology the attained maximum is therefore
+strictly smaller than $U_3(\eta)\rho M^2L_T$. Defining the difference to be
+$\delta_{\mathbf n,\mathbf r}(\eta)$ proves the claim. $\square$
+
+\textbf{Scope boundary.} This is a strict-gap theorem for each fixed finite
+dimension/rank class. It does not provide a dimension-uniform lower bound on
+$\delta_{\mathbf n,\mathbf r}(\eta)$ and therefore does not settle the
+global supremum over unbounded dimensions or ranks. A sequence of fixed-class
+maximizers can still approach $U_3(\eta)$ as the dimension/rank tuple varies.

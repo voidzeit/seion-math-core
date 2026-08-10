@@ -85,3 +85,20 @@
 - **Evidence:** `research/projected_trees_v5/BASELINE_FREEZE.json`,
   `claims/theorem_registry_v5.yaml`, and the V5 truth ledger.
 - **Status:** accepted
+
+## D-0008 — Freeze the certified KGE confirmatory protocol before new campaigns
+
+- **Date:** 2026-08-10
+- **Decision:** Adopt `experiments/configs/CERTIFIED_KGE_CONFIRMATORY_PROTOCOL_V1.yaml`
+  as the declared protocol for the TTN score-space confirmation campaign.
+  New runs must preserve train-only calibration, valid-only selection, a
+  single final test confirmation, same-backend hardware baselines, seed-level
+  statistics, and the G0--G8 advancement gates.
+- **Reason:** The exploratory audits demonstrated mathematical opportunity
+  but did not establish certificate capture or robust hardware speedup. A
+  frozen protocol prevents tolerance/rank cherry-picking and prevents mixing
+  dataset, topology, training, and executor changes in one causal comparison.
+- **Evidence:** `experiments/configs/CERTIFIED_KGE_CONFIRMATORY_PROTOCOL_V1.yaml`,
+  `.ai/CURRENT_STATE.md`, and the score-space benchmark artifacts under
+  `runs/TTN_FB15K237_TTN_V2_D128_E10_2026-08-09/`.
+- **Status:** accepted_with_B-0012_execution_hold

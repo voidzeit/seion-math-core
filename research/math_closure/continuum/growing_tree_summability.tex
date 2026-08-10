@@ -1,0 +1,60 @@
+\section*{M5b: Growing-tree convergence under weighted summability}
+
+The fixed-tree theorem does not extend to $k_N\to\infty$ from pointwise
+consistency alone. The following corrected statement isolates the missing
+hypothesis in the form used by the multilinear telescoping proof.
+
+Let $T_N$ be a sequence of finite typed projected trees. Let $\mathcal I_N$
+be its internal vertices, let $\delta_{v,N}\ge0$ be the local
+discretization/commutation defect at vertex $v$, and let $w_{v,N}\ge0$ be a
+downstream gain bound for carrying a perturbation at $v$ to the observed
+root. Assume the nodewise telescoping argument proves
+\[
+ \|J_NF_{T_N,N}-F_{T_N}\|+
+ \|J_NR_{T_N,N}-R_{T_N}\|
+ \le \sum_{v\in\mathcal I_N}w_{v,N}\delta_{v,N}.
+ \tag{M5b.1}
+\]
+Assume also the weighted summability condition
+\[
+ \boxed{\quad\sum_{v\in\mathcal I_N}w_{v,N}\delta_{v,N}\longrightarrow0.\quad}
+ \tag{M5b.2}
+\]
+No bound on $|\mathcal I_N|$ is required.
+
+\subsection*{Theorem}
+
+Under (M5b.1)--(M5b.2), the discretized ambient and recursively projected
+evaluations converge at the observed root. If the projected-root bound holds
+at every $N$ with right-hand side $B_N$, then
+\[
+ E_{T_N,N}^{\mathrm{proj}}\longrightarrow E_{T_N}^{\mathrm{proj}},
+ \qquad
+ E_{T_N}^{\mathrm{proj}}\le\limsup_{N\to\infty}B_N.
+\]
+
+\subsection*{Proof}
+
+The first conclusion follows immediately from (M5b.1) and (M5b.2), since
+both nonnegative root errors are bounded by a quantity tending to zero. The
+projected-root error is a continuous norm of the difference between the
+projected ambient and reduced root values, so the same convergence gives the
+first limit. For every $N$, the finite-tree projected theorem gives
+$E_{T_N,N}^{\mathrm{proj}}\le B_N$; passing to a subsequence along which
+$B_N$ approaches its limsup preserves the non-strict inequality. The complete
+growing sum is controlled before taking the limit, so the proof is independent
+of the number of internal vertices. $\blacksquare$
+
+\subsection*{Boundary}
+
+This is a weighted summability condition, not pointwise convergence at each
+fixed vertex. If $w_{v,N}\le W$ and $|\mathcal I_N|=k_N$, the sufficient rate
+$\sup_v\delta_{v,N}=o(k_N^{-1})$ implies (M5b.2). The borderline rate
+$\Theta(k_N^{-1})$ need not imply convergence, as explained by the existing
+counterexample in
+\texttt{counterexamples\_without\_uniformity.tex}.
+
+\subsection*{Status}
+
+\textsc{proved\_under\_stated\_assumptions}. This closes the corrected
+summability formulation, not unrestricted growing-tree convergence.

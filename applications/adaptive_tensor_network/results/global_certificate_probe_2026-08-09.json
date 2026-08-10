@@ -1,0 +1,4129 @@
+{
+  "status": "EXPLORATORY_PROBE_NOT_PREREGISTERED",
+  "design": {
+    "topologies": [
+      "chain_depth3",
+      "balanced_binary_4leaf"
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "fit_batch_size": 80,
+    "eval_batch_size": 300,
+    "leaf_domain": "each normalized leaf row has norm <= 1",
+    "methods": [
+      "pathwise_global",
+      "global_certificate_optimal"
+    ]
+  },
+  "summary": {
+    "chain_depth3": {
+      "n_pairs": 60,
+      "candidate_mean_held_out_rms_reduction": 0.014798350223442447,
+      "candidate_held_out_better_fraction": 0.6666666666666666,
+      "candidate_certificate_holds_fraction": 1.0
+    },
+    "balanced_binary_4leaf": {
+      "n_pairs": 60,
+      "candidate_mean_held_out_rms_reduction": 0.013456379816921658,
+      "candidate_held_out_better_fraction": 0.6666666666666666,
+      "candidate_certificate_holds_fraction": 1.0
+    }
+  },
+  "records": [
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.09924817561715849,
+      "held_out_root_error_sup": 0.35477513882192263,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 11.291725292360658,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.09924817561715849,
+      "held_out_root_error_sup": 0.35477513882192263,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 11.291725292360658,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.09397697714681308,
+      "held_out_root_error_sup": 0.24763177941762407,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.030495626935927,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.0892772586739355,
+      "held_out_root_error_sup": 0.35410886471042824,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.740622642842779,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.07108972982796904,
+      "held_out_root_error_sup": 0.23303871126859163,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.479392977418049,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.06338761149901273,
+      "held_out_root_error_sup": 0.23159459875560506,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.145379032807515,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.07108972982796904,
+      "held_out_root_error_sup": 0.23303871126859163,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.479392977418049,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03678272430092533,
+      "held_out_root_error_sup": 0.12328067517049773,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.3340139446105432,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.03678272430092533,
+      "held_out_root_error_sup": 0.12328067517049773,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.3340139446105432,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.179687935661317e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.179687935661317e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 0,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.179687935661317e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.08240412623071493,
+      "held_out_root_error_sup": 0.2636049572898204,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.356338486188575,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.08240412623071493,
+      "held_out_root_error_sup": 0.2636049572898204,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.356338486188575,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.05689163436981544,
+      "held_out_root_error_sup": 0.15812938516415687,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.108535076833736,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.05678603530848176,
+      "held_out_root_error_sup": 0.15263087362830488,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.087286721271062,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.05081820193187571,
+      "held_out_root_error_sup": 0.1419295759499962,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.2647952732828065,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.0314612248319053,
+      "held_out_root_error_sup": 0.15028208710390364,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.907125816396021,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03597133474927536,
+      "held_out_root_error_sup": 0.14463024284837533,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.000672934294458,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.021637055826226458,
+      "held_out_root_error_sup": 0.07755810619414784,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.885877460833347,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.021637055826226458,
+      "held_out_root_error_sup": 0.07755810619414784,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.885877460833347,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.991940965933292e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.991940965933292e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 1,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.991940965933292e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.0713436498059211,
+      "held_out_root_error_sup": 0.20199176838649782,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.958569750073261,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.0713436498059211,
+      "held_out_root_error_sup": 0.20199176838649782,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.958569750073261,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.0668096870729583,
+      "held_out_root_error_sup": 0.23031910240957082,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.253345774697035,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.06389644198483685,
+      "held_out_root_error_sup": 0.20320469621111778,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.352227640019798,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.05452011854724563,
+      "held_out_root_error_sup": 0.2128078319436404,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.599359740738713,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.045334982011329086,
+      "held_out_root_error_sup": 0.13791272970511967,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.687624438131046,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.05452011854724563,
+      "held_out_root_error_sup": 0.2128078319436404,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.599359740738713,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03507830306597614,
+      "held_out_root_error_sup": 0.16315972939600715,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.911735302607676,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.025534697360095723,
+      "held_out_root_error_sup": 0.14173081033784823,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.2872800220520544,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.660413591651743e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.660413591651743e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 2,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.660413591651743e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.11013373112030637,
+      "held_out_root_error_sup": 0.35274051274422746,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.317389476860912,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.11013373112030637,
+      "held_out_root_error_sup": 0.35274051274422746,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.317389476860912,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.09880849570623305,
+      "held_out_root_error_sup": 0.3086693416421866,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.746755157013707,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.09872452526150888,
+      "held_out_root_error_sup": 0.3083622474582043,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.92809835399723,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.0756691151612889,
+      "held_out_root_error_sup": 0.2473646889313468,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.03698071026434,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.04407696925437309,
+      "held_out_root_error_sup": 0.14806419368635648,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.221589570457803,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.059287534957674574,
+      "held_out_root_error_sup": 0.17734447603961778,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.995022633300056,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.024581826947657235,
+      "held_out_root_error_sup": 0.08557347262498287,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.4029327674413263,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.05027827302527711,
+      "held_out_root_error_sup": 0.19175977200648534,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.176365830283578,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.3052155063246807e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.3052155063246807e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 3,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.3052155063246807e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.09803206215532848,
+      "held_out_root_error_sup": 0.3543433123304773,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 12.36918145004513,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.09803206215532848,
+      "held_out_root_error_sup": 0.3543433123304773,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 12.36918145004513,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.07937033054681718,
+      "held_out_root_error_sup": 0.24493493596659205,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 11.049565700834744,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.07869781267178867,
+      "held_out_root_error_sup": 0.29024415471324533,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.41417752029859,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.06688609994289121,
+      "held_out_root_error_sup": 0.29366442045089797,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.411431983226947,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.05823264806978412,
+      "held_out_root_error_sup": 0.2212390745416141,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.8871856867443966,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.06688609994289121,
+      "held_out_root_error_sup": 0.29366442045089797,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.411431983226947,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03086251533822298,
+      "held_out_root_error_sup": 0.1395386485190899,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.2523898878761557,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.04419481578262145,
+      "held_out_root_error_sup": 0.170931584767625,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.5242462964825583,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.998398783938387e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.998398783938387e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 4,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.998398783938387e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.10237043263399641,
+      "held_out_root_error_sup": 0.32762112185730907,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.593896656393829,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.10237043263399641,
+      "held_out_root_error_sup": 0.32762112185730907,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.593896656393829,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.09480199480939906,
+      "held_out_root_error_sup": 0.35118934008941927,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.267294448136495,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.07695005358428825,
+      "held_out_root_error_sup": 0.2542623551054488,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.180988385573871,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.08075613169097769,
+      "held_out_root_error_sup": 0.34829695203774264,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.409494417996951,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.049907857228012956,
+      "held_out_root_error_sup": 0.15242215339406784,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.325980467301176,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.05306651905588855,
+      "held_out_root_error_sup": 0.15753319267457797,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.323188355434327,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.021117731298794778,
+      "held_out_root_error_sup": 0.06973267219835509,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.9972078881331583,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.03710630970868602,
+      "held_out_root_error_sup": 0.150706780527864,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.0032492685311185,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.978739945073171e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.978739945073171e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 5,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.978739945073171e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.10915251245441293,
+      "held_out_root_error_sup": 0.2932480869438835,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 12.467003597723265,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.10915251245441293,
+      "held_out_root_error_sup": 0.2932480869438835,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 12.467003597723265,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.10188499951788313,
+      "held_out_root_error_sup": 0.28461562599349693,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 11.10478134328641,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.09157752453481749,
+      "held_out_root_error_sup": 0.244624452094853,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.893965567329936,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.08049896308219798,
+      "held_out_root_error_sup": 0.24760339273628854,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.797009901729504,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.06983054466955178,
+      "held_out_root_error_sup": 0.23451679362740738,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.703011743429376,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.06718421341155399,
+      "held_out_root_error_sup": 0.2564679428265328,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.049322484834992,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03930373316283219,
+      "held_out_root_error_sup": 0.1835990249131035,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.8287315694637223,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.05577747002126669,
+      "held_out_root_error_sup": 0.18842002265530444,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.784055895998569,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.5666248250525006e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.5666248250525006e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 6,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.5666248250525006e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.07060367102189173,
+      "held_out_root_error_sup": 0.18437610742495247,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.392826324587698,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.07060367102189173,
+      "held_out_root_error_sup": 0.18437610742495247,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.392826324587698,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.0595863893737779,
+      "held_out_root_error_sup": 0.17714665335578286,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.236813360467715,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.056573770364627955,
+      "held_out_root_error_sup": 0.17742151552158678,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.873041400855605,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.0507263672500684,
+      "held_out_root_error_sup": 0.1466221967394375,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.182430159134777,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.043025828680381184,
+      "held_out_root_error_sup": 0.1390264968747115,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.0862130491318913,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.040761275493668085,
+      "held_out_root_error_sup": 0.12838817654014834,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.818658199522667,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.027429933362442614,
+      "held_out_root_error_sup": 0.1084995508841343,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.722441089519782,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.027429933362442614,
+      "held_out_root_error_sup": 0.1084995508841343,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.722441089519782,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.748353976711981e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.748353976711981e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 7,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.748353976711981e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.10673137517167802,
+      "held_out_root_error_sup": 0.38905365635483696,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.87224307502695,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.10673137517167802,
+      "held_out_root_error_sup": 0.38905365635483696,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.87224307502695,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.0997677374197252,
+      "held_out_root_error_sup": 0.30994433534536087,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 12.1197897584768,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.0977834894468898,
+      "held_out_root_error_sup": 0.3068219747492149,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.750112390489132,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.09246676092058759,
+      "held_out_root_error_sup": 0.31041156846618173,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.434605755559312,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.06379478740332081,
+      "held_out_root_error_sup": 0.23702172020506326,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.21593970767233,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.0703235216872668,
+      "held_out_root_error_sup": 0.232881164288143,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.404459157098467,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.040035069962245984,
+      "held_out_root_error_sup": 0.15689281009058662,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.8462623396846616,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.050596413343635606,
+      "held_out_root_error_sup": 0.2697478870297344,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.188519449426147,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0064388747914252e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0064388747914252e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 8,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0064388747914252e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.12066192320936399,
+      "held_out_root_error_sup": 0.4575762376362531,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.142869459829459,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.12066192320936399,
+      "held_out_root_error_sup": 0.4575762376362531,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.142869459829459,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.1172697532344228,
+      "held_out_root_error_sup": 0.3786575512241474,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 11.433750391547266,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.11116040799442313,
+      "held_out_root_error_sup": 0.3829412655764149,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.986488033492956,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.07270934970308027,
+      "held_out_root_error_sup": 0.24878272449669156,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.946920745022391,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.05817287483620093,
+      "held_out_root_error_sup": 0.19713244509311986,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.121068436064389,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.05719988385821615,
+      "held_out_root_error_sup": 0.22908959490801256,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.203696177199142,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03475409039572932,
+      "held_out_root_error_sup": 0.15062003662108273,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.3778438682411407,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.05719988385821615,
+      "held_out_root_error_sup": 0.22908959490801256,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.203696177199142,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.585767030871403e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.585767030871403e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "chain_depth3",
+      "seed": 9,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.585767030871403e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.08869526713090777,
+      "held_out_root_error_sup": 0.267424144522695,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 11.280279096664145,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.08869526713090777,
+      "held_out_root_error_sup": 0.267424144522695,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 11.280279096664145,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.083721889424181,
+      "held_out_root_error_sup": 0.23820304846915377,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.029323824200887,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.08264805256668391,
+      "held_out_root_error_sup": 0.26843940864995214,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.729176447146269,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.06471652367260074,
+      "held_out_root_error_sup": 0.1910003911829711,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.47822117468301,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.05801700504873448,
+      "held_out_root_error_sup": 0.20517942955960888,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.1442072300724755,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.06471652367260074,
+      "held_out_root_error_sup": 0.1910003911829711,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.47822117468301,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03381841551334488,
+      "held_out_root_error_sup": 0.14773464965977914,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.334013944610544,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.04963857441315048,
+      "held_out_root_error_sup": 0.16258197228539145,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.187223902316996,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0164415790113465e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0164415790113465e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 0,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0164415790113465e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.07069049837775003,
+      "held_out_root_error_sup": 0.20887434615214304,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.365692898808623,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.07069049837775003,
+      "held_out_root_error_sup": 0.20887434615214304,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.365692898808623,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.06453579008023748,
+      "held_out_root_error_sup": 0.19573208453272176,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.150744957669993,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.06295593274605739,
+      "held_out_root_error_sup": 0.19600379745380195,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.902941548315155,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.06295593274605739,
+      "held_out_root_error_sup": 0.19600379745380195,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.902941548315155,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.04039157042113349,
+      "held_out_root_error_sup": 0.14908630747019247,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.907125816396021,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.055460381684578,
+      "held_out_root_error_sup": 0.2038106507068531,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.8230437882237265,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.022422836373877243,
+      "held_out_root_error_sup": 0.07436696728555331,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.885877460833347,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.022422836373877243,
+      "held_out_root_error_sup": 0.07436696728555331,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.885877460833347,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.861277248624479e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.861277248624479e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 1,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.861277248624479e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.09253043347781148,
+      "held_out_root_error_sup": 0.31342300745271023,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.935744147103705,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.09253043347781148,
+      "held_out_root_error_sup": 0.31342300745271023,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.935744147103705,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.0842074211506895,
+      "held_out_root_error_sup": 0.2724316828338591,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.230520171727477,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.07552506461310175,
+      "held_out_root_error_sup": 0.28467955919797705,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.329402037050242,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.06110202634964725,
+      "held_out_root_error_sup": 0.21815735549603868,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.569632228848619,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.05311377387727347,
+      "held_out_root_error_sup": 0.21060385170910803,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.6578969262409515,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.04736510194714408,
+      "held_out_root_error_sup": 0.14027936072962263,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.255134053343225,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.034279212892005716,
+      "held_out_root_error_sup": 0.10926343760661818,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.9117353026076775,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.034279212892005716,
+      "held_out_root_error_sup": 0.10926343760661818,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.9117353026076775,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0260656722291946e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0260656722291946e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 2,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0260656722291946e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.10638059603423909,
+      "held_out_root_error_sup": 0.3356285044869945,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.240928602208788,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.10638059603423909,
+      "held_out_root_error_sup": 0.3356285044869945,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.240928602208788,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.10068769751874129,
+      "held_out_root_error_sup": 0.385127754123436,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.816566811202241,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.09509137833109389,
+      "held_out_root_error_sup": 0.36587391351634085,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.801397232689999,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.09450661991475094,
+      "held_out_root_error_sup": 0.38339903365640393,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.106792364452875,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.06693406290027877,
+      "held_out_root_error_sup": 0.2666714367400881,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.2914012246463376,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.07402457251083029,
+      "held_out_root_error_sup": 0.2757443554902925,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.064834287488589,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03198135748087476,
+      "held_out_root_error_sup": 0.12790695534670343,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.276231646134094,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.03198135748087476,
+      "held_out_root_error_sup": 0.12790695534670343,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.276231646134094,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.3497783434884596e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.3497783434884596e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 3,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.3497783434884596e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.10496379508458226,
+      "held_out_root_error_sup": 0.3059450414300845,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 12.349950796455694,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.10496379508458226,
+      "held_out_root_error_sup": 0.3059450414300845,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 12.349950796455694,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.1029098189218971,
+      "held_out_root_error_sup": 0.2978345420989721,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.5078417960721,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.09500388461502643,
+      "held_out_root_error_sup": 0.30380649266418097,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.505096259000457,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.08531721243288705,
+      "held_out_root_error_sup": 0.28374331999449276,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.550943114685848,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.06923653449939017,
+      "held_out_root_error_sup": 0.2648266712578118,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.887185686744398,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.05940520064944962,
+      "held_out_root_error_sup": 0.27412388245545355,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.916147315817606,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.028161516957207363,
+      "held_out_root_error_sup": 0.09791821369987407,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.252389887876157,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.028161516957207363,
+      "held_out_root_error_sup": 0.09791821369987407,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.252389887876157,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.521333531043284e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.521333531043284e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 4,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.521333531043284e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.09092237215600667,
+      "held_out_root_error_sup": 0.3021660399832345,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.540009779936103,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.09092237215600667,
+      "held_out_root_error_sup": 0.3021660399832345,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 10.540009779936103,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.07124482825522974,
+      "held_out_root_error_sup": 0.18744820156715158,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.740746804059317,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.05948046193260221,
+      "held_out_root_error_sup": 0.18672618023557827,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.882946773919772,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.05948046193260221,
+      "held_out_root_error_sup": 0.18672618023557827,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.882946773919772,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.04424646725472606,
+      "held_out_root_error_sup": 0.1747475211920227,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.325980467301174,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.0483547031236473,
+      "held_out_root_error_sup": 0.1696354573679563,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.348770791779149,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03661219121013859,
+      "held_out_root_error_sup": 0.13539615267731483,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.0060413803979666,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 4
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.041275059279328404,
+      "held_out_root_error_sup": 0.1340028865296216,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.028831704875941,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.949553789961554e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.949553789961554e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 5,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.949553789961554e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.11632032353296456,
+      "held_out_root_error_sup": 0.4422208741982252,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 12.372619566739864,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.11632032353296456,
+      "held_out_root_error_sup": 0.4422208741982252,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 12.372619566739864,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.09764392112555347,
+      "held_out_root_error_sup": 0.3270181847320606,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 11.06484812518296,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.09146610231295307,
+      "held_out_root_error_sup": 0.2825815731516716,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.799581536346537,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.08946358881152955,
+      "held_out_root_error_sup": 0.32941268078461655,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.981492526475959,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.07121725433349979,
+      "held_out_root_error_sup": 0.2663079991134886,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.8874943681758305,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.07935478901763948,
+      "held_out_root_error_sup": 0.26373434916184063,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.716225937639536,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03841458362972212,
+      "held_out_root_error_sup": 0.17227731783116146,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.828731569463717,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 4,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.03841458362972212,
+      "held_out_root_error_sup": 0.17227731783116146,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.828731569463717,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0253249247498594e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0253249247498594e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 6,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.0253249247498594e-14,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.07267328738669725,
+      "held_out_root_error_sup": 0.30905551208464443,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.413883916575747,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.07267328738669725,
+      "held_out_root_error_sup": 0.30905551208464443,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.413883916575747,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.07051957997403754,
+      "held_out_root_error_sup": 0.2853739744891493,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.103190689930908,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.06516828511339702,
+      "held_out_root_error_sup": 0.28535215716474976,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.829705394445838,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.05121875780039774,
+      "held_out_root_error_sup": 0.15333795009790357,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.048807488597969,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.04062752996222427,
+      "held_out_root_error_sup": 0.1622575492776217,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.9525903785950836,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 3
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.04485506660051,
+      "held_out_root_error_sup": 0.1634233967106846,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.83918911349678,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.02051559478752607,
+      "held_out_root_error_sup": 0.08516341043788853,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.6791050831100143,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.02051559478752607,
+      "held_out_root_error_sup": 0.08516341043788853,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 1.6791050831100143,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.861210983848514e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.861210983848514e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 7,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 3.861210983848514e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.130735508634901,
+      "held_out_root_error_sup": 0.43623857433677865,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.924377029709206,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.130735508634901,
+      "held_out_root_error_sup": 0.43623857433677865,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.924377029709206,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.1227961685233627,
+      "held_out_root_error_sup": 0.42086226492985923,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 12.23919302679172,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 1
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.10209873213826312,
+      "held_out_root_error_sup": 0.33873034799054696,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.697769008029468,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.091495967247037,
+      "held_out_root_error_sup": 0.3895461956469959,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.403392999108757,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.08104115758280958,
+      "held_out_root_error_sup": 0.39122011035520216,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.214873549682621,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.05424547830174934,
+      "held_out_root_error_sup": 0.1697965896070763,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.982438406651133,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.03083651730966057,
+      "held_out_root_error_sup": 0.09931382970266472,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.7939189572249967,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.03083651730966057,
+      "held_out_root_error_sup": 0.09931382970266472,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.7939189572249967,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.399242127332828e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.399242127332828e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 8,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 7.399242127332828e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 3,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 1,
+        "n1": 1,
+        "n2": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.11752092169135861,
+      "held_out_root_error_sup": 0.3768355746014019,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.148487157485532,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 3,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 1
+      },
+      "rank_cost": 3,
+      "held_out_root_error_rms": 0.11752092169135861,
+      "held_out_root_error_sup": 0.3768355746014019,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 13.148487157485532,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 5,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 2,
+        "n1": 1,
+        "n2": 2
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.10183145210688993,
+      "held_out_root_error_sup": 0.27556671632086366,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 11.439368089203336,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 5,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 1,
+        "n0": 3
+      },
+      "rank_cost": 5,
+      "held_out_root_error_rms": 0.09323388083700386,
+      "held_out_root_error_sup": 0.2925997301465343,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 8.992105731149026,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 7,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 2,
+        "n2": 2
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.054970420053162015,
+      "held_out_root_error_sup": 0.18552791802952226,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 6.926540342063077,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 7,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 2,
+        "n0": 4
+      },
+      "rank_cost": 7,
+      "held_out_root_error_rms": 0.04970082519316454,
+      "held_out_root_error_sup": 0.18057220160477627,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 4.100688033105075,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 8,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 3,
+        "n1": 3,
+        "n2": 2
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.040989822776080945,
+      "held_out_root_error_sup": 0.13063394246641588,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 5.279115923111518,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 8,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 3,
+        "n0": 4
+      },
+      "rank_cost": 8,
+      "held_out_root_error_rms": 0.027928413969803754,
+      "held_out_root_error_sup": 0.11170951604420788,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.4532636141535153,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 10,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 3,
+        "n2": 3
+      },
+      "rank_cost": 10,
+      "held_out_root_error_rms": 0.027928413969803754,
+      "held_out_root_error_sup": 0.11170951604420788,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 2.4532636141535153,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 10,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.121194455482808e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 12,
+      "method": "pathwise_global",
+      "ranks": {
+        "n0": 4,
+        "n1": 4,
+        "n2": 4
+      },
+      "rank_cost": 12,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.121194455482808e-15,
+      "global_certificate_holds_on_held_out": true
+    },
+    {
+      "topology": "balanced_binary_4leaf",
+      "seed": 9,
+      "budget": 12,
+      "method": "global_certificate_optimal",
+      "ranks": {
+        "n2": 1,
+        "n1": 4,
+        "n0": 4
+      },
+      "rank_cost": 9,
+      "held_out_root_error_rms": 0.0,
+      "held_out_root_error_sup": 0.0,
+      "domain_leaf_norm_bound": 1.0,
+      "global_certificate": 9.121194455482808e-15,
+      "global_certificate_holds_on_held_out": true
+    }
+  ],
+  "limitations": [
+    "Frobenius operator enclosures are conservative.",
+    "The probe does not establish universal allocator superiority.",
+    "The comparison is not preregistered and does not alter Level 1."
+  ]
+}

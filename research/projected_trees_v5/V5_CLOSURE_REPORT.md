@@ -318,3 +318,161 @@ any broader sense.
 `novelty_status: NOVELTY_NOT_ESTABLISHED` and `approval_status:
 PENDING_HUMAN_REVIEW` apply to every result mentioned in this report
 without exception.
+
+## Current-state addendum — 2026-08-09
+
+This report is an append-only historical closeout and predates the fixed-tree
+support-compression theorem. The current theorem registry and truth ledger now
+record the following additional result under the repository's typed,
+type-indexed-projector convention:
+
+- every fixed finite typed tree admits a projector-invariant support
+  compression with dimension at most `2*(leaf_count + 2*node_count)` per type;
+  a proper-projector padding convention adds at most two coordinates;
+- for the declared independent-law binary `k=3` class, this gives a finite
+  union of compact parameter spaces, so M10's pointwise non-attainment implies
+  `C_3^P(eta) < U_3(eta)` for `0 < eta < 1`.
+- the same equality obstruction extends to `eta=1`, where the M9 optimizer is
+  interior, giving `C_3^P(1) < U_3(1)=sqrt(2)` after the same compactness step.
+
+This closes the former global strict-supremum-gap blocker for `0 < eta <= 1`.
+It does not compute the exact `C_3^P(eta)` or provide an explicit quantitative
+gap, establish a bound uniform over unbounded tree size or arity, establish
+novelty, or replace independent human review. Historical
+claims above remain unchanged; the current registries and ledgers are the
+authorities for this addendum.
+
+## Follow-up addendum — M13 chain envelope — 2026-08-09
+
+The ordered independent-law binary chain now has an unconditional quantitative
+envelope from the contraction Gram-matrix cross-term bound:
+`C_3,ind,chain^P(eta) <= W_3(eta)`, with
+`W_3=sqrt(4-3 eta^2)` below `sqrt(2/3)` and
+`W_3=2/(sqrt(3) eta)` above. The explicit comparison proves
+`W_3(eta)<U_3(eta)` for every `0<eta<=1`. At the time of this addendum this
+record did not yet include the subsequent M14 attainment result below; the
+branching envelope remains open. The proof and verification artifacts are
+recorded in the theorem registry and truth ledgers.
+
+## Follow-up addendum — M14 exact chain constant — 2026-08-09
+
+The M13 chain envelope is attained by an explicit two-dimensional real
+independent-law witness with a rank-one projector. Therefore
+`C_3,ind,chain^P(eta)=W_3(eta)` for every `0<eta<=1`. This closes the exact
+fixed-eta chain problem, but not branching, same-law/gated subclasses,
+arbitrary-tree sharpness, novelty, or independent human review.
+
+## Follow-up addendum — M15 exact branching constant — 2026-08-09
+
+The branching topology has the same exact independent-law constant as the
+chain. Scalarizing the root and applying nuclear/operator-norm duality gives
+the `W_3` upper bound, and a dimension-two polar-factor witness attains it.
+Thus both independent-law binary `k=3` topologies are now closed at fixed
+`eta`; same-law/gated subclasses, arbitrary-tree sharpness, novelty, and
+independent human review remain open.
+
+## Follow-up addendum — declared general k=2 class constant — 2026-08-09
+
+The declared finite-dimensional real binary `k=2` class with arbitrary
+bounded bilinear laws (shared or independent) is also closed at the class
+level: the universal projected-root bound gives `C_{2,A}^P(eta)<=1`, while
+the embedded repeated-law rank-two witness gives equality for every
+`0<eta<=1`. Higher-arity variants, the broader gated-planar repeated-law
+subclass, novelty, and independent human review remain outside this result.
+
+## Follow-up addendum — M16 arbitrary-node-law binary k=3 corollary — 2026-08-09
+
+M14 and M15 use the independent-law convention in the literal sense that the
+law at each node is freely selectable, with no sharing constraint. Therefore
+their matching upper bounds and witnesses also close the arbitrary-node-law
+binary `k=3` class for both chain and branching topologies at `W_3(eta)`.
+Repeated same-law/gated subclasses, higher-arity or arbitrary finite
+topologies, and growing-tree sharpness remain outside this corollary.
+
+## Follow-up addendum — M18 binary-tree asymptotic sharpness — 2026-08-09
+
+For every fixed finite ordered full-binary tree `T` with `k` internal vertices,
+an explicit two-dimensional real-plane independent-law witness (the plane is
+identified with `C`) gives
+`E_proj=|sin((k-1) arcsin(eta))|`. Together with the universal projected-root
+coefficient `k-1`, this proves
+`lim_{eta downarrow 0} C_{T,ind}^P(eta)=k-1` for every finite binary topology.
+The result is asymptotic only: fixed-eta equality, higher arity, same-law/gated
+variants, growing-tree uniformity, novelty, and independent human review remain
+open.
+
+## Follow-up addendum — M19 finite-arity asymptotic sharpness — 2026-08-09
+
+The M18 construction extends to every fixed finite ordered rooted tree whose
+internal arities are at least two. Using real-plane multiplication at each
+non-root node and the imaginary part of the root product gives the exact
+witness `E_proj=|sin((k-1) arcsin(eta))|`, independent of the arity profile.
+Together with the universal projected-root theorem this proves the asymptotic
+limit `C_{T,ind}^P(eta) -> k(T)-1`. Fixed-eta equality, same-law/gated variants,
+and uniformity for growing trees remain outside the closure.
+
+## Follow-up addendum — M20 exact k=3 all-arity constant — 2026-08-09
+
+M20 closes the fixed-eta independent-law constant for every finite ordered
+rooted tree with exactly three internal vertices and all internal arities at
+least two. Freezing unit projected leaves gives an effective linear law at a
+node with one internal child and an effective bilinear law at a node with two.
+The only possible three-node internal-child skeletons are chain and branching,
+so M13--M15 give the upper bound `W_3(eta)`. Inserting unit `e0` gates into
+the extra leaf slots of the dimension-two M14/M15 witnesses gives equality for
+every finite arity profile:
+
+`C_{T,ind}^P(eta)=W_3(eta)`, `0<eta<=1`.
+
+The remaining fixed-eta independent-law frontier starts at `k>=4`; same-law/
+gated variants, growing-tree uniformity, novelty, and independent human review
+remain open. Evidence is
+`research/math_closure/k3/m20_k3_arbitrary_arity_exact_constant.tex`,
+`research/math_closure/k3/m20_k3_arbitrary_arity_exact_constant.py`, and
+`tests/math_closure/test_m20_k3_arbitrary_arity_exact_constant.py`.
+
+## Follow-up addendum — M21 tagged same-law binary k=3 — 2026-08-09
+
+M21 closes a precisely declared shared-law class. A single repeated bilinear
+law is built as an orthogonal direct sum of the M14 chain blocks or M15
+branching blocks. Orthogonal tags in the projected leaf vectors select the
+appropriate block at each occurrence, while the block outputs remain
+orthogonal. The shared law therefore has norm one, projected closure defect at
+most `eta`, and exactly reproduces the M14/M15 error.
+
+Thus both binary topologies satisfy
+`C_{3,tag-same}^P(eta)=W_3(eta)` for `0<eta<=1`. This result does not close
+rank-one/common-leaf same-law restrictions or gated/variable-gate subclasses.
+Evidence is `research/math_closure/k3/m21_same_law_tagged_exact_constant.tex`,
+`research/math_closure/k3/m21_same_law_tagged_exact_constant.py`, and
+`tests/math_closure/test_m21_same_law_tagged_exact_constant.py`.
+
+## Follow-up addendum — M22 high-eta rank-one/common-leaf same-law chain — 2026-08-09
+
+M22 closes the strict rank-one/common-leaf repeated-rotation chain in the
+high-defect regime. A single rotation with leakage `sqrt(2/3)` gives projected
+error `2/sqrt(3)`, so for `sqrt(2/3)<=eta<=1` the normalized class value is
+`2/(sqrt(3) eta)=W_3(eta)`. The low-eta chain, branching, and broader
+same-law/gated variants remain open.
+
+Evidence is `research/math_closure/k3/m22_same_law_rank_one_high_eta.tex`,
+`research/math_closure/k3/m22_same_law_rank_one_high_eta.py`, and
+`tests/math_closure/test_m22_same_law_rank_one_high_eta.py`.
+
+## Follow-up addendum — M23 exact operator reduction — 2026-08-09
+
+For the remaining strict rank-one/common-leaf same-law chain, freeze the
+common second input and define `A(x)=mu(x,e0)`. The exact projected error is
+
+`|<e0,A^3 e0> - <e0,A e0>^3|`.
+
+Conversely, every finite-dimensional contraction `A` is realized by the gated
+repeated law `mu_A(x,y)=A x <e0,y>`. Thus the class extremum is exactly the
+corresponding contraction-operator supremum under `||Q A e0||<=eta` after
+normalization. This is a rigorous reduction, not the low-eta value; the
+operator optimization and the branching/gated extensions remain open.
+
+Evidence is
+`research/math_closure/k3/m23_rank_one_same_law_chain_operator_reduction.tex`,
+`research/math_closure/k3/m23_rank_one_same_law_chain_operator_reduction.py`,
+and `tests/math_closure/test_m23_rank_one_same_law_chain_operator_reduction.py`.

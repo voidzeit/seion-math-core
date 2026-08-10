@@ -1,0 +1,62 @@
+\section{Asymptotic path sharpness for every fixed independent-law DAG}
+\label{sec:dag-asymptotic-sharpness}
+
+Let $G$ be a finite ordered acyclic multilinear DAG whose leaves have unit
+norm, whose non-root internal nodes are projected by the same rank-one
+orthogonal projection $P(z)=\operatorname{Re}(z)$ on
+$\mathbb C\simeq\mathbb R^2$, and whose root is unprojected.  Assume the
+independent-law class
+\begin{equation*}
+ \|\mu_v\|_{\mathrm{op}}\le1,
+ \qquad \|(I-P)\mu_v\|_{\mathrm{op}}\le\eta
+ \quad(v\ne\mathrm{root}).
+\end{equation*}
+Repeated input slots are counted with multiplicity.  Let $K(G)$ be the total
+number of non-root internal-node occurrences in the tree obtained by
+unrolling the DAG from the root. Equivalently, if $w_v$ is the number of
+directed slot-paths from $v$ to the root, then
+\begin{equation*}
+ K(G)=\sum_{v\ne\mathrm{root}}w_v.
+\end{equation*}
+
+For arbitrary admissible laws, exact and recursively projected values have norm
+at most one.  The multilinear telescoping recurrence therefore gives one local
+source of size at most $\eta$ at every projected node and one unit gain for
+every input slot.  The exact nonnegative channel path identity yields
+\begin{equation*}
+ E_G^{\mathrm{proj}}(\eta)\le K(G)\eta.
+\end{equation*}
+
+For the matching lower construction, choose independently at every internal
+node
+\begin{equation*}
+ \mu_\theta(z_1,\ldots,z_m)=e^{i\theta}\prod_{j=1}^m z_j,
+ \qquad \theta=\arcsin(\eta),
+\end{equation*}
+and set every leaf to $1$.  If $q_v$ is the number of internal occurrences in
+the unrolled expression rooted at $v$, then
+\begin{equation*}
+ q_v=1+\sum_jq_{v_j},\qquad
+ X_v=e^{iq_v\theta},\qquad Y_v=\cos(\theta)^{q_v}
+\end{equation*}
+for every projected node.  At the unprojected root the exact-versus-reduced
+error is consequently
+\begin{equation*}
+ E_G^{\mathrm{wit}}(\eta)=
+ \left|e^{iK(G)\theta}-\cos(\theta)^{K(G)}\right|.
+\end{equation*}
+The laws have operator norm one and normal defect exactly $\eta$.  Since
+$\theta=\arcsin\eta$,
+\begin{equation*}
+ \lim_{\eta\downarrow0}
+ \frac{E_G^{\mathrm{wit}}(\eta)}{\eta}=K(G).
+\end{equation*}
+The universal upper bound and this witness prove
+\begin{equation*}
+ \lim_{\eta\downarrow0}
+ \frac{C_{G,\mathrm{ind}}^{\mathrm{proj}}(\eta)}{\eta}=K(G)
+\end{equation*}
+for every fixed finite DAG in the declared class.  This is an asymptotic
+sharpness theorem, not fixed-$\eta$ equality and not a uniform statement over
+unbounded DAG families.
+

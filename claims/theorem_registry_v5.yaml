@@ -47,13 +47,40 @@ theorems:
     novelty_status: NOVELTY_NOT_ESTABLISHED
     approval_status: PENDING_HUMAN_REVIEW
   - id: OPEN_V5_K2_REPEATED_LAW_SHARPNESS
-    title: Fixed-eta k=2 sharpness for the gated-planar repeated-law subclass
+    title: Unresolved variants of broader gated-planar repeated-law sharpness
     statement: >-
-      It remains open whether the earlier gated-planar repeated-law subclass
-      can attain its ambient same-law upper bound at fixed eta.
-    scope: [gated-planar repeated/shared node law, fixed eta]
-    epistemic_status: OPEN
+      The phrase broader gated-planar repeated-law is not unique without a
+      definition of the gate, active operator, leaf directions, and ambient
+      support. The canonical contractive gated-planar subclass defined in M17
+      is now closed at value 1; variants with variable gates, arbitrary leaf
+      directions, or non-planar shared laws remain unresolved.
+    scope: [unresolved gated-planar repeated/shared node-law variants, fixed eta]
+    epistemic_status: OPEN_WITH_PRECISE_BOUNDARY
     novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: THM_V5_K2_M17_CONTRACTIVE_GATED_REPEATED_EXACT
+    title: Exact k=2 constant for the contractive gated-planar repeated-law subclass
+    statement: >-
+      For the repeated law mu_A(x,y)=A*x*<e0,y>, with A supported on the
+      active plane, ||A||<=M, ||(I-P)A P||<=rho=eta*M, unit e0 leaves, and an
+      orthogonal projector containing e0, the normalized projected-root
+      constant is exactly 1 for 0<eta<=1. The exact error identity is
+      P*A*(I-P)*A*e0, and A=[[0,M],[rho,0]] attains M*rho.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - binary k=2 chain with one repeated gated law
+      - active planar contraction and fixed e0 gate
+      - orthogonal projector with e0 in its range
+      - unit leaves e0 and 0 < eta <= 1
+    dependencies:
+      - THM_V3_PROJECTED_ROOT_K_MINUS_ONE
+      - THM_V5_K2_SAME_LAW_PROJECTED_SHARPNESS
+    proof_location: research/math_closure/k2/m17_broader_gated_contraction_exact.tex
+    implementation: research/math_closure/k2/m17_broader_gated_contraction_exact.py
+    tests: [tests/math_closure/test_m17_broader_gated_contraction_exact.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_FOR_DECLARED_CONTRACTIVE_GATED_SUBCLASS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
   - id: THM_V5_K2_SAME_LAW_PROJECTED_SHARPNESS
     title: Exact k=2 projected-root sharpness for an explicitly repeated bilinear law
     statement: >-
@@ -77,6 +104,129 @@ theorems:
     sharpness_status: EXACT_FOR_DECLARED_SAME_LAW_CLASS
     novelty_status: NOVELTY_NOT_ESTABLISHED
     approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K2_CLASS_A_EXACT_CONSTANT
+    title: Exact normalized k=2 constant for the declared general binary class
+    statement: >-
+      For the declared finite-dimensional real binary-chain class with
+      arbitrary bounded bilinear laws (shared or independent), orthogonal
+      proper projectors, unit leaves, uniform M and rho=eta*M, the class-level
+      projected-root constant is C_2^P(eta;A)=1 for every 0<eta<=1. The
+      universal k-1 upper bound and the explicit repeated-law rank-two witness
+      give matching upper and lower bounds.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - binary k=2 chain
+      - arbitrary bounded bilinear laws, shared or independent
+      - orthogonal proper projectors and unit leaves
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V3_PROJECTED_ROOT_K_MINUS_ONE
+      - THM_V5_K2_SAME_LAW_PROJECTED_SHARPNESS
+    proof_location: research/math_closure/k2/class_A_exact_constant.tex
+    implementation: research/math_closure/k2/class_A_exact_constant.py
+    tests: [tests/math_closure/test_class_a_exact_constant.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_FOR_DECLARED_GENERAL_BINARY_CLASS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K2_GATED_PLANAR_ROTATION_EXACT_VALUE
+    title: Exact k=2 value for the declared gated-planar rotation construction
+    statement: >-
+      For the homogeneous binary k=2 chain using the declared gated-planar
+      rotation law at both nodes, unit leaves, a coordinate orthogonal
+      projector of any nontrivial rank, and 0<=eta<=1, the projected error is
+      exactly E_proj=eta^2. Its ratio to the universal projected-root bound is
+      eta, so it saturates that bound if and only if eta=1.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - homogeneous binary k=2 chain
+      - declared gated-planar rotation law
+      - coordinate orthogonal projector with 1 <= rank < dimension
+      - unit leaf inputs
+      - 0 <= eta <= 1
+    proof_location: research/math_closure/k2/classification_theorem.tex
+    implementation: research/math_closure/k2/exact_examples/chain_gated_rotation_eta_squared.py
+    tests: [tests/math_closure/test_k2_k3_exact_forms.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_FOR_DECLARED_GATED_PLANAR_ROTATION_CLASS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_HOMOGENEOUS_GATED_ROTATION_ALL_BINARY_TOPOLOGIES
+    title: Exact formula for the homogeneous gated-rotation family on every finite ordered full-binary topology
+    statement: >-
+      For every finite ordered full-binary tree with k internal nodes, the
+      declared homogeneous gated-planar rotation law and unit reduced leaves
+      have projected-root error
+      |a(T)cos(d(T)theta)-cos(theta)^k| in the M=L=1 normalization, where
+      d(leaf)=0, d((A,B))=1+d(A), a(leaf)=1, and
+      a((A,B))=a(A)a(B)cos(d(B)theta). The result is independent of finite
+      ambient dimension and coordinate-projector rank under the stated active
+      two-plane assumptions.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - every finite ordered full-binary topology
+      - homogeneous gated-planar rotation law
+      - unit leaves and coordinate orthogonal projector
+      - 0 <= eta <= 1
+    dependencies:
+      - THM_V3_ROOT_ERROR_ORTHOGONALITY
+    proof_location: research/math_closure/k3/gated_rotation_full_binary.tex
+    implementation: research/math_closure/k3/gated_rotation_full_binary.py
+    tests: [tests/math_closure/test_gated_rotation_full_binary.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_RESTRICTED_FAMILY_NOT_GLOBAL_EXTREMAL_CONSTANT
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_HOMOGENEOUS_GATED_ROTATION_GENERAL_ARITY
+    title: Exact formula for finite ordered arity-compatible gated-rotation trees
+    statement: >-
+      For every finite ordered rooted tree whose internal arities are at least
+      two, the arity-compatible homogeneous gated-planar rotation laws with
+      unit reduced leaves have projected-root error
+      |a(T)cos(d(T)theta)-cos(theta)^k| in the M=L=1 normalization, with the
+      recursive a,d definitions stated in the proof. The result is independent
+      of finite ambient dimension and coordinate-projector rank under the
+      stated active two-plane assumptions.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - finite ordered rooted trees with arities at least two
+      - arity-compatible homogeneous gated-planar rotation laws
+      - unit leaves and coordinate orthogonal projector
+      - 0 <= eta <= 1
+    dependencies:
+      - THM_V3_ROOT_ERROR_ORTHOGONALITY
+    proof_location: research/math_closure/k3/gated_rotation_general_arity.tex
+    implementation: research/math_closure/k3/gated_rotation_general_arity.py
+    tests: [tests/math_closure/test_gated_rotation_general_arity.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_RESTRICTED_FAMILY_NOT_GLOBAL_EXTREMAL_CONSTANT
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_M11_CONDITIONAL_QUANTITATIVE_GAP
+    title: Conditional quantitative k=3 gap below M9 under first-propagator saturation
+    statement: >-
+      For the ordered k=3 chain, under exact operator-norm saturation of the
+      first propagated-defect direction at the second node, the normalized
+      projected error is at most G(eta)/eta, where G(eta)=eta*sqrt(4-3 eta^2)
+      for eta<=sqrt(2/3) and G(eta)=2/sqrt(3) thereafter. This is a
+      quantitative conditional gap and is not an unconditional replacement
+      for the M9 envelope.
+    scope:
+      - finite-dimensional real or complex Hilbert spaces
+      - ordered binary k=3 chain
+      - orthogonal projectors and independent node laws
+      - first propagated-defect norm saturation at the second node
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V5_K3_GENERAL_UPPER_ENVELOPE
+      - THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED
+    proof_location: research/math_closure/k3/m11_conditional_quantitative_gap.tex
+    implementation: research/math_closure/k3/m11_conditional_quantitative_gap.py
+    tests: [tests/math_closure/test_m11_conditional_quantitative_gap.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: CONDITIONAL_QUANTITATIVE_GAP_NOT_GLOBAL
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
   - id: LB_V5_K3_INDEPENDENT_CHAIN
     title: Independent-law k=3 chain lower construction
     statement: >-
@@ -88,7 +238,8 @@ theorems:
     implementation: src/seion_core/research_v5/k3_independent_candidates.py
     tests: [tests/research_v5_test_k3_independent_candidates.py]
     epistemic_status: CERTIFIED_LOWER_BOUND
-    sharpness_status: GLOBAL_SHARPNESS_OPEN
+    sharpness_status: SUPERSEDED_AS_EXACT_CHAIN_CONSTANT_BY_M14
+    superseded_by: THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT
     novelty_status: NOVELTY_NOT_ESTABLISHED
     approval_status: PENDING_HUMAN_REVIEW
   - id: LB_V5_K3_PIECEWISE_SCALAR_CURVE
@@ -131,7 +282,7 @@ theorems:
     implementation: src/seion_core/research_v5/v5b_extremal.py
     tests: [tests/research_v5_test_v5b_extremal.py]
     epistemic_status: PROVED_UNDER_ASSUMPTIONS
-    sharpness_status: ASYMPTOTIC_ONLY_FIXED_ETA_OPEN
+    sharpness_status: COROLLARY_OF_EXACT_FIXED_ETA_CONSTANT
     novelty_status: NOVELTY_NOT_ESTABLISHED
     approval_status: PENDING_HUMAN_REVIEW
   - id: LB_V5_K3_INDEPENDENT_BRANCH
@@ -145,15 +296,17 @@ theorems:
     implementation: src/seion_core/research_v5/k3_independent_candidates.py
     tests: [tests/research_v5_test_k3_independent_candidates.py]
     epistemic_status: CERTIFIED_LOWER_BOUND
-    sharpness_status: GLOBAL_SHARPNESS_OPEN
+    sharpness_status: SUPERSEDED_AS_EXACT_BRANCHING_CONSTANT_BY_M15
+    superseded_by: THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT
     novelty_status: NOVELTY_NOT_ESTABLISHED
     approval_status: PENDING_HUMAN_REVIEW
   - id: CONJ_V5_INDEPENDENT_TREE_SHARPNESS
-    title: Independent-law finite-tree sharpness conjecture
+    title: Fixed-eta and beyond-binary independent-law sharpness conjecture
     statement: >-
-      For sufficiently free independent laws, C_T,ind^P(eta) may equal
-      k(T)-1 for finite trees; this remains a conjecture and is not a theorem.
-    scope: [finite projected multilinear trees, independent laws]
+      M20 closes fixed-eta equality for all finite k=3 arity profiles, but
+      fixed-eta equality for k>=4 and uniformity for growing trees remain
+      conjectural; no such extension is asserted as a theorem.
+    scope: [fixed-eta k>=4 or growing projected multilinear trees, independent laws]
     epistemic_status: OPEN
     novelty_status: NOVELTY_NOT_ESTABLISHED
   - id: THM_V5_K2_SATURATION_IFF_CHARACTERIZATION
@@ -216,11 +369,11 @@ theorems:
       whose assumptions were never proved and were dimensionally
       inconsistent with the actual witness value.
   - id: THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED
-    title: M9's upper envelope U_3(eta) is not attained (M10, revised)
+    title: M9's upper envelope U_3(eta) is not attained for the chain (M10, revised)
     statement: >-
-      For the k=3 chain (and branching) class, no single admissible
-      configuration attains E_proj=U_3(eta)*rho*M^2*L_T exactly. Proved
-      via a projector-independent repair of the original argument: (node
+      For the ordered k=3 chain class, no single admissible configuration
+      attains E_proj=U_3(eta)*rho*M^2*L_T exactly. Proved via a
+      projector-independent repair of the original argument: (node
       2) if T1 saturates exactly, a self-adjointness/contradiction
       argument (valid for ANY orthogonal projector P2, not a specifically
       constructed one) shows S2 is never a nonzero scalar multiple of S1;
@@ -232,15 +385,17 @@ theorems:
       This does NOT prove C_3,ind^P(eta) < U_3(eta) as a strict supremum
       inequality (an error in the original version of this entry) --
       non-attainment at every point is consistent with the supremum still
-      equalling U_3(eta) in a limit. The strict inequality is a separate,
-      open question (see OPEN_V5_K3_STRICT_SUPREMUM_GAP below).
+      equalling U_3(eta) in a limit. The strict inequality is not established
+      by M10 alone; it is now established for the independent-law chain by
+      M14 and for branching by M15.
     revision_note: >-
       Revised after review found two errors in the first version: an
       unjustified "S1 perp S2" claim (repaired above) and an invalid
       inference from non-attainment to a strict supremum gap (removed;
       epistemic_status downgraded PROVED -> PROVED_NON_ATTAINMENT).
     scope:
-      - same class as THM_V5_K3_GENERAL_UPPER_ENVELOPE
+      - independent-law ordered binary k=3 chain
+      - finite-dimensional real or complex Hilbert spaces
       - 0 < eta < 1
     dependencies:
       - THM_V5_K3_GENERAL_UPPER_ENVELOPE
@@ -251,53 +406,553 @@ theorems:
     sharpness_status: PROVES_NON_ATTAINMENT_ONLY_NO_STRICT_GAP_NO_TIGHTENED_VALUE
     novelty_status: NOVELTY_NOT_ESTABLISHED
     approval_status: PENDING_HUMAN_REVIEW
-  - id: OPEN_V5_K3_STRICT_SUPREMUM_GAP
-    title: Whether C_3,ind^P(eta) is strictly below U_3(eta) (as a supremum, not just unattained)
+  - id: THM_V5_K3_FIXED_CLASS_STRICT_GAP
+    title: Strict gap below U_3 for every fixed finite dimension/rank class
     statement: >-
-      THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED proves no single configuration
-      reaches U_3(eta), but this does not by itself establish
-      C_3,ind^P(eta) < U_3(eta): the supremum could still equal U_3(eta),
-      approached by a sequence of configurations without any one attaining
-      it. Closing this needs either (Route A) a compactness argument
-      restricting to a class where the extremal problem is known to live
-      on a compact set -- blocked on the still-open dimension/rank
-      reduction result -- or (Route B) an explicit quantitative gap
-      E_proj <= U_3(eta) - delta(eta), delta(eta) > 0, unconditionally.
-      pareto_frontier_two_direction_norm_budget quantifies the underlying
-      trade-off Route B would need but does not solve the resulting joint
-      (magnitude, angle) optimization.
+      Fixing the finite ambient dimensions and orthogonal-projector ranks of
+      a declared independent-law k=3 chain or branching topology makes the
+      admissible parameter set compact. The fixed-class supremum is strictly
+      below U_3(eta) for 0<eta<1: for the chain this follows from M10, while
+      for branching it follows directly from the exact M15 value W_3<U_3.
+    scope:
+      - finite-dimensional real or complex Hilbert spaces
+      - fixed finite dimensions for every type
+      - fixed orthogonal-projector ranks
+      - binary k=3 chain or branching topology
+      - independent bilinear laws bounded by M
+      - 0 < eta < 1
+    dependencies:
+      - THM_V5_K3_GENERAL_UPPER_ENVELOPE
+      - THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED
+      - THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT
+    proof_location: research/math_closure/k3/fixed_dimension_compactness_gap.tex
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: STRICT_GAP_FOR_EACH_FIXED_CLASS_NOT_UNIFORM_GLOBAL
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_FIXED_TREE_SUPPORT_COMPRESSION
+    title: Finite-support compression for fixed typed projected trees
+    statement: >-
+      Every admissible finite-dimensional configuration for a fixed finite
+      typed tree has an evaluation-preserving compressed configuration with
+      dim(W_tau)<=2*(leaf_count_tau+2*node_count_tau) for each type. The
+      compressed laws have no larger operator or closure-residual norms. For
+      a one-type binary k=3 chain or branching tree this is dimension 20, or
+      22 when two padding coordinates enforce a proper projector.
+    scope:
+      - fixed finite typed trees
+      - finite-dimensional real or complex Hilbert spaces
+      - type-indexed orthogonal projectors
+      - independent laws bounded by M and closure residuals bounded by rho
+    dependencies:
+      - THM_V3_FIXED_TREE_SUPPORT_COMPRESSION
+      - THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED
+    proof_location: research/math_closure/dimension_rank/fixed_tree_support_compression.tex
+    implementation: research/math_closure/dimension_rank/fixed_tree_support_compression.py
+    tests: [tests/math_closure/test_fixed_tree_support_compression.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: FIXED_TREE_DIMENSION_RANK_REDUCTION
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_GLOBAL_STRICT_SUPREMUM_GAP_FIXED_TREE
+    title: Global strict gap below U_3 for k=3 after finite-support compression
+    statement: >-
+      For the independent-law binary k=3 chain and branching classes and
+      0<eta<=1, the exact constants are both W_3(eta): the chain is M14 and
+      branching is M15. Since W_3(eta)<U_3(eta), this gives an explicit
+      quantitative strict gap below M9 for both topologies.
+    scope:
+      - independent-law binary k=3 chain and branching trees
+      - finite-dimensional real or complex Hilbert spaces
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V5_FIXED_TREE_SUPPORT_COMPRESSION
+      - THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT
+      - THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT
+    proof_location: research/math_closure/k3/m15_exact_branching_constant.tex
+    implementation: research/math_closure/k3/m15_exact_branching_constant.py
+    tests: [tests/math_closure/test_m14_exact_chain_constant.py, tests/math_closure/test_m15_exact_branching_constant.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: GLOBAL_EXACT_CONSTANTS_AND_EXPLICIT_STRICT_GAP
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_ENDPOINT_STRICT_SUPREMUM_GAP_ETA_ONE
+    title: Strict k=3 supremum gap at the endpoint eta=1
+    statement: >-
+      For the independent-law binary k=3 chain and branching classes,
+      C_3,ind^P(1)=2/sqrt(3)<U_3(1)=sqrt(2), by the exact M14 and M15
+      constructions and their matching M13/M15 upper bounds.
+    scope:
+      - independent-law binary k=3 chain and branching trees
+      - finite-dimensional real or complex Hilbert spaces
+      - eta = 1
+    dependencies:
+      - THM_V5_K3_GENERAL_UPPER_ENVELOPE
+      - THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT
+      - THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT
+    proof_location: research/math_closure/k3/m15_exact_branching_constant.tex
+    implementation: research/math_closure/k3/m15_exact_branching_constant.py
+    tests: [tests/math_closure/test_m14_exact_chain_constant.py, tests/math_closure/test_m15_exact_branching_constant.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_ENDPOINT_VALUE_AND_STRICT_GAP
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_CHAIN_UNCONDITIONAL_QUANTITATIVE_ENVELOPE
+    title: Unconditional quantitative k=3 envelope for the independent-law chain
+    statement: >-
+      For the independent-law binary k=3 chain, the contraction Gram-matrix
+      cross-term bound gives the unconditional normalized upper envelope
+      W_3(eta)=sqrt(4-3*eta^2) for 0<eta<=sqrt(2/3), and
+      W_3(eta)=2/(sqrt(3)*eta) for sqrt(2/3)<=eta<=1. Consequently the
+      explicit positive gap U_3(eta)-W_3(eta) separates the chain constant
+      from the M9 envelope for every 0<eta<=1.
+    scope:
+      - independent-law binary k=3 chain topology only
+      - finite-dimensional real or complex Hilbert spaces
+      - arbitrary orthogonal projector ranks
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V5_K3_GENERAL_UPPER_ENVELOPE
+      - THM_V5_FIXED_TREE_SUPPORT_COMPRESSION
+    proof_location: research/math_closure/k3/m13_unconditional_chain_envelope.tex
+    implementation: research/math_closure/k3/m13_unconditional_chain_envelope.py
+    tests: [tests/math_closure/test_m13_unconditional_chain_envelope.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: UNCONDITIONAL_CHAIN_ENVELOPE_EXPLICIT_GAP_NOT_SHARP
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT
+    title: Exact fixed-eta projected constant for the independent-law k=3 chain
+    statement: >-
+      For the independent-law ordered binary k=3 chain, the normalized
+      projected-root constant is exactly W_3(eta): sqrt(4-3*eta^2) for
+      0<eta<=sqrt(2/3), and 2/(sqrt(3)*eta) for sqrt(2/3)<=eta<=1.
+      The M13 upper bound is attained by an explicit dimension-two,
+      rank-one-projector construction.
+    scope:
+      - independent-law ordered binary k=3 chain topology only
+      - finite-dimensional real Hilbert spaces
+      - dimension two witness with rank-one coordinate projector for attainment
+      - arbitrary finite-dimensional real or complex spaces for the upper bound
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V5_K3_CHAIN_UNCONDITIONAL_QUANTITATIVE_ENVELOPE
+    proof_location: research/math_closure/k3/m14_exact_chain_constant.tex
+    implementation: research/math_closure/k3/m14_exact_chain_constant.py
+    tests: [tests/math_closure/test_m14_exact_chain_constant.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_CHAIN_CONSTANT
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT
+    title: Exact fixed-eta projected constant for the independent-law k=3 branching tree
+    statement: >-
+      For the independent-law ordered binary k=3 branching tree, the
+      normalized projected-root constant is exactly W_3(eta):
+      sqrt(4-3*eta^2) for 0<eta<=sqrt(2/3), and
+      2/(sqrt(3)*eta) for sqrt(2/3)<=eta<=1. The matching upper bound follows
+      from nuclear/operator-norm duality for the two root bilinear terms, and
+      an explicit dimension-two rank-one construction attains it.
+    scope:
+      - independent-law ordered binary k=3 branching topology only
+      - finite-dimensional real Hilbert spaces for the explicit witness
+      - arbitrary finite-dimensional real or complex spaces for the upper bound
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V5_K3_GENERAL_UPPER_ENVELOPE
+    proof_location: research/math_closure/k3/m15_exact_branching_constant.tex
+    implementation: research/math_closure/k3/m15_exact_branching_constant.py
+    tests: [tests/math_closure/test_m15_exact_branching_constant.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_BRANCHING_CONSTANT
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_GENERAL_BINARY_CLASS_COROLLARY
+    title: Exact constants for the arbitrary-node-law binary k=3 class
+    statement: >-
+      For the finite-dimensional projected-root class with three binary
+      internal nodes and no law-sharing constraint, the class-level normalized
+      constant equals W_3(eta) for both the ordered chain and ordered
+      branching topology. This is the M14/M15 class convention expressed
+      without the shorthand independent-law label.
+    scope:
+      - finite-dimensional real or complex Hilbert spaces
+      - ordered binary k=3 chain or branching topology
+      - independently selectable bounded bilinear law at each node
+      - orthogonal projectors and unit leaves
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT
+      - THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT
+    proof_location: research/math_closure/k3/m16_general_binary_class_corollary.tex
+    implementation: research/math_closure/k3/m16_general_binary_class_corollary.py
+    tests: [tests/math_closure/test_m16_general_binary_class_corollary.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_FOR_DECLARED_ARBITRARY_NODE_LAW_BINARY_CLASS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_BINARY_TREE_ASYMPTOTIC_K_MINUS_ONE_SHARPNESS
+    title: Asymptotic $(k-1)$ sharpness for every finite ordered full-binary tree
+    statement: >-
+      For every finite ordered full-binary tree T with k internal vertices,
+      the finite-dimensional independent-law projected-root class satisfies
+      lim_{eta downarrow 0} C_{T,ind}^P(eta)=k-1. A two-dimensional real
+      witness (the plane identified with C) uses e^{i theta} multiplication at every non-root
+      vertex and a scalar off-diagonal root law, with theta=arcsin(eta), and
+      has E_proj=|sin((k-1)theta)|.
+    scope:
+      - finite ordered full-binary trees
+      - finite-dimensional real Hilbert spaces
+      - independently selectable bounded bilinear laws at internal vertices
+      - orthogonal coordinate projector and unit leaves
+      - asymptotic eta downarrow 0 only
+    dependencies:
+      - THM_V3_PROJECTED_ROOT_K_MINUS_ONE
+    proof_location: research/math_closure/k3/m18_binary_tree_asymptotic_sharpness.tex
+    implementation: research/math_closure/k3/m18_binary_tree_asymptotic_sharpness.py
+    tests: [tests/math_closure/test_m18_binary_tree_asymptotic_sharpness.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: ASYMPTOTIC_BINARY_TREE_SHARPNESS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_FINITE_ARITY_TREE_ASYMPTOTIC_K_MINUS_ONE_SHARPNESS
+    title: Asymptotic $(k-1)$ sharpness for every finite arity-compatible tree
+    statement: >-
+      For every finite ordered rooted tree T whose internal arities are at
+      least two, with k internal vertices, the independent-law projected-root
+      class satisfies lim_{eta downarrow 0} C_{T,ind}^P(eta)=k-1. The witness
+      is the real plane identified with C: use e^{i theta} times the product
+      at every non-root vertex and the imaginary part of the root product at
+      the root, with theta=arcsin(eta).
+    scope:
+      - finite ordered rooted trees with arity at least two
+      - finite-dimensional real Hilbert spaces
+      - independently selectable bounded multilinear laws at internal vertices
+      - orthogonal coordinate projector and unit leaves
+      - asymptotic eta downarrow 0 only
+    dependencies:
+      - THM_V3_PROJECTED_ROOT_K_MINUS_ONE
+      - THM_V5_BINARY_TREE_ASYMPTOTIC_K_MINUS_ONE_SHARPNESS
+    proof_location: research/math_closure/k3/m19_finite_arity_asymptotic_sharpness.tex
+    implementation: research/math_closure/k3/m19_finite_arity_asymptotic_sharpness.py
+    tests: [tests/math_closure/test_m19_finite_arity_asymptotic_sharpness.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: ASYMPTOTIC_FINITE_ARITY_SHARPNESS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_ALL_FINITE_ARITY_EXACT_FIXED_ETA_CONSTANT
+    title: Exact fixed-eta k=3 constant for every finite arity profile
+    statement: >-
+      For every finite ordered rooted tree T with exactly three internal
+      vertices and all internal arities at least two, the independent-law
+      projected-root constant satisfies C_{T,ind}^P(eta)=W_3(eta) for
+      0<eta<=1, where W_3(eta)=sqrt(4-3 eta^2) for eta<=sqrt(2/3) and
+      W_3(eta)=2/(sqrt(3) eta) above. Freezing unit projected leaf inputs
+      reduces each node to an effective linear or bilinear law; the only
+      three-vertex internal-child skeletons are chain and branching, and
+      M14/M15 supply matching witnesses with unit gates in extra leaf slots.
+    scope:
+      - finite ordered rooted trees with exactly three internal vertices
+      - all internal arities at least two, with arbitrary finite ordered leaf slots
+      - finite-dimensional real Hilbert spaces
+      - independently selectable bounded multilinear laws at internal vertices
+      - orthogonal projectors and unit projected leaves; coordinates are used
+        only for the explicit dimension-two witnesses
+      - fixed eta in (0,1]
+    dependencies:
+      - THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT
+      - THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT
+      - THM_V5_FINITE_ARITY_TREE_ASYMPTOTIC_K_MINUS_ONE_SHARPNESS
+    proof_location: research/math_closure/k3/m20_k3_arbitrary_arity_exact_constant.tex
+    implementation: research/math_closure/k3/m20_k3_arbitrary_arity_exact_constant.py
+    tests: [tests/math_closure/test_m20_k3_arbitrary_arity_exact_constant.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_K3_ALL_FINITE_ARITIES
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_TAGGED_SAME_LAW_EXACT_FIXED_ETA_CONSTANT
+    title: Exact tagged same-law fixed-eta constants for binary k=3
+    statement: >-
+      In the explicitly declared finite-dimensional real binary k=3 class
+      with one repeated bilinear law, one fixed coordinate projector, and
+      arbitrary unit projected leaf vectors, orthogonal leaf tags permit a
+      direct-sum shared-law simulation of the M14 chain witness and the M15
+      branching witness. Consequently the class-level constant is W_3(eta)
+      for both binary topologies and every 0<eta<=1.
+    scope:
+      - finite-dimensional real binary k=3 chain or branching topology
+      - one repeated bilinear law at every internal vertex
+      - one fixed coordinate projector with finite rank at least eight in the witness
+      - arbitrary unit projected leaf vectors, including orthogonal tags
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT
+      - THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT
+    proof_location: research/math_closure/k3/m21_same_law_tagged_exact_constant.tex
+    implementation: research/math_closure/k3/m21_same_law_tagged_exact_constant.py
+    tests: [tests/math_closure/test_m21_same_law_tagged_exact_constant.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_TAGGED_SAME_LAW_K3
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_RANK_ONE_SAME_LAW_HIGH_ETA_EXACT_CONSTANT
+    title: Exact high-eta regime for the rank-one/common-leaf same-law chain
+    statement: >-
+      In the strict binary k=3 chain class with one repeated gated rotation
+      law, common unit projected leaf e0, and rank-one projector span(e0),
+      the independent-law upper bound W_3(eta) is attained for
+      sqrt(2/3)<=eta<=1 by fixing the rotation leakage at sqrt(2/3).
+      Consequently the class-level normalized constant equals
+      2/(sqrt(3) eta) throughout this high-eta regime.
+    scope:
+      - finite-dimensional real binary k=3 chain
+      - one repeated gated-planar rotation law
+      - common unit projected leaf e0
+      - rank-one coordinate projector span(e0)
+      - sqrt(2/3) <= eta <= 1
+    dependencies:
+      - THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT
+      - THM_V5_K3_TAGGED_SAME_LAW_EXACT_FIXED_ETA_CONSTANT
+    proof_location: research/math_closure/k3/m22_same_law_rank_one_high_eta.tex
+    implementation: research/math_closure/k3/m22_same_law_rank_one_high_eta.py
+    tests: [tests/math_closure/test_m22_same_law_rank_one_high_eta.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_RANK_ONE_SAME_LAW_HIGH_ETA_REGIME
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_FINITE_SOURCE_RESOLVED_ERROR_CALCULUS
+    title: Finite source-resolved error calculus for projected multilinear DAGs
+    statement: >-
+      For every finite typed acyclic graph of finite-dimensional multilinear
+      laws with finitely many labelled local sources, each recursively
+      projected node error is an exact finite vector-valued polynomial indexed
+      by source multiplicities. Topological coefficient convolution agrees
+      with recursive unrolling; first-order coefficients aggregate same-source
+      paths before taking norms; finite truncation has the omitted-term norm
+      bound; and finite signed compositional expressions satisfy
+      B_actual <= B_signed <= B_treewise after coefficient-wise aggregation.
+    scope:
+      - finite-dimensional typed multilinear DAGs
+      - finite acyclic graph and finite source support
+      - recursively projected baselines with orthogonal output projectors
+      - finite signed compositional expressions over the resulting polynomials
+    dependencies: []
+    proof_location: research/math_closure/dag/source_resolved_error_calculus.tex
+    implementation: research/math_closure/dag/source_resolved_error_calculus.py
+    tests: [tests/math_closure/test_source_resolved_error_calculus.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: FINITE_CALCULUS_NOT_EXTREMAL
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_K3_RANK_ONE_SAME_LAW_CHAIN_OPERATOR_REDUCTION
+    title: Exact unary-operator reduction for the rank-one/common-leaf same-law chain
+    statement: >-
+      For the strict binary k=3 chain with one repeated real bilinear law,
+      common unit projected leaf e0, and rank-one projector P=span(e0), the
+      projected error is exactly |<e0,A^3 e0>-<e0,A e0>^3|, where
+      A(x)=mu(x,e0), under ||mu||_op<=M and the evaluated projected-input
+      closure cap ||Q mu(e0,e0)||<=rho=eta*M. Conversely every
+      finite-dimensional contraction A is realized by the gated repeated law
+      mu_A(x,y)=A x <e0,y>, preserving both the operator and closure caps.
+      Hence the class extremum is exactly the corresponding
+      contraction-operator supremum with ||Q A e0||<=eta after normalization
+      M=1.
+    scope:
+      - finite-dimensional real binary k=3 chain
+      - one repeated bilinear law at all internal nodes
+      - common unit projected leaf e0
+      - rank-one orthogonal projector span(e0)
+      - 0 < eta <= 1
+    dependencies: []
+    proof_location: research/math_closure/k3/m23_rank_one_same_law_chain_operator_reduction.tex
+    implementation: research/math_closure/k3/m23_rank_one_same_law_chain_operator_reduction.py
+    tests: [tests/math_closure/test_m23_rank_one_same_law_chain_operator_reduction.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_REDUCTION_VALUE_OPEN
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: OPEN_V5_K3_STRICT_SUPREMUM_GAP
+    title: Historical open question on the strict k=3 supremum gap
+    statement: >-
+      This item recorded the former uncertainty about whether non-attainment
+      could coexist with a supremum equal to U_3. It is superseded for the
+      independent-law chain and branching classes by M14 and M15, which give
+      the exact value W_3(eta)<U_3(eta) for every 0<eta<=1.
+    revision_note: >-
+      Superseded by THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT and
+      THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT; retained as provenance for
+      the M10 review correction.
     scope: [independent-law k=3 chain and branching, 0 < eta < 1]
     dependencies:
-      - THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED
-    epistemic_status: OPEN
+      - THM_V5_K3_CHAIN_EXACT_FIXED_ETA_CONSTANT
+      - THM_V5_K3_BRANCHING_EXACT_FIXED_ETA_CONSTANT
+    epistemic_status: SUPERSEDED_HISTORICAL
     novelty_status: NOVELTY_NOT_ESTABLISHED
   - id: OPEN_V5_K3_FIXED_ETA_SHARPNESS
-    title: Fixed-eta k=3 sharpness (gap narrowed via M9; whether it strictly excludes U_3 remains open)
+    title: Remaining restricted same-law/gated and higher-k fixed-eta sharpness
     statement: >-
-      L_3(eta) <= C_3,ind^P(eta) <= U_3(eta) < 2 for every eta in (0,1);
-      the certified gap narrowed substantially via
-      THM_V5_K3_GENERAL_UPPER_ENVELOPE (e.g. at eta=1, relative gap
-      50%->29%). THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED further proves no
-      single configuration reaches U_3(eta) exactly, but whether the
-      supremum itself is strictly below U_3(eta) is a separate open
-      question (OPEN_V5_K3_STRICT_SUPREMUM_GAP) -- no exact tightened
-      value or matching construction is known either way. The precise
-      open problem is now a well-posed joint optimization over the
-      magnitude allocation q and the angle between the two propagated-
-      error terms, not a vague "improve the bound" question.
-    scope: [independent-law k=3 chain and branching, 0 < eta <= 1]
+      M20 closes the independent-law fixed-eta constant for every finite k=3
+      arity profile, and M21 closes the tagged same-law binary subclass.
+      M22 closes the rank-one/common-leaf repeated-rotation chain for
+      eta>=sqrt(2/3). Remaining open classes include its low-eta regime,
+      rank-one/common-leaf branching and general same-law restrictions, other
+      gated-planar restrictions at k=3, and independent-law fixed-eta
+      sharpness for k>=4.
+    scope: [low-eta rank-one/common-leaf same-law k=3, branching/gated k=3 classes, independent-law k>=4 finite-tree classes]
     dependencies:
       - LB_V5_K3_PIECEWISE_SCALAR_CURVE
       - THM_V5_K3_GENERAL_UPPER_ENVELOPE
       - THM_V5_K3_UPPER_ENVELOPE_NOT_ATTAINED
       - OPEN_V5_K3_STRICT_SUPREMUM_GAP
+      - THM_V5_K3_GLOBAL_STRICT_SUPREMUM_GAP_FIXED_TREE
     epistemic_status: OPEN_WITH_CERTIFIED_GAP
     novelty_status: NOVELTY_NOT_ESTABLISHED
   - id: OPEN_V5_DIMENSION_RANK_REDUCTION
     title: Universal dimension/rank reduction for projected sharpness
     statement: >-
-      It remains open whether the relevant projected sharpness supremum can be
-      reduced to a finite universal ambient dimension and projector rank.
-    scope: [general projected multilinear trees]
-    epistemic_status: OPEN
+      Fixed-tree support compression proves a finite dimension/rank reduction
+      for every fixed finite typed tree, with an explicit bound depending only
+      on its leaf and node counts. A certified independent-law growing-chain
+      obstruction shows that no nodewise value-preserving bound can be uniform
+      over unbounded tree size. Root-only reductions that change intermediate
+      laws, same-law restrictions, and extensions beyond the repository's
+      type-indexed-projector convention remain open.
+    scope: [growing or unbounded projected-tree families beyond fixed trees]
+    epistemic_status: OPEN_WITH_CERTIFIED_OBSTRUCTION
+    evidence:
+      - claims/counterexample_registry.yaml:CE_V5_GROWING_TREE_NODEWISE_SUPPORT
+      - research/math_closure/dimension_rank/growing_tree_dimension_counterexample.tex
     novelty_status: NOVELTY_NOT_ESTABLISHED
+  - id: THM_V5_FINITE_DAG_DOMAIN_ERROR_CERTIFICATE
+    title: Finite multilinear DAG bounded-domain error certificate with shared subexpressions
+    statement: >-
+      For every finite acyclic multilinear DAG with declared nonnegative
+      operator enclosures M_v, rank-indexed normal-residual enclosures rho_v,
+      and bounded leaf domains, the topological recurrence
+      U_v <= M_v prod_i U_i and D_v <= rho_v(r_v) prod_i U_i +
+      M_v sum_i(prod_{j != i} U_j)D_i certifies the root error. Shared
+      subexpressions are computed once and charged once per input slot and
+      downstream fan-out edge. With rank-independent M_v and U_v, reverse
+      downstream gains make the finite integer rank-budget objective separable,
+      so the returned knapsack dynamic program is exact for this enclosure
+      model.
+    scope:
+      - finite-dimensional multilinear DAGs represented by finite nonnegative enclosures
+      - acyclic graphs with repeated input slots and shared subexpressions
+      - bounded leaf domains and finite rank tables
+      - unprojected root by default, with optional projected-root extension
+    dependencies: []
+    proof_location: research/math_closure/dag/global_domain_certificate.tex
+    implementation: src/seion_core/research_v5/dag_domain_certificate.py
+    tests: [tests/research_v5_test_dag_domain_certificate.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: FINITE_DAG_CERTIFICATE_NOT_EXTREMAL
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_FINITE_DAG_RANK_AWARE_DOMAIN_CERTIFICATE
+    title: Rank-aware bounded-domain certificate for fixed finite DAG allocations
+    statement: >-
+      For every finite acyclic multilinear DAG with declared exact-value
+      bounds M_v, rank-dependent projected-operator bounds L_v(r), normal
+      residual bounds rho_v(r), and bounded leaf domains, a fixed rank
+      assignment is certified by U_v <= M_v prod_i U_i,
+      A_v <= L_v(r_v) prod_i A_i, and D_v <= rho_v(r_v) prod_i A_i +
+      L_v(r_v) sum_i(prod_{j != i} max(U_j,A_j))D_i, with the root local
+      term omitted when unprojected. The recurrence is valid for shared
+      subexpressions and repeated input slots. Rank choices are generally
+      coupled; exhaustive optimization is therefore scoped to small finite
+      DAGs and does not imply a scalable allocation theorem.
+    scope:
+      - finite-dimensional multilinear DAGs with finite rank tables
+      - fixed rank assignments on bounded leaf domains
+      - shared subexpressions and repeated input slots
+      - unprojected root by default
+    dependencies:
+      - THM_V5_FINITE_DAG_DOMAIN_ERROR_CERTIFICATE
+    proof_location: research/math_closure/dag/global_domain_certificate.tex
+    implementation: src/seion_core/research_v5/dag_domain_certificate.py
+    tests: [tests/research_v5_test_dag_domain_certificate.py, applications/adaptive_tensor_network/tests/test_dag_network.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: FINITE_DAG_CERTIFICATE_NOT_EXTREMAL
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_EXACT_NONNEGATIVE_DAG_PATH_CONSTANT
+    title: Exact path constant for the nonnegative first-order DAG channel class
+    statement: >-
+      For every finite acyclic DAG with nonnegative edge gains and bounded
+      nonnegative local source amplitudes, the root value of the channel
+      recurrence d_v=s_v+sum_e g_e d_source(e) equals the sum of source bounds
+      weighted by the total product of gains over all source-to-root paths.
+      The constant is attained by setting every source to its bound, including
+      shared subexpressions and parallel edges representing repeated slots.
+      When instantiated by multilinear telescoping enclosures this proves
+      sharpness of the first-order nonnegative envelope, not automatically of
+      the full multilinear operator class.
+    scope:
+      - finite acyclic nonnegative first-order channel DAGs
+      - finite local source bounds and nonnegative edge gains
+      - shared subexpressions and repeated input slots
+    dependencies:
+      - THM_V5_FINITE_DAG_DOMAIN_ERROR_CERTIFICATE
+    proof_location: research/math_closure/dag/exact_path_constant.tex
+    implementation: src/seion_core/research_v5/dag_path_constant.py
+    tests: [tests/research_v5_test_dag_path_constant.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_FOR_DECLARED_NONNEGATIVE_CHANNEL_CLASS
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_SHARED_DIAMOND_DAG_ASYMPTOTIC_SHARPNESS
+    title: Exact asymptotic path constant for the independent-law shared diamond DAG
+    statement: >-
+      For the binary shared diamond DAG with one shared projected node, two
+      projected branches, an unprojected root, unit leaves, orthogonal
+      rank-one real projection, operator norm at most one, and uniform normal
+      defect cap eta, the normalized asymptotic constant is exactly 4. The
+      universal path recurrence gives E <= 4 eta, while the planar independent
+      law mu_theta(z,w)=exp(i theta) z w with theta=arcsin(eta) has exact error
+      |exp(4 i theta)-cos(theta)^4| and ratio tending to 4 as eta decreases
+      to zero.
+    scope:
+      - finite-dimensional real Hilbert spaces identified with the complex plane
+      - fixed shared diamond DAG topology
+      - independently selectable binary laws
+      - unit leaves, rank-one real projection, and unprojected root
+      - asymptotic eta downarrow 0 only
+    dependencies:
+      - THM_V5_EXACT_NONNEGATIVE_DAG_PATH_CONSTANT
+      - THM_V5_FINITE_DAG_DOMAIN_ERROR_CERTIFICATE
+    proof_location: research/math_closure/dag/diamond_asymptotic_sharpness.tex
+    implementation: research/math_closure/dag/diamond_asymptotic_sharpness.py
+    tests: [tests/math_closure/test_diamond_asymptotic_sharpness.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_ASYMPTOTIC_SHARED_DIAMOND_CONSTANT
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V5_FIXED_DAG_INDEPENDENT_ASYMPTOTIC_PATH_SHARPNESS
+    title: Asymptotic path sharpness for every fixed independent-law multilinear DAG
+    statement: >-
+      For every fixed finite ordered acyclic multilinear DAG with unit leaves,
+      rank-one real projection at every non-root internal node, unprojected
+      root, independent binary or finite-arity node laws of norm at most one,
+      and normal operator defect cap eta, the normalized asymptotic constant as
+      eta decreases to zero equals K(G), the sum over projected nodes of their
+      directed slot-path multiplicities to the root. The upper bound follows
+      from the nonnegative path recurrence. The planar laws
+      mu_theta(z_1,...,z_m)=exp(i theta) prod_j z_j with theta=arcsin(eta)
+      attain the limit, with exact witness error
+      |exp(i K(G) theta)-cos(theta)^K(G)|.
+    scope:
+      - fixed finite ordered acyclic DAGs with internal arities at least one
+      - finite-dimensional real Hilbert spaces identified with the complex plane
+      - independent node laws, unit leaves, rank-one real projections
+      - unprojected root and asymptotic eta downarrow 0
+    dependencies:
+      - THM_V5_EXACT_NONNEGATIVE_DAG_PATH_CONSTANT
+      - THM_V5_FINITE_DAG_DOMAIN_ERROR_CERTIFICATE
+    proof_location: research/math_closure/dag/dag_asymptotic_sharpness.tex
+    implementation: src/seion_core/research_v5/dag_asymptotic_sharpness.py
+    tests: [tests/research_v5_test_dag_asymptotic_sharpness.py, applications/adaptive_tensor_network/tests/test_dag_asymptotic_witness.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_ASYMPTOTIC_FIXED_DAG_PATH_CONSTANT
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW

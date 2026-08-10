@@ -1,0 +1,39 @@
+experiment_id: TTN_FB15K237_HARDWARE_V3_PAIRED_2026-08-09
+status: observed
+dataset: FB15K-237
+checkpoint: runs/TTN_FB15K237_BRANCHING_K3_FINAL_NORMED_E10_2026-08-09/full_ttn.pt
+device: NVIDIA RTX PRO 5000 Blackwell Generation Laptop GPU
+primary_question: transformed-full-versus-transformed-compressed-runtime
+executor:
+  mode: projected
+  transformed_full_ranks: [32, 32]
+  compressed_ranks: [[1, 4], [1, 16], [4, 24], [8, 24], [16, 32], [32, 32]]
+  same_executor: true
+  transformed_cores_cached_offline: true
+scorer:
+  queries: 8192
+  batch_size: 128
+  candidate_block: 4096
+  warmups: 100
+  repeats: 30
+  timing: cuda_events
+  order: alternating_paired
+filtered:
+  queries: 8192
+  batch_size: 128
+  candidate_block: 4096
+  warmups: 2
+  repeats: 3
+  timing: wall_clock_with_cuda_synchronization
+outputs:
+  scorer: runs/TTN_FB15K237_BRANCHING_K3_FINAL_NORMED_E10_2026-08-09/hardware_benchmark_v3_paired_final.json
+  filtered: runs/TTN_FB15K237_BRANCHING_K3_FINAL_NORMED_E10_2026-08-09/hardware_benchmark_v3_filtered_final.json
+gates:
+  scorer_speedup_primary: mean_transformed_full_over_mean_compressed
+  scorer_ci: paired_log_ratio_95_percent
+  strict_hardware_pass: ci95_low_greater_than_one
+limitations:
+  - One frozen checkpoint and one GPU; no universal hardware claim.
+  - Offline core transformation is excluded from runtime by design.
+  - Filtered evaluation includes evaluator CPU filtering and is reported separately.
+  - Analytical resource reduction does not imply hardware speedup at this scale.

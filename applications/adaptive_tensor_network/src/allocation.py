@@ -196,6 +196,131 @@ def pathwise_global_allocation(
     return ranks
 
 
+def _path_products(net: TensorNetwork, ambient_values, leaf_batch) -> dict[str, float]:
+    """Return the declared empirical path products for every internal node."""
+
+    amplifications = net.path_amplification(ambient_values, leaf_batch)
+    products = {}
+    for node_id in _node_ids(net):
+        path = net.topology.path_to_root(node_id)
+        product = 1.0
+        for step in path[:-1]:
+            product *= amplifications.get(step, 1.0)
+        products[node_id] = product
+    return products
+
+
+def pathwise_majorant_value(
+    net: TensorNetwork,
+    ranks: dict[str, int],
+    *,
+    ambient_values,
+    leaf_batch,
+    include_root: bool = False,
+) -> float:
+    """Evaluate the fitted-data pathwise majorant for a rank allocation.
+
+    The local residual is computed exactly from the fitted singular spectrum:
+    ``sqrt(sum_{j>=r} s_j^2 / batch_size)``.  The root is excluded by default
+    because ``TensorNetwork.reduced_forward`` does not project the root.  The
+    path factors are the same empirical factors used by ``pathwise_global``;
+    this function is therefore an exact optimizer objective, not a claim that
+    those empirical factors are universal operator-norm certificates.
+    """
+
+    products = _path_products(net, ambient_values, leaf_batch)
+    root_id = net.topology.root.node_id
+    sample_count = next(iter(ambient_values.values())).shape[0]
+    total = 0.0
+    for node in net.topology.nodes_postorder:
+        if not include_root and node.node_id == root_id:
+            continue
+        rank = max(1, min(int(ranks.get(node.node_id, node.ambient_dim)), node.ambient_dim))
+        singular_values = net.projectors[node.node_id].singular_values
+        tail = float(np.sqrt(np.sum(singular_values[rank:] ** 2) / sample_count))
+        total += products[node.node_id] * tail
+    return total
+
+
+def pathwise_majorant_optimal_allocation(
+    net: TensorNetwork,
+    budget: int,
+    *,
+    ambient_values,
+    leaf_batch,
+    include_root: bool = False,
+    **_ignored,
+) -> dict[str, int]:
+    """Minimize the declared pathwise majorant exactly under a rank budget.
+
+    Once the fitted spectra and path products are fixed, the objective is a
+    sum of independent node tails.  The finite dynamic program below therefore
+    finds the global minimizer of that *certificate objective* in
+    ``O(|V| B d_max^2)`` time, rather than relying on the singular-value
+    marginal heuristic in ``pathwise_global_allocation``.  It does not use
+    held-out root errors and it does not establish an allocator-optimality
+    theorem for the true reconstruction error.
+    """
+
+    ids = _node_ids(net)
+    ambient = _ambient_dims(net)
+    root_id = net.topology.root.node_id
+    decision_ids = [node_id for node_id in ids if include_root or node_id != root_id]
+    fixed_ranks = {root_id: 1} if not include_root else {}
+    if not decision_ids:
+        return _clip_to_budget(fixed_ranks, budget, ambient)
+    if budget < len(decision_ids) + len(fixed_ranks):
+        return _clip_to_budget(
+            {node_id: 1 for node_id in ids}, budget, ambient
+        )
+
+    products = _path_products(net, ambient_values, leaf_batch)
+    sample_count = next(iter(ambient_values.values())).shape[0]
+    usable_budget = min(budget - len(fixed_ranks), sum(ambient[node_id] for node_id in decision_ids))
+    infinity = float("inf")
+    dynamic = [infinity] * (usable_budget + 1)
+    dynamic[0] = 0.0
+    parents: list[list[tuple[int, int] | None]] = []
+
+    for node_id in decision_ids:
+        singular_values = net.projectors[node_id].singular_values
+        max_rank = min(ambient[node_id], usable_budget)
+        tails = {
+            rank: products[node_id]
+            * float(np.sqrt(np.sum(singular_values[rank:] ** 2) / sample_count))
+            for rank in range(1, max_rank + 1)
+        }
+        next_dynamic = [infinity] * (usable_budget + 1)
+        parent = [None] * (usable_budget + 1)
+        for used, current in enumerate(dynamic):
+            if not np.isfinite(current):
+                continue
+            for rank, cost in tails.items():
+                new_used = used + rank
+                if new_used > usable_budget:
+                    break
+                candidate = current + cost
+                if candidate < next_dynamic[new_used]:
+                    next_dynamic[new_used] = candidate
+                    parent[new_used] = (used, rank)
+        dynamic = next_dynamic
+        parents.append(parent)
+
+    final_used = min(
+        (used for used, value in enumerate(dynamic) if np.isfinite(value)),
+        key=lambda used: (dynamic[used], -used),
+    )
+    ranks = dict(fixed_ranks)
+    for index in range(len(decision_ids) - 1, -1, -1):
+        previous = parents[index][final_used]
+        if previous is None:
+            raise RuntimeError("majorant dynamic program lost a feasible parent")
+        previous_used, rank = previous
+        ranks[decision_ids[index]] = rank
+        final_used = previous_used
+    return _clip_to_budget(ranks, budget, ambient)
+
+
 def small_case_oracle_allocation(
     net: TensorNetwork,
     budget: int,
@@ -237,6 +362,91 @@ def small_case_oracle_allocation(
         # fall back to uniform (still budget-feasible by construction)
         return uniform_allocation(net, budget)
     return best_ranks
+
+
+def small_case_validated_certificate_allocation(
+    net: TensorNetwork,
+    budget: int,
+    *,
+    leaf_batch,
+    max_combinations: int = 2000,
+    **_ignored,
+) -> dict[str, int]:
+    """Minimize the finite-batch validated root bound for small networks.
+
+    This is deliberately an optional small-case policy: it evaluates the
+    sound sup-norm certificate from ``TensorNetwork.validated_error_certificate``
+    for each candidate allocation, so its cost is combinatorial.  It uses only
+    the supplied fitting/validation batch and must not be compared to held-out
+    performance as if it were a preregistered allocator.
+    """
+
+    return small_case_oracle_allocation(
+        net,
+        budget,
+        evaluate_fn=lambda ranks: float(
+            net.validated_error_certificate(leaf_batch, ranks)["root_bound"]
+        ),
+        max_combinations=max_combinations,
+    )
+
+
+def global_certificate_optimal_allocation(
+    net: TensorNetwork,
+    budget: int,
+    *,
+    leaf_norm_bounds,
+    **_ignored,
+) -> dict[str, int]:
+    """Globally minimize the bounded-domain certificate by dynamic programming.
+
+    The operator-norm recurrence exposes a fixed downstream gain and a local
+    rank cost at every non-root node.  The resulting separable integer problem
+    is solved exactly in ``O(|V| B d_max^2)`` worst-case time, without
+    held-out data or exhaustive rank-vector enumeration.
+    """
+
+    ids = _node_ids(net)
+    ambient = _ambient_dims(net)
+    root_id = net.topology.root.node_id
+    decision_ids = [node_id for node_id in ids if node_id != root_id]
+    fixed = {root_id: 1}
+    if budget < len(decision_ids) + 1:
+        return _clip_to_budget({node_id: 1 for node_id in ids}, budget, ambient)
+    components = net.global_error_certificate(leaf_norm_bounds)
+    rank_costs = components["rank_costs"]
+    usable_budget = min(budget - 1, sum(ambient[node_id] for node_id in decision_ids))
+    infinity = float("inf")
+    dynamic = [infinity] * (usable_budget + 1)
+    dynamic[0] = 0.0
+    parents: list[list[tuple[int, int] | None]] = []
+    for node_id in decision_ids:
+        costs = rank_costs[node_id]
+        next_dynamic = [infinity] * (usable_budget + 1)
+        parent = [None] * (usable_budget + 1)
+        for used, current in enumerate(dynamic):
+            if not np.isfinite(current):
+                continue
+            for rank in range(1, min(ambient[node_id], usable_budget - used) + 1):
+                candidate = current + costs[rank]
+                new_used = used + rank
+                if candidate < next_dynamic[new_used]:
+                    next_dynamic[new_used] = candidate
+                    parent[new_used] = (used, rank)
+        dynamic = next_dynamic
+        parents.append(parent)
+    final_used = min(
+        (used for used, value in enumerate(dynamic) if np.isfinite(value)),
+        key=lambda used: (dynamic[used], -used),
+    )
+    ranks = dict(fixed)
+    for index in range(len(decision_ids) - 1, -1, -1):
+        previous = parents[index][final_used]
+        if previous is None:
+            raise RuntimeError("global certificate dynamic program lost a feasible parent")
+        final_used, rank = previous
+        ranks[decision_ids[index]] = rank
+    return _clip_to_budget(ranks, budget, ambient)
 
 
 def _greedy_by_score(

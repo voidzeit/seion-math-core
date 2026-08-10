@@ -26,7 +26,7 @@
 
 \begin{document}
 \begin{abstract}
-This companion documents the repository architecture, evidence contracts, test gates, paper-generation workflow, and governance state for the finite projected multilinear tree and graph program. The package separates executable behavior, mathematical claims, numerical artifacts, experiments, durable memory, and publication outputs. The v5 research layer adds an exact independent-law $k=2$ sharpness construction, $k=3$ lower witnesses, source-polynomial DAG propagation, signed-expression certificates, validated finite norm enclosures, and approximate-law budgets. The latest focused suite contains 85 passing tests; governance passes structurally with known historical warnings. The package remains fail-closed for theorem novelty, independent human review, and global sharpness.\end{abstract}
+This companion documents the repository architecture, evidence contracts, test gates, paper-generation workflow, and governance state for the finite projected multilinear tree and graph program. The package separates executable behavior, mathematical claims, numerical artifacts, experiments, durable memory, and publication outputs. The v5 research layer adds an exact independent-law $k=2$ sharpness construction, the necessary-and-sufficient $k=2$ equality characterization, an exact contractive gated-planar repeated-law subclass, exact independent-law $k=3$ constants for every finite arity profile, the tagged same-law binary $k=3$ closure, the high-$\eta$ rank-one/common-leaf same-law chain closure, an exact unary-operator reduction for the remaining strict rank-one/common-leaf same-law chain, finite-tree asymptotic $(k-1)$ sharpness for arbitrary arity at least two, source-polynomial DAG propagation, signed-expression certificates, validated finite norm enclosures, and approximate-law budgets. The current verification collects 493 tests, with the mathematical closure and non-slow KGR segments passing; the FB15K237 full batched training epoch completes but remains above the preregistered 300-second performance ceiling on this hardware. Governance passes structurally with known historical warnings. The package remains fail-closed for theorem novelty, independent human review, the unresolved low-$\eta$ operator extremum and gated variants, fixed-eta independent-law sharpness for $k\ge4$, and growing-tree uniformity.\end{abstract}
 \subjclass[2020]{68N30, 65Y05, 65G50, 15A69}
 \keywords{research software, reproducibility, artifact contract, projected multilinear graph, governance}
 \maketitle
@@ -62,6 +62,8 @@ checkpoint & role & scope\\
 \texttt{773fa9c} & V5 freeze metadata & scientific baseline and ledger binding\\
 \texttt{5e8384a} & V5-A construction & independent-law k=3 chain/branch lower witnesses\\
 \texttt{997e745} & V5-A registry & lower-bound and conjecture status registration\\
+\texttt{b817624} & M8/M9 closure & $k=2$ equality characterization and unconditional $k=3$ envelope\\
+\texttt{9c8e755} & M10 correction & non-attainment only; strict supremum gap re-opened\\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -112,10 +114,10 @@ Every registered run records identity, resolved configuration, command,
 environment, hardware, mathematical-object hashes, input hashes, metrics,
 certificates, logs, and artifact hashes. Historical runs remain immutable;
 deduplication creates a derived unique index rather than deleting records.
-The latest structural audit reports 150 historical runs, 9 unique scientific
-instances, 8 duplicate groups, 0 missing artifacts, and complete contracts for
-all 150 records. The duplicate warning is a governance issue, not a reason to
-reinterpret historical runs as independent evidence.
+The latest structural audit snapshot reports 156 historical runs, 9 unique
+scientific instances, 8 duplicate groups, 0 missing artifacts, and complete
+contracts for all 156 records. The duplicate warning is a governance issue,
+not a reason to reinterpret historical runs as independent evidence.
 
 \section{Paper-generation workflow}
 
@@ -139,9 +141,12 @@ artifacts.
 The current governance result is non-strict PASS/YELLOW. Required artifacts
 are present; warnings remain for duplicate historical runs and the paper
 quality rubric. The strict research gate remains fail-closed because
-theorem-level novelty, independent human review, repeated-law sharpness,
-global $k=3$ sharpness, universal dimension/rank reduction, and global
-multilinear norm optimality are unresolved.
+theorem-level novelty, independent human review, variable-gate/arbitrary-leaf
+gated variants beyond the contractive M17 class,
+arbitrary-tree $k=3$ sharpness, universal dimension/rank reduction beyond
+fixed trees, and global multilinear norm optimality are unresolved. The
+independent-law binary $k=3$ chain and branching constants are closed by M14
+and M15.
 
 A compiled PDF is therefore a reproducible research artifact, not publication
 approval. No test-set or KGR claim is changed by this package.

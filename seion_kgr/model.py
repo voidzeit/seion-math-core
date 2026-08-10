@@ -227,6 +227,7 @@ class SeionKGRv26(nn.Module):
         h_ids: torch.Tensor, r_ids: torch.Tensor, t_ids: torch.Tensor,
         adjacency: Optional[Adjacency] = None, seed: int = 0, training: bool = True,
         return_breakdown: bool = False, context: Optional[torch.Tensor] = None,
+        path_output: Optional[PathReasonerOutput] = None,
     ):
         """Gate 13.1: ``return_breakdown=True`` additionally returns a dict of
         per-branch GATED contributions (``gamma * s_path``, ``eta * s_seion``)
@@ -240,7 +241,9 @@ class SeionKGRv26(nn.Module):
         breakdown: Dict[str, torch.Tensor] = {"s_base": s}
 
         if self.enable_path and adjacency is not None:
-            output = self._run_path_reasoner(h_ids, r_ids, t_ids, adjacency, r, seed, training)
+            output = path_output if path_output is not None else self._run_path_reasoner(
+                h_ids, r_ids, t_ids, adjacency, r, seed, training,
+            )
             query_ids = torch.arange(h_ids.shape[0], device=h_ids.device)
             reached = output.state_for(query_ids, t_ids)
             path_vec = self.path_score_norm(reached) if self.path_score_norm is not None else reached
@@ -296,6 +299,7 @@ class SeionKGRv26(nn.Module):
         adjacency: Optional[Adjacency] = None, seed: int = 0, training: bool = True,
         gold_tail_ids: Optional[torch.Tensor] = None,
         context: Optional[torch.Tensor] = None,
+        path_output: Optional[PathReasonerOutput] = None,
     ) -> torch.Tensor:
         """``candidates_ids``: ``[K]`` (shared) or ``[B,K]`` (per-row).
         ``gold_tail_ids`` is only needed to exclude the queried edge from
@@ -308,7 +312,9 @@ class SeionKGRv26(nn.Module):
 
         if self.enable_path and adjacency is not None:
             t_for_frontier = gold_tail_ids if gold_tail_ids is not None else torch.zeros_like(h_ids)
-            output = self._run_path_reasoner(h_ids, r_ids, t_for_frontier, adjacency, r, seed, training)
+            output = path_output if path_output is not None else self._run_path_reasoner(
+                h_ids, r_ids, t_for_frontier, adjacency, r, seed, training,
+            )
             batch = h_ids.shape[0]
             cand_ids_2d = candidates_ids if candidates_ids.ndim == 2 else candidates_ids.unsqueeze(0).expand(batch, -1)
             query_ids = torch.arange(batch, device=h_ids.device)

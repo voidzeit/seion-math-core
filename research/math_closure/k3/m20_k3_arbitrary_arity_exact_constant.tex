@@ -1,0 +1,58 @@
+\section*{Exact fixed-$\eta$ $k=3$ constant for every finite arity profile}
+\label{sec:m20-k3-arbitrary-arity}
+
+Consider a finite ordered rooted tree with exactly three internal vertices,
+where every internal arity is at least two.  We first record the reduction
+used below.  If a node law is
+$\mu:\prod_{j=1}^a V_j\to V$ and the leaf slots are frozen at unit vectors
+$\ell_j\in\operatorname{Ran}P_j$, define the effective law on the internal
+slots $I$ by
+\[
+ \widetilde\mu((x_i)_{i\in I})
+ :=\mu(y_1,\ldots,y_a),\qquad
+ y_j=\begin{cases}x_j,&j\in I,\\\ell_j,&j\notin I.
+ \end{cases}
+\]
+Multilinearity and $\|\ell_j\|=1$ give
+$\|\widetilde\mu\|_{\rm op}\le\|\mu\|_{\rm op}$.  Because the frozen
+leaf slots are already in their projected ranges, the same substitution in
+the local closure map gives
+\[
+ \|(I-P)\widetilde\mu(P_i\cdot)_{i\in I}\|_{\rm op}
+ \le \|(I-P)\mu(P_1\cdot,\ldots,P_a\cdot)\|_{\rm op}.
+\]
+Thus freezing unit projected leaves preserves admissibility budgets.  The
+resulting effective map is linear if there is one internal child and bilinear
+if there are two.  Since three internal vertices permit only the
+internal-child skeletons
+\[
+  \text{chain}\qquad\text{or}\qquad\text{branching},
+\]
+M13--M15 give the universal upper bound $W_3(\eta)$ for every finite arity
+profile.
+
+Conversely, take the dimension-two rank-one witnesses from M14 or M15 and
+insert a unit $e_0$ gate in every additional leaf slot.  The resulting
+multilinear law has the same operator norm and closure residual as the
+effective linear or bilinear law.  Therefore the witness embeds into every
+allowed arity profile and attains the same value.
+
+\textbf{Theorem.}  For every finite ordered rooted tree $T$ with exactly three
+internal vertices and all internal arities at least two,
+\[
+  \boxed{C_{T,\mathrm{ind}}^P(\eta)=W_3(\eta)}
+  \qquad (0<\eta\le1),
+\]
+where
+\[
+ W_3(\eta)=
+ \begin{cases}
+ \sqrt{4-3\eta^2},&0<\eta\le\sqrt{2/3},\\[1mm]
+ 2/(\sqrt3\,\eta),&\sqrt{2/3}\le\eta\le1.
+ \end{cases}
+\]
+
+The theorem is a fixed-$k=3$ independent-law result.  It does not close
+same-law/gated restrictions, arbitrary fixed-$\eta$ constants for $k\ge4$,
+or uniform growing-tree questions.
+\hfill$\square$

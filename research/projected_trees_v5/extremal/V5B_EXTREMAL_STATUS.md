@@ -131,3 +131,21 @@ pytest -q tests/research_v5_test_v5b_extremal.py
 The generated JSON contains the source commit, transition regimes, analytic
 values, repeated-law bands, and a finite grid sanity check. The grid check is
 diagnostic only and does not replace the calculus argument.
+
+## Current theorem-closure correction — 2026-08-09
+
+The lower-witness and M9 sections above are preserved as provenance. The
+independent-law binary `k=3` fixed-eta problem is now closed by the subsequent
+M14/M15 proofs: both chain and branching constants equal `W_3(eta)`. The
+M20 extends this exact closure to every finite `k=3` arity profile by reducing
+extra leaf slots to effective linear/bilinear laws and embedding the M14/M15
+witnesses. The remaining fixed-eta frontier is same-law/gated subclasses and
+independent-law trees with `k>=4`; the historical lower curves remain valid
+constructions but are no longer the best available global description for the
+closed `k=3` classes.
+
+The broader gated-planar boundary is now split explicitly. M17 closes the
+contractive repeated law `mu_A(x,y)=A*x*<e0,y>` with fixed gate and active
+planar contraction at normalized constant `1`, using the exact identity
+`P*A*(I-P)*A*e0` and an off-diagonal witness. Variable-gate, arbitrary-leaf,
+and non-planar shared-law variants remain open.

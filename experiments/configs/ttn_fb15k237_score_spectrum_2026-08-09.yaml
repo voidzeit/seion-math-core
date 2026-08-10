@@ -1,0 +1,27 @@
+experiment_id: TTN_FB15K237_SCORE_SPACE_SPECTRUM_2026-08-09
+status: observed
+dataset: FB15K-237
+checkpoint: runs/TTN_FB15K237_TTN_V2_D128_E10_2026-08-09/full_ttn.pt
+scope:
+  relations: original_237_only
+  fitting_split: train
+  score_matrix: implicit_Z_times_entity_embeddings_transpose
+  objective: relationwise_frobenius_score_residual
+spectral_oracle:
+  gram_form: H_rho = sqrt(E^T E) (Z_rho^T Z_rho) sqrt(E^T E)
+  eigenvalues: squared_nonzero_score_singular_values
+  allocation: weighted_spectral_water_filling
+  tolerances: [0.1, 0.01, 0.001, 0.0001]
+hardware:
+  device: cuda
+  max_vram_gb: 23
+  batch_size: 16384
+  full_score_matrix_materialized: false
+  stream_relation_grams: true
+outputs:
+  spectrum: runs/TTN_FB15K237_TTN_V2_D128_E10_2026-08-09/score_spectrum_relationwise.json
+  manifest: runs/TTN_FB15K237_TTN_V2_D128_E10_2026-08-09/score_spectrum_relationwise_manifest.json
+limitations:
+  - This is an exact Frobenius oracle for sampled train query rows and stored entity embeddings.
+  - It is not a ranking certificate and does not establish held-out or universal error control.
+  - The checkpoint is exploratory: post-training evaluation was paused after checkpoint creation.

@@ -1,0 +1,41 @@
+\section*{Projected Jacobiator cancellation for the gated-planar rotation law}
+\label{sec:structured-gated-rotation-jacobiator}
+
+\textbf{Theorem.} Let $P$ be a coordinate orthogonal projector with
+$1\le r<n$, let $e_0$ be a unit vector in its range, and let $e_1$ be a
+normal direction. Define
+\[
+  \mu(x,y)=T_\eta x\,\langle e_0,y\rangle,
+  \qquad T_\eta e_0=\sqrt{1-\eta^2}\,e_0+\eta e_1,
+\]
+with $T_\eta$ the declared planar rotation on
+$\operatorname{span}(e_0,e_1)$. For unit leaves $x=y=z=e_0$, form the
+declared three-term binary Jacobiator forest
+\[
+  \mu(x,\mu(y,z))+\mu(y,\mu(z,x))+\mu(z,\mu(x,y)).
+\]
+Its projected error is exactly zero for every $0\le\eta\le1$.
+
+\textbf{Proof.} Put $c=\sqrt{1-\eta^2}$. Each inner term has ambient value
+$T_\eta e_0=c e_0+\eta e_1$ and projected value $c e_0$. Therefore each
+outer ambient term is
+\[
+  \mu(e_0,c e_0+\eta e_1)=cT_\eta e_0,
+\]
+while its recursively projected value is
+\[
+  \mu(e_0,c e_0)=cT_\eta e_0.
+\]
+The root projection removes the same normal component from both values.
+Thus each of the three signed-forest terms has zero projected error, and
+their sum has zero projected error as well. The argument is independent of
+the ambient dimension and projector rank because all active coordinates lie
+in the displayed two-plane. The symbolic repository evaluator reproduces
+the identity in
+`research/math_closure/signed_identities/structured_gated_rotation_jacobiator.py`.
+\qed
+
+\textbf{Scope boundary.} This is an exact restricted-law result. It neither
+proves the generic Jacobi identity nor determines the generic signed-forest
+Jacobiator extremal constant; the latter remains open under arbitrary bounded
+multilinear laws.

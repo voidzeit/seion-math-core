@@ -577,10 +577,36 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                 )
 
             optimizer.zero_grad(set_to_none=True)
-            pos_fwd = model.score_positive(h_ids, r_ids, t_ids, adjacency, args.seed, training=True, context=forward_context)
-            neg_fwd = model.score_tail_candidates(h_ids, r_ids, tail_negs, adjacency, args.seed, training=True, gold_tail_ids=t_ids, context=forward_context)
-            pos_bwd = model.score_positive(t_ids, r_inv_ids, h_ids, adjacency, args.seed, training=True, context=backward_context)
-            neg_bwd = model.score_tail_candidates(t_ids, r_inv_ids, head_negs, adjacency, args.seed, training=True, gold_tail_ids=h_ids, context=backward_context)
+            # Positive and negative scores for one direction share the exact
+            # same path query, seed, and training-time edge exclusions. Reuse
+            # the frontier so the batched backend traverses each direction
+            # once per batch rather than once for positives and once again for
+            # negatives. The optional output is also accepted by the legacy
+            # backend and leaves all score/readout semantics unchanged.
+            fwd_path_output = (
+                model._run_path_reasoner(h_ids, r_ids, t_ids, adjacency, model.relation(r_ids), args.seed, True)
+                if args.enable_path and adjacency is not None else None
+            )
+            bwd_path_output = (
+                model._run_path_reasoner(t_ids, r_inv_ids, h_ids, adjacency, model.relation(r_inv_ids), args.seed, True)
+                if args.enable_path and adjacency is not None else None
+            )
+            pos_fwd = model.score_positive(
+                h_ids, r_ids, t_ids, adjacency, args.seed, training=True,
+                context=forward_context, path_output=fwd_path_output,
+            )
+            neg_fwd = model.score_tail_candidates(
+                h_ids, r_ids, tail_negs, adjacency, args.seed, training=True,
+                gold_tail_ids=t_ids, context=forward_context, path_output=fwd_path_output,
+            )
+            pos_bwd = model.score_positive(
+                t_ids, r_inv_ids, h_ids, adjacency, args.seed, training=True,
+                context=backward_context, path_output=bwd_path_output,
+            )
+            neg_bwd = model.score_tail_candidates(
+                t_ids, r_inv_ids, head_negs, adjacency, args.seed, training=True,
+                gold_tail_ids=h_ids, context=backward_context, path_output=bwd_path_output,
+            )
 
             loss_fwd = negative_sampling_loss(pos_fwd, neg_fwd, args.adversarial_temperature)
             loss_bwd = negative_sampling_loss(pos_bwd, neg_bwd, args.adversarial_temperature)

@@ -106,3 +106,141 @@ theorems:
     sharpness_status: OPEN
     novelty_status: NOVELTY_NOT_ESTABLISHED
     approval_status: PENDING_HUMAN_REVIEW
+  - id: COR_V3_STRUCTURED_GATED_ROTATION_JACOBIATOR_ZERO
+    title: Exact zero projected Jacobiator for the declared gated-rotation law
+    statement: >-
+      For the declared three-term binary Jacobiator, the homogeneous
+      gated-planar rotation law with unit reduced leaves has exactly zero
+      projected error for every eta in [0,1], independent of finite ambient
+      dimension and nontrivial coordinate-projector rank.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - homogeneous gated-planar rotation law
+      - three-term binary Jacobiator convention
+      - unit leaves e0 in the reduced subspace
+      - 1 <= projector rank < ambient dimension
+    dependencies: [THM_V3_ROOT_ERROR_ORTHOGONALITY]
+    proof_location: research/math_closure/signed_identities/structured_gated_rotation_jacobiator.tex
+    implementation: research/math_closure/signed_identities/structured_gated_rotation_jacobiator.py
+    tests: [tests/math_closure/test_structured_gated_rotation_jacobiator.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_RESTRICTED_IDENTITY_NOT_GENERIC_EXTREMAL_CONSTANT
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: COR_V3_GATED_ROTATION_LEFT_COMB_GENERAL_K
+    title: Exact projected error formula for every finite gated-rotation left comb
+    statement: >-
+      For the homogeneous left-comb binary chain with k internal nodes,
+      declared gated-planar rotation law, unit reduced leaves, and a
+      nontrivial coordinate projector, E_proj equals
+      |T_k(sqrt(1-eta^2))-(sqrt(1-eta^2))^k| for every 0<=eta<=1,
+      independently of finite ambient dimension and projector rank.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - homogeneous left-comb binary chain with k>=1
+      - declared gated-planar rotation law
+      - unit leaves e0 in the reduced subspace
+      - 1 <= projector rank < ambient dimension
+    dependencies: [THM_V3_ROOT_ERROR_ORTHOGONALITY]
+    proof_location: research/math_closure/k3/gated_rotation_chain_general.tex
+    implementation: research/math_closure/k3/gated_rotation_chain_general.py
+    tests: [tests/math_closure/test_gated_rotation_chain_general.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_RESTRICTED_FAMILY_NOT_GLOBAL_EXTREMAL_CONSTANT
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: COR_V3_GATED_ROTATION_FULL_BINARY_GENERAL
+    title: Exact projected error formula for every finite ordered full-binary gated-rotation tree
+    statement: >-
+      For every finite ordered full-binary tree under the same homogeneous
+      gated-planar rotation law, unit reduced leaves, and a coordinate
+      projector containing e0, define d(leaf)=0, d((A,B))=1+d(A),
+      a(leaf)=1, and a((A,B))=a(A)a(B)cos(d(B)theta). Then, with
+      c=sqrt(1-eta^2), E_proj=|a(T)cos(d(T)theta)-c^k| in the M=L=1
+      normalization, independently of finite dimension and projector rank.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - every finite ordered full-binary topology
+      - homogeneous gated-planar rotation law
+      - unit leaves e0 in the reduced subspace
+      - 1 <= projector rank < ambient dimension
+    dependencies: [THM_V3_ROOT_ERROR_ORTHOGONALITY]
+    proof_location: research/math_closure/k3/gated_rotation_full_binary.tex
+    implementation: research/math_closure/k3/gated_rotation_full_binary.py
+    tests: [tests/math_closure/test_gated_rotation_full_binary.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_RESTRICTED_FAMILY_NOT_GLOBAL_EXTREMAL_CONSTANT
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: COR_V3_GATED_ROTATION_GENERAL_ARITY
+    title: Exact projected error formula for finite ordered arity-compatible gated-rotation trees
+    statement: >-
+      For every finite ordered rooted tree with internal arities at least two,
+      use the arity-compatible gated law mu_m(x1,...,xm)=R_theta*x1 times
+      the product of secondary e0 gates. With d(leaf)=0,
+      d((T1,...,Tm))=1+d(T1), a(leaf)=1, and
+      a((T1,...,Tm))=a(T1)*product_{j>=2}a(Tj)cos(d(Tj)theta), the
+      projected error is |a(T)cos(d(T)theta)-cos(theta)^k| in the M=L=1
+      normalization, independently of finite dimension and projector rank.
+    scope:
+      - finite-dimensional real Hilbert spaces
+      - finite ordered rooted trees with arities at least two
+      - arity-compatible homogeneous gated-planar rotation laws
+      - unit leaves e0 in the reduced subspace
+      - 1 <= projector rank < ambient dimension
+    dependencies: [THM_V3_ROOT_ERROR_ORTHOGONALITY]
+    proof_location: research/math_closure/k3/gated_rotation_general_arity.tex
+    implementation: research/math_closure/k3/gated_rotation_general_arity.py
+    tests: [tests/math_closure/test_gated_rotation_general_arity.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: EXACT_RESTRICTED_FAMILY_NOT_GLOBAL_EXTREMAL_CONSTANT
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V3_K3_M11_CONDITIONAL_QUANTITATIVE_GAP
+    title: Conditional quantitative k=3 gap under first-propagator saturation
+    statement: >-
+      For the ordered k=3 chain, if the first propagated-defect direction
+      attains the operator norm at the next node, then the projected error is
+      at most M^3 L_T G(eta), where G(eta)=eta*sqrt(4-3 eta^2) for
+      eta<=sqrt(2/3) and G(eta)=2/sqrt(3) thereafter. Relative to rho*M^2*L_T,
+      this is G(eta)/eta. The result is conditional and does not bound
+      configurations without the saturation hypothesis.
+    scope:
+      - finite-dimensional real or complex Hilbert spaces
+      - ordered binary k=3 chain
+      - orthogonal projectors and independent node laws
+      - first propagated-defect norm saturation at the second node
+      - 0 < eta <= 1
+    dependencies:
+      - THM_V3_PROJECTED_ROOT_K_MINUS_ONE
+      - THM_V3_ROOT_ERROR_ORTHOGONALITY
+    proof_location: research/math_closure/k3/m11_conditional_quantitative_gap.tex
+    implementation: research/math_closure/k3/m11_conditional_quantitative_gap.py
+    tests: [tests/math_closure/test_m11_conditional_quantitative_gap.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: CONDITIONAL_QUANTITATIVE_GAP_NOT_GLOBAL
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW
+  - id: THM_V3_FIXED_TREE_SUPPORT_COMPRESSION
+    title: Finite-support compression and fixed-tree dimension/rank reduction
+    statement: >-
+      For every fixed finite typed projected tree, restricting each type to
+      the smallest projector-invariant span generated by its leaf vectors and
+      the ambient and recursively projected raw node outputs preserves all
+      evaluations and errors, while not increasing law norms or closure
+      residual norms. Its dimension is at most 2*(leaf_count+2*node_count)
+      per type, with at most two additional dummy coordinates if a proper
+      projector is required.
+    scope:
+      - fixed finite typed trees
+      - finite-dimensional real or complex Hilbert spaces
+      - orthogonal type-indexed projectors
+      - bounded multilinear laws and projected closure residual caps
+    dependencies: [THM_V3_ROOT_ERROR_ORTHOGONALITY]
+    proof_location: research/math_closure/dimension_rank/fixed_tree_support_compression.tex
+    implementation: research/math_closure/dimension_rank/fixed_tree_support_compression.py
+    tests: [tests/math_closure/test_fixed_tree_support_compression.py]
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    sharpness_status: FIXED_TREE_DIMENSION_RANK_REDUCTION
+    novelty_status: NOVELTY_NOT_ESTABLISHED
+    approval_status: PENDING_HUMAN_REVIEW

@@ -1,0 +1,69 @@
+\section{Finite DAG bounded-domain certificate}
+\label{sec:finite-dag-domain-certificate}
+
+Consider a finite acyclic multilinear graph.  For each internal vertex $v$,
+let $M_v$ be a declared operator-norm upper bound for its multilinear law and
+let $\rho_v(r)$ be a declared upper bound for the normal residual after the
+rank-$r$ intermediate projection.  Leaves are restricted to a declared domain
+$\|x_\ell\|\le L_\ell$.  The bounds need not be sharp; they are inputs to the
+certificate and may be empirical enclosures only if their validation is
+recorded separately.
+
+Write $U_v$ for the norm of the projected value enclosure and $D_v$ for the
+absolute error enclosure relative to the corresponding unprojected
+composition.  For a leaf, $U_\ell=L_\ell$ and $D_\ell=0$.  If the input slots of
+$v$ are $v_1,\ldots,v_k$, multilinearity and a telescoping expansion give
+\begin{align*}
+ U_v &\le M_v\prod_{i=1}^k U_{v_i},\\
+ D_v &\le \rho_v(r_v)\prod_{i=1}^k U_{v_i}
+       +M_v\sum_{i=1}^k
+        \left(\prod_{j\ne i}U_{v_j}\right)D_{v_i}.
+\end{align*}
+The local term is omitted at an unprojected root.  Crucially, the formula is
+indexed by input slots, not by distinct node identifiers: a repeated shared
+subexpression is therefore charged once per occurrence, while its stored
+value and error bounds are computed only once in topological order.
+
+The recurrence also yields an exact allocation objective for this enclosure
+model.  Let $G_{\mathrm{root}}=1$.  For every parent-to-child slot, propagate
+\begin{equation*}
+ G_{v_i}\mathrel{+}=G_v M_v\prod_{j\ne i}U_{v_j}.
+\end{equation*}
+Then the root-bound contribution of assigning rank $r$ to a projectable node
+$v$ is
+\begin{equation*}
+ c_v(r)=G_v\rho_v(r)\prod_i U_{v_i}.
+\end{equation*}
+Since the declared $M_v$ and $U_v$ are rank-independent, the certified root
+bound is $\sum_v c_v(r_v)$ (with the root term omitted when the root is not
+projected).  Thus an integer budget $\sum_v r_v\le B$ is solved exactly by a
+knapsack dynamic program over the finite rank tables.  This is a certificate
+and allocator for the declared finite DAG and bounded leaf domain, not an
+extremal theorem: sharpness of $M_v$ or $\rho_v(r)$, continuum validity of
+empirical estimates, and global optimality outside the supplied enclosure
+model remain separate questions.
+
+\subsection{Rank-aware refinement}
+
+The rank-independent value enclosure above is intentionally scalable but can
+discard useful information. A fixed rank assignment admits the following
+refinement. Let $A_v$ enclose the recursively projected value, let $U_v$
+enclose the exact value, and define $B_v=\max\{A_v,U_v\}$. If $L_v(r)$ is a
+declared bound for the projected operator $P_v\mu_v$ at rank $r$, then
+\begin{align*}
+ U_v &\le M_v\prod_i U_{v_i},\\
+ A_v &\le L_v(r_v)\prod_i A_{v_i},\\
+ D_v &\le \rho_v(r_v)\prod_i A_{v_i}
+       +L_v(r_v)\sum_i\left(\prod_{j\ne i}B_{v_j}\right)D_{v_i}.
+\end{align*}
+The root uses $L_{\mathrm{root}}=M_{\mathrm{root}}$ and has no local normal
+term when it is unprojected. The mixed factor $B$ follows by telescoping the
+multilinear law one slot at a time, using exact inputs on one side of each
+difference and projected inputs on the other. This proves a sound fixed-
+assignment certificate for shared DAGs, including repeated slots.
+
+Unlike the rank-independent recurrence, $A_v$ and $B_v$ depend on descendant
+ranks. The resulting allocation objective is generally coupled; therefore the
+repository's rank-aware optimizer is explicitly an exhaustive small-DAG oracle,
+while the earlier separable dynamic program remains the scalable
+rank-independent method.

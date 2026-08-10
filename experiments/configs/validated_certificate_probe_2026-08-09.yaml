@@ -1,0 +1,16 @@
+id: adaptive_tensor_network_validated_certificate_probe_2026_08_09
+status: exploratory_not_preregistered
+purpose: compare a finite-batch validated certificate allocator with empirical policies
+command: python applications/adaptive_tensor_network/experiments/run_validated_certificate_probe.py
+topologies: [chain_depth3, balanced_binary_4leaf]
+seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+fit_batch_size: 80
+eval_batch_size: 300
+methods: [pathwise_global, pathwise_majorant_optimal, validated_certificate_small_case]
+outputs:
+  raw: applications/adaptive_tensor_network/results/validated_certificate_probe_2026-08-09.json
+  report: applications/adaptive_tensor_network/results/VALIDATED_CERTIFICATE_PROBE_2026-08-09.md
+limitations:
+  - frobenius_operator_enclosure_is_conservative
+  - certificate_allocator_is_small_case_combinatorial
+  - no_true_error_superiority_claim

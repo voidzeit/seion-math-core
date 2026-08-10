@@ -10,22 +10,42 @@
     "k=3 independent-law chain and branching lower-bound witnesses",
     "V5-B exact scalar optimizer for the k=3 witness family",
     "V5-B asymptotic sharpness as eta tends to zero",
-    "k=2 exact saturation for the explicitly declared same-map class"
+    "k=2 exact saturation for the explicitly declared same-map class",
+    "k=2 exact normalized constant for the declared general finite-dimensional binary class",
+    "corrected growing-tree convergence theorem under weighted summability"
   ],
   "closed_in_theorem_closure_campaign_2026_08_08": [
     "k=2 necessary-and-sufficient saturation characterization (EQ1-EQ3), arbitrary dimension/rank, independent or repeated laws",
     "stale K2-EQ-05 repeated-law audit status corrected (was OPEN_IF_REPEATED, already resolved by the V5-B witness)",
+    "declared gated-planar rotation k=2 exact value E_proj=eta^2 and saturation iff eta=1 recorded as a restricted-class theorem",
     "unconditional (non-scalar-reduction-dependent) tightened k=3 upper envelope U_3(eta) for chain and branching topologies, superseding the CONDITIONAL_ON_UNPROVED_SCALAR_REDUCTION bookkeeping entry",
-    "M10 (revised after review): proof that no single admissible configuration attains U_3(eta) exactly (PROVED_NON_ATTAINMENT) -- NOT a proof that C_3,ind^P(eta) < U_3(eta) strictly; that stronger claim was found to be an overclaim in the first version and is now tracked as a separate open item"
+    "M10 (revised after review): chain-only proof that no single admissible configuration attains U_3(eta) exactly (PROVED_NON_ATTAINMENT); the historical strict-gap overclaim is superseded for the declared independent-law chain and branching classes by the exact M14/M15 values"
+  ],
+  "closed_after_theorem_closure_campaign": [
+    "finite-support compression for every fixed finite typed tree, with explicit dimension/rank bound",
+    "global strict supremum gap C_3,ind^P(eta)<U_3(eta) for 0<eta<=1 in binary chain and branching classes, by compression plus compactness",
+    "exact homogeneous gated-rotation formulas for all finite ordered topologies and arity-compatible trees",
+    "M11 conditional quantitative angle-magnitude gap under first-propagator saturation",
+    "finite source-resolved error calculus consolidating P6A, P6B, and P7B",
+    "strict k=3 supremum gap at eta=1 by endpoint non-attainment and compactness",
+    "unconditional chain-only k=3 quantitative envelope W_3 and explicit gap below M9",
+    "exact fixed-eta independent-law k=3 chain constant: C_chain=W_3",
+    "exact fixed-eta independent-law k=3 branching constant: C_branch=W_3",
+    "arbitrary-node-law binary k=3 class corollary: both chain and branching constants equal W_3",
+    "M17 exact normalized constant 1 for the explicitly defined contractive gated-planar repeated-law subclass",
+    "M18 asymptotic (k-1) sharpness for every fixed finite ordered full-binary topology",
+    "M19 asymptotic (k-1) sharpness for every fixed finite ordered tree with arities at least two",
+    "M20 exact fixed-eta independent-law constant W_3 for every finite k=3 arity profile",
+    "M21 exact tagged same-law fixed-eta constant W_3 for binary k=3 chain and branching",
+    "M22 exact rank-one/common-leaf repeated-rotation chain constant W_3 for eta>=sqrt(2/3)",
+    "M23 exact unary-operator reduction for the remaining rank-one/common-leaf same-law chain class"
   ],
   "open": [
-    "whether C_3,ind^P(eta) is strictly below U_3(eta) as a supremum, or only unattained pointwise (M10 proves the latter only; needs a compactness argument or an explicit quantitative gap -- see the tex proof's Route A / Route B)",
-    "exact tightened k=3 envelope if the strict-gap question resolves affirmatively (the joint magnitude/angle optimization is set up via pareto_frontier_two_direction_norm_budget, not solved)",
-    "gated-planar repeated-law k=2 sharpness",
-    "independent-law k=3 global sharpness (gap narrowed by U_3(eta); M10 proves U_3 not pointwise-attained; exact value/strict-gap status still unknown)",
-    "independent-law (k-1) sharpness for arbitrary finite trees",
-    "universal dimension/rank reduction",
-    "global k=3 topology sharpness",
+    "low-eta rank-one/common-leaf same-law chain, rank-one/common-leaf branching and gated k=3 sharpness, plus fixed-eta independent-law sharpness for k>=4 beyond M20-M22",
+    "variable-gate, arbitrary-leaf, and non-planar variants beyond the M17 contractive gated-planar repeated-law subclass",
+    "fixed-eta independent-law sharpness beyond the M20 finite k=3 closure and M19 finite-tree asymptotic closure",
+    "one dimension/rank bound uniform over unbounded tree size/arity, and extensions beyond the typed-projector convention",
+    "low-eta rank-one/common-leaf same-law and gated k=3 values beyond the M21/M22/M23 closures",
     "globally tight multilinear spectral norms",
     "theorem-level novelty",
     "formal proof assistant implementation (Lean/lake confirmed not installed on this machine)"
