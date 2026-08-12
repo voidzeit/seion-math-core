@@ -1,0 +1,497 @@
+<title>PMT Visual Atlas</title>
+<style>
+  :root{
+    --ink:#0E1416; --panel:#141C1F; --raised:#1B252A; --line:#2A363A;
+    --text:#DDE7E9; --muted:#7C9096; --dim:#4C5F65;
+    --crit:#E8484F; --crit-soft:rgba(232,72,79,.14);
+    --proved:#7FB069; --assumed:#D9A441; --open:#8E7CC3; --numeric:#4FA3B8;
+    --grid:rgba(124,144,150,.16); --ghost:rgba(124,144,150,.35);
+  }
+  @media (prefers-color-scheme:light){
+    :root{
+      --ink:#F4F6F5; --panel:#FFFFFF; --raised:#EDF1F0; --line:#D3DCDA;
+      --text:#14201F; --muted:#5C6E70; --dim:#93A3A4;
+      --crit:#C42B33; --crit-soft:rgba(196,43,51,.09);
+      --proved:#4E7A38; --assumed:#9A6E14; --open:#5E4C93; --numeric:#2A7186;
+      --grid:rgba(20,32,31,.12); --ghost:rgba(20,32,31,.28);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#0E1416;--panel:#141C1F;--raised:#1B252A;--line:#2A363A;--text:#DDE7E9;
+    --muted:#7C9096;--dim:#4C5F65;--crit:#E8484F;--crit-soft:rgba(232,72,79,.14);
+    --proved:#7FB069;--assumed:#D9A441;--open:#8E7CC3;--numeric:#4FA3B8;
+    --grid:rgba(124,144,150,.16);--ghost:rgba(124,144,150,.35);
+  }
+  :root[data-theme="light"]{
+    --ink:#F4F6F5;--panel:#FFFFFF;--raised:#EDF1F0;--line:#D3DCDA;--text:#14201F;
+    --muted:#5C6E70;--dim:#93A3A4;--crit:#C42B33;--crit-soft:rgba(196,43,51,.09);
+    --proved:#4E7A38;--assumed:#9A6E14;--open:#5E4C93;--numeric:#2A7186;
+    --grid:rgba(20,32,31,.12);--ghost:rgba(20,32,31,.28);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--text);
+    font:14px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .mono{font-family:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+    font-variant-numeric:tabular-nums}
+  header{padding:20px 24px 15px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--dim);margin:0 0 6px}
+  h1{margin:0;font-size:17px;font-weight:600;letter-spacing:-.01em}
+  .sub{margin:6px 0 0;color:var(--muted);font-size:12.5px;max-width:78ch}
+  .wrap{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:calc(100vh - 92px)}
+  @media (max-width:860px){.wrap{grid-template-columns:1fr}}
+  nav{border-right:1px solid var(--line);background:var(--panel);padding:14px 0;overflow-y:auto}
+  @media (max-width:860px){nav{border-right:0;border-bottom:1px solid var(--line);
+    display:flex;overflow-x:auto;padding:10px}}
+  .nb{display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;
+    padding:8px 16px;color:var(--muted);font:inherit;font-size:12.5px;
+    border-left:2px solid transparent;white-space:nowrap}
+  .nb:hover{color:var(--text);background:var(--raised)}
+  .nb[aria-current="true"]{color:var(--text);border-left-color:var(--crit);background:var(--raised)}
+  .nb .n{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--dim);margin-right:7px}
+  .nb[aria-current="true"] .n{color:var(--crit)}
+  main{padding:22px 26px 40px;overflow-x:hidden}
+  .badge{display:inline-block;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+    padding:3px 8px;border-radius:2px;border:1px solid;font-weight:600}
+  .b-proved{color:var(--proved);border-color:var(--proved)}
+  .b-assumed{color:var(--assumed);border-color:var(--assumed)}
+  .b-open{color:var(--open);border-color:var(--open)}
+  .b-numeric{color:var(--numeric);border-color:var(--numeric)}
+  h2{margin:11px 0 4px;font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+  .claim{margin:0 0 16px;color:var(--muted);font-size:12.5px;max-width:76ch;line-height:1.6}
+  .claim b{color:var(--text);font-weight:600}
+  .stagebox{border:1px solid var(--line);border-radius:3px;background:var(--panel);overflow:hidden}
+  canvas{display:block;width:100%;background:var(--panel)}
+  .ctrls{display:flex;flex-wrap:wrap;gap:18px;padding:13px 15px;border-top:1px solid var(--line);
+    background:var(--raised);align-items:flex-end}
+  .ctl{flex:1;min-width:165px}
+  .ctl label{display:flex;justify-content:space-between;align-items:baseline;font-size:9.5px;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+  .ctl label b{font-size:14px;letter-spacing:0;text-transform:none;color:var(--text)}
+  input[type=range]{width:100%;accent-color:var(--crit);height:20px}
+  input[type=range]:focus-visible{outline:2px solid var(--crit);outline-offset:3px}
+  .out{display:flex;gap:22px;flex-wrap:wrap;padding:13px 15px;border-top:1px solid var(--line)}
+  .o .k{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+  .o .v{font-size:16px;margin-top:2px}
+  .verdict{margin-top:14px;padding:12px 14px;border:1px solid var(--line);border-radius:3px;
+    background:var(--raised);font-size:12.5px;color:var(--muted);line-height:1.6;max-width:78ch}
+  .verdict.hot{border-color:var(--crit);background:var(--crit-soft)}
+  .verdict b{color:var(--text)}
+  .nodata{padding:34px 20px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7}
+  .nodata .big{font-size:15px;color:var(--text);font-weight:600;margin-bottom:8px}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--text)}
+  a{color:var(--crit)}
+</style>
+
+<header>
+  <p class="eyebrow">Projected multilinear trees</p>
+  <h1>Visual Atlas</h1>
+  <p class="sub">One view, one mathematical claim. Every view carries the status of the
+    claim it draws, so a picture cannot quietly promote a conjecture into a result.</p>
+</header>
+
+<div class="wrap">
+  <nav id="nav"></nav>
+  <main>
+    <div id="badge"></div>
+    <h2 id="title"></h2>
+    <p class="claim" id="claim"></p>
+    <div class="stagebox">
+      <canvas id="cv"></canvas>
+      <div class="ctrls" id="ctrls"></div>
+      <div class="out" id="out"></div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+  </main>
+</div>
+
+<script>
+(function(){
+"use strict";
+const SQ23=Math.sqrt(2/3), EMAX=2/Math.sqrt(3), R2=Math.SQRT2;
+const cv=document.getElementById("cv"), g=cv.getContext("2d");
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let W=0,H=0,S={};
+
+function fit(hpx){
+  const r=cv.getBoundingClientRect(), d=window.devicePixelRatio||1;
+  cv.style.height=hpx+"px";
+  cv.width=Math.max(1,r.width*d); cv.height=hpx*d;
+  g.setTransform(d,0,0,d,0,0); W=r.width; H=hpx;
+  g.clearRect(0,0,W,H);
+}
+const arrow=(x0,y0,x1,y1,col,lw=2)=>{
+  g.beginPath(); g.moveTo(x0,y0); g.lineTo(x1,y1);
+  g.strokeStyle=col; g.lineWidth=lw; g.stroke();
+  const a=Math.atan2(y1-y0,x1-x0);
+  g.beginPath(); g.moveTo(x1,y1);
+  g.lineTo(x1-9*Math.cos(a-0.38), y1-9*Math.sin(a-0.38));
+  g.lineTo(x1-9*Math.cos(a+0.38), y1-9*Math.sin(a+0.38));
+  g.closePath(); g.fillStyle=col; g.fill();
+};
+const lab=(t,x,y,col,size=11,al="left")=>{
+  g.font=size+"px ui-monospace,Menlo,monospace"; g.fillStyle=col; g.textAlign=al;
+  g.fillText(t,x,y); g.textAlign="left";
+};
+
+/* ---------------------------------------------------------------- views */
+const VIEWS=[
+{
+ id:"01", nav:"Root cancellation", status:"proved",
+ title:"The root's own leakage never reaches the observable",
+ claim:"For a single internal vertex, <b>C₁ᴾ = 0</b>. The root does produce a normal "+
+   "component, but the projected observable cannot see it: R<sub>r</sub> = P<sub>r</sub>F<sub>r</sub> "+
+   "by definition, so P<sub>r</sub>F<sub>r</sub> − R<sub>r</sub> vanishes identically. Drag F.",
+ ctrls:[{k:"ang",lab:"direction of F",min:-1.35,max:1.35,step:.005,val:.62,fmt:v=>v.toFixed(3)},
+        {k:"mag",lab:"‖F‖",min:.25,max:1,step:.005,val:.85,fmt:v=>v.toFixed(3)}],
+ draw(s){
+   fit(300); const cx=W/2, cy=H*0.62, R=Math.min(W*0.32,140);
+   g.beginPath(); g.moveTo(cx-R*1.5,cy); g.lineTo(cx+R*1.5,cy);
+   g.strokeStyle=css("--line"); g.lineWidth=1.5; g.stroke();
+   lab("Ran(P)", cx+R*1.5-4, cy-9, css("--dim"),10,"right");
+   const fx=cx+Math.sin(s.ang)*R*s.mag*1.5, fy=cy-Math.cos(s.ang)*R*s.mag*1.5;
+   g.setLineDash([3,3]);
+   g.beginPath(); g.moveTo(fx,fy); g.lineTo(fx,cy); g.strokeStyle=css("--ghost");
+   g.lineWidth=1; g.stroke(); g.setLineDash([]);
+   arrow(cx,cy,fx,fy,css("--text"),2.2); lab("F",fx+7,fy-4,css("--text"),12);
+   arrow(cx,cy,fx,cy,css("--numeric"),3.4);
+   lab("PF = R",(cx+fx)/2, cy+19, css("--numeric"),11,"center");
+   arrow(fx,cy,fx,fy,css("--assumed"),2);
+   lab("(I−P)F",fx+9,(fy+cy)/2,css("--assumed"),10.5);
+   g.beginPath(); g.arc(fx,cy,6.5,0,7); g.strokeStyle=css("--crit"); g.lineWidth=2; g.stroke();
+   lab("E = ‖PF − R‖ = 0", cx, H-16, css("--crit"),12,"center");
+   const dropped=Math.abs(fy-cy)/(R*1.5);
+   return {"normal component discarded":dropped.toFixed(4),
+           "projected error E₁ᴾ":"0.000000", "constant C₁ᴾ":"0"};
+ },
+ verdict:s=>["<b>P(I−P) = 0</b> is the whole mechanism. Move F as far off the range as you "+
+   "like — the discarded component grows, the projected error stays exactly zero. This is "+
+   "also why the universal bound is k−1 and not k: the root vertex is the one whose local "+
+   "defect is annihilated.",false]
+},
+{
+ id:"02", nav:"k=2 equality gates", status:"proved",
+ title:"Three gates, and all three must be open",
+ claim:"<b>C₂ᴾ(η) = 1</b>, and equality is attained <b>iff</b> EQ1, EQ2 and EQ3 hold "+
+   "simultaneously. Each slider is the saturation of one gate; the constant is their product, "+
+   "so slackness anywhere costs the bound.",
+ ctrls:[{k:"eq2",lab:"EQ2 · closure saturates ρ",min:0,max:1,step:.005,val:1,fmt:v=>(100*v).toFixed(0)+"%"},
+        {k:"eq1",lab:"EQ1 · outer law saturates M",min:0,max:1,step:.005,val:1,fmt:v=>(100*v).toFixed(0)+"%"},
+        {k:"eq3",lab:"EQ3 · output inside Ran(P)",min:0,max:1,step:.005,val:1,fmt:v=>(100*v).toFixed(0)+"%"}],
+ draw(s){
+   fit(300);
+   const gates=[["EQ2","‖D‖ = ρ‖a‖‖b‖",s.eq2],["EQ1","‖μ₂(D,d)‖ = M‖D‖‖d‖",s.eq1],
+                ["EQ3","μ₂(D,d) ∈ Ran(P₂)",s.eq3]];
+   const bw=Math.min(W*0.26,190), gap=(W-3*bw)/4, top=44, bh=88;
+   let flow=1;
+   gates.forEach((gt,i)=>{
+     const x=gap+i*(bw+gap), open=gt[2];
+     flow*=open;
+     g.beginPath(); g.roundRect(x,top,bw,bh,3);
+     g.fillStyle=css("--raised"); g.fill();
+     g.strokeStyle= open>0.995?css("--proved"):css("--line"); g.lineWidth=open>0.995?2:1; g.stroke();
+     lab(gt[0], x+12, top+22, open>0.995?css("--proved"):css("--muted"),12);
+     g.font="10px ui-sans-serif,system-ui"; g.fillStyle=css("--muted");
+     g.fillText(gt[1], x+12, top+40);
+     g.beginPath(); g.roundRect(x+12,top+56,bw-24,7,4);
+     g.fillStyle=css("--line"); g.fill();
+     g.beginPath(); g.roundRect(x+12,top+56,(bw-24)*open,7,4);
+     g.fillStyle= open>0.995?css("--proved"):css("--assumed"); g.fill();
+     if(i<2) arrow(x+bw+4, top+bh/2, x+bw+gap-4, top+bh/2, css("--dim"),1.6);
+   });
+   const y=top+bh+52, full=W-2*gap;
+   g.beginPath(); g.roundRect(gap,y,full,20,3); g.fillStyle=css("--line"); g.fill();
+   g.beginPath(); g.roundRect(gap,y,full*flow,20,3);
+   g.fillStyle= flow>0.995?css("--crit"):css("--numeric"); g.fill();
+   lab("C₂ᴾ = "+flow.toFixed(4), gap+full/2, y+45,
+       flow>0.995?css("--crit"):css("--muted"),15,"center");
+   lab("0", gap, y+34, css("--dim"),10);
+   lab("1", gap+full, y+34, css("--dim"),10,"right");
+   return {"C₂ᴾ attained":flow.toFixed(6),"gates fully open":gates.filter(x=>x[2]>0.995).length+" / 3"};
+ },
+ verdict:s=>{
+   const f=s.eq1*s.eq2*s.eq3;
+   return [f>0.995
+     ? "<b>All three gates open — the bound is attained.</b> Both known witnesses (independent-law "+
+       "and repeated-law) are instances of exactly this configuration, which is why weight sharing "+
+       "by itself is not an obstruction: one bilinear map can have distinct norm-attaining input "+
+       "pairs for its structurally different terms."
+     : "At least one gate is slack, so the configuration sits strictly below ρM‖a‖‖b‖‖d‖. The "+
+       "characterisation is what makes this diagnosable: the shortfall is attributable to a named "+
+       "condition rather than a diffuse aggregate.", f>0.995];
+ }
+},
+{
+ id:"04", nav:"SOS geometry", status:"proved",
+ title:"A non-negative surface that touches zero at exactly one point",
+ claim:"The identity <b>4(1+ξ²)(1+ζ²) − 3[(ξ+ζ)² + ξ²ζ²] = (ξζ−2)² + (ξ−ζ)²</b> does three "+
+   "jobs at once: it gives f ≤ 4/3, it localises equality, and it produces η_c. Equality needs "+
+   "both squares to vanish — the two curves below meet at one point only.",
+ ctrls:[{k:"zoom",lab:"view extent",min:2,max:5,step:.02,val:3.2,fmt:v=>v.toFixed(2)}],
+ draw(s){
+   fit(330); const M=s.zoom, pad=42, pw=Math.min(W-2*pad,H-2*pad+40), ox=(W-pw)/2, oy=26;
+   const X=v=>ox+(v/M)*pw, Y=v=>oy+pw-(v/M)*pw;
+   const Sf=(x,z)=>Math.pow(x*z-2,2)+Math.pow(x-z,2);
+   const N=110, cw=pw/N;
+   for(let i=0;i<N;i++)for(let j=0;j<N;j++){
+     const x=(i+.5)/N*M, z=(j+.5)/N*M, v=Sf(x,z);
+     const t=Math.min(1,Math.pow(v/9,0.36));
+     const c1=[14,59,69], c2=[216,192,138];
+     g.fillStyle=`rgb(${Math.round(c1[0]+(c2[0]-c1[0])*t)},${Math.round(c1[1]+(c2[1]-c1[1])*t)},${Math.round(c1[2]+(c2[2]-c1[2])*t)})`;
+     g.fillRect(ox+i*cw, oy+pw-(j+1)*cw, cw+.6, cw+.6);
+   }
+   g.beginPath(); g.moveTo(X(0),Y(0)); g.lineTo(X(M),Y(M));
+   g.strokeStyle=css("--text"); g.lineWidth=1.6; g.globalAlpha=.75; g.stroke(); g.globalAlpha=1;
+   lab("ξ = ζ", X(M)-8, Y(M)+16, css("--text"),10.5,"right");
+   g.beginPath();
+   for(let i=0;i<=260;i++){ const x=0.62+(M-0.62)*i/260, z=2/x;
+     if(z<=M){ const p=[X(x),Y(z)]; i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]); } }
+   g.strokeStyle=css("--text"); g.lineWidth=1.6; g.globalAlpha=.75; g.stroke(); g.globalAlpha=1;
+   lab("ξζ = 2", X(M*0.72), Y(2/(M*0.72))-9, css("--text"),10.5);
+   g.beginPath(); g.arc(X(R2),Y(R2),7,0,7); g.strokeStyle=css("--crit"); g.lineWidth=2.4; g.stroke();
+   g.beginPath(); g.arc(X(R2),Y(R2),2.6,0,7); g.fillStyle=css("--crit"); g.fill();
+   lab("(√2, √2)", X(R2)+13, Y(R2)-9, css("--crit"),11);
+   lab("ξ", X(M)-4, oy+pw+20, css("--dim"),10,"right");
+   lab("ζ", ox-8, oy+8, css("--dim"),10,"right");
+   lab("S(ξ,ζ) = (ξζ−2)² + (ξ−ζ)²   ·   dark = 0", ox, oy+pw+34, css("--muted"),10.5);
+   return {"S at (√2,√2)":Sf(R2,R2).toFixed(12),"min elsewhere":"> 0",
+           "gives η_c":"sin(arctan √2) = √(2/3)"};
+ },
+ verdict:()=>["The two bright curves are the two conditions. <b>They cross once</b>, and that "+
+   "crossing is the extremizer: ξ = ζ = √2, i.e. q = s = √(2/3). The critical budget is not "+
+   "chosen — it is where these two curves meet.",false]
+},
+{
+ id:"06", nav:"Universal k−1", status:"assumed",
+ title:"Counting the defects that survive",
+ claim:"<b>E<sub>T</sub>ᴾ ≤ (k−1)ρM<sup>k−1</sup>L<sub>T</sub></b>. Every internal vertex "+
+   "injects one local defect. The root's is annihilated by P<sub>r</sub>(I−P<sub>r</sub>) = 0, "+
+   "so k defects enter and k−1 survive — independently of the shape.",
+ ctrls:[{k:"shape",lab:"topology",min:0,max:2,step:1,val:0,fmt:v=>["chain","branching","star"][v]},
+        {k:"depth",lab:"internal vertices k",min:2,max:5,step:1,val:4,fmt:v=>v.toFixed(0)}],
+ draw(s){
+   fit(320); const k=Math.round(s.depth), shape=Math.round(s.shape);
+   const nodes=[];
+   if(shape===0){ for(let i=0;i<k;i++) nodes.push({x:W/2, y:H-58-i*((H-120)/(k-1||1)), root:i===k-1}); }
+   else if(shape===1){ const lv=Math.ceil(Math.log2(k+1));
+     for(let i=0;i<k;i++){ const d=Math.floor(Math.log2(i+1)), idx=i-(Math.pow(2,d)-1);
+       nodes.push({x:W/2+(idx-(Math.pow(2,d)-1)/2)*(W*0.17), y:66+d*((H-140)/Math.max(1,lv-1)), root:i===0}); } }
+   else { nodes.push({x:W/2,y:70,root:true});
+     for(let i=1;i<k;i++) nodes.push({x:W/2+(i-(k)/2)*(W*0.15), y:H-84, root:false}); }
+   nodes.forEach((n,i)=>{ if(shape===0&&i<k-1) arrow(n.x,n.y-13,nodes[i+1].x,nodes[i+1].y+13,css("--line"),1.4);
+     if(shape===1&&i>0){ const p=nodes[Math.floor((i-1)/2)];
+       arrow(n.x,n.y-13,p.x,p.y+13,css("--line"),1.4); }
+     if(shape===2&&i>0) arrow(n.x,n.y-13,nodes[0].x,nodes[0].y+13,css("--line"),1.4); });
+   nodes.forEach(n=>{
+     g.beginPath(); g.arc(n.x,n.y,13,0,7);
+     g.fillStyle=css("--raised"); g.fill();
+     g.strokeStyle=n.root?css("--crit"):css("--numeric"); g.lineWidth=2; g.stroke();
+     if(n.root){
+       g.beginPath(); g.moveTo(n.x-8,n.y-8); g.lineTo(n.x+8,n.y+8);
+       g.moveTo(n.x+8,n.y-8); g.lineTo(n.x-8,n.y+8);
+       g.strokeStyle=css("--crit"); g.lineWidth=2.2; g.stroke();
+       lab("P_r(I−P_r) = 0", n.x+22, n.y+4, css("--crit"),10.5);
+     } else lab("δ", n.x-3.5, n.y+4, css("--numeric"),11);
+   });
+   lab(k+" defects injected   →   "+(k-1)+" survive", W/2, H-18, css("--text"),13,"center");
+   return {"internal vertices k":k, "surviving defects":k-1, "bound C_Tᴾ ≤":(k-1).toFixed(0)};
+ },
+ verdict:()=>["Switch the topology: the count never changes. <b>k−1 is structural</b>, not a "+
+   "property of a particular shape — which is also why it says nothing about how the surviving "+
+   "defects interact. That interaction is what k=3 resolves and k≥4 does not.",false]
+},
+{
+ id:"07", nav:"Small-η microscope", status:"assumed",
+ title:"How fast the naive bound becomes wrong",
+ claim:"The universal constant is asymptotically correct: <b>C<sub>T</sub>ᴾ → k−1</b> as η↓0. "+
+   "The microscope shows the deficit D₃(η) = 2 − W₃(η) and its normalisation D₃/η², which "+
+   "converges to <b>3/4</b> — the first order at which geometry beats counting.",
+ ctrls:[{k:"win",lab:"η window",min:.02,max:.9,step:.005,val:.35,fmt:v=>"[0, "+v.toFixed(3)+"]"}],
+ draw(s){
+   fit(320); const E=s.win, L=52,R=16,T=18,B=34, pw=W-L-R, ph=H-T-B;
+   const W3=e=> e<=SQ23?Math.sqrt(4-3*e*e):EMAX/e, D=e=>2-W3(e);
+   const ymax=Math.max(D(E)*1.25,1e-6);
+   const X=e=>L+(e/E)*pw, Y=v=>T+ph-(v/ymax)*ph, Y2=v=>T+ph-(v/1.0)*ph;
+   g.strokeStyle=css("--grid"); g.lineWidth=1;
+   for(let i=0;i<=4;i++){ const y=T+ph*i/4; g.beginPath(); g.moveTo(L,y); g.lineTo(L+pw,y); g.stroke(); }
+   g.beginPath();
+   for(let i=0;i<=300;i++){ const e=E*i/300, p=[X(e),Y(D(e))]; i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]); }
+   g.strokeStyle=css("--numeric"); g.lineWidth=2.2; g.stroke();
+   lab("D₃(η) = 2 − W₃(η)", L+8, T+15, css("--numeric"),11);
+   g.beginPath();
+   for(let i=1;i<=300;i++){ const e=E*i/300, r=D(e)/(e*e), p=[X(e),Y2(r)];
+     i===1?g.moveTo(p[0],p[1]):g.lineTo(p[0],p[1]); }
+   g.strokeStyle=css("--crit"); g.lineWidth=2.2; g.stroke();
+   g.setLineDash([4,4]); g.beginPath(); g.moveTo(L,Y2(0.75)); g.lineTo(L+pw,Y2(0.75));
+   g.strokeStyle=css("--crit"); g.globalAlpha=.55; g.lineWidth=1.2; g.stroke();
+   g.setLineDash([]); g.globalAlpha=1;
+   lab("3/4", L+pw-4, Y2(0.75)-7, css("--crit"),11,"right");
+   lab("D₃(η)/η²  →  3/4", L+8, T+32, css("--crit"),11);
+   lab("η", L+pw/2, H-11, css("--dim"),10,"center");
+   const e0=Math.max(1e-4,E*0.02);
+   return {"D₃ at window edge":D(E).toExponential(3),
+           "D₃/η² at η→0":(D(e0)/(e0*e0)).toFixed(6), "predicted":"0.750000"};
+ },
+ verdict:()=>["Shrink the window and the red curve flattens onto 3/4. That coefficient is the "+
+   "whole content of the k≥4 programme: <b>does a_T exist for every tree, and does it depend on "+
+   "the topology?</b> For k=3 it is 3/4 for both chain and branching. Nothing is known for k≥4.",false]
+},
+{
+ id:"08", nav:"k=4 topology lab", status:"open",
+ title:"Where topology would first become visible",
+ claim:"The open question: is <b>C<sub>T</sub>ᴾ(η) = 3 − a<sub>T</sub>η² + o(η²)</b>, and is "+
+   "a<sub>T</sub> the same for all four skeletons? This view is deliberately empty.",
+ ctrls:[], noCanvasFit:true,
+ draw(){
+   fit(250);
+   const names=["T₁ chain","T₂ branch below","T₃ chain + sibling","T₄ three-way star"];
+   const bw=Math.min((W-70)/4,150);
+   names.forEach((n,i)=>{
+     const x=(W-(bw*4+30))/2+i*(bw+10);
+     g.beginPath(); g.roundRect(x,34,bw,84,3);
+     g.strokeStyle=css("--line"); g.setLineDash([4,3]); g.lineWidth=1.2; g.stroke(); g.setLineDash([]);
+     lab(n, x+bw/2, 62, css("--muted"),10.5,"center");
+     lab("a_T = ?", x+bw/2, 88, css("--open"),13,"center");
+   });
+   lab("no data — the campaign has not been run", W/2, 158, css("--muted"),12.5,"center");
+   lab("harness calibrated; four skeletons implemented; negative controls exact",
+       W/2, 180, css("--dim"),10.5,"center");
+   return {"skeletons implemented":"4","calibration vs W₃":"99.4–99.9%",
+           "a_T measured":"none","fork status":"NOT DETERMINED"};
+ },
+ verdict:()=>["Drawing four curves here would fabricate exactly the result the campaign is "+
+   "supposed to decide. <b>The harness exists and is calibrated</b> — it recovers W₃ to 9×10⁻⁶ "+
+   "at η=0.2 and its negative controls are exact — but no k=4 number has been computed, so this "+
+   "view stays empty until one is.",false]
+},
+{
+ id:"10", nav:"Dimension obstruction", status:"assumed",
+ title:"Perfect closure, unbounded internal span",
+ claim:"A certified obstruction: <b>ρ<sup>proj</sup> = 0 does not imply uniform nodewise "+
+   "compressibility</b>. Every value lies inside the projector range, yet the span of the "+
+   "internal states grows with depth.",
+ ctrls:[{k:"n",lab:"chain depth n",min:1,max:9,step:1,val:5,fmt:v=>v.toFixed(0)}],
+ draw(s){
+   fit(300); const n=Math.round(s.n), step=Math.min((W-140)/(n+1),74);
+   const x0=(W-step*n)/2, y0=H-72;
+   for(let i=0;i<=n;i++){
+     const x=x0+i*step, y=y0-i*((H-150)/Math.max(n,1));
+     if(i>0) arrow(x0+(i-1)*step+13, y0-(i-1)*((H-150)/Math.max(n,1))-6, x-13, y+6, css("--line"),1.4);
+     g.beginPath(); g.arc(x,y,13,0,7);
+     g.fillStyle=css("--raised"); g.fill();
+     g.strokeStyle=css("--numeric"); g.lineWidth=1.8; g.stroke();
+     lab("e"+i, x-7, y+4, css("--numeric"),10);
+   }
+   lab("μ_j(x,y) = e_{j+1}⟨e_j,x⟩⟨e_0,y⟩", x0, 26, css("--muted"),11);
+   lab("all values inside Ran(P)  ·  evaluated closure defect ≡ 0", x0, 44, css("--proved"),10.5);
+   const bw=W-2*x0>60?W-2*x0:W-60;
+   g.beginPath(); g.roundRect(x0,H-38,bw,10,3); g.fillStyle=css("--line"); g.fill();
+   g.beginPath(); g.roundRect(x0,H-38,bw*Math.min(1,(n+1)/10),10,3);
+   g.fillStyle=css("--crit"); g.fill();
+   lab("orthonormal span dimension: "+(n+1), x0, H-46, css("--crit"),11);
+   return {"depth n":n, "closure defect":"0.000000", "span dimension":n+1,
+           "operator norms":"1.000000"};
+ },
+ verdict:()=>["The two readouts move independently: the defect stays pinned at zero while the "+
+   "span climbs with depth. <b>This kills a tempting generalisation</b> — but only the "+
+   "unrestricted nodewise one. Root-only reduction, changing intermediate laws, same-law "+
+   "classes and fixed typed trees all remain open.",false]
+},
+{
+ id:"12", nav:"Oblique projectors", status:"open",
+ title:"What breaks when the projector stops being orthogonal",
+ claim:"Every k=3 sharpening rests on <b>D ⊥ R</b>, hence ‖F‖² = ‖PF‖² + ‖(I−P)F‖². For a "+
+   "merely idempotent P (P² = P, P* ≠ P) that identity fails. Slide the obliquity and watch "+
+   "the Pythagorean defect open up.",
+ ctrls:[{k:"ob",lab:"obliquity angle",min:0,max:1.15,step:.005,val:0,fmt:v=>(v*180/Math.PI).toFixed(1)+"°"},
+        {k:"fa",lab:"direction of F",min:.2,max:1.35,step:.005,val:.8,fmt:v=>v.toFixed(2)}],
+ draw(s){
+   fit(310); const cx=W/2, cy=H*0.66, R=Math.min(W*0.3,132);
+   g.beginPath(); g.moveTo(cx-R*1.45,cy); g.lineTo(cx+R*1.45,cy);
+   g.strokeStyle=css("--line"); g.lineWidth=1.5; g.stroke();
+   lab("Ran(P)", cx+R*1.45-4, cy-9, css("--dim"),10,"right");
+   const kx=Math.sin(s.ob), ky=-Math.cos(s.ob);
+   g.setLineDash([4,4]);
+   g.beginPath(); g.moveTo(cx-kx*R*1.2, cy-ky*R*1.2); g.lineTo(cx+kx*R*1.2, cy+ky*R*1.2);
+   g.strokeStyle=s.ob>0.01?css("--assumed"):css("--ghost"); g.lineWidth=1.3; g.stroke();
+   g.setLineDash([]);
+   lab("ker(P)", cx+kx*R*1.2+8, cy+ky*R*1.2+4, s.ob>0.01?css("--assumed"):css("--dim"),10);
+   const fx=cx+Math.sin(s.fa)*R*1.25, fy=cy-Math.cos(s.fa)*R*1.25;
+   const vx=fx-cx, vy=fy-cy, t=(kx!==0||ky!==0)?(vy*kx - vx*ky)/( -ky ):0;
+   const px = kx===0 ? vx : vx - (vy/ky)*kx;
+   const Rx=cx+px, Ry=cy;
+   arrow(cx,cy,fx,fy,css("--text"),2.2); lab("F",fx+7,fy-4,css("--text"),12);
+   arrow(cx,cy,Rx,Ry,css("--numeric"),3.2); lab("R = PF",(cx+Rx)/2,cy+19,css("--numeric"),11,"center");
+   arrow(Rx,Ry,fx,fy,css("--assumed"),2); lab("F − R",(Rx+fx)/2+9,(fy+cy)/2,css("--assumed"),10.5);
+   const nF=Math.hypot(vx,vy)/R, nR=Math.abs(px)/R, nD=Math.hypot(fx-Rx,fy-Ry)/R;
+   const defect=Math.abs(nF*nF-(nR*nR+nD*nD));
+   const ang=Math.abs(Math.atan2(fy-Ry,fx-Rx)-Math.atan2(0,px>0?1:-1))*180/Math.PI;
+   lab(defect<1e-9?"‖F‖² = ‖R‖² + ‖F−R‖²   ✓":"‖F‖² ≠ ‖R‖² + ‖F−R‖²   ✗",
+       cx, H-16, defect<1e-9?css("--proved"):css("--crit"),12.5,"center");
+   return {"obliquity":(s.ob*180/Math.PI).toFixed(1)+"°",
+           "angle R to F−R":(Math.min(ang,180-ang)).toFixed(1)+"°",
+           "Pythagorean defect":defect.toFixed(6)};
+ },
+ verdict:s=>[s.ob<0.01
+   ? "<b>Orthogonal: the identity holds exactly.</b> This is the hypothesis the Gram lemma and "+
+     "the whole W₃ derivation consume. Push the slider to see what the theory is standing on."
+   : "<b>The decomposition no longer splits the norm.</b> The k=3 sharpening does not degrade "+
+     "gracefully here — the mechanism is gone, not merely weaker. Oblique projectors are open "+
+     "problem OP6, not a corollary.", s.ob>=0.01]
+}];
+
+/* ------------------------------------------------------------- shell */
+const BADGE={proved:["b-proved","Theorem · proved"],
+  assumed:["b-assumed","Proved under assumptions"],
+  open:["b-open","Open problem"], numeric:["b-numeric","Numerical exploration"]};
+let cur=0, state={};
+
+const nav=document.getElementById("nav");
+VIEWS.forEach((v,i)=>{
+  const b=document.createElement("button");
+  b.className="nb"; b.innerHTML='<span class="n">'+v.id+'</span>'+v.nav;
+  b.onclick=()=>{cur=i;mount();}; nav.appendChild(b);
+});
+
+function mount(){
+  const v=VIEWS[cur];
+  [...nav.children].forEach((b,i)=>b.setAttribute("aria-current", i===cur?"true":"false"));
+  const bd=BADGE[v.status];
+  document.getElementById("badge").innerHTML='<span class="badge '+bd[0]+'">'+bd[1]+'</span>';
+  document.getElementById("title").textContent=v.title;
+  document.getElementById("claim").innerHTML=v.claim;
+  state={}; (v.ctrls||[]).forEach(c=>state[c.k]=c.val);
+  const cw=document.getElementById("ctrls"); cw.innerHTML="";
+  cw.style.display=(v.ctrls&&v.ctrls.length)?"flex":"none";
+  (v.ctrls||[]).forEach(c=>{
+    const d=document.createElement("div"); d.className="ctl";
+    d.innerHTML='<label for="c_'+c.k+'">'+c.lab+' <b class="mono" id="o_'+c.k+'">'+c.fmt(c.val)+'</b></label>'+
+      '<input type="range" id="c_'+c.k+'" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" value="'+c.val+'">';
+    cw.appendChild(d);
+    d.querySelector("input").addEventListener("input",e=>{
+      state[c.k]=parseFloat(e.target.value);
+      document.getElementById("o_"+c.k).textContent=c.fmt(state[c.k]);
+      render();
+    });
+  });
+  render();
+}
+function render(){
+  const v=VIEWS[cur], outs=v.draw(state)||{};
+  const o=document.getElementById("out"); o.innerHTML="";
+  for(const k in outs){
+    const d=document.createElement("div"); d.className="o";
+    d.innerHTML='<div class="k">'+k+'</div><div class="v mono">'+outs[k]+'</div>';
+    o.appendChild(d);
+  }
+  const [txt,hot]=v.verdict(state);
+  const vd=document.getElementById("verdict");
+  vd.innerHTML=txt; vd.classList.toggle("hot",!!hot);
+}
+addEventListener("resize",render);
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",render);
+new MutationObserver(render).observe(document.documentElement,
+  {attributes:true,attributeFilter:["data-theme"]});
+mount();
+})();
+</script>
