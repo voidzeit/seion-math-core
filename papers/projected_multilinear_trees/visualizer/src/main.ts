@@ -77,15 +77,26 @@ function renderSelfCheck(): { passed: boolean; worst: number; n: number; tol: nu
   return { passed: worst <= tol, worst, n: gpu.length, tol };
 }
 
-/** Non-invasive benchmark: time a few frames at each level, keep the best that holds 60fps. */
+/**
+ * Pick a mesh resolution, conservatively.
+ *
+ * Timing draw calls with `gl.finish()` proved not to measure execution on this
+ * stack: an 8.4M-triangle mesh reported 0.03 ms/frame, faster than a 32k one,
+ * and the ladder was not monotone. Those numbers were measuring submission, not
+ * work, so they are not used. Auto-selection therefore stops at ULTRA, which is
+ * verified interactive; EXTREME and INSANE remain available manually for anyone
+ * who wants to push the mesh and watch the real frame counter.
+ */
+const AUTO_MAX = 3; // index of ULTRA
+
 function autoQuality(): Quality {
   let chosen = QUALITIES[0];
-  for (const q of QUALITIES) {
+  for (let i = 0; i <= AUTO_MAX; i++) {
+    const q = QUALITIES[i];
     obs.setQuality(q);
     const t0 = performance.now();
-    for (let i = 0; i < 6; i++) draw(0.5);
-    const per = (performance.now() - t0) / 6;
-    if (per <= 16.6) chosen = q; else break;
+    for (let f = 0; f < 6; f++) draw(0.5);
+    if ((performance.now() - t0) / 6 <= 16.6) chosen = q; else break;
   }
   obs.setQuality(chosen);
   return chosen;
@@ -304,6 +315,24 @@ $("verifiedBadge").textContent = `VERIFIED · math 6/6 · gpu ${rcheck.n} probes
 $("verifiedBadge").className = "vbadge ok";
 
 updateTelemetry();
+// Report the adapter that actually served this context (dev only). See the
+// gpu-report plugin in vite.config.ts for why eyeballing a panel is not enough.
+if (import.meta.env.DEV) {
+  fetch("/__gpu", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      renderer: obs.info.renderer, vendor: obs.info.vendor,
+      api: obs.info.api, webgpuAvailable: obs.info.webgpuAvailable,
+      maxSamples: obs.info.maxSamples, dpr: obs.info.dpr,
+      quality: obs.quality.name, triangles: obs.triangles,
+      mathChecks: `${report.results.filter((r) => r.passed).length}/${report.results.length}`,
+      renderCheck: { passed: rcheck.passed, worst: rcheck.worst, probes: rcheck.n },
+      userAgent: navigator.userAgent,
+    }),
+  }).catch(() => { /* the instrument works with or without the report */ });
+}
+
 $("statusLine").textContent =
   `${STATUS_LABEL.THEOREM} · C₃ᴾ·ᶠⁱⁿ(η) = W₃(η) — frozen k≤3 core`;
 addEventListener("resize", sync);

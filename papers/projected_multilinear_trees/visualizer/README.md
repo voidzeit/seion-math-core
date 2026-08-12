@@ -104,12 +104,51 @@ Verified in-browser at 1099×693:
 - 576/576 sampled framebuffer pixels non-blank across 95 distinct colours
 - η = 0.95 → t_opt froze at 0.816497, G₃ = 1.154701, regime `geometry-limited`
 
-**GPU caveat:** the embedded browser resolved to
-`ANGLE (Intel, Intel(R) Graphics, D3D11)` — the integrated adapter, not the
-RTX PRO 5000. `powerPreference: "high-performance"` is a hint browsers may
-ignore. To use the discrete GPU, launch the browser with it selected in Windows
-Graphics Settings, or via the NVIDIA control panel. The workload is small enough
-that ULTRA still auto-selected on the integrated adapter.
+## Which GPU, and why the integrated one
+
+This machine has both an NVIDIA RTX PRO 5000 Blackwell and Intel integrated
+graphics. Chrome resolves to the integrated adapter by default, and
+`powerPreference: "high-performance"` does not change that.
+
+Measured, by having the page report its own adapter to a dev-only endpoint
+(`vite.config.ts`) rather than by reading a panel:
+
+| launch flag | adapter actually used |
+|---|---|
+| *(none)* | `ANGLE (Intel … D3D11)` |
+| `--force-high-performance-gpu` | `ANGLE (Intel … D3D11)` |
+| `--gpu-active-vendor-id=0x10DE --gpu-active-device-id=0x2C38` | `ANGLE (Intel … D3D11)` |
+| `--use-angle=gl` | `ANGLE (Intel … OpenGL 4.5)` |
+| **`--use-angle=vulkan`** | **`ANGLE (NVIDIA, Vulkan 1.4.303, RTX PRO 5000 …)`** |
+
+So the discrete GPU **is** reachable — only through the Vulkan backend, not
+through any of the switches that sound like they should do it:
+
+```powershell
+chrome.exe --use-angle=vulkan http://localhost:5173/
+```
+
+**The instrument runs on the integrated adapter by choice.** At 512×512 the
+scene is 524k static triangles at ~1100×700, which loads neither adapter; the
+integrated GPU renders it interactively and the discrete one showed no
+advantage. Requiring a specific backend flag would cost reproducibility for
+nothing.
+
+Self-checks pass identically on both (render check 1.27e-7 on Intel, 1.47e-7 on
+the RTX — float32 rounding either way), which is the property that actually
+matters.
+
+### On the frame timings
+
+An earlier version reported per-frame milliseconds from a `gl.finish()`-bounded
+loop. Those numbers are **not** in this build because they were not measuring
+execution: an 8.4M-triangle mesh reported 0.03 ms/frame — faster than a 32k one
+— and the ladder was not monotone across resolutions. That is submission time,
+not work. The honest figure is the live counter in the footer, which measures
+presented frames.
+
+Because auto-selection cannot rely on those timings, it stops at ULTRA.
+EXTREME (1024²) and INSANE (2048², 8.4M triangles) are selectable manually.
 
 ## Epistemic contract
 
