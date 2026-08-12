@@ -66,7 +66,7 @@ visible rather than hidden.
 
 ## Self-checks
 
-Six checks run in float64 (JavaScript numbers are IEEE-754 binary64) before any
+**Seven** checks. Six run in float64 (JavaScript numbers are IEEE-754 binary64) before any
 geometry is generated:
 
 | id | claim | tolerance |
@@ -77,6 +77,19 @@ geometry is generated:
 | `G3_GRID` | max over [0,η]² = G₃(η), eight η | 2e-3 |
 | `W3_IS_G3_OVER_ETA` | W₃ = G₃/η | 1e-12 |
 | `SOS_IDENTITY` | the extremal identity, and S(√2,√2) = 0 | 1e-9 |
+| `GPU_SURFACE_MATCHES_MATH` | the shader's `surf()` equals `math.E` over 3,726 probes | 2e-6 |
+
+The seventh is a **render** check, not a math one. `SURF_GLSL` is a second
+implementation of `E(q,s)` — in float32, on the GPU — so a divergence between
+the drawn surface and the tested mathematics would be invisible to any test of
+the math layer. Transform feedback reads the shader's own output back and
+compares it. Measured worst deviation: **1.27e-7**, i.e. float32 rounding.
+
+This check earned its place on its first run: it failed with a deviation of
+exactly 2/√3, which is what you get when the capture writes nothing. The cause
+was a real WebGL2 defect in the probe — a buffer left bound to `ARRAY_BUFFER`
+cannot also serve as a transform-feedback target. Without the check the surface
+would have rendered fine and the verification would have been decorative.
 
 `npm run test` additionally asserts the η⁶ coefficient **27/512** rather than
 merely tolerating it — an earlier version tolerated it and hid a wrong guess.
@@ -87,8 +100,8 @@ Verified in-browser at 1099×693:
 
 - renderer WebGL2, MSAA max 8, DPR 1.0
 - auto-selected quality **ULTRA 512×512 = 524,288 triangles**
-- self-checks 6/6 in ~1 s
-- 576/576 sampled framebuffer pixels non-blank across 37 distinct colours
+- self-checks 7/7 (six math + one render)
+- 576/576 sampled framebuffer pixels non-blank across 95 distinct colours
 - η = 0.95 → t_opt froze at 0.816497, G₃ = 1.154701, regime `geometry-limited`
 
 **GPU caveat:** the embedded browser resolved to
@@ -108,8 +121,25 @@ Nothing in this build draws a k ≥ 4 quantity. When the k=4 lab is added it mus
 read numbers from versioned artifacts and label them `NUMERICAL_EXPLORATION`
 until a theorem exists — `a_T` is unknown and no curve may be invented for it.
 
+## Reproducible views
+
+The URL carries the full view state, so a manuscript figure can cite the link
+that produced it:
+
+```
+?eta=0.900000&layers=diagonal,peak&az=-1.2000&el=0.6000&dist=2.8000
+```
+
+η, active layers and camera are read on load and rewritten on every change.
+`state` copies the same thing as JSON plus the link.
+
+## Rendering notes
+
+The surface is opaque everywhere. Unreachable terrain is **desaturated toward
+the ground**, not made translucent: alpha blending against a depth-tested mesh
+is order-dependent, and an unsorted transparent surface renders incorrectly.
+Blending is explicitly disabled.
+
 ## Not implemented
 
-Gates 2–4 of the specification, the export of SVG overlays, and URL query-state
-restore. `state` copies a JSON snapshot to the clipboard; it is not yet read
-back.
+Gates 2–4 of the specification, and SVG export of the 2D overlays.

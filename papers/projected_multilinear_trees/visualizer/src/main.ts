@@ -7,9 +7,9 @@
  */
 
 import { ETA_C, E_MAX, STATUS_LABEL } from "./math/pmt_constants";
-import { G3, W3, deficit3, regime, tOpt } from "./math/pmt_exact";
+import { E as Eexact, G3, W3, deficit3, regime, tOpt } from "./math/pmt_exact";
 import { runSelfChecks } from "./math/pmt_checks";
-import { Observatory, QUALITIES, type Quality } from "./gl/renderer";
+import { Observatory, QUALITIES, type CameraState, type Quality } from "./gl/renderer";
 
 const $ = (id: string) => document.getElementById(id)!;
 const CRIT: [number, number, number, number] = [0.91, 0.28, 0.31, 1];
@@ -35,7 +35,9 @@ if (!report.passed) {
   $("verifiedBadge").className = "vbadge bad";
   throw new Error("MATHEMATICAL_SELF_CHECK_FAILED");
 }
-$("verifiedBadge").textContent = "VERIFIED · 6/6 checks";
+// The math badge is provisional until the renderer has also been checked; the
+// GPU runs a second implementation of the surface, in float32.
+$("verifiedBadge").textContent = "math 6/6 · checking render";
 $("verifiedBadge").className = "vbadge ok";
 
 /* ------------------------------------------- 2. geometry and renderer */
@@ -47,6 +49,32 @@ try {
   $("stage").innerHTML = `<div class="fatal"><div class="fatalTitle">WEBGL2_UNAVAILABLE</div>
     <p>This instrument requires WebGL2 for real GPU rasterisation. ${String(e)}</p></div>`;
   throw e;
+}
+
+/**
+ * Render self-check: does the GPU's surface agree with the tested one?
+ *
+ * `SURF_GLSL` duplicates `math/pmt_exact.E`. Transform feedback reads the
+ * shader's own output back so the two can be compared. float32 gives roughly
+ * 1e-7 relative precision, so the tolerance is set there — anything larger is
+ * a genuine divergence, not rounding.
+ */
+function renderSelfCheck(): { passed: boolean; worst: number; n: number; tol: number } {
+  const probes: number[] = [];
+  const N = 61;
+  for (let i = 0; i < N; i++)
+    for (let j = 0; j < N; j++) probes.push(i / (N - 1), j / (N - 1));
+  // include the points the theorem actually cares about
+  probes.push(ETA_C, ETA_C, 1, 1, 0, 0, ETA_C, 0.2, 0.999, 0.999);
+  const pts = new Float32Array(probes);
+  const gpu = obs.probeSurface(pts);
+  let worst = 0;
+  for (let i = 0; i < gpu.length; i++) {
+    const d = Math.abs(gpu[i] - Eexact(pts[2 * i], pts[2 * i + 1]));
+    if (d > worst) worst = d;
+  }
+  const tol = 2e-6;
+  return { passed: worst <= tol, worst, n: gpu.length, tol };
 }
 
 /** Non-invasive benchmark: time a few frames at each level, keep the best that holds 60fps. */
@@ -63,8 +91,41 @@ function autoQuality(): Quality {
   return chosen;
 }
 
-let eta = 0.4;
-const state = { diagonal: true, square: true, peak: true, axis: true };
+/**
+ * A view is reproducible only if it can be handed to someone else. The URL
+ * carries eta, camera and layers, so a figure in the manuscript can cite the
+ * exact link that produced it.
+ */
+function readUrlState(): { eta: number; layers: Record<string, boolean>; cam?: CameraState } {
+  const p = new URLSearchParams(location.search);
+  const num = (k: string, d: number) => {
+    const v = parseFloat(p.get(k) ?? "");
+    return Number.isFinite(v) ? v : d;
+  };
+  const layers = (p.get("layers") ?? "").split(",").filter(Boolean);
+  const has = (k: string) => (p.has("layers") ? layers.includes(k) : true);
+  const out: { eta: number; layers: Record<string, boolean>; cam?: CameraState } = {
+    eta: Math.min(1, Math.max(0.02, num("eta", 0.4))),
+    layers: { diagonal: has("diagonal"), square: has("square"),
+              peak: has("peak"), axis: has("axis") },
+  };
+  if (p.has("az")) out.cam = { az: num("az", -0.86), el: num("el", 0.52), dist: num("dist", 3.1) };
+  return out;
+}
+
+function writeUrlState(): void {
+  const p = new URLSearchParams();
+  p.set("eta", eta.toFixed(6));
+  p.set("layers", Object.entries(state).filter(([, v]) => v).map(([k]) => k).join(","));
+  p.set("az", obs.cam.az.toFixed(4));
+  p.set("el", obs.cam.el.toFixed(4));
+  p.set("dist", obs.cam.dist.toFixed(4));
+  history.replaceState(null, "", `${location.pathname}?${p}`);
+}
+
+const initial = readUrlState();
+let eta = initial.eta;
+const state = { ...initial.layers } as { diagonal: boolean; square: boolean; peak: boolean; axis: boolean };
 const dark = () => {
   const forced = document.documentElement.getAttribute("data-theme");
   if (forced) return forced === "dark";
@@ -135,6 +196,7 @@ function sync(): void {
     : "The corner of the square is the best reachable point, so the extremizer spends the whole budget: t = η.";
   draw(eta);
   drawPlot();
+  writeUrlState();
 }
 
 /* -------------------------------------------------------- 5. controls */
@@ -169,7 +231,7 @@ $("shot").addEventListener("click", () => {
 $("snap").addEventListener("click", () => {
   const s = { mode: "extremal_mountain", eta, camera: obs.cam, layers: { ...state },
               quality: obs.quality.name, selfChecks: report.passed ? "PASS" : "FAIL" };
-  navigator.clipboard?.writeText(JSON.stringify(s, null, 2));
+  navigator.clipboard?.writeText(JSON.stringify({ ...s, url: location.href }, null, 2));
   const b = $("snap"); const o = b.textContent; b.textContent = "copied";
   setTimeout(() => (b.textContent = o), 1200);
 });
@@ -184,7 +246,7 @@ canvas.addEventListener("pointermove", (e) => {
   obs.cam.el = Math.max(-0.2, Math.min(1.42, obs.cam.el + (e.clientY - drag.y) * 0.006));
   drag = { x: e.clientX, y: e.clientY }; draw(eta);
 });
-canvas.addEventListener("pointerup", () => (drag = null));
+canvas.addEventListener("pointerup", () => { drag = null; writeUrlState(); });
 canvas.addEventListener("wheel", (e) => {
   e.preventDefault();
   obs.cam.dist = Math.max(1.5, Math.min(7, obs.cam.dist * (e.deltaY > 0 ? 1.06 : 0.94)));
@@ -213,8 +275,34 @@ function loop(now: number): void {
   requestAnimationFrame(loop);
 }
 
+if (initial.cam) obs.cam = initial.cam;
+($("eta") as HTMLInputElement).value = String(eta);
+for (const k of ["diagonal", "square", "peak", "axis"] as const)
+  ($("t_" + k) as HTMLInputElement).checked = state[k];
+
 const q = autoQuality();
 qSel.value = String(QUALITIES.indexOf(q));
+
+const rcheck = renderSelfCheck();
+checksEl.insertAdjacentHTML("beforeend",
+  `<div class="chk ${rcheck.passed ? "ok" : "bad"}">
+     <span class="cid">${rcheck.passed ? "PASS" : "FAIL"}</span>
+     <span class="cname">GPU_SURFACE_MATCHES_MATH</span>
+     <span class="cres mono">${rcheck.worst.toExponential(2)} &le; ${rcheck.tol.toExponential(0)}</span>
+   </div>`);
+if (!rcheck.passed) {
+  $("verifiedBadge").textContent = "RENDER CHECK FAILED";
+  $("verifiedBadge").className = "vbadge bad";
+  $("stage").innerHTML =
+    `<div class="fatal"><div class="fatalTitle">RENDER_SELF_CHECK_FAILED</div>
+     <p>The GPU surface disagrees with the tested mathematics by
+     ${rcheck.worst.toExponential(3)} over ${rcheck.n} probes. The instrument will
+     not present a surface it cannot certify.</p></div>`;
+  throw new Error("RENDER_SELF_CHECK_FAILED");
+}
+$("verifiedBadge").textContent = `VERIFIED · math 6/6 · gpu ${rcheck.n} probes`;
+$("verifiedBadge").className = "vbadge ok";
+
 updateTelemetry();
 $("statusLine").textContent =
   `${STATUS_LABEL.THEOREM} · C₃ᴾ·ᶠⁱⁿ(η) = W₃(η) — frozen k≤3 core`;

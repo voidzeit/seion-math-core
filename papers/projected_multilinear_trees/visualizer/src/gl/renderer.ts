@@ -31,6 +31,19 @@ export const QUALITIES: Quality[] = [
   { name: "ULTRA", n: 512 },
 ];
 
+/**
+ * The surface, in GLSL. This is a second implementation of `math/pmt_exact.E`
+ * and therefore a real divergence risk: it runs in float32 on the GPU while the
+ * tested implementation runs in float64 on the CPU. `probeSurface()` below
+ * exists to compare them, so the duplication is checked rather than trusted.
+ */
+export const SURF_GLSL = `
+float surf(vec2 p){
+  float q=p.x, s=p.y;
+  float cq=max(0.0,1.0-q*q), cs=max(0.0,1.0-s*s);
+  return sqrt(max(0.0, q*q + cq*s*s + 2.0*q*sqrt(cq)*s*sqrt(cs)));
+}`;
+
 const VERT = `#version 300 es
 precision highp float;
 layout(location=0) in vec2 aQS;
@@ -39,13 +52,7 @@ uniform float uEta;
 out float vZ;
 out float vInside;
 out vec3 vN;
-
-float surf(vec2 p){
-  float q=p.x, s=p.y;
-  float cq=max(0.0,1.0-q*q), cs=max(0.0,1.0-s*s);
-  return sqrt(max(0.0, q*q + cq*s*s + 2.0*q*sqrt(cq)*s*sqrt(cs)));
-}
-
+${SURF_GLSL}
 void main(){
   float z = surf(aQS);
   vZ = z;
@@ -80,9 +87,15 @@ void main(){
   vec3 L = normalize(vec3(0.42,-0.55,0.72));
   float lam = 0.55 + 0.45*max(0.0, dot(normalize(vN), L));
   vec3 col = base*lam;
-  float a = vInside > 0.5 ? 1.0 : 0.26;
-  if (vInside < 0.5) col = mix(col, vec3(uDark==1?0.08:0.93), 0.45);
-  frag = vec4(col, a);
+  // Unreachable terrain is desaturated toward the ground, not made
+  // translucent: alpha blending against a depth-tested mesh is order
+  // dependent, and an unsorted transparent surface renders incorrectly.
+  if (vInside < 0.5){
+    vec3 ground = vec3(uDark==1 ? 0.075 : 0.945);
+    float grey = dot(col, vec3(0.299,0.587,0.114));
+    col = mix(mix(vec3(grey), ground, 0.55), col, 0.22);
+  }
+  frag = vec4(col, 1.0);
 }`;
 
 const LINE_VERT = `#version 300 es
@@ -97,7 +110,22 @@ uniform vec4 uColor;
 out vec4 frag;
 void main(){ frag = uColor; }`;
 
-function compile(gl: WebGL2RenderingContext, vs: string, fs: string): WebGLProgram {
+/** Vertex program used only to read the shader's own surface back to the CPU. */
+const PROBE_VERT = `#version 300 es
+precision highp float;
+layout(location=0) in vec2 aQS;
+out float vProbe;
+${SURF_GLSL}
+void main(){ vProbe = surf(aQS); gl_Position = vec4(0.0,0.0,0.0,1.0); }`;
+
+const PROBE_FRAG = `#version 300 es
+precision highp float;
+out vec4 frag;
+void main(){ frag = vec4(0.0); }`;
+
+function compile(
+  gl: WebGL2RenderingContext, vs: string, fs: string, feedback?: string[],
+): WebGLProgram {
   const mk = (type: number, src: string) => {
     const s = gl.createShader(type)!;
     gl.shaderSource(s, src);
@@ -109,6 +137,7 @@ function compile(gl: WebGL2RenderingContext, vs: string, fs: string): WebGLProgr
   const p = gl.createProgram()!;
   gl.attachShader(p, mk(gl.VERTEX_SHADER, vs));
   gl.attachShader(p, mk(gl.FRAGMENT_SHADER, fs));
+  if (feedback) gl.transformFeedbackVaryings(p, feedback, gl.SEPARATE_ATTRIBS);
   gl.linkProgram(p);
   if (!gl.getProgramParameter(p, gl.LINK_STATUS))
     throw new Error("link: " + gl.getProgramInfoLog(p));
@@ -153,6 +182,7 @@ export class Observatory {
   private gl: WebGL2RenderingContext;
   private progSurf: WebGLProgram;
   private progLine: WebGLProgram;
+  private progProbe: WebGLProgram;
   private vaoSurf!: WebGLVertexArrayObject;
   private idxCount = 0;
   private lineBuf: WebGLBuffer;
@@ -190,10 +220,62 @@ export class Observatory {
     gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
     gl.bindVertexArray(null);
 
+    this.progProbe = compile(gl, PROBE_VERT, PROBE_FRAG, ["vProbe"]);
     this.buildSurface();
     gl.enable(gl.DEPTH_TEST);
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    // No blending: every fragment is opaque, so nothing depends on draw order.
+    gl.disable(gl.BLEND);
+  }
+
+  /**
+   * Run the *shader's* surface over probe points and read the results back.
+   *
+   * The GLSL `surf()` is a second implementation of `math/pmt_exact.E`, in
+   * float32 rather than float64. Without this, a divergence between the drawn
+   * surface and the tested mathematics would be invisible — the picture would
+   * simply be wrong in a way no math test could catch.
+   */
+  probeSurface(points: Float32Array): Float32Array {
+    const gl = this.gl, n = points.length / 2;
+    const inBuf = gl.createBuffer()!;
+    gl.bindBuffer(gl.ARRAY_BUFFER, inBuf);
+    gl.bufferData(gl.ARRAY_BUFFER, points, gl.STATIC_DRAW);
+    const vao = gl.createVertexArray()!;
+    gl.bindVertexArray(vao);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+    const outBuf = gl.createBuffer()!;
+    gl.bindBuffer(gl.ARRAY_BUFFER, outBuf);
+    gl.bufferData(gl.ARRAY_BUFFER, n * 4, gl.STATIC_READ);
+    // A buffer may not be bound to ARRAY_BUFFER and TRANSFORM_FEEDBACK_BUFFER
+    // at the same time; leaving it bound here makes the capture silently write
+    // nothing, which is exactly how this was first caught.
+    gl.bindBuffer(gl.ARRAY_BUFFER, null);
+
+    const tf = gl.createTransformFeedback()!;
+    gl.bindTransformFeedback(gl.TRANSFORM_FEEDBACK, tf);
+    gl.bindBufferBase(gl.TRANSFORM_FEEDBACK_BUFFER, 0, outBuf);
+
+    gl.useProgram(this.progProbe);
+    gl.enable(gl.RASTERIZER_DISCARD);
+    gl.beginTransformFeedback(gl.POINTS);
+    gl.drawArrays(gl.POINTS, 0, n);
+    gl.endTransformFeedback();
+    gl.disable(gl.RASTERIZER_DISCARD);
+
+    // Release the transform-feedback bindings before reading the buffer back.
+    gl.bindBufferBase(gl.TRANSFORM_FEEDBACK_BUFFER, 0, null);
+    gl.bindTransformFeedback(gl.TRANSFORM_FEEDBACK, null);
+
+    const out = new Float32Array(n);
+    gl.bindBuffer(gl.ARRAY_BUFFER, outBuf);
+    gl.getBufferSubData(gl.ARRAY_BUFFER, 0, out);
+    gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    gl.bindVertexArray(null);
+    gl.deleteBuffer(inBuf); gl.deleteBuffer(outBuf);
+    gl.deleteVertexArray(vao); gl.deleteTransformFeedback(tf);
+    return out;
   }
 
   /** The mesh is built once per quality level and never rebuilt for eta. */
