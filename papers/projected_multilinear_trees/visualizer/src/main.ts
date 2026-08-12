@@ -7,7 +7,7 @@
  */
 
 import { ETA_C, E_MAX, STATUS_LABEL } from "./math/pmt_constants";
-import { E as Eexact, G3, W3, deficit3, regime, tOpt } from "./math/pmt_exact";
+import { E as Eexact, G3, W3, deficit3, f as fTan, regime, S as Ssos, toTangent, tOpt } from "./math/pmt_exact";
 import { runSelfChecks } from "./math/pmt_checks";
 import { Observatory, QUALITIES, type CameraState, type Quality } from "./gl/renderer";
 
@@ -136,7 +136,20 @@ function writeUrlState(): void {
 
 const initial = readUrlState();
 let eta = initial.eta;
-const state = { ...initial.layers } as { diagonal: boolean; square: boolean; peak: boolean; axis: boolean };
+const state = { ...initial.layers, contour: true, probe: true } as
+  { diagonal: boolean; square: boolean; peak: boolean; axis: boolean;
+    contour: boolean; probe: boolean };
+const ov = $("ov") as HTMLCanvasElement;
+
+/**
+ * Extra degrees of freedom, every one of them already in the formalization.
+ *
+ * probeQ/probeS place a free point on the surface, so the instrument shows the
+ * whole landscape rather than only its optimum. M and LT exist to make Lemma
+ * 7.1 visible: they move every absolute quantity and leave the normalised
+ * constant untouched.
+ */
+const vars = { probeQ: 0.35, probeS: 0.62, M: 1, LT: 1, sections: true, orbit: false };
 const dark = () => {
   const forced = document.documentElement.getAttribute("data-theme");
   if (forced) return forced === "dark";
@@ -144,7 +157,68 @@ const dark = () => {
 };
 
 function draw(e: number): void {
-  obs.render(e, { ...state, dark: dark(), emax: E_MAX, critical: CRIT });
+  obs.render(e, { ...state, etaSquare: e, contour: state.contour ? 0.1 : 0,
+                  probe: state.probe ? { q: vars.probeQ, s: vars.probeS } : null,
+                  sections: vars.sections,
+                  dark: dark(), emax: E_MAX, critical: CRIT });
+  drawOverlay();
+}
+
+/**
+ * Axis values and the two annotations, drawn on a 2D canvas over the scene.
+ *
+ * Text in WebGL means either a glyph atlas or SDF fonts; for a handful of tick
+ * labels an overlay that shares the scene's MVP is far less machinery and stays
+ * crisp at any DPI.
+ */
+function drawOverlay(): void {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  ov.width = w * dpr; ov.height = h * dpr;
+  const c = ov.getContext("2d")!;
+  c.setTransform(dpr, 0, 0, dpr, 0, 0);
+  c.clearRect(0, 0, w, h);
+  if (!state.axis && !state.peak) return;
+
+  const m = obs.lastMVP;
+  const project = (x: number, y: number, z: number): [number, number, number] => {
+    const cx = m[0]*x + m[4]*y + m[8]*z + m[12];
+    const cy = m[1]*x + m[5]*y + m[9]*z + m[13];
+    const cw = m[3]*x + m[7]*y + m[11]*z + m[15];
+    return [(cx / cw * 0.5 + 0.5) * w, (1 - (cy / cw * 0.5 + 0.5)) * h, cw];
+  };
+  const cs = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  c.font = "10px ui-monospace,Menlo,monospace";
+
+  if (state.axis) {
+    c.fillStyle = cs("--dim"); c.textAlign = "center";
+    for (let i = 1; i <= 4; i++) {
+      const v = i / 4;
+      let [px, py, pw2] = project(v, -0.075, 0);
+      if (pw2 > 0) c.fillText(v.toFixed(2), px, py);
+      [px, py, pw2] = project(-0.075, v, 0);
+      if (pw2 > 0) c.fillText(v.toFixed(2), px, py);
+    }
+    const lbl = (t: string, x: number, y: number, z: number) => {
+      const [px, py, pw2] = project(x, y, z);
+      if (pw2 > 0) c.fillText(t, px, py);
+    };
+    c.fillStyle = cs("--muted");
+    lbl("q  first leakage", 0.62, -0.17, 0);
+    lbl("s  second leakage", -0.17, 0.62, 0);
+    lbl("E", -0.06, -0.06, 1.34);
+  }
+
+  if (state.peak) {
+    const [px, py, pw2] = project(ETA_C, ETA_C, E_MAX + 0.055);
+    if (pw2 > 0) {
+      c.fillStyle = cs("--crit"); c.textAlign = "center";
+      c.font = "11px ui-monospace,Menlo,monospace";
+      c.fillText("2/√3 = 1.154701", px, py - 14);
+      c.font = "9.5px ui-monospace,Menlo,monospace";
+      c.fillText("global extremizer", px, py - 2);
+    }
+  }
 }
 
 /* --------------------------------------------------- 3. derived plot */
@@ -205,6 +279,22 @@ function sync(): void {
   $("regWhy").textContent = locked
     ? "The admissible square already contains the global extremizer. Enlarging it reaches only lower terrain, so the absolute supremum over the class is frozen at 2/√3."
     : "The corner of the square is the best reachable point, so the extremizer spends the whole budget: t = η.";
+  // Absolute quantities carry M^3 * L_T; the normalised constant does not.
+  const scale = vars.M ** 3 * vars.LT;
+  const pq = vars.probeQ, ps = vars.probeS;
+  const pe = Eexact(pq, ps);
+  const xi = toTangent(pq), ze = toTangent(ps);
+  ($("pqOut")).textContent = `${pq.toFixed(4)}, ${ps.toFixed(4)}`;
+  ($("peOut")).textContent = (pe * scale).toFixed(6);
+  ($("pfOut")).textContent = `${fTan(xi, ze).toFixed(6)} / 1.333333`;
+  ($("psOut")).textContent = Ssos(xi, ze).toFixed(6);
+  ($("pxOut")).textContent = `${xi.toFixed(4)}, ${ze.toFixed(4)}`;
+  const inside = pq <= eta + 1e-9 && ps <= eta + 1e-9;
+  ($("pinOut")).textContent = inside ? "reachable" : "outside budget";
+  ($("pinOut")).style.color = inside ? "" : "var(--dim)";
+  ($("absOut")).textContent = (G3(eta) * scale).toFixed(6);
+  ($("wOut2")).textContent = W3(eta).toFixed(6);
+
   draw(eta);
   drawPlot();
   writeUrlState();
@@ -217,14 +307,55 @@ function sync(): void {
 $("toEtaC").addEventListener("click", () => {
   eta = ETA_C; ($("eta") as HTMLInputElement).value = String(ETA_C); sync();
 });
-for (const k of ["diagonal", "square", "peak", "axis"] as const) {
+for (const k of ["diagonal", "square", "peak", "axis", "contour"] as const) {
   const el = $("t_" + k) as HTMLInputElement;
   el.addEventListener("change", () => { (state as any)[k] = el.checked; draw(eta); });
 }
+for (const [id, key, fmt] of [
+  ["v_q", "probeQ", (v: number) => v.toFixed(4)],
+  ["v_s", "probeS", (v: number) => v.toFixed(4)],
+  ["v_M", "M", (v: number) => v.toFixed(3)],
+  ["v_LT", "LT", (v: number) => v.toFixed(3)],
+] as const) {
+  const el = $(id) as HTMLInputElement;
+  el.addEventListener("input", () => {
+    (vars as any)[key] = parseFloat(el.value);
+    ($("o_" + id)).textContent = fmt(parseFloat(el.value));
+    sync();
+  });
+}
+for (const k of ["probe", "sections"] as const) {
+  const el = $("t_" + k) as HTMLInputElement;
+  el.addEventListener("change", () => {
+    if (k === "probe") state.probe = el.checked; else vars.sections = el.checked;
+    draw(eta);
+  });
+}
+$("orbit").addEventListener("click", () => {
+  vars.orbit = !vars.orbit;
+  $("orbit").textContent = vars.orbit ? "stop orbit" : "auto-orbit";
+});
+
 const qSel = $("quality") as HTMLSelectElement;
 QUALITIES.forEach((q, i) => qSel.add(new Option(`${q.name} · ${q.n}×${q.n}`, String(i))));
 qSel.addEventListener("change", () => {
   obs.setQuality(QUALITIES[parseInt(qSel.value)]); updateTelemetry(); draw(eta);
+});
+let sweep = 0;
+$("play").addEventListener("click", () => {
+  if (sweep) { cancelAnimationFrame(sweep); sweep = 0; $("play").textContent = "sweep η"; return; }
+  $("play").textContent = "stop";
+  const t0 = performance.now();
+  const step = (now: number) => {
+    // A slow traverse makes the freeze legible: the square keeps growing long
+    // after the readout has stopped moving.
+    const u = ((now - t0) / 9000) % 1;
+    eta = 0.02 + 0.98 * (u < 0.5 ? u * 2 : 2 - u * 2);
+    ($("eta") as HTMLInputElement).value = String(eta);
+    sync();
+    sweep = requestAnimationFrame(step);
+  };
+  sweep = requestAnimationFrame(step);
 });
 $("reset").addEventListener("click", () => {
   obs.cam = { az: -0.86, el: 0.52, dist: 3.1 }; draw(eta);
@@ -279,6 +410,7 @@ function updateTelemetry(): void {
 }
 function loop(now: number): void {
   acc += now - last; last = now; frames++;
+  if (vars.orbit) { obs.cam.az += 0.0035; draw(eta); }
   if (acc >= 500) {
     $("fps").textContent = `${(frames * 1000 / acc).toFixed(0)} fps · ${(acc / frames).toFixed(1)} ms`;
     frames = 0; acc = 0;
@@ -288,7 +420,7 @@ function loop(now: number): void {
 
 if (initial.cam) obs.cam = initial.cam;
 ($("eta") as HTMLInputElement).value = String(eta);
-for (const k of ["diagonal", "square", "peak", "axis"] as const)
+for (const k of ["diagonal", "square", "peak", "axis", "contour"] as const)
   ($("t_" + k) as HTMLInputElement).checked = state[k];
 
 const q = autoQuality();

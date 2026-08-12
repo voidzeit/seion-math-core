@@ -21,6 +21,7 @@ npm run dev          # http://localhost:5173
 ```powershell
 npm run test         # 16 mathematical tests, no browser needed
 npm run build        # tsc --noEmit + vite build -> dist/
+npm run standalone   # build, then inline it -> ../figures/pmt_observatory_standalone.html
 ```
 
 Works offline after `npm install`. Three dev dependencies (vite, typescript,
@@ -46,6 +47,30 @@ the tests exercise.
 **Order of operations is enforced:** mathematics → self-check → geometry →
 render. If any check fails, `main.ts` replaces the stage with
 `MATHEMATICAL_SELF_CHECK_FAILED` and refuses to display a VERIFIED badge.
+
+## The variables panel
+
+Beyond η, four controls move independent quantities, each chosen because it
+makes a *stated* property observable rather than because it adds motion:
+
+| control | what it moves | what it exposes |
+|---|---|---|
+| `q`, `s` | the probe point on the surface | E, the tangents ξ,ζ, f(ξ,ζ) against 4/3, S(ξ,ζ), and whether the point is inside the η-budget |
+| `M` | the leaf-magnitude scale | the absolute defect scales as M³ |
+| `L_T` | the tree constant | the absolute defect scales as L_T¹ |
+| `sections`, `orbit` | cross-sections through the probe, camera | reading the surface off a still frame |
+
+Move `M` or `L_T` and every absolute quantity changes while the normalised
+constant does not. That invariance is what lets the theorem fix M = L_T = 1
+without loss of generality, so it is worth being able to see it fail if it ever
+did. **Verified in the shipped artifact**, not merely asserted: at η = 0.4,
+`abs` = 0.750467 = G₃(η) at M = L_T = 1; setting M = 2, L_T = 1.5 gives
+9.005598, a ratio of exactly **12.0000 = 2³·1.5**, with W₃ = 1.876166 unchanged
+across both states.
+
+The readouts are recomputed from `math/`, never from the rendered pixels, so a
+control that drove the picture without driving the mathematics would show up as
+a frozen number rather than as a convincing animation.
 
 ## Why WebGL2 and not Three.js / WebGPU
 

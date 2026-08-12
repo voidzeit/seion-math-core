@@ -41,6 +41,7 @@
   #stage{position:relative;background:var(--panel);border-right:1px solid var(--line);
     display:flex;flex-direction:column;min-height:0}
   #gl{flex:1;display:block;width:100%;min-height:0;cursor:grab;touch-action:none}
+  #ov{position:absolute;left:0;top:0;width:100%;pointer-events:none}
   #gl:active{cursor:grabbing}
   .strip{border-top:1px solid var(--line);padding:9px 14px 11px;flex:0 0 auto}
   #plot{display:block;width:100%;height:96px}
@@ -82,8 +83,26 @@
   .fatalTitle{color:var(--bad);font-weight:700;letter-spacing:.1em;font-size:14px;margin-bottom:10px}
   footer{flex:0 0 auto;border-top:1px solid var(--line);padding:7px 18px;display:flex;
     gap:16px;align-items:center;font-size:10.5px;color:var(--muted)}
+  .cell.wide2{grid-column:1/-1}
   body.present aside,body.present .strip,body.present footer .sec,body.present .hint{display:none}
   body.present .body{grid-template-columns:1fr}
+  /* Narrow viewports: the scene keeps priority and the rail becomes a scrolling
+     panel beneath it, rather than squeezing the canvas into a sliver. */
+  @media (max-width:940px){
+    body{overflow:auto}
+    .body{grid-template-columns:1fr}
+    #stage{border-right:0;border-bottom:1px solid var(--line)}
+    #gl{min-height:46vh}
+    aside{max-height:none}
+    header{flex-wrap:wrap;gap:8px}
+    .eq{flex-basis:100%;order:3;font-size:11px}
+    .vbadge{margin-left:0}
+  }
+  @media (max-width:520px){
+    .grid2{grid-template-columns:1fr}
+    .row{flex-wrap:wrap}
+    #gl{min-height:40vh}
+  }
 </style>
 </head>
 <body>
@@ -96,6 +115,7 @@
 <div class="body">
   <div id="stage">
     <canvas id="gl"></canvas>
+    <canvas id="ov"></canvas>
     <p class="hint">drag to orbit · scroll to zoom</p>
     <div class="strip"><canvas id="plot"></canvas></div>
   </div>
@@ -106,6 +126,8 @@
       <input type="range" id="eta" min="0.02" max="1" step="0.0005" value="0.4">
       <div class="row" style="margin-top:7px">
         <button id="toEtaC">jump to η<sub>c</sub></button>
+        <button id="play">sweep η</button>
+        <button id="orbit">auto-orbit</button>
         <button id="reset">reset camera</button>
       </div>
     </div>
@@ -125,12 +147,47 @@
     </div>
 
     <div>
+      <h3 style="margin-bottom:8px">probe point on the surface</h3>
+      <div class="lbl"><label for="v_q">q &nbsp; first leakage</label> <b class="mono" id="o_v_q">0.3500</b></div>
+      <input type="range" id="v_q" min="0" max="0.999" step="0.001" value="0.35">
+      <div class="lbl" style="margin-top:8px"><label for="v_s">s &nbsp; second leakage</label> <b class="mono" id="o_v_s">0.6200</b></div>
+      <input type="range" id="v_s" min="0" max="0.999" step="0.001" value="0.62">
+      <div class="grid2" style="margin-top:10px">
+        <div class="cell"><div class="k">E at probe</div><div class="v mono" id="peOut">—</div></div>
+        <div class="cell"><div class="k">status</div><div class="v mono" style="font-size:12px" id="pinOut">—</div></div>
+        <div class="cell"><div class="k">ξ, ζ tangents</div><div class="v mono" style="font-size:12px" id="pxOut">—</div></div>
+        <div class="cell"><div class="k">f / bound 4·3⁻¹</div><div class="v mono" style="font-size:12px" id="pfOut">—</div></div>
+        <div class="cell wide2"><div class="k">S(ξ,ζ) — zero only at the extremizer</div><div class="v mono" id="psOut">—</div></div>
+      </div>
+      <div style="display:none"><span id="pqOut"></span></div>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:8px">scaling — Lemma 7.1</h3>
+      <div class="lbl"><label for="v_M">operator bound M</label> <b class="mono" id="o_v_M">1.000</b></div>
+      <input type="range" id="v_M" min="0.25" max="3" step="0.005" value="1">
+      <div class="lbl" style="margin-top:8px"><label for="v_LT">leaf product L_T</label> <b class="mono" id="o_v_LT">1.000</b></div>
+      <input type="range" id="v_LT" min="0.25" max="3" step="0.005" value="1">
+      <div class="grid2" style="margin-top:10px">
+        <div class="cell"><div class="k">absolute G₃·M³·L_T</div><div class="v mono" id="absOut">—</div></div>
+        <div class="cell"><div class="k">W₃ normalised</div><div class="v mono" id="wOut2">—</div></div>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin:8px 0 0;line-height:1.5">
+        Move either slider: every absolute quantity changes, the normalised
+        constant does not. That invariance is what lets the theorem fix
+        M = L_T = 1 without loss of generality.</p>
+    </div>
+
+    <div>
       <h3 style="margin-bottom:8px">layers</h3>
       <div style="display:flex;flex-direction:column;gap:6px">
         <label class="tg"><input type="checkbox" id="t_square" checked> admissible square [0,η]²</label>
         <label class="tg"><input type="checkbox" id="t_diagonal" checked> diagonal q=s → g(t)</label>
         <label class="tg"><input type="checkbox" id="t_peak" checked> reachable extremizer</label>
-        <label class="tg"><input type="checkbox" id="t_axis" checked> axes</label>
+        <label class="tg"><input type="checkbox" id="t_axis" checked> axes and tick values</label>
+        <label class="tg"><input type="checkbox" id="t_contour" checked> isolines of E</label>
+        <label class="tg"><input type="checkbox" id="t_probe" checked> probe point</label>
+        <label class="tg"><input type="checkbox" id="t_sections" checked> cross-sections through probe</label>
       </div>
     </div>
 

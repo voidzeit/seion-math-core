@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "standalone": "npm run build && node scripts/build_standalone.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "selfcheck": "vitest run tests/self_checks.test.ts"

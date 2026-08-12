@@ -10,6 +10,8 @@
 
 import { E } from "../math/pmt_exact";
 
+const ETA_C_R = Math.sqrt(2 / 3);
+
 export interface GpuInfo {
   api: "webgl2";
   webgpuAvailable: boolean;
@@ -84,6 +86,7 @@ in float vInside;
 in vec3 vN;
 uniform float uEmax;
 uniform int uDark;
+uniform float uContour;   // isoline spacing; 0 disables
 out vec4 frag;
 
 vec3 ramp(float t){
@@ -106,6 +109,15 @@ void main(){
     vec3 ground = vec3(uDark==1 ? 0.075 : 0.945);
     float grey = dot(col, vec3(0.299,0.587,0.114));
     col = mix(mix(vec3(grey), ground, 0.55), col, 0.22);
+  }
+  // Isolines of E, drawn analytically. fwidth keeps them one pixel wide at any
+  // zoom, which a geometric contour mesh cannot do without re-tessellating.
+  if (uContour > 0.0) {
+    float u = vZ / uContour;
+    float d = fwidth(u);
+    float band = min(fract(u), 1.0 - fract(u));
+    float line = 1.0 - smoothstep(0.0, d * 1.6, band);
+    col = mix(col, col * (uDark == 1 ? 0.55 : 1.35), line * 0.75);
   }
   frag = vec4(col, 1.0);
 }`;
@@ -324,19 +336,57 @@ export class Observatory {
   setQuality(q: Quality): void { this.quality = q; this.buildSurface(); }
 
 
+  private eye: number[] = [0, 0, 0];
+  lastMVP: M4 = ident();
+
   private mvp(w: number, h: number): M4 {
     const { az, el, dist } = this.cam;
-    const eye = [
+    this.eye = [
       0.5 + dist * Math.cos(el) * Math.sin(az),
       0.5 + dist * Math.cos(el) * Math.cos(az),
       0.55 + dist * Math.sin(el),
     ];
-    return mul(perspective(0.62, w / h, 0.05, 40), lookAt(eye, [0.5, 0.5, 0.42], [0, 0, 1]));
+    this.lastMVP = mul(perspective(0.62, w / h, 0.05, 40),
+                       lookAt(this.eye, [0.5, 0.5, 0.42], [0, 0, 1]));
+    return this.lastMVP;
+  }
+
+  /**
+   * Expand a polyline into a camera-facing ribbon.
+   *
+   * WebGL2 caps `lineWidth` at 1 on essentially every implementation, so a
+   * LINE_STRIP is a hairline that all but vanishes on a high-DPI display. The
+   * ribbon is built on the CPU because these polylines are a few hundred points
+   * at most; the offset is perpendicular to both the local tangent and the view
+   * direction, so the strip always faces the viewer.
+   */
+  private ribbon(pts: number[], width: number): Float32Array {
+    const n = pts.length / 3, out = new Float32Array(n * 6);
+    for (let i = 0; i < n; i++) {
+      const p = [pts[3 * i], pts[3 * i + 1], pts[3 * i + 2]];
+      const a = i === 0 ? p : [pts[3 * i - 3], pts[3 * i - 2], pts[3 * i - 1]];
+      const b = i === n - 1 ? p : [pts[3 * i + 3], pts[3 * i + 4], pts[3 * i + 5]];
+      const tan = norm([b[0] - a[0], b[1] - a[1], b[2] - a[2]]);
+      const view = norm([this.eye[0] - p[0], this.eye[1] - p[1], this.eye[2] - p[2]]);
+      let off = cross(tan, view);
+      const l = Math.hypot(off[0], off[1], off[2]);
+      off = l < 1e-6 ? [1, 0, 0] : [off[0] / l, off[1] / l, off[2] / l];
+      for (let s = 0; s < 2; s++) {
+        const k = s === 0 ? width / 2 : -width / 2;
+        out[6 * i + 3 * s] = p[0] + off[0] * k;
+        out[6 * i + 3 * s + 1] = p[1] + off[1] * k;
+        out[6 * i + 3 * s + 2] = p[2] + off[2] * k;
+      }
+    }
+    return out;
   }
 
   render(eta: number, opts: { diagonal: boolean; square: boolean; peak: boolean;
+                              etaSquare: number;
                               dark: boolean; emax: number; critical: [number,number,number,number];
-                              axis: boolean }): void {
+                              axis: boolean; contour: number;
+                              probe?: { q: number; s: number } | null;
+                              sections?: boolean }): void {
     const gl = this.gl, dpr = Math.min(window.devicePixelRatio || 1, 2);
     const w = this.canvas.clientWidth, h = this.canvas.clientHeight;
     this.canvas.width = Math.max(1, w * dpr); this.canvas.height = Math.max(1, h * dpr);
@@ -352,41 +402,83 @@ export class Observatory {
     gl.uniform1f(gl.getUniformLocation(this.progSurf, "uEta"), eta);
     gl.uniform1f(gl.getUniformLocation(this.progSurf, "uEmax"), opts.emax);
     gl.uniform1i(gl.getUniformLocation(this.progSurf, "uDark"), opts.dark ? 1 : 0);
+    gl.uniform1f(gl.getUniformLocation(this.progSurf, "uContour"), opts.contour);
     gl.bindVertexArray(this.vaoSurf);
     gl.drawElements(gl.TRIANGLES, this.idxCount, gl.UNSIGNED_INT, 0);
 
     gl.useProgram(this.progLine);
     gl.uniformMatrix4fv(gl.getUniformLocation(this.progLine, "uMVP"), false, mvp);
-    const drawLines = (pts: number[], color: number[]) => {
+    const strip = (pts: number[], color: number[], width: number) => {
+      if (pts.length < 6) return;
+      const geo = this.ribbon(pts, width);
       gl.uniform4fv(gl.getUniformLocation(this.progLine, "uColor"), color);
       gl.bindVertexArray(this.vaoLine);
       gl.bindBuffer(gl.ARRAY_BUFFER, this.lineBuf);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(pts), gl.DYNAMIC_DRAW);
-      gl.drawArrays(gl.LINE_STRIP, 0, pts.length / 3);
+      gl.bufferData(gl.ARRAY_BUFFER, geo, gl.DYNAMIC_DRAW);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, geo.length / 3);
+    };
+    const ring = (cxp: number, cyp: number, cz: number, r: number) => {
+      const p: number[] = [];
+      for (let i = 0; i <= 64; i++) {
+        const a = (i / 64) * Math.PI * 2;
+        p.push(cxp + r * Math.cos(a), cyp + r * Math.sin(a), cz);
+      }
+      return p;
     };
 
+    const grey: number[] = opts.dark ? [0.44, 0.51, 0.53, 1] : [0.33, 0.40, 0.40, 1];
     if (opts.axis) {
-      const c: number[] = opts.dark ? [0.42, 0.49, 0.51, 1] : [0.35, 0.42, 0.42, 1];
-      drawLines([0,0,0, 1,0,0], c); drawLines([0,0,0, 0,1,0], c); drawLines([0,0,0, 0,0,1.25], c);
+      strip([0,0,0, 1.06,0,0], grey, 0.004);
+      strip([0,0,0, 0,1.06,0], grey, 0.004);
+      strip([0,0,0, 0,0,1.30], grey, 0.004);
+      for (let i = 1; i <= 4; i++) {           // ticks every 0.25
+        const v = i / 4;
+        strip([v,0,0, v,-0.028,0], grey, 0.0028);
+        strip([0,v,0, -0.028,v,0], grey, 0.0028);
+      }
     }
     if (opts.square) {
-      const e = eta, y = 0.0005;
-      drawLines([0,0,y, e,0,y, e,e,y, 0,e,y, 0,0,y], opts.critical);
+      const e = opts.etaSquare, y = 0.0012;
+      strip([0,0,y, e,0,y, e,e,y, 0,e,y, 0,0,y], opts.critical, 0.008);
+      // Lift the reachable boundary onto the terrain so the edge of the
+      // admissible region is visible on the surface, not only on the floor.
+      const wall: number[] = [];
+      for (let i = 0; i <= 60; i++) { const u = (e * i) / 60; wall.push(u, e, E(u, e) + 0.004); }
+      for (let i = 0; i <= 60; i++) { const u = e - (e * i) / 60; wall.push(e, u, E(e, u) + 0.004); }
+      strip(wall, [opts.critical[0], opts.critical[1], opts.critical[2], 0.75], 0.005);
     }
     if (opts.diagonal) {
       const pts: number[] = [];
-      for (let i = 0; i <= 240; i++) { const t = i / 240; pts.push(t, t, E(t, t) + 0.004); }
-      drawLines(pts, opts.critical);
+      for (let i = 0; i <= 260; i++) { const t2 = i / 260; pts.push(t2, t2, E(t2, t2) + 0.005); }
+      strip(pts, opts.critical, 0.009);
+    }
+    if (opts.probe) {
+      const { q, s } = opts.probe, pz = E(q, s);
+      const soft: number[] = [0.55, 0.78, 0.72, 1];
+      // Two cross-sections through the probe: the surface is two-dimensional,
+      // and a single point on it says nothing about which direction is steep.
+      if (opts.sections) {
+        const a: number[] = [], b: number[] = [];
+        for (let i = 0; i <= 120; i++) {
+          const u = i / 120;
+          a.push(u, s, E(u, s) + 0.003);
+          b.push(q, u, E(q, u) + 0.003);
+        }
+        strip(a, [soft[0], soft[1], soft[2], 0.85], 0.005);
+        strip(b, [soft[0], soft[1], soft[2], 0.85], 0.005);
+      }
+      strip(ring(q, s, pz + 0.006, 0.022), soft, 0.008);
+      strip([q, s, 0, q, s, pz], soft, 0.004);
     }
     if (opts.peak) {
-      const t = Math.min(eta, Math.sqrt(2 / 3)), z = E(t, t);
-      const r = 0.028, pts: number[] = [];
-      for (let i = 0; i <= 48; i++) {
-        const a = (i / 48) * Math.PI * 2;
-        pts.push(t + r * Math.cos(a), t + r * Math.sin(a), z + 0.006);
-      }
-      drawLines(pts, opts.critical);
-      drawLines([t, t, z, t, t, z + 0.22], opts.critical);
+      const gz = E(ETA_C_R, ETA_C_R);
+      // The global extremizer stays on screen at all times: the point of the
+      // instrument is watching the square travel toward it.
+      const reached = opts.etaSquare >= ETA_C_R - 1e-9;
+      strip(ring(ETA_C_R, ETA_C_R, gz + 0.006, 0.036), opts.critical, reached ? 0.011 : 0.005);
+      const t3 = Math.min(opts.etaSquare, ETA_C_R), rz = E(t3, t3);
+      strip(ring(t3, t3, rz + 0.006, 0.018), opts.critical, 0.009);
+      strip([t3, t3, rz, t3, t3, rz + 0.20], opts.critical, 0.005);
     }
     gl.bindVertexArray(null);
   }
