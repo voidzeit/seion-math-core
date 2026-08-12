@@ -1,0 +1,243 @@
+<title>PMT Mathematical Observatory</title>
+<style>
+  :root{
+    --ink:#0E1416; --panel:#141C1F; --raised:#1B252A; --line:#2A363A;
+    --text:#DDE7E9; --muted:#7C9096; --dim:#4C5F65;
+    --crit:#E8484F; --crit-soft:rgba(232,72,79,.14);
+    --ok:#7FB069; --bad:#E8484F; --grid:rgba(124,144,150,.16);
+  }
+  @media (prefers-color-scheme:light){
+    :root{--ink:#F4F6F5;--panel:#FFF;--raised:#EDF1F0;--line:#D3DCDA;--text:#14201F;
+      --muted:#5C6E70;--dim:#93A3A4;--crit:#C42B33;--crit-soft:rgba(196,43,51,.09);
+      --ok:#4E7A38;--grid:rgba(20,32,31,.12);}
+  }
+  :root[data-theme="dark"]{--ink:#0E1416;--panel:#141C1F;--raised:#1B252A;--line:#2A363A;
+    --text:#DDE7E9;--muted:#7C9096;--dim:#4C5F65;--crit:#E8484F;--ok:#7FB069;
+    --crit-soft:rgba(232,72,79,.14);--grid:rgba(124,144,150,.16);}
+  :root[data-theme="light"]{--ink:#F4F6F5;--panel:#FFF;--raised:#EDF1F0;--line:#D3DCDA;
+    --text:#14201F;--muted:#5C6E70;--dim:#93A3A4;--crit:#C42B33;--ok:#4E7A38;
+    --crit-soft:rgba(196,43,51,.09);--grid:rgba(20,32,31,.12);}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--ink);color:var(--text);overflow:hidden;
+    font:13.5px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+  .mono{font-family:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+    font-variant-numeric:tabular-nums}
+  header{display:flex;align-items:baseline;gap:14px;padding:11px 18px;
+    border-bottom:1px solid var(--line);flex:0 0 auto}
+  h1{margin:0;font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+  .eq{color:var(--muted);font-size:12px}
+  .vbadge{margin-left:auto;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+    padding:3px 9px;border:1px solid;border-radius:2px;font-weight:600}
+  .vbadge.ok{color:var(--ok);border-color:var(--ok)}
+  .vbadge.bad{color:var(--bad);border-color:var(--bad)}
+  .body{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 300px;min-height:0}
+  #stage{position:relative;background:var(--panel);border-right:1px solid var(--line);
+    display:flex;flex-direction:column;min-height:0}
+  #gl{flex:1;display:block;width:100%;min-height:0;cursor:grab;touch-action:none}
+  #gl:active{cursor:grabbing}
+  .strip{border-top:1px solid var(--line);padding:9px 14px 11px;flex:0 0 auto}
+  #plot{display:block;width:100%;height:96px}
+  .hint{position:absolute;left:14px;bottom:120px;font-size:10px;color:var(--dim);
+    letter-spacing:.05em;pointer-events:none}
+  aside{background:var(--panel);padding:15px 16px 20px;overflow-y:auto;
+    display:flex;flex-direction:column;gap:15px}
+  .lbl{display:flex;justify-content:space-between;align-items:baseline;font-size:9.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+  .lbl b{font-size:15px;letter-spacing:0;text-transform:none;color:var(--text)}
+  input[type=range]{width:100%;accent-color:var(--crit)}
+  input[type=range]:focus-visible{outline:2px solid var(--crit);outline-offset:3px}
+  .row{display:flex;gap:7px}
+  button,select{background:var(--raised);color:var(--text);border:1px solid var(--line);
+    border-radius:2px;padding:5px 9px;font:inherit;font-size:11.5px;cursor:pointer}
+  button:hover{border-color:var(--muted)}
+  button:focus-visible,select:focus-visible{outline:2px solid var(--crit);outline-offset:2px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:2px;overflow:hidden}
+  .cell{background:var(--raised);padding:8px 10px}
+  .cell .k{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+  .cell .v{font-size:14.5px;margin-top:2px}
+  .regime{border:1px solid var(--line);border-radius:2px;padding:10px 12px;background:var(--raised)}
+  .regime.locked{border-color:var(--crit);background:var(--crit-soft)}
+  .regime .n{font-size:12px;font-weight:600}
+  .regime.locked .n{color:var(--crit)}
+  .regime .w{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5}
+  .tg{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted);cursor:pointer}
+  .tg input{accent-color:var(--crit)}
+  .chk{display:flex;gap:8px;align-items:baseline;font-size:10.5px;padding:2px 0}
+  .cid{font-size:8.5px;letter-spacing:.1em;font-weight:700;width:32px}
+  .chk.ok .cid{color:var(--ok)} .chk.bad .cid{color:var(--bad)}
+  .cname{color:var(--muted);flex:1;font-size:10px}
+  .cres{color:var(--dim);font-size:9.5px}
+  .tl{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);padding:1px 0}
+  .tl b{color:var(--text);font-weight:500;font-size:10px}
+  h3{margin:0;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .fatal{padding:50px 30px;text-align:center;color:var(--muted)}
+  .fatalTitle{color:var(--bad);font-weight:700;letter-spacing:.1em;font-size:14px;margin-bottom:10px}
+  footer{flex:0 0 auto;border-top:1px solid var(--line);padding:7px 18px;display:flex;
+    gap:16px;align-items:center;font-size:10.5px;color:var(--muted)}
+  body.present aside,body.present .strip,body.present footer .sec,body.present .hint{display:none}
+  body.present .body{grid-template-columns:1fr}
+</style>
+
+<header>
+  <h1>PMT Mathematical Observatory</h1>
+  <span class="eq mono">E(q,s)² = q² + (1−q²)s² + 2q√(1−q²)·s√(1−s²)</span>
+  <span class="vbadge" id="verifiedBadge">checking…</span>
+</header>
+
+<div class="body">
+  <div id="stage">
+    <canvas id="gl"></canvas>
+    <p class="hint">drag to orbit · scroll to zoom</p>
+    <div class="strip"><canvas id="plot"></canvas></div>
+  </div>
+
+  <aside>
+    <div>
+      <div class="lbl"><label for="eta">closure budget η</label> <b class="mono" id="etaOut">0.400000</b></div>
+      <input type="range" id="eta" min="0.02" max="1" step="0.0005" value="0.4">
+      <div class="row" style="margin-top:7px">
+        <button id="toEtaC">jump to η<sub>c</sub></button>
+        <button id="reset">reset camera</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="cell"><div class="k">t optimal</div><div class="v mono" id="tOut">—</div></div>
+      <div class="cell"><div class="k">regime</div><div class="v mono" id="regOut">—</div></div>
+      <div class="cell"><div class="k">G₃(η) absolute</div><div class="v mono" id="gOut">—</div></div>
+      <div class="cell"><div class="k">W₃(η) constant</div><div class="v mono" id="wOut">—</div></div>
+      <div class="cell"><div class="k">deficit 2−W₃</div><div class="v mono" id="dOut">—</div></div>
+      <div class="cell"><div class="k">bound k−1</div><div class="v mono">2.000000</div></div>
+    </div>
+
+    <div class="regime" id="regBox">
+      <div class="n" id="regName">regime</div>
+      <div class="w" id="regWhy"></div>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:8px">layers</h3>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label class="tg"><input type="checkbox" id="t_square" checked> admissible square [0,η]²</label>
+        <label class="tg"><input type="checkbox" id="t_diagonal" checked> diagonal q=s → g(t)</label>
+        <label class="tg"><input type="checkbox" id="t_peak" checked> reachable extremizer</label>
+        <label class="tg"><input type="checkbox" id="t_axis" checked> axes</label>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:7px">self-checks <span class="mono" id="checkTime" style="float:right;font-size:9px;color:var(--dim)"></span></h3>
+      <div id="checks"></div>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:7px">telemetry</h3>
+      <div id="tel"></div>
+      <div class="row" style="margin-top:9px">
+        <select id="quality"></select>
+        <button id="shot">PNG</button>
+        <button id="snap">state</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span class="mono" id="fps">—</span>
+  <span class="sec" id="statusLine"></span>
+  <span class="sec" style="margin-left:auto"><button id="present">presentation mode</button></span>
+</footer>
+
+
+<script type="module">
+var ee=Object.defineProperty;var te=(e,r,n)=>r in e?ee(e,r,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[r]=n;var v=(e,r,n)=>te(e,typeof r!="symbol"?r+"":r,n);(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))t(a);new MutationObserver(a=>{for(const o of a)if(o.type==="childList")for(const i of o.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&t(i)}).observe(document,{childList:!0,subtree:!0});function n(a){const o={};return a.integrity&&(o.integrity=a.integrity),a.referrerPolicy&&(o.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?o.credentials="include":a.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function t(a){if(a.ep)return;a.ep=!0;const o=n(a);fetch(a.href,o)}})();const E=Math.sqrt(2/3),w=2/Math.sqrt(3),G=Math.SQRT2,ne={THEOREM:"Theorem"};function S(e,r){const n=1-e*e,t=1-r*r;return n<0||t<0?NaN:Math.sqrt(e*e+n*r*r+2*e*Math.sqrt(n)*r*Math.sqrt(t))}function re(e){return e*Math.sqrt(4-3*e*e)}function ae(e){return Math.min(e,E)}function P(e){return e<=E?e*Math.sqrt(4-3*e*e):w}function C(e){return e<=E?Math.sqrt(4-3*e*e):w/e}function oe(e){return 2-C(e)}function Y(e,r){const n=e*r-2,t=e-r;return n*n+t*t}function ie(e,r){return 4*(1+e*e)*(1+r*r)-3*((e+r)*(e+r)+e*e*r*r)-Y(e,r)}function se(e,r=700){let n=0;for(let t=0;t<=r;t++){const a=e*t/r;for(let o=0;o<=r;o++){const i=S(a,e*o/r);i>n&&(n=i)}}return n}function ce(e){return Math.abs(e-E)<1e-9?"critical":e<E?"budget-limited":"geometry-limited"}const L=(e,r,n,t,a,o)=>({id:e,claim:r,residual:n,tolerance:t,observed:a,expected:o,passed:Number.isFinite(n)&&n<=t});function le(){let r=0;for(let n=0;n<=1400;n++)for(let t=0;t<=1400;t++){const a=S(n/1400,t/1400);a>r&&(r=a)}return L("SURFACE_PEAK","max E(q,s) = 2/sqrt(3)",Math.abs(r-w),1e-6,r.toFixed(12),w.toFixed(12))}function de(){let r=-1,n=0,t=0;for(let o=0;o<=2e3;o++)for(let i=0;i<=2e3;i++){const l=o/2e3,p=i/2e3,h=S(l,p);h>r&&(r=h,n=l,t=p)}const a=Math.max(Math.abs(n-E),Math.abs(t-E));return L("PEAK_LOCATION","argmax E = (sqrt(2/3), sqrt(2/3))",a,.001,`(${n.toFixed(6)}, ${t.toFixed(6)})`,`(${E.toFixed(6)}, ${E.toFixed(6)})`)}function fe(){let e=0;for(let r=0;r<=4e4;r++){const n=r/4e4;e=Math.max(e,Math.abs(S(n,n)-re(n)))}return L("DIAGONAL_IDENTITY","E(t,t) = t sqrt(4 - 3 t^2)",e,1e-12,e.toExponential(3),"0")}function ue(){const e=[.05,.2,.4,.6,E,.85,.95,1];let r=0,n=0;for(const t of e){const a=Math.abs(se(t,600)-P(t));a>r&&(r=a,n=t)}return L("G3_GRID","max_{q,s<=eta} E = G_3(eta)",r,.002,`${r.toExponential(3)} at eta=${n.toFixed(4)}`,"0")}function he(){let e=0;for(let r=1;r<=2e4;r++){const n=r/2e4;e=Math.max(e,Math.abs(C(n)-P(n)/n))}return L("W3_IS_G3_OVER_ETA","W_3(eta) = G_3(eta)/eta",e,1e-12,e.toExponential(3),"0")}function me(){let e=0;for(let t=0;t<=300;t++)for(let a=0;a<=300;a++){const o=t/300*4,i=a/300*4;e=Math.max(e,Math.abs(ie(o,i)))}const r=Y(G,G),n=Math.max(e,Math.abs(r));return L("SOS_IDENTITY","4(1+xi^2)(1+zeta^2) - 3[(xi+zeta)^2 + xi^2 zeta^2] = (xi zeta - 2)^2 + (xi - zeta)^2",n,1e-9,`max residual ${e.toExponential(3)}, S(sqrt2,sqrt2)=${r.toExponential(3)}`,"0")}function pe(){var t,a,o,i;const e=((a=(t=globalThis.performance)==null?void 0:t.now)==null?void 0:a.call(t))??Date.now(),r=[le(),de(),fe(),ue(),he(),me()],n=((i=(o=globalThis.performance)==null?void 0:o.now)==null?void 0:i.call(o))??Date.now();return{passed:r.every(l=>l.passed),results:r,elapsedMs:n-e}}const y=[{name:"LOW",n:64},{name:"MEDIUM",n:128},{name:"HIGH",n:256},{name:"ULTRA",n:512},{name:"EXTREME",n:1024},{name:"INSANE",n:2048}],Q=`
+float surf(vec2 p){
+  float q=p.x, s=p.y;
+  float cq=max(0.0,1.0-q*q), cs=max(0.0,1.0-s*s);
+  return sqrt(max(0.0, q*q + cq*s*s + 2.0*q*sqrt(cq)*s*sqrt(cs)));
+}`,ge=`#version 300 es
+precision highp float;
+layout(location=0) in vec2 aQS;
+uniform mat4 uMVP;
+uniform float uEta;
+out float vZ;
+out float vInside;
+out vec3 vN;
+${Q}
+void main(){
+  float z = surf(aQS);
+  vZ = z;
+  vInside = (aQS.x <= uEta + 1e-6 && aQS.y <= uEta + 1e-6) ? 1.0 : 0.0;
+  // analytic-ish normal by central differences on the GPU
+  float h = 0.004;
+  float zx = surf(aQS + vec2(h,0.0)) - surf(aQS - vec2(h,0.0));
+  float zy = surf(aQS + vec2(0.0,h)) - surf(aQS - vec2(0.0,h));
+  vN = normalize(vec3(-zx/(2.0*h), -zy/(2.0*h), 1.0));
+  gl_Position = uMVP * vec4(aQS.x, aQS.y, z, 1.0);
+}`,Ee=`#version 300 es
+precision highp float;
+in float vZ;
+in float vInside;
+in vec3 vN;
+uniform float uEmax;
+uniform int uDark;
+out vec4 frag;
+
+vec3 ramp(float t){
+  t = clamp(t,0.0,1.0);
+  vec3 c1 = vec3(0.055,0.231,0.271);   // deep teal
+  vec3 c2 = vec3(0.369,0.549,0.478);   // sage
+  vec3 c3 = vec3(0.847,0.753,0.541);   // sand
+  return t<0.5 ? mix(c1,c2,t*2.0) : mix(c2,c3,(t-0.5)*2.0);
+}
+
+void main(){
+  vec3 base = ramp(vZ/uEmax);
+  vec3 L = normalize(vec3(0.42,-0.55,0.72));
+  float lam = 0.55 + 0.45*max(0.0, dot(normalize(vN), L));
+  vec3 col = base*lam;
+  // Unreachable terrain is desaturated toward the ground, not made
+  // translucent: alpha blending against a depth-tested mesh is order
+  // dependent, and an unsorted transparent surface renders incorrectly.
+  if (vInside < 0.5){
+    vec3 ground = vec3(uDark==1 ? 0.075 : 0.945);
+    float grey = dot(col, vec3(0.299,0.587,0.114));
+    col = mix(mix(vec3(grey), ground, 0.55), col, 0.22);
+  }
+  frag = vec4(col, 1.0);
+}`,ve=`#version 300 es
+precision highp float;
+layout(location=0) in vec3 aPos;
+uniform mat4 uMVP;
+void main(){ gl_Position = uMVP * vec4(aPos,1.0); }`,Ae=`#version 300 es
+precision highp float;
+uniform vec4 uColor;
+out vec4 frag;
+void main(){ frag = uColor; }`,xe=`#version 300 es
+precision highp float;
+layout(location=0) in vec2 aQS;
+out float vProbe;
+${Q}
+void main(){ vProbe = surf(aQS); gl_Position = vec4(0.0,0.0,0.0,1.0); }`,be=`#version 300 es
+precision highp float;
+out vec4 frag;
+void main(){ frag = vec4(0.0); }`;function $(e,r,n,t){const a=(i,l)=>{const p=e.createShader(i);if(e.shaderSource(p,l),e.compileShader(p),!e.getShaderParameter(p,e.COMPILE_STATUS))throw new Error("shader: "+e.getShaderInfoLog(p));return p},o=e.createProgram();if(e.attachShader(o,a(e.VERTEX_SHADER,r)),e.attachShader(o,a(e.FRAGMENT_SHADER,n)),t&&e.transformFeedbackVaryings(o,t,e.SEPARATE_ATTRIBS),e.linkProgram(o),!e.getProgramParameter(o,e.LINK_STATUS))throw new Error("link: "+e.getProgramInfoLog(o));return o}const Se=()=>new Float32Array([1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]);function Re(e,r){const n=new Float32Array(16);for(let t=0;t<4;t++)for(let a=0;a<4;a++){let o=0;for(let i=0;i<4;i++)o+=e[i*4+a]*r[t*4+i];n[t*4+a]=o}return n}function Fe(e,r,n,t){const a=1/Math.tan(e/2),o=new Float32Array(16);return o[0]=a/r,o[5]=a,o[11]=-1,o[10]=(t+n)/(n-t),o[14]=2*t*n/(n-t),o}function Te(e,r,n){const t=H([e[0]-r[0],e[1]-r[1],e[2]-r[2]]),a=H(z(n,t)),o=z(t,a),i=Se();return i[0]=a[0],i[4]=a[1],i[8]=a[2],i[12]=-V(a,e),i[1]=o[0],i[5]=o[1],i[9]=o[2],i[13]=-V(o,e),i[2]=t[0],i[6]=t[1],i[10]=t[2],i[14]=-V(t,e),i}const z=(e,r)=>[e[1]*r[2]-e[2]*r[1],e[2]*r[0]-e[0]*r[2],e[0]*r[1]-e[1]*r[0]],V=(e,r)=>e[0]*r[0]+e[1]*r[1]+e[2]*r[2],H=e=>{const r=Math.hypot(e[0],e[1],e[2])||1;return[e[0]/r,e[1]/r,e[2]/r]};class ye{constructor(r,n){v(this,"gl");v(this,"progSurf");v(this,"progLine");v(this,"progProbe");v(this,"vaoSurf");v(this,"idxCount",0);v(this,"lineBuf");v(this,"vaoLine");v(this,"info");v(this,"quality");v(this,"cam",{az:-.86,el:.52,dist:3.1});v(this,"triangles",0);this.canvas=r;const t=r.getContext("webgl2",{antialias:!0,depth:!0,alpha:!1,powerPreference:"high-performance"});if(!t)throw new Error("WEBGL2_UNAVAILABLE");this.gl=t,this.quality=n,this.progSurf=$(t,ge,Ee),this.progLine=$(t,ve,Ae);const a=t.getExtension("WEBGL_debug_renderer_info");this.info={api:"webgl2",webgpuAvailable:typeof navigator<"u"&&"gpu"in navigator,vendor:a?String(t.getParameter(a.UNMASKED_VENDOR_WEBGL)):"hidden",renderer:a?String(t.getParameter(a.UNMASKED_RENDERER_WEBGL)):"hidden",maxSamples:t.getParameter(t.MAX_SAMPLES),dpr:window.devicePixelRatio||1},this.lineBuf=t.createBuffer(),this.vaoLine=t.createVertexArray(),t.bindVertexArray(this.vaoLine),t.bindBuffer(t.ARRAY_BUFFER,this.lineBuf),t.enableVertexAttribArray(0),t.vertexAttribPointer(0,3,t.FLOAT,!1,0,0),t.bindVertexArray(null),this.progProbe=$(t,xe,be,["vProbe"]),this.buildSurface(),t.enable(t.DEPTH_TEST),t.disable(t.BLEND)}probeSurface(r){const n=this.gl,t=r.length/2,a=n.createBuffer();n.bindBuffer(n.ARRAY_BUFFER,a),n.bufferData(n.ARRAY_BUFFER,r,n.STATIC_DRAW);const o=n.createVertexArray();n.bindVertexArray(o),n.enableVertexAttribArray(0),n.vertexAttribPointer(0,2,n.FLOAT,!1,0,0);const i=n.createBuffer();n.bindBuffer(n.ARRAY_BUFFER,i),n.bufferData(n.ARRAY_BUFFER,t*4,n.STATIC_READ),n.bindBuffer(n.ARRAY_BUFFER,null);const l=n.createTransformFeedback();n.bindTransformFeedback(n.TRANSFORM_FEEDBACK,l),n.bindBufferBase(n.TRANSFORM_FEEDBACK_BUFFER,0,i),n.useProgram(this.progProbe),n.enable(n.RASTERIZER_DISCARD),n.beginTransformFeedback(n.POINTS),n.drawArrays(n.POINTS,0,t),n.endTransformFeedback(),n.disable(n.RASTERIZER_DISCARD),n.bindBufferBase(n.TRANSFORM_FEEDBACK_BUFFER,0,null),n.bindTransformFeedback(n.TRANSFORM_FEEDBACK,null);const p=new Float32Array(t);return n.bindBuffer(n.ARRAY_BUFFER,i),n.getBufferSubData(n.ARRAY_BUFFER,0,p),n.bindBuffer(n.ARRAY_BUFFER,null),n.bindVertexArray(null),n.deleteBuffer(a),n.deleteBuffer(i),n.deleteVertexArray(o),n.deleteTransformFeedback(l),p}buildSurface(){const r=this.gl,n=this.quality.n,t=new Float32Array((n+1)*(n+1)*2);let a=0;for(let h=0;h<=n;h++)for(let c=0;c<=n;c++)t[a++]=h/n,t[a++]=c/n;const o=new Uint32Array(n*n*6);let i=0;for(let h=0;h<n;h++)for(let c=0;c<n;c++){const d=h*(n+1)+c,g=d+1,A=d+(n+1),m=A+1;o[i++]=d,o[i++]=A,o[i++]=g,o[i++]=g,o[i++]=A,o[i++]=m}this.idxCount=o.length,this.triangles=o.length/3,this.vaoSurf&&r.deleteVertexArray(this.vaoSurf),this.vaoSurf=r.createVertexArray(),r.bindVertexArray(this.vaoSurf);const l=r.createBuffer();r.bindBuffer(r.ARRAY_BUFFER,l),r.bufferData(r.ARRAY_BUFFER,t,r.STATIC_DRAW),r.enableVertexAttribArray(0),r.vertexAttribPointer(0,2,r.FLOAT,!1,0,0);const p=r.createBuffer();r.bindBuffer(r.ELEMENT_ARRAY_BUFFER,p),r.bufferData(r.ELEMENT_ARRAY_BUFFER,o,r.STATIC_DRAW),r.bindVertexArray(null)}setQuality(r){this.quality=r,this.buildSurface()}mvp(r,n){const{az:t,el:a,dist:o}=this.cam,i=[.5+o*Math.cos(a)*Math.sin(t),.5+o*Math.cos(a)*Math.cos(t),.55+o*Math.sin(a)];return Re(Fe(.62,r/n,.05,40),Te(i,[.5,.5,.42],[0,0,1]))}render(r,n){const t=this.gl,a=Math.min(window.devicePixelRatio||1,2),o=this.canvas.clientWidth,i=this.canvas.clientHeight;this.canvas.width=Math.max(1,o*a),this.canvas.height=Math.max(1,i*a),t.viewport(0,0,this.canvas.width,this.canvas.height);const l=n.dark?[.055,.078,.086,1]:[.957,.965,.961,1];t.clearColor(l[0],l[1],l[2],l[3]),t.clear(t.COLOR_BUFFER_BIT|t.DEPTH_BUFFER_BIT);const p=this.mvp(o,i);t.useProgram(this.progSurf),t.uniformMatrix4fv(t.getUniformLocation(this.progSurf,"uMVP"),!1,p),t.uniform1f(t.getUniformLocation(this.progSurf,"uEta"),r),t.uniform1f(t.getUniformLocation(this.progSurf,"uEmax"),n.emax),t.uniform1i(t.getUniformLocation(this.progSurf,"uDark"),n.dark?1:0),t.bindVertexArray(this.vaoSurf),t.drawElements(t.TRIANGLES,this.idxCount,t.UNSIGNED_INT,0),t.useProgram(this.progLine),t.uniformMatrix4fv(t.getUniformLocation(this.progLine,"uMVP"),!1,p);const h=(c,d)=>{t.uniform4fv(t.getUniformLocation(this.progLine,"uColor"),d),t.bindVertexArray(this.vaoLine),t.bindBuffer(t.ARRAY_BUFFER,this.lineBuf),t.bufferData(t.ARRAY_BUFFER,new Float32Array(c),t.DYNAMIC_DRAW),t.drawArrays(t.LINE_STRIP,0,c.length/3)};if(n.axis){const c=n.dark?[.42,.49,.51,1]:[.35,.42,.42,1];h([0,0,0,1,0,0],c),h([0,0,0,0,1,0],c),h([0,0,0,0,0,1.25],c)}if(n.square){const c=r,d=5e-4;h([0,0,d,c,0,d,c,c,d,0,c,d,0,0,d],n.critical)}if(n.diagonal){const c=[];for(let d=0;d<=240;d++){const g=d/240;c.push(g,g,S(g,g)+.004)}h(c,n.critical)}if(n.peak){const c=Math.min(r,Math.sqrt(.6666666666666666)),d=S(c,c),g=.028,A=[];for(let m=0;m<=48;m++){const F=m/48*Math.PI*2;A.push(c+g*Math.cos(F),c+g*Math.sin(F),d+.006)}h(A,n.critical),h([c,c,d,c,c,d+.22],n.critical)}t.bindVertexArray(null)}}const s=e=>document.getElementById(e),Le=[.91,.28,.31,1],k=pe(),K=s("checks");K.innerHTML=k.results.map(e=>`<div class="chk ${e.passed?"ok":"bad"}">
+      <span class="cid">${e.passed?"PASS":"FAIL"}</span>
+      <span class="cname">${e.id}</span>
+      <span class="cres mono">${e.residual.toExponential(2)} &le; ${e.tolerance.toExponential(0)}</span>
+    </div>`).join("");s("checkTime").textContent=`${k.elapsedMs.toFixed(0)} ms · float64`;if(!k.passed)throw s("stage").innerHTML=`<div class="fatal"><div class="fatalTitle">MATHEMATICAL_SELF_CHECK_FAILED</div>
+     <p>The instrument will not render a surface it cannot certify. Failing checks:
+     ${k.results.filter(e=>!e.passed).map(e=>e.id).join(", ")}.</p></div>`,s("verifiedBadge").textContent="NOT VERIFIED",s("verifiedBadge").className="vbadge bad",new Error("MATHEMATICAL_SELF_CHECK_FAILED");s("verifiedBadge").textContent="math 6/6 · checking render";s("verifiedBadge").className="vbadge ok";const R=s("gl");let f;try{f=new ye(R,y[1])}catch(e){throw s("stage").innerHTML=`<div class="fatal"><div class="fatalTitle">WEBGL2_UNAVAILABLE</div>
+    <p>This instrument requires WebGL2 for real GPU rasterisation. ${String(e)}</p></div>`,e}function _e(){const e=[];for(let i=0;i<61;i++)for(let l=0;l<61;l++)e.push(i/60,l/60);e.push(E,E,1,1,0,0,E,.2,.999,.999);const n=new Float32Array(e),t=f.probeSurface(n);let a=0;for(let i=0;i<t.length;i++){const l=Math.abs(t[i]-S(n[2*i],n[2*i+1]));l>a&&(a=l)}const o=2e-6;return{passed:a<=o,worst:a,n:t.length,tol:o}}const Me=3;function Be(){let e=y[0];for(let r=0;r<=Me;r++){const n=y[r];f.setQuality(n);const t=performance.now();for(let a=0;a<6;a++)b(.5);if((performance.now()-t)/6<=16.6)e=n;else break}return f.setQuality(e),e}function we(){const e=new URLSearchParams(location.search),r=(o,i)=>{const l=parseFloat(e.get(o)??"");return Number.isFinite(l)?l:i},n=(e.get("layers")??"").split(",").filter(Boolean),t=o=>e.has("layers")?n.includes(o):!0,a={eta:Math.min(1,Math.max(.02,r("eta",.4))),layers:{diagonal:t("diagonal"),square:t("square"),peak:t("peak"),axis:t("axis")}};return e.has("az")&&(a.cam={az:r("az",-.86),el:r("el",.52),dist:r("dist",3.1)}),a}function j(){const e=new URLSearchParams;e.set("eta",u.toFixed(6)),e.set("layers",Object.entries(I).filter(([,r])=>r).map(([r])=>r).join(",")),e.set("az",f.cam.az.toFixed(4)),e.set("el",f.cam.el.toFixed(4)),e.set("dist",f.cam.dist.toFixed(4)),history.replaceState(null,"",`${location.pathname}?${e}`)}const q=we();let u=q.eta;const I={...q.layers},Pe=()=>{const e=document.documentElement.getAttribute("data-theme");return e?e==="dark":matchMedia("(prefers-color-scheme: dark)").matches};function b(e){f.render(e,{...I,dark:Pe(),emax:w,critical:Le})}const M=s("plot");function Ce(){const e=Math.min(window.devicePixelRatio||1,2),r=M.clientWidth,n=M.clientHeight;M.width=r*e,M.height=n*e;const t=M.getContext("2d");t.setTransform(e,0,0,e,0,0),t.clearRect(0,0,r,n);const a=m=>getComputedStyle(document.documentElement).getPropertyValue(m).trim(),o=46,i=14,l=12,p=22,h=r-o-i,c=n-l-p,d=m=>o+m*h,g=m=>l+c-m/2.15*c;t.strokeStyle=a("--grid"),t.lineWidth=1;for(const m of[0,.5,1,1.5,2])t.beginPath(),t.moveTo(o,g(m)),t.lineTo(o+h,g(m)),t.stroke(),t.fillStyle=a("--dim"),t.font="9.5px ui-monospace,Menlo,monospace",t.textAlign="right",t.fillText(m.toFixed(1),o-6,g(m)+3);const A=(m,F,J)=>{t.beginPath();for(let N=0;N<=400;N++){const D=.005+.995*(N/400);N?t.lineTo(d(D),g(m(D))):t.moveTo(d(D),g(m(D)))}t.strokeStyle=F,t.lineWidth=J,t.stroke()};A(C,"#5E8C7A",1.9),A(P,a("--crit"),2.3),t.setLineDash([3,3]),t.globalAlpha=.5,t.beginPath(),t.moveTo(d(E),l),t.lineTo(d(E),l+c),t.strokeStyle=a("--crit"),t.lineWidth=1.2,t.stroke(),t.setLineDash([]),t.globalAlpha=1,t.beginPath(),t.moveTo(d(u),l),t.lineTo(d(u),l+c),t.strokeStyle=a("--text"),t.globalAlpha=.55,t.lineWidth=1.1,t.stroke(),t.globalAlpha=1;for(const[m,F]of[[P,a("--crit")],[C,"#5E8C7A"]])t.beginPath(),t.arc(d(u),g(m(u)),3.8,0,7),t.fillStyle=F,t.fill();t.fillStyle=a("--dim"),t.font="9.5px ui-monospace,Menlo,monospace",t.textAlign="left",t.fillText("G₃ absolute",o+6,l+11),t.fillStyle="#5E8C7A",t.fillText("W₃ constant",o+6,l+23),t.fillStyle=a("--dim"),t.textAlign="center",t.fillText("η",o+h/2,n-5)}function _(){const e=ae(u),r=ce(u),n=r!=="budget-limited";s("etaOut").textContent=u.toFixed(6),s("tOut").textContent=e.toFixed(6),s("gOut").textContent=P(u).toFixed(6),s("wOut").textContent=C(u).toFixed(6),s("dOut").textContent=oe(u).toExponential(3),s("regOut").textContent=r,s("regBox").className="regime"+(n?" locked":""),s("regWhy").textContent=n?"The admissible square already contains the global extremizer. Enlarging it reaches only lower terrain, so the absolute supremum over the class is frozen at 2/√3.":"The corner of the square is the best reachable point, so the extremizer spends the whole budget: t = η.",b(u),Ce(),j()}s("eta").addEventListener("input",e=>{u=parseFloat(e.target.value),_()});s("toEtaC").addEventListener("click",()=>{u=E,s("eta").value=String(E),_()});for(const e of["diagonal","square","peak","axis"]){const r=s("t_"+e);r.addEventListener("change",()=>{I[e]=r.checked,b(u)})}const O=s("quality");y.forEach((e,r)=>O.add(new Option(`${e.name} · ${e.n}×${e.n}`,String(r))));O.addEventListener("change",()=>{f.setQuality(y[parseInt(O.value)]),X(),b(u)});s("reset").addEventListener("click",()=>{f.cam={az:-.86,el:.52,dist:3.1},b(u)});s("present").addEventListener("click",()=>{document.body.classList.toggle("present"),requestAnimationFrame(()=>_())});s("shot").addEventListener("click",()=>{b(u);const e=document.createElement("a");e.download=`pmt_eta_${u.toFixed(4)}.png`,e.href=R.toDataURL("image/png"),e.click()});s("snap").addEventListener("click",()=>{var t;const e={mode:"extremal_mountain",eta:u,camera:f.cam,layers:{...I},quality:f.quality.name,selfChecks:k.passed?"PASS":"FAIL"};(t=navigator.clipboard)==null||t.writeText(JSON.stringify({...e,url:location.href},null,2));const r=s("snap"),n=r.textContent;r.textContent="copied",setTimeout(()=>r.textContent=n,1200)});let T=null;R.addEventListener("pointerdown",e=>{T={x:e.clientX,y:e.clientY},R.setPointerCapture(e.pointerId)});R.addEventListener("pointermove",e=>{T&&(f.cam.az-=(e.clientX-T.x)*.008,f.cam.el=Math.max(-.2,Math.min(1.42,f.cam.el+(e.clientY-T.y)*.006)),T={x:e.clientX,y:e.clientY},b(u))});R.addEventListener("pointerup",()=>{T=null,j()});R.addEventListener("wheel",e=>{e.preventDefault(),f.cam.dist=Math.max(1.5,Math.min(7,f.cam.dist*(e.deltaY>0?1.06:.94))),b(u)},{passive:!1});let U=0,B=0,W=performance.now();function X(){s("tel").innerHTML=[["renderer",f.info.api.toUpperCase()],["webgpu present",String(f.info.webgpuAvailable)],["gpu",f.info.renderer.slice(0,46)],["mesh",`${f.quality.n}×${f.quality.n}`],["triangles",f.triangles.toLocaleString()],["msaa max",String(f.info.maxSamples)],["dpr",f.info.dpr.toFixed(2)]].map(([e,r])=>`<div class="tl"><span>${e}</span><b class="mono">${r}</b></div>`).join("")}function Z(e){B+=e-W,W=e,U++,B>=500&&(s("fps").textContent=`${(U*1e3/B).toFixed(0)} fps · ${(B/U).toFixed(1)} ms`,U=0,B=0),requestAnimationFrame(Z)}q.cam&&(f.cam=q.cam);s("eta").value=String(u);for(const e of["diagonal","square","peak","axis"])s("t_"+e).checked=I[e];const ke=Be();O.value=String(y.indexOf(ke));const x=_e();K.insertAdjacentHTML("beforeend",`<div class="chk ${x.passed?"ok":"bad"}">
+     <span class="cid">${x.passed?"PASS":"FAIL"}</span>
+     <span class="cname">GPU_SURFACE_MATCHES_MATH</span>
+     <span class="cres mono">${x.worst.toExponential(2)} &le; ${x.tol.toExponential(0)}</span>
+   </div>`);if(!x.passed)throw s("verifiedBadge").textContent="RENDER CHECK FAILED",s("verifiedBadge").className="vbadge bad",s("stage").innerHTML=`<div class="fatal"><div class="fatalTitle">RENDER_SELF_CHECK_FAILED</div>
+     <p>The GPU surface disagrees with the tested mathematics by
+     ${x.worst.toExponential(3)} over ${x.n} probes. The instrument will
+     not present a surface it cannot certify.</p></div>`,new Error("RENDER_SELF_CHECK_FAILED");s("verifiedBadge").textContent=`VERIFIED · math 6/6 · gpu ${x.n} probes`;s("verifiedBadge").className="vbadge ok";X();s("statusLine").textContent=`${ne.THEOREM} · C₃ᴾ·ᶠⁱⁿ(η) = W₃(η) — frozen k≤3 core`;addEventListener("resize",_);matchMedia("(prefers-color-scheme: dark)").addEventListener("change",_);_();requestAnimationFrame(Z);
+
+</script>
