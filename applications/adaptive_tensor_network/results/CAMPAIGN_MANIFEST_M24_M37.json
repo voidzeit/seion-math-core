@@ -1,0 +1,600 @@
+{
+  "campaign": "M24-M37 adaptive tensor network / PMT certification and allocation",
+  "frozen_head": "d4ea5ddd87b47867809e8f5b97f3ca82064b9aeb",
+  "branch": "campaign/gate13-closeout",
+  "dirty_at_freeze": true,
+  "environment": {
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+    "dtype": "float64 throughout",
+    "gpu_used": false,
+    "gpu_note": "CUDA available but deliberately unused; the frozen pipeline is numpy float64 and Gate 0 reproduced M31 against it exactly"
+  },
+  "reproduction_gates": {
+    "M31_reproduction": "PASS \u2014 3 cells to machine precision (0, 8.9e-16, 1.8e-15)",
+    "parallel_vs_serial": "PASS \u2014 0.000e+00 over 42 configs incl. full spectra",
+    "path_independence": "PASS \u2014 0.000e+00 over 20 profiles x 4 decompositions",
+    "dfs_vs_direct_enumeration": "PASS \u2014 0.000e+00 over 150 samples per seed"
+  },
+  "file_count": 144,
+  "files": {
+    "applications/adaptive_tensor_network/experiments/run_branching_interaction.py": {
+      "sha256": "f09b6533f22201d80e566a13209e5ff45da1df394b3e2beb0c7cf329f07a8159",
+      "bytes": 10865
+    },
+    "applications/adaptive_tensor_network/experiments/run_certificate_alignment.py": {
+      "sha256": "3b2ab4e04099e74b05e3cf64c3e84663f744420782ee110126fd653c6a9721d6",
+      "bytes": 8253
+    },
+    "applications/adaptive_tensor_network/experiments/run_coupled_allocator.py": {
+      "sha256": "5026fd4ea9a80054bc94ad31416cfdd724465ef7461b4e4494f2bc5d885ad273",
+      "bytes": 8877
+    },
+    "applications/adaptive_tensor_network/experiments/run_dag_certificate_probe.py": {
+      "sha256": "040fb536afcae60c5671894d0cf40f2e649c14010c26904fec0731e7d13ecbd6",
+      "bytes": 6289
+    },
+    "applications/adaptive_tensor_network/experiments/run_dag_matched_tolerance_probe.py": {
+      "sha256": "42b6089d8a80ae8ae236b6f81b2cfa28fee360a141411cfdc6133ce8bc123cac",
+      "bytes": 13894
+    },
+    "applications/adaptive_tensor_network/experiments/run_depth_sweep.py": {
+      "sha256": "a03b70b9ea58040d3ea595ce6eb0e56192bc82c4737f9899489c878986267f09",
+      "bytes": 12292
+    },
+    "applications/adaptive_tensor_network/experiments/run_discrete_hessian.py": {
+      "sha256": "543d2b543a3276d2c03bf6058ca493aabf293888c8f49da40455d8730262ef4e",
+      "bytes": 4871
+    },
+    "applications/adaptive_tensor_network/experiments/run_global_certificate_probe.py": {
+      "sha256": "94e41e7856ec860dde5890d7a3aa5fa9cb57f3b81ec48bcc9fdae033baf79534",
+      "bytes": 5584
+    },
+    "applications/adaptive_tensor_network/experiments/run_heterogeneity_mechanism_m37.py": {
+      "sha256": "8b647c936afcde95c6d2f14fd4d144f455311896cb615167c27f5d0dacfbf88d",
+      "bytes": 13080
+    },
+    "applications/adaptive_tensor_network/experiments/run_heterogeneity_placement_m37.py": {
+      "sha256": "63b059a7a630a791f85878eab64e00df0d79512c1713a80bf7c42a9dcc33309b",
+      "bytes": 4969
+    },
+    "applications/adaptive_tensor_network/experiments/run_horizon_aware_allocation.py": {
+      "sha256": "bbcd3bfd47382157aa0f8fc51442a6b1ba1618ffe932c63b563d673b8bdf369b",
+      "bytes": 9019
+    },
+    "applications/adaptive_tensor_network/experiments/run_interaction_decision_value.py": {
+      "sha256": "e94066fe2ea182a24f690518c36048aaa4eecf6da3be1e5d6c5647d1bf572eb5",
+      "bytes": 8275
+    },
+    "applications/adaptive_tensor_network/experiments/run_interaction_dimension.py": {
+      "sha256": "d7f191ea5d821f2e8bef9176f902cfb51656cb8d072def6b1d54b11d3d5b5020",
+      "bytes": 8179
+    },
+    "applications/adaptive_tensor_network/experiments/run_level1_campaign.py": {
+      "sha256": "aa5d7ee6d6a0cf760687e96c72d0af824d9afd03a1003f0901e7425b3c499e89",
+      "bytes": 5879
+    },
+    "applications/adaptive_tensor_network/experiments/run_level2_campaign.py": {
+      "sha256": "44e95004ed990fb784c8f81cc7e12e7da10c6bc86af0c439fdea9988b3a38387",
+      "bytes": 4540
+    },
+    "applications/adaptive_tensor_network/experiments/run_level3_campaign.py": {
+      "sha256": "ab438ad07b37a9f1cdcb2d93ea84a6c10804c2c98d35eac84295277abdd22a6a",
+      "bytes": 5213
+    },
+    "applications/adaptive_tensor_network/experiments/run_m37_parallel.py": {
+      "sha256": "52e795c7f25a1b3b0f580891e2c3ca62e0b2f86bed5134a7555019fe9d1b5838",
+      "bytes": 7056
+    },
+    "applications/adaptive_tensor_network/experiments/run_majorant_optimizer_probe.py": {
+      "sha256": "40c548eba0b87014c308c5a7e0375bd80589dcf08339c5260f74999ac598a8cf",
+      "bytes": 6097
+    },
+    "applications/adaptive_tensor_network/experiments/run_marginal_utility.py": {
+      "sha256": "7b3f55ebe74fe7b2690f09ffe98fb8826a12aae515c0a298408b584fd6c0c6fa",
+      "bytes": 6128
+    },
+    "applications/adaptive_tensor_network/experiments/run_pairwise_interaction.py": {
+      "sha256": "7cc489df58e14c61e0930f588398fba4b9717345f87fb9e40ccec0923c52249c",
+      "bytes": 6547
+    },
+    "applications/adaptive_tensor_network/experiments/run_rollout_calibration.py": {
+      "sha256": "365bbf0706f2f2f1bbf87a809882046267b81af20aa4e02cdf7cbf7ba317aa6e",
+      "bytes": 9252
+    },
+    "applications/adaptive_tensor_network/experiments/run_surrogate_prediction.py": {
+      "sha256": "97b553e9d6fea87ef7fba44214fd5ab687c57d6bcdd62f2fc7f1ce495db9dccd",
+      "bytes": 7827
+    },
+    "applications/adaptive_tensor_network/experiments/run_terminal_oracle_m8.py": {
+      "sha256": "67e9d0ba7187c4f50c0e8fdb0089c781d3ba4cecc76e803e088ce9a80b68ecae",
+      "bytes": 12152
+    },
+    "applications/adaptive_tensor_network/experiments/run_trajectory_repair.py": {
+      "sha256": "ad1289dee75b2790867c7d32583e0dc098466bcc5272449a25fb65073f1f42eb",
+      "bytes": 7621
+    },
+    "applications/adaptive_tensor_network/experiments/run_validated_certificate_probe.py": {
+      "sha256": "0b9a98c46126db3562f33983626289c220d6d97b21cc8c727fd52edb8fa87aa5",
+      "bytes": 6319
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_branching_interaction.py": {
+      "sha256": "f5dc750e751f499502ac5a4dc94d1597d69ecdfd61b9b3baca02380617e4c8e5",
+      "bytes": 6843
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_certificate_alignment.py": {
+      "sha256": "21b8f957c900939a97fd4d0d074829bfc26dbbc85e8ab48e8a040395d904b090",
+      "bytes": 5973
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_coupled_allocator.py": {
+      "sha256": "f25d8fb7db21f821cc302c706e7154ce26ed7ca8b5260a37f22f4ff9b0539191",
+      "bytes": 3265
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_decision_rank_m37.py": {
+      "sha256": "1e5bb7817c55bddee530188cf6bb356052649e935d28a89c1d6b2e987e13dc79",
+      "bytes": 4518
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_depth_sweep.py": {
+      "sha256": "a3d968ef9d2bd9d542a6daf7eba0790ed1ab9469c4031c02d03c094a0de34262",
+      "bytes": 7854
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_discrete_hessian.py": {
+      "sha256": "03f766cfca1a1a94745f7fcd198f5365b9cfceb124a940e01c85d7175e4b8a0b",
+      "bytes": 4260
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_heterogeneity_mechanism_m37.py": {
+      "sha256": "165be8d52c4ad935163d508e3e720a938490119f47c9ce0da7cca4b2e785e767",
+      "bytes": 8374
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_horizon_aware_allocation.py": {
+      "sha256": "d55bc938f44f27635a03256fd9e1e995d2d2de6b79bbc6814fe27b0d228b03c5",
+      "bytes": 8067
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_interaction_decision_value.py": {
+      "sha256": "e0554704d4478683318a964d60bb91a30b7c1d92592808e410720886eb96161d",
+      "bytes": 4548
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_interaction_dimension.py": {
+      "sha256": "db30897507fff7edd3d76549d4849335de2ee8b7c32959c0566fdee21a28a830",
+      "bytes": 8512
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_level1.py": {
+      "sha256": "2fbd093280f675fbb08fcd8eb0149c2f4350e73a747030a012380f755a46b50f",
+      "bytes": 8336
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_marginal_utility.py": {
+      "sha256": "851d8392a936a5d9da7c1bb77a42037823057d04339df3b89862dd1c26f7ab30",
+      "bytes": 4819
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_pairwise_interaction.py": {
+      "sha256": "ed85e61880de458e8bded9dac643dfdd3cacb805aa9b64de88b5b7ce74967cc0",
+      "bytes": 5716
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_rollout_calibration.py": {
+      "sha256": "8b72707f3f9f2fcef0cc9768d098e2696b0ec6a03c1721535758c4c4cc23694d",
+      "bytes": 7407
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_surrogate_prediction.py": {
+      "sha256": "08f829018eff5de2a1032115668dd065e8a27426f454ee14e2c587bb11c019ed",
+      "bytes": 4517
+    },
+    "applications/adaptive_tensor_network/experiments/analyze_trajectory_repair.py": {
+      "sha256": "87ac04c494be0afdca6382d8f9e386858faeb5955f0c541e8ae70f257203b990",
+      "bytes": 3617
+    },
+    "applications/adaptive_tensor_network/experiments/freeze_campaign_manifest.py": {
+      "sha256": "4b987047c37ee0311d4c444e961e64c02f80fc62aef6402f3247d7b84b9f16f1",
+      "bytes": 3713
+    },
+    "applications/adaptive_tensor_network/src/allocation.py": {
+      "sha256": "2cbe3a2ecd12d8405cbe611ab95419663129651d751def21065d6c049358ac1f",
+      "bytes": 24630
+    },
+    "applications/adaptive_tensor_network/src/dag.py": {
+      "sha256": "7a7fb55b0f3bc3cb021c611b1068068bda9723c8ad39c4a41701a9f725c1dac3",
+      "bytes": 4243
+    },
+    "applications/adaptive_tensor_network/src/dag_allocation.py": {
+      "sha256": "4a103f600dd0c644844fc6d10e43a04b1ffde6f8d909903ee81fc7b5f53cfc7f",
+      "bytes": 859
+    },
+    "applications/adaptive_tensor_network/src/dag_network.py": {
+      "sha256": "8933387ea38a1e15dd108879abe734c6f38ae4368ce5cfe45c48a385ee6de54e",
+      "bytes": 17216
+    },
+    "applications/adaptive_tensor_network/src/geometric_certificate.py": {
+      "sha256": "5b817487c7d1d1953b73ff1a47e6d69f6cab05446867b449cc2fa931a46c1e4c",
+      "bytes": 8956
+    },
+    "applications/adaptive_tensor_network/src/metrics.py": {
+      "sha256": "8343fed1a2139ffa4368f753fb4be619c9c1559d0bdcc529d279cdf40771e4bc",
+      "bytes": 2435
+    },
+    "applications/adaptive_tensor_network/src/network.py": {
+      "sha256": "dc0cb667d91c6033c98aa97e29462e2a5fc996eebf8f4164c914152571f0ba4e",
+      "bytes": 25081
+    },
+    "applications/adaptive_tensor_network/src/tree.py": {
+      "sha256": "fef88dd01dded017b36fe59a39838f499ac5e8facab4a0089f27f90fd022daab",
+      "bytes": 4336
+    },
+    "applications/adaptive_tensor_network/results/branching_interaction_analysis.json": {
+      "sha256": "7204f00cea33e1e9cd77943c7a509d12ab7fd8553a24e2e7ac880e75f04a3fba",
+      "bytes": 2935
+    },
+    "applications/adaptive_tensor_network/results/branching_interaction_raw.json": {
+      "sha256": "d7f223befb2588ff165867cceaae160a4534cea063d00af066883a377c59f77d",
+      "bytes": 8208709
+    },
+    "applications/adaptive_tensor_network/results/certificate_alignment_raw.json": {
+      "sha256": "a67f358332d148ac5618adc1aa24d4eb11d771be017664f09273b42c6ab314b9",
+      "bytes": 249997
+    },
+    "applications/adaptive_tensor_network/results/coupled_allocator_raw.json": {
+      "sha256": "39c925420b52a78a37bfea7d51bd5f0514042de8e442b737bde5fb896e24f407",
+      "bytes": 61684
+    },
+    "applications/adaptive_tensor_network/results/dag_certificate_probe_2026-08-09.json": {
+      "sha256": "e444e2ad4bdfd2b94bce49072c5167e12932eb5a0760eac07c4cdadbd6a39e80",
+      "bytes": 173124
+    },
+    "applications/adaptive_tensor_network/results/DAG_MATCHED_TOLERANCE_PROBE_2026-08-09.json": {
+      "sha256": "bc3c7c50b87ea188ab1696cd195ef8ad07f47cc430efc607265d0463a1adb3b6",
+      "bytes": 221174
+    },
+    "applications/adaptive_tensor_network/results/depth_sweep_analysis.json": {
+      "sha256": "0441de070f2f936395118a098511b89ec34c64b82ccc47026b5ba684e0c01ef8",
+      "bytes": 35882
+    },
+    "applications/adaptive_tensor_network/results/depth_sweep_raw.json": {
+      "sha256": "93af3accc9eecf1d000b4a2a4f4fe5e13b14df7da84bac4676b3a80394e79ef7",
+      "bytes": 4890505
+    },
+    "applications/adaptive_tensor_network/results/discrete_hessian_analysis.json": {
+      "sha256": "0ba79bb96012691633f1f1f6395106466871bc7c8e49171c9a72274efa6b4998",
+      "bytes": 1409
+    },
+    "applications/adaptive_tensor_network/results/discrete_hessian_raw.json": {
+      "sha256": "e99f71bffc5f4d0e2bb90d3b3c936c957d8f01cb07b50b5bd640c0eb4c37403b",
+      "bytes": 920953
+    },
+    "applications/adaptive_tensor_network/results/global_certificate_probe_2026-08-09.json": {
+      "sha256": "9af797eace6b62d2d557a62b8b5fd81b0c1d56e6873b1f275bc7c8c39fbcdc32",
+      "bytes": 116322
+    },
+    "applications/adaptive_tensor_network/results/interaction_decision_value_analysis.json": {
+      "sha256": "41a24c64eb54da61ac5c42235ef722175e11f3d65dc2051daf6b3ed6eaaed382",
+      "bytes": 3381
+    },
+    "applications/adaptive_tensor_network/results/interaction_decision_value_raw.json": {
+      "sha256": "29161fb0781ed95cbfe4db53894bc5decdc4ca0ec9e45b201060ecc5dcc362fd",
+      "bytes": 25063
+    },
+    "applications/adaptive_tensor_network/results/interaction_dimension_analysis.json": {
+      "sha256": "7949460e3c414a0b5f77476261594d7d43e3da7ae4b3021d6eadbfd623d35767",
+      "bytes": 3941
+    },
+    "applications/adaptive_tensor_network/results/interaction_dimension_raw.json": {
+      "sha256": "d480d856aa9a8415fd97af8ec698d682aafe5b7ebecf1d4a22a8359c24137c76",
+      "bytes": 2585590
+    },
+    "applications/adaptive_tensor_network/results/level1_analysis.json": {
+      "sha256": "a18bcddad733e88d0c624bf2b7c0131f88cc2bc4147e7f4b44cc42f0b2410acf",
+      "bytes": 4972
+    },
+    "applications/adaptive_tensor_network/results/level1_raw.json": {
+      "sha256": "4d944957e6da23dddde0e419ff405e8a5d844be86321750f01f43fe1e2f3c4ae",
+      "bytes": 429901
+    },
+    "applications/adaptive_tensor_network/results/level2_raw.json": {
+      "sha256": "66a9126d72426518f73ac33b54eaeb752a607380f7628c0b69e2c5425294b585",
+      "bytes": 36676
+    },
+    "applications/adaptive_tensor_network/results/level3_raw.json": {
+      "sha256": "5fb7c900af457ec5ad71313dd3c6fc4c9cbc07d834f37de3bcad0883e0e56beb",
+      "bytes": 42490
+    },
+    "applications/adaptive_tensor_network/results/m35b_analysis.json": {
+      "sha256": "0f30b9db2503ed413019fb48bcfef7e1bcdc941d66d692baa32f0cd1f7c84b69",
+      "bytes": 12761
+    },
+    "applications/adaptive_tensor_network/results/m35c_analysis.json": {
+      "sha256": "085270c8c0450b5b31d1fc4b2a20f5b8ca2d0b61a504b259ead313ba82be6b75",
+      "bytes": 6024
+    },
+    "applications/adaptive_tensor_network/results/m36_analysis.json": {
+      "sha256": "59098ee4f68fed97d8258a75ad1e88352650ab309efcd2a729ac6ce4af1b70e9",
+      "bytes": 1649
+    },
+    "applications/adaptive_tensor_network/results/m37_par_smoke.json": {
+      "sha256": "f93606b909413d45b953ff8e9cb275c500422e9bf9105b294c3fdafe42d23294",
+      "bytes": 125378
+    },
+    "applications/adaptive_tensor_network/results/m37_placement_raw.json": {
+      "sha256": "35c1e23022fb9224c94212c5722a561e84eb50d3f2c4e1f4aaea8d68bba53142",
+      "bytes": 200944
+    },
+    "applications/adaptive_tensor_network/results/m37_raw.json": {
+      "sha256": "9fa49a55431fdaaf8bd531e75fdbc1c68a67a7a783a2de20fae58a01fbcdf251",
+      "bytes": 635087
+    },
+    "applications/adaptive_tensor_network/results/m37_raw_d16.json": {
+      "sha256": "e32a1e766f904e547f6ff7f00a600abd35fcdaad3246ca9a60f637ff1e9ca5a8",
+      "bytes": 627615
+    },
+    "applications/adaptive_tensor_network/results/m37_raw_d32.json": {
+      "sha256": "8b991b0ef8dc1da9c04ff972ecf0a79bfbe4808b0491e78c59878f2391b34274",
+      "bytes": 624563
+    },
+    "applications/adaptive_tensor_network/results/m37_smoke.json": {
+      "sha256": "21ddeff396cb70b2993505b334f8a6b8245934f6a899c30901ef80966be6b20f",
+      "bytes": 63055
+    },
+    "applications/adaptive_tensor_network/results/m37_statistics.json": {
+      "sha256": "114e2d54adf2fd3c56707115d74d60a866ad9f3e1e75fb2cbd061b225144238a",
+      "bytes": 1050
+    },
+    "applications/adaptive_tensor_network/results/majorant_optimizer_probe_2026-08-09.json": {
+      "sha256": "70766e5eab7639df2e045ef043af94ee7e7c5b9e64ce5fe79a8e7886f2eb651f",
+      "bytes": 81947
+    },
+    "applications/adaptive_tensor_network/results/marginal_utility_analysis.json": {
+      "sha256": "4e1a5ca539478856250c654322aeb2c1dddf2ddd46ca7bc20e42f01920b8d6d2",
+      "bytes": 10831
+    },
+    "applications/adaptive_tensor_network/results/marginal_utility_raw.json": {
+      "sha256": "cce21e2ad37f4b794e8025c2efe83f856646df4a73c3c14440b37147c5466a7b",
+      "bytes": 1093908
+    },
+    "applications/adaptive_tensor_network/results/pairwise_interaction_analysis.json": {
+      "sha256": "9c294478bf62f60fee23e583b806149daf42811435f9f677219c283052a88d9b",
+      "bytes": 8388
+    },
+    "applications/adaptive_tensor_network/results/pairwise_interaction_raw.json": {
+      "sha256": "fbe5e053c8d1e1d956824b86244ad91aecc7d410817310f9e7b132bf451fe82a",
+      "bytes": 2475558
+    },
+    "applications/adaptive_tensor_network/results/policy_scaling_m8.json": {
+      "sha256": "6c6f9a4479df739cd426355bae838b0b05877f128f0a4339ae92abb64a9de38c",
+      "bytes": 69570
+    },
+    "applications/adaptive_tensor_network/results/policy_scaling_raw.json": {
+      "sha256": "6d8500d8a2158a9343c181f29f26c16787e65324b014925b7d9f5fbd2c9d4ecd",
+      "bytes": 135552
+    },
+    "applications/adaptive_tensor_network/results/rollout_calibration_raw.json": {
+      "sha256": "75b7ed4bea6c5122069fde1a96c091eab0103406104e59f687582ce15704e253",
+      "bytes": 63707
+    },
+    "applications/adaptive_tensor_network/results/surrogate_prediction_analysis.json": {
+      "sha256": "4e4d7f0a565be20e69a244c7531edb014365bb5ffcd82521213c2df0daa2e779",
+      "bytes": 4531
+    },
+    "applications/adaptive_tensor_network/results/surrogate_prediction_raw.json": {
+      "sha256": "8176825cb6ea93b25edad76c83cb09f338f504a0335a0c216134aa8273546190",
+      "bytes": 8977469
+    },
+    "applications/adaptive_tensor_network/results/terminal_oracle_m8_raw.json": {
+      "sha256": "48b1739ed03e9d21d343591cdfc833869868ace33fd2f6eb06533731c742218d",
+      "bytes": 28103
+    },
+    "applications/adaptive_tensor_network/results/trajectory_repair_analysis.json": {
+      "sha256": "64f673d5aa583a96f5330d03c40f23bfb41187a7ee143f244c2967570a4e23db",
+      "bytes": 2461
+    },
+    "applications/adaptive_tensor_network/results/trajectory_repair_raw.json": {
+      "sha256": "2ee724cfed9a062ebff1e63226b1689951bf7928af2a51bdac945263a256113b",
+      "bytes": 21909
+    },
+    "applications/adaptive_tensor_network/results/TTN_FB15K237_MULTISEED_2026-08-10.json": {
+      "sha256": "511c8b8efc01ac9ffd770347e89da9289867518836e598d911d0586db1a50bc8",
+      "bytes": 6768
+    },
+    "applications/adaptive_tensor_network/results/validated_certificate_probe_2026-08-09.json": {
+      "sha256": "2e98eb8bf7de743870f1f6ceb2d0a60c27cb25377c08e1cc617069e2074ff1b2",
+      "bytes": 173275
+    },
+    "applications/adaptive_tensor_network/results/m35b_policy_table.csv": {
+      "sha256": "07e4f59611283b565e77a36cb11d7b96b67b9b1fe7b317af1c711f367f24c9b9",
+      "bytes": 2367
+    },
+    "applications/adaptive_tensor_network/results/m35c_rollout_table.csv": {
+      "sha256": "afb5113d1790b1675ec70e56e20f6efb25a430972b38463e6a4ce38eed203895",
+      "bytes": 2461
+    },
+    "applications/adaptive_tensor_network/results/m36_alignment_table.csv": {
+      "sha256": "1272b150ed0ac82e25defcef44baca30bd45c28aacdf35d4a28cfeefa6832ad4",
+      "bytes": 938
+    },
+    "applications/adaptive_tensor_network/results/m37_decision_rank.csv": {
+      "sha256": "dc2d2ccec96e9db66334197407f215a46a7fe82af8c40d1f129b7bb5748f9d06",
+      "bytes": 263
+    },
+    "applications/adaptive_tensor_network/results/m37_operational_summary.csv": {
+      "sha256": "bb24bd3cb6a15f63d902a1db32a837b2aedfb850b06fe03fc78952b49722f35a",
+      "bytes": 1761
+    },
+    "applications/adaptive_tensor_network/results/m37_spectral_summary.csv": {
+      "sha256": "2ec5cd987ce8732c945d07111b7225e62433b43c4f202a656fe309e2b1480b92",
+      "bytes": 14482
+    },
+    "applications/adaptive_tensor_network/results/APPLIED_VALIDATION_STATUS_2026-08-09.md": {
+      "sha256": "964d76df051bb1466556adf3a5e32257ecc9da021c28c88dd7eca9da416e0e47",
+      "bytes": 4653
+    },
+    "applications/adaptive_tensor_network/results/BRANCHING_INTERACTION_M30_FINDINGS.md": {
+      "sha256": "f253025cf2cdb31318eb9ceb51efec8aac1914a9174150b1e0bffccf39aa9eaf",
+      "bytes": 6885
+    },
+    "applications/adaptive_tensor_network/results/CAMPAIGN_FINDINGS.md": {
+      "sha256": "6e7577e4b621dccde2ca66ea616852b10fd4bb48de72d50fd7f4d5de5cd6a0b0",
+      "bytes": 5754
+    },
+    "applications/adaptive_tensor_network/results/CERTIFICATE_ALIGNMENT_M36_FINDINGS.md": {
+      "sha256": "e16f070639dab9cc3c85818a16f86854b10d2f861f4def92cc6a69ba0fa2d4e1",
+      "bytes": 5292
+    },
+    "applications/adaptive_tensor_network/results/CERTIFICATE_M24_M25_FINDINGS.md": {
+      "sha256": "108dcf827ca1b5ff194536831e60739465168d00a4df342fe2e4fd59f6937f05",
+      "bytes": 5075
+    },
+    "applications/adaptive_tensor_network/results/COUPLED_ALLOCATOR_M33_FINDINGS.md": {
+      "sha256": "bbc90733b8624859e02ea393ab1e70b6f5c3667ac2980588e1a0d3383b85256e",
+      "bytes": 5514
+    },
+    "applications/adaptive_tensor_network/results/DAG_CERTIFICATE_PROBE_2026-08-09.md": {
+      "sha256": "a42005cbabb9867cebfa14578b7165519babde86734d3cd5d1bfbdc3613f629a",
+      "bytes": 2113
+    },
+    "applications/adaptive_tensor_network/results/DAG_MATCHED_TOLERANCE_PROBE_2026-08-09.md": {
+      "sha256": "5adf4909e549e722f63f398fa92019a1c16262018fc30363e2aa3d22f981b1f9",
+      "bytes": 2213
+    },
+    "applications/adaptive_tensor_network/results/DECISION_VALUE_M34_FINDINGS.md": {
+      "sha256": "800f96f34571a349baf85cf29e3c9a793de7b1c671cd72c587018f31b4604def",
+      "bytes": 5652
+    },
+    "applications/adaptive_tensor_network/results/DEPTH_SWEEP_FINDINGS.md": {
+      "sha256": "862903d8b294779693ff134be7cb2a4cd1df030fd0fa7fab88d4acc087c6acd5",
+      "bytes": 7100
+    },
+    "applications/adaptive_tensor_network/results/DISCRETE_HESSIAN_FINDINGS.md": {
+      "sha256": "b9bc622d8fb926762b501100fb8a6c2242498be44264c67474f0627cda477cff",
+      "bytes": 5197
+    },
+    "applications/adaptive_tensor_network/results/GLOBAL_CERTIFICATE_PROBE_2026-08-09.md": {
+      "sha256": "a861af613beece13d8294268dd2a9d69a86c6a917cd5e09a8f7fb4819700a715",
+      "bytes": 990
+    },
+    "applications/adaptive_tensor_network/results/HETEROGENEITY_MECHANISM_M37_FINDINGS.md": {
+      "sha256": "56793f2a7f517d487a380bbd6dc3f0ac344eb4beda52a5f7ded296d97bd8533d",
+      "bytes": 12317
+    },
+    "applications/adaptive_tensor_network/results/HORIZON_AWARE_M35B_FINDINGS.md": {
+      "sha256": "8a0b6c0676c2df4cdfbb88019417911dff811cf8edac819fbbc05cc69252cba2",
+      "bytes": 8116
+    },
+    "applications/adaptive_tensor_network/results/INTERACTION_DIMENSION_M31_FINDINGS.md": {
+      "sha256": "de8e612f795e3792de79c42b52ea0f1c73938e44a08eefe7e5593177329c4c5c",
+      "bytes": 8425
+    },
+    "applications/adaptive_tensor_network/results/LEVEL1_FINDINGS.md": {
+      "sha256": "9b61445f18b73cede5c39e6479d22d236c69fb248337c901cce5885857f4828a",
+      "bytes": 5167
+    },
+    "applications/adaptive_tensor_network/results/m33_m35_interpretation_correction.md": {
+      "sha256": "1b5d527b58fb209988a5fff5dd43b5df9e574d84fa1c66c8ff44d9f034cff490",
+      "bytes": 2919
+    },
+    "applications/adaptive_tensor_network/results/MAJORANT_OPTIMIZER_NOTE.md": {
+      "sha256": "c21097c62130f704ca6f7db5238d8e8c09a19ca72401b0626ebc5dceb45c8847",
+      "bytes": 1061
+    },
+    "applications/adaptive_tensor_network/results/MAJORANT_OPTIMIZER_PROBE_2026-08-09.md": {
+      "sha256": "49c014fd99bea8cf183157483370a95a097d113a888cf7060517b9e25fdea17c",
+      "bytes": 1227
+    },
+    "applications/adaptive_tensor_network/results/MARGINAL_UTILITY_M27_FINDINGS.md": {
+      "sha256": "42b4c9eb189215c4f3924986312cae292e8cb9dc0dcdd2bc12b2aa2dc853893b",
+      "bytes": 6306
+    },
+    "applications/adaptive_tensor_network/results/PAIRWISE_INTERACTION_M29_FINDINGS.md": {
+      "sha256": "4e46bfb1c2876b8c436d014c16ee44e37e8ac48d4373484ea9be77a00ec27568",
+      "bytes": 7109
+    },
+    "applications/adaptive_tensor_network/results/ROLLOUT_CALIBRATION_M35C_FINDINGS.md": {
+      "sha256": "dfb253caa262301c94fcc2a8b761b71a8d3ed5396f4390c2e2fd002cf2835e3b",
+      "bytes": 6156
+    },
+    "applications/adaptive_tensor_network/results/SURROGATE_PREDICTION_M32_FINDINGS.md": {
+      "sha256": "8b07222805c4c873c1e18faa80b396fbb67ed0f96544d57e292ae0a478a0c665",
+      "bytes": 5268
+    },
+    "applications/adaptive_tensor_network/results/TRAJECTORY_REPAIR_M35_FINDINGS.md": {
+      "sha256": "d5bdeda3f4fee27f62f9a67f28015d2e55b25648c57fd566b24668a0ecf6a810",
+      "bytes": 4867
+    },
+    "applications/adaptive_tensor_network/results/TTN_FB15K237_MULTISEED_2026-08-10.md": {
+      "sha256": "43261dd1a2b8416dd0619e7219ae4dbafca6a3cefe49346bc3f69154d521c11a",
+      "bytes": 828
+    },
+    "applications/adaptive_tensor_network/results/VALIDATED_CERTIFICATE_PROBE_2026-08-09.md": {
+      "sha256": "b60401c13daa1959e791e8b3b58cc5454c9848043a0a2507769aabe35cee5d04",
+      "bytes": 1215
+    },
+    "applications/adaptive_tensor_network/results/VALIDATED_OPERATOR_CERTIFICATE_NOTE.md": {
+      "sha256": "dc279fd1245ebfab84b575b1290a087d9a92e352e9798d9ac2728555a161a1cf",
+      "bytes": 1493
+    },
+    "applications/adaptive_tensor_network/results/terminal_oracle_m8_values_seed0.npy": {
+      "sha256": "6925db961cd24fdbfbb2b061393a0b9ba9c25e1ba746c2bdffcbfdaa9a34ed1a",
+      "bytes": 1882912
+    },
+    "applications/adaptive_tensor_network/results/terminal_oracle_m8_values_seed1.npy": {
+      "sha256": "448b44e57016ea3bad973d5f1e8d3e464aeebc576c123b3083046245a12bea4c",
+      "bytes": 1882912
+    },
+    "applications/adaptive_tensor_network/results/terminal_oracle_m8_values_seed2.npy": {
+      "sha256": "d316e9beb40c66cf98e1dc860575d249cf9f1a9edb6ae517c101611fa902605f",
+      "bytes": 1882912
+    },
+    "applications/adaptive_tensor_network/results/terminal_oracle_m8_values_seed3.npy": {
+      "sha256": "4841b09dda26ca61118c81eaa02c6f0f02c050a611a4c7be548d12cceef3253c",
+      "bytes": 1882912
+    },
+    "applications/adaptive_tensor_network/results/terminal_oracle_m8_values_seed4.npy": {
+      "sha256": "f30604103af9f05f571f09d072910121a93e8e7a875194629c82cd537a4b6a4a",
+      "bytes": 1882912
+    },
+    "applications/adaptive_tensor_network/tests/test_dag_asymptotic_witness.py": {
+      "sha256": "be4c0e733b7da8164f8b8cc2aca3f3f9e6392aebaeef303c7a841df5ce0be776",
+      "bytes": 3893
+    },
+    "applications/adaptive_tensor_network/tests/test_dag_network.py": {
+      "sha256": "4b203a44105c0663c4473c2dcd6e8ba1208e8c6a1a2c0232a8655cdf87f8fa45",
+      "bytes": 6121
+    },
+    "applications/adaptive_tensor_network/tests/test_fitting.py": {
+      "sha256": "ad2ddda09df52562156fe18d48aef520f8d16cbf37aec5807de3b24c33e848bb",
+      "bytes": 5645
+    },
+    "applications/adaptive_tensor_network/tests/test_geometric_certificate.py": {
+      "sha256": "caddc3341ba0113ca2c468149d708412ce4f78c334de2f43787f389259acbb2e",
+      "bytes": 4163
+    },
+    "applications/adaptive_tensor_network/tests/test_global_certificate.py": {
+      "sha256": "4baf567e504c640375358c12e0e700aa3ff1ae4a4c5746b66d7f6583131e7863",
+      "bytes": 2535
+    },
+    "applications/adaptive_tensor_network/tests/test_majorant_optimizer.py": {
+      "sha256": "27e0b476fe279bebe32d9cd296a919d8211f38d25ed9ac51afaffc9aa5e1ec9d",
+      "bytes": 1957
+    },
+    "applications/adaptive_tensor_network/tests/test_network_and_allocation.py": {
+      "sha256": "e11f47570e284732cda43b5e7718781feed4daf85800083b6bc516ba47b367ec",
+      "bytes": 6425
+    },
+    "applications/adaptive_tensor_network/tests/test_validated_certificate.py": {
+      "sha256": "fd37a24c086224ddd5d331d4dd69d57120d11a362d5993ebeb45320e733e7675",
+      "bytes": 2642
+    },
+    "research/math_closure/certificates/m24_m25_finite_batch_certificates.py": {
+      "sha256": "43db375fef7e956ea050b00118e5a0a0dae5cc5450a5ee1e0624f7de225bbd19",
+      "bytes": 10378
+    },
+    "research/math_closure/certificates/m24_m25_finite_batch_certificates.tex": {
+      "sha256": "e44f6a7af7c0800b3a0f5473eafecf513be603d73f933e1141fa3e55da42efb4",
+      "bytes": 10404
+    },
+    "research/math_closure/certificates/terminal_state_sufficiency.tex": {
+      "sha256": "a9874866ff29296b14444b07be29946b94dcf8ef2f41fdf0198ec2d9ec47ed7d",
+      "bytes": 3690
+    },
+    "tests/math_closure/test_m24_m25_finite_batch_certificates.py": {
+      "sha256": "f24c123c53ec5be28ae86fc57d1ffd712a314e87bf4c7b63babab599b08d7c5b",
+      "bytes": 3654
+    }
+  }
+}

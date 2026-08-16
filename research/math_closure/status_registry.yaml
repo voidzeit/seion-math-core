@@ -779,6 +779,66 @@ entries:
       No scalable implicit-DAG compression, infinite-series tail theorem,
       universal signed-forest sharp constant, or novelty claim is made.
 
+  - id: M24_restricted_gain_finite_batch_certificate
+    question: >
+      Is the restricted-gain, per-sample composition rule a sound upper bound
+      on the root discrepancy, and does per-sample propagation provably beat
+      batch-decoupled composition and the Frobenius rule?
+    status: PROVED_UNDER_ASSUMPTIONS
+    admissible_class: >
+      finite ordered rooted trees, arbitrary arity, finite-dimensional real
+      Hilbert spaces, orthogonal projectors of prescribed rank, root left
+      unprojected, a fixed finite family of leaf data and a fixed rank
+      assignment.
+    evidence:
+      - research/math_closure/certificates/m24_m25_finite_batch_certificates.tex
+      - research/math_closure/certificates/m24_m25_finite_batch_certificates.py
+      - tests/math_closure/test_m24_m25_finite_batch_certificates.py
+      - applications/adaptive_tensor_network/src/geometric_certificate.py
+      - applications/adaptive_tensor_network/results/CERTIFICATE_M24_M25_FINDINGS.md
+    result: >
+      The telescoping expansion over effective slot maps is an exact identity
+      (Lemma 1), so all slack is attributable to how it is bounded. Bounding it
+      per sample with exact slot operator norms yields B with ||delta_v|| <= B_v
+      pointwise, hence max_n ||E|| <= max_n B_root. Per-sample propagation
+      satisfies max_n B_v <= Bbar_v, the batch-decoupled bound, which pairs one
+      sample's gain with another sample's error; and B_v <= A_v, the Frobenius
+      value-bound rule. Empirically the composition change recovers a factor of
+      2.4e18 in tightness at depth 24.
+    limitation: >
+      Finite-batch only; not a claim about unbounded inputs, not a
+      computational shortcut (both evaluations are required), and it bounds no
+      extremal constant C_T^P(eta). The residual slack is the step
+      ||M delta|| <= sigma_max(M) ||delta||, which still compounds
+      geometrically in depth; directional transport is deferred to M28.
+
+  - id: M25_gram_aware_certificate_refinement
+    question: >
+      Does accounting for the angle between the propagated error and the
+      closure residual give a bound that is provably never looser than M24,
+      and when is it strictly tighter?
+    status: PROVED_UNDER_ASSUMPTIONS
+    admissible_class: >
+      as M24.
+    evidence:
+      - research/math_closure/certificates/m24_m25_finite_batch_certificates.tex
+      - research/math_closure/certificates/m24_m25_finite_batch_certificates.py
+      - tests/math_closure/test_m24_m25_finite_batch_certificates.py
+    result: >
+      The closure residual lies in Ran(I-P_v) by construction, so the cross
+      term in ||a+b||^2 sees only the normal component of the propagated
+      error, bounded by its own restricted gain. The resulting G satisfies
+      ||delta_v|| <= G_v <= B_v for every node and sample. The refinement is
+      strict exactly when the closure residual is nonzero and the
+      normal-restricted gain is strictly below the unrestricted one; it
+      degrades to Pythagorean addition when the propagated error is mostly
+      tangential. Measured gain over M24 is 6% to 20%.
+    limitation: >
+      Second-order, as for the k=3 orthogonality mechanism it generalizes: it
+      does not change the leading accumulation rate in depth. It addresses only
+      the closure/propagated angle, not the alignment assumption inside the
+      slot-map bound.
+
   - id: M7_pseudodifferential_microlocal_program
     question: >
       Symbol class stability, projector composition stability, associator

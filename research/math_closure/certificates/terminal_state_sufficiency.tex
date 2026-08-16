@@ -1,0 +1,80 @@
+\section*{Terminal-state sufficiency for rank-allocation sequences}
+\label{sec:terminal-state-sufficiency}
+
+\paragraph{Scope.}
+This is a structural proposition about the evaluation model used by the
+adaptive tensor-network campaign, not a statement about projected multilinear
+trees in general. It is elementary. It is recorded because it is load-bearing:
+it is what licenses replacing a search over action sequences by an enumeration
+over terminal rank vectors, and the whole $m=8$ terminal-oracle calibration
+rests on it.
+
+\paragraph{Setting.}
+Fix a finite ordered rooted tree $T$ with internal vertices carrying
+multilinear laws $\mu_v$, a finite leaf batch $Z$, and a family of orthogonal
+projectors $\{P_v^{(\cdot)}\}$ in which $P_v^{(\rho)}$ denotes projection onto
+the leading $\rho$ directions of a basis fixed in advance. Write
+$\mathbf r \in \mathbb{Z}_{\ge0}^{V}$ for a rank assignment and
+\[
+  \Phi(Z,\mathbf r) \;:=\; \bigl\|\,F_r(Z) - \widetilde R_r(Z,\mathbf r)\,\bigr\|
+\]
+for the root discrepancy, where $F$ is the ambient evaluation and
+$\widetilde R$ the recursively projected one.
+
+\paragraph{Hypotheses.}
+\begin{enumerate}
+\item[(H1)] \emph{Fixed projector bases.} Each $P_v^{(\rho)}$ is determined by a
+basis fitted once, from the ambient pass, independently of $\mathbf r$.
+\item[(H2)] \emph{Purely rank-indexed evaluation.} $\widetilde R$ is computed by
+a recursion over $T$ that reads only $(Z, \mathbf r)$ and the laws, and retains
+no state between invocations.
+\end{enumerate}
+
+\paragraph{Proposition (terminal-state sufficiency).}
+Under (H1)--(H2), for any two admissible action sequences
+$a_{0:T-1}$ and $a'_{0:T-1}$ with
+\[
+  \mathbf r_0 + \sum_{t=0}^{T-1} a_t \;=\; \mathbf r_0 + \sum_{t=0}^{T-1} a'_t,
+\]
+the terminal objectives coincide:
+\[
+  \boxed{\;\Phi\bigl(Z,\mathbf r_T\bigr) = \Phi\bigl(Z,\mathbf r_T'\bigr).\;}
+\]
+
+\emph{Proof.} By (H1)--(H2) the map $\mathbf r \mapsto \Phi(Z,\mathbf r)$ is a
+function --- the evaluation depends on the sequence only through the rank
+vector it produces. Equal terminal rank vectors therefore give equal
+objectives. $\square$
+
+\paragraph{Corollary (enumeration validity).}
+Let each round add one unit to exactly $b$ distinct coordinates, over $T$
+rounds. Then the reachable terminal increments are exactly
+\[
+  \mathcal X_{T,b}
+  \;=\;
+  \Bigl\{\,x \in \{0,\dots,T\}^m \;:\; \textstyle\sum_i x_i = Tb \,\Bigr\},
+\]
+the constraint $x_i \le T$ and the total being precisely the Gale--Ryser
+condition for decomposing $x$ into $T$ binary vectors of weight $b$. By the
+proposition, minimizing the terminal objective over policies is equivalent to
+\[
+  \boxed{\;\min_{x \in \mathcal X_{T,b}} \Phi\bigl(Z, \mathbf r_0 + x\bigr).\;}
+\]
+For $m=8$, $b=3$, $T=6$ this replaces $\binom{8}{3}^6 = 3.08\times10^{10}$
+action sequences by $|\mathcal X_{T,b}| = 235{,}348$ terminal profiles.
+
+\paragraph{Boundary.}
+The proposition fails if the projector bases are refitted from the reduced
+pipeline at each round, since then $P_v$ would depend on the history through
+the values it was fitted to; (H1) excludes exactly that. It also says nothing
+about the difficulty of the optimization: the sequential problem remains
+combinatorial because the per-round budget constrains which terminal profiles
+remain reachable from a given partial state. What it removes is hysteresis, not
+planning.
+
+\paragraph{Implementation control.}
+\texttt{run\_terminal\_oracle\_m8.py} tests the proposition numerically on 20
+random terminal profiles per instance, each realized by 4 distinct
+decompositions, and observes a maximum spread of $0.000\mathrm{e}{+}00$. Under
+the proposition this is a test of the implementation, not evidence for the
+statement.

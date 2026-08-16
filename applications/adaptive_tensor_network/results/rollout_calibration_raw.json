@@ -1,0 +1,3678 @@
+{
+  "config": {
+    "m": 8,
+    "dim": 16,
+    "bundle": 3,
+    "rounds": 6,
+    "start_fraction": 0.25,
+    "eval_batch": 200,
+    "fit_batch": 200,
+    "regime": "heterogeneous",
+    "dtype": "float64",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "lookahead": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "bases": [
+      "local_greedy",
+      "measured_first_order"
+    ],
+    "command": "run_rollout_calibration.py --seeds 0 1 2 3 4 --lookahead 1 2 3 4 5 6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.4.6",
+    "note": "h=1 rollout is exactly step-greedy over the full 56-bundle set"
+  },
+  "runs": [
+    {
+      "policy": "local_greedy",
+      "base_policy": "local_greedy",
+      "lookahead": 0,
+      "terminal_error": 1.6753117045492603,
+      "terminal_profile": [
+        4,
+        0,
+        2,
+        6,
+        0,
+        1,
+        1,
+        4
+      ],
+      "actions": [
+        [
+          "n3",
+          "n0",
+          "n2"
+        ],
+        [
+          "n3",
+          "n7",
+          "n0"
+        ],
+        [
+          "n3",
+          "n7",
+          "n0"
+        ],
+        [
+          "n3",
+          "n2",
+          "n7"
+        ],
+        [
+          "n3",
+          "n6",
+          "n0"
+        ],
+        [
+          "n3",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 1,
+      "wall_seconds": 0.005000114440917969,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "measured_first_order",
+      "base_policy": "measured_first_order",
+      "lookahead": 0,
+      "terminal_error": 1.2472551451839373,
+      "terminal_profile": [
+        5,
+        0,
+        1,
+        1,
+        1,
+        6,
+        0,
+        4
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n5"
+        ],
+        [
+          "n3",
+          "n5",
+          "n4"
+        ],
+        [
+          "n7",
+          "n5",
+          "n0"
+        ],
+        [
+          "n5",
+          "n0",
+          "n7"
+        ],
+        [
+          "n0",
+          "n7",
+          "n5"
+        ],
+        [
+          "n7",
+          "n0",
+          "n5"
+        ]
+      ],
+      "evaluations": 55,
+      "wall_seconds": 0.19582843780517578,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_local_greedy_h1",
+      "base_policy": "local_greedy",
+      "lookahead": 1,
+      "terminal_error": 1.2694359784589944,
+      "terminal_profile": [
+        5,
+        0,
+        1,
+        1,
+        2,
+        5,
+        0,
+        4
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n4",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.1850836277008057,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_local_greedy_h2",
+      "base_policy": "local_greedy",
+      "lookahead": 2,
+      "terminal_error": 1.5071807020020327,
+      "terminal_profile": [
+        4,
+        0,
+        2,
+        1,
+        3,
+        4,
+        1,
+        3
+      ],
+      "actions": [
+        [
+          "n0",
+          "n4",
+          "n5"
+        ],
+        [
+          "n0",
+          "n2",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5",
+          "n7"
+        ],
+        [
+          "n4",
+          "n5",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2385966777801514,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_local_greedy_h3",
+      "base_policy": "local_greedy",
+      "lookahead": 3,
+      "terminal_error": 1.4066189428550966,
+      "terminal_profile": [
+        4,
+        0,
+        0,
+        5,
+        2,
+        4,
+        2,
+        1
+      ],
+      "actions": [
+        [
+          "n3",
+          "n4",
+          "n5"
+        ],
+        [
+          "n0",
+          "n3",
+          "n5"
+        ],
+        [
+          "n0",
+          "n3",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5",
+          "n6"
+        ],
+        [
+          "n0",
+          "n3",
+          "n6"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2540199756622314,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_local_greedy_h4",
+      "base_policy": "local_greedy",
+      "lookahead": 4,
+      "terminal_error": 1.568146526553212,
+      "terminal_profile": [
+        2,
+        0,
+        1,
+        5,
+        3,
+        4,
+        2,
+        1
+      ],
+      "actions": [
+        [
+          "n3",
+          "n4",
+          "n5"
+        ],
+        [
+          "n3",
+          "n4",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5",
+          "n6"
+        ],
+        [
+          "n3",
+          "n5",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2747974395751953,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_local_greedy_h5",
+      "base_policy": "local_greedy",
+      "lookahead": 5,
+      "terminal_error": 1.435592833038366,
+      "terminal_profile": [
+        4,
+        0,
+        1,
+        5,
+        1,
+        2,
+        1,
+        4
+      ],
+      "actions": [
+        [
+          "n3",
+          "n4",
+          "n5"
+        ],
+        [
+          "n0",
+          "n2",
+          "n6"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n3",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.271207332611084,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_local_greedy_h6",
+      "base_policy": "local_greedy",
+      "lookahead": 6,
+      "terminal_error": 1.4590403493597233,
+      "terminal_profile": [
+        4,
+        0,
+        2,
+        5,
+        1,
+        2,
+        0,
+        4
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n4"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n3",
+          "n5",
+          "n7"
+        ],
+        [
+          "n3",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2892577648162842,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_measured_first_order_h1",
+      "base_policy": "measured_first_order",
+      "lookahead": 1,
+      "terminal_error": 1.2694359784589944,
+      "terminal_profile": [
+        5,
+        0,
+        1,
+        1,
+        2,
+        5,
+        0,
+        4
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n4",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2263977527618408,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_measured_first_order_h2",
+      "base_policy": "measured_first_order",
+      "lookahead": 2,
+      "terminal_error": 1.359193588014057,
+      "terminal_profile": [
+        6,
+        0,
+        1,
+        1,
+        1,
+        6,
+        0,
+        3
+      ],
+      "actions": [
+        [
+          "n0",
+          "n3",
+          "n5"
+        ],
+        [
+          "n0",
+          "n2",
+          "n5"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 2857,
+      "wall_seconds": 10.094682931900024,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_measured_first_order_h3",
+      "base_policy": "measured_first_order",
+      "lookahead": 3,
+      "terminal_error": 1.2618451886954676,
+      "terminal_profile": [
+        5,
+        3,
+        1,
+        1,
+        1,
+        4,
+        0,
+        3
+      ],
+      "actions": [
+        [
+          "n0",
+          "n1",
+          "n2"
+        ],
+        [
+          "n0",
+          "n1",
+          "n5"
+        ],
+        [
+          "n0",
+          "n1",
+          "n3"
+        ],
+        [
+          "n4",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 4873,
+      "wall_seconds": 17.14393901824951,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_measured_first_order_h4",
+      "base_policy": "measured_first_order",
+      "lookahead": 4,
+      "terminal_error": 1.1891828215507814,
+      "terminal_profile": [
+        5,
+        3,
+        1,
+        1,
+        1,
+        3,
+        0,
+        4
+      ],
+      "actions": [
+        [
+          "n0",
+          "n1",
+          "n2"
+        ],
+        [
+          "n3",
+          "n4",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n5"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 6385,
+      "wall_seconds": 22.688108205795288,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_measured_first_order_h5",
+      "base_policy": "measured_first_order",
+      "lookahead": 5,
+      "terminal_error": 1.1891828215507814,
+      "terminal_profile": [
+        5,
+        3,
+        1,
+        1,
+        1,
+        3,
+        0,
+        4
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n5"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 7393,
+      "wall_seconds": 26.244006872177124,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "rollout_measured_first_order_h6",
+      "base_policy": "measured_first_order",
+      "lookahead": 6,
+      "terminal_error": 1.1616989068963617,
+      "terminal_profile": [
+        4,
+        3,
+        1,
+        1,
+        1,
+        4,
+        0,
+        4
+      ],
+      "actions": [
+        [
+          "n1",
+          "n2",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 7897,
+      "wall_seconds": 27.840177536010742,
+      "seed": 0,
+      "base_error": 2.0882852267730145
+    },
+    {
+      "policy": "local_greedy",
+      "base_policy": "local_greedy",
+      "lookahead": 0,
+      "terminal_error": 4.701164356957481,
+      "terminal_profile": [
+        0,
+        3,
+        6,
+        0,
+        5,
+        2,
+        0,
+        2
+      ],
+      "actions": [
+        [
+          "n2",
+          "n4",
+          "n7"
+        ],
+        [
+          "n2",
+          "n4",
+          "n1"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n1"
+        ],
+        [
+          "n2",
+          "n7",
+          "n1"
+        ],
+        [
+          "n2",
+          "n5",
+          "n4"
+        ]
+      ],
+      "evaluations": 1,
+      "wall_seconds": 0.0048828125,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "measured_first_order",
+      "base_policy": "measured_first_order",
+      "lookahead": 0,
+      "terminal_error": 4.18081933535744,
+      "terminal_profile": [
+        0,
+        3,
+        2,
+        2,
+        6,
+        1,
+        3,
+        1
+      ],
+      "actions": [
+        [
+          "n4",
+          "n2",
+          "n1"
+        ],
+        [
+          "n4",
+          "n1",
+          "n7"
+        ],
+        [
+          "n4",
+          "n1",
+          "n5"
+        ],
+        [
+          "n4",
+          "n6",
+          "n3"
+        ],
+        [
+          "n4",
+          "n2",
+          "n6"
+        ],
+        [
+          "n6",
+          "n3",
+          "n4"
+        ]
+      ],
+      "evaluations": 55,
+      "wall_seconds": 0.18819904327392578,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_local_greedy_h1",
+      "base_policy": "local_greedy",
+      "lookahead": 1,
+      "terminal_error": 4.912136571130967,
+      "terminal_profile": [
+        0,
+        6,
+        0,
+        4,
+        1,
+        1,
+        5,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n7"
+        ],
+        [
+          "n1",
+          "n5",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.183891773223877,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_local_greedy_h2",
+      "base_policy": "local_greedy",
+      "lookahead": 2,
+      "terminal_error": 4.015891975006819,
+      "terminal_profile": [
+        0,
+        3,
+        2,
+        2,
+        5,
+        4,
+        2,
+        0
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n1",
+          "n4",
+          "n6"
+        ],
+        [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        [
+          "n3",
+          "n4",
+          "n5"
+        ],
+        [
+          "n3",
+          "n5",
+          "n6"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.222874641418457,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_local_greedy_h3",
+      "base_policy": "local_greedy",
+      "lookahead": 3,
+      "terminal_error": 4.270076702449809,
+      "terminal_profile": [
+        0,
+        3,
+        2,
+        3,
+        4,
+        1,
+        5,
+        0
+      ],
+      "actions": [
+        [
+          "n3",
+          "n4",
+          "n6"
+        ],
+        [
+          "n1",
+          "n4",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n6"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2499845027923584,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_local_greedy_h4",
+      "base_policy": "local_greedy",
+      "lookahead": 4,
+      "terminal_error": 4.1450457994237455,
+      "terminal_profile": [
+        0,
+        3,
+        2,
+        1,
+        5,
+        1,
+        5,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n3",
+          "n4"
+        ],
+        [
+          "n1",
+          "n4",
+          "n6"
+        ],
+        [
+          "n1",
+          "n4",
+          "n6"
+        ],
+        [
+          "n4",
+          "n5",
+          "n6"
+        ],
+        [
+          "n2",
+          "n4",
+          "n6"
+        ],
+        [
+          "n2",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2828967571258545,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_local_greedy_h5",
+      "base_policy": "local_greedy",
+      "lookahead": 5,
+      "terminal_error": 4.1450457994237455,
+      "terminal_profile": [
+        0,
+        3,
+        2,
+        1,
+        5,
+        1,
+        5,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n4"
+        ],
+        [
+          "n1",
+          "n4",
+          "n6"
+        ],
+        [
+          "n4",
+          "n5",
+          "n6"
+        ],
+        [
+          "n2",
+          "n4",
+          "n6"
+        ],
+        [
+          "n2",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2806577682495117,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_local_greedy_h6",
+      "base_policy": "local_greedy",
+      "lookahead": 6,
+      "terminal_error": 4.534377743360123,
+      "terminal_profile": [
+        1,
+        3,
+        6,
+        1,
+        5,
+        1,
+        0,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n2",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2855768203735352,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_measured_first_order_h1",
+      "base_policy": "measured_first_order",
+      "lookahead": 1,
+      "terminal_error": 4.912136571130967,
+      "terminal_profile": [
+        0,
+        6,
+        0,
+        4,
+        1,
+        1,
+        5,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n7"
+        ],
+        [
+          "n1",
+          "n5",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.1800918579101562,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_measured_first_order_h2",
+      "base_policy": "measured_first_order",
+      "lookahead": 2,
+      "terminal_error": 4.0848055304272455,
+      "terminal_profile": [
+        2,
+        5,
+        2,
+        1,
+        5,
+        1,
+        2,
+        0
+      ],
+      "actions": [
+        [
+          "n1",
+          "n3",
+          "n4"
+        ],
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n1",
+          "n4",
+          "n6"
+        ],
+        [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2",
+          "n4"
+        ]
+      ],
+      "evaluations": 2857,
+      "wall_seconds": 10.045175790786743,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_measured_first_order_h3",
+      "base_policy": "measured_first_order",
+      "lookahead": 3,
+      "terminal_error": 3.950880220324939,
+      "terminal_profile": [
+        0,
+        3,
+        0,
+        1,
+        6,
+        4,
+        4,
+        0
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5",
+          "n6"
+        ],
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n1",
+          "n4",
+          "n6"
+        ],
+        [
+          "n3",
+          "n4",
+          "n6"
+        ],
+        [
+          "n4",
+          "n5",
+          "n6"
+        ]
+      ],
+      "evaluations": 4873,
+      "wall_seconds": 17.109302282333374,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_measured_first_order_h4",
+      "base_policy": "measured_first_order",
+      "lookahead": 4,
+      "terminal_error": 4.012532731576228,
+      "terminal_profile": [
+        2,
+        3,
+        2,
+        0,
+        5,
+        4,
+        1,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        [
+          "n0",
+          "n1",
+          "n4"
+        ],
+        [
+          "n0",
+          "n1",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5",
+          "n7"
+        ],
+        [
+          "n4",
+          "n5",
+          "n6"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 6385,
+      "wall_seconds": 22.429375648498535,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_measured_first_order_h5",
+      "base_policy": "measured_first_order",
+      "lookahead": 5,
+      "terminal_error": 4.077190602857198,
+      "terminal_profile": [
+        4,
+        5,
+        2,
+        0,
+        5,
+        1,
+        1,
+        0
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n4"
+        ],
+        [
+          "n0",
+          "n1",
+          "n2"
+        ],
+        [
+          "n0",
+          "n1",
+          "n4"
+        ],
+        [
+          "n0",
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n1",
+          "n4",
+          "n6"
+        ]
+      ],
+      "evaluations": 7393,
+      "wall_seconds": 26.218398094177246,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "rollout_measured_first_order_h6",
+      "base_policy": "measured_first_order",
+      "lookahead": 6,
+      "terminal_error": 3.944073996293624,
+      "terminal_profile": [
+        0,
+        3,
+        0,
+        0,
+        6,
+        4,
+        5,
+        0
+      ],
+      "actions": [
+        [
+          "n4",
+          "n5",
+          "n6"
+        ],
+        [
+          "n4",
+          "n5",
+          "n6"
+        ],
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n1",
+          "n4",
+          "n6"
+        ],
+        [
+          "n1",
+          "n4",
+          "n6"
+        ],
+        [
+          "n4",
+          "n5",
+          "n6"
+        ]
+      ],
+      "evaluations": 7897,
+      "wall_seconds": 28.060750484466553,
+      "seed": 1,
+      "base_error": 5.837401580084828
+    },
+    {
+      "policy": "local_greedy",
+      "base_policy": "local_greedy",
+      "lookahead": 0,
+      "terminal_error": 1.2741381813492179,
+      "terminal_profile": [
+        6,
+        0,
+        1,
+        3,
+        6,
+        2,
+        0,
+        0
+      ],
+      "actions": [
+        [
+          "n0",
+          "n4",
+          "n3"
+        ],
+        [
+          "n0",
+          "n4",
+          "n3"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ],
+        [
+          "n0",
+          "n4",
+          "n3"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ],
+        [
+          "n0",
+          "n4",
+          "n2"
+        ]
+      ],
+      "evaluations": 1,
+      "wall_seconds": 0.0039997100830078125,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "measured_first_order",
+      "base_policy": "measured_first_order",
+      "lookahead": 0,
+      "terminal_error": 1.6272113004989381,
+      "terminal_profile": [
+        6,
+        5,
+        0,
+        0,
+        1,
+        0,
+        5,
+        1
+      ],
+      "actions": [
+        [
+          "n4",
+          "n0",
+          "n7"
+        ],
+        [
+          "n1",
+          "n6",
+          "n0"
+        ],
+        [
+          "n0",
+          "n6",
+          "n1"
+        ],
+        [
+          "n0",
+          "n6",
+          "n1"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n6",
+          "n1"
+        ]
+      ],
+      "evaluations": 55,
+      "wall_seconds": 0.19256067276000977,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_local_greedy_h1",
+      "base_policy": "local_greedy",
+      "lookahead": 1,
+      "terminal_error": 1.6281485910641635,
+      "terminal_profile": [
+        6,
+        2,
+        0,
+        0,
+        1,
+        0,
+        5,
+        4
+      ],
+      "actions": [
+        [
+          "n0",
+          "n4",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2090306282043457,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_local_greedy_h2",
+      "base_policy": "local_greedy",
+      "lookahead": 2,
+      "terminal_error": 1.4106661491679005,
+      "terminal_profile": [
+        3,
+        4,
+        1,
+        3,
+        1,
+        2,
+        3,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n2",
+          "n3"
+        ],
+        [
+          "n3",
+          "n5",
+          "n7"
+        ],
+        [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2258949279785156,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_local_greedy_h3",
+      "base_policy": "local_greedy",
+      "lookahead": 3,
+      "terminal_error": 1.3893406652613225,
+      "terminal_profile": [
+        4,
+        1,
+        1,
+        3,
+        4,
+        2,
+        2,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n3",
+          "n5"
+        ],
+        [
+          "n3",
+          "n4",
+          "n7"
+        ],
+        [
+          "n0",
+          "n4",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2",
+          "n6"
+        ],
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.246382474899292,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_local_greedy_h4",
+      "base_policy": "local_greedy",
+      "lookahead": 4,
+      "terminal_error": 1.3776502665569943,
+      "terminal_profile": [
+        5,
+        1,
+        0,
+        3,
+        4,
+        2,
+        2,
+        1
+      ],
+      "actions": [
+        [
+          "n0",
+          "n3",
+          "n5"
+        ],
+        [
+          "n1",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n4",
+          "n6"
+        ],
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.260188102722168,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_local_greedy_h5",
+      "base_policy": "local_greedy",
+      "lookahead": 5,
+      "terminal_error": 1.3795971963589497,
+      "terminal_profile": [
+        5,
+        1,
+        1,
+        3,
+        4,
+        2,
+        1,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n6"
+        ],
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2894501686096191,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_local_greedy_h6",
+      "base_policy": "local_greedy",
+      "lookahead": 6,
+      "terminal_error": 1.2734263311954324,
+      "terminal_profile": [
+        6,
+        1,
+        0,
+        3,
+        6,
+        2,
+        0,
+        0
+      ],
+      "actions": [
+        [
+          "n0",
+          "n1",
+          "n4"
+        ],
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ],
+        [
+          "n0",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.3257536888122559,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_measured_first_order_h1",
+      "base_policy": "measured_first_order",
+      "lookahead": 1,
+      "terminal_error": 1.6281485910641635,
+      "terminal_profile": [
+        6,
+        2,
+        0,
+        0,
+        1,
+        0,
+        5,
+        4
+      ],
+      "actions": [
+        [
+          "n0",
+          "n4",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2066340446472168,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_measured_first_order_h2",
+      "base_policy": "measured_first_order",
+      "lookahead": 2,
+      "terminal_error": 1.3178793240674633,
+      "terminal_profile": [
+        5,
+        3,
+        1,
+        3,
+        1,
+        0,
+        4,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n3",
+          "n6"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ]
+      ],
+      "evaluations": 2857,
+      "wall_seconds": 10.144681692123413,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_measured_first_order_h3",
+      "base_policy": "measured_first_order",
+      "lookahead": 3,
+      "terminal_error": 1.2378007618660751,
+      "terminal_profile": [
+        6,
+        4,
+        1,
+        3,
+        1,
+        0,
+        2,
+        1
+      ],
+      "actions": [
+        [
+          "n0",
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n2",
+          "n4"
+        ],
+        [
+          "n0",
+          "n1",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n3",
+          "n6"
+        ]
+      ],
+      "evaluations": 4873,
+      "wall_seconds": 17.204179763793945,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_measured_first_order_h4",
+      "base_policy": "measured_first_order",
+      "lookahead": 4,
+      "terminal_error": 1.2378007618660751,
+      "terminal_profile": [
+        6,
+        4,
+        1,
+        3,
+        1,
+        0,
+        2,
+        1
+      ],
+      "actions": [
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n1",
+          "n2"
+        ],
+        [
+          "n0",
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 6385,
+      "wall_seconds": 22.48051142692566,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_measured_first_order_h5",
+      "base_policy": "measured_first_order",
+      "lookahead": 5,
+      "terminal_error": 1.2378007618660751,
+      "terminal_profile": [
+        6,
+        4,
+        1,
+        3,
+        1,
+        0,
+        2,
+        1
+      ],
+      "actions": [
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n1",
+          "n2"
+        ],
+        [
+          "n0",
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 7393,
+      "wall_seconds": 25.895788431167603,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "rollout_measured_first_order_h6",
+      "base_policy": "measured_first_order",
+      "lookahead": 6,
+      "terminal_error": 1.2378007618660751,
+      "terminal_profile": [
+        6,
+        4,
+        1,
+        3,
+        1,
+        0,
+        2,
+        1
+      ],
+      "actions": [
+        [
+          "n0",
+          "n3",
+          "n4"
+        ],
+        [
+          "n0",
+          "n1",
+          "n2"
+        ],
+        [
+          "n0",
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 7897,
+      "wall_seconds": 27.650891065597534,
+      "seed": 2,
+      "base_error": 1.7916081472522762
+    },
+    {
+      "policy": "local_greedy",
+      "base_policy": "local_greedy",
+      "lookahead": 0,
+      "terminal_error": 2.4371244060771797,
+      "terminal_profile": [
+        6,
+        0,
+        3,
+        4,
+        2,
+        0,
+        0,
+        3
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n3",
+          "n2"
+        ],
+        [
+          "n0",
+          "n7",
+          "n4"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n4",
+          "n3"
+        ],
+        [
+          "n0",
+          "n2",
+          "n7"
+        ]
+      ],
+      "evaluations": 1,
+      "wall_seconds": 0.003999471664428711,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "measured_first_order",
+      "base_policy": "measured_first_order",
+      "lookahead": 0,
+      "terminal_error": 2.3864619313080073,
+      "terminal_profile": [
+        5,
+        2,
+        4,
+        2,
+        0,
+        1,
+        3,
+        1
+      ],
+      "actions": [
+        [
+          "n2",
+          "n0",
+          "n7"
+        ],
+        [
+          "n2",
+          "n5",
+          "n0"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n3",
+          "n2",
+          "n6"
+        ],
+        [
+          "n6",
+          "n0",
+          "n1"
+        ],
+        [
+          "n0",
+          "n6",
+          "n1"
+        ]
+      ],
+      "evaluations": 55,
+      "wall_seconds": 0.1880650520324707,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_local_greedy_h1",
+      "base_policy": "local_greedy",
+      "lookahead": 1,
+      "terminal_error": 2.394852349619377,
+      "terminal_profile": [
+        5,
+        3,
+        4,
+        2,
+        0,
+        1,
+        2,
+        1
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n7"
+        ],
+        [
+          "n1",
+          "n2",
+          "n5"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.1703650951385498,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_local_greedy_h2",
+      "base_policy": "local_greedy",
+      "lookahead": 2,
+      "terminal_error": 2.328143400460868,
+      "terminal_profile": [
+        5,
+        0,
+        2,
+        2,
+        0,
+        1,
+        3,
+        5
+      ],
+      "actions": [
+        [
+          "n2",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2075462341308594,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_local_greedy_h3",
+      "base_policy": "local_greedy",
+      "lookahead": 3,
+      "terminal_error": 2.387622252232559,
+      "terminal_profile": [
+        5,
+        2,
+        3,
+        2,
+        0,
+        1,
+        4,
+        1
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n5"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2",
+          "n6"
+        ],
+        [
+          "n2",
+          "n3",
+          "n6"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2457342147827148,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_local_greedy_h4",
+      "base_policy": "local_greedy",
+      "lookahead": 4,
+      "terminal_error": 2.387622252232559,
+      "terminal_profile": [
+        5,
+        2,
+        3,
+        2,
+        0,
+        1,
+        4,
+        1
+      ],
+      "actions": [
+        [
+          "n0",
+          "n5",
+          "n6"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n2",
+          "n3",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n2",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2633271217346191,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_local_greedy_h5",
+      "base_policy": "local_greedy",
+      "lookahead": 5,
+      "terminal_error": 2.3578902577189957,
+      "terminal_profile": [
+        5,
+        0,
+        3,
+        2,
+        2,
+        1,
+        2,
+        3
+      ],
+      "actions": [
+        [
+          "n0",
+          "n5",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2",
+          "n6"
+        ],
+        [
+          "n2",
+          "n4",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n4"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.272517442703247,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_local_greedy_h6",
+      "base_policy": "local_greedy",
+      "lookahead": 6,
+      "terminal_error": 2.393734571206709,
+      "terminal_profile": [
+        5,
+        0,
+        3,
+        6,
+        0,
+        1,
+        0,
+        3
+      ],
+      "actions": [
+        [
+          "n2",
+          "n3",
+          "n5"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2782351970672607,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_measured_first_order_h1",
+      "base_policy": "measured_first_order",
+      "lookahead": 1,
+      "terminal_error": 2.394852349619377,
+      "terminal_profile": [
+        5,
+        3,
+        4,
+        2,
+        0,
+        1,
+        2,
+        1
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n7"
+        ],
+        [
+          "n1",
+          "n2",
+          "n5"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n1",
+          "n6"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2137539386749268,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_measured_first_order_h2",
+      "base_policy": "measured_first_order",
+      "lookahead": 2,
+      "terminal_error": 2.3569415047811066,
+      "terminal_profile": [
+        5,
+        0,
+        6,
+        1,
+        1,
+        0,
+        4,
+        1
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n2",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2",
+          "n4"
+        ],
+        [
+          "n2",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 2857,
+      "wall_seconds": 10.103100299835205,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_measured_first_order_h3",
+      "base_policy": "measured_first_order",
+      "lookahead": 3,
+      "terminal_error": 2.3153635485646493,
+      "terminal_profile": [
+        5,
+        0,
+        3,
+        2,
+        0,
+        1,
+        3,
+        4
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n5"
+        ],
+        [
+          "n0",
+          "n2",
+          "n6"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n3",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 4873,
+      "wall_seconds": 16.91948962211609,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_measured_first_order_h4",
+      "base_policy": "measured_first_order",
+      "lookahead": 4,
+      "terminal_error": 2.3036391179312266,
+      "terminal_profile": [
+        5,
+        0,
+        3,
+        2,
+        0,
+        1,
+        2,
+        5
+      ],
+      "actions": [
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n2",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 6385,
+      "wall_seconds": 21.991889476776123,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_measured_first_order_h5",
+      "base_policy": "measured_first_order",
+      "lookahead": 5,
+      "terminal_error": 2.3036391179312266,
+      "terminal_profile": [
+        5,
+        0,
+        3,
+        2,
+        0,
+        1,
+        2,
+        5
+      ],
+      "actions": [
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n7"
+        ],
+        [
+          "n2",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 7393,
+      "wall_seconds": 25.407023906707764,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "rollout_measured_first_order_h6",
+      "base_policy": "measured_first_order",
+      "lookahead": 6,
+      "terminal_error": 2.3332219043274383,
+      "terminal_profile": [
+        4,
+        0,
+        3,
+        2,
+        0,
+        1,
+        3,
+        5
+      ],
+      "actions": [
+        [
+          "n0",
+          "n2",
+          "n3"
+        ],
+        [
+          "n2",
+          "n5",
+          "n7"
+        ],
+        [
+          "n2",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ],
+        [
+          "n0",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 7897,
+      "wall_seconds": 26.97396993637085,
+      "seed": 3,
+      "base_error": 2.6153787182338917
+    },
+    {
+      "policy": "local_greedy",
+      "base_policy": "local_greedy",
+      "lookahead": 0,
+      "terminal_error": 1.5153946769356128,
+      "terminal_profile": [
+        0,
+        6,
+        0,
+        0,
+        0,
+        5,
+        6,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n6",
+          "n5"
+        ],
+        [
+          "n1",
+          "n6",
+          "n5"
+        ],
+        [
+          "n1",
+          "n6",
+          "n5"
+        ],
+        [
+          "n1",
+          "n6",
+          "n5"
+        ],
+        [
+          "n1",
+          "n6",
+          "n5"
+        ],
+        [
+          "n1",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 1,
+      "wall_seconds": 0.003999948501586914,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "measured_first_order",
+      "base_policy": "measured_first_order",
+      "lookahead": 0,
+      "terminal_error": 1.5451958325969226,
+      "terminal_profile": [
+        5,
+        1,
+        5,
+        1,
+        4,
+        0,
+        0,
+        2
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n7"
+        ],
+        [
+          "n7",
+          "n2",
+          "n0"
+        ],
+        [
+          "n2",
+          "n0",
+          "n3"
+        ],
+        [
+          "n2",
+          "n0",
+          "n4"
+        ],
+        [
+          "n2",
+          "n0",
+          "n4"
+        ],
+        [
+          "n4",
+          "n0",
+          "n2"
+        ]
+      ],
+      "evaluations": 55,
+      "wall_seconds": 0.18538784980773926,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_local_greedy_h1",
+      "base_policy": "local_greedy",
+      "lookahead": 1,
+      "terminal_error": 1.5669220484454394,
+      "terminal_profile": [
+        5,
+        3,
+        2,
+        1,
+        3,
+        0,
+        0,
+        4
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n2"
+        ],
+        [
+          "n0",
+          "n1",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4",
+          "n7"
+        ],
+        [
+          "n0",
+          "n4",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.1309165954589844,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_local_greedy_h2",
+      "base_policy": "local_greedy",
+      "lookahead": 2,
+      "terminal_error": 1.30034534480355,
+      "terminal_profile": [
+        3,
+        1,
+        0,
+        2,
+        1,
+        5,
+        0,
+        6
+      ],
+      "actions": [
+        [
+          "n4",
+          "n5",
+          "n7"
+        ],
+        [
+          "n3",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n1",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.1693274974822998,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_local_greedy_h3",
+      "base_policy": "local_greedy",
+      "lookahead": 3,
+      "terminal_error": 1.324982896514034,
+      "terminal_profile": [
+        1,
+        2,
+        2,
+        1,
+        3,
+        5,
+        0,
+        4
+      ],
+      "actions": [
+        [
+          "n4",
+          "n5",
+          "n7"
+        ],
+        [
+          "n1",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n7"
+        ],
+        [
+          "n1",
+          "n5",
+          "n7"
+        ],
+        [
+          "n3",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.198850393295288,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_local_greedy_h4",
+      "base_policy": "local_greedy",
+      "lookahead": 4,
+      "terminal_error": 1.3816067765320688,
+      "terminal_profile": [
+        3,
+        3,
+        2,
+        0,
+        1,
+        3,
+        0,
+        6
+      ],
+      "actions": [
+        [
+          "n0",
+          "n4",
+          "n7"
+        ],
+        [
+          "n1",
+          "n2",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n7"
+        ],
+        [
+          "n1",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n5",
+          "n7"
+        ],
+        [
+          "n1",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2109394073486328,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_local_greedy_h5",
+      "base_policy": "local_greedy",
+      "lookahead": 5,
+      "terminal_error": 1.326541506474252,
+      "terminal_profile": [
+        1,
+        2,
+        2,
+        1,
+        1,
+        5,
+        0,
+        6
+      ],
+      "actions": [
+        [
+          "n4",
+          "n5",
+          "n7"
+        ],
+        [
+          "n0",
+          "n2",
+          "n7"
+        ],
+        [
+          "n2",
+          "n5",
+          "n7"
+        ],
+        [
+          "n1",
+          "n5",
+          "n7"
+        ],
+        [
+          "n1",
+          "n5",
+          "n7"
+        ],
+        [
+          "n3",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2270164489746094,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_local_greedy_h6",
+      "base_policy": "local_greedy",
+      "lookahead": 6,
+      "terminal_error": 1.5153946769356128,
+      "terminal_profile": [
+        0,
+        6,
+        0,
+        0,
+        0,
+        5,
+        6,
+        1
+      ],
+      "actions": [
+        [
+          "n1",
+          "n5",
+          "n6"
+        ],
+        [
+          "n1",
+          "n5",
+          "n6"
+        ],
+        [
+          "n1",
+          "n5",
+          "n6"
+        ],
+        [
+          "n1",
+          "n5",
+          "n6"
+        ],
+        [
+          "n1",
+          "n5",
+          "n6"
+        ],
+        [
+          "n1",
+          "n6",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.2400546073913574,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_measured_first_order_h1",
+      "base_policy": "measured_first_order",
+      "lookahead": 1,
+      "terminal_error": 1.5669220484454394,
+      "terminal_profile": [
+        5,
+        3,
+        2,
+        1,
+        3,
+        0,
+        0,
+        4
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n7"
+        ],
+        [
+          "n0",
+          "n3",
+          "n7"
+        ],
+        [
+          "n0",
+          "n1",
+          "n2"
+        ],
+        [
+          "n0",
+          "n1",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4",
+          "n7"
+        ],
+        [
+          "n0",
+          "n4",
+          "n7"
+        ]
+      ],
+      "evaluations": 337,
+      "wall_seconds": 1.1365747451782227,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_measured_first_order_h2",
+      "base_policy": "measured_first_order",
+      "lookahead": 2,
+      "terminal_error": 1.2737883698620436,
+      "terminal_profile": [
+        0,
+        1,
+        6,
+        1,
+        3,
+        5,
+        0,
+        2
+      ],
+      "actions": [
+        [
+          "n1",
+          "n2",
+          "n5"
+        ],
+        [
+          "n2",
+          "n5",
+          "n7"
+        ],
+        [
+          "n2",
+          "n3",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n7"
+        ]
+      ],
+      "evaluations": 2857,
+      "wall_seconds": 9.712769985198975,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_measured_first_order_h3",
+      "base_policy": "measured_first_order",
+      "lookahead": 3,
+      "terminal_error": 1.2768460988795531,
+      "terminal_profile": [
+        0,
+        1,
+        4,
+        1,
+        5,
+        5,
+        0,
+        2
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n3",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5",
+          "n7"
+        ],
+        [
+          "n2",
+          "n4",
+          "n7"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ]
+      ],
+      "evaluations": 4873,
+      "wall_seconds": 16.55612540245056,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_measured_first_order_h4",
+      "base_policy": "measured_first_order",
+      "lookahead": 4,
+      "terminal_error": 1.2704979478437706,
+      "terminal_profile": [
+        0,
+        1,
+        5,
+        1,
+        4,
+        5,
+        0,
+        2
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n3",
+          "n7"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 6385,
+      "wall_seconds": 21.566486597061157,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_measured_first_order_h5",
+      "base_policy": "measured_first_order",
+      "lookahead": 5,
+      "terminal_error": 1.2704979478437706,
+      "terminal_profile": [
+        0,
+        1,
+        5,
+        1,
+        4,
+        5,
+        0,
+        2
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n3",
+          "n4"
+        ],
+        [
+          "n2",
+          "n5",
+          "n7"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 7393,
+      "wall_seconds": 25.081295251846313,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    },
+    {
+      "policy": "rollout_measured_first_order_h6",
+      "base_policy": "measured_first_order",
+      "lookahead": 6,
+      "terminal_error": 1.2704979478437706,
+      "terminal_profile": [
+        0,
+        1,
+        5,
+        1,
+        4,
+        5,
+        0,
+        2
+      ],
+      "actions": [
+        [
+          "n1",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n3",
+          "n4"
+        ],
+        [
+          "n2",
+          "n5",
+          "n7"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n5",
+          "n7"
+        ]
+      ],
+      "evaluations": 7897,
+      "wall_seconds": 26.834855556488037,
+      "seed": 4,
+      "base_error": 1.6895672430336741
+    }
+  ]
+}
