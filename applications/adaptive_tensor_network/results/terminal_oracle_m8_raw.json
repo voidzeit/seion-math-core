@@ -11,7 +11,9 @@
     "regime": "heterogeneous",
     "dtype": "float64",
     "commands": [
-      "run_terminal_oracle_m8.py --seeds 0 --verify-samples 100"
+      "run_terminal_oracle_m8.py --seeds 0 --verify-samples 100",
+      "run_terminal_oracle_parallel.py --m 8 --seeds 0 --verify",
+      "run_terminal_oracle_m8.py --seeds 0 --verify-samples 120"
     ]
   },
   "seeds": {
@@ -1533,7 +1535,7 @@
           "value": 1.2025877669131222
         }
       ],
-      "wall_seconds": 303.4629292488098
+      "wall_seconds": 279.0389566421509
     }
   }
 }

@@ -60,15 +60,15 @@ from run_interaction_dimension import EVAL_BATCH, FIT_BATCH, heterogeneous_netwo
 
 RESULTS_DIR = Path(__file__).resolve().parents[1] / "results"
 DIM = 16
-M = 8
 BUNDLE = 3
 ROUNDS = 6
 START_FRACTION = 0.25
 
 
 class Instance:
-    def __init__(self, seed: int) -> None:
-        self.topology = chain_topology(depth=M + 1, leaf_dim=DIM, ambient_dim=DIM)
+    def __init__(self, seed: int, m: int) -> None:
+        self.m = m
+        self.topology = chain_topology(depth=m + 1, leaf_dim=DIM, ambient_dim=DIM)
         self.net = heterogeneous_network(self.topology, DIM, seed=seed)
         fit_batch = self.net.sample_leaf_batch(FIT_BATCH, seed=seed * 1000 + 1)
         self.eval_batch = self.net.sample_leaf_batch(EVAL_BATCH, seed=seed * 1000 + 2)
@@ -92,7 +92,7 @@ class Instance:
         return [n for n in self.allocatable if ranks[n] < DIM]
 
 
-def base_action(instance: Instance, ranks, policy: str):
+def base_action(instance: "Instance", ranks, policy: str):
     """One action of a base policy. Returns a tuple of allocatable node ids."""
     eligible = instance.eligible(ranks)
     if len(eligible) < BUNDLE:
@@ -187,6 +187,7 @@ def run_base(instance: Instance, policy: str) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--m", type=int, default=8)
     parser.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2, 3, 4])
     parser.add_argument("--lookahead", type=int, nargs="+", default=[1, 2, 3, 6])
     parser.add_argument("--bases", type=str, nargs="+",
@@ -194,10 +195,10 @@ def main() -> None:
     args = parser.parse_args()
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    out_path = RESULTS_DIR / "rollout_calibration_raw.json"
+    out_path = RESULTS_DIR / f"rollout_calibration_m{args.m}_raw.json"
     payload = {
         "config": {
-            "m": M, "dim": DIM, "bundle": BUNDLE, "rounds": ROUNDS,
+            "m": args.m, "dim": DIM, "bundle": BUNDLE, "rounds": ROUNDS,
             "start_fraction": START_FRACTION, "eval_batch": EVAL_BATCH,
             "fit_batch": FIT_BATCH, "regime": "heterogeneous", "dtype": "float64",
             "seeds": args.seeds, "lookahead": args.lookahead, "bases": args.bases,
@@ -210,7 +211,7 @@ def main() -> None:
 
     start = time.time()
     for seed in args.seeds:
-        instance = Instance(seed)
+        instance = Instance(seed, args.m)
         base_error = instance.error(instance.base)
         for policy in args.bases:
             result = run_base(instance, policy)
