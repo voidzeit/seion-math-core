@@ -518,6 +518,99 @@ optimizer, not the geometry.
 | 0.7071 | 0.99709 | 0.88808 |
 | 1.00 | **0.99842** | 0.90354 |
 
+### Feasibility belongs to the backward pass, not only the forward
+
+The search evaluates an **admissible** law, obtained by dividing a raw tensor by
+a scale factor built from its own operator norm and closure defect. The first
+implementation computed that factor under `no_grad` and treated it as a
+constant, so autograd differentiated
+
+```
+Ftilde_{mu0}(mu) = J( mu / s(mu0) )     instead of     F(mu) = J( mu / s(mu) )
+```
+
+These are different optimization problems, and they disagree in exactly the
+direction a homogeneous problem cannot ignore. Before normalization the
+same-law objective is homogeneous of degree 2, so Euler gives
+`<grad J(mu), mu> = 2 J(mu) > 0`: the frozen-denominator surrogate reports a
+strongly ascending **radial** direction. But `s` is homogeneous of degree 1
+too, so the normalized objective is scale invariant, `F(c mu) = F(mu)`, and
+therefore
+
+```
+DF(mu)[mu] = 0     exactly.
+```
+
+Measured on this repository (`rg_gradient_checks.py`):
+
+| quantity | frozen | differentiable |
+|---|---|---|
+| radial derivative `\|DF(mu)[mu]\|` (must be 0) | **0.5443** | **7.6e-17** |
+| finite-difference vs autograd, relative error | **10.7** | **9.1e-6** |
+| forward scale invariance `\|F(c mu) - F(mu)\|` | 1.4e-16 | 1.4e-16 |
+| Euler identity `\|<grad N, mu> - N\|` | — | 2.7e-15 |
+
+The forward was never wrong; only the backward was. The consequence was that
+the optimizer actively walked away from configurations valued at `1.9997` out
+of `2`, down to a `~1.68` attractor, which is what produced the apparent
+same-law plateau at `gamma_J ~ 0.84`. With the gradient corrected, the same
+starting points hold at `1.9968` and points perturbed to `1.77` now **climb**
+to `1.99`.
+
+Two secondary lessons, both structural rather than numerical:
+
+- **The damage scaled with `eta`.** It was worst at `eta = 1` (drift `-0.50`
+  versus `-0.31` at `eta = 0.3`), because at `eta = 1` the closure budget is
+  vacuous and the operator norm is the only active constraint, so the entire
+  spurious radial direction lands on it with no second branch of the `max` to
+  share it.
+- **A cached factor and a differentiable factor are mutually exclusive.** The
+  `refresh` cache that made the sweep affordable silently presupposed the frozen
+  mode: a constant can be cached, a graph cannot. The correct loop pays the
+  feasibility cost every step.
+
+A restart-batched kernel is where this hid: `m39_gpu_kernels` searches the
+maximizing directions under `no_grad` but contracts the final value against the
+**live** tensor, which is the envelope theorem,
+`d/dt ||mu_t||_op = d/dt <mu_t, v*>` at fixed maximizer. The first version of
+`rg_kernels.op_norms` contracted against the detached copy instead, returning a
+norm with no gradient at all. Search vectors may be detached; the tensor they
+are contracted against may not.
+
+**The residual, decomposed.** After the fix a small drift remained when
+starting `1e-3` from the witness at `eta = 1`. Sweeping the two candidate causes
+separately settles it:
+
+| axis | setting | drift |
+|---|---|---|
+| inner-solver fidelity | `(3,20)` / `(16,40)` / `(32,40)` | −0.0153 / −0.0130 / −0.0062 |
+| | `(64,40)` / `(128,60)` | −0.0047 / **−0.0047** (plateau) |
+| learning rate at `(64,40)` | `0.05` / `0.01` / `0.002` | −0.0070 / **+0.0005** / **+0.0009** |
+
+So the residual is `inner-solve` plus `finite optimizer step`, and nothing else:
+at `lr = 0.01` with converged in-loop fidelity the witness **holds**
+(`1.998865 -> 1.999384`). The non-smooth corner where `||mu||_op = 1` and
+`closure = eta` tie costs nothing measurable above those two.
+
+The sharpest confirmation that the diagnosis is right is the reversal of the
+learning-rate sweep. Under the FROZEN backward, lowering `lr` did not help and
+was not even monotone -- `lr = 1e-3` gave `1.328`, worse than `lr = 0.05`'s
+`1.686` -- because the flow was ascending the wrong function and `lr` only set
+how far it got. Under the corrected backward the same sweep is monotone and
+lowering `lr` recovers the extremizer, which is how gradient ascent near a
+maximum is supposed to behave.
+
+**Consequence for the record.** Every same-law number produced before this fix
+— `gamma_J = 0.88136`, the A/B/C/D initialization matrix, the learning-rate
+sweep — is `INVALID AS LANDSCAPE EVIDENCE`. Those configurations were graded
+honestly and really are admissible, so they remain valid lower bounds; what is
+void is reading them as information about basin width, extremizer rigidity, or
+the difficulty of the constant. `S_2^same-mu` therefore has **no valid
+numerical evidence of any kind** and stands exactly as open as before the
+sweeps. Theorems M40-M42 are untouched: they rest on analytic proofs, exact
+witnesses, measured-norm audits, the scalar verification and the tests, none of
+which involve the gradient search.
+
 ### Estimator-independent check of Theorem 5.1
 
 Because the tensor-level searches all depend on the operator-norm estimator,

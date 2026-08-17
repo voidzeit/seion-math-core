@@ -78,7 +78,9 @@ def share_laws(raws: dict, shared: torch.Tensor) -> dict:
             for key in LAW_KEYS}
 
 
-def feasibility_factors(laws, projectors, restarts: int, iters: int) -> dict:
+def feasibility_factors(laws, projectors, restarts: int, iters: int,
+                        differentiable: bool = False, warm=None,
+                        return_warm: bool = False):
     """Operator-norm and closure scalars per law, detached from the graph.
 
     Recomputed every REFRESH steps and held fixed in between. The strength of
@@ -99,21 +101,33 @@ def feasibility_factors(laws, projectors, restarts: int, iters: int) -> dict:
     P_iL, P_iM, P_root = projectors
     identity = torch.eye(P_root.shape[-1], dtype=DTYPE,
                          device=P_root.device).expand_as(P_root)
-    factors = {}
-    with torch.no_grad():
+    factors, fresh = {}, {}
+    warm = warm or {}
+    context = torch.enable_grad() if differentiable else torch.no_grad()
+    with context:
         for key, projector, seed in (("inner_L", P_iL, 11),
                                      ("inner_M", P_iM, 23)):
-            norms = op_norms(laws[key], seed=seed, iters=iters,
-                             restarts=restarts)
+            norms, v_norm = op_norms(laws[key], seed=seed, iters=iters,
+                                     restarts=restarts,
+                                     warm=warm.get((key, "norm")),
+                                     return_vectors=True)
             scaled = laws[key] / norms.clamp_min(1e-12).view(-1, 1, 1, 1, 1)
-            closure = op_norms(scaled, post=identity - projector,
-                               seed=seed + 1, iters=iters, restarts=restarts)
+            closure, v_close = op_norms(scaled, post=identity - projector,
+                                        seed=seed + 1, iters=iters,
+                                        restarts=restarts,
+                                        warm=warm.get((key, "closure")),
+                                        return_vectors=True)
             factors[key] = (norms, closure)
+            fresh[(key, "norm")], fresh[(key, "closure")] = v_norm, v_close
         for key, seed in (("root_L", 37), ("root_M", 53)):
             tensor = torch.einsum("nqo,noacd->nqacd", P_root, laws[key])
-            norms = op_norms(tensor, seed=seed, iters=iters, restarts=restarts)
+            norms, v_norm = op_norms(tensor, seed=seed, iters=iters,
+                                     restarts=restarts,
+                                     warm=warm.get((key, "norm")),
+                                     return_vectors=True)
             factors[key] = (norms, None)
-    return factors
+            fresh[(key, "norm")] = v_norm
+    return (factors, fresh) if return_warm else factors
 
 
 def apply_factors(law, projector, normal, eta, factors):
