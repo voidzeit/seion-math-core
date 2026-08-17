@@ -143,6 +143,21 @@ It separates two things that a compressed computation conflates:
 An observed rebracketing defect smaller than `E_T^P + E_{T'}^P` is not
 evidence of anything about `μ`.
 
+**Superseded threshold (M42).** The converse reading — "an observed defect
+*larger* than `2 ρ M L` proves `P A ≠ 0`" — is true but not sharp. The
+constant `2` is sharp for the *distortion* `‖Â − P A‖` (M40, attained), yet the
+sharp constant for the *fabrication* problem `sup{‖Â‖ : P A = 0}` is strictly
+smaller at every leakage level:
+
+```
+‖Â‖ ≤ ‖P A‖ + Σ₂(η)·ρ M L,      Σ₂(η) = 2√(1−η²)  for η ≤ 1/√2,
+                                          1/η       for η ≥ 1/√2,
+```
+
+so `‖P A‖ ≥ ‖Â‖ − Σ₂(η) ρ M L` with `Σ₂(η) < 2` throughout. See
+`research/rebracketing_geometry/RG_CANONICAL.md` §5. Use `Σ₂(η)`, not `2`, when
+certifying genuine non-associativity from a compressed computation.
+
 ---
 
 ## 3. Corollaries at fixed tree size — **EXACT**
@@ -210,6 +225,14 @@ certified gaps already recorded in `signed_identities/constants_table.csv`:
 These measure a **difference between two trees**, which is a different
 extremal problem from `W₃`, which measures error **inside one tree**. The
 bridge of §2 relates them but does not reduce one to the other.
+
+**Partly closed since (M40–M42).** For the `k = 2` pair problem the three
+extremal constants are now settled — distortion `J₂ = 2` and concealment
+`H₂ = 2`, both attained by a single shared law and a single shared projector,
+and fabrication `S₂(η) = Σ₂(η) < 2`, attained with `A = 0` exactly. Those are
+constants of the *pair* `(T,T')`; the signed-family constants tabulated above
+are a different normalization (a signed combination of several trees) and
+remain open. See `research/rebracketing_geometry/RG_CANONICAL.md`.
 
 One caution carried from the constants table: the near-zero lower bound for
 the six-term GJI comes from an adversarial search over rank-one (collinear)

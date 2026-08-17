@@ -852,3 +852,89 @@ entries:
       finite-dimensional techniques, not a mechanical extension. Explicitly
       lowest priority per the mission brief; no claim attempted per the
       mission's own prohibition against incomplete-hypothesis claims here.
+
+  - id: M40_j2_rebracketing_distortion_exact
+    question: >
+      For a pair of k=2 trees over the same leaves with a common root
+      projector, what is the sharp constant J_2(eta) in
+      ||Ahat - P A|| <= J_2(eta) rho M L, and does restricting to one shared
+      law, or to one shared law and one shared projector, lower it?
+    status: PROVED
+    admissible_class: >
+      finite-dimensional real or complex Hilbert space, any arity profile with
+      exactly two internal vertices per tree, orthogonal projectors, laws
+      bounded by M with rho_v^proj <= rho = eta M, leaves not reduced
+      (Definition 1.4 of the canonical formalization).
+    evidence:
+      - research/rebracketing_geometry/RG_CANONICAL.md (Theorem 3.1, Cor 3.2)
+      - research/rebracketing_geometry/rg_witnesses.py
+      - research/rebracketing_geometry/rg4_s2_search.py
+      - tests/math_closure/test_m40_m42_rebracketing_geometry.py
+    result: >
+      J_2(eta) = 2 for every eta in (0,1], attained. The witness uses ONE
+      ternary law and ONE rank-2 projector at all four vertices of both trees
+      in ambient dimension 3, with every leaf inside Ran(P); so
+      J_2^free = J_2^same-mu = J_2^same-mu,shared-P = 2 and the class
+      hierarchy collapses at k=2. The mechanism is that the two trees feed the
+      shared law's slot-antisymmetric monomial in opposite orders, producing
+      two maximal exactly anti-aligned projected errors (chi = -1).
+    limitation: >
+      k=2 only. The constant 2 is sharp for the DISTORTION bound but is the
+      wrong constant for the certificate ||Ahat|| > c rho M L => P A != 0; see
+      M42. Says nothing about k>=3, where J_3 vs 2 W_3 is open.
+
+  - id: M41_h2_total_concealment
+    question: >
+      How much genuine rebracketing defect can a projection hide completely,
+      i.e. what is sup ||P A|| subject to Ahat = 0?
+    status: PROVED
+    admissible_class: as M40.
+    evidence:
+      - research/rebracketing_geometry/RG_CANONICAL.md (Theorem 4.1)
+      - tests/math_closure/test_m40_m42_rebracketing_geometry.py
+    result: >
+      H_2(eta) = 2 for every eta in (0,1], attained by the same one-law
+      one-projector witness as M40: the compressed computation reports
+      R_L = R_M exactly -- literal observed associativity -- while the ambient
+      law has F_L = -F_M != 0 with ||P A|| = 2 rho M L, the largest value the
+      class permits. Concealment is total at every leakage level, not a
+      small-eta perturbative effect.
+    limitation: >
+      k=2 only. It bounds what a projection CAN hide, not what any particular
+      projection does hide; it gives no test for detecting concealment.
+
+  - id: M42_s2_spurious_rebracketing_exact
+    question: >
+      How much rebracketing signal can the projection FABRICATE from a law
+      that is genuinely associative along the pair, i.e. what is
+      sup ||Ahat|| subject to P A = 0?
+    status: PROVED
+    admissible_class: as M40.
+    evidence:
+      - research/rebracketing_geometry/RG_CANONICAL.md (Theorem 5.1, Cor 5.2,
+        Cor 5.3)
+      - research/rebracketing_geometry/rg_witnesses.py
+      - research/rebracketing_geometry/rg4_s2_search.py
+      - tests/math_closure/test_m40_m42_rebracketing_geometry.py
+    result: >
+      The unconditional quantitative bound is
+      ||Ahat|| <= ||P A|| + Sigma_2(eta) rho M L with
+      Sigma_2(eta) = sin(min(2 arcsin eta, pi/2))/eta, i.e. 2 sqrt(1-eta^2)
+      below eta_c = 1/sqrt(2) and 1/eta above it. Hence
+      S_2(eta) = Sigma_2(eta), attained by a dimension-2 witness with A = 0
+      EXACTLY (not merely P A = 0). Since Sigma_2(eta) < 2 for every eta > 0,
+      the certificate ||P A|| >= ||Ahat|| - Sigma_2(eta) rho M L is strictly
+      stronger at every leakage level than the one obtained from the
+      distortion bound of M40. The asymmetry S_2 < H_2 = J_2 = 2 is the
+      conceptual content: a projection can conceal a maximal rebracketing
+      defect entirely but cannot fabricate one of the same size, because
+      fabrication requires a nonzero clean part to carry the ambient
+      cancellation and the clean part competes with the defect through
+      ||D||^2 + ||R||^2 <= (M L)^2 -- the same Pythagorean coupling that makes
+      W_3(eta) < 2 at k=3, appearing here at k=2 where the single-tree
+      constant C_2^P = 1 shows no such effect.
+    limitation: >
+      k=2 only, and the free-law class only: the S_2 witness uses three
+      different laws, and S_2^same-mu is OPEN. The bound is on the projected
+      defect P A, not on A itself, and says nothing about which of ||Ahat||
+      or ||P A|| an experiment can actually estimate.

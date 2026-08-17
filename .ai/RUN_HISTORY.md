@@ -1230,3 +1230,178 @@ changed paths, and limitations. Historical artifact runs remain under
   partial tolerance transfer. The comparison is negative/context-dependent:
   certificate methods used more contraction units than uniform on average in
   the matched pairs. Resource values are not hardware timings.
+
+## 2026-08-16T07:42:44.820016+00:00 — Engineering advantage audit for adaptive tensor-network allocation
+
+- Command: `python applications/adaptive_tensor_network/experiments/analyze_engineering_pareto.py; python -m pytest applications/adaptive_tensor_network/tests -q; python -m seion_core.cli.main governance audit --json; python -m seion_core.cli.main governance dedupe-runs; git diff --check`
+- Branch/commit: `campaign/gate13-closeout` / `a0430ac80704a16122b89d7c871c05cbc72881d1`
+- Outcome: **AUDIT_COMPLETE_WITH_DOMAIN_LIMITED_ADVANTAGES_AND_CRITICAL_OPEN_THRESHOLD_BASELINE**
+- Summary: Created a falsifiable engineering-advantage register, registered six scoped claims, and generated a deterministic M35b/M38 error-cost Pareto table from preserved raw artifacts.
+- Validation: 110 adaptive application tests passed; generator SHA256 stable across rerun; compileall passed; governance audit yellow with no missing required files; dedupe-runs completed; git diff --check passed.
+- Changed files:
+  - `applications/adaptive_tensor_network/ENGINEERING_ADVANTAGE_REGISTER.md`
+  - `applications/adaptive_tensor_network/experiments/analyze_engineering_pareto.py`
+  - `applications/adaptive_tensor_network/results/engineering_pareto_front.csv`
+  - `claims/claims_registry.yaml`
+  - `experiments/README.md`
+- Limitations:
+  - Static and adaptive threshold/cutoff competitors are not implemented; all FO/pairwise/rollout Pareto evidence is synthetic and exact-oracle evidence has five seeds per m.
+  - No new FLOP, peak-memory, VRAM, energy, robust timing, real TT/MPS/TTN, or hardware-speed claim was produced; KGE predictive metrics affected by B-0014 were excluded.
+
+## 2026-08-16T08:25:02.219537+00:00 — Close the decisive static/adaptive threshold gate at m=8 and m=10; draft and adjudicate Paper A
+
+- Command: `python applications/adaptive_tensor_network/experiments/run_threshold_gate.py; python applications/adaptive_tensor_network/experiments/run_threshold_gate.py --m 8 10 --seeds 5..34 --policies threshold_static threshold_adaptive measured_first_order --out threshold_gate_v1b_raw.json; python applications/adaptive_tensor_network/experiments/analyze_threshold_gate.py; python applications/adaptive_tensor_network/experiments/analyze_threshold_gate_v1b.py; latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex`
+- Branch/commit: `campaign/gate13-closeout` / `a0430ac80704a16122b89d7c871c05cbc72881d1`
+- Outcome: **DOMAIN_LIMITED_FO_ADVANTAGE_AT_M10_NO_GENERAL_GO; Paper A draft complete, novelty pending human review**
+- Summary: Implemented exact-budget threshold-static and propagated-state threshold-adaptive baselines; executed V1 plus a predeclared fixed-size V1B precision extension; found no general FO GO, with pooled m=10-only terminal advantage and much lower threshold evaluation cost. Drafted and rendered Paper A around k-1 and exact W3 at k=3, and completed scoped full-text theorem adjudication with novelty still unestablished.
+- Validation: 113 adaptive tests passed; 48 Paper A math tests passed; 56 governance tests passed; threshold analyzers reproduced byte-identical outputs; LaTeX compiled 11 pages without warnings; every page rendered and visually inspected; compileall and git diff --check passed; governance audit passed yellow with pre-existing duplicate-run and paper-release warnings
+- Changed files:
+  - `applications/adaptive_tensor_network/src/allocation.py`
+  - `applications/adaptive_tensor_network/tests/test_threshold_allocation.py`
+  - `applications/adaptive_tensor_network/experiments/run_threshold_gate.py`
+  - `applications/adaptive_tensor_network/experiments/analyze_threshold_gate.py`
+  - `applications/adaptive_tensor_network/experiments/analyze_threshold_gate_v1b.py`
+  - `experiments/configs/ATN_THRESHOLD_GATE_V1.yaml`
+  - `experiments/configs/ATN_THRESHOLD_GATE_V1B.yaml`
+  - `applications/adaptive_tensor_network/results/threshold_gate_m8_m10_raw.json`
+  - `applications/adaptive_tensor_network/results/threshold_gate_v1b_raw.json`
+  - `applications/adaptive_tensor_network/results/threshold_gate_summary.csv`
+  - `applications/adaptive_tensor_network/results/threshold_gate_v1b_summary.json`
+  - `applications/adaptive_tensor_network/results/THRESHOLD_GATE_V1_FINDINGS.md`
+  - `applications/adaptive_tensor_network/results/THRESHOLD_GATE_V1B_FINDINGS.md`
+  - `applications/adaptive_tensor_network/ENGINEERING_ADVANTAGE_REGISTER.md`
+  - `claims/claims_registry.yaml`
+  - `experiments/README.md`
+  - `papers/paper_a/main.tex`
+  - `papers/paper_a/references.bib`
+  - `papers/paper_a/main.pdf`
+  - `research/projected_trees_v5/novelty/PAPER_A_THEOREM_ADJUDICATION_2026-08-16.md`
+- Limitations:
+  - All allocator evidence is synthetic fixed-basis D=16 CPU execution; memory is analytical, wall time is not a robust hardware benchmark, and adaptive threshold does not refit bases or shrink ranks.
+  - The preregistered V1B extension remained inconclusive; pooled m=10 intervals are descriptive precision evidence and do not rewrite V1.
+  - No screened rollout was run because the global threshold gate did not return GO.
+  - No equivalent W3 theorem was identified in the scoped full-text corpus, but novelty remains NOVELTY_NOT_ESTABLISHED pending human review, Kayalar-Weinert library access, and Zhang-Solomonik citation-neighborhood review.
+
+## 2026-08-16T18:40:00Z — Geometry of projected rebracketings: the k=2 pair constants
+
+- Goal: open a focused line on the geometry of *pairs* of computation trees
+  (RG-0/1/2/4/5 of the user's programme), leaving Hodge/GJI/E8/curvature out.
+  The single-tree theory gives `C_2^P = 1` and `C_3^P = W_3`; the pair problem
+  asks how a projection distorts the difference between two bracketings.
+- New: `research/rebracketing_geometry/` — `RG_CANONICAL.md` (definitions and
+  proofs), `rg_witnesses.py` (explicit witnesses + admissibility audit),
+  `rg4_s2_search.py` (adversarial falsification harness),
+  `tests/math_closure/test_m40_m42_rebracketing_geometry.py` (50 tests).
+- Proved and registered (`research/math_closure/status_registry.yaml`):
+  - **M40** `J_2(eta) = 2`, attained. The witness uses ONE ternary law and ONE
+    rank-2 projector at all four vertices of both trees in dimension 3 with
+    every leaf inside `Ran(P)`, so `J_2^free = J_2^same-mu =
+    J_2^same-mu,shared-P`: the class hierarchy collapses at k=2 and sharing
+    provides no rigidity.
+  - **M41** `H_2(eta) = 2`, attained by the same witness: the compressed
+    computation reports `R_L = R_M` exactly while the ambient one has
+    `F_L = -F_M != 0`. Concealment is total at every leakage level.
+  - **M42** `||Ahat|| <= ||PA|| + Sigma_2(eta) rho M L` with
+    `Sigma_2(eta) = 2 sqrt(1-eta^2)` below `eta_c = 1/sqrt(2)` and `1/eta`
+    above, hence `S_2 = Sigma_2 < 2`, attained with `A = 0` exactly in
+    dimension 2. Proof is a two-equation scalarization plus a single
+    Cauchy-Schwarz with the interpolation weight
+    `lambda = cos a cos a' / cos(a - a')`, which collapses the bound to
+    `sin(a + a')`.
+- Consequence: the certificate threshold for inferring genuine
+  non-associativity from a compressed computation drops from `2 rho M L` to
+  `Sigma_2(eta) rho M L`, strictly smaller at every eta (1.9596 at eta=0.2,
+  1.4142 at the crossover, 1.0 at eta=1). Recorded in the associator file,
+  which previously carried only the constant 2.
+- Verification: 24/24 witness audits pass with 19 checks each (operator norms
+  and closure defects measured, not assumed, and matched to their analytic
+  values at 1e-9); 50/50 tests pass, including randomized admissible pairs
+  against all three ceilings.
+- Defect found and recorded: `m39a_j2_fused.py` makes the root law feasible
+  with `restrict=P_L` on all three slots, but Definition 4.1 restricts only the
+  slot whose child is the inner vertex — the root's other children are leaves,
+  whose extended projector is the identity. It admits laws whose true
+  `rho_r^proj` exceeds eta. No bound proved here depends on it (Lemma 2.2
+  shows the root closure budget is never binding), but that script's
+  admissibility claim carries the caveat.
+- Limitations:
+  - k=2 only. `J_3` versus `2 W_3`, and `S_3`, `H_3`, are untouched.
+  - `S_2^same-mu` is OPEN: the `S_2` witness uses three different laws, and the
+    same-law arm of the sweep is a conservative subset of the true same-law
+    class, so a shortfall there is not evidence of a strict gap.
+  - All bounds are on the projected defect `P A`, not on `A`; and nothing here
+    says which of `||Ahat||` or `||PA||` an experiment can actually estimate.
+  - Proofs are repository-internal, `approval_status: PENDING_HUMAN_REVIEW`,
+    with no prior-art adjudication yet — the `S_2` extremal problem has not
+    been searched for in the literature.
+
+## 2026-08-16T21:10:00Z — RG harness: hardware saturation, positive control, and a grading defect
+
+- Hardware: RTX PRO 5000 Blackwell Laptop (24 GB, 82 SMs, CUDA 12.8, torch
+  2.12) + Intel Core Ultra 9 285HX (24 cores), 127 GB RAM.
+- The k=2 search was launch-bound, not FLOP-bound: 42% GPU, 2.0 of 24 GB,
+  ~34 s/cell. `rg_fused_search.py` folds objective, class, rank and eta into
+  per-element vectors so a whole sweep at one dimension is one optimization
+  loop -> 100% GPU at 24 GB, 10.3 s/cell at D=3. Group size is sized from a
+  two-point measurement of MARGINAL bytes/element; a single probe charges fixed
+  workspace overhead to its own elements and underfills the card ~2x.
+  `rg_witnesses.py --workers` puts the audit on all 24 cores: 123 audits over
+  41 eta values in 15 s (was ~3 min for 24 serially). `rg_cpu_falsify.py` adds
+  uniform random sampling as an unbiased complement to gradient ascent:
+  1,500,000 admissible pairs over dims 2-6, zero violations, worst excess
+  -0.336. `rg_kernels.py` batches restarts into the batch axis (3.5x over the
+  sequential-restart M39 kernel), leaving the M39 kernels untouched.
+- Class-typing defect found and fixed BEFORE reading any number: the first
+  fused same-law arm shared the raw tensor but normalized root and inner
+  vertices differently, so it was an unnamed correlated-law class, not
+  C^same-mu. Recorded as Warning 2.3: a WLOG reduction valid in the free class
+  (here, taking root laws P-valued) can stop being WLOG under shared parameters.
+- Positive control (`rg_readout.py`): J_2 = 2 is proved attainable in the
+  same-law/shared-P class, so the J arm calibrates the search. Free class
+  gamma_J = 0.99968 -> calibrated. Same-law gamma_J = 0.93448 -> NOT
+  calibrated; at D=3 rank 2, the very cell where the witness attains 2 for
+  every eta, the search returns only 1.5261-1.6848. The observed same-law S
+  deficit (0.81-0.87 of Sigma_2) is therefore recorded as an optimizer result;
+  S_2^same-mu remains OPEN and no claim is made.
+- `rg_harness_selftest.py` separates optimizer failure from a parametrization
+  bug by pushing the exact witness through the harness: J = 2.000000000
+  (gap 9e-16) at every eta, measured op norm 1.000000, closure = eta, chi = -1.
+  The extremizer is inside the search space and undistorted, so the same-law
+  shortfall is optimizer failure.
+- GRADING DEFECT (the significant finding): the operator-norm estimator is not
+  converged at the strengths used. Against a converged reference, worst deficit
+  is -18.29% at D=3 and -29.64% at D=4 for the in-loop setting (restarts=3,
+  iters=20), and still -3.28% at D=4 for restarts=18/iters=120; D=4 needs
+  restarts=64/iters=200. Feasibility DIVIDES by this estimate, so every
+  reported sweep value is inflated by an unknown amount up to several percent
+  and the 144-cell gamma table is WITHDRAWN pending re-grading. Converged
+  grading is now wired in (`--grade-strength`, default 64/200) with the search
+  loop left cheap, which is legitimate: the loop only needs a descent direction.
+- One cell exceeded a ceiling (S, same-law, D=4, rank 2, eta=1: 1.0794 vs 1).
+  RESOLVED as a grading artifact: re-run with converged grading (64/200) the
+  same cell gives 0.9009, with the reported configuration's operator norm
+  re-measured at 1.000000 and admissibility confirmed. The other same-law ranks
+  moved 0.8791->0.8965 and 0.8748->0.8678; the free class barely moved
+  (0.997653 -> 0.997704 at D=4, eta=1), so the free arm is insensitive to
+  grading strength here while the same-law arm shifted by 0.18. No refutation
+  of Theorem 5.1. eta=1 is the unique leakage level where the closure budget is
+  vacuous, leaving the operator norm as the only active constraint, which is
+  where an adversarial search finds the estimator's slack.
+- Estimator-independent verification of Theorem 5.1 added
+  (`rg_scalar_verification.py`): the scalar optimization the proof reduces to,
+  maximized by sampling the raw feasible set WITHOUT the proof's interpolation
+  weight. Over 11 etas the sampled maximum approaches
+  sin(min(2 arcsin eta, pi/2)) from within and exceeds it by +0.000e+00; the
+  extremizer's active constraint switches at eta_c = 1/sqrt(2) exactly as
+  predicted (d = d' = eta below, d^2 + d'^2 = 1 above). This is the one check
+  of Sigma_2 that is immune to the operator-norm estimator entirely.
+- Not affected: Theorems 3.1/4.1/5.1 and their witnesses. `rg_witnesses.py`
+  grades witnesses against ANALYTIC norms, not the estimator; 123/123 audits
+  pass over 41 eta values, ratios match 2, 2, Sigma_2(eta) to 1e-12.
+- Limitations:
+  - The re-graded sweep has not been run; no corrected gamma table exists yet.
+  - The admissibility audit uses the same family of lower-bound estimators, so
+    it can PROVE inadmissibility (an estimate above 1 certifies the norm
+    exceeds 1) but can never certify admissibility.
+  - The convergence study is over random laws at D<=4; D>=5 is untested and the
+    deficit grows with dimension.
