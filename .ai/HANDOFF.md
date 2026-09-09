@@ -1068,3 +1068,11 @@
 - Validation: 113 adaptive tests passed; 48 Paper A math tests passed; 56 governance tests passed; threshold analyzers reproduced byte-identical outputs; LaTeX compiled 11 pages without warnings; every page rendered and visually inspected; compileall and git diff --check passed; governance audit passed yellow with pre-existing duplicate-run and paper-release warnings
 - Resume from commit: `a0430ac80704a16122b89d7c871c05cbc72881d1` on `campaign/gate13-closeout`
 - Limitation: All allocator evidence is synthetic fixed-basis D=16 CPU execution; memory is analytical, wall time is not a robust hardware benchmark, and adaptive threshold does not refit bases or shrink ranks.
+
+## Latest postflight: canonical PMT typed core
+
+- Timestamp: 2026-09-09T04:41:33.449586+00:00
+- Outcome: **IMPLEMENTED_WITH_K4_OPEN_AND_REVIEW_PENDING**
+- Validation: python -m pytest -q (753 passed in 900.35s); python -m pytest tests/governance -q (56 passed); ruff check src/seion_core/pmt tests/pmt; python -m compileall -q src/seion_core/pmt; git diff --check
+- Resume from commit: `ce04c7356b7edd14f178586066f48c217f1b3d25` on `campaign/gate13-closeout`
+- Limitation: Exact fixed-eta constants for k>=4 remain open; finite optimizer outputs remain NUMERICAL_OBSERVATION and cannot populate exact_constant.

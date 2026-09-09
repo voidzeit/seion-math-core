@@ -175,3 +175,18 @@
   `runs/HISTORICAL_VALIDATION_RECONCILIATION_V1_20260810_FINAL2/result/`,
   `seion_kgr/data.py`, `seion_kgr/train_spectral_mixture.py`.
 - **Status:** accepted_open_cause.
+
+## D-0014 — Keep the canonical PMT facade fail-closed at `k>=4`
+
+- **Date:** 2026-09-09
+- **Decision:** Implement the typed finite-dimensional PMT evaluator,
+  projected-root bounds, `W_3(eta)` witnesses, and norm/closure brackets in a
+  separate `seion_core.pmt` namespace. Expose fixed-eta `k>=4` only as an
+  explicit open-problem record.
+- **Reason:** The implementation must turn existing definitions and proofs
+  into reproducible contracts without allowing a finite numerical optimizer to
+  become an exact-constant theorem.
+- **Evidence:** `src/seion_core/pmt/`, `docs/pmt/README.md`,
+  `research/math_closure/k4_exploration/PMT_K4_FRONTIER.md`,
+  `claims/claims_registry.yaml`, and `claims/theorem_registry.yaml`.
+- **Status:** accepted_with_external_review_pending.

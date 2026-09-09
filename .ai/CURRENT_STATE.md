@@ -1,5 +1,22 @@
 # Current state
 
+## 2026-09-09 — canonical PMT core
+
+- Added `seion_core.pmt` as the canonical finite-dimensional PMT contract:
+  typed ordered trees, dense real/complex multilinear laws, orthogonal output
+  projectors, ambient leaf inputs, exact ambient/projected recursion, and the
+  root Pythagorean error decomposition.
+- Added closed-form contracts for the universal projected `(k-1)` bound and
+  independent-law `W_3(eta)`, with two-dimensional chain/branch witnesses and
+  explicit projected-closure/norm brackets. Numerical lower endpoints remain
+  evidence rather than global operator-norm proofs.
+- Registered the theorem/claim scope and the `k>=4` fixed-eta frontier as
+  `OPEN_PROBLEM`; finite searches cannot populate an exact constant.
+- Focused PMT checks, historical `research_v3` checks, mathematical
+  `k=2/k=3` checks, and governance tests pass. The structural audit remains
+  `yellow` because pre-existing duplicate runs and paper-readiness warnings
+  are preserved.
+
 ## 2026-08-10 postflight — accuracy-first spectral-mixture discovery runs
 
 - Implemented and exercised the first full-entity,

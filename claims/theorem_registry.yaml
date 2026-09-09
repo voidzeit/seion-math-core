@@ -14,3 +14,37 @@ theorems:
     symbolic_verification: null
     epistemic_status: PROVED_UNDER_ASSUMPTIONS
 
+  - id: THM_PMT_ROOT_ERROR_DECOMPOSITION_V1
+    statement: "For a finite recursively projected multilinear tree with an orthogonal root projector, ambient root error squared equals projected-root error squared plus normal-root error squared."
+    dependencies: [DEF_NARY_LAW_V1]
+    hypotheses: [finite-dimensional Hilbert spaces, orthogonal projectors, recursively projected root lies in the root projector range]
+    proof_location: research/CANONICAL_W3_PROOF.md
+    implementation: src/seion_core/pmt/evaluation.py
+    symbolic_verification: tests/pmt/test_pmt_core.py
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+
+  - id: THM_PMT_PROJECTED_K_MINUS_ONE_V1
+    statement: "For k internal vertices, uniform operator norm bound M, projected-input closure budget rho, and leaf product L_T, E_T^P <= (k-1) rho M^(k-1) L_T."
+    dependencies: [THM_PMT_ROOT_ERROR_DECOMPOSITION_V1]
+    hypotheses: [finite ordered rooted tree, finite-dimensional real or complex Hilbert spaces, orthogonal projectors, projected-input closure convention]
+    proof_location: research/CANONICAL_W3_PROOF.md
+    implementation: src/seion_core/pmt/bounds.py
+    numerical_verification: tests/research_v3/regression/test_projected_k_minus_one.py
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+
+  - id: THM_PMT_W3_FIXED_ETA_V1
+    statement: "For the declared independent-law finite-dimensional k=3 classes, the normalized projected-root constant is the piecewise W_3(eta) function and the analytic chain/branch witnesses attain it."
+    dependencies: [THM_PMT_PROJECTED_K_MINUS_ONE_V1]
+    hypotheses: [0 < eta <= 1, independent node laws, orthogonal projectors, projected-input closure convention, chain or branching skeleton with the finite-arity reduction]
+    proof_location: research/CANONICAL_W3_PROOF.md
+    implementation: src/seion_core/pmt/bounds.py;src/seion_core/pmt/extremizers.py
+    numerical_verification: tests/pmt/test_pmt_core.py;tests/math_closure/test_m14_exact_chain_constant.py;tests/math_closure/test_m15_exact_branching_constant.py
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+
+  - id: OPEN_PMT_FIXED_ETA_K4_PLUS_V1
+    statement: "The exact independent-law fixed-eta projected-root constant remains open for k>=4; numerical search records cannot upgrade this status."
+    dependencies: [THM_PMT_PROJECTED_K_MINUS_ONE_V1]
+    hypotheses: [finite ordered topology, finite-dimensional Hilbert spaces, orthogonal projectors]
+    proof_location: research/math_closure/k4_exploration/PMT_K4_FRONTIER.md
+    implementation: src/seion_core/pmt/frontier.py
+    epistemic_status: OPEN_PROBLEM

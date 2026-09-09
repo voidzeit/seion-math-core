@@ -135,6 +135,20 @@
 - [ ] Resolve exact global fixed-eta sharpness and growing-tree uniformity;
   the quantitative chain gap and endpoint strictness are tracked below.
 
+## Canonical PMT API (2026-09-09)
+
+- [x] Add the `seion_core.pmt` typed finite-dimensional facade with ambient
+  leaf semantics, exact ambient/projected evaluation, and root error
+  decomposition.
+- [x] Expose the universal projected `(k-1)` bound, the exact independent-law
+  `W_3(eta)` contract, analytic chain/branch witnesses, and numerical norm
+  brackets with fail-closed semantics.
+- [x] Register the PMT definition, proved-under-assumptions contracts, and
+  the fixed-eta `k>=4` `OPEN_PROBLEM` boundary.
+- [ ] Derive and certify an exact fixed-eta constant for `k>=4`; numerical
+  optimizer output remains observation-only until an analytic upper envelope
+  and independent lower construction are available.
+
 ## Projected-graph theory v5
 
 - [x] Freeze the finite projected-graph core at scientific commit

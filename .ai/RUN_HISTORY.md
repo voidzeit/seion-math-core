@@ -1405,3 +1405,30 @@ changed paths, and limitations. Historical artifact runs remain under
     exceeds 1) but can never certify admissibility.
   - The convergence study is over random laws at D<=4; D>=5 is untested and the
     deficit grows with dimension.
+
+## 2026-09-09T04:41:33.449586+00:00 — canonical PMT typed core
+
+- Command: `python -m pytest -q; python -m pytest tests/governance -q; ruff check src/seion_core/pmt tests/pmt; python -m compileall -q src/seion_core/pmt; python -m seion_core.cli.main governance audit --json; python -m seion_core.cli.main governance dedupe-runs; git diff --check`
+- Branch/commit: `campaign/gate13-closeout` / `ce04c7356b7edd14f178586066f48c217f1b3d25`
+- Outcome: **IMPLEMENTED_WITH_K4_OPEN_AND_REVIEW_PENDING**
+- Summary: Implemented canonical finite-dimensional PMT model, exact ambient/projected evaluator, root error decomposition, projected k-minus-one bound, W3 contracts and extremizer witnesses; registered k>=4 fixed-eta as open.
+- Validation: python -m pytest -q (753 passed in 900.35s); python -m pytest tests/governance -q (56 passed); ruff check src/seion_core/pmt tests/pmt; python -m compileall -q src/seion_core/pmt; git diff --check
+- Changed files:
+  - `.ai/CURRENT_STATE.md`
+  - `.ai/DECISIONS.md`
+  - `.ai/TASKS.md`
+  - `.ai/evidence/ledger.jsonl`
+  - `artifacts/index/governance_audit.json`
+  - `artifacts/index/run_deduplication_report.json`
+  - `artifacts/index/run_index_deduplicated.csv`
+  - `claims/claims_registry.yaml`
+  - `claims/theorem_registry.yaml`
+  - `docs/pmt/README.md`
+  - `docs/reviewer_report.md`
+  - `research/math_closure/k4_exploration/PMT_K4_FRONTIER.md`
+  - `src/seion_core/pmt`
+  - `tests/pmt/test_pmt_core.py`
+- Limitations:
+  - Exact fixed-eta constants for k>=4 remain open; finite optimizer outputs remain NUMERICAL_OBSERVATION and cannot populate exact_constant.
+  - Operator-norm brackets expose a safe Frobenius upper and attained numerical lower, not a global optimum certificate.
+  - Structural audit is yellow due to pre-existing duplicate runs and paper-readiness warning; no theorem novelty or external human review is approved by this run.

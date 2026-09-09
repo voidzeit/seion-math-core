@@ -99,3 +99,44 @@ claims:
     statement: "In the pooled identical-design synthetic exact-terminal sample of 35 seeds, measured first order does not separate from static or adaptive threshold at m=8, while at m=10 it has lower mean normalized terminal error than both thresholds with paired bootstrap intervals above zero. Threshold remains much cheaper in forward evaluations, so no general Pareto dominance or universal FO advantage is established."
     assumptions: [frozen projector bases, heterogeneous D=16 chains, six rounds, three rank additions per round, equal terminal rank, exact terminal objective, V1B declared after V1 and before its new seeds, pooled analysis descriptive]
     evidence: [experiments/configs/ATN_THRESHOLD_GATE_V1.yaml, experiments/configs/ATN_THRESHOLD_GATE_V1B.yaml, applications/adaptive_tensor_network/results/threshold_gate_m8_m10_raw.json, applications/adaptive_tensor_network/results/threshold_gate_v1b_raw.json, applications/adaptive_tensor_network/results/threshold_gate_v1b_summary.json, applications/adaptive_tensor_network/results/THRESHOLD_GATE_V1B_FINDINGS.md]
+
+  - id: DEF_PMT_CANONICAL_TYPED_MODEL_V1
+    title: Canonical finite-dimensional Projected Multilinear Tree model
+    status: definition
+    statement: "A PMTModel binds a finite ordered typed tree, dense multilinear node laws, orthogonal output projectors, and ambient leaf vectors; leaves use the identity projector convention."
+    assumptions: [finite-dimensional real or complex typed Hilbert spaces, internal arity at least two, output-first dense law coordinates]
+    evidence: [src/seion_core/pmt/model.py, src/seion_core/pmt/evaluation.py, docs/pmt/README.md, tests/pmt/test_pmt_core.py]
+
+  - id: THM_PMT_ROOT_ERROR_DECOMPOSITION_V1
+    title: PMT root error decomposition
+    status: proved_under_assumptions
+    statement: "For orthogonal root projection, ambient root error squared equals projected-root error squared plus normal-root error squared."
+    assumptions: [finite-dimensional Hilbert space, orthogonal root projector, recursively projected root in the projector range]
+    proof: research/CANONICAL_W3_PROOF.md
+    evidence: [src/seion_core/pmt/evaluation.py, tests/pmt/test_pmt_core.py]
+
+  - id: THM_PMT_PROJECTED_K_MINUS_ONE_V1
+    title: Universal projected-root k-minus-one bound
+    status: proved_under_assumptions
+    statement: "For k internal vertices with law norm at most M, projected-input closure defect at most rho, and leaf product L_T, the projected-root error is at most (k-1) rho M^(k-1) L_T."
+    assumptions: [finite-dimensional real or complex Hilbert spaces, finite ordered rooted tree, orthogonal projectors, projected-input closure convention]
+    proof: research/CANONICAL_W3_PROOF.md
+    evidence: [src/seion_core/pmt/bounds.py, src/seion_core/research_v3/certificates.py, tests/research_v3/regression/test_projected_k_minus_one.py]
+    limitations: [implementation exposes the theorem contract; arbitrary-law fixed-eta sharpness is not inferred from the bound]
+
+  - id: THM_PMT_W3_FIXED_ETA_V1
+    title: Exact independent-law k3 W3 contract
+    status: proved_under_assumptions
+    statement: "For the declared independent-law finite-dimensional k=3 chain, branching, and finite-arity reductions, the normalized projected-root constant is W3(eta), with the piecewise formula implemented by w3(eta) and attained by analytic two-dimensional witnesses."
+    assumptions: [0 < eta <= 1, finite-dimensional real or complex Hilbert spaces, orthogonal projectors, independently selectable node laws, projected-input closure convention]
+    proof: research/CANONICAL_W3_PROOF.md
+    evidence: [src/seion_core/pmt/bounds.py, src/seion_core/pmt/extremizers.py, tests/pmt/test_pmt_core.py, tests/math_closure/test_m14_exact_chain_constant.py, tests/math_closure/test_m15_exact_branching_constant.py, tests/math_closure/test_m20_k3_arbitrary_arity_exact_constant.py]
+    limitations: [novelty and independent human review remain pending; same-law restrictions are separate classes]
+
+  - id: OPEN_PMT_FIXED_ETA_K4_PLUS_V1
+    title: Fixed-eta PMT constants for k at least four
+    status: open
+    statement: "The exact independent-law fixed-eta constant for k>=4 remains open; the universal k-1 upper coefficient and small-eta asymptotic information do not determine it."
+    assumptions: [finite ordered rooted topology, finite-dimensional Hilbert spaces, orthogonal projectors, projected-input closure convention]
+    evidence: [src/seion_core/pmt/frontier.py, docs/pmt/README.md, research/math_closure/k4_exploration/PMT_K4_FRONTIER.md, research/math_closure/k4_exploration/optimizer.py]
+    limitations: [numerical searches remain observations and cannot populate exact_constant]
