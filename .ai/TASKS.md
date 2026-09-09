@@ -137,6 +137,18 @@
 
 ## Canonical PMT API (2026-09-09)
 
+- [x] Develop an isolated k4 chain study with full source Gram, global
+  closure audits, seeded CPU searches, source snapshots and negative controls.
+- [x] Supply the advisory chain/mixed sharp formula proof via isometric
+  dilation and angular optimization, including a_chain=5/2 and explicit
+  attaining witnesses; see `k4_exploration/CHAIN_GRAM_REPORT.md`.
+- [ ] Independently review that proof and explicitly reconcile the historical
+  OPEN_PMT_FIXED_ETA_K4_PLUS_V1 boundary before theorem promotion.
+- [ ] Resolve the branch-below k4 upper/lower gap and audit theorem-level
+  novelty against scaled relative graphs and products of projections.
+- [ ] Reconcile M18/M19 phase-law prose with canonical ambient-leaf closure;
+  the additive gated witness and negative control are already available.
+
 - [x] Add the `seion_core.pmt` typed finite-dimensional facade with ambient
   leaf semantics, exact ambient/projected evaluation, and root error
   decomposition.

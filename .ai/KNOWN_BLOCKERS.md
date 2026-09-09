@@ -9,6 +9,25 @@
 
 These blockers are not silently downgraded by successful software tests.
 
+## PMT k4 audit — 2026-09-09
+
+- **PMT-K4-LEAF-CONVENTION:** the ungated M18/M19 phase law has global
+  projected-input closure 1 at a bottom node under the canonical ambient-leaf
+  convention, although its chosen trajectory has defect eta. Historical files
+  and statuses are preserved. The additive gated construction in
+  `src/seion_core/pmt/phase.py` preserves the phase values with canonical
+  global closure <=eta. The negative control and proof are in
+  `research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md` §2 and
+  `artifacts/pmt_k4_chain/2026-09-09-v1/reproduction.json`. Resolution: review
+  and reconcile the historical wording explicitly, not by a silent rewrite.
+- **PMT-K4-PROOF-REVIEW:** the chain/mixed formula and a_chain=5/2 have a
+  complete advisory dilation/angle proof draft, but no independent review or
+  official theorem approval. The historical k>=4 OPEN_PROBLEM classification
+  remains in force. Numerical agreement cannot close this approval gap.
+- **PMT-K4-SEARCH-NORMS:** the historical k4 optimizer's alternating/grid
+  multilinear norm estimates do not certify global admissibility. New chain
+  searches check the whole linear matrix block; no historical run is promoted.
+
 ## V3 strict-gate blockers
 
 | ID | Blocker | Impact | Evidence | Resolution condition |

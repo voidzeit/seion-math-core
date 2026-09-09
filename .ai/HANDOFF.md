@@ -1076,3 +1076,11 @@
 - Validation: python -m pytest -q (753 passed in 900.35s); python -m pytest tests/governance -q (56 passed); ruff check src/seion_core/pmt tests/pmt; python -m compileall -q src/seion_core/pmt; git diff --check
 - Resume from commit: `ce04c7356b7edd14f178586066f48c217f1b3d25` on `campaign/gate13-closeout`
 - Limitation: Exact fixed-eta constants for k>=4 remain open; finite optimizer outputs remain NUMERICAL_OBSERVATION and cannot populate exact_constant.
+
+## Latest postflight: PMT k4 chain Gram and closure-preserving dilation
+
+- Timestamp: 2026-09-09T07:37:11.228834+00:00
+- Outcome: **verified_implementation_with_advisory_proof**
+- Validation: 201 mathematical/PMT tests passed; 56 governance tests passed; final PMT rerun 38 passed. Two run hash manifests and V2 source snapshot verified. 42 reproduction controls per run, max residual 6.67e-16. 78 rescaled candidates passed floating full-matrix audits. SLSQP 0/54 and Powell 23/24 declared convergence. SDP gap <=2.41e-9 with warnings and min PSD eigenvalue -8.28e-10. Structural audit yellow; dedupe executed; compileall and git diff --check passed.
+- Resume from commit: `9f1c6d291ef1bb84d2c50602e80090305538c321` on `codex/pmt-k4-chain-gram`
+- Limitation: All new mathematical statements remain advisory proof drafts pending independent review; existing statuses unchanged.

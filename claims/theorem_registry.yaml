@@ -1,4 +1,15 @@
 theorems:
+  - id: PROPOSAL_PMT_K4_CHAIN_MIXED_FINITE_ETA_20260909
+    statement: "Proposed sharp chain/mixed constant: sqrt(9-15 eta^2+7 eta^4) for eta<=sqrt(3/7); 9/(7 eta) above. In particular a_chain=5/2."
+    dependencies: [THM_PMT_W3_FIXED_ETA_V1]
+    hypotheses: [independent node laws, finite-dimensional real or complex Hilbert spaces, orthogonal projectors, ambient leaves, global projected-input closure budget, chain or mixed binary topology]
+    proof_location: research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md
+    implementation: research/math_closure/k4_exploration/chain_analysis.py
+    numerical_verification: tests/pmt/test_chain_gram.py
+    epistemic_status: CONJECTURE
+    proof_status: COMPLETE_ADVISORY_PROOF_DRAFT_PENDING_INDEPENDENT_REVIEW
+    approval_status: NOT_APPROVED
+    limitations: [existing OPEN_PMT classification preserved pending review, branch-below equality not established, no novelty claim]
   - id: THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1
     statement: "R_standard(x,y)z = A(y,x,z)-A(x,y,z)."
     dependencies: [DEF_NARY_LAW_V1]

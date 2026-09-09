@@ -1,5 +1,21 @@
 # Decisions
 
+## 2026-09-09 — PMT k4 chain study authority and preservation
+
+- Scope remains independent-law finite-dimensional canonical PMT. New work
+  is on `codex/pmt-k4-chain-gram`; no main edits, history rewriting, push,
+  paper publication, or external-repository change.
+- Register the chain/mixed formula as a proposal with a complete advisory
+  proof draft, not an automatically approved theorem. Existing results and
+  the general k>=4 open registry entry retain their status until independent
+  review. The proof's upper bound is analytic; SDP precision is not certified.
+- Preserve historical ungated M18/M19 phase code and SLSQP failures. Add
+  globally admissible leaf-gated phase constructions and explicit negative
+  controls under the canonical ambient-leaf convention.
+- V2 uses derivative-free Powell with full spectral rescaling after V1's
+  SLSQP nonconvergence. Each run is separately registered; V2 snapshots its
+  source and does not overwrite V1. No optimizer deficit is landscape proof.
+
 ## D-0001 — Keep governance local to SEION Math Core
 
 - **Date:** 2026-07-29

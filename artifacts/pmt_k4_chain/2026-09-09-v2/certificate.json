@@ -1,0 +1,10 @@
+{
+  "status": "OBSERVED_WITH_ANALYTIC_PROOF_DRAFT",
+  "proof_location": "research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md",
+  "numeric_status": "NUMERICAL_CANDIDATE",
+  "interval_sdp_certificate": null,
+  "novelty": "NOT_ESTABLISHED",
+  "human_approval": false,
+  "tolerance": 1e-10,
+  "reproduction_pass": true
+}

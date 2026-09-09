@@ -1,5 +1,29 @@
 # Current state
 
+## 2026-09-09 — k4 chain/mixed advisory proof and Gram study
+
+- On isolated branch `codex/pmt-k4-chain-gram`, added a complete advisory
+  proof draft using closure-preserving isometric dilation and angular
+  geometry. Proposed chain/mixed C is `sqrt(9-15 eta^2+7 eta^4)` through
+  `eta=sqrt(3/7)`, then `9/(7 eta)`; proposed `a_chain=5/2`.
+- Added source-resolved chain evaluation, typed bilinear lifting, full
+  projected-subspace matrix checks, a realizable Gram SDP, and canonical
+  gated phase witnesses. Registered the historical M18/M19 ambient-leaf
+  convention conflict rather than rewriting old evidence.
+- Preserved V1's 54 nonconverged SLSQP exits; bounded V2 Powell search has
+  23/24 converged exits. All 78 rescaled candidates pass floating global
+  norm/closure checks. SDP agreement is observational (max C gap 2.41e-9),
+  with solver warnings and negative PSD residuals retained.
+- Validation: 201 PMT/mathematical tests and 56 governance tests passed;
+  both run hash manifests and V2 source snapshots verified. Audit yellow
+  for pre-existing duplicate/paper warnings; deduplication executed.
+- Deliverables: `research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md`,
+  `EXECUTION.md`, and `artifacts/index/pmt_k4_chain_artifacts.json`.
+  Existing k>=4 OPEN_PROBLEM and M14–M42 classifications remain unchanged.
+  New formulas are CONJECTURE with COMPLETE_ADVISORY_PROOF_DRAFT pending
+  independent review. Branch-below equality, novelty, and approval remain
+  open; main, `.claude/`, and historical runs are preserved.
+
 ## 2026-09-09 — canonical PMT core
 
 - Added `seion_core.pmt` as the canonical finite-dimensional PMT contract:

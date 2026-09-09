@@ -1,0 +1,15 @@
+version: 1
+scope: canonical independent-law PMT chain k4, CPU only
+runs:
+  - id: PMT_K4_CHAIN_GRAM_V1
+    config: experiments/configs/PMT_K4_CHAIN_GRAM_V1.json
+    output: artifacts/pmt_k4_chain/2026-09-09-v1
+    expected_search_records: 54
+    interpretation: numerical candidates, including all failed SLSQP exits
+  - id: PMT_K4_CHAIN_GRAM_V2
+    config: experiments/configs/PMT_K4_CHAIN_GRAM_V2.json
+    output: artifacts/pmt_k4_chain/2026-09-09-v2
+    expected_search_records: 24
+    interpretation: derivative-free hard spectral rescaling, advisory evidence only
+analytic_proof: research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md
+approval_status: PENDING_INDEPENDENT_REVIEW

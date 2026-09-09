@@ -72,3 +72,6 @@ campaigns/*/confirmatory/
 # pdf/qa_png/) ARE committed.
 release/*/pdf/qa_png/
 release/*_PDF_PACKAGE.zip
+
+# Isolated CPU dependencies for the PMT k4 study (not research evidence).
+tmp/pmt_k4_deps/

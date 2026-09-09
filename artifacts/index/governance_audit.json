@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "audited_at": "2026-09-09T04:41:48.881610+00:00",
+  "audited_at": "2026-09-09T05:14:01.640638+00:00",
   "status": "yellow",
   "strict": false,
   "git": {
-    "branch": "campaign/gate13-closeout",
-    "commit": "ce04c7356b7edd14f178586066f48c217f1b3d25",
+    "branch": "codex/pmt-k4-chain-gram",
+    "commit": "9f1c6d291ef1bb84d2c50602e80090305538c321",
     "dirty": true
   },
   "required_files": {

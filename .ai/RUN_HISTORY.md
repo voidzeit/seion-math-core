@@ -1432,3 +1432,50 @@ changed paths, and limitations. Historical artifact runs remain under
   - Exact fixed-eta constants for k>=4 remain open; finite optimizer outputs remain NUMERICAL_OBSERVATION and cannot populate exact_constant.
   - Operator-norm brackets expose a safe Frobenius upper and attained numerical lower, not a global optimum certificate.
   - Structural audit is yellow due to pre-existing duplicate runs and paper-readiness warning; no theorem novelty or external human review is approved by this run.
+
+## 2026-09-09T07:37:11.228834+00:00 — PMT k4 chain Gram and closure-preserving dilation
+
+- Command: `python -m pytest tests/pmt tests/math_closure/test_k2_k3_exact_forms.py tests/math_closure/test_m14_exact_chain_constant.py tests/math_closure/test_m15_exact_branching_constant.py tests/math_closure/test_m16_general_binary_class_corollary.py tests/math_closure/test_m17_broader_gated_contraction_exact.py tests/math_closure/test_m18_binary_tree_asymptotic_sharpness.py tests/math_closure/test_m19_finite_arity_asymptotic_sharpness.py tests/math_closure/test_m20_k3_arbitrary_arity_exact_constant.py tests/math_closure/test_m24_m25_finite_batch_certificates.py tests/math_closure/test_m40_m42_rebracketing_geometry.py tests/research_v3/regression/test_projected_k_minus_one.py -q | python -m pytest tests/governance -q | python -m pytest tests/pmt -q | python scripts/run_pmt_k4_chain.py --output artifacts/pmt_k4_chain/2026-09-09-v1 | python scripts/run_pmt_k4_chain.py --config experiments/configs/PMT_K4_CHAIN_GRAM_V2.json --output artifacts/pmt_k4_chain/2026-09-09-v2 | python scripts/summarize_pmt_k4_chain.py | python -m seion_core.cli.main governance audit --json | python -m seion_core.cli.main governance dedupe-runs`
+- Branch/commit: `codex/pmt-k4-chain-gram` / `9f1c6d291ef1bb84d2c50602e80090305538c321`
+- Outcome: **verified_implementation_with_advisory_proof**
+- Summary: Added complete advisory chain/mixed sharp-formula proof, a_chain=5/2, source-resolved evaluation, full-subspace Gram SDP, globally audited candidates and leaf-convention negative control. Python 3.12.14; Windows-11-10.0.26200-SP0; CPU float64, BLAS threads=1. V1 preserved; V2 archived exact sources. No main edits or theorem approvals.
+- Validation: 201 mathematical/PMT tests passed; 56 governance tests passed; final PMT rerun 38 passed. Two run hash manifests and V2 source snapshot verified. 42 reproduction controls per run, max residual 6.67e-16. 78 rescaled candidates passed floating full-matrix audits. SLSQP 0/54 and Powell 23/24 declared convergence. SDP gap <=2.41e-9 with warnings and min PSD eigenvalue -8.28e-10. Structural audit yellow; dedupe executed; compileall and git diff --check passed.
+- Changed files:
+  - `.ai/CURRENT_STATE.md`
+  - `.ai/DECISIONS.md`
+  - `.ai/KNOWN_BLOCKERS.md`
+  - `.ai/TASKS.md`
+  - `.ai/evidence/ledger.jsonl`
+  - `.gitignore`
+  - `artifacts/index/governance_audit.json`
+  - `artifacts/index/run_deduplication_report.json`
+  - `claims/claims_registry.yaml`
+  - `claims/conjecture_registry.yaml`
+  - `claims/theorem_registry.yaml`
+  - `docs/reviewer_report.md`
+  - `pyproject.toml`
+  - `artifacts/index/pmt_k4_chain_artifacts.json`
+  - `artifacts/pmt_k4_chain/`
+  - `experiments/configs/PMT_K4_CHAIN_GRAM_V1.json`
+  - `experiments/configs/PMT_K4_CHAIN_GRAM_V2.json`
+  - `experiments/matrices/pmt_k4_chain_gram.yaml`
+  - `research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md`
+  - `research/math_closure/k4_exploration/CHAIN_PLAN.md`
+  - `research/math_closure/k4_exploration/EXECUTION.md`
+  - `research/math_closure/k4_exploration/chain_analysis.py`
+  - `research/math_closure/k4_exploration/chain_gram_sdp.py`
+  - `research/math_closure/k4_exploration/chain_search.py`
+  - `research/math_closure/k4_exploration/topology_witnesses.py`
+  - `scripts/run_pmt_k4_chain.py`
+  - `scripts/summarize_pmt_k4_chain.py`
+  - `src/seion_core/pmt/chain.py`
+  - `src/seion_core/pmt/phase.py`
+  - `tests/pmt/test_chain_gram.py`
+  - `.ai/RUN_HISTORY.md`
+  - `.ai/HANDOFF.md`
+- Limitations:
+  - All new mathematical statements remain advisory proof drafts pending independent review; existing statuses unchanged.
+  - Branch-below equality, complex branch-below attaining construction, ternary-star comparison and theorem-level novelty remain open.
+  - Floating SDP primal/dual results are not outward-rounded numerical certificates; all optimizer failures preserved.
+  - V1 predates source snapshots; V2 source snapshot is hash-verified. The current report adds literature comparison after the V2 snapshot.
+  - No GPU, release, push, merge, commit, or external-repository mutation.
