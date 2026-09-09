@@ -24,10 +24,11 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-from .data import KnowledgeGraph
+from .data import KnowledgeGraph, train_only_filter_view
 from .evaluate import evaluate
 from .reproducibility import restore_rng_state, rng_state_snapshot, set_seed
 from .sota.full_entity_miner import mine_full_entity_hard_negatives
+from .sota.full_entity_miner_fast import mine_full_entity_hard_negatives_fast
 from .sota.losses import listwise_loss, margin_distillation_loss
 from .sota.momentum_encoder import MomentumEncoder
 from .sota.sratm import SpectralRelationAdaptiveTensorMixture
@@ -125,7 +126,44 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--cpu", action="store_true")
     parser.add_argument("--resume", type=Path, default=None)
+    # --- Additive options for long sealed campaigns.  Every default reproduces
+    # --- the original step-bounded, constant-LR, reference-miner behaviour.
+    parser.add_argument("--max-seconds", type=float, default=0.0,
+                        help="wall-clock training ceiling in seconds; 0 disables the time budget")
+    parser.add_argument("--scheduler", choices=("none", "cosine"), default="none",
+                        help="learning-rate schedule; 'none' keeps the constant LR of earlier runs")
+    parser.add_argument("--warmup-steps", type=int, default=0,
+                        help="linear LR warmup steps before the schedule takes over")
+    parser.add_argument("--min-lr-ratio", type=float, default=0.1,
+                        help="cosine floor as a fraction of --lr")
+    parser.add_argument("--eval-every-seconds", type=float, default=0.0,
+                        help="wall-clock evaluation cadence in seconds; 0 falls back to --eval-every steps")
+    parser.add_argument("--fast-miner", action="store_true",
+                        help="use the bit-exact desynchronized hard-negative miner")
+    parser.add_argument("--mining-filter", choices=("train_valid", "train_only"), default="train_valid",
+                        help=(
+                            "which known-positive tables mask hard negatives during TRAINING. "
+                            "'train_valid' reproduces earlier runs but leaks VALID membership into "
+                            "training; 'train_only' is the non-leaking choice. Evaluation always "
+                            "keeps TRAIN+VALID filters."
+                        ))
     return parser
+
+
+# The shared implementation now lives in data.py so every trainer uses one
+# definition; re-exported here because tests and the sealed runner import it.
+_train_only_filter_view = train_only_filter_view
+
+
+def _lr_scale(args: argparse.Namespace, step: int, horizon: int) -> float:
+    """Multiplicative LR factor for ``step`` (1-based) under the chosen schedule."""
+    if args.warmup_steps > 0 and step <= args.warmup_steps:
+        return step / float(args.warmup_steps)
+    if args.scheduler == "none":
+        return 1.0
+    span = max(1, horizon - args.warmup_steps)
+    progress = min(1.0, max(0.0, (step - args.warmup_steps) / span))
+    return args.min_lr_ratio + (1.0 - args.min_lr_ratio) * 0.5 * (1.0 + np.cos(np.pi * progress))
 
 
 def _device(args: argparse.Namespace) -> torch.device:
@@ -233,6 +271,17 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             history = list(state.get("history", []))
             restore_rng_state(state["rng"], numpy_rng=rng)
 
+        miner = (
+            mine_full_entity_hard_negatives_fast if args.fast_miner else mine_full_entity_hard_negatives
+        )
+        # Evaluation keeps kg (TRAIN+VALID filters, the standard filtered
+        # protocol); mining may be restricted to TRAIN-only to avoid leaking
+        # VALID membership into the training signal.
+        mining_kg = _train_only_filter_view(kg) if args.mining_filter == "train_only" else kg
+        base_lrs = [group["lr"] for group in optimizer.param_groups]
+        time_budget_exhausted = False
+        last_eval_at = time.perf_counter()
+
         train_order = np.arange(len(kg.train), dtype=np.int64)
         for epoch in range(start_epoch, args.epochs + 1):
             rng.shuffle(train_order)
@@ -242,14 +291,20 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             for offset in range(0, len(train_order), args.batch_size):
                 if step >= args.max_steps:
                     break
+                if args.max_seconds > 0 and (time.perf_counter() - started) >= args.max_seconds:
+                    time_budget_exhausted = True
+                    break
                 batch = torch.from_numpy(kg.train[train_order[offset:offset + args.batch_size]]).to(
                     device=device, dtype=torch.long, non_blocking=True,
                 )
                 h, r, t = batch.T
-                hard_ids, _ = mine_full_entity_hard_negatives(
-                    teacher.encoder, h, r, t, kg,
+                hard_ids, _ = miner(
+                    teacher.encoder, h, r, t, mining_kg,
                     candidate_block=args.candidate_block, hard_k=args.hard_k,
                 )
+                scale = _lr_scale(args, step + 1, args.max_steps)
+                for group, base_lr in zip(optimizer.param_groups, base_lrs):
+                    group["lr"] = base_lr * scale
                 optimizer.zero_grad(set_to_none=True)
                 positive = model.score_positive(h, r, t)
                 negatives = model.score_tail_candidates(h, r, hard_ids)
@@ -276,11 +331,23 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 teacher.update(model)
                 step += 1
                 epoch_losses.append(float(loss.detach().item()))
-                if args.eval_every and step % args.eval_every == 0:
+                now = time.perf_counter()
+                if args.eval_every_seconds > 0:
+                    due = (now - last_eval_at) >= args.eval_every_seconds
+                else:
+                    due = bool(args.eval_every) and step % args.eval_every == 0
+                if due:
+                    last_eval_at = now
                     queries = kg.valid[:min(args.eval_queries, len(kg.valid))]
                     metrics = evaluate(model, kg, "valid", device, min(args.batch_size, 64), args.entity_block, queries=queries)
-                    record = {"epoch": epoch, "step": step, "loss": float(loss.item()), "valid": metrics["combined"]}
+                    record = {
+                        "epoch": epoch, "step": step, "loss": float(loss.item()),
+                        "valid": metrics["combined"],
+                        "elapsed_seconds": now - started,
+                        "lr": optimizer.param_groups[0]["lr"],
+                    }
                     history.append(record)
+                    model.train()
                     current_mrr = float(metrics["combined"]["MRR"])
                     if current_mrr > best_valid_mrr:
                         best_valid_mrr, best_valid_step = current_mrr, step
@@ -289,7 +356,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     _save(args.out_dir / "checkpoint_last.pt", model, teacher, optimizer, epoch=epoch, step=step, history=history, rng=rng, seed=args.seed, config=config)
             history.append({"epoch": epoch, "step": step, "loss": float(np.mean(epoch_losses)) if epoch_losses else None, "seconds": time.perf_counter() - epoch_started, "steps": len(epoch_losses)})
             _save(args.out_dir / "checkpoint_last.pt", model, teacher, optimizer, epoch=epoch, step=step, history=history, rng=rng, seed=args.seed, config=config)
-            if step >= args.max_steps:
+            if step >= args.max_steps or time_budget_exhausted:
                 break
 
         if device.type == "cuda":
@@ -313,6 +380,27 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "examples_per_second": float((step * args.batch_size) / max(elapsed, 1e-9)),
         "best_valid_mrr": None if best_valid_step is None else best_valid_mrr,
         "best_valid_step": best_valid_step,
+        "stop_reason": (
+            "WALL_CLOCK_BUDGET_EXHAUSTED" if time_budget_exhausted
+            else "MAX_STEPS_REACHED" if step >= args.max_steps
+            else "EPOCHS_EXHAUSTED"
+        ),
+        "schedule": {
+            "scheduler": args.scheduler,
+            "warmup_steps": args.warmup_steps,
+            "min_lr_ratio": args.min_lr_ratio,
+            "final_lr": optimizer.param_groups[0]["lr"],
+            "horizon_steps": args.max_steps,
+        },
+        "miner": "fast_desynchronized_bit_exact" if args.fast_miner else "reference",
+        "mining_filter": {
+            "mode": args.mining_filter,
+            "training_negatives_masked_by": (
+                "TRAIN_ONLY" if args.mining_filter == "train_only" else "TRAIN_PLUS_VALID"
+            ),
+            "evaluation_filters": "TRAIN_PLUS_VALID",
+            "valid_membership_leaks_into_training": args.mining_filter != "train_only",
+        },
         "history": history,
         "memory": memory,
         "config": config,

@@ -1,0 +1,531 @@
+<title>SEION Results Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#EDF0F3; --surface:#FFFFFF; --surface-2:#F5F7F9;
+  --ink:#141A20; --muted:#586674; --faint:#8593A1;
+  --rule:#D2D9E0; --rule-soft:#E3E8ED;
+  --accent:#1A5B70; --accent-soft:#E2EDF1;
+  --proved:#2E6A4E;  --proved-bg:#E4EFE8;
+  --refuted:#9A3A2E; --refuted-bg:#F6E5E2;
+  --open:#87621A;    --open-bg:#F5ECD9;
+  --limited:#4A5A69; --limited-bg:#E7ECF0;
+  --shadow:0 1px 2px rgba(20,26,32,.05),0 4px 16px rgba(20,26,32,.05);
+  --measure:66ch;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F1317; --surface:#161B21; --surface-2:#1B2229;
+    --ink:#E5EBF1; --muted:#909EAC; --faint:#6E7C8A;
+    --rule:#252E37; --rule-soft:#1E262E;
+    --accent:#63B8CE; --accent-soft:#17323C;
+    --proved:#6FBF95;  --proved-bg:#152A21;
+    --refuted:#E08878; --refuted-bg:#2E1A17;
+    --open:#D6AC55;    --open-bg:#2B2314;
+    --limited:#9AA8B6; --limited-bg:#1D242B;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F1317; --surface:#161B21; --surface-2:#1B2229;
+  --ink:#E5EBF1; --muted:#909EAC; --faint:#6E7C8A;
+  --rule:#252E37; --rule-soft:#1E262E;
+  --accent:#63B8CE; --accent-soft:#17323C;
+  --proved:#6FBF95;  --proved-bg:#152A21;
+  --refuted:#E08878; --refuted-bg:#2E1A17;
+  --open:#D6AC55;    --open-bg:#2B2314;
+  --limited:#9AA8B6; --limited-bg:#1D242B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px 96px}
+
+/* ---------- masthead ---------- */
+.mast{padding:72px 0 40px; border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--accent);
+  margin:0 0 18px;
+}
+h1{
+  font-family:Spectral,Georgia,serif; font-weight:700;
+  font-size:clamp(2.4rem,6vw,4rem); line-height:1.04; margin:0 0 20px;
+  letter-spacing:-.02em; text-wrap:balance;
+}
+.standfirst{
+  font-family:Spectral,Georgia,serif; font-size:clamp(1.05rem,2.2vw,1.28rem);
+  line-height:1.55; color:var(--muted); max-width:62ch; margin:0 0 28px;
+}
+.meta{
+  display:flex; flex-wrap:wrap; gap:8px 28px;
+  font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--faint);
+}
+.meta b{color:var(--muted); font-weight:500}
+
+/* ---------- scoreboard ---------- */
+.board{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr));
+  gap:1px; background:var(--rule); border:1px solid var(--rule);
+  margin:40px 0 8px;
+}
+.cell{background:var(--surface); padding:20px 18px}
+.cell .n{
+  font-family:Spectral,Georgia,serif; font-size:2.5rem; font-weight:700;
+  line-height:1; font-variant-numeric:tabular-nums; display:block;
+}
+.cell .k{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--faint); margin-top:9px; display:block;
+}
+.cell.p .n{color:var(--proved)} .cell.r .n{color:var(--refuted)}
+.cell.o .n{color:var(--open)}   .cell.l .n{color:var(--limited)}
+.board-note{
+  font-size:13.5px; color:var(--muted); margin:0 0 8px; max-width:var(--measure);
+}
+
+/* ---------- sections ---------- */
+section{padding-top:64px}
+h2{
+  font-family:Spectral,Georgia,serif; font-weight:600;
+  font-size:clamp(1.55rem,3.4vw,2.1rem); line-height:1.15;
+  margin:0 0 6px; letter-spacing:-.01em; text-wrap:balance;
+}
+.sec-label{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 10px;
+  padding-bottom:8px; border-bottom:1px solid var(--rule);
+}
+h3{
+  font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:1.02rem;
+  margin:36px 0 10px; letter-spacing:.005em;
+}
+p{margin:0 0 15px; max-width:var(--measure)}
+.lede{font-size:17px; color:var(--muted); max-width:64ch}
+ul{margin:0 0 15px; padding-left:20px; max-width:var(--measure)}
+li{margin-bottom:7px}
+strong{font-weight:600}
+em{font-style:italic}
+a{color:var(--accent); text-underline-offset:3px}
+
+/* ---------- formula blocks ---------- */
+.formula{
+  background:var(--surface); border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+  font-family:"IBM Plex Mono",monospace; font-size:13.5px; line-height:1.75;
+  padding:18px 20px; margin:20px 0; overflow-x:auto; white-space:pre;
+  box-shadow:var(--shadow);
+}
+code{
+  font-family:"IBM Plex Mono",monospace; font-size:.88em;
+  background:var(--surface-2); padding:.1em .34em; border-radius:2px;
+  border:1px solid var(--rule-soft);
+}
+.formula code{background:none; border:none; padding:0}
+
+/* ---------- tables ---------- */
+.scroll{overflow-x:auto; margin:22px 0; border:1px solid var(--rule); background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; font-size:13.5px; min-width:600px}
+th{
+  text-align:left; font-family:"IBM Plex Mono",monospace; font-weight:500;
+  font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--faint); padding:12px 14px; border-bottom:1px solid var(--rule);
+  background:var(--surface-2); white-space:nowrap; vertical-align:bottom;
+}
+td{padding:11px 14px; border-bottom:1px solid var(--rule-soft); vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Plex Mono",monospace}
+td.mono{font-family:"IBM Plex Mono",monospace; font-size:12.5px}
+td.id{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); white-space:nowrap}
+
+/* ---------- status pills ---------- */
+.pill{
+  display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10px;
+  letter-spacing:.07em; text-transform:uppercase; font-weight:500;
+  padding:3px 7px; border-radius:2px; white-space:nowrap; line-height:1.5;
+}
+.pill.p{color:var(--proved);  background:var(--proved-bg)}
+.pill.r{color:var(--refuted); background:var(--refuted-bg)}
+.pill.o{color:var(--open);    background:var(--open-bg)}
+.pill.l{color:var(--limited); background:var(--limited-bg)}
+
+/* ---------- callout ---------- */
+.note{
+  background:var(--surface); border:1px solid var(--rule);
+  border-left:3px solid var(--refuted);
+  padding:18px 20px; margin:24px 0; box-shadow:var(--shadow);
+}
+.note.acc{border-left-color:var(--accent)}
+.note p:last-child{margin-bottom:0}
+.note .h{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--refuted); margin:0 0 9px; font-weight:500;
+}
+.note.acc .h{color:var(--accent)}
+
+footer{
+  margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--faint);
+}
+footer p{max-width:70ch; margin-bottom:9px}
+@media (max-width:640px){
+  .mast{padding:44px 0 30px}
+  section{padding-top:48px}
+  .wrap{padding:0 18px 64px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Complete results · 2026-08-20 · branch campaign/gate13-closeout</p>
+  <h1>SEION Results Ledger</h1>
+  <p class="standfirst">Sharp error constants for recursively projected multilinear computations — every proved theorem, every refuted claim, and an engineering register in which not one falsifiable advantage survived a fair comparison.</p>
+  <div class="meta">
+    <span><b>740/740</b> tests passing (459.99 s)</span>
+    <span><b>628</b> Python modules · <b>684</b> markdown records</span>
+    <span><b>40</b> registry entries · <b>31</b> ledger theorems · <b>25</b> engineering hypotheses</span>
+  </div>
+</header>
+
+<div class="board">
+  <div class="cell p"><span class="n">36</span><span class="k">Theorems proved<br>10 unconditional</span></div>
+  <div class="cell r"><span class="n">8</span><span class="k">Engineering hypotheses<br>refuted</span></div>
+  <div class="cell r"><span class="n">3</span><span class="k">Self-retractions<br>this week</span></div>
+  <div class="cell l"><span class="n">0</span><span class="k">Engineering advantages<br>supported</span></div>
+</div>
+<p class="board-note">Each figure has one source. <strong>36 proved</strong> and <strong>3 open</strong> of 40 entries in <code>research/math_closure/status_registry.yaml</code>, of which 10 carry no assumption qualifier and 1 is a counterexample. The v4 truth ledger adds 31 theorems, 4 counterexamples and 10 stated-boundary open questions; <code>claims/claims_registry.yaml</code> holds 15 claims, 3 of them refuted. <strong>0 supported, 7 domain-limited, 8 refuted, 10 open</strong> across the 25 rows of the engineering advantage register. Novelty is <code>NOT_ESTABLISHED</code> on all 35 rows of the theorem-to-theorem matrix — by deliberate policy, pending independent adjudication, not for lack of trying.</p>
+
+<!-- ============================================================ -->
+<section>
+  <p class="sec-label">The object</p>
+  <h2>Projected multilinear trees</h2>
+  <p class="lede">Compose bounded multilinear maps along a rooted tree and apply an orthogonal projector after every internal operation. This is the abstraction of any hierarchical compressed computation — tensor trains, hierarchical Tucker, tree tensor networks.</p>
+
+  <p>Each law has operator norm at most <code>M</code>. Its <em>closure defect</em> <code>rho</code> is the norm of its normal output <strong>on already-projected inputs</strong>. The single governing parameter is <code>eta = rho / M</code>, and constants are normalized against <code>rho · M^(k-1) · L_T</code> where <code>L_T</code> is the product of leaf norms and <code>k</code> the number of internal vertices.</p>
+
+  <div class="formula">universal bound     E_amb   &lt;=  k     · rho · M^(k-1) · L_T
+                    E_proj  &lt;= (k-1) · rho · M^(k-1) · L_T
+
+exact decomposition E_amb^2 = E_proj^2 + E_normal^2,   E_red = E_proj  at the root</div>
+
+  <p>The missing root contribution is structural, not an estimate: the final projection removes the root's own normal defect exactly. That is why the projected coefficient is <code>k-1</code> and not <code>k</code> — zero for a single vertex, one for two.</p>
+</section>
+
+<!-- ============================================================ -->
+<section>
+  <p class="sec-label">Exact constants</p>
+  <h2>k = 2 and k = 3 are closed</h2>
+
+  <h3>k = 2</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>ID</th><th>Class</th><th>Exact result</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td class="id">M2-A</td><td>Class A, finite-dim real binary chain</td><td class="mono">C = 1 for 0 &lt; eta &lt;= 1</td><td><span class="pill p">Proved / assumptions</span></td></tr>
+      <tr><td class="id">M2-B</td><td>Homogeneous chain, gated planar rotation</td><td class="mono">E_proj = eta², all n, all rank r</td><td><span class="pill p">Proved</span></td></tr>
+      <tr><td class="id">M8</td><td>Saturation characterization</td><td class="mono">E_proj = rho·M·L_T  iff  EQ1 &amp; EQ2 &amp; EQ3</td><td><span class="pill p">Proved</span></td></tr>
+      <tr><td class="id">M17</td><td>Repeated planar contraction</td><td class="mono">E = ‖P A (I−P) A e0‖; C = 1</td><td><span class="pill p">Proved / assumptions</span></td></tr>
+    </tbody>
+  </table></div>
+  <p>M8 is an <em>iff</em>: equality forces the outer law to saturate <code>M</code>, the closure map to saturate <code>rho</code>, and the root projection to lose nothing — simultaneously. It was proved by an elementary chain-of-inequalities argument, and both known witnesses were verified against it.</p>
+
+  <h3>k = 3 — the central theorem</h3>
+  <div class="formula">W_3(eta) =  sqrt(4 − 3 eta²)      for 0 &lt; eta &lt;= sqrt(2/3)
+            2 / (sqrt(3) eta)   for sqrt(2/3) &lt;= eta &lt;= 1</div>
+  <p>This is the best dimension- and rank-independent constant for <strong>every</strong> ordered tree with exactly three internal vertices, arbitrary finite arities, independently selectable node laws, real or complex finite-dimensional Hilbert spaces. Upper bound by orthogonal error coupling plus a two-dimensional sum-of-squares identity; matching real two-dimensional constructions attain it.</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>ID</th><th>Statement</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td class="id">M9</td><td class="mono">C_3,ind ≤ U_3(eta) = 1+sqrt(1−eta²) below eta*, sqrt(1+eta²)/eta above; eta* = sqrt((√5−1)/2) ≈ 0.786151, where both branches equal φ exactly. U_3(1) = √2 — a 29% reduction from the trivial 2.</td><td><span class="pill p">Proved</span></td></tr>
+      <tr><td class="id">M10</td><td>The M9 envelope is <strong>never attained</strong> by any admissible chain configuration.</td><td><span class="pill p">Proved non-attainment</span></td></tr>
+      <tr><td class="id">M13</td><td>Unconditional chain envelope <code>W_3</code>, separating M9 by an explicit positive piecewise gap.</td><td><span class="pill p">Proved / assumptions</span></td></tr>
+      <tr><td class="id">M14</td><td>Exact chain constant = <code>W_3(eta)</code>, attained by a 2-D rank-one construction in both regimes.</td><td><span class="pill p">Proved / assumptions</span></td></tr>
+      <tr><td class="id">M15</td><td>Exact branching constant = <code>W_3(eta)</code>, via nuclear/operator-norm duality plus a 2-D rank-one witness.</td><td><span class="pill p">Proved / assumptions</span></td></tr>
+      <tr><td class="id">M20</td><td>Same exact constant for <strong>every finite arity profile</strong>: freezing unit leaf slots reduces every three-node skeleton to chain or branching.</td><td><span class="pill p">Proved / assumptions</span></td></tr>
+      <tr><td class="id">M21</td><td>Tagged <em>same-law</em> constants also equal <code>W_3</code>, via an orthogonal direct-sum law selecting M14/M15 blocks by leaf-slot tag.</td><td><span class="pill p">Proved / assumptions</span></td></tr>
+      <tr><td class="id">M23</td><td>Rank-one same-law chain reduces exactly to <code>|⟨e0,A³e0⟩ − ⟨e0,Ae0⟩³|</code>; conversely every finite-dim contraction is realized by <code>mu_A(x,y) = Ax⟨e0,y⟩</code>.</td><td><span class="pill p">Proved / assumptions</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Topology dependence, made exact</h3>
+  <p>For the restricted gated-rotation law the two <code>k=3</code> topologies separate by an exact factor of three at their shared optimum:</p>
+  <div class="formula">chain      E_proj = 3 eta² sqrt(1−eta²)   best ratio 3/4  at eta* = 1/sqrt(2)
+branching  E_proj =   eta² sqrt(1−eta²)   best ratio 1/4  at eta* = 1/sqrt(2)</div>
+  <p>Neither ever saturates. This corrected an earlier sampled minimum gap of 0.350 at <code>eta = 0.5</code>: the true continuous minimum is <code>1/4</code>, at a point the sampling grid never tested.</p>
+
+  <h3>Asymptotic sharpness for all k</h3>
+  <p>M18 and M19: for every fixed full-binary shape, and then every finite arity-compatible shape, a two-dimensional witness gives <code>E_proj = |sin((k−1)·arcsin eta)|</code>. With the universal bound this proves</p>
+  <div class="formula">lim (eta ↓ 0)  C_T(eta)  =  k(T) − 1</div>
+  <p>So local error accumulation is first-order sharp, while the finite-defect extremal geometry is strictly smaller than the universal coefficient. M3b/M3c/M3d give the exact all-<code>k</code> recurrence for the gated-rotation family: <code>E_proj = |a(T)·cos(d(T)θ) − cos(θ)^k|</code> with explicit recursive invariants <code>a, d</code>, independent of finite dimension and projector rank.</p>
+</section>
+
+<!-- ============================================================ -->
+<section>
+  <p class="sec-label">New this week</p>
+  <h2>Geometry of projected rebracketings</h2>
+  <p class="lede">If a projection can hide the difference between two bracketings of the same computation, then any observed associativity defect is suspect. These three constants say exactly how badly, in both directions.</p>
+
+  <p>For a rebracketing pair <code>A = F_T − F_T'</code> (ambient) and <code>Â = R_T − R_T'</code> (observed, compressed):</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Constant</th><th>Meaning</th><th class="num">Value</th><th>Attained</th><th>Class</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">C_2</td><td>error inside one tree</td><td class="num">1</td><td>yes</td><td>prior (M8)</td></tr>
+      <tr><td class="mono">J_2</td><td>distortion between trees</td><td class="num">2</td><td>yes</td><td>free = same-mu = same-mu+shared-P</td></tr>
+      <tr><td class="mono">H_2</td><td>concealment of a genuine defect</td><td class="num">2</td><td>yes</td><td>same witness as J_2</td></tr>
+      <tr><td class="mono">S_2</td><td>fabrication of a spurious defect</td><td class="num">Σ₂(eta) &lt; 2</td><td>yes</td><td>free laws</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="formula">Σ₂(eta) = sin( min(2 arcsin eta, π/2) ) / eta
+
+        = 2 sqrt(1 − eta²)   for 0 &lt; eta &lt;= 1/sqrt(2)
+        = 1 / eta            for 1/sqrt(2) &lt;= eta &lt;= 1
+
+Σ₂(1/sqrt2) = sqrt(2)      Σ₂(1) = 1</div>
+
+  <p><strong>The asymmetry is the result.</strong> A projection can conceal an arbitrarily large rebracketing defect <em>entirely</em> — <code>H_2 = 2</code>, total concealment, at every leakage level, not a small-<code>eta</code> perturbative effect. But it cannot <em>fabricate</em> one of the same size: fabrication is sharp at <code>Σ₂(eta) · rho·M·L &lt; 2 rho·M·L</code>. That yields a usable one-sided certificate,</p>
+  <div class="formula">‖P A‖  &gt;=  ‖Â‖ − Σ₂(eta) · rho · M · L</div>
+  <p>sharpening the naive threshold from <code>2 rho M L</code>. The <code>J_2</code> witness uses <strong>one</strong> ternary law and <strong>one</strong> rank-2 projector at all four vertices of both trees in ambient dimension 3, with every leaf inside <code>Ran(P)</code> — so the whole class hierarchy collapses at <code>k = 2</code>.</p>
+
+  <p><strong>Verification.</strong> 123 witness audits, all passing, 19–28 checks each, over 41 values of <code>eta</code> in <code>[0.025, 1.0]</code>. Operator norms and closure defects are <em>measured</em> by alternating maximization with 400 restarts, brute-sweep stall detection, and matched to analytic values at <code>1e-9</code>:</p>
+  <div class="formula">max | S_2 measured − Σ₂(eta) analytic |  =  4.44e-16      (41 witnesses)</div>
+
+  <div class="note acc">
+    <p class="h">Two distinct transitions — do not conflate</p>
+    <p><code>eta_c^{S_2} = 1/sqrt(2) ≈ 0.707107</code> is the transition of <code>Σ₂</code> at <code>k = 2</code>. <code>eta_c^{W_3} = sqrt(2/3) ≈ 0.816497</code> is the transition of <code>W_3 = C_3</code> at <code>k = 3</code>. Every occurrence of <code>sqrt(2/3)</code> in the repository belongs to the <code>k=3</code> line and is correct.</p>
+  </div>
+
+  <p><code>S_2^same-mu</code> remains <span class="pill o">Open</span> with <strong>zero valid numerical evidence</strong> in either direction — see the retractions below.</p>
+</section>
+
+<!-- ============================================================ -->
+<section>
+  <p class="sec-label">Certificates</p>
+  <h2>Computable bounds, and what they are worth</h2>
+
+  <p><strong>M24</strong> — the telescoping expansion over effective slot maps is an <em>exact identity</em>, so all slack is attributable to how it is bounded, not to the expansion. Bounding per sample with exact slot operator norms gives <code>‖delta_v‖ ≤ B_v</code> pointwise. <strong>M25</strong> refines it: the closure residual lies in <code>Ran(I − P_v)</code> by construction, so the cross term sees only the normal component of the propagated error, giving</p>
+  <div class="formula">‖E‖  &lt;=  G  &lt;=  B  &lt;=  B̄  &lt;=  A</div>
+  <p>strict exactly when the closure residual is nonzero and the normal-restricted gain is strictly below the unrestricted one.</p>
+
+  <p><strong>M12 — finite source-resolved error calculus.</strong> Every node error has an exact finite multi-index polynomial expansion; topological convolution agrees with recursive unrolling; same-source first-order paths aggregate <em>before</em> taking norms; truncations carry a norm-weighted omitted-term bound; and signed coefficient aggregation yields <code>B_actual ≤ B_signed ≤ B_treewise</code>. On DAGs this gives an <code>O(|V|+|E|)</code> source-resolved reverse dynamic program with no tree unrolling.</p>
+
+  <p><strong>M5 / M5b — continuum.</strong> If the complete downstream-gain-weighted defect sum tends to zero, ambient and recursively projected root evaluations converge and every finite-<code>N</code> bound passes to the limsup. No uniform bound on vertex count is needed once the weighted sum is controlled.</p>
+
+  <h3>The TT bridge that held</h3>
+  <p>One identification survived every falsification this week. Across 200 instances, the object TT truncation already reports — discarded Frobenius mass — <em>is</em> M24's realized leakage, exactly:</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Candidate for gamma_v</th><th class="num">Residual</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">sqrt( Σ_{i&gt;r} sigma_i² )  — Frobenius tail</td><td class="num">1.10e-15</td><td><span class="pill p">Exact match</span></td></tr>
+      <tr><td class="mono">spectral residual</td><td class="num">0.381</td><td><span class="pill r">Rejected</span></td></tr>
+      <tr><td class="mono">unsquared sum</td><td class="num">1244.8</td><td><span class="pill r">Rejected</span></td></tr>
+    </tbody>
+  </table></div>
+  <p>Projector gates: idempotent <code>1.78e-15</code>, self-adjoint <code>3.33e-15</code>, reconstruction <code>0.0</code>. This identification is representation-independent and stands.</p>
+</section>
+
+<!-- ============================================================ -->
+<section>
+  <p class="sec-label">Negative results</p>
+  <h2>What was disproved, and what was withdrawn</h2>
+  <p class="lede">The refutations are the load-bearing part of this project. Three of them were self-inflicted and caught within days by structural invariance tests, not by benchmarks.</p>
+
+  <h3>Disproved outright</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>ID</th><th>Claim</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td class="id">M1</td><td>The named general six-term GJI identity vanishes for every multilinear law and all five inputs</td><td><span class="pill r">Counterexample</span></td></tr>
+      <tr><td class="id">PT-CE-001</td><td>Composition/reduction commutation survives removing exact invariance</td><td><span class="pill r">Disproved</span></td></tr>
+      <tr><td class="id">PT-CE-002</td><td>Spectral snapping stays continuous without a positive gap</td><td><span class="pill r">Disproved</span></td></tr>
+      <tr><td class="id">PT-CE-004</td><td>Historical duplicate run records are independent scientific instances</td><td><span class="pill r">Disproved</span></td></tr>
+    </tbody>
+  </table></div>
+  <p>The GJI case is instructive: the collinear-leaf subcase <em>is</em> proved zero, and a prior 4000-trial adversarial search had exercised exactly that regime (a rank-1 projector forces collinear leaves). The search was confirming a true sub-identity while appearing to confirm a false general one.</p>
+
+  <h3>Three retractions in one day, all the same shape</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Claim</th><th>Invariance it failed</th><th>How it looked before</th></tr></thead>
+    <tbody>
+      <tr><td>Same-law landscape gap in the fused search</td><td>scale invariance of the <em>backward</em> pass</td><td class="mono">J 0.846, H 0.842, S 0.835 of ceiling</td></tr>
+      <tr><td>TT certification tax as a commercial quantity</td><td>gauge / canonicalization</td><td class="mono">tau 7.66 → 3.96, −47.7% "recovered"</td></tr>
+      <tr><td>Branching amplification survives canonicalization</td><td>choice of truncation rule</td><td class="mono">tau = sqrt(r1 r2 / r_p) ≈ 2.84</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <p class="h">1 — The instrument that nearly faked a constant</p>
+    <p>The GPU search normalized its objective by a feasibility factor computed under <code>no_grad</code>. Since <code>J(cμ) = c²J(μ)</code> forces <code>⟨∇J,μ⟩ = 2J &gt; 0</code> while <code>F(cμ) = F(μ)</code> forces <code>DF(μ)[μ] = 0</code>, freezing <code>F</code> leaves the radial component uncancelled and the optimizer climbs a direction the constraint should have removed. Radial derivative measured <code>5.443e-01</code> frozen versus <code>7.633e-17</code> differentiable; finite-difference error <code>1.07e+01</code> versus <code>9.1e-06</code>. <strong>The forward pass is scale invariant in both modes</strong> — no forward check could ever have caught it. All same-law evidence before commit <code>8843022</code> is void.</p>
+  </div>
+
+  <div class="note">
+    <p class="h">2 — The certification tax was a gauge artifact</p>
+    <p>The whole TT economics corpus was measured on <strong>non-orthogonalized</strong> trains. Re-running identical code on the right-orthogonalized representation of the same tensors (reconstruction agreement <code>2.12e-15</code>) drove <code>tau</code> from <code>9.49</code> to <code>1.0000</code> at every percentile; over 20 240 meaningful rows <code>cert/error ∈ [1 − 3.8e-13, 1 + 2.4e-12]</code>. After canonicalization each slot map is an isometry, so the recursion is an <em>equality</em> — this is Oseledets' TT-SVD error identity, rediscovered. A formal gauge battery confirms it: an orthogonal gauge leaves <code>tau</code> at <code>1.0000</code>, an ill-conditioned one moves it to <code>14.14</code> on an unchanged tensor, and re-canonicalization restores <code>1.0000</code>. Hence <code>kappa_intrinsic = 1</code> for TT chains.</p>
+  </div>
+
+  <div class="note">
+    <p class="h">3 — Branching died to its own control</p>
+    <p>Truncating each child by its own local SVD produced <code>tau = sqrt(r1 r2 / r_p)</code>, confirmed across 33 configurations to 1.8%, with the falsifiable edge <code>r_p = r1 r2 → tau = 1</code> holding in all 9 such cases. But HT-SVD and every TTN implementation truncate using the SVD of the tensor <em>matricized at that edge</em>, with the environment already folded in. Under that rule <code>tau</code> collapses to <code>1.005–1.022</code> at every node dimension. The amplification was a property of how you truncate, not of branching.</p>
+  </div>
+
+  <p>Also retracted with it: the certified TT allocator, the "certification premium collapses at tight tolerance" reading, the threshold + verifier + repair architecture, and both successive diagnoses of where the cost lived (<em>"the margin is in allocation"</em>, then its replacement <em>"the tax is caused by the certificate"</em>). REACH-2 answered YES where REACH-1 answered NO — the restricted transport norm is <code>0.83–0.96 &lt; 1</code> and a certificate charging it stays sound — but it recovered 10–15% of a gap that does not exist under the standard truncation.</p>
+
+  <div class="note acc">
+    <p class="h">The rule that came out of it</p>
+    <p>Before interpreting a quantity as geometry, identify the group of transformations under which it must be invariant, and test that first. The rule tightened after the third: it is not enough to ask <em>"is this invariant under a change of representation?"</em> — you must also ask <strong>"am I comparing against what the standard algorithm actually does?"</strong> All three times, the loss was against an impoverished version of the standard that had been built in-house.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section>
+  <p class="sec-label">Engineering</p>
+  <h2>Twenty-five hypotheses, zero supported</h2>
+  <p class="lede">The advantage register admits a claim only when five fields are known: the resource improved, a real competitor, an equalized budget, the regime, and an experiment capable of falsifying it. Under that rule nothing has been promoted.</p>
+
+  <div class="board" style="margin-top:28px">
+    <div class="cell p"><span class="n">0</span><span class="k">Supported</span></div>
+    <div class="cell l"><span class="n">7</span><span class="k">Domain-limited</span></div>
+    <div class="cell r"><span class="n">8</span><span class="k">Refuted</span></div>
+    <div class="cell o"><span class="n">10</span><span class="k">Open</span></div>
+  </div>
+
+  <h3>Refuted against a real baseline</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>ID</th><th>Hypothesis</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td class="id">EA-05</td><td>Full rollout is economical</td><td>Costs 144× base evaluations at m=8, ~306× at m=10. No economic win.</td></tr>
+      <tr><td class="id">EA-07</td><td>Pairwise modeling adds terminal value after first order</td><td>No separation at m=8/10/14/31; one step-greedy exception at m=23 kills the general rule.</td></tr>
+      <tr><td class="id">EA-11</td><td>Pathwise certificate allocation beats standard allocation</td><td>Preregistered Level 1 <em>loses</em> to both uniform and local greedy.</td></tr>
+      <tr><td class="id">EA-12</td><td>Certified allocation lowers resources at matched true error</td><td>Shared-DAG policies used more contraction units than uniform; tolerance transfer only partial.</td></tr>
+      <tr><td class="id">EA-14</td><td>A tighter certificate ranks actions better</td><td>M36 top-1 agreement <strong>0 of 15</strong>; regret 0.40–0.48 of spread. Tighter certification did not improve ranking at all.</td></tr>
+      <tr><td class="id">EA-15</td><td>Rank-aware DAG certificate allocator beats its separable version</td><td>Only a small change; both lose to uniform on average.</td></tr>
+      <tr><td class="id">EA-23</td><td>Relationwise spectral allocation yields hardware speedup</td><td>p50 <strong>1.017×</strong>, p05 0.807× — below the preregistered 1.5× robust gate.</td></tr>
+      <tr><td class="id">EA-24</td><td>Local/pathwise score superiority is general</td><td>Mixed to negative across Levels 1–3. No universal policy advantage.</td></tr>
+    </tbody>
+  </table></div>
+
+  <p><strong>EA-14 is the structural one.</strong> Soundness and tightness of a certificate do <em>not</em> imply useful action ranking, and the M36 probe demonstrates the non-implication directly. That result is what makes the whole "certify, then allocate" architecture suspect, independent of the TT retraction.</p>
+
+  <h3>The decisive threshold gate</h3>
+  <p><code>ATN_THRESHOLD_GATE_V1</code> compared uniform, static threshold, adaptive threshold, first order, pairwise and rollout on exact-oracle seeds. Every paired interval crossed zero, so a fixed 30-seed precision extension <code>V1B</code> was declared <em>before</em> execution. It remained inconclusive. Pooled over 35 identical-design seeds:</p>
+  <div class="scroll"><table>
+    <thead><tr><th class="num">m</th><th>Comparison</th><th class="num">Normalized paired delta</th><th>Reading</th></tr></thead>
+    <tbody>
+      <tr><td class="num">8</td><td>static vs first order</td><td class="num">0.0032 &nbsp;[−0.0384, 0.0406]</td><td>no separation</td></tr>
+      <tr><td class="num">8</td><td>adaptive vs first order</td><td class="num">−0.0021 &nbsp;[−0.0447, 0.0369]</td><td>no separation</td></tr>
+      <tr><td class="num">10</td><td>static vs first order</td><td class="num">0.0594 &nbsp;[0.0099, 0.1034]</td><td>FO lower error</td></tr>
+      <tr><td class="num">10</td><td>adaptive vs first order</td><td class="num">0.0513 &nbsp;[0.0044, 0.0914]</td><td>FO lower error</td></tr>
+    </tbody>
+  </table></div>
+  <p>At equal terminal rank, static threshold uses <strong>one</strong> objective forward and adaptive twelve, versus 60–72 for first order. So the advantage is domain-limited at <code>m=10</code> and threshold remains the low-cost frontier point. Global gate: <code>MIXED_OR_INCONCLUSIVE</code>; screened rollout was never started.</p>
+
+  <h3>What is genuinely there</h3>
+  <p>Measured first order does strictly dominate full pairwise, rank-<code>q</code> pairwise and exhaustive step-greedy at <code>m = 8</code> and <code>m = 10</code> — both lower exact-terminal regret <em>and</em> fewer evaluations (regret 0.2298 at 60 evaluations versus 0.3867 at 228 and 342). Horizon-6 rollout lowers regret by 90.5% and 76.0% but consumes two to three orders of magnitude more evaluations; neither policy dominates the other. Both are <span class="pill l">Domain-limited</span> to frozen bases, <code>D=16</code> heterogeneous chains, six rounds, five exact-oracle seeds.</p>
+
+  <p>The register lists ten confounders blocking promotion. The binding ones: exact enumeration costs 235 348 profiles at <code>m=8</code> and 3 039 400 at <code>m=10</code>, so the oracle is not a deployable policy; FLOPs, resident memory, VRAM, energy, data movement and SVD cost are all unmeasured; and the synthetic comparators keep bases frozen while a real library-native cutoff can refit bases and shrink ranks.</p>
+</section>
+
+<!-- ============================================================ -->
+<section>
+  <p class="sec-label">Held-out leakage</p>
+  <h2>The KGE metrics were inflated by a factor of 2.5</h2>
+
+  <p>Two trainers reused evaluation-time known-positive filter tables to mask hard negatives <em>during training</em>. Masking sets a candidate's score to <code>−inf</code>, so it can never be selected as a negative and the objective never pushes it down. Applied to a held-out split's gold entities, the model is being told, per query, which entity not to suppress.</p>
+
+  <div class="formula">build_filters(train, valid, test)  ->  tails_of_hr / heads_of_rt
+        |
+        v
+mine_full_entity_hard_negatives(..., kg, ...)   masks kg.tails_of_hr to −inf
+        |
+        v
+negatives = model.score_tail_candidates(h, r, hard_ids)   gold never appears</div>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Run</th><th>Mining filter</th><th class="num">Step</th><th class="num">Elapsed</th><th class="num">VALID MRR</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">SEALED_SOTA_V1</td><td>TRAIN+VALID (leaking)</td><td class="num">1702</td><td class="num">603 s</td><td class="num"><strong>0.51818</strong></td></tr>
+      <tr><td class="mono">SEALED_SOTA_V2_NOLEAK</td><td>TRAIN-only (fixed)</td><td class="num">1678</td><td class="num">603 s</td><td class="num"><strong>0.20571</strong></td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Identical seed, config, eval subset and matched wall clock. The leak was worth <strong>+0.312 MRR</strong>. The honest TEST figures on 40 932 queries are <code>MRR 0.19764</code>, <code>H@1 0.12802</code>, <code>H@3 0.21536</code>, <code>H@10 0.34022</code>.</p>
+
+  <div class="note">
+    <p class="h">No file-access audit could have caught this</p>
+    <p>The sealed runtime sentinel correctly reported zero forbidden TEST accesses throughout, because the sealed trainer genuinely never opened TEST. The leak is in what the filter tables are <em>used for</em>. Establishing it for TEST required no TEST read — it follows from the code path. The historical <code>MRR = 0.6116475</code> is now <strong>leakage-explained</strong> rather than unknown.</p>
+  </div>
+
+  <p>All seven affected trainers now expose a TRAIN-only negative filter sharing <code>data.train_only_filter_view</code>, with defaults preserving historical behaviour so old runs stay reproducible, and a standing statistical detector pinned by <code>tests/kgr/test_no_heldout_leak_in_training_negatives.py</code>. Twenty-nine <code>TTN_FB15K237_*</code> directories plus the <code>SPECTRAL_MIXTURE</code>, <code>SRATM_DISCOVERY</code>, <code>V25_FB237</code> and <code>KGR_V26</code> runs were produced under the leaking default; every predictive-quality metric from them must be re-run or withdrawn. Certificates and rank/spectral diagnostics computed <em>on</em> those checkpoints remain true of those tensors.</p>
+
+  <p>The magnitude is model-dependent and that is itself a finding: the same leak cost SRATM 0.31 MRR but TTN almost nothing (<code>+0.00144</code>), because a model too weak to exploit the exemption cannot benefit from it. <strong>The leak is dangerous precisely in proportion to how good the model is.</strong></p>
+</section>
+
+<!-- ============================================================ -->
+<section>
+  <p class="sec-label">Boundaries</p>
+  <h2>Open, and honestly bounded</h2>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Question</th><th>Current boundary</th></tr></thead>
+    <tbody>
+      <tr><td><code>S_2^same-mu</code> and <code>S_2^same-mu,shared-P</code></td><td>The <code>S_2</code> witness uses three different laws. Whether one tagged law reaches <code>Σ₂</code> is unknown, with <strong>zero valid numerical evidence</strong> after the gradient retraction. Harness is <code>rg_fused_search.py --differentiable</code>; the older <code>rg4_s2_search.py</code> is quarantined for carrying the bug.</td></tr>
+      <tr><td>Exact fixed-<code>eta</code> constants for <code>k &gt;= 4</code></td><td><code>k=2</code> and <code>k=3</code> are closed. <code>k=4</code> has an exploration harness (skeletons, optimizer, candidate certification) but no recorded conclusion, and no general method exists.</td></tr>
+      <tr><td>RG-6: <code>J_3</code>, <code>H_3</code>, <code>S_3</code></td><td><code>H_3 = 2W_3</code> should follow from the two-anti-aligned-witnesses argument; <code>S_3</code> needs a genuinely new coupling argument.</td></tr>
+      <tr><td>Does a non-trivial PMT domain exist at all?</td><td>The two concrete structures tested — chain and binary tree — <em>both</em> trivialize when treated as the standard treats them. A genuine domain would need a structure whose optimal truncation is not computable by local matricization. Unexplored.</td></tr>
+      <tr><td>M4: exact cancellation-aware constants</td><td>Jacobiator empirically near-sharp (99.43%, not exact); associator 68.6%/82.9%; Filippov 41.6% — the widest gap. General GJI has no adversarial search at all.</td></tr>
+      <tr><td>M7: pseudodifferential / microlocal program</td><td>Open with precise boundary.</td></tr>
+      <tr><td>Globally tight validated multilinear operator-norm enclosures</td><td>P8 supplies certified finite upper methods; global spectral sharpness open.</td></tr>
+      <tr><td>Universal dominance ordering among certificate families</td><td>Deliberately not claimed. Nodewise, pathwise, mixed-mask and telescoping certificates are not ordered.</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Deliberately <strong>not</strong> attempted, and recorded as such: <code>δ² = 0</code>, the graded Jacobi identity, Hodge theory, <code>E8</code>, fractal manifolds, or any claim that a differential curvature has been discovered. Calling <code>A</code> a curvature remains a constitutive choice, not a theorem, and nothing above depends on that reading.</p>
+
+  <h3>Release blockers</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>ID</th><th>Blocker</th></tr></thead>
+    <tbody>
+      <tr><td class="id">B-0006</td><td>Bounded prior-art review does not establish theorem-level novelty. All 35 novelty rows are <code>NOT_ESTABLISHED</code> by policy.</td></tr>
+      <tr><td class="id">B-0009</td><td>Three of four automated adversarial reviews recommend major revision; <strong>zero</strong> independent human reviews exist.</td></tr>
+      <tr><td class="id">B-0014</td><td>KGE held-out leakage. Blocks every predictive-quality metric from the affected trainers, and blocks EA-22, the release-critical real-workload gate.</td></tr>
+      <tr><td class="id">B-0012</td><td>Two Windows bugchecks on 2026-08-09 pause GPU performance claims from that session.</td></tr>
+      <tr><td class="id">B-0011</td><td>Preregistered FB15K237 acceptance completes correctly but exceeds the 300 s wall-clock ceiling.</td></tr>
+      <tr><td class="id">B-0008</td><td>Extended schedule is resource-gated: 4 of 460 800 optimizer trajectories and 0 of 8 400 extended performance cells complete.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============================================================ -->
+<section>
+  <p class="sec-label">Infrastructure</p>
+  <h2>The instrument</h2>
+
+  <p>The falsification apparatus is the part of this project with the clearest transferable value, and it is what caught all three self-inflicted retractions.</p>
+
+  <ul>
+    <li><strong>Structural invariance gates.</strong> Radial-null and finite-difference checks on the backward pass; envelope-theorem identity <code>|⟨∇N,μ⟩ − N| = 2.665e-15</code>; a gauge battery over orthogonal, ill-conditioned and re-canonicalizing transformations, each verified to preserve the represented tensor before any reading is taken; dimensional-monotonicity checks that caught non-convergence in the same-law class while the free control passed.</li>
+    <li><strong>Positive controls with known exact answers.</strong> The free class attains <code>Σ₂</code> by theorem, so its shortfall at any budget <em>is</em> the optimizer's noise floor — calibrated at 0.9914–1.0000 across ambient dimensions 2, 3 and 4.</li>
+    <li><strong>Fail-closed by default.</strong> Any certificate falling below a true error aborts the run rather than being reported.</li>
+    <li><strong>Regression tests for the bugs themselves.</strong> <code>test_frozen_normalization_is_detectably_wrong</code> fails if the gradient bug returns; <code>test_no_heldout_leak_in_training_negatives</code> pins the KGE detector.</li>
+    <li><strong>One mathematical engine, many campaigns.</strong> Convergence studies orchestrate the canonical harness as a subprocess rather than reimplementing it — reimplementing the search to study the search is how the frozen gradient survived as long as it did.</li>
+  </ul>
+
+  <p><strong>Hardware.</strong> RTX PRO 5000 Blackwell Laptop (24 GB, 82 SMs, CC 12.0, CUDA 12.8, torch 2.12) and Intel Core Ultra 9 285HX (24 cores, 127 GB). All arithmetic <code>float64</code>: at these tensor sizes the run is launch-bound rather than FLOP-bound, so lower precision would buy almost nothing while introducing a precision question into a run whose purpose is to test a certified bound. Fusing objective, class, rank and <code>eta</code> into per-element vectors took the sweep from 42% GPU utilization at 2.0/24 GB to 100% at 24 GB; the witness audit runs 123 audits over 41 <code>eta</code> values in 15 s on 24 cores.</p>
+</section>
+
+<footer>
+  <p>Sources: <code>research/math_closure/status_registry.yaml</code> · <code>research/projected_trees_v4/truth_ledger/</code> · <code>research/projected_trees_v5/truth_ledger/</code> · <code>research/rebracketing_geometry/RG_RESULTS_2026_08_18.md</code> · <code>claims/claims_registry.yaml</code> · <code>applications/adaptive_tensor_network/ENGINEERING_ADVANTAGE_REGISTER.md</code> · <code>.ai/KNOWN_BLOCKERS.md</code> · <code>.ai/LEAKAGE_FINDING_MINING_FILTER_2026-08-10.md</code></p>
+  <p>Every figure is executed, not modelled, unless stated otherwise. Novelty is unadjudicated and no independent human review exists; nothing here is release-approved.</p>
+</footer>
+
+</div>

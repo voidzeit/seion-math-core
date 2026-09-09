@@ -1,0 +1,669 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\hypersetup{
+  pdftitle={Sharp Error Amplification in Recursively Projected Multilinear Computations},
+  pdfauthor={Anonymous manuscript}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\amb}{\mathrm{amb}}
+\newcommand{\fin}{\mathrm{fin}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}
+
+\setlist[itemize]{leftmargin=1.5em,itemsep=2pt,topsep=4pt}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=2pt,topsep=4pt}
+\setlength{\parskip}{0.35em}
+\setlength{\parindent}{0pt}
+\emergencystretch=2em
+
+\title{\textbf{Sharp Error Amplification in Recursively Projected Multilinear Computations}}
+\author{Anonymous manuscript}
+\date{Draft of \today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study finite-dimensional computations obtained by composing bounded
+multilinear maps along a rooted tree and applying an orthogonal projector after
+every internal operation.  If each law has operator norm at most $M$ and its
+normal output on already-projected inputs is at most $\rho$, then a tree with
+$k$ internal vertices has projected root error at most
+$(k-1)\rho M^{k-1}$ times the product of the leaf norms.  The missing root
+contribution is structural: the final projection removes the root's own normal
+defect.  The coefficient is zero for $k=1$ and the normalized constant is one
+for $k=2$.  For every ordered tree with exactly three internal vertices,
+arbitrary finite arities, independently selectable node laws, finite-dimensional
+real or complex Hilbert spaces, and orthogonal projectors, we determine the best
+dimension- and rank-independent constant:
+\[
+ W_3(\eta)=
+ \begin{cases}
+ \sqrt{4-3\eta^2},&0<\eta\le \sqrt{2/3},\\[1mm]
+ \dfrac{2}{\sqrt3\,\eta},&\sqrt{2/3}\le\eta\le1,
+ \end{cases}
+ \qquad \eta=\rho/M.
+\]
+The upper bound follows from orthogonal error coupling and a two-dimensional
+sum-of-squares identity; matching real two-dimensional constructions attain it.
+Thus local error accumulation is first-order sharp as $\eta\downarrow0$, but
+the finite-defect extremal geometry is strictly smaller than the universal
+coefficient two.  Exact constants at fixed $\eta$ for $k\ge4$ remain open.
+All novelty comparisons in this draft are provisional pending theorem-level
+bibliographic adjudication and independent review.
+\end{abstract}
+
+\section{Introduction}
+
+Projection is a standard way to keep an evolving or recursively constructed
+object inside a prescribed reduced space.  Its local effect is transparent:
+an orthogonal projector is contractive, and the discarded component can be
+measured.  Its global effect is subtler.  Once a discarded component enters a
+multilinear composition, subsequent maps can redirect it into the retained
+space.  The final retained error is therefore neither the sum of local
+discarded norms nor the defect of the root alone.
+
+This paper isolates the corresponding extremal problem.  A finite ordered
+rooted tree specifies a composition of multilinear maps.  Every internal value
+is projected before being passed upward.  We assume a uniform operator-norm
+bound $M$ and a uniform closure-defect bound $\rho$, measured only on inputs
+which are already in the appropriate projected ranges.  The question is:
+\emph{how large can the retained root error be, relative to the local budget
+$\rho$?}
+
+Our first result is the universal estimate
+\begin{equation}\label{eq:intro-universal}
+ E_T^P\le (k-1)\rho M^{k-1}L_T,
+\end{equation}
+where $k$ is the number of internal vertices and $L_T$ is the product of leaf
+norms.  The main result determines the exact normalized constant for $k=3$ as
+the piecewise function $W_3$ displayed in the abstract.  The transition at
+$\eta_c=\sqrt{2/3}$ separates a budget-limited regime, in which an extremizer
+uses the full defect allowance, from a geometry-limited regime, in which the
+worst absolute error has already saturated.
+
+\paragraph{Position relative to neighboring projection theories.}
+Four nearby literatures make the scope easier to see.
+
+\begin{itemize}
+\item \textbf{HSVD and hierarchical tensor truncation.}  Hierarchical SVD,
+hierarchical Tucker, and tensor-train truncation approximate a fixed tensor by
+a structured low-rank tensor and compare the truncation with best approximation
+in a tensor norm; representative quasi-optimality results are developed in
+\cite{Grasedyck2010,Oseledets2011,HackbuschKuhn2009}.  Here the object is instead
+a composition of independently bounded multilinear maps, the denominator is a
+per-node closure budget, and the comparison is with the unprojected evaluation.
+Consequently the familiar $\sqrt{d}$-type truncation factors and our
+$(k-1)$/$W_3(\eta)$ amplification constants answer different questions.
+
+\item \textbf{Alternating projections.}  Classical alternating-projection
+theory studies products of projectors and convergence to an intersection;
+angles between subspaces control sharp error or rate bounds in important cases
+\cite{KayalarWeinert1988,DeutschHundal1997}.  Our projectors do not alternate on
+one state.  They are interleaved with nonlinear multilinear laws on a tree, and
+the propagated component may re-enter a retained range.  Orthogonality remains
+decisive, but through Pythagorean coupling at a node rather than through a
+Friedrichs angle between target subspaces.
+
+\item \textbf{Tensor-network perturbation and conditioning.}  Sitewise
+perturbations of tensor networks already admit worst-case bounds, condition
+numbers, and tight witness constructions \cite{ZhangSolomonik2020}; finite-
+precision analyses of tree tensor-network operations likewise propagate local
+roundoff and truncation errors through a contraction tree
+\cite{BaboulinEtAl2025}.  These are substantial precedents for sharp local-to-
+global amplification.  Their perturbation variables are tensor sites or
+arithmetic operations, whereas our admissibility parameter controls the normal
+part of a node law only on already-projected inputs.  They do not determine the
+fixed-$\eta$ supremum for the projected-closure error in
+\eqref{eq:projected-error}.
+
+\item \textbf{DLRA and TDVP.}  Dynamical low-rank approximation and
+time-dependent variational principles project a vector field onto a tangent
+space of a fixed-rank manifold and analyze time-integration or variational error
+\cite{KochLubich2007,LubichOseledetsVandereycken2015,HaegemanEtAl2016}.  The
+present problem is static and finite, has no time step or tangent bundle, and
+allows a different multilinear law and projector at every vertex.  It can
+serve as a local algebraic model of recursive projection, but it does not by
+itself establish a DLRA or TDVP error theorem.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Theorem-level positioning from a scoped full-text audit.  Failure to
+identify an equivalent theorem in that corpus is not a priority claim.}
+\label{tab:positioning}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.25\textwidth}
+                >{\raggedright\arraybackslash}p{0.29\textwidth}
+                >{\raggedright\arraybackslash}p{0.36\textwidth}}
+\toprule
+Result in this paper & Closest precedent & Difference requiring adjudication\\
+\midrule
+Universal projected coefficient $k-1$ & layered/telescoping error bounds;
+Zhang--Solomonik sitewise perturbation; TTN finite-precision propagation &
+recursive laws with a projected-input closure budget and exact removal of the
+root defect; retained root error rather than contracted-tensor perturbation\\
+$C_2^P(\eta)=1$ & equality in elementary operator-norm chains & exact class and
+closure convention may be unstated folklore\\
+$C_3^{P,\fin}(\eta)=W_3(\eta)$ & Zhang--Solomonik tight worst-case site
+perturbation; exact alternating-projection constants & nonlinear fixed-defect-
+ratio supremum, piecewise phase transition, and attaining projected-law
+witness\\
+$k=3$ universality over arities and skeletons & tree-based tensor formats &
+classification by internal-child skeleton after freezing leaf slots\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:positioning} is deliberately conservative.  A scoped full-text
+audit did not identify an equivalent to the exact $W_3$ statement, but
+bibliographic novelty remains unestablished pending independent review.  In
+particular, the paper does not claim to introduce sharp tensor-network
+stability or local-to-global amplification in general.  Its mathematical
+center is the exact fixed-$\eta$ projected-closure constant.  The arity and
+skeleton universality below is a structural consequence of the two sharp
+three-node cases, not a separate broad novelty claim.
+
+\paragraph{Contributions.}
+\begin{enumerate}
+\item We prove the structural bound \eqref{eq:intro-universal} directly by
+subtree induction and argument-wise telescoping.
+\item We identify the exact constants at $k=1,2$ in the declared class.
+\item For $k=3$ we derive a contraction Gram lemma, reduce both possible tree
+skeletons to the same two-variable extremal problem, and solve it by a
+sum-of-squares identity.
+\item We give explicit real two-dimensional witnesses and extend the result to
+every finite arity profile by freezing additional leaf slots.
+\item We state the fixed-$\eta$ problem for $k\ge4$ as open, rather than
+extrapolating from the universal upper bound or from small cases.
+\end{enumerate}
+
+\section{Projected multilinear trees}
+
+Let $T$ be a finite ordered rooted tree.  Its internal vertices are
+$V_{\mathrm{int}}(T)$, its leaves are $L(T)$, and
+$k=k(T)=|V_{\mathrm{int}}(T)|$.  Every vertex $w$ carries a finite-dimensional
+Hilbert space $H_w$ over $\K\in\{\R,\C\}$.  An internal vertex $v$ has ordered
+children $c_1(v),\ldots,c_{m_v}(v)$, with $m_v\ge2$, and a multilinear law
+\[
+ \mu_v:H_{c_1(v)}\times\cdots\times H_{c_{m_v}(v)}\longrightarrow H_v.
+\]
+Every internal $v$ also carries an orthogonal projector
+$P_v=P_v^*=P_v^2$.  For a leaf $\ell$ set $\widehat P_\ell=I_{H_\ell}$, and
+for an internal vertex set $\widehat P_v=P_v$.
+
+Given leaf data $z_\ell\in H_\ell$, define the ambient evaluation recursively
+by $F_\ell=z_\ell$ and
+\[
+ F_v=\mu_v(F_{c_1(v)},\ldots,F_{c_{m_v}(v)}).
+\]
+The recursively projected evaluation is $R_\ell=z_\ell$ and
+\[
+ R_v=P_v\mu_v(R_{c_1(v)},\ldots,R_{c_{m_v}(v)}).
+\]
+For the root $r$, the quantity of interest is
+\begin{equation}\label{eq:projected-error}
+ E_T^P=\norm{P_rF_r-R_r}.
+\end{equation}
+This differs from the ambient discrepancy $\norm{F_r-R_r}$: it retains only
+the component visible in the reduced root space.
+
+\begin{definition}[Projected-input closure defect]
+For an internal vertex $v$, set
+\begin{equation}\label{eq:defect}
+ \rho_v^{\proj}=
+ \left\|(I-P_v)\mu_v
+ \bigl(\widehat P_{c_1(v)}\,\cdot,\ldots,
+       \widehat P_{c_{m_v}(v)}\,\cdot\bigr)\right\|_{\op}.
+\end{equation}
+\end{definition}
+
+The restriction in \eqref{eq:defect} is load-bearing.  It controls the normal
+output when the children have already been projected, exactly the inputs seen
+by the recursive evaluation.  It is weaker than the unrestricted ambient
+defect $\norm{(I-P_v)\mu_v}_{\op}$, and the two conventions must not be
+interchanged.
+
+A realization is $(M,\rho)$-admissible if
+$\norm{\mu_v}_{\op}\le M$ and $\rho_v^{\proj}\le\rho$ at every internal
+vertex, where $M>0$ and $0<\rho\le M$.  Write
+\[
+ \eta=\rho/M\in(0,1],\qquad
+ L_T=\prod_{\ell\in L(T)}\norm{z_\ell}.
+\]
+For a fixed tree $T$, define the dimension- and rank-independent constant
+over independently selectable node laws by
+\begin{equation}\label{eq:constant}
+ C_T^{P,\fin}(\eta)=
+ \sup\frac{E_T^P}{\rho M^{k-1}L_T},
+\end{equation}
+where the supremum ranges over all nondegenerate admissible
+finite-dimensional realizations with $\rho/M=\eta$.  Equality in
+\eqref{eq:constant} is a class statement; it does not say that every fixed
+dimension and projector rank attains the supremum.
+
+Scaling all node laws by a common positive factor and each leaf independently
+shows that the ratio in \eqref{eq:constant} is invariant.  We may therefore
+normalize $M=1$ and all nonzero leaves to unit norm.  A zero leaf makes the
+entire multilinear evaluation vanish.
+
+\section{The universal projected bound}
+
+For a vertex $v$, let $T_v$ be its subtree, let $k_v$ be its number of
+internal vertices, and let $L_v$ be the product of its leaf norms.
+
+\begin{lemma}[Subtree stability]\label{lem:stability}
+For every vertex $v$,
+\[
+ \norm{F_v}\le M^{k_v}L_v,
+ \qquad
+ \norm{R_v}\le M^{k_v}L_v.
+\]
+\end{lemma}
+\begin{proof}
+The statement is immediate at a leaf.  At an internal vertex it follows by
+multilinearity, the operator-norm bound on $\mu_v$, contractivity of $P_v$,
+and induction over the child subtrees.
+\end{proof}
+
+\begin{lemma}[Ambient subtree discrepancy]\label{lem:ambient-subtree}
+For every vertex $v$,
+\[
+ \norm{F_v-R_v}\le k_v\rho M^{k_v-1}L_v.
+\]
+\end{lemma}
+\begin{proof}
+The result is trivial at a leaf.  Let $v$ be internal and abbreviate the child
+values by $F_i,R_i$.  Add and subtract $\mu_v(R_1,\ldots,R_{m_v})$:
+\[
+ F_v-R_v=
+ \bigl[\mu_v(F_1,\ldots,F_{m_v})-
+       \mu_v(R_1,\ldots,R_{m_v})\bigr]
+ +(I-P_v)\mu_v(R_1,\ldots,R_{m_v}).
+\]
+The last term is bounded by
+$\rho M^{k_v-1}L_v$ because every $R_i$ is in the corresponding projected
+range.  Telescoping the first bracket one argument at a time gives one term
+for each child.  Lemma~\ref{lem:stability} and the inductive hypothesis bound
+the $i$th term by $k_{c_i}\rho M^{k_v-1}L_v$.  Since
+$k_v=1+\sum_i k_{c_i}$, summing proves the claim.
+\end{proof}
+
+\begin{theorem}[Structural $k-1$ bound]\label{thm:kminusone}
+Every admissible tree with $k\ge1$ internal vertices satisfies
+\begin{equation}\label{eq:kminusone}
+ \boxed{E_T^P\le(k-1)\rho M^{k-1}L_T.}
+\end{equation}
+Consequently $C_T^{P,\fin}(\eta)\le k-1$.
+\end{theorem}
+\begin{proof}
+At the root,
+\[
+ P_rF_r-R_r=
+ P_r\bigl[\mu_r(F_1,\ldots,F_{m_r})-
+           \mu_r(R_1,\ldots,R_{m_r})\bigr].
+\]
+The root's local normal defect is absent because $P_r(I-P_r)=0$.
+Telescoping over the root arguments and applying
+Lemma~\ref{lem:ambient-subtree} to each child yields
+\[
+ E_T^P\le\Bigl(\sum_i k_{c_i}\Bigr)
+ \rho M^{k-1}L_T=(k-1)\rho M^{k-1}L_T.
+\]
+\end{proof}
+
+The improvement from $k$ to $k-1$ is therefore not a cancellation inferred
+from examples.  It follows from which component the final projector removes.
+
+\section{The cases \texorpdfstring{$k=1$ and $k=2$}{k=1 and k=2}}
+
+\begin{corollary}\label{cor:k1}
+For $k=1$, $C_1^{P,\fin}(\eta)=0$.
+\end{corollary}
+\begin{proof}
+There is only the root, and by definition $R_r=P_rF_r$.
+\end{proof}
+
+For $k=2$, after freezing any additional unit leaf slots, the internal-child
+skeleton is a chain.  In the binary notation, let the first law act on leaves
+$a,b$, let the second law act on the first value and a leaf $d$, and put
+\[
+ D=(I-P_1)\mu_1(a,b),\qquad R_1=P_1\mu_1(a,b).
+\]
+Then
+\begin{equation}\label{eq:k2-identity}
+ E_T^P=\norm{P_2\mu_2(D,d)}.
+\end{equation}
+
+\begin{theorem}[Exact two-vertex constant]\label{thm:k2}
+For the unrestricted finite-dimensional independent-law class,
+\[
+ \boxed{C_2^{P,\fin}(\eta)=1\qquad(0<\eta\le1).}
+\]
+In a fixed binary realization, equality in the universal estimate holds if and
+only if
+\begin{align*}
+ \norm{D}&=\rho\norm a\norm b,\\
+ \norm{\mu_2(D,d)}&=M\norm D\norm d,\\
+ \mu_2(D,d)&\in\Ran(P_2).
+\end{align*}
+\end{theorem}
+\begin{proof}
+Equation~\eqref{eq:k2-identity} gives the upper bound and the three equality
+conditions by inspecting the chain
+\[
+ E_T^P\le\norm{\mu_2(D,d)}
+ \le M\norm D\norm d
+ \le \rho M\norm a\norm b\norm d.
+\]
+For attainment, normalize $M=1$ and take $H=\R^2$ with basis $e_0,e_1$ and
+$P$ the projection onto $\R e_0$.  With unit leaves $e_0$, choose
+\[
+ \mu_1(x,y)=\ip{x}{e_0}\ip{y}{e_0}
+ (\sqrt{1-\eta^2}\,e_0+\eta e_1),
+ \qquad
+ \mu_2(x,y)=\ip{x}{e_1}\ip{y}{e_0}e_0.
+\]
+Both laws have norm at most one, the first closure defect is $\eta$, the root
+law has zero normal output, and $E_T^P=\eta$.  Restoring scale gives
+$E_T^P=\rho M L_T$.  Unit gates embed the same witness into additional leaf
+slots.
+\end{proof}
+
+\section{Three vertices: orthogonal coupling}
+
+The universal coefficient at $k=3$ is two.  It is not the exact finite-defect
+constant.  Orthogonality couples the size of a discarded component to the size
+of the retained value from which it came.
+
+At the first non-root internal vertex, write
+\[
+ D_1=(I-P_1)F_1,\qquad R_1=P_1F_1.
+\]
+Then $D_1\perp R_1$ and, in the normalized setting,
+\begin{equation}\label{eq:pythagorean}
+ \norm{D_1}^2+\norm{R_1}^2=\norm{F_1}^2\le1.
+\end{equation}
+
+The second ingredient controls the cross term created when a contraction acts
+on two orthogonal directions.
+
+\begin{lemma}[Projector-contraction Gram bound]\label{lem:gram}
+Let $N:H\to K$ be linear with $\norm N_{\op}\le1$, let $u,v\in H$ be
+orthonormal, and let $Q$ be an orthogonal projector on $K$.  If
+$s=\norm{QNv}$, then
+\begin{equation}\label{eq:gram-bound}
+ \left|\ip{Nu}{QNv}\right|\le s\sqrt{1-s^2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Set $A=N^*QN$.  Then $0\preceq A\preceq I$.  On
+$\operatorname{span}\{u,v\}$ write $A_{vv}=s^2$, $A_{uu}=\alpha$, and
+$A_{uv}=c$.  Positivity of $A$ gives $|c|^2\le\alpha s^2$, while positivity
+of $I-A$ gives $|c|^2\le(1-\alpha)(1-s^2)$.  The largest possible minimum of
+these two quantities occurs at $\alpha=1-s^2$, proving
+$|c|\le s\sqrt{1-s^2}$.
+\end{proof}
+
+\subsection{The chain skeleton}
+
+Normalize $M=L_T=1$ and $\rho=\eta$.  Put
+$q=\norm{D_1}\le\eta$ and $p=\norm{R_1}\le\sqrt{1-q^2}$.  Freezing the leaf
+inputs at the next vertex reduces its law to a linear contraction $N$.  With
+$Q=I-P_2$ and suitable orthonormal $u,v$, put $s=\norm{QNv}\le\eta$.
+The discrepancy that can reach the projected root has the form
+$qNu+pQNv$.  Lemma~\ref{lem:gram} therefore gives
+\begin{equation}\label{eq:chain-objective}
+ \norm{qNu+pQNv}^2
+ \le q^2+p^2s^2+2qps\sqrt{1-s^2}.
+\end{equation}
+The right-hand side increases with $p$, so take
+$p=\sqrt{1-q^2}$.  Write $q=\sin\alpha$, $s=\sin\beta$ and
+$\xi=\tan\alpha$, $\zeta=\tan\beta$.  The squared objective becomes
+\begin{equation}\label{eq:f-objective}
+ f(\xi,\zeta)=
+ \frac{(\xi+\zeta)^2+\xi^2\zeta^2}
+ {(1+\xi^2)(1+\zeta^2)}.
+\end{equation}
+The extremal calculation is encoded in the identity
+\begin{equation}\label{eq:sos}
+ 4(1+\xi^2)(1+\zeta^2)
+ -3\bigl[(\xi+\zeta)^2+\xi^2\zeta^2\bigr]
+ =(\xi\zeta-2)^2+(\xi-\zeta)^2.
+\end{equation}
+Hence $f\le4/3$, with equality exactly at
+$\xi=\zeta=\sqrt2$, or $q=s=\sqrt{2/3}$.  Under the box constraints
+$q,s\le\eta$, the maximum is at $q=s=\eta$ until that point becomes
+available and remains $4/3$ thereafter.  Dividing the maximal absolute error
+by $\eta$ gives
+\begin{equation}\label{eq:w3}
+ W_3(\eta)=
+ \begin{cases}
+ \sqrt{4-3\eta^2},&0<\eta\le\sqrt{2/3},\\[1mm]
+ \dfrac{2}{\sqrt3\,\eta},&\sqrt{2/3}\le\eta\le1.
+ \end{cases}
+\end{equation}
+
+\begin{theorem}[Exact chain constant]\label{thm:chain}
+For the ordered three-vertex chain with independently selectable laws,
+\[
+ C_{3,\mathrm{chain}}^{P,\fin}(\eta)=W_3(\eta).
+\]
+\end{theorem}
+\begin{proof}
+The preceding argument gives the upper bound.  For attainment take
+$H=\R^2$, $P=e_0e_0^*$, all leaves equal to $e_0$, and
+\[
+ t=\min\{\eta,\sqrt{2/3}\},\qquad p=c=\sqrt{1-t^2}.
+\]
+Define
+\begin{align*}
+ \mu_1(x,y)&=\ip{x}{e_0}\ip{y}{e_0}(te_1+pe_0),\\
+ \mu_2(x,y)&=\ip{y}{e_0}N_tx,
+\end{align*}
+where the orthogonal map $N_t$ satisfies
+\[
+ N_te_0=te_1-ce_0,\qquad N_te_1=ce_1+te_0.
+\]
+After two levels the propagated discrepancy is
+\[
+ v=tN_te_1+pt,e_1=t^2e_0+2tp,e_1,
+ \qquad \norm v=t\sqrt{4-3t^2}.
+\]
+Let $Ah=\ip{v}{h}\norm v^{-1}e_0$ and
+$\mu_3(x,y)=\ip{y}{e_0}Ax$.  All three laws are contractions, both active
+defects equal $t\le\eta$, and the root defect is zero.  The projected root
+error is $\norm v$, which gives \eqref{eq:w3} after division by $\eta$.
+\end{proof}
+
+\begin{remark}[Two regimes]
+The absolute normalized extremal error is
+\[
+ G_3(\eta):=\eta W_3(\eta)=
+ \begin{cases}
+ \eta\sqrt{4-3\eta^2},&\eta\le\sqrt{2/3},\\[1mm]
+ 2/\sqrt3,&\eta\ge\sqrt{2/3}.
+ \end{cases}
+\]
+Below the transition the witness uses the full defect budget.  Above it, the
+effective leakage freezes at $\sqrt{2/3}$; the decrease of $W_3$ results from
+normalizing a saturated absolute error by a growing allowed budget.
+\end{remark}
+
+\subsection{The branching skeleton}
+
+Now two internal children feed the root.  Write their discarded and retained
+norms as $q_i$ and $p_i$, with
+$q_i\le\eta$ and $p_i\le\sqrt{1-q_i^2}$.  After scalarizing the projected root
+output, maximizing over contractive bilinear forms is dual to a nuclear norm.
+The relevant two-by-two coefficient matrix is
+\[
+ A=\begin{pmatrix}
+ q_1q_2&q_1p_2\\
+ p_1q_2&0
+ \end{pmatrix}.
+\]
+Since $\norm A_*^2=\norm A_F^2+2|\det A|$, saturation of the $p_i$ bounds gives
+\begin{equation}\label{eq:branch-objective}
+ \norm A_*^2=
+ q_1^2+q_2^2-q_1^2q_2^2
+ +2q_1q_2\sqrt{1-q_1^2}\sqrt{1-q_2^2}.
+\end{equation}
+With $q_1=\sin\alpha$, $q_2=\sin\beta$, expression
+\eqref{eq:branch-objective} is exactly $f(\tan\alpha,\tan\beta)$ from
+\eqref{eq:f-objective}.  Thus the same sum-of-squares identity controls both
+skeletons.
+
+\begin{theorem}[Exact branching constant]\label{thm:branch}
+For the ordered three-vertex branching tree with independently selectable
+laws,
+\[
+ C_{3,\mathrm{branch}}^{P,\fin}(\eta)=W_3(\eta).
+\]
+\end{theorem}
+\begin{proof}
+Equation~\eqref{eq:branch-objective} and
+\eqref{eq:sos} give the upper bound.  For attainment, use two copies of the
+first-node output $te_1+pe_0$ from Theorem~\ref{thm:chain}, with
+$t=\min\{\eta,\sqrt{2/3}\}$.  At the root choose a norm-one bilinear scalar
+form given by a polar factor of the coefficient matrix $A$, and direct that
+scalar into $\Ran(P_r)$.  Operator/nuclear-norm duality then attains
+$\norm A_*=t\sqrt{4-3t^2}$, while the root closure defect is zero.  This is a
+real two-dimensional rank-one-projector realization and yields $W_3(\eta)$.
+\end{proof}
+
+\section{Structural universality at \texorpdfstring{$k=3$}{k=3}}
+
+Deleting the leaves from a rooted tree with exactly three internal vertices
+leaves only two possible internal-child skeletons: a chain, or two siblings
+feeding the root.  Higher arity adds only leaf-occupied slots.
+
+Fixing a unit leaf in such a slot converts a multilinear law into an effective
+law on its internal-child slots.  This operation does not increase the operator
+norm.  Because leaves carry the identity extended projector, it also does not
+increase the projected-input closure defect.  The effective law is linear at a
+vertex with one internal child and bilinear at the root of the branching
+skeleton.  Conversely, the two-dimensional witnesses above embed in every
+finite arity profile by inserting unit $e_0$ gates in the extra leaf slots.
+
+\begin{theorem}[Universal exact constant for three vertices]\label{thm:k3-universal}
+Let $T$ be any finite ordered rooted tree with exactly three internal vertices
+and internal arities at least two.  Then every admissible finite-dimensional
+real or complex realization satisfies
+\[
+ E_T^P\le W_3(\eta)\rho M^2L_T.
+\]
+Moreover, over the unrestricted finite-dimensional class with independently
+selectable node laws,
+\begin{equation}\label{eq:k3-universal}
+ \boxed{C_T^{P,\fin}(\eta)=W_3(\eta)\qquad(0<\eta\le1).}
+\end{equation}
+The equality is attained over $\R$ in dimension two with rank-one projectors.
+\end{theorem}
+\begin{proof}
+Freeze unit leaf slots to reduce to the chain or branching analysis, giving the
+upper bound without increasing either admissibility budget.  Embed the matching
+two-dimensional witness into the original arity profile with unit gates to
+obtain the lower bound.
+\end{proof}
+
+\begin{remark}[Quantifiers]
+Theorem~\ref{thm:k3-universal} determines the best constant uniform in finite
+dimension, rank, arity, and skeleton.  It does not assert equality in each
+fixed realization.  For example, if every $P_v=I$, then the projected error is
+identically zero.
+\end{remark}
+
+For $0<\eta<\sqrt{2/3}$,
+\begin{equation}\label{eq:expansion}
+ W_3(\eta)=2-\frac34\eta^2-\frac{9}{64}\eta^4+O(\eta^6).
+\end{equation}
+Thus the universal coefficient two is asymptotically correct to first order,
+while orthogonality forces a strict second-order improvement at every positive
+defect ratio.
+
+\section{What remains open}
+
+Theorem~\ref{thm:kminusone} applies to every finite tree, but an upper bound is
+not an exact constant.  For a fixed tree with $k\ge4$ internal vertices, the
+central unresolved finite-defect problem is
+\[
+ \boxed{C_T^{P,\fin}(\eta)=?\qquad(0<\eta\le1).}
+\]
+The $k=3$ proof does not extend by independent repetition: a larger tree couples
+several retained and discarded components, and the two-variable Gram geometry
+is replaced by a higher-dimensional compatibility problem.  The following
+questions are therefore left open.
+
+\begin{enumerate}
+\item Determine $C_T^{P,\fin}(\eta)$ at fixed $\eta$ for $k=4$, separately for
+the distinct internal-child skeletons.
+\item Decide whether the leading finite-defect correction to $k-1$ is always
+quadratic in $\eta$ and whether its coefficient is a combinatorial invariant of
+$T$.
+\item Determine how exact constants change under law sharing, fixed dimensions
+or projector ranks, and oblique rather than orthogonal projectors.
+\end{enumerate}
+
+These are mathematical questions about the declared extremal class.  Numerical
+search may suggest witnesses, but cannot establish a universal constant.
+
+\section{Limitations and novelty boundary}
+
+The results are finite-dimensional and deterministic.  They require orthogonal
+projectors, independently selectable node laws for the unrestricted sharpness
+statements, and the projected-input closure convention
+\eqref{eq:defect}.  They do not imply continuum limits, time-integration error
+bounds or tensor-rank quasi-optimality.
+
+The bibliography records a scoped full-text comparison with HSVD/HT,
+tensor-network perturbation, alternating projections, and DLRA/TDVP.  No
+equivalent to \eqref{eq:k3-universal} was identified in that corpus, but this
+negative search result is not a proof of novelty.  The citation neighborhood
+of sharp tensor-network conditioning, the original Kayalar--Weinert paper, and
+the approximate-multiplicativity literature still require independent human
+review.  The appropriate claim is therefore \emph{we determine the exact
+constant in the declared model}, not a priority claim.
+
+\section{Conclusion}
+
+Recursive projection through a multilinear tree has a simple universal budget
+and a nontrivial exact geometry.  The retained root error receives no local
+contribution from the root itself, which yields the coefficient $k-1$.  At
+three internal vertices, however, orthogonality prevents simultaneous
+saturation of the two propagated sources.  Both possible skeletons reduce to
+the same sum-of-squares problem, giving the exact constant $W_3(\eta)$ and a
+phase transition at $\eta=\sqrt{2/3}$.  Determining the corresponding
+fixed-defect constants for $k\ge4$ is the next mathematical problem.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,710 @@
+{
+  "status": "PARTIAL -- run killed by operator before completion",
+  "note": "The harness writes its JSON only on completion, so these cells were recovered from the console log. Missing: D=4 same_law_same_P at ranks 2 and 3 (14 of 84 cells).",
+  "command": "rg_fused_search.py --objectives S --classes free same_law_same_P --dims 2 3 4 --etas 0.05 0.2 0.35 0.5 0.7071067811865476 0.85 1.0 --per-cell 2048 --steps 300 --differentiable --finalists 24 --grade-strength 64 40",
+  "reading": "free is CALIBRATED (worst ratio 0.9914 across D=2,3,4). same_law_same_P VIOLATES dimensional monotonicity -- a D=2 instance embeds into D=4 by zero-padding, so the supremum cannot decrease with D, yet eta=1.00 gives 0.9563 -> 0.9291 -> 0.8442. These are valid LOWER BOUNDS and nothing more; the shortfall is demonstrably contaminated by non-convergence.",
+  "cells_recovered": 70,
+  "cells_expected": 84,
+  "runs": [
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.05,
+      "best": 1.996084,
+      "ceiling": 1.997498,
+      "ratio": 0.9992921144351584
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.2,
+      "best": 1.957757,
+      "ceiling": 1.959592,
+      "ratio": 0.9990635805820803
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.35,
+      "best": 1.87094,
+      "ceiling": 1.873499,
+      "ratio": 0.9986341065567689
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.5,
+      "best": 1.73039,
+      "ceiling": 1.732051,
+      "ratio": 0.9990410213094187
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.707,
+      "best": 1.413688,
+      "ceiling": 1.414214,
+      "ratio": 0.9996280619481916
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.85,
+      "best": 1.176395,
+      "ceiling": 1.176471,
+      "ratio": 0.99993540002261
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 2,
+      "rank": 1,
+      "eta": 1.0,
+      "best": 1.0,
+      "ceiling": 1.0,
+      "ratio": 1.0
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.05,
+      "best": 1.96789,
+      "ceiling": 1.997498,
+      "ratio": 0.9851774569987053
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.2,
+      "best": 1.886231,
+      "ceiling": 1.959592,
+      "ratio": 0.9625631253852843
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.35,
+      "best": 1.770519,
+      "ceiling": 1.873499,
+      "ratio": 0.9450333306823222
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.5,
+      "best": 1.620788,
+      "ceiling": 1.732051,
+      "ratio": 0.9357622841359752
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.707,
+      "best": 1.33138,
+      "ceiling": 1.414214,
+      "ratio": 0.9414275350123814
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 2,
+      "rank": 1,
+      "eta": 0.85,
+      "best": 1.138722,
+      "ceiling": 1.176471,
+      "ratio": 0.9679133612303236
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 2,
+      "rank": 1,
+      "eta": 1.0,
+      "best": 0.956291,
+      "ceiling": 1.0,
+      "ratio": 0.956291
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.05,
+      "best": 1.995831,
+      "ceiling": 1.997498,
+      "ratio": 0.9991654559854377
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.2,
+      "best": 1.950797,
+      "ceiling": 1.959592,
+      "ratio": 0.995511820828009
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.35,
+      "best": 1.870024,
+      "ceiling": 1.873499,
+      "ratio": 0.9981451818228886
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.5,
+      "best": 1.73036,
+      "ceiling": 1.732051,
+      "ratio": 0.9990237008032673
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.707,
+      "best": 1.412945,
+      "ceiling": 1.414214,
+      "ratio": 0.9991026817723483
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.85,
+      "best": 1.176232,
+      "ceiling": 1.176471,
+      "ratio": 0.9997968500711024
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 1,
+      "eta": 1.0,
+      "best": 1.0,
+      "ceiling": 1.0,
+      "ratio": 1.0
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.05,
+      "best": 1.995924,
+      "ceiling": 1.997498,
+      "ratio": 0.9992120142298015
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.2,
+      "best": 1.948234,
+      "ceiling": 1.959592,
+      "ratio": 0.9942038955047785
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.35,
+      "best": 1.869823,
+      "ceiling": 1.873499,
+      "ratio": 0.9980378959369607
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.5,
+      "best": 1.728884,
+      "ceiling": 1.732051,
+      "ratio": 0.9981715319006196
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.707,
+      "best": 1.413104,
+      "ceiling": 1.414214,
+      "ratio": 0.9992151117157657
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.85,
+      "best": 1.175909,
+      "ceiling": 1.176471,
+      "ratio": 0.999522300167195
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 3,
+      "rank": 2,
+      "eta": 1.0,
+      "best": 0.999488,
+      "ceiling": 1.0,
+      "ratio": 0.999488
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.05,
+      "best": 1.885985,
+      "ceiling": 1.997498,
+      "ratio": 0.9441736612502241
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.2,
+      "best": 1.88809,
+      "ceiling": 1.959592,
+      "ratio": 0.9635117922506318
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.35,
+      "best": 1.798489,
+      "ceiling": 1.873499,
+      "ratio": 0.9599626154057195
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.5,
+      "best": 1.664472,
+      "ceiling": 1.732051,
+      "ratio": 0.9609832504932014
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.707,
+      "best": 1.351576,
+      "ceiling": 1.414214,
+      "ratio": 0.9557082591460698
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.85,
+      "best": 1.143378,
+      "ceiling": 1.176471,
+      "ratio": 0.971870959845164
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 1,
+      "eta": 1.0,
+      "best": 0.92908,
+      "ceiling": 1.0,
+      "ratio": 0.92908
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.05,
+      "best": 1.977183,
+      "ceiling": 1.997498,
+      "ratio": 0.9898297770510909
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.2,
+      "best": 1.890251,
+      "ceiling": 1.959592,
+      "ratio": 0.9646145728294461
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.35,
+      "best": 1.775446,
+      "ceiling": 1.873499,
+      "ratio": 0.9476631692891216
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.5,
+      "best": 1.636029,
+      "ceiling": 1.732051,
+      "ratio": 0.9445616786110801
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.707,
+      "best": 1.233169,
+      "ceiling": 1.414214,
+      "ratio": 0.8719818924151507
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.85,
+      "best": 1.059282,
+      "ceiling": 1.176471,
+      "ratio": 0.9003893848637153
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 3,
+      "rank": 2,
+      "eta": 1.0,
+      "best": 0.930206,
+      "ceiling": 1.0,
+      "ratio": 0.930206
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.05,
+      "best": 1.995811,
+      "ceiling": 1.997498,
+      "ratio": 0.9991554434597681
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.2,
+      "best": 1.947377,
+      "ceiling": 1.959592,
+      "ratio": 0.993766559569543
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.35,
+      "best": 1.859236,
+      "ceiling": 1.873499,
+      "ratio": 0.9923869721841325
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.5,
+      "best": 1.729849,
+      "ceiling": 1.732051,
+      "ratio": 0.9987286748484888
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.707,
+      "best": 1.41375,
+      "ceiling": 1.414214,
+      "ratio": 0.9996719025550589
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.85,
+      "best": 1.176249,
+      "ceiling": 1.176471,
+      "ratio": 0.999811300066045
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 1,
+      "eta": 1.0,
+      "best": 1.0,
+      "ceiling": 1.0,
+      "ratio": 1.0
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 2,
+      "eta": 0.05,
+      "best": 1.99615,
+      "ceiling": 1.997498,
+      "ratio": 0.9993251557698681
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 2,
+      "eta": 0.2,
+      "best": 1.949226,
+      "ceiling": 1.959592,
+      "ratio": 0.9947101233317955
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 2,
+      "eta": 0.35,
+      "best": 1.868072,
+      "ceiling": 1.873499,
+      "ratio": 0.9971032810799472
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 2,
+      "eta": 0.5,
+      "best": 1.72959,
+      "ceiling": 1.732051,
+      "ratio": 0.9985791411453819
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 2,
+      "eta": 0.707,
+      "best": 1.41217,
+      "ceiling": 1.414214,
+      "ratio": 0.9985546741865091
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 2,
+      "eta": 0.85,
+      "best": 1.175514,
+      "ceiling": 1.176471,
+      "ratio": 0.9991865502847073
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 2,
+      "eta": 1.0,
+      "best": 0.999606,
+      "ceiling": 1.0,
+      "ratio": 0.999606
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 3,
+      "eta": 0.05,
+      "best": 1.995698,
+      "ceiling": 1.997498,
+      "ratio": 0.9990988726897349
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 3,
+      "eta": 0.2,
+      "best": 1.945992,
+      "ceiling": 1.959592,
+      "ratio": 0.9930597797908952
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 3,
+      "eta": 0.35,
+      "best": 1.857299,
+      "ceiling": 1.873499,
+      "ratio": 0.9913530778505887
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 3,
+      "eta": 0.5,
+      "best": 1.726876,
+      "ceiling": 1.732051,
+      "ratio": 0.9970122126888874
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 3,
+      "eta": 0.707,
+      "best": 1.41218,
+      "ceiling": 1.414214,
+      "ratio": 0.9985617452521329
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 3,
+      "eta": 0.85,
+      "best": 1.17477,
+      "ceiling": 1.176471,
+      "ratio": 0.9985541505060473
+    },
+    {
+      "objective": "S",
+      "class": "free",
+      "dim": 4,
+      "rank": 3,
+      "eta": 1.0,
+      "best": 0.99938,
+      "ceiling": 1.0,
+      "ratio": 0.99938
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.05,
+      "best": 1.872379,
+      "ceiling": 1.997498,
+      "ratio": 0.9373621400371865
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.2,
+      "best": 1.863702,
+      "ceiling": 1.959592,
+      "ratio": 0.9510663444227165
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.35,
+      "best": 1.775004,
+      "ceiling": 1.873499,
+      "ratio": 0.9474272470922055
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.5,
+      "best": 1.655823,
+      "ceiling": 1.732051,
+      "ratio": 0.9559897485697593
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.707,
+      "best": 1.364344,
+      "ceiling": 1.414214,
+      "ratio": 0.9647365957344504
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 4,
+      "rank": 1,
+      "eta": 0.85,
+      "best": 1.113604,
+      "ceiling": 1.176471,
+      "ratio": 0.946563068702926
+    },
+    {
+      "objective": "S",
+      "class": "same_law_same_P",
+      "dim": 4,
+      "rank": 1,
+      "eta": 1.0,
+      "best": 0.844232,
+      "ceiling": 1.0,
+      "ratio": 0.844232
+    }
+  ]
+}

@@ -452,7 +452,29 @@ class BranchingTTNK3(nn.Module):
             return (interaction @ qout) @ (self.entity(candidates_ids) @ qout).T
         return interaction @ self.entity(candidates_ids).T
 
+    def _certificate_cache_key(self) -> tuple:
+        """Identity of every tensor `_certificate_nodes` reads.
+
+        `data_ptr` catches rebinding (e.g. a refit basis) and `_version` catches
+        in-place mutation (an optimizer step), so the cache below invalidates
+        itself whenever the certificate inputs actually change.
+        """
+        tensors = (
+            self.mu1.weight, self.mu2.weight, self.basis1, self.basis2, self.root,
+        )
+        return tuple((t.data_ptr(), t._version, tuple(t.shape)) for t in tensors)
+
     def _certificate_nodes(self) -> dict[str, DAGDomainNode]:
+        # The node table depends only on frozen model tensors, never on the
+        # query. The post-training sweep calls certificate() once per query per
+        # rank pair, which recomputed ~128 matrix norms and as many device
+        # syncs every time; on the D32 sweep that was the single largest cost.
+        # Caching is exact, not approximate: same inputs, same tensors.
+        key = self._certificate_cache_key()
+        cached = getattr(self, "_certificate_nodes_cache", None)
+        if cached is not None and cached[0] == key:
+            return cached[1]
+
         eye = torch.eye(self.branch_dim, device=self.root.device, dtype=self.root.dtype)
 
         def branch_data(layer: nn.Bilinear, basis: torch.Tensor) -> tuple[float, tuple[float, ...], tuple[float, ...]]:
@@ -470,7 +492,7 @@ class BranchingTTNK3(nn.Module):
         op1, normal1, projected1 = branch_data(self.mu1, self.basis1)
         op2, normal2, projected2 = branch_data(self.mu2, self.basis2)
         root_op = float(torch.linalg.matrix_norm(self.root.detach().reshape(-1, self.dim), ord="fro").item())
-        return {
+        nodes = {
             "h1": DAGDomainNode("h1"),
             "r1": DAGDomainNode("r1"),
             "h2": DAGDomainNode("h2"),
@@ -486,6 +508,8 @@ class BranchingTTNK3(nn.Module):
                 "root", ("branch1", "branch2", "t"), root_op, (0.0, 0.0), (root_op, root_op)
             ),
         }
+        self._certificate_nodes_cache = (key, nodes)
+        return nodes
 
     def certificate(
         self,

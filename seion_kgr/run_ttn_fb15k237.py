@@ -23,7 +23,8 @@ import torch
 import torch.nn.functional as F
 
 from . import reproducibility as repro
-from .data import KnowledgeGraph, load_knowledge_graph, sample_negatives
+from .data import KnowledgeGraph, load_knowledge_graph, sample_negatives, train_only_filter_view
+from .gpu_negative_sampler import GpuNegativeSampler
 from .evaluate import evaluate, ranks_to_metrics
 from .ttn_branching import (
     BranchingTTNK3,
@@ -58,6 +59,15 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--eval-queries", type=int, default=128)
     p.add_argument("--candidate-sample", type=int, default=256)
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--negative-filter", choices=("train_valid_test", "train_only"),
+                   default="train_valid_test",
+                   help="which known-positive tables mask TRAINING negatives (B-0014). "
+                        "'train_valid_test' reproduces earlier runs but leaks held-out "
+                        "membership into training; 'train_only' is the non-leaking choice. "
+                        "Evaluation always keeps the full filters.")
+    p.add_argument("--gpu-negative-sampler", action="store_true",
+                   help="draw filtered negatives on the device instead of the per-row "
+                        "Python/NumPy loop; distributionally equivalent, not bit-exact")
     p.add_argument("--cpu", action="store_true")
     p.add_argument("--allow-existing", action="store_true")
     p.add_argument("--skip-application-result", action="store_true")
@@ -95,6 +105,7 @@ def _train_full(
     core_max_fro: float,
     root_max_fro: float,
     seed: int,
+    gpu_negative_sampler: bool = False,
 ) -> list[dict[str, float | int]]:
     if epochs <= 0 or batch_size <= 0 or neg_k <= 0 or loss_temperature <= 0:
         raise ValueError("epochs, batch_size, neg_k, and loss_temperature must be positive")
@@ -103,6 +114,15 @@ def _train_full(
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
     train_tensor = torch.from_numpy(kg.train.astype(np.int64, copy=False))
     rng = np.random.default_rng(seed)
+    # The reference sampler is a per-row Python/NumPy loop and pins a CPU core
+    # while the GPU idles; the device-resident one keeps the whole step on the
+    # accelerator. Distributionally equivalent, not bit-exact -- see
+    # seion_kgr/gpu_negative_sampler.py.
+    gpu_sampler = None
+    gpu_generator = None
+    if gpu_negative_sampler:
+        gpu_sampler = GpuNegativeSampler(kg, device)
+        gpu_generator = torch.Generator(device=device).manual_seed(seed)
     history: list[dict[str, float | int]] = []
     for epoch in range(1, epochs + 1):
         start = time.perf_counter()
@@ -112,9 +132,12 @@ def _train_full(
             indices = order[offset : offset + batch_size]
             batch = train_tensor[indices].to(device=device, non_blocking=True)
             h_ids, r_ids, t_ids = batch.T
-            negatives = sample_negatives(
-                h_ids, r_ids, t_ids, kg, neg_k, rng, device
-            )
+            if gpu_sampler is not None:
+                negatives = gpu_sampler.sample(h_ids, r_ids, neg_k, gpu_generator)
+            else:
+                negatives = sample_negatives(
+                    h_ids, r_ids, t_ids, kg, neg_k, rng, device
+                )
             optimizer.zero_grad(set_to_none=True)
             positive = model.score_positive(h_ids, r_ids, t_ids)
             negative = model.score_tail_candidates(h_ids, r_ids, negatives)
@@ -612,16 +635,21 @@ def run(args: argparse.Namespace) -> dict[str, object]:
         torch.cuda.reset_peak_memory_stats(device)
     repro.set_seed(args.seed)
     kg = load_knowledge_graph(args.train, args.valid, args.test)
+    # B-0014: kg's filter tables contain VALID and TEST. Correct for evaluation,
+    # leaking if reused to generate training negatives. Evaluation below keeps
+    # `kg`; only the training call gets the TRAIN-only view.
+    training_kg = train_only_filter_view(kg) if args.negative_filter == "train_only" else kg
     model = BranchingTTNK3(
         kg.num_entities, kg.num_relations_total, args.dim, args.branch_dim
     ).to(device)
     history = _train_full(
-        model, kg, device, epochs=args.epochs, batch_size=args.batch_size,
+        model, training_kg, device, epochs=args.epochs, batch_size=args.batch_size,
         neg_k=args.neg_k, lr=args.lr, weight_decay=args.weight_decay, seed=args.seed,
         loss_temperature=args.loss_temperature,
         embedding_max_norm=args.embedding_max_norm,
         core_max_fro=args.core_max_fro,
         root_max_fro=args.root_max_fro,
+        gpu_negative_sampler=args.gpu_negative_sampler,
     )
     calibration = torch.from_numpy(
         np.asarray(kg.train[: min(args.calibration_triples, len(kg.train)), 0:3], dtype=np.int64)

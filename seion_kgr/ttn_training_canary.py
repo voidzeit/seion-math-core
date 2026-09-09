@@ -17,7 +17,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-from .data import KnowledgeGraph, load_knowledge_graph, sample_negatives
+from .data import KnowledgeGraph, load_knowledge_graph, sample_negatives, train_only_filter_view
 from .ttn_branching import BranchingTTNK3
 
 
@@ -35,6 +35,12 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--checkpoint-every", type=int, default=16)
     p.add_argument("--max-vram-gb", type=float, default=4.0)
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--negative-filter", choices=("train_valid_test", "train_only"),
+                   default="train_valid_test",
+                   help="which known-positive tables mask TRAINING negatives (B-0014). "
+                        "'train_valid_test' reproduces earlier runs but leaks held-out "
+                        "membership into training; 'train_only' is the non-leaking choice. "
+                        "Evaluation always keeps the full filters.")
     p.add_argument("--lr", type=float, default=1e-3)
     p.add_argument("--weight-decay", type=float, default=1e-6)
     p.add_argument("--loss-temperature", type=float, default=1000.0)
@@ -98,6 +104,8 @@ def main() -> int:
     device = _device(args)
     _set_seed(args.seed)
     kg: KnowledgeGraph = load_knowledge_graph(args.train, args.valid, args.test)
+    # B-0014: full filters are right for evaluation, leaking for training negatives.
+    negative_kg = train_only_filter_view(kg) if args.negative_filter == "train_only" else kg
     model = BranchingTTNK3(kg.num_entities, kg.num_relations_total, args.dim, args.branch_dim).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     train_tensor = torch.from_numpy(kg.train.astype(np.int64, copy=False))
@@ -119,7 +127,7 @@ def main() -> int:
         offset += len(indices)
         batch = train_tensor[indices].to(device=device, non_blocking=True)
         h_ids, r_ids, t_ids = batch.T
-        negatives = sample_negatives(h_ids, r_ids, t_ids, kg, args.neg_k, rng, device)
+        negatives = sample_negatives(h_ids, r_ids, t_ids, negative_kg, args.neg_k, rng, device)
         optimizer.zero_grad(set_to_none=True)
         positive = model.score_positive(h_ids, r_ids, t_ids)
         negative = model.score_tail_candidates(h_ids, r_ids, negatives)

@@ -305,19 +305,35 @@ def build_group(cells, per_cell, dim, device, generator, init="dense"):
 def run_group(cells, per_cell, dim, steps, refresh, quality, device, seed,
               audit_quality=16, init="dense", lr=0.05, decay=False,
               loop_strength=(3, 20), grade_strength=(64, 40),
-              finalists=24):
+              finalists=24, differentiable=False, warm_iters=0,
+              global_refresh=25):
     generator = torch.Generator(device=device).manual_seed(seed)
     group = build_group(cells, per_cell, dim, device, generator, init)
     optimizer = torch.optim.Adam(group["parameters"], lr=lr)
     schedule = (torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, steps)
                 if decay else None)
 
-    factors = None
+    # Three time scales, three different jobs (see rg_kernels):
+    #   every step     warm continuation + cold fraction: tracking + switching
+    #   every K steps  a full cold solve, against accumulated drift
+    #   the end        converged grading, the only authority on a reported value
+    # In differentiable mode the factors MUST be rebuilt every step: a constant
+    # can be cached, a graph cannot, so `refresh` and a correct gradient are
+    # mutually exclusive. Warm-starting the extremizers pays that cost back.
+    factors, warm = None, None
     for step in range(steps):
         laws = share_laws(group["raws"], group["shared"])
-        if step % refresh == 0:
-            factors = feasibility_factors(laws, group["projectors"],
-                                          *loop_strength)
+        if differentiable or step % refresh == 0:
+            full = warm is None or (global_refresh
+                                    and step % global_refresh == 0)
+            strength = (loop_strength if (full or not warm_iters)
+                        else (loop_strength[0], warm_iters))
+            result = feasibility_factors(
+                laws, group["projectors"], *strength,
+                differentiable=differentiable,
+                warm=(warm if warm_iters and not full else None),
+                return_warm=bool(warm_iters))
+            factors, warm = result if warm_iters else (result, None)
         optimizer.zero_grad(set_to_none=True)
         A_hat, PA, D, _ = evaluate(laws, group["projectors"],
                                    group["leaves"], group["eta"], factors,
@@ -452,6 +468,15 @@ def main() -> None:
     parser.add_argument("--steps", type=int, default=250)
     parser.add_argument("--refresh", type=int, default=5)
     parser.add_argument("--init", choices=("dense", "sparse"), default="dense")
+    parser.add_argument("--differentiable", action="store_true",
+                        help="differentiate through the admissibility scaling; "
+                             "without it the backward optimizes a DIFFERENT "
+                             "function than the forward evaluates")
+    parser.add_argument("--warm-iters", type=int, default=3,
+                        help="iterations per warm-started feasibility solve; "
+                             "0 disables warm start")
+    parser.add_argument("--global-refresh", type=int, default=25,
+                        help="steps between full cold feasibility solves")
     parser.add_argument("--lr", type=float, default=0.05)
     parser.add_argument("--decay", action="store_true",
                         help="cosine-anneal the learning rate over the run")
@@ -506,7 +531,10 @@ def main() -> None:
                              init=args.init, lr=args.lr, decay=args.decay,
                              loop_strength=tuple(args.loop_strength),
                              grade_strength=tuple(args.grade_strength),
-                             finalists=args.finalists)
+                             finalists=args.finalists,
+                             differentiable=args.differentiable,
+                             warm_iters=args.warm_iters,
+                             global_refresh=args.global_refresh)
             records.extend(rows)
             for row in rows:
                 print(f"{row['objective']:>4} {row['class']:>16} {dim:3d} "

@@ -12,7 +12,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-from .data import KnowledgeGraph, load_knowledge_graph, tiny_kg
+from .data import KnowledgeGraph, load_knowledge_graph, tiny_kg, train_only_filter_view
 from .evaluate import evaluate
 from .reproducibility import restore_rng_state, rng_state_snapshot, set_seed
 from .sota.full_entity_miner import mine_full_entity_hard_negatives
@@ -59,6 +59,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--entity-block", type=int, default=4096)
     p.add_argument("--max-vram-gb", type=float, default=23.0)
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--negative-filter", choices=("train_valid_test", "train_only"),
+                   default="train_valid_test",
+                   help="which known-positive tables mask TRAINING negatives (B-0014). "
+                        "'train_valid_test' reproduces the historical runs but leaks "
+                        "VALID and TEST membership into training; 'train_only' is the "
+                        "non-leaking choice. Evaluation always keeps the full filters.")
     p.add_argument("--cpu", action="store_true")
     p.add_argument("--resume", type=Path, default=None)
     p.add_argument("--allow-existing", action="store_true")
@@ -113,6 +119,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     rng = np.random.default_rng(args.seed)
     device = _device(args)
     kg = _load_kg(args)
+    # B-0014: this trainer requires --test and folds VALID+TEST into the filter
+    # tables. Those tables are right for evaluation and leaking for training
+    # negatives; only the miner gets the TRAIN-only view.
+    negative_kg = train_only_filter_view(kg) if args.negative_filter == "train_only" else kg
     model_cls = SpectralRelationAdaptiveTensorMixture if args.architecture == "sratm" else SpectralConditionalTensorMixture
     model = model_cls(
         kg.num_entities, kg.num_relations_total, entity_dim=args.dim, relation_dim=args.relation_dim,
@@ -160,7 +170,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             batch = torch.from_numpy(kg.train[train_order[offset : offset + args.batch_size]]).to(device=device, dtype=torch.long, non_blocking=True)
             h, r, t = batch.T
             hard_ids, _ = mine_full_entity_hard_negatives(
-                teacher.encoder, h, r, t, kg, candidate_block=args.candidate_block, hard_k=args.hard_k,
+                teacher.encoder, h, r, t, negative_kg, candidate_block=args.candidate_block, hard_k=args.hard_k,
             )
             optimizer.zero_grad(set_to_none=True)
             positive = model.score_positive(h, r, t)

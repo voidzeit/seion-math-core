@@ -1,0 +1,63 @@
+{
+  "config": {
+    "dims": [
+      3
+    ],
+    "etas": [
+      0.2,
+      0.5
+    ],
+    "classes": [
+      "same_law"
+    ],
+    "per_cell": 1024,
+    "steps": 60
+  },
+  "device": "cuda",
+  "runs": [
+    {
+      "class": "same_law",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.2,
+      "J2": 1.9993147997554175,
+      "chi": -1.0,
+      "eT_over_eta": 0.9996552724582666,
+      "eTM_over_eta": 0.9996595272971509,
+      "restarts": 1024
+    },
+    {
+      "class": "same_law",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.5,
+      "J2": 1.9985651820915395,
+      "chi": -1.0,
+      "eT_over_eta": 0.998709279104075,
+      "eTM_over_eta": 0.9998559029874645,
+      "restarts": 1024
+    },
+    {
+      "class": "same_law",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.2,
+      "J2": 1.9985045985559449,
+      "chi": -0.9999823683016618,
+      "eT_over_eta": 0.9995114429446473,
+      "eTM_over_eta": 0.9990019649265236,
+      "restarts": 1024
+    },
+    {
+      "class": "same_law",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.5,
+      "J2": 1.9993593004329435,
+      "chi": -0.9999657383642954,
+      "eT_over_eta": 0.9995773623593635,
+      "eTM_over_eta": 0.9997990636233994,
+      "restarts": 1024
+    }
+  ]
+}

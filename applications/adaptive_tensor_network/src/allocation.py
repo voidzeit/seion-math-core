@@ -18,6 +18,133 @@ import numpy as np
 from network import TensorNetwork
 
 
+def threshold_ranks_from_spectra(
+    spectra: dict[str, np.ndarray],
+    budget: int,
+    *,
+    minimum_ranks: dict[str, int] | None = None,
+    maximum_ranks: dict[str, int] | None = None,
+) -> tuple[dict[str, int], float]:
+    """Choose a common tail-energy threshold under an exact rank budget.
+
+    For each node ``i`` and common ``tau`` the selected rank is
+
+    ``min {r >= minimum_ranks[i] : sum_{j>r} sigma[i,j]^2 <= tau}``.
+
+    With distinct floating-point tail energies, lowering ``tau`` crosses one
+    rank boundary at a time, so every integer budget between the minimum and
+    maximum is attained.  Exact attainment is required deliberately: silently
+    rounding a threshold allocation would confound a same-rank comparison.
+    """
+
+    if not spectra:
+        raise ValueError("at least one spectrum is required")
+    node_ids = sorted(spectra)
+    minimum_ranks = minimum_ranks or {node_id: 1 for node_id in node_ids}
+    maximum_ranks = maximum_ranks or {
+        node_id: len(np.asarray(spectra[node_id])) for node_id in node_ids
+    }
+    if set(minimum_ranks) != set(node_ids) or set(maximum_ranks) != set(node_ids):
+        raise ValueError("rank bounds must have exactly the spectrum node ids")
+
+    tails: dict[str, dict[int, float]] = {}
+    boundaries: set[float] = set()
+    for node_id in node_ids:
+        singular = np.asarray(spectra[node_id], dtype=float)
+        minimum = int(minimum_ranks[node_id])
+        maximum = int(maximum_ranks[node_id])
+        if minimum < 0 or maximum < minimum or maximum > singular.size:
+            raise ValueError(f"invalid rank bounds for {node_id}")
+        node_tails = {
+            rank: float(np.sum(singular[rank:] ** 2))
+            for rank in range(minimum, maximum + 1)
+        }
+        tails[node_id] = node_tails
+        boundaries.update(node_tails.values())
+
+    minimum_total = sum(int(minimum_ranks[node_id]) for node_id in node_ids)
+    maximum_total = sum(int(maximum_ranks[node_id]) for node_id in node_ids)
+    if budget < minimum_total or budget > maximum_total:
+        raise ValueError(
+            f"budget {budget} is outside feasible [{minimum_total}, {maximum_total}]"
+        )
+
+    # At a tail-energy boundary, <= makes the corresponding rank feasible.
+    # Search from loose to strict thresholds and require exact budget equality.
+    for tau in sorted(boundaries, reverse=True):
+        ranks = {}
+        for node_id in node_ids:
+            feasible = [
+                rank for rank, tail in tails[node_id].items() if tail <= tau
+            ]
+            ranks[node_id] = min(feasible) if feasible else int(maximum_ranks[node_id])
+        if sum(ranks.values()) == budget:
+            return ranks, float(tau)
+
+    raise RuntimeError(
+        "no common threshold attains the exact budget; use an explicitly "
+        "declared boundary-tie policy rather than silent rounding"
+    )
+
+
+def threshold_static_allocation(
+    net: TensorNetwork,
+    budget: int,
+    *,
+    node_ids: list[str],
+    minimum_ranks: dict[str, int],
+) -> tuple[dict[str, int], float]:
+    """One-shot common-cutoff allocation from the fitted singular spectra."""
+
+    spectra = {
+        node_id: np.asarray(net.projectors[node_id].singular_values, dtype=float)
+        for node_id in node_ids
+    }
+    maximum = {
+        node_id: int(net.projectors[node_id].ambient_dim) for node_id in node_ids
+    }
+    return threshold_ranks_from_spectra(
+        spectra,
+        budget,
+        minimum_ranks=minimum_ranks,
+        maximum_ranks=maximum,
+    )
+
+
+def threshold_adaptive_allocation(
+    net: TensorNetwork,
+    budget: int,
+    *,
+    node_ids: list[str],
+    minimum_ranks: dict[str, int],
+    current_values: dict[str, np.ndarray],
+) -> tuple[dict[str, int], float]:
+    """Recompute fixed-basis discarded energy on the current reduced state.
+
+    The projector bases remain frozen, preserving terminal-state sufficiency
+    and the exact M8/M10 oracle.  What adapts is the energy present in each
+    fitted basis direction after upstream truncations have propagated through
+    the calibration pipeline.  This is the strongest path-dependent cutoff
+    signal compatible with that oracle; it is not a basis-refitting method.
+    """
+
+    spectra = {}
+    maximum = {}
+    for node_id in node_ids:
+        projector = net.projectors[node_id]
+        coordinates = np.asarray(current_values[node_id]) @ projector.basis
+        # The threshold rule depends only on squared values.  sqrt(sum x^2)
+        # gives one energy-equivalent coefficient per frozen basis direction.
+        spectra[node_id] = np.sqrt(np.sum(coordinates**2, axis=0))
+        maximum[node_id] = int(projector.ambient_dim)
+    return threshold_ranks_from_spectra(
+        spectra,
+        budget,
+        minimum_ranks=minimum_ranks,
+        maximum_ranks=maximum,
+    )
+
+
 def _node_ids(net: TensorNetwork) -> list[str]:
     return [node.node_id for node in net.topology.nodes_postorder]
 

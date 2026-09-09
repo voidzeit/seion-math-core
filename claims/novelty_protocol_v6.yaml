@@ -1,0 +1,221 @@
+version: 6
+title: Calibrated novelty protocol
+created: 2026-08-25
+branch: campaign/gate13-closeout
+supersedes:
+  - claims/novelty_registry.yaml
+  - claims/prior_art_registry_v3.yaml
+  - research/projected_trees_v5/novelty/THEOREM_TO_THEOREM_MATRIX.md
+
+diagnosis_of_the_previous_protocol: >
+  prior_art_registry_v3 declares "Absence from a bounded search is not evidence
+  of novelty." That policy is correct, and it is exactly why the previous
+  protocol CANNOT TERMINATE. "X is novel" is a universal negative over an
+  unbounded corpus; no amount of further searching establishes it. Blocker
+  B-0006 was never waiting on more work, it was waiting on a protocol of a
+  different shape. A second defect: prior_art_registry_v3 already grades
+  (STANDARD_RESTRICTION_RESULT, STANDARD_MULTILINEAR_BOUND,
+  KNOWN_BOUND_NEW_SPECIALIZATION, NOVELTY_NOT_ESTABLISHED) while
+  THEOREM_TO_THEOREM_MATRIX is binary with all 35 rows NOT_ESTABLISHED. Two
+  incompatible vocabularies over the same objects, and the binary one forces
+  even honestly-classified rows to fail.
+
+principle: >
+  Replace one unprovable universal negative with two provable claims:
+  (A) a CALIBRATED RECALL claim about the search instrument, and
+  (B) a DECIDABLE DIFFERENCE claim against a named nearest known result.
+  This is the same discipline used elsewhere in this repository: the free class
+  calibrates the extremal optimizer because it attains Sigma_2 by theorem, so
+  its shortfall at any budget IS the instrument's noise floor.
+
+# ---------------------------------------------------------------- the ladder
+ladder:
+  N0: standard or textbook
+  N1: standard restriction or specialization
+  N2: known result, new proof
+  N3: quantitative sharpening -- strict improvement of a known constant
+  N4: new object or regime, known technique
+  N5: no known analogue under CALIBRATED search
+note_on_the_ladder: >
+  N5 is the only level that requires calibrated search, and it is the only
+  level no methodology can award with certainty. N3 and N4 are established by
+  gate D alone and are fully defensible. The previous binary framing forced
+  every row to aim at N5 and therefore to fail. Most of this project's real
+  value is N3.
+
+# ------------------------------------------------------- gate A: calibration
+gate_A_calibration:
+  A1_recall_panel:
+    requirement: 20-30 results that ARE in the literature, of matched shape and
+      obscurity, selected by a third party and BLIND to whoever searches.
+    stratify_by: citation count, with the low-citation stratum reported
+      separately -- an instrument that only recovers highly cited work is blind
+      exactly where the risk lives.
+    status: NOT_EXECUTED
+    blocking_reason: >
+      STRUCTURALLY NOT EXECUTABLE BY THE SEARCHING AGENT. If the same agent
+      selects the panel and then searches for it, the blinding is broken in
+      both directions: selection bias (I choose what I can find) and knowledge
+      bias (I may already know the planted results from pretraining). A
+      mechanically sampled panel would remove the first but not the second.
+      This gate requires a human third party.
+  A2_threshold:
+    preregistered: recall >= 0.80, stratified
+    rule: >
+      recall below threshold => CALIBRATION_FAIL => NO novelty reading is
+      licensed for any target, however empty the search came back.
+    status: CANNOT_BE_EVALUATED (A1 not executed)
+  A3_synonym_lattice:
+    status: EXECUTED
+    rationale: >
+      The same object carries at least three names across three literatures
+      that do not cite each other. A keyword search in one vocabulary is
+      structurally blind to the other two.
+    lattice:
+      rho_v_proj:
+        algebra_operads: closure defect
+        numerical_analysis: normal residual, local backward error
+        tensor_networks: discarded weight, truncation error
+      E_proj:
+        algebra_operads: approximate homomorphism defect
+        numerical_analysis: compositional forward error
+        tensor_networks: low-rank approximation error
+      M_v_j:
+        algebra_operads: operadic partial composition
+        numerical_analysis: slot Jacobian, abstract transformer
+        tensor_networks: bond transport map
+      projected_tree:
+        algebra_operads: algebra over a coloured operad
+        numerical_analysis: computation graph with rounding
+        tensor_networks: HT / TTN with a dimension tree
+  A4_citation_graph_closure:
+    requirement: forward and backward citations to depth 2 from the k nearest
+      known results, with MathSciNet/zbMATH review prose in the text index
+      (reviews describe theorems that abstracts do not).
+    status: NOT_EXECUTED
+    blocking_reason: no authenticated MathSciNet/zbMATH access in this session.
+
+# --------------------------------------------- gate D: decidable difference
+gate_D_decidable_difference:
+  D1_specialization:
+    description: >
+      Identify the standard setting the theorem specialises to and COMPUTE what
+      the standard result gives there. Verdicts COINCIDES / WEAKER /
+      STRICTLY_SHARPER.
+    why_mandatory: >
+      The Pythagorean TT certificate looked new until it was evaluated on
+      canonically orthogonalised trains, where tau = 1.0000 exactly, because it
+      IS Oseledets' TT-SVD error identity. Found by an internal control, not by
+      review. D1 is that control promoted to a protocol step.
+    critical_property: >
+      D1 IS THE ONLY GATE THAT WORKS WITHOUT CALIBRATION, because it compares
+      against a NAMED known result rather than against the absence of one.
+      Everything resting on "we did not find it" is blocked by CALIBRATION_FAIL;
+      D1 is not.
+    status: EXECUTED
+    harness: research/novelty/d1_reduce_to_standard.py
+    evidence: research/novelty/d1_reduce_to_standard.json
+  D2_separating_instance:
+    description: exhibit an executable object satisfying the claim's hypotheses
+      that the nearest known result does not cover, or a strict quantitative gap.
+    status: PARTIALLY_EXECUTED (via D1 target 1; witnesses already exist for
+      W_3 and Sigma_2)
+  D3_reverse_containment:
+    description: >
+      Hand an adversary the known result Y and ask them to derive X in <= N
+      steps. If they can, X is a corollary. Everyone skips this because they
+      hunt for differences rather than for derivability -- that asymmetry is
+      what manufactures false novelty.
+    status: NOT_EXECUTED
+    blocking_reason: requires independent adversaries (see gate E).
+
+gate_E_adversarial:
+  requirement: k >= 3 independent reviewers, task stated as REFUTE THE NOVELTY,
+    default verdict "prior art exists", majority rule. A reviewer who finds
+    nothing votes "did not find", which is a different datum from "novel".
+  status: NOT_EXECUTED
+  blocking_reason: >
+    CANNOT BE THE AUTHORING AGENT. Also satisfies B-0009 (zero independent
+    human reviews) only if the reviewers are domain humans.
+
+# ------------------------------------------------------------------ results
+executed_findings:
+  D1_target_1:
+    claim_under_test: projected-root (k-1) bound
+    named_standard: hierarchical SVD truncation (Hackbusch-Kuehn 2009;
+      Grasedyck 2010; Oseledets TT-SVD 2011) -- on an orthogonalised tree the
+      per-node errors are mutually orthogonal and ||E||^2 = sum_v eps_v^2.
+    measurement: 120 instances per cell, bond 8, physical 3, rank 3,
+      isometry defect in {0.00, 0.15, 0.50}, k in {2,3,4,6,8}
+    on_the_standards_home_ground_defect_0:
+      standard_tau: 1.000 at every k, 100% sound      # the exact identity
+      pmt_tau: [1.000, 1.498, 1.892, 2.742, 3.468]    # k = 2,3,4,6,8
+      pmt_sound: 100% everywhere
+      verdict: WEAKER
+      reading: >
+        The (k-1) bound is sound but strictly looser than the standard on the
+        standard's own ground, by a factor rising to 3.47x at k=8. It coincides
+        exactly only at k=2. It is NOT an N3 sharpening there.
+    off_the_home_ground:
+      defect_0.15: standard sound 26.7% (k=3) falling to 0.8% (k=8)
+      defect_0.50: standard sound 1.7% (k=3), 0.0% for k >= 4
+      pmt_sound: 100% at every defect and every k
+      verdict: >
+        The standard bound is not merely loose off its home ground -- it is
+        UNSOUND, silently. The PMT bound stays sound throughout.
+    consequence_for_the_paper: >
+      The (k-1) bound's value is entirely OUTSIDE the canonically orthogonalised
+      setting. The paper must scope its claim to non-isometric composition and
+      must state that on orthogonalised hierarchical formats the standard
+      Pythagorean identity is exact and strictly better. Claiming otherwise
+      would repeat the TT retraction in print.
+    ladder_assignment: N4 (new regime, known technique) -- NOT N3, NOT N5.
+  D1_target_2:
+    claim_under_test: W_3(eta) at k = 3
+    named_standard: the universal coefficient (k-1) = 2
+    verdict: STRICTLY_SHARPER at every eta > 0
+    margin: 0.1% at eta=0.05, 9.9% at 0.5, 20.9% at 1/sqrt2, 42.3% at eta=1
+    ladder_assignment: N3, established mechanically, independent of calibration
+  D1_target_3:
+    claim_under_test: Sigma_2(eta)
+    named_standard: the triangle-inequality threshold 2, from C_2 = 1 and J_2 = 2
+    verdict: STRICTLY_SHARPER at every eta > 0
+    margin: 0.1% at eta=0.05, 13.4% at 0.5, 29.3% at 1/sqrt2, 50.0% at eta=1
+    ladder_assignment: N3, established mechanically, independent of calibration
+
+executed_searches:
+  status: EXECUTED_BUT_UNCALIBRATED
+  vocabularies_run: 3 of 3 (algebra/operads, numerical analysis, tensor networks)
+  outcome_algebra_vocabulary: no relevant hit for composed multilinear maps on a
+    rooted tree with per-node orthogonal projection and closure defect
+  outcome_tensor_network_vocabulary: CONFIRMS the named standard -- hierarchical
+    SVD truncation error in terms of sums of squared discarded singular values
+    is established (Grasedyck; Hackbusch-Kuehn). This is what D1 target 1
+    compares against.
+  outcome_rebracketing_constants: no relevant hit
+  interpretation: >
+    THE NEGATIVE OUTCOMES CARRY NO WEIGHT. Recall is unmeasured, so silence is
+    uninformative by the protocol's own A2 rule. Recorded as searched, not as
+    evidence of novelty.
+
+# ----------------------------------------------------------------- verdict
+protocol_verdict: CALIBRATION_FAIL
+verdict_meaning: >
+  Gate A did not run, so no N5 assignment is licensed for any of the 35 targets
+  and none is made. This is the protocol working as designed, not a failure to
+  complete it: it refuses to convert an uncalibrated silence into a novelty
+  claim.
+what_survives_the_verdict: >
+  D1 does not depend on calibration. Three assignments therefore stand:
+  W_3 = N3, Sigma_2 = N3, and the (k-1) bound = N4 with a mandatory scoping
+  correction. These are defensible today, without any further search.
+strategic_consequence: >
+  The project should rest its novelty case on D1-established N3/N4 scoping
+  rather than pursue N5. N5 requires a blind human panel, is the only level no
+  methodology can guarantee, and is not where this work's value sits.
+
+remaining_to_unblock_B0006:
+  - human third party selects the blind recall panel (gate A1)
+  - authenticated MathSciNet/zbMATH for review-prose search (gate A4)
+  - k >= 3 independent domain humans tasked to refute (gates D3, E) --
+    also discharges B-0009

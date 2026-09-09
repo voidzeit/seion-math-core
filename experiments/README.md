@@ -49,3 +49,33 @@ It selects allocations using validation sup-error and evaluates them on an
 independent test batch. Its resource values are exact compressed-coordinate
 proxies, not hardware timings; the resulting comparison remains
 context-dependent and does not support a superiority claim.
+
+## 2026-08-16 — engineering-advantage audit
+
+The canonical candidate-claim ledger is
+`applications/adaptive_tensor_network/ENGINEERING_ADVANTAGE_REGISTER.md`.
+It distinguishes supported, open, refuted, and domain-limited advantages and
+requires competitive cutoff/adaptive-cutoff baselines before any general
+allocator-superiority claim. The observed M35b/M38 error-cost table is rebuilt
+from raw JSON by
+`applications/adaptive_tensor_network/experiments/analyze_engineering_pareto.py`;
+the CSV is descriptive evidence, not a hardware or production claim.
+
+## 2026-08-16 — static/adaptive threshold gate
+
+The decisive synthetic cutoff comparison is frozen in
+`configs/ATN_THRESHOLD_GATE_V1.yaml`. It evaluates uniform, common-cutoff
+static threshold, propagated-state adaptive threshold, measured first order,
+pairwise, and rollout at m=8 and m=10 with exact terminal oracles and records
+rank, objective-forward count, an analytical memory proxy, and CPU wall time.
+V1 was inconclusive at five seeds, so the fixed 30-new-seed precision extension
+`configs/ATN_THRESHOLD_GATE_V1B.yaml` was declared before its execution.
+
+The preregistered V1B gate remained `MIXED_OR_INCONCLUSIVE`. Descriptively
+pooling the identical designs, FO does not separate from either threshold at
+m=8 and has lower terminal error at m=10, while thresholds use far fewer
+forwards. The canonical conclusion is
+`DOMAIN_LIMITED_FO_ADVANTAGE_AT_M10_NO_GENERAL_GO`; screened rollout was not
+started. Raw data, deterministic summaries, and limitations are in
+`applications/adaptive_tensor_network/results/threshold_gate_*` and
+`applications/adaptive_tensor_network/results/THRESHOLD_GATE_V1B_FINDINGS.md`.

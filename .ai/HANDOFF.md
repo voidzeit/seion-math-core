@@ -1052,3 +1052,19 @@
   `runs/TTN_FB15K237_CONFIRMATORY_CANARY_D128_S42_8GB_2026-08-10/canary_result.json`.
   This passes only the sustained-canary subgate. It does not clear B-0012 or
   support quality/hardware claims. Keep the next escalation isolated.
+
+## Latest postflight: Engineering advantage audit for adaptive tensor-network allocation
+
+- Timestamp: 2026-08-16T07:42:44.820016+00:00
+- Outcome: **AUDIT_COMPLETE_WITH_DOMAIN_LIMITED_ADVANTAGES_AND_CRITICAL_OPEN_THRESHOLD_BASELINE**
+- Validation: 110 adaptive application tests passed; generator SHA256 stable across rerun; compileall passed; governance audit yellow with no missing required files; dedupe-runs completed; git diff --check passed.
+- Resume from commit: `a0430ac80704a16122b89d7c871c05cbc72881d1` on `campaign/gate13-closeout`
+- Limitation: Static and adaptive threshold/cutoff competitors are not implemented; all FO/pairwise/rollout Pareto evidence is synthetic and exact-oracle evidence has five seeds per m.
+
+## Latest postflight: Close the decisive static/adaptive threshold gate at m=8 and m=10; draft and adjudicate Paper A
+
+- Timestamp: 2026-08-16T08:25:02.219537+00:00
+- Outcome: **DOMAIN_LIMITED_FO_ADVANTAGE_AT_M10_NO_GENERAL_GO; Paper A draft complete, novelty pending human review**
+- Validation: 113 adaptive tests passed; 48 Paper A math tests passed; 56 governance tests passed; threshold analyzers reproduced byte-identical outputs; LaTeX compiled 11 pages without warnings; every page rendered and visually inspected; compileall and git diff --check passed; governance audit passed yellow with pre-existing duplicate-run and paper-release warnings
+- Resume from commit: `a0430ac80704a16122b89d7c871c05cbc72881d1` on `campaign/gate13-closeout`
+- Limitation: All allocator evidence is synthetic fixed-basis D=16 CPU execution; memory is analytical, wall time is not a robust hardware benchmark, and adaptive threshold does not refit bases or shrink ranks.

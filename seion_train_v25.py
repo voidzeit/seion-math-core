@@ -1260,6 +1260,20 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
 
     provenance = build_run_contract(args)
     kg = load_knowledge_graph(args)
+    # B-0014: this script has its own copy of build_filters(train, valid, test),
+    # so kg.tails_of_hr/heads_of_rt contain held-out triples. Correct for the
+    # filtered evaluator below, leaking if reused to sample training negatives.
+    # Evaluation keeps `kg`; only sample_negatives gets the TRAIN-only view.
+    if args.negative_filter == "train_only":
+        _train_original = [
+            (int(h), int(r), int(t))
+            for h, r, t in kg.train
+            if int(r) < kg.num_relations_original
+        ]
+        _neg_tails, _neg_heads = build_filters(_train_original, [], [])
+        negative_kg = dataclasses.replace(kg, tails_of_hr=_neg_tails, heads_of_rt=_neg_heads)
+    else:
+        negative_kg = kg
     gate_init = parse_gate_init(args.gate_init)
     model = SeionV25(
         num_entities=kg.num_entities,
@@ -1327,7 +1341,7 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
 
         for batch_index, batch in enumerate(loader):
             h_ids, r_ids, t_ids = (x.to(device=device, non_blocking=True) for x in batch)
-            head_neg_ids, tail_neg_ids = sample_negatives(h_ids, r_ids, t_ids, kg, args, rng, device)
+            head_neg_ids, tail_neg_ids = sample_negatives(h_ids, r_ids, t_ids, negative_kg, args, rng, device)
             h = model.ent(h_ids)
             t = model.ent(t_ids)
             h_neg = model.ent(head_neg_ids)
@@ -1673,6 +1687,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--batch_size", type=int, default=2048)
     p.add_argument("--neg_k", type=int, default=256)
     p.add_argument("--neg_mode", choices=["baseline", "bernoulli", "filtered"], default="baseline")
+    p.add_argument("--negative_filter", choices=["train_valid_test", "train_only"],
+                   default="train_valid_test",
+                   help="which known-positive tables mask TRAINING negatives (B-0014). "
+                        "'train_valid_test' reproduces earlier V25 runs but leaks held-out "
+                        "membership into training; 'train_only' is the non-leaking choice. "
+                        "The filtered evaluator always keeps the full tables.")
     p.add_argument("--filtered_neg_max_tries", type=int, default=32)
     p.add_argument("--loss_mode", choices=["logistic", "margin"], default="logistic")
     p.add_argument("--adversarial_temperature", type=float, default=2.0)

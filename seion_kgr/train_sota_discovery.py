@@ -24,7 +24,13 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-from .data import KnowledgeGraph, load_knowledge_graph, sample_negatives, tiny_kg
+from .data import (
+    KnowledgeGraph,
+    load_knowledge_graph,
+    sample_negatives,
+    tiny_kg,
+    train_only_filter_view,
+)
 from .evaluate import evaluate
 from .model import BASE_EXPERTS, SeionKGRv26
 from .reproducibility import restore_rng_state, rng_state_snapshot, set_seed
@@ -57,6 +63,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--eval-queries", type=int, default=256)
     p.add_argument("--entity-block", type=int, default=4096)
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--negative-filter", choices=("train_valid_test", "train_only"),
+                   default="train_valid_test",
+                   help="which known-positive tables mask TRAINING negatives (B-0014). "
+                        "'train_valid_test' reproduces earlier runs but leaks held-out "
+                        "membership into training; 'train_only' is the non-leaking choice. "
+                        "Evaluation always keeps the full filters.")
     p.add_argument("--cpu", action="store_true")
     p.add_argument("--resume", type=Path, default=None)
     p.add_argument("--allow-existing", action="store_true")
@@ -138,6 +150,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     rng = np.random.default_rng(args.seed)
     device = _device(args)
     kg = _load_kg(args)
+    # B-0014: full filters are right for evaluation, leaking for training negatives.
+    negative_kg = train_only_filter_view(kg) if args.negative_filter == "train_only" else kg
     model = SeionKGRv26(kg.num_entities, kg.num_relations_total, args.dim, base_expert=args.base_expert).to(device)
     teacher = copy.deepcopy(model).to(device)
     for parameter in teacher.parameters():
@@ -171,7 +185,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 break
             batch = _batch_tensor(kg, train_order, offset, args.batch_size, device)
             h, r, t = batch.T
-            hard_ids, _ = _mine(teacher, h, r, t, kg, args.candidate_pool, args.hard_k, rng, device)
+            hard_ids, _ = _mine(teacher, h, r, t, negative_kg, args.candidate_pool, args.hard_k, rng, device)
             optimizer.zero_grad(set_to_none=True)
             positive = model.score_positive(h, r, t, training=True)
             negatives = model.score_tail_candidates(h, r, hard_ids, training=True, gold_tail_ids=t)

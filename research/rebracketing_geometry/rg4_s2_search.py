@@ -1,3 +1,16 @@
+"""QUARANTINED 2026-08-18 -- DO NOT USE FOR EVIDENCE.
+
+This harness computes its feasibility factors under `torch.no_grad()` (see
+`feasibility_factors`, and the `no_grad` blocks below). That is exactly the
+frozen-normalization bug fixed in commit `8843022`: the forward pass is scale
+invariant but the backward pass is not, so the optimizer climbs a radial
+direction the constraint should have removed. Numbers produced here are NOT
+valid landscape evidence for any same-law question.
+
+Use `rg_fused_search.py --differentiable` instead. Kept only so the historical
+runs remain reproducible as a record of the bug.
+"""
+
 """Adversarial search against the k=2 rebracketing ceilings J_2, H_2, S_2.
 
 EXPERIMENTAL. Nothing here is a theorem; this is a falsification harness for

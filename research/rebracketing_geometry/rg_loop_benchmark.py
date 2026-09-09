@@ -67,7 +67,7 @@ def timed_loop(dim, rank, eta, batch, steps, strength, device, seed,
         torch.cuda.synchronize()
     started = time.time()
 
-    factors, warm = None, None
+    factors, warm, refreshes = None, None, 0
     for step in range(steps):
         laws = share_laws(raws, shared)
         rebuild = differentiable or step % cache_every == 0
@@ -76,6 +76,7 @@ def timed_loop(dim, rank, eta, batch, steps, strength, device, seed,
             # accumulates drift that neither warm nor the cold fraction sees
             full = warm is None or (global_refresh and
                                     step % global_refresh == 0)
+            refreshes += int(full)
             current = strength if (full or not warm_iters) else (strength[0],
                                                                  warm_iters)
             result = feasibility_factors(
@@ -96,14 +97,28 @@ def timed_loop(dim, rank, eta, batch, steps, strength, device, seed,
     peak = (torch.cuda.max_memory_allocated() / 1e9
             if device.type == "cuda" else 0.0)
 
-    # grade the endpoint honestly, so cost is compared at equal meaning
+    # Grade the endpoint honestly, so cost is compared at equal MEANING rather
+    # than at equal arithmetic. `raw` is what the loop believed at the end;
+    # `honest` is what a converged estimator says the same configuration is
+    # worth. Their ratio is how much the search was inflating itself, and the
+    # norm deficit is the mechanism: the loop divides by an underestimate, so
+    # the law it graded was not the law it thought it had.
     with torch.no_grad():
         laws = share_laws(raws, shared)
+        A_hat, PA, D, _ = evaluate(laws, projectors, leaves, eta_vec, factors,
+                                   shared)
+        raw = float(score(coefficients, A_hat, PA, D, eta_vec).max())
+
         graded = feasibility_factors(laws, projectors, 64, 40)
         A_hat, PA, D, _ = evaluate(laws, projectors, leaves, eta_vec, graded,
                                    shared)
-        value = float(score(coefficients, A_hat, PA, D, eta_vec).max())
-    return elapsed, peak, value
+        honest = float(score(coefficients, A_hat, PA, D, eta_vec).max())
+
+        loop_norm = factors["inner_L"][0]
+        true_norm = graded["inner_L"][0]
+        deficit = float(((true_norm - loop_norm) / true_norm).max())
+    return {"elapsed": elapsed, "peak": peak, "raw": raw, "honest": honest,
+            "deficit": deficit, "refreshes": refreshes}
 
 
 def main() -> None:
@@ -121,8 +136,9 @@ def main() -> None:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"device={device} D={args.dim} batch={args.batch} "
           f"steps={args.steps} strength={tuple(args.strength)}\n")
-    print(f"{'configuration':>22} {'backward':>14} {'s/step':>9} "
-          f"{'peak GB':>9} {'J graded':>10} {'vs cached':>10}")
+    print(f"{'configuration':>22} {'backward':>9} {'s/step':>8} {'total':>7} "
+          f"{'GB':>6} {'J raw':>9} {'J honest':>9} {'norm def':>9} "
+          f"{'refr':>5} {'vs cached':>10}")
 
     configurations = [
         ("frozen / cached", False, args.cache_every, 0),
@@ -132,14 +148,15 @@ def main() -> None:
     ]
     baseline = None
     for label, differentiable, cache_every, warm_iters in configurations:
-        elapsed, peak, value = timed_loop(
-            args.dim, args.rank, args.eta, args.batch, args.steps,
-            tuple(args.strength), device, 4242, differentiable, cache_every,
-            warm_iters)
-        per_step = elapsed / args.steps
+        row = timed_loop(args.dim, args.rank, args.eta, args.batch, args.steps,
+                         tuple(args.strength), device, 4242, differentiable,
+                         cache_every, warm_iters)
+        per_step = row["elapsed"] / args.steps
         baseline = baseline or per_step
-        print(f"{label:>22} {'WRONG' if not differentiable else 'correct':>14} "
-              f"{per_step:9.4f} {peak:9.2f} {value:10.6f} "
+        print(f"{label:>22} {'WRONG' if not differentiable else 'correct':>9} "
+              f"{per_step:8.4f} {row['elapsed']:7.1f} {row['peak']:6.2f} "
+              f"{row['raw']:9.6f} {row['honest']:9.6f} "
+              f"{row['deficit'] * 100:8.3f}% {row['refreshes']:5d} "
               f"{per_step / baseline:9.2f}x")
 
     print("\nThe first row is what the committed sweep ran: cheap, and")

@@ -1,0 +1,27 @@
+{
+  "status": "PARTIAL -- run aborted at rung 2 by a CUDA fault, not by logic",
+  "fault": "torch.AcceleratorError: CUDA error: unknown error, raised inside torch.linalg.eigh during feasibility_factors at steps=600 per_cell=4096",
+  "relation_to_B0012": "Second GPU incident of this class. B-0012 records two Windows bugchecks on 2026-08-09 and pauses GPU experimentation pending debugger access, BIOS/IOMMU and driver review. Its prescribed exit is a bounded GPU canary before any long job.",
+  "canary_after_fault": "PASSED -- 5x float64 eigh on 2000x2000, device healthy, 0 MiB resident. Idle temperature 80 C, which is high and is one of B-0012's candidate causes.",
+  "verdict": "NO VERDICT LICENSED. One rung cannot separate a landscape deficit from an unconverged optimizer -- that separation is the entire purpose of the ladder, and the pre-registered calibration gate needs dbar_free to improve 4x across it.",
+  "rung_1": {
+    "steps": 300,
+    "restarts": 2048,
+    "effective_evaluations": 1843200,
+    "wall_seconds": 129.2,
+    "d_free": 0.001205,
+    "d_same": 0.06651,
+    "delta": 0.06531,
+    "ratio_noise_floors": 55,
+    "reading": "the same-law shortfall sits at 55 noise floors at this budget -- suggestive, decides nothing"
+  },
+  "dims": [
+    2
+  ],
+  "etas": [
+    0.35,
+    0.5,
+    0.7071067811865476
+  ],
+  "harness": "research/rebracketing_geometry/rg_s2_convergence.py"
+}

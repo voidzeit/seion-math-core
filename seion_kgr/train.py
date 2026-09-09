@@ -23,7 +23,14 @@ import numpy as np
 import torch
 
 from . import geometry, projection, rank_controller, reproducibility as repro
-from .data import KnowledgeGraph, TripleDataset, load_knowledge_graph, sample_negatives, tiny_kg
+from .data import (
+    KnowledgeGraph,
+    TripleDataset,
+    load_knowledge_graph,
+    sample_negatives,
+    tiny_kg,
+    train_only_filter_view,
+)
 from .context import build_context_adjacency, build_context_index, build_query_context, context_spec_dict
 from .evaluate import evaluate
 from .frontier_ops import build_csr_adjacency
@@ -347,6 +354,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     p.add_argument("--cpu", action="store_true")
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--negative-filter", choices=("train_valid_test", "train_only"),
+                   default="train_valid_test",
+                   help="which known-positive tables mask TRAINING negatives (B-0014). "
+                        "'train_valid_test' reproduces earlier runs but leaks held-out "
+                        "membership into training; 'train_only' is the non-leaking choice. "
+                        "Evaluation always keeps the full filters.")
     p.add_argument("--resume", type=str, default="", help="path to a last.pt/best.pt checkpoint to resume from")
     p.add_argument(
         "--init_from_checkpoint", type=str, default="",
@@ -425,6 +438,8 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
         )
 
     kg = load_knowledge_graph(args.train, args.valid, args.test)
+    # B-0014: full filters are right for evaluation, leaking for training negatives.
+    negative_kg = train_only_filter_view(kg) if args.negative_filter == "train_only" else kg
     structural_kernel = build_structural_kernel(
         args.structural_kernel_variant, args.dim, kg.num_relations_total, args.structural_kernel_seed, args.structural_kernel_dim,
         gate_g_max=args.gate_g_max,
@@ -557,8 +572,8 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
             r_inv_ids = torch.tensor(
                 [_inverse_relation(int(r), kg.num_relations_original) for r in r_ids.tolist()], device=device,
             )
-            tail_negs = sample_negatives(h_ids, r_ids, t_ids, kg, args.neg_k, rng, device)
-            head_negs = sample_negatives(t_ids, r_inv_ids, h_ids, kg, args.neg_k, rng, device)  # unfiltered, see docstring
+            tail_negs = sample_negatives(h_ids, r_ids, t_ids, negative_kg, args.neg_k, rng, device)
+            head_negs = sample_negatives(t_ids, r_inv_ids, h_ids, negative_kg, args.neg_k, rng, device)  # unfiltered, see docstring
             batch_order_hasher.update(torch.stack((h_ids, r_ids, t_ids), dim=1).detach().cpu().contiguous().numpy().tobytes())
             negative_sample_hasher.update(torch.cat((tail_negs, head_negs), dim=1).detach().cpu().contiguous().numpy().tobytes())
 
