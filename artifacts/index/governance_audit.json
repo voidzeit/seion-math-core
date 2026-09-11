@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "audited_at": "2026-09-11T03:31:02.385420+00:00",
+  "audited_at": "2026-09-11T03:33:17.510565+00:00",
   "status": "yellow",
   "strict": false,
   "git": {
     "branch": "codex/pmt-k4-chain-gram",
-    "commit": "42ba06d7aeeaabf164e49f971bf03e7c39961ae6",
+    "commit": "cb878f476b6c4b045c40c12c327c2921d76d6c79",
     "dirty": true
   },
   "required_files": {
