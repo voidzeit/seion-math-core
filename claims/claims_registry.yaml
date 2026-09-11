@@ -19,6 +19,14 @@ claims:
     proof: docs/theorems/curvature_associator.md
     symbolic_checks: [artifacts/symbolic/curvature_identity.json]
     counterexamples: [docs/counterexamples/curvature_without_symmetry.md]
+  - id: THM_AFFINE_CONNECTION_TORSION_ASSOCIATOR_V1
+    title: Induced affine curvature equals torsion term minus antisymmetrized associator
+    status: proved_under_assumptions
+    statement: "For nabla_XY=D_XY+X star Y on the affine space of a finite-dimensional square bilinear product, R_affine(x,y)=[L_x,L_y] and R_affine(x,y)z=T(x,y) star z-A^-(x,y,z)."
+    assumptions: [finite-dimensional square bilinear product, standard flat derivative, constant-vector curvature convention]
+    proof: docs/theorems/affine_connection_torsion_associator.md
+    evidence: [src/seion_core/geometry/affine_connection.py, tests/unit/test_affine_connection.py]
+    limitations: [not a metric theorem, not a physical claim, separate from THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1]
   - id: THM_COHOMOLOGY_DESCENT_FINITE_V1
     title: Commuting finite operator descends to cohomology
     status: proved_under_assumptions

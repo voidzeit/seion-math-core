@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "audited_at": "2026-09-09T05:14:01.640638+00:00",
+  "audited_at": "2026-09-11T03:31:02.385420+00:00",
   "status": "yellow",
   "strict": false,
   "git": {
     "branch": "codex/pmt-k4-chain-gram",
-    "commit": "9f1c6d291ef1bb84d2c50602e80090305538c321",
+    "commit": "42ba06d7aeeaabf164e49f971bf03e7c39961ae6",
     "dirty": true
   },
   "required_files": {
@@ -19,17 +19,17 @@
     "status": "green"
   },
   "runs": {
-    "historical_run_count": 189,
+    "historical_run_count": 190,
     "unique_scientific_instance_count": 9,
     "duplicate_group_count": 8,
-    "duplicate_record_count": 180,
+    "duplicate_record_count": 181,
     "artifact_contract": {
-      "run_count": 189,
-      "contract_complete_count": 189,
+      "run_count": 190,
+      "contract_complete_count": 190,
       "contract_incomplete_count": 0,
       "missing_artifacts": {},
       "statuses": {
-        "COMPLETE": 187,
+        "COMPLETE": 188,
         "FAILED_RUNTIME": 2
       }
     }

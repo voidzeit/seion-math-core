@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Maqueta editorial para investigar propulsión por reconexión magnética y plasmoides.">
+  <title>RECONEXIÓN / Propulsión magnetoplasmática</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Inicio de Reconexión">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>RECONEXIÓN<span class="brand-slash">/</span><small>01</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#concepto">Concepto</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#modelo">Modelo</a>
+        <a href="#mvp">MVP científico</a>
+      </nav>
+      <a class="nav-cta" href="#explorador">Explorar parámetros <span>↗</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero section-pad">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Propulsión avanzada · nota de investigación</p>
+          <h1>Convertir la energía magnética en <em>impulso.</em></h1>
+          <p class="hero-lede">Una interfaz para pensar, modelar y contrastar un propulsor de plasmoides basado en reconexión magnética.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#arquitectura">Ver el concepto <span>↓</span></a>
+            <a class="text-link" href="#modelo">Abrir el modelo <span>↗</span></a>
+          </div>
+          <div class="hero-note"><span class="note-line"></span><span>Estado: <strong>hipótesis de diseño</strong> · no es un motor validado</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Diagrama animado de líneas de campo y un plasmoide">
+          <div class="visual-meta"><span>CAMPO B</span><span>PLASMOIDE / 01</span></div>
+          <svg class="field-art" viewBox="0 0 640 500" role="img" aria-label="Líneas de campo magnético que se reconectan alrededor de un plasmoide">
+            <defs>
+              <radialGradient id="plasmaGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffb36a" stop-opacity=".95" /><stop offset=".45" stop-color="#ff6b4a" stop-opacity=".68" /><stop offset="1" stop-color="#ff6b4a" stop-opacity="0" /></radialGradient>
+              <linearGradient id="fieldStroke" x1="0" x2="1"><stop stop-color="#9adbe9" stop-opacity=".12" /><stop offset=".5" stop-color="#9adbe9" stop-opacity=".8" /><stop offset="1" stop-color="#9adbe9" stop-opacity=".12" /></linearGradient>
+              <filter id="blur"><feGaussianBlur stdDeviation="12" /></filter>
+            </defs>
+            <g class="field-lines">
+              <path d="M24 116 C135 50 220 55 313 201 C390 322 469 356 618 288" />
+              <path d="M4 180 C119 112 213 115 304 211 C407 321 472 325 642 218" />
+              <path d="M4 250 C125 181 215 165 304 216 C420 282 493 267 640 139" />
+              <path d="M11 326 C130 280 216 229 306 220 C407 209 511 181 631 79" />
+              <path d="M47 405 C152 361 220 274 309 225 C400 176 496 115 586 20" />
+              <path d="M92 469 C181 396 230 300 320 233 C409 166 468 73 521 4" />
+            </g>
+            <g class="field-lines field-lines-secondary"><path d="M29 54 C157 34 237 89 304 194 C381 315 486 402 614 385" /><path d="M2 406 C122 437 225 359 302 246 C379 132 473 57 632 61" /></g>
+            <circle class="glow" cx="314" cy="220" r="146" fill="url(#plasmaGlow)" filter="url(#blur)" />
+            <ellipse class="plasmoid" cx="315" cy="220" rx="65" ry="44" /><ellipse class="plasmoid-core" cx="315" cy="220" rx="31" ry="20" />
+            <path class="axis-line" d="M45 220 H585" /><path class="arrow-head" d="M571 213 l14 7 -14 7" />
+            <g class="visual-label label-reconnect"><circle cx="315" cy="220" r="3" /><path d="M318 217 L383 164" /><text x="393" y="160">ZONA DE RECONEXIÓN</text></g>
+            <g class="visual-label label-thrust"><path d="M380 232 L445 285" /><text x="453" y="293">CHORRO AXIAL</text></g>
+          </svg>
+          <div class="visual-legend"><span><i class="legend-cyan"></i> líneas de campo</span><span><i class="legend-coral"></i> plasma expulsado</span></div>
+        </div>
+      </section>
+
+      <section class="signal-strip"><div><span class="signal-index">01</span><strong>La pregunta</strong><span>¿Cómo controlar la reconexión para convertir energía magnética en velocidad axial?</span></div><div><span class="signal-index">02</span><strong>La hipótesis</strong><span>Una tobera adaptativa puede mejorar el desprendimiento del plasmoide.</span></div><div><span class="signal-index">03</span><strong>La prueba</strong><span>Reconexión 2D → tobera simplificada → balance de momento.</span></div></section>
+
+      <section id="concepto" class="concept section-pad"><div class="section-intro"><p class="eyebrow">01 / Contexto</p><h2>La idea no es crear energía.<br><em>Es darle dirección.</em></h2></div><div class="concept-body"><p class="large-copy">Un propulsor de plasma recibe energía eléctrica, ioniza un propelente y acelera sus partículas. Aquí la aceleración se plantea desde la <strong>reconexión magnética</strong>: la topología del campo cambia, libera energía y forma estructuras de plasma que pueden abandonar el dispositivo.</p><div class="principle-card"><span class="card-kicker">PRINCIPIO DE MOMENTO</span><div class="momentum-line"><span class="momentum-label">plasma</span><span class="momentum-arrow">←</span><span class="momentum-equals">→</span><span class="momentum-label">nave</span></div><p>Al expulsar masa hacia atrás, la nave recibe impulso hacia adelante.</p></div></div></section>
+
+      <section id="arquitectura" class="architecture section-pad"><div class="section-heading-row"><div><p class="eyebrow">02 / Arquitectura</p><h2>Del campo al empuje.</h2></div><p class="section-aside">Una secuencia conceptual para separar con claridad cada fuente de energía, transformación y observación.</p></div><div class="flow-grid"><article class="flow-card"><span class="flow-number">01</span><div class="flow-icon icon-power">⌁</div><h3>Fuente eléctrica</h3><p>Potencia disponible para sostener la descarga y el sistema magnético.</p><span class="flow-tag">ENTRADA</span></article><div class="flow-connector">→</div><article class="flow-card"><span class="flow-number">02</span><div class="flow-icon icon-fuel">◌</div><h3>Inyección + ionización</h3><p>El propelente pasa a un estado cargado dentro de la cámara.</p><span class="flow-tag">PLASMA</span></article><div class="flow-connector">→</div><article class="flow-card flow-card-highlight"><span class="flow-number">03</span><div class="flow-icon icon-reconnect">✳</div><h3>Reconexión</h3><p>La topología del campo libera energía al plasma y organiza el chorro.</p><span class="flow-tag">NÚCLEO</span></article><div class="flow-connector">→</div><article class="flow-card"><span class="flow-number">04</span><div class="flow-icon icon-thrust">↠</div><h3>Expulsión</h3><p>El plasmoide se desacopla y transfiere momento a la nave.</p><span class="flow-tag">SALIDA</span></article></div></section>
+
+      <section id="modelo" class="model-section section-pad"><div class="model-equation"><p class="eyebrow">03 / Modelo mínimo</p><h2>Resistive MHD</h2><p class="model-lede">Primer nivel para estudiar transporte, difusión y reconexión. La ecuación no sustituye un modelo cinético: define un punto de partida y sus límites.</p><div class="equation-card"><span>∂B</span><i>/</i><span>∂t</span><b>=</b><span>∇ × (u × B)</span><b>+</b><span>η<sub>m</sub> ∇²B</span></div><div class="equation-legend"><span><i>u</i> velocidad del plasma</span><span><i>B</i> campo magnético</span><span><i>η<sub>m</sub></i> difusión magnética</span></div></div><div class="model-boundaries"><p class="eyebrow">Mapa de fidelidad</p><div class="boundary-item"><span class="boundary-dot dot-active"></span><div><strong>MHD resistiva</strong><p>Geometría global y balance de energía.</p></div><em>punto de partida</em></div><div class="boundary-item"><span class="boundary-dot dot-next"></span><div><strong>Hall-MHD</strong><p>Escalas donde la separación ión-electrón importa.</p></div><em>siguiente capa</em></div><div class="boundary-item"><span class="boundary-dot dot-open"></span><div><strong>Modelo cinético</strong><p>Distribuciones no maxwellianas y microfísica.</p></div><em>frontera abierta</em></div><div class="model-warning"><span>!</span><p>Una simulación con residuo bajo es una observación numérica, no una validación experimental.</p></div></div></section>
+
+      <section id="explorador" class="explorer section-pad"><div class="section-heading-row"><div><p class="eyebrow">04 / Explorador</p><h2>Juega con los parámetros.</h2></div><p class="section-aside">Relaciones ideales de primer orden. Sirven para dimensionar preguntas, no para cerrar el diseño del motor.</p></div><div class="explorer-grid"><form class="controls" id="parameter-form"><div class="control-heading"><span class="card-kicker">ENTRADAS DEL MODELO</span><span class="mono-label">SI / estimación</span></div><label class="range-control" for="mass-flow"><span><strong>Flujo másico</strong><output id="mass-flow-value">0.80</output> mg/s</span><input id="mass-flow" type="range" min="0.10" max="5" step="0.05" value="0.80"></label><label class="range-control" for="exhaust-velocity"><span><strong>Velocidad de escape</strong><output id="exhaust-velocity-value">28.0</output> km/s</span><input id="exhaust-velocity" type="range" min="5" max="80" step="0.5" value="28"></label><label class="range-control" for="efficiency"><span><strong>Eficiencia de conversión</strong><output id="efficiency-value">42</output> %</span><input id="efficiency" type="range" min="5" max="80" step="1" value="42"></label><div class="control-footnote"><span class="mini-check">✓</span> Conservación de momento activada</div></form><div class="readouts" aria-live="polite"><div class="readout-main"><span class="card-kicker">EMPUJE ESTIMADO</span><strong id="thrust-output">22.4</strong><span class="readout-unit">mN</span><p>ṁ × v<sub>e</sub> · idealizado</p></div><div class="readout-secondary"><div><span>Potencia de chorro</span><strong id="jet-power-output">313.6</strong><small>W</small></div><div><span>Impulso específico</span><strong id="isp-output">2 855</strong><small>s</small></div></div><div class="readout-bar"><span>Rendimiento relativo</span><div class="bar-track"><i id="efficiency-bar"></i></div><strong id="efficiency-readout">42%</strong></div></div></div></section>
+
+      <section id="mvp" class="mvp section-pad"><div class="section-heading-row"><div><p class="eyebrow">05 / Ruta de investigación</p><h2>Un MVP científico viable.</h2></div><p class="section-aside">Cada etapa produce una observación trazable y abre el siguiente nivel de complejidad.</p></div><div class="timeline"><div class="timeline-step timeline-done"><span class="timeline-line"></span><span class="timeline-marker">01</span><div><span class="step-status">BASELINE · OBSERVABLE</span><h3>Reconexión 2D conocida</h3><p>Reproducir un caso de referencia y medir tasa de reconexión, energía y velocidad del plasma.</p></div></div><div class="timeline-step"><span class="timeline-line"></span><span class="timeline-marker">02</span><div><span class="step-status">MODELO · EN DISEÑO</span><h3>Cámara + tobera magnética</h3><p>Introducir geometría simplificada, condiciones de contorno y control de desprendimiento.</p></div></div><div class="timeline-step"><span class="timeline-marker">03</span><div><span class="step-status">VALIDACIÓN · ABIERTA</span><h3>Balance de momento</h3><p>Comparar flujo de momento, eficiencia, estabilidad y resultados experimentales publicados.</p></div></div></div></section>
+
+      <section class="closing section-pad"><div class="closing-copy"><p class="eyebrow">Una hipótesis con límites claros</p><h2>La reconexión es prometedora.<br><em>El empuje todavía hay que demostrarlo.</em></h2><p>La investigación gana fuerza cuando separa la intuición física, el modelo matemático, la simulación y la evidencia experimental.</p></div><div class="closing-stamp"><span>RESEARCH<br>NOT<br>SCI-FI</span><i>✳</i></div></section>
+    </main>
+
+    <footer class="footer"><div class="footer-brand"><span class="brand-mark small"><i></i><i></i><i></i></span><span>RECONEXIÓN / 01</span></div><span>Maqueta conceptual · SEION Math Core · 2026</span><a href="#top">Volver arriba ↑</a></footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
