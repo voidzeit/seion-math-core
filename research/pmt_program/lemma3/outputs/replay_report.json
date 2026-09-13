@@ -1,0 +1,2503 @@
+[
+ {
+  "file": "outputs/random_O1_m1_eta0.9_s11.jsonl",
+  "order": "O1",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0014382432163273172,
+  "replayed_v": -2.220446049250313e-16,
+  "theta": 0.9557232810513344,
+  "lam_phi": [
+   0.0,
+   0.0
+  ],
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.5727619863674679,
+   0.3188717519962668,
+   0.980356477101096
+  ],
+  "child_chain_states": [
+   [
+    0.9995590270162418,
+    0.029698666539041643
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.9995590270162418,
+    0.0197397633768002
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.1_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.1,
+  "recorded_v": 5.674297832292119e-05,
+  "replayed_v": 0.0,
+  "theta": 0.05203816594160788,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9928173799802612,
+   0.9654240723050634,
+   0.23545407388585685
+  ],
+  "child_chain_states": [
+   [
+    0.9941631586045461,
+    0.18341590794424945
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9941631586045461,
+    0.18341590794424917
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.1_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.1,
+  "recorded_v": 4.321744393420701e-05,
+  "replayed_v": 0.0,
+  "theta": 0.013509356470126226,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9995851775214463,
+   0.9988270271185585,
+   0.03895024849289902
+  ],
+  "child_chain_states": [
+   [
+    0.9996763979610956,
+    0.025440892022772558
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9996763979610956,
+    0.02544089202277322
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.1_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.1,
+  "recorded_v": 6.824497386004325e-05,
+  "replayed_v": 1.1102230246251565e-16,
+  "theta": 0.08221382045048357,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.9866561235312397,
+   0.947533215548964,
+   0.2825486627736032
+  ],
+  "child_chain_states": [
+   [
+    0.99,
+    0.2003348423231196
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.99,
+    0.20033484232311913
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.0006837792868379378,
+  "replayed_v": 1.1102230246251565e-16,
+  "theta": 0.1807010728980927,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.9381330156540939,
+   0.8187792055673255,
+   0.5099371792836882
+  ],
+  "child_chain_states": [
+   [
+    0.9536605760559377,
+    0.32923610638559564
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.9536605760559377,
+    0.3292361063855954
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.00012099499430040517,
+  "replayed_v": 0.0,
+  "theta": 0.05203816594160788,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.945669141633662,
+   0.7751381098348232,
+   0.6099588863926182
+  ],
+  "child_chain_states": [
+   [
+    0.9469510101244026,
+    0.5579207204510102
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9469510101244026,
+    0.55792072045101
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.0006783713967235538,
+  "replayed_v": 0.0,
+  "theta": 0.2679010160430383,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9621769699215521,
+   0.9167217050882039,
+   0.3086060018131879
+  ],
+  "child_chain_states": [
+   [
+    0.9990030183672851,
+    0.04465752655118454
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9990030183672851,
+    0.03624032602524736
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.0009085131151126413,
+  "replayed_v": 0.0,
+  "theta": 0.11793084792845925,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9776926588213171,
+   0.9357279407253057,
+   0.29405038503791264
+  ],
+  "child_chain_states": [
+   [
+    0.9845310013145502,
+    0.17611953710945358
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9845310013145502,
+    0.1761195371094533
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.00044694510562215406,
+  "replayed_v": 1.1102230246251565e-16,
+  "theta": 0.2578965842150981,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.8799050143518192,
+   0.5692120417643404,
+   0.8672818922458931
+  ],
+  "child_chain_states": [
+   [
+    0.91,
+    0.609385308030795
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.91,
+    0.6093853080307949
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.00029406267918730133,
+  "replayed_v": 0.0,
+  "theta": 0.2593349437164004,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.8763240117818675,
+   0.5064140707462835,
+   0.954662159914331
+  ],
+  "child_chain_states": [
+   [
+    0.9066414326964278,
+    0.6953272161979306
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9066414326964278,
+    0.6953272161979305
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 4.9288111799716816e-05,
+  "replayed_v": 0.0,
+  "theta": 0.013509356470126226,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9969161458830613,
+   0.9928006494359087,
+   0.0908963234205379
+  ],
+  "child_chain_states": [
+   [
+    0.9970071227514324,
+    0.07738696695041297
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9970071227514324,
+    0.07738696695041246
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.0010204359752692405,
+  "replayed_v": 1.1102230246251565e-16,
+  "theta": 0.17140659237999045,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.8770292429880753,
+   0.4808854538699686,
+   0.9904521840004218
+  ],
+  "child_chain_states": [
+   [
+    0.8900725247375263,
+    0.8190455916204312
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.8900725247375263,
+    0.8190455916204311
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.0020510432760832975,
+  "replayed_v": 0.0,
+  "theta": 0.28520009356918796,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9033638447076203,
+   0.6529469001440986,
+   0.7629579707544927
+  ],
+  "child_chain_states": [
+   [
+    0.941390979700369,
+    0.47775787718530466
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.941390979700369,
+    0.47775787718530477
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.00021574628192777556,
+  "replayed_v": 1.1102230246251565e-16,
+  "theta": 0.08221382045048357,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.9069263357711396,
+   0.6985392638013682,
+   0.6915991284812786
+  ],
+  "child_chain_states": [
+   [
+    0.91,
+    0.609385308030795
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.91,
+    0.6093853080307949
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.0008389568534893366,
+  "replayed_v": 0.0,
+  "theta": 0.2751937309676832,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.876798314135103,
+   0.491472157779328,
+   0.9757701231834401
+  ],
+  "child_chain_states": [
+   [
+    0.9110799072774225,
+    0.700576392215757
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9110799072774225,
+    0.700576392215757
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.001188197643402833,
+  "replayed_v": 0.0,
+  "theta": 0.27960775791190656,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999998,
+   0.9609005290336617,
+   0.9171238346751034,
+   0.3030121263689922
+  ],
+  "child_chain_states": [
+   [
+    0.999726130270247,
+    0.023404368457085642
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.999726130270247,
+    0.023404368457084136
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.0003083425593384259,
+  "replayed_v": 0.0,
+  "theta": 0.18183141705278535,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9218464397578188,
+   0.694617071670509,
+   0.717417213851067
+  ],
+  "child_chain_states": [
+   [
+    0.9372985894535971,
+    0.5355857967982817
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9372985894535971,
+    0.5355857967982817
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.3_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.3,
+  "recorded_v": 0.0008520581371684877,
+  "replayed_v": 0.0,
+  "theta": 0.12564954101679893,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9296668846925373,
+   0.7572989266278196,
+   0.6187714060990601
+  ],
+  "child_chain_states": [
+   [
+    0.9370541732165644,
+    0.4931218650822613
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9370541732165644,
+    0.49312186508226125
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.003480334869290558,
+  "replayed_v": 0.0,
+  "theta": 0.41356289607717156,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.9152694783630164,
+   0.8265086770243611,
+   0.4440429519330276
+  ],
+  "child_chain_states": [
+   [
+    0.999535519059057,
+    0.030480055855855923
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.999535519059057,
+    0.030480055855853862
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0025951899009181156,
+  "replayed_v": 0.0,
+  "theta": 0.1807010728980927,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.7859492607619251,
+   0.5031650655718098,
+   0.8760371655864582
+  ],
+  "child_chain_states": [
+   [
+    0.7989579433427809,
+    0.6953360926883655
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.7989579433427809,
+    0.6953360926883655
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0008681824725843557,
+  "replayed_v": 5.551115123125783e-17,
+  "theta": 0.05203816594160788,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.7782071622833939,
+   0.2598503304620228,
+   1.2303488258724837
+  ],
+  "child_chain_states": [
+   [
+    0.7792620335874068,
+    1.178310659930876
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.7792620335874068,
+    1.178310659930876
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0030233809142305446,
+  "replayed_v": 0.0,
+  "theta": 0.5741777670100529,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.6847301153731993,
+   0.07527611344303271,
+   1.46063822056255
+  ],
+  "child_chain_states": [
+   [
+    0.8155051998996764,
+    0.8864604535524974
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.8155051998996764,
+    0.8864604535524974
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0005774697557959785,
+  "replayed_v": 0.0,
+  "theta": 0.2622267018332634,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.958856644192701,
+   0.9010835529723259,
+   0.3489040815320398
+  ],
+  "child_chain_states": [
+   [
+    0.9955556115712617,
+    0.09431526317730182
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9955556115712617,
+    0.07653840574409945
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0014756194371096099,
+  "replayed_v": 0.0,
+  "theta": 0.5267528890674351,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.5532232250531666,
+   -0.13776128459308226,
+   1.8224601642434741
+  ],
+  "child_chain_states": [
+   [
+    0.6399757511842844,
+    1.295707275176039
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.6399757511842844,
+    1.295707275176039
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0022818815754334087,
+  "replayed_v": 0.0,
+  "theta": 0.11793084792845925,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9251464063563877,
+   0.8163351105033743,
+   0.4898896592635239
+  ],
+  "child_chain_states": [
+   [
+    0.9316172210096099,
+    0.3719588113350646
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9316172210096099,
+    0.3719588113350645
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0018931141802701057,
+  "replayed_v": 0.0,
+  "theta": 0.5500943394147493,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.6368344868742315,
+   -0.047807966388218916,
+   1.6459382778314524
+  ],
+  "child_chain_states": [
+   [
+    0.747041650835956,
+    1.095843938416703
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.747041650835956,
+    1.095843938416703
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.00030905896722505793,
+  "replayed_v": 7.632783294297951e-17,
+  "theta": 0.2578965842150981,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999998,
+   0.618834295807873,
+   0.01602448528041185,
+   1.544898801801667
+  ],
+  "child_chain_states": [
+   [
+    0.6400000000000001,
+    1.2870022175865687
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.6400000000000001,
+    1.2870022175865687
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0011146455377652048,
+  "replayed_v": 6.938893903907228e-17,
+  "theta": 0.2593349437164004,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.6084370610249044,
+   -0.09516114817922582,
+   1.7278437137864027
+  ],
+  "child_chain_states": [
+   [
+    0.6294866297130914,
+    1.4685087700700021
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.6294866297130914,
+    1.4685087700700021
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 7.427469367426998e-05,
+  "replayed_v": 0.0,
+  "theta": 0.013509356470126226,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9865835513701308,
+   0.9711785248607272,
+   0.17694814760101898
+  ],
+  "child_chain_states": [
+   [
+    0.986673585303537,
+    0.163438791130893
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.986673585303537,
+    0.16343879113089282
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0012148193876213575,
+  "replayed_v": 0.0,
+  "theta": 0.38383128985869674,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.8131336277052019,
+   0.514845804669274,
+   0.8851639579677016
+  ],
+  "child_chain_states": [
+   [
+    0.8769428676584702,
+    0.501332668109005
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.8769428676584702,
+    0.501332668109005
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0021244665056702194,
+  "replayed_v": 2.220446049250313e-16,
+  "theta": 0.6295912196634862,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.7984988695287134,
+   0.5647205624627941,
+   0.7852270666674753
+  ],
+  "child_chain_states": [
+   [
+    0.9879131689300226,
+    0.15563584700398897
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9879131689300226,
+    0.15563584700398905
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0006342605765832232,
+  "replayed_v": 0.0,
+  "theta": 0.17140659237999045,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.569802496550075,
+   -0.1848605947196393,
+   1.9012046016663073
+  ],
+  "child_chain_states": [
+   [
+    0.5782766660985404,
+    1.7297980092863168
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.5782766660985404,
+    1.7297980092863168
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0032871254033046693,
+  "replayed_v": 5.551115123125783e-17,
+  "theta": 0.4707537735548127,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.7044794877067989,
+   0.20950482293531675,
+   1.2688390170049073
+  ],
+  "child_chain_states": [
+   [
+    0.7904605173360312,
+    0.7980852434500945
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.7904605173360312,
+    0.7980852434500946
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0013502455425710158,
+  "replayed_v": 0.0,
+  "theta": 0.28520009356918796,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.7229900358454386,
+   0.19742970303202662,
+   1.294209400659122
+  ],
+  "child_chain_states": [
+   [
+    0.7534243285754129,
+    1.0090093070899342
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.7534243285754129,
+    1.0090093070899342
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0010421493893643108,
+  "replayed_v": 0.0,
+  "theta": 0.08221382045048357,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.6378383020808015,
+   0.127706626422869,
+   1.3692160380370524
+  ],
+  "child_chain_states": [
+   [
+    0.6400000000000001,
+    1.2870022175865687
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.6400000000000001,
+    1.2870022175865687
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0009885792986954883,
+  "replayed_v": 6.938893903907228e-17,
+  "theta": 0.2751937309676832,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.6216746867685902,
+   -0.11373905281179102,
+   1.754788592360227
+  ],
+  "child_chain_states": [
+   [
+    0.645981301340155,
+    1.479594861392544
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.645981301340155,
+    1.479594861392544
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.0034639748363374245,
+  "replayed_v": 1.1102230246251565e-16,
+  "theta": 0.27960775791190656,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999997,
+   0.9599898185001606,
+   0.9084901543411074,
+   0.3290370331315845
+  ],
+  "child_chain_states": [
+   [
+    0.9987786220839742,
+    0.0494292752196779
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.9987786220839742,
+    0.049429275219676654
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.005720420608057442,
+  "replayed_v": 0.0,
+  "theta": 0.47327241387820723,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.8872045598919869,
+   0.7546447010133147,
+   0.5536956404524765
+  ],
+  "child_chain_states": [
+   [
+    0.9967677950075419,
+    0.08042322657426958
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9967677950075419,
+    0.08042322657426897
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.003141664991778148,
+  "replayed_v": 0.0,
+  "theta": 0.46202128699108636,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.8342603557814788,
+   0.49570368313388297,
+   0.9345462723295118
+  ],
+  "child_chain_states": [
+   [
+    0.9319748204834961,
+    0.47252498533842546
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9319748204834961,
+    0.4725249853384255
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.004492760426286324,
+  "replayed_v": 0.0,
+  "theta": 0.36030778455956486,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999998,
+   0.779531539773475,
+   0.28989846270630326,
+   1.1897542065608095
+  ],
+  "child_chain_states": [
+   [
+    0.8330212016330277,
+    0.8294464220012445
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.8330212016330277,
+    0.8294464220012444
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.002433844866175733,
+  "replayed_v": 0.0,
+  "theta": 0.42245412244844915,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.6064292728995521,
+   -0.051404606911869946,
+   1.6556642059332185
+  ],
+  "child_chain_states": [
+   [
+    0.6648820472381227,
+    1.2332100834847695
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.6648820472381227,
+    1.2332100834847695
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.002244633400587781,
+  "replayed_v": 8.326672684688674e-17,
+  "theta": 0.18183141705278535,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.7270185904967372,
+   0.18537370455493868,
+   1.3129714348761627
+  ],
+  "child_chain_states": [
+   [
+    0.7392050020371677,
+    1.1311400178233775
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.7392050020371677,
+    1.1311400178233775
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.00041748384080686485,
+  "replayed_v": 0.0,
+  "theta": 0.12564954101679893,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.7316699220113793,
+   0.28740996168462785,
+   1.1671070975702025
+  ],
+  "child_chain_states": [
+   [
+    0.7374838935610253,
+    1.0414575565534037
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.7374838935610253,
+    1.0414575565534037
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.6_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.6,
+  "recorded_v": 0.00020842580689917067,
+  "replayed_v": 1.1102230246251565e-16,
+  "theta": 0.49839265110522735,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.772635287740539,
+   0.3934823558884623,
+   1.0364564046588023
+  ],
+  "child_chain_states": [
+   [
+    0.8796419426086859,
+    0.5380637535535749
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.8796419426086859,
+    0.5380637535535749
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.004687987307890107,
+  "replayed_v": 1.1102230246251565e-16,
+  "theta": 0.41356289607717156,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.9144071176257756,
+   0.816658921513346,
+   0.46660186818841776
+  ],
+  "child_chain_states": [
+   [
+    0.9985937634258901,
+    0.05303897211124628
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.9985937634258901,
+    0.053038972111244816
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0009523035312376527,
+  "replayed_v": 0.0,
+  "theta": 1.0976540670774113,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.996439359479863,
+   0.4369346914192072,
+   0.19086006190379007,
+   1.117004323165386
+  ],
+  "child_chain_states": [
+   [
+    0.9998937339178656,
+    0.014578612023628684
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9995616763336853,
+    0.9991062904721628,
+    0.0003909804763792323
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0010579186522941264,
+  "replayed_v": 0.0,
+  "theta": 0.1807010728980927,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.42710220509475083,
+   0.0765171297828314,
+   1.390669709519068
+  ],
+  "child_chain_states": [
+   [
+    0.43417141082219823,
+    1.2099686366209754
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.43417141082219823,
+    1.2099686366209754
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 8.345511658905402e-05,
+  "replayed_v": 0.0,
+  "theta": 0.05203816594160788,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.4420590090175721,
+   -0.22410247932008245,
+   2.102440780884681
+  ],
+  "child_chain_states": [
+   [
+    0.4426582265343124,
+    2.0504026149430734
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.4426582265343124,
+    2.0504026149430734
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.003283803205456931,
+  "replayed_v": 0.0,
+  "theta": 0.5741777670100529,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.4302181845666779,
+   -0.22337475134962514,
+   2.116725835033379
+  ],
+  "child_chain_states": [
+   [
+    0.5123846004849706,
+    1.5425480680233266
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.5123846004849706,
+    1.5425480680233266
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0008114722602917679,
+  "replayed_v": 1.3877787807814457e-17,
+  "theta": 0.9472921948329804,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.254508928014006,
+   -0.12118309451958983,
+   2.0670617098316146
+  ],
+  "child_chain_states": [
+   [
+    0.43588989435406733,
+    1.1197695149986342
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.43588989435406733,
+    1.1197695149986342
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0007843971691454676,
+  "replayed_v": 0.0,
+  "theta": 0.253347852768441,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9501950698824524,
+   0.8731198688608898,
+   0.4055517298719138
+  ],
+  "child_chain_states": [
+   [
+    0.9865625269826165,
+    0.1641199293394566
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9865625269826165,
+    0.13318605408397333
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0004215115390028834,
+  "replayed_v": 5.551115123125783e-17,
+  "theta": 0.7741039414565385,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.29542746723600677,
+   -0.20332202138802902,
+   2.3298427117568
+  ],
+  "child_chain_states": [
+   [
+    0.4131576862651323,
+    1.5557387703002612
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.4131576862651323,
+    1.5557387703002612
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0035771648368680964,
+  "replayed_v": 0.0,
+  "theta": 0.11793084792845925,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.7922021787354852,
+   0.571379703519574,
+   0.7651840260141727
+  ],
+  "child_chain_states": [
+   [
+    0.7977431325037273,
+    0.6472531780857135
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.7977431325037273,
+    0.6472531780857136
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.009673363677264457,
+  "replayed_v": 0.0,
+  "theta": 0.709610039687212,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.7580507523417932,
+   0.5555782865693133,
+   0.748215904128484
+  ],
+  "child_chain_states": [
+   [
+    0.999254886166199,
+    0.03860586444127186
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.999254886166199,
+    0.03860586444127176
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0009719254469932048,
+  "replayed_v": 0.0,
+  "theta": 0.5500943394147493,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999998,
+   0.29923077589681213,
+   -0.2318061479959178,
+   2.4569949160682243
+  ],
+  "child_chain_states": [
+   [
+    0.3510140506115917,
+    1.906900576653475
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.3510140506115917,
+    1.906900576653475
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.00040766764100236275,
+  "replayed_v": 0.0,
+  "theta": 0.2578965842150981,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.18371643156796222,
+   -0.14690081050656523,
+   2.4974356142123666
+  ],
+  "child_chain_states": [
+   [
+    0.18999999999999997,
+    2.2395390299972684
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.18999999999999997,
+    2.2395390299972684
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.006973414263267613,
+  "replayed_v": 5.551115123125783e-17,
+  "theta": 0.7364084332896408,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.6535430765486097,
+   0.21470947187151543,
+   1.236048000244114
+  ],
+  "child_chain_states": [
+   [
+    0.8821107184310569,
+    0.49963956695447337
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.8821107184310569,
+    0.4996395669544733
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 9.986367578773692e-05,
+  "replayed_v": 0.0,
+  "theta": 0.2593349437164004,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.17456242309512363,
+   -0.16531938299078633,
+   2.8147172589328373
+  ],
+  "child_chain_states": [
+   [
+    0.1806016076726173,
+    2.5553823152164368
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.1806016076726173,
+    2.5553823152164368
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0005536671563532991,
+  "replayed_v": 0.0,
+  "theta": 0.013509356470126226,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.9597416915409952,
+   0.9174663065719195,
+   0.29791255854043336
+  ],
+  "child_chain_states": [
+   [
+    0.9598292759320216,
+    0.2844032020703071
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9598292759320216,
+    0.2844032020703071
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.000375030388831174,
+  "replayed_v": 2.7755575615628914e-17,
+  "theta": 0.8424101115027576,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.2901571766135177,
+   -0.11068552621154469,
+   1.962179626501392
+  ],
+  "child_chain_states": [
+   [
+    0.43588989435406733,
+    1.1197695149986342
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.43588989435406733,
+    1.1197695149986342
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0023416570693802208,
+  "replayed_v": 0.0,
+  "theta": 0.38383128985869674,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.5962189276280476,
+   0.18448359702848946,
+   1.2562105770896164
+  ],
+  "child_chain_states": [
+   [
+    0.6430061656925532,
+    0.8723792872309195
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.6430061656925532,
+    0.8723792872309196
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.012672454170468916,
+  "replayed_v": 0.0,
+  "theta": 0.6295912196634863,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.7788072793740165,
+   0.4838603225118793,
+   0.9004163581669262
+  ],
+  "child_chain_states": [
+   [
+    0.9635504779189762,
+    0.27082513850343987
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9635504779189762,
+    0.2708251385034399
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0025130151354417207,
+  "replayed_v": 0.0,
+  "theta": 0.7757415976611867,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.3977300317930856,
+   -0.21241263401339372,
+   2.134194619889052
+  ],
+  "child_chain_states": [
+   [
+    0.5571213848374329,
+    1.3584530222278657
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.5571213848374329,
+    1.3584530222278657
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.00038349435939064036,
+  "replayed_v": 0.0,
+  "theta": 0.6443596808984868,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.6570159853138885,
+   0.20680146854562792,
+   1.2505939514087743
+  ],
+  "child_chain_states": [
+   [
+    0.8217994650430142,
+    0.6062342705102873
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.8217994650430142,
+    0.6062342705102873
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.000737686644966401,
+  "replayed_v": 4.163336342344337e-17,
+  "theta": 0.4707537735548127,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.37450647738296056,
+   -0.10663223703875345,
+   1.859518320769849
+  ],
+  "child_chain_states": [
+   [
+    0.4202146251574568,
+    1.388764547215036
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.4202146251574568,
+    1.388764547215036
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.01031595818864181,
+  "replayed_v": 2.7755575615628914e-17,
+  "theta": 0.881781829630343,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.5758347300364937,
+   0.1431831663845879,
+   1.3195067590348486
+  ],
+  "child_chain_states": [
+   [
+    0.9057183632644809,
+    0.43772492940450564
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9057183632644809,
+    0.4377249294045056
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0013870106578951213,
+  "replayed_v": 2.7755575615628914e-17,
+  "theta": 0.28520009356918796,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.346026494397127,
+   -0.15677285012603867,
+   2.0409979422286133
+  ],
+  "child_chain_states": [
+   [
+    0.3605924926829738,
+    1.7557978486594255
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.3605924926829738,
+    1.7557978486594255
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.004964975491186185,
+  "replayed_v": 0.0,
+  "theta": 0.7482286216092171,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.5924182676511236,
+   0.10391572818453233,
+   1.39447473459557
+  ],
+  "child_chain_states": [
+   [
+    0.8083260739081416,
+    0.6462461129863527
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.8083260739081416,
+    0.6462461129863527
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 1.0564024619630352e-05,
+  "replayed_v": 0.0,
+  "theta": 0.08221382045048357,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.1893582459302379,
+   -0.1292063885040488,
+   2.321752850447752
+  ],
+  "child_chain_states": [
+   [
+    0.18999999999999997,
+    2.2395390299972684
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.18999999999999997,
+    2.2395390299972684
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.00010751710257533853,
+  "replayed_v": 2.7755575615628914e-17,
+  "theta": 0.2751937309676832,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.1994657084259151,
+   -0.19103809210789868,
+   2.8498671817141776
+  ],
+  "child_chain_states": [
+   [
+    0.20726453986966273,
+    2.574673450746494
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.20726453986966273,
+    2.574673450746494
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0001763075863899788,
+  "replayed_v": 0.0,
+  "theta": 0.27960775791190656,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999997,
+   0.9576105042892933,
+   0.8943144019493919,
+   0.3656206563873509
+  ],
+  "child_chain_states": [
+   [
+    0.996303170653929,
+    0.0860128984754445
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.996303170653929,
+    0.0860128984754447
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0020961214862041944,
+  "replayed_v": 0.0,
+  "theta": 0.47327241387820723,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.8813796171116606,
+   0.7207922400311096,
+   0.6132185245920961
+  ],
+  "child_chain_states": [
+   [
+    0.9902235146536426,
+    0.1399461107138887
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9902235146536426,
+    0.13994611071388846
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.007173122072949956,
+  "replayed_v": 0.0,
+  "theta": 0.46202128699108636,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.7166302011196418,
+   0.20253418384688882,
+   1.2842717329139655
+  ],
+  "child_chain_states": [
+   [
+    0.8005669913631503,
+    0.8222504459228793
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.8005669913631503,
+    0.8222504459228792
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0007239658257525705,
+  "replayed_v": 0.0,
+  "theta": 0.3603077845595649,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9999999999999999,
+   0.5143176837570174,
+   -0.11867871682283024,
+   1.8036445636109377
+  ],
+  "child_chain_states": [
+   [
+    0.5496089806307085,
+    1.4433367790513727
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.5496089806307085,
+    1.4433367790513727
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 8.760616599451376e-05,
+  "replayed_v": 0.0,
+  "theta": 0.4224541224484492,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.20598162867406547,
+   -0.17305907268138976,
+   2.568388353493828
+  ],
+  "child_chain_states": [
+   [
+    0.22583587746586267,
+    2.145934231045379
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.22583587746586267,
+    2.145934231045379
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0006179800467763508,
+  "replayed_v": 0.0,
+  "theta": 0.18183141705278535,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.3386844774119012,
+   -0.1854244640638,
+   2.1501514274546825
+  ],
+  "child_chain_states": [
+   [
+    0.3443615652856474,
+    1.968320010401897
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.3443615652856474,
+    1.968320010401897
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.00042312578242871546,
+  "replayed_v": 4.163336342344337e-17,
+  "theta": 0.12564954101679893,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.33284100431457125,
+   -0.11946465801409278,
+   1.9379112559660583
+  ],
+  "child_chain_states": [
+   [
+    0.33548581459229976,
+    1.8122617149492595
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.33548581459229976,
+    1.8122617149492595
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m1_eta0.9_s11.jsonl",
+  "order": "O2",
+  "m": 1,
+  "eta": 0.9,
+  "recorded_v": 0.0019653010707844087,
+  "replayed_v": 1.1102230246251565e-16,
+  "theta": 0.49839265110522735,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   1.0,
+   0.5717704399779838,
+   0.07758239845007608,
+   1.434688455606441
+  ],
+  "child_chain_states": [
+   [
+    0.650958179789162,
+    0.9362958045012137
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.650958179789162,
+    0.9362958045012137
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m2_eta0.3_s21.jsonl",
+  "order": "O2",
+  "m": 2,
+  "eta": 0.3,
+  "recorded_v": 0.0002474766554206864,
+  "replayed_v": 0.0,
+  "theta": 0.27734648831751557,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9992330096060565,
+   0.8557282525886243,
+   0.2932914890694797,
+   1.2206852688120045
+  ],
+  "child_chain_states": [
+   [
+    0.9815600360080284,
+    0.19233780894431707
+   ],
+   [
+    0.9074607158641643,
+    0.7497601834045
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    0.9999999999999999,
+    0.9815600360080284,
+    0.1923378089443167
+   ],
+   [
+    1.0,
+    0.9074607158641643,
+    0.7497601834045
+   ]
+  ]
+ },
+ {
+  "file": "outputs/random_O2_m2_eta0.9_s21.jsonl",
+  "order": "O2",
+  "m": 2,
+  "eta": 0.9,
+  "recorded_v": 0.0008758054215471378,
+  "replayed_v": 0.0,
+  "theta": 0.49577795276564535,
+  "lam_phi": null,
+  "confirmed": false,
+  "law_kind": "phase",
+  "out_state_a_r_c_psi": [
+   0.9992330096060568,
+   0.5145800092417492,
+   -0.1142152449718072,
+   1.7947933514583854
+  ],
+  "child_chain_states": [
+   [
+    0.9116090322023414,
+    0.42361473498500146
+   ],
+   [
+    0.643525263545414,
+    0.8717012977810668
+   ]
+  ],
+  "child_states_a_r_psi": [
+   [
+    1.0,
+    0.9116090322023414,
+    0.4236147349850015
+   ],
+   [
+    1.0,
+    0.643525263545414,
+    0.8717012977810669
+   ]
+  ]
+ }
+]

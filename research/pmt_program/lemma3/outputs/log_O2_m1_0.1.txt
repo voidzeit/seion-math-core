@@ -1,0 +1,1 @@
+{"order": "O2", "m": 1, "eta": 0.1, "cases": 20000, "violations_lemma3": 3, "violations_root": 0, "max_v_lemma3": 6.824497386004325e-05, "max_v_root": 8.326672684688674e-17, "max_v_lemma3_proof_theta": 5.5289106626332796e-14}

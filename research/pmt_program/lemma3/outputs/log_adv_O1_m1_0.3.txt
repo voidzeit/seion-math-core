@@ -1,0 +1,1 @@
+{"order": "O1", "m": 1, "eta": 0.3, "min_margin_certified_norm": 0.10685430234108928, "counterexample": false}
