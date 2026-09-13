@@ -1,0 +1,220 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{question}{Questions for the reviewer}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Gram}{\operatorname{Gram}}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+
+\title[A tensor angle inequality and Gram domination]{A tensor angle inequality for projective norms and preservation of a Gram domination order under multilinear contractions}
+\author{Review note (extracted from Theorem R, v2)}
+\date{Tag \texttt{theorem-R-v2-review}, commit \texttt{3d920f9}, 13 September 2026. Status: advisory proof draft, not independently reviewed. Numbers in parentheses refer to the full note.}
+
+\begin{document}
+\maketitle
+
+\section{What is to be checked}
+
+Everything takes place in finite-dimensional \emph{real} Hilbert spaces. For
+$\rho\ge0$ and $\psi\in[0,\pi]$ let
+\[
+K(\rho,\psi):=\begin{pmatrix}1&\rho\cos\psi\\ \rho\cos\psi&\rho^2\end{pmatrix}
+\]
+be the Gram matrix of a unit vector and a vector of norm $\rho$ at angle $\psi$.
+Angles are $\angle(a,b)=\arccos\bigl(\ip ab/(\norm a\norm b)\bigr)$, and $\preceq$ is
+the Löwner order.
+
+\begin{definition}[Order O2]
+A pair $(F,R)$ is \emph{dominated by} $(\rho,\chi)$, with $\rho,\chi\ge0$, if
+$\Gram(F,R)\preceq K(\rho,\psi')$ for some $\psi'\in[0,\min(\chi,\pi)]$.
+\end{definition}
+
+\subsection*{Assumptions}
+\begin{enumerate}[label=\textup{(H\arabic*)}]
+\item $\mu:H_1\times\cdots\times H_m\to H$ is multilinear with
+  $\norm\mu:=\sup\{\norm{\mu(x_1,\dots,x_m)}:\norm{x_i}\le1\}\le1$, $m\ge1$.
+\item $P$ is an orthogonal projector on $H$, $Q=I-P$, and $\eta\in(0,1]$.
+\item For each $i$, $(F_i,R_i)\in H_i^2$ is dominated by $(\rho_i,\chi_i)$.
+\item \emph{Trajectory closure:} $\norm{Q\,\mu(R_1,\dots,R_m)}\le\eta\prod_i\norm{R_i}$.
+\end{enumerate}
+
+\subsection*{Output}
+$F:=\mu(F_1,\dots,F_m)$ and $R:=P\,\mu(R_1,\dots,R_m)$.
+
+\begin{theorem}[Claim; Lemma 4.2 of the full note]\label{thm:claim}
+Under \textup{(H1)--(H4)} there is $\theta\in[0,\arcsin\eta]$ such that $(F,R)$ is
+dominated by
+\[
+\Bigl(\cos\theta\prod_i\rho_i,\;\;\theta+\sum_i\chi_i\Bigr).
+\]
+Writing a label as $z=\rho e^{i\chi}$, this reads
+$z_{\mathrm{out}}=\cos\theta\,e^{i\theta}\prod_iz_i$. If $\prod_i\rho_i>0$ one may take
+$\sin\theta=\norm{Q\mu(R_1,\dots,R_m)}/\prod_i\rho_i$.
+\end{theorem}
+
+The analytic core is the following inequality. The question we would like a
+specialist to answer is whether it holds for arbitrary finite arity, and whether
+\S\ref{sec:proof} correctly derives Theorem~\ref{thm:claim} from it.
+
+\begin{theorem}[Tensor angle inequality; Theorem 3.1]\label{thm:TA}
+Let $u_i,v_i\in H_i$ be unit vectors, $\psi_i=\angle(u_i,v_i)$ and $S=\sum_{i=1}^m\psi_i$.
+For real $a,b$ with $ab\le0$,
+\[
+\Bigl\|a\bigotimes_iu_i+b\bigotimes_iv_i\Bigr\|_\pi\le\bigl|ae^{i\min(S,\pi)}+b\bigr|,
+\]
+where $\norm\cdot_\pi$ is the projective tensor norm. For $S\le\pi$ this is an equality.
+\end{theorem}
+
+\section{Two elementary lemmas}
+
+\begin{lemma}[Realization; Lemma 2.2]\label{lem:real}
+If $\Gram(F,R)\preceq K(\rho,\psi)$, then for a $2$-dimensional space $X$ with unit
+vectors $\hat F,\hat R$ at angle $\psi$ there is a linear map $B:X\to H$ with
+$\norm B\le1$, $B\hat F=F$ and $B(\rho\hat R)=R$. In particular $\norm F\le1$ and
+$\norm R\le\rho$.
+\end{lemma}
+
+\begin{proof}
+The Löwner inequality says $\norm{\alpha F+\beta R}\le\norm{\alpha\hat F+\beta\rho\hat R}$
+for all real $\alpha,\beta$. So $B$ is well defined and contractive on the span.
+Extend it by $0$ on the orthogonal complement; this also covers $\rho=0$ and
+$\psi\in\{0,\pi\}$.
+\end{proof}
+
+\begin{lemma}[Planar domination; Lemma 2.3]\label{lem:planar}
+Let $S\in[0,\pi]$, and suppose $\norm{af+bg}\le\abs{ae^{iS}+b}$ for all real $a,b$
+with $ab\le0$. Then $\Gram(f,g)\preceq K(1,\psi)$ for some $\psi\in[0,S]$.
+\end{lemma}
+
+\begin{proof}
+Let $G=\Gram(f,g)$. The cases $b=0$ and $a=0$ give $G_{11}\le1$ and
+$G_{22}\le1$. Put $\mu=\sqrt{(1-G_{11})(1-G_{22})}$. The hypothesis reads
+\[
+a^2(1-G_{11})+b^2(1-G_{22})-2\abs{ab}(\cos S-G_{12})\ge0,
+\]
+which holds for all $a,b$ if and only if $G_{12}+\mu\ge\cos S$. Since
+$K(1,\psi)-G$ has nonnegative diagonal, it is $\succeq0$ if and only if
+$\cos\psi\in[G_{12}-\mu,G_{12}+\mu]$. This interval meets $[\cos S,1]$, because
+$G_{12}-\mu\le1$ and $G_{12}+\mu\ge\cos S$.
+\end{proof}
+
+\begin{remark}
+Only a \emph{lower} bound on the alignment $G_{12}$ is available, and none is needed.
+Excess alignment is absorbed by choosing $\psi<S$. This is where the argument
+departs from a naive one that fixes the angle to equal $S$.
+\end{remark}
+
+\section{Proof of the tensor angle inequality}
+
+\emph{Reductions.} Take $a=1$ and $b=-t$ with $t\ge0$. If $S\ge\pi$ the right side is
+$1+t$, which is the triangle inequality, so assume $S<\pi$. One-dimensional factors
+embed isometrically into $\R^2$ without changing projective norms.
+
+\emph{Induction on $m$.} The case $m=1$ is
+$\norm{u-tv}^2=1+t^2-2t\cos\psi_1$. Let $m\ge2$, $X=\bigotimes_{i\ge2}u_i$,
+$Y=\bigotimes_{i\ge2}v_i$ and $S'=S-\psi_1$.
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item By associativity of $\otimes_\pi$ and duality, the norm equals
+  $\sup_\beta[\beta(u_1,X)-t\beta(v_1,Y)]$ over bilinear forms $\beta$ with
+  $\abs{\beta(z,W)}\le\norm z\norm W_\pi$.
+\item Fix a $2$-plane $\Pi\ni u_1,v_1$. Then $\beta(z,W)=\ip z{\Lambda W}$ for $z\in\Pi$,
+  with $\Lambda$ linear and $\norm{\Lambda W}\le\norm W_\pi$.
+\item Put $p=\Lambda X$ and $q=\Lambda Y$. By induction,
+  $\norm{\alpha p+\beta'q}\le\abs{\alpha e^{iS'}+\beta'}$ for $\alpha\beta'\le0$.
+  Lemmas~\ref{lem:planar} and~\ref{lem:real} then give unit $\hat p,\hat q$ at angle
+  $\tilde\psi\le S'$ and a contraction $C$ with $C\hat p=p$ and $C\hat q=q$.
+\item With $\mathrm{Rot}$ the rotation of $\Pi$ taking $v_1$ to $u_1$,
+  $\beta(u_1,X)-t\beta(v_1,Y)=\ip{u_1}{C\hat p-t\,\mathrm{Rot}\,C\hat q}\le\norm{C\hat p-t\,\mathrm{Rot}\,C\hat q}$.
+\item Let $V=(C,(I-C^*C)^{1/2})$, an isometry into $\Pi\oplus D$, and
+  $\tilde R=\mathrm{Rot}\oplus I$. For unit $y$ we have
+  $\ip y{\tilde Ry}\ge\cos\psi_1$, hence $\angle(y,\tilde Ry)\le\psi_1$. The
+  $\Pi$-component of $V\hat p-t\tilde RV\hat q$ is $C\hat p-t\,\mathrm{Rot}\,C\hat q$.
+  The vectors $V\hat p$ and $t\tilde RV\hat q$ have norms $1$ and $t$, and the angle
+  between them is at most $\tilde\psi+\psi_1\le S<\pi$.
+\end{enumerate}
+Hence the norm is at most $\abs{1-te^{iS}}$.
+
+\emph{Equality for $S\le\pi$.} Identify each $\Pi_i\cong\mathbb C$ with $v_i\mapsto1$
+and $u_i\mapsto e^{i\psi_i}$, and let $\pi_i$ be the orthogonal projection onto $\Pi_i$.
+For $\abs\lambda=1$, the form $W(x)=\mathrm{Re}(\lambda\prod\pi_ix_i)$ has norm at most $1$
+and gives $\mathrm{Re}(\lambda(e^{iS}-t))$. Choose $\lambda$. \qed
+
+\section{Proof of the claim}\label{sec:proof}
+
+\emph{Step 0: substitute the children.} By Lemma~\ref{lem:real}, choose unit
+$\hat F_i,\hat R_i$ at angles $\psi_i\le\min(\chi_i,\pi)$ and contractions $B_i$ with
+$B_i\hat F_i=F_i$ and $B_i(\rho_i\hat R_i)=R_i$. Put $\mu'(x):=\mu(B_1x_1,\dots,B_mx_m)$,
+so $\norm{\mu'}\le1$, and let $\rho:=\prod_i\rho_i$. Then $F=\mu'(\hat F)$ and
+$\mu(R_1,\dots)=\rho\,\mu'(\hat R)$.
+
+\emph{Case $\rho=0$.} Some $R_i=0$, so $R=0$ and $\norm F\le1$. Hence
+$\Gram(F,0)\preceq K(0,0)$; take $\theta=0$.
+
+\emph{Case $\rho>0$.}
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item \emph{Closure normalization.} By (H4) and $\norm{R_i}\le\rho_i$,
+  $\norm{Q\mu'(\hat R)}=\norm{Q\mu(R_1,\dots)}/\rho\le\eta$.
+\item \emph{Raw output satisfies (N$-$).} Put $f=\mu'(\hat F)$, $g=\mu'(\hat R)$,
+  $S=\sum\psi_i$ and $S'=\min(S,\pi)$. For $ab\le0$,
+  \[
+  \norm{af+bg}=\sup_{\norm\omega\le1}\ip\omega{\mu'(a\otimes\hat F+b\otimes\hat R)}\le\norm{a\otimes\hat F+b\otimes\hat R}_\pi\le\abs{ae^{iS'}+b}
+  \]
+  by Theorem~\ref{thm:TA}.
+\item \emph{Domination of the raw output.} Lemmas~\ref{lem:planar} and~\ref{lem:real}
+  give unit $\hat F',\hat E'$ at angle $\tilde\psi\le S'$ and a contraction $C$ with
+  $C\hat F'=f$ and $C\hat E'=g$.
+\item \emph{Dilation.} Let $V=(C,(I-C^*C)^{1/2})$ and $P'=P\oplus I$, and set
+  $\tilde F=V\hat F'$, $\tilde R=\rho P'V\hat E'$. The $H$-components of $\tilde F$ and
+  $\tilde R$ are $F$ and $R$, hence $\Gram(F,R)\preceq\Gram(\tilde F,\tilde R)$.
+\item \emph{Norms and angle.} $\norm{\tilde F}=1$. Since
+  $\norm{(I-P')V\hat E'}=\norm{Qg}\le\eta$, put $\theta:=\arcsin\norm{Qg}$. Then
+  $\norm{\tilde R}=\rho\cos\theta$. If $\tilde R\ne0$,
+  \[
+  \angle(\tilde F,\tilde R)\le\angle(V\hat F',V\hat E')+\angle(V\hat E',P'V\hat E')=\tilde\psi+\theta\le\textstyle\sum\chi_i+\theta .
+  \]
+  Therefore $\Gram(\tilde F,\tilde R)=K(\rho\cos\theta,\angle(\tilde F,\tilde R))$. If
+  $\tilde R=0$, the pair is dominated by $K(0,0)$. \qed
+\end{enumerate}
+
+\section{Why this matters and what has been checked}
+
+Applied at every non-root node of a projected multilinear tree, Theorem~\ref{thm:claim}
+makes the labels $z=\rho e^{i\chi}$ compose by complex multiplication. As a result,
+the sharp projected-error constant of such a tree depends only on its number of
+internal nodes; this is Theorem R of the full note. The same construction in
+$\R^2\cong\mathbb C$ attains the bound. If Theorem~\ref{thm:claim} fails, Theorem R
+falls back to the proved cases: chains of every length, all trees with at most four
+internal nodes, and bilinear roots fed by two chains.
+
+Numerical controls, which are not part of the proof:
+\begin{itemize}
+\item The claim, at arities $1$--$3$: $344\,000$ random cases plus adversarial
+  optimization, and $14\,000$ degenerate cases. No counterexample was found; the
+  largest violation at the proof angle is $6.7\cdot10^{-16}$.
+\item Theorem~\ref{thm:TA}, by cutting-plane LP for $m=2,3,4$: the upper estimate is
+  within $1.6\cdot10^{-7}$ of the bound.
+\end{itemize}
+
+\begin{question}
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item Is Theorem~\ref{thm:TA} correct for every finite $m$? Is it known?
+\item Does \S\ref{sec:proof} correctly derive Theorem~\ref{thm:claim}? In particular,
+  are Lemma~\ref{lem:planar} and the dilation step applied under their exact
+  hypotheses?
+\item Is anything used beyond (H1)--(H4)?
+\end{enumerate}
+\end{question}
+
+\end{document}

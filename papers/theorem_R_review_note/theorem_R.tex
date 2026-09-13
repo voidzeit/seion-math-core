@@ -1,0 +1,733 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem{question}{Question}
+\newtheorem*{thmR}{Theorem R}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Vint}{V_{\mathrm{int}}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Gram}{\operatorname{Gram}}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\PMTA}{\textsf{PMT-A}}
+
+\title[Theorem R]{Theorem R: Sharp Topology-Independent Stability of Real Projected Multilinear Trees}
+\author{Review note}
+\date{Version v2 (tag \texttt{theorem-R-v2-review}, commit \texttt{3d920f9}), 13 September 2026.
+Status: advisory proof draft; author audit only; not independently reviewed; novelty not established.}
+
+\begin{document}
+
+\begin{abstract}
+A projected multilinear tree composes independently chosen multilinear maps
+between finite-dimensional real Hilbert spaces along a rooted tree and projects
+orthogonally after every internal operation. Under a uniform operator-norm budget
+$M$ and a closure budget $\rho=\eta M$ on the part of each law that leaves the
+retained subspace on projected inputs, let $C^P_T(\eta)$ be the sharp constant for
+the projected output error. We prove that
+\[
+C^P_T(\eta)=\frac1\eta\max_{0\le\theta\le\arcsin\eta}\bigl|1-(\cos\theta\,e^{i\theta})^{k-1}\bigr|,
+\]
+where $k$ is the number of internal nodes of $T$. The constant depends on the number
+of internal nodes and on the leakage, but not on depth or topology. The upper bound
+rests on a Löwner-order state invariant and a tensor angle inequality for projective
+norms; the lower bound is an explicit construction valid for every tree.
+\end{abstract}
+
+\maketitle
+
+\section*{Introduction}
+
+\subsection*{The problem}
+A computation that alternates multilinear operations with orthogonal reductions is
+modelled by a rooted tree. Each internal node applies a multilinear law to its
+children's values, and a projector keeps only a retained subspace. Examples include
+truncated tensor-network contractions, Galerkin projections of polynomial
+nonlinearities, and reduced models of recursive compositions. The recursively
+reduced value $R_r$ is compared with the ambient value $F_r$ computed without any
+reduction. The natural question is extremal: if every law has norm at most $M$ and
+leaks at most $\rho$ out of its retained subspace on already-reduced inputs, how
+large can the projected error $\norm{P_rF_r-R_r}$ be?
+
+\subsection*{What was known}
+Telescoping over arguments gives the universal bound
+\begin{equation}\label{eq:universal}
+\norm{P_rF_r-R_r}\le(k-1)\,\rho\,M^{k-1}\prod_\ell\norm{z_\ell}.
+\end{equation}
+Indeed, by induction $\norm{F_v-R_v}\le k_v\rho M^{k_v-1}L_v$ at every node. The
+difference $\mu_v(F_c)-\mu_v(R_c)$ telescopes into one term per child, and the local
+defect $Q_v\mu_v(R_c)$ contributes one more $\rho$; at the root this defect is
+annihilated by $P_r$. The bound~\eqref{eq:universal} is asymptotically sharp as
+$\eta=\rho/M\to0$. For $k=2$ it is exact ($C_2^P\equiv1$). For $k=3$ the exact
+constant is $W_3(\eta)=\sqrt{4-3\eta^2}$ for $\eta\le\sqrt{2/3}$ and $2/(\sqrt3\eta)$
+above, for both three-node skeletons. This shows that orthogonality forbids
+simultaneous saturation of all local errors at positive leakage.
+
+\subsection*{What is proved here}
+For every tree the sharp constant is a single explicit function of the number $k$ of
+internal nodes and the leakage $\eta$ (Theorem R). The whole family of trees collapses
+to the one-parameter sequence $C_1,C_2,C_3,\dots$. Section~\ref{sec:consequences}
+records the resulting closed forms, the second-order coefficient, and the behaviour
+as $k\to\infty$.
+
+\subsection*{The idea}
+The state of a node is the $2\times2$ Gram matrix of its ambient and reduced values.
+States are ordered by Löwner domination against the Gram matrix of a unit vector and
+a vector of norm $\rho$ at an angle at most $\chi$ (order O2). Two facts make this
+order propagate through the tree:
+\begin{itemize}
+\item a projection step multiplies the chain label $\rho e^{i\chi}$ by
+  $w(\theta)=\cos\theta\,e^{i\theta}$, because isometric dilations preserve angles and
+  the closure budget;
+\item a multilinear node multiplies the labels of its children, by a tensor angle
+  inequality for projective norms.
+\end{itemize}
+The labels therefore compose as complex numbers, and the error is at most
+$\abs{1-\prod w(\theta_v)}$ over the $k-1$ non-root internal nodes. A concavity
+argument then shows that equal angles are extremal. Conversely, multiplication in
+$\R^2\cong\C$ realizes every such product exactly, for every tree.
+
+\subsection*{Relation to the literature}
+The triangle inequality for angles under nonexpansive maps also underlies the scaled
+relative graph calculus~\cite{RHY}. Isometric dilations of contractions are
+classical~\cite{NF}, and projective tensor norms are standard~\cite{Ryan}. We are not
+aware of the tensor angle inequality (Theorem~\ref{thm:TA}) or of Theorem R in the
+literature, but a systematic comparison has not been carried out, and no novelty is
+claimed.
+
+\subsection*{How to read this note}
+
+The argument splits into two independent halves:
+\begin{align*}
+\text{upper bound: }&\text{Definitions}\to\text{O2}\to\text{Tensor angle lemma}\to\text{Lemma 3}\\
+&\to\text{Multiplicative envelope}\to\text{Diagonal Lemma},\\
+\text{lower bound: }&\text{Universal sharp witness}.
+\end{align*}
+Sections~\ref{sec:tensor} and~\ref{sec:diagonal} use no tree vocabulary and can be
+read on their own. The step we regard as the one most in need of independent
+scrutiny is the passage \emph{tensor angle inequality $\Rightarrow$ preservation
+of the order O2 at a multilinear node} (Theorem~\ref{thm:TA} and
+Lemma~\ref{lem:lemma3}). It is also available as a separate short note.
+
+Throughout, $k$ denotes the \emph{number of internal nodes}, not the depth. A chain
+with $k$ internal nodes has depth $k$; a star with $k$ internal nodes has depth $2$.
+
+\section{Definitions}\label{sec:defs}
+
+\subsection{The class \PMTA}
+
+\begin{enumerate}[label=\textup{(A\arabic*)}]
+\item $T$ is a finite rooted tree with internal nodes $\Vint$, $k:=\abs{\Vint}\ge1$,
+  root $r$, and leaves $L$. Each internal node $v$ has $m_v\ge1$ ordered children,
+  some of which may be leaves and some internal.
+\item Every node $w$ carries a finite-dimensional real Hilbert space $H_w$ of
+  arbitrary dimension (dimension $2$ is allowed).
+\item Every internal $v$ carries an orthogonal projector $P_v$ of arbitrary rank.
+  Rank $0$, rank $1$ and $P_v=I$ are all allowed, also at the root. Write $Q_v:=I-P_v$.
+\item Every internal $v$ carries a multilinear map $\mu_v$ from the product of its
+  children's spaces to $H_v$, with
+  $\norm{\mu_v}:=\sup\{\norm{\mu_v(x_1,\dots)}:\norm{x_i}\le1\}\le M$.
+  Laws at different nodes are chosen independently.
+\item Leaves carry nonzero data $z_\ell$. Set $F_\ell=R_\ell=z_\ell$, and for internal $v$
+  \[
+  F_v=\mu_v(F_{\mathrm{children}}),\qquad R_v=P_v\,\mu_v(R_{\mathrm{children}}).
+  \]
+\item \emph{Closure.} For every internal $v$,
+  $\norm{Q_v\mu_v(x_1,\dots)}\le\rho\prod\norm{x_i}$ whenever each internal-child
+  slot receives a vector in that child's $\Ran P$. Leaf slots receive arbitrary
+  vectors. Here $0<\rho\le M$ and $\eta:=\rho/M\in(0,1]$; the value $\eta=0$ is not
+  part of the class.
+\item The projected error is $E^P_T:=\norm{P_rF_r-R_r}$, and
+  \[
+  C^P_T(\eta):=\sup\frac{E^P_T}{\rho\,M^{k-1}\prod_\ell\norm{z_\ell}},
+  \]
+  the supremum over all admissible realizations, dimensions and ranks.
+\end{enumerate}
+
+\subsection{Normalization and trajectory closure}
+
+\begin{enumerate}[label=\textup{(N\arabic*)}]
+\item \emph{Scaling.} The ratio is invariant under $\mu_v\mapsto\lambda\mu_v$ and
+  $z_\ell\mapsto\nu_\ell z_\ell$. We take $M=1$, $\rho=\eta$ and unit leaves.
+\item \emph{Leaf freezing.} Fix leaf arguments at the leaf data. At each internal $v$
+  with internal children $c_1,\dots,c_m$ ($m\ge0$) this gives a multilinear map on
+  the internal slots with norm $\le1$, the same $F$ and $R$, and
+  \[
+  \textup{(TC)}\qquad \norm{Q_v\mu_v(R_{c_1},\dots,R_{c_m})}\le\eta\prod_i\norm{R_{c_i}},
+  \]
+  because $R_{c_i}\in\Ran P_{c_i}$. For $m=0$, $\mu_v$ is a vector $f_v$ with
+  $\norm{f_v}\le1$ and $\norm{Q_vf_v}\le\eta$.
+\end{enumerate}
+
+The upper bound uses only norms $\le1$, orthogonality of each $P_v$, and (TC). The
+witness satisfies the full closure (A6).
+
+\subsection{The theorem}
+
+Let
+\[
+w(\theta):=\cos\theta\,e^{i\theta}=\tfrac12\bigl(1+e^{2i\theta}\bigr),\qquad
+C_k(\eta):=\frac1\eta\max_{0\le\theta\le\arcsin\eta}\bigl|1-w(\theta)^{k-1}\bigr|.
+\]
+
+\begin{thmR}
+For every finite rooted tree $T$ in real \PMTA{} with $k$ internal nodes and every
+$\eta\in(0,1]$,
+\[
+C^P_T(\eta)=C_k(\eta).
+\]
+\end{thmR}
+
+\begin{remark}
+At $k=2,3$ this recovers $C_2^P=1$ and the known two-regime constant
+$W_3(\eta)=\sqrt{4-3\eta^2}$ for $\eta\le\sqrt{2/3}$, $2/(\sqrt3\eta)$ above.
+As $\eta\downarrow0$, $C_k(\eta)=(k-1)-\frac{(k-1)(k-2)(k+6)}{24}\eta^2+O(\eta^4)$.
+\end{remark}
+
+\section{The order O2}\label{sec:O2}
+
+For $\rho\ge0$ and $\psi\in[0,\pi]$ put
+\[
+K(\rho,\psi):=\begin{pmatrix}1&\rho\cos\psi\\ \rho\cos\psi&\rho^2\end{pmatrix},
+\]
+the Gram matrix of a unit vector and a vector of norm $\rho$ at angle $\psi$.
+Angles are $\angle(a,b)=\arccos\bigl(\ip ab/(\norm a\norm b)\bigr)\in[0,\pi]$; this is a
+metric on the unit sphere. $\preceq$ denotes the Löwner order.
+
+\begin{definition}[O2]\label{def:O2}
+A pair $(F,R)$ is \emph{dominated by the label} $(\rho,\chi)$, with $\rho,\chi\ge0$, if
+\[
+\Gram(F,R)\preceq K(\rho,\psi')\quad\text{for some }\psi'\in[0,\min(\chi,\pi)].
+\]
+The label $\chi$ is a cumulative phase bookkeeping parameter. It is not
+reconstructed from the Gram matrix.
+\end{definition}
+
+\begin{lemma}[Realization]\label{lem:realization}
+Assume $\Gram(F,R)\preceq K(\rho,\psi)$ with $\rho\ge0$, $\psi\in[0,\pi]$. Let $X$ be a
+$2$-dimensional real space with unit vectors $\hat F,\hat R$ at angle $\psi$. Then
+there is $B:X\to H$ with $\norm B\le1$, $B\hat F=F$ and $B(\rho\hat R)=R$. In particular
+$\norm F\le1$ and $\norm R\le\rho$.
+\end{lemma}
+
+\begin{proof}
+For real $\alpha,\beta$ we have
+$\norm{\alpha F+\beta R}^2\le\norm{\alpha\hat F+\beta\rho\hat R}^2$. So
+$B(\alpha\hat F+\beta\rho\hat R):=\alpha F+\beta R$ is well defined and contractive
+on the span. Extend it by $0$ on the orthogonal complement. This covers $\rho=0$
+(forcing $R=0$) and $\psi\in\{0,\pi\}$ (forcing $R=\pm\rho F$).
+\end{proof}
+
+\begin{lemma}[(N$-$) implies O2]\label{lem:N-}
+Let $S\in[0,\pi]$ and let $f,g$ satisfy
+\[
+\textup{(N$-$)}\qquad \norm{af+bg}\le\abs{ae^{iS}+b}\quad\text{for all real }a,b\text{ with }ab\le0.
+\]
+Then $\Gram(f,g)\preceq K(1,\psi)$ for some $\psi\in[0,S]$.
+\end{lemma}
+
+\begin{proof}
+Let $G=\Gram(f,g)$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item The choices $b=0$ and $a=0$ give $G_{11},G_{22}\le1$. Put $\mu:=\sqrt{(1-G_{11})(1-G_{22})}$.
+\item (N$-$) reads $a^2(1-G_{11})+b^2(1-G_{22})-2\abs{ab}(\cos S-G_{12})\ge0$.
+  Minimizing over the ratio $\abs a:\abs b$, this holds for all $a,b$ if and only if
+  $G_{12}+\mu\ge\cos S$.
+\item Since its diagonal is nonnegative, $K(1,\psi)-G\succeq0$ if and only if
+  $\cos\psi\in[G_{12}-\mu,G_{12}+\mu]$.
+\item This interval meets $[\cos S,1]$: $G_{12}-\mu\le\sqrt{G_{11}G_{22}}\le1$, and
+  $\cos S\le G_{12}+\mu$ by (ii).
+\end{enumerate}
+Taking $\cos\psi$ in the intersection gives $\psi\in[0,S]$.
+\end{proof}
+
+\begin{remark}
+(N$-$) bounds the alignment $G_{12}$ only from below. Excess alignment is absorbed by
+a dilation angle $\psi<S$. This is the precise sense in which extra alignment
+cannot help the adversary.
+\end{remark}
+
+\section{The tensor angle lemma}\label{sec:tensor}
+
+For real Hilbert spaces $H_1,\dots,H_m$, $\norm{\cdot}_\pi$ denotes the projective
+tensor norm on $H_1\otimes\cdots\otimes H_m$. It is the dual of the multilinear
+operator norm: $\norm{\mathsf T}_\pi=\sup W(\mathsf T)$ over $m$-linear forms $W$ with
+$\abs{W(x_1,\dots,x_m)}\le\prod\norm{x_i}$.
+
+\begin{theorem}[Tensor angle inequality]\label{thm:TA}
+Let $u_i,v_i\in H_i$ be unit vectors, $\psi_i:=\angle(u_i,v_i)$ and
+$S:=\sum_{i=1}^m\psi_i$. For all real $a,b$ with $ab\le0$,
+\[
+\Bigl\|a\bigotimes_{i=1}^mu_i+b\bigotimes_{i=1}^mv_i\Bigr\|_\pi\le\bigl|ae^{i\min(S,\pi)}+b\bigr|.
+\]
+\end{theorem}
+
+\begin{proof}
+\emph{Reductions.} We may take $a=1$, $b=-t$ with $t\ge0$. If $S\ge\pi$, the right side
+is $1+t$ and the claim is the triangle inequality, so assume $S<\pi$. Factors of
+dimension one may be embedded isometrically into $\R^2$, since projective norms of
+Hilbert factors are preserved under isometric embeddings.
+
+\emph{Induction on $m$.} For $m=1$ the claim is the identity
+$\norm{u-tv}^2=1+t^2-2t\cos\psi_1$. Let $m\ge2$.
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item Put $X=\bigotimes_{i\ge2}u_i$, $Y=\bigotimes_{i\ge2}v_i$ and $S'=S-\psi_1$.
+  By associativity of $\otimes_\pi$ and duality, the left side equals
+  $\sup_\beta[\beta(u_1,X)-t\beta(v_1,Y)]$ over bilinear forms $\beta$ on
+  $H_1\times(\otimes_{i\ge2}H_i)$ with $\abs{\beta(z,W)}\le\norm z\norm W_\pi$.
+\item Fix a $2$-plane $\Pi\ni u_1,v_1$. By the Riesz representation,
+  $\beta(z,W)=\ip z{\Lambda W}$ for $z\in\Pi$, with $\norm{\Lambda W}\le\norm W_\pi$.
+\item Put $p=\Lambda X$ and $q=\Lambda Y$. The induction hypothesis gives
+  $\norm{\alpha p+\beta'q}\le\abs{\alpha e^{iS'}+\beta'}$ for $\alpha\beta'\le0$.
+\item Lemmas~\ref{lem:N-} and~\ref{lem:realization} give unit vectors $\hat p,\hat q$
+  at an angle $\tilde\psi\le S'$ and a contraction $C$ with $C\hat p=p$, $C\hat q=q$.
+\item Let $\mathrm{Rot}$ be the rotation of $\Pi$ taking $v_1$ to $u_1$. Then
+  $\beta(u_1,X)-t\beta(v_1,Y)=\ip{u_1}{C\hat p-t\,\mathrm{Rot}\,C\hat q}\le\norm{C\hat p-t\,\mathrm{Rot}\,C\hat q}$.
+\item Let $V=(C,(I-C^*C)^{1/2})$, an isometry into $\Pi\oplus D$, and
+  $\tilde R=\mathrm{Rot}\oplus I$. For unit $y$,
+  $\ip y{\tilde Ry}=\norm{y_\Pi}^2\cos\psi_1+\norm{y_D}^2\ge\cos\psi_1$, so
+  $\angle(y,\tilde Ry)\le\psi_1$.
+\item The $\Pi$-component of $V\hat p-t\tilde RV\hat q$ is
+  $C\hat p-t\,\mathrm{Rot}\,C\hat q$. The vectors $V\hat p$ and $t\tilde RV\hat q$ have
+  norms $1$ and $t$, and the angle between them is at most $\tilde\psi+\psi_1\le S<\pi$.
+\end{enumerate}
+Therefore the quantity in (5) is at most $\abs{1-te^{iS}}$.
+\end{proof}
+
+\begin{proposition}[Sharpness]\label{prop:TAsharp}
+If $S\le\pi$, equality holds in Theorem~\ref{thm:TA}.
+\end{proposition}
+
+\begin{proof}
+Identify each $\Pi_i\cong\C$ with $v_i\mapsto1$ and $u_i\mapsto e^{i\psi_i}$, and let
+$\pi_i$ be the orthogonal projection onto $\Pi_i$. For $\abs\lambda=1$ the form
+$W(x)=\mathrm{Re}\bigl(\lambda\prod_i\pi_ix_i\bigr)$ has norm at most $1$, and
+$W(\otimes u_i)-tW(\otimes v_i)=\mathrm{Re}\bigl(\lambda(e^{iS}-t)\bigr)$. Choose $\lambda$.
+\end{proof}
+
+\section{Lemma 3: O2 is preserved at non-root internal nodes}\label{sec:lemma3}
+
+\begin{lemma}[Child substitution and closure normalization]\label{lem:substitution}
+Let $v$ be internal with internal children $c_1,\dots,c_m$, $m\ge1$, let
+$\norm{\mu_v}\le1$, let (TC) hold, and let each $(F_{c_i},R_{c_i})$ be dominated by
+$(\rho_i,\chi_i)$ via $\psi_i\in[0,\min(\chi_i,\pi)]$. Let $B_i$ be as in
+Lemma~\ref{lem:realization}, with unit $\hat F_i,\hat R_i$ at angle $\psi_i$. Put
+$\mu'(x):=\mu_v(B_1x_1,\dots,B_mx_m)$ and $\rho:=\prod_i\rho_i$. Then:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $\norm{\mu'}\le1$;
+\item $F_v=\mu'(\hat F_1,\dots)$ and $\mu_v(R_{c_1},\dots)=\rho\,\mu'(\hat R_1,\dots)$;
+\item if $\rho>0$, then $\norm{Q_v\mu'(\hat R_1,\dots)}\le\eta$;
+\item if $\rho=0$, then $\mu_v(R_{c_1},\dots)=0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Composition with contractions. (ii) Multilinearity. (iii) By (ii) and (TC),
+$\norm{Q_v\mu'(\hat R)}=\norm{Q_v\mu_v(R_c)}/\rho\le\eta\prod\norm{R_{c_i}}/\rho\le\eta$,
+using $\norm{R_{c_i}}\le\rho_i$. (iv) Some $R_{c_i}=0$.
+\end{proof}
+
+\begin{lemma}[Lemma 3]\label{lem:lemma3}
+Let $v\ne r$ be internal with $m\ge0$ internal children satisfying the hypotheses of
+Lemma~\ref{lem:substitution}. Then there is $\theta_v\in[0,\arcsin\eta]$ such that
+$(F_v,R_v)$ is dominated by
+\[
+(\rho_v,\chi_v):=\Bigl(\cos\theta_v\prod_i\rho_i,\;\theta_v+\sum_i\chi_i\Bigr)
+\]
+(empty product $1$, empty sum $0$). When $\prod_i\rho_i>0$ one can take
+\[
+\sin\theta_v=\frac{\norm{Q_v\mu_v(R_{c_1},\dots,R_{c_m})}}{\prod_i\rho_i}.
+\]
+\end{lemma}
+
+\begin{proof}
+\emph{Case $\prod_i\rho_i=0$} (so $m\ge1$). By Lemma~\ref{lem:substitution}(iv),
+$R_v=0$, and $\norm{F_v}\le1$. Hence $\Gram(F_v,0)\preceq K(0,0)$; take $\theta_v=0$.
+
+\emph{Case $\rho:=\prod_i\rho_i>0$.}
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item \emph{Raw output.} Put $f=\mu'(\hat F)$ and $g=\mu'(\hat R)$, so $F_v=f$ and
+  $R_v=\rho P_vg$. For $m=0$ put $f=g=f_v$, $\rho=1$, $S=0$; otherwise $S=\sum\psi_i$.
+\item \emph{(N$-$) for the raw output.} With $S'=\min(S,\pi)$, for $ab\le0$,
+  \[
+  \norm{af+bg}=\sup_{\norm\omega\le1}\ip\omega{\mu'(a\otimes\hat F+b\otimes\hat R)}\le\norm{a\otimes\hat F+b\otimes\hat R}_\pi\le\abs{ae^{iS'}+b}
+  \]
+  by Theorem~\ref{thm:TA}. For $m=0$ this is immediate.
+\item \emph{Domination.} Lemmas~\ref{lem:N-} and~\ref{lem:realization} give unit
+  $\hat F',\hat E'$ at an angle $\tilde\psi\le S'$ and a contraction $C$ with
+  $C\hat F'=f$, $C\hat E'=g$.
+\item \emph{Dilation.} Let $V=(C,(I-C^*C)^{1/2})$ and $P'=P_v\oplus I$, and set
+  $\tilde F=V\hat F'$, $\tilde R=\rho P'V\hat E'$. Their $H_v$-components are $F_v$
+  and $R_v$, so $\Gram(F_v,R_v)\preceq\Gram(\tilde F,\tilde R)$.
+\item \emph{Norms.} $\norm{\tilde F}=1$. Also
+  $\norm{(I-P')V\hat E'}=\norm{Q_vg}\le\eta$ by Lemma~\ref{lem:substitution}(iii)
+  (by (N2) if $m=0$). Put $\theta_v:=\arcsin\norm{Q_vg}$. Then
+  $\norm{\tilde R}=\rho\cos\theta_v$, and $\norm{Q_vg}=\norm{Q_v\mu_v(R_c)}/\rho$
+  gives the stated formula.
+\item \emph{Angle.} If $\tilde R=0$, the pair is dominated by $K(0,0)$. Otherwise
+  $\angle(\tilde F,\tilde R)\le\angle(V\hat F',V\hat E')+\angle(V\hat E',P'V\hat E')=\tilde\psi+\theta_v\le\chi_v$,
+  so $\Gram(\tilde F,\tilde R)=K(\rho_v,\angle(\tilde F,\tilde R))$.
+\end{enumerate}
+Combining (4) and (6) proves the claim.
+\end{proof}
+
+\section{The multiplicative envelope}\label{sec:envelope}
+
+Encode a label as $z=\rho e^{i\chi}$. Lemma~\ref{lem:lemma3} then reads
+$z_v=w(\theta_v)\prod_iz_{c_i}$.
+
+\begin{proposition}[Unrolling]\label{prop:unroll}
+Applying Lemma~\ref{lem:lemma3} from the leaves upward, every non-root internal $v$
+has $(F_v,R_v)$ dominated by $z_v=\prod_{u\in\Vint(T_v)}w(\theta_u)$, where $T_v$ is the
+subtree of $v$. Since the subtrees of the root's internal children are pairwise
+disjoint and exhaust $\Vint\setminus\{r\}$,
+\[
+\prod_iz_{c_i}=\prod_{u\in\Vint\setminus\{r\}}w(\theta_u),
+\]
+a product with exactly $k-1$ factors.
+\end{proposition}
+
+\begin{remark}
+The count uses that $T$ is a tree; for directed acyclic graphs this step fails as
+stated. O2 induces a commutative multiplicative envelope for tree states. We make
+no stronger algebraic claim.
+\end{remark}
+
+\begin{lemma}[Root reading]\label{lem:root}
+Let the root have $m\ge1$ internal children dominated by $(\rho_i,\chi_i)$ via
+angles $\psi_i$, and let $\norm{\mu_r}\le1$. No closure is needed at the root. Then
+$E^P_T\le\abs{1-\rho e^{i\min(S,\pi)}}$ with $\rho=\prod\rho_i$ and $S=\sum\psi_i$.
+\end{lemma}
+
+\begin{proof}
+$E^P_T=\norm{P_r(\mu_r(F_c)-\mu_r(R_c))}$. Substitute the children
+(Lemma~\ref{lem:substitution}(i)--(ii)), scalarize with a unit $\omega\in\Ran P_r$, and
+apply Theorem~\ref{thm:TA} with $a=1$, $b=-\rho$. If $\rho=0$ the bound is
+$1\ge\norm{F_r}$.
+\end{proof}
+
+\begin{corollary}\label{cor:envelope}
+There are $\theta_u\in[0,\arcsin\eta]$, $u\in\Vint\setminus\{r\}$, with
+\[
+E^P_T\le\bigl|1-R\,e^{i\min(\Theta,\pi)}\bigr|,\qquad R=\prod_{u\ne r}\cos\theta_u,\quad\Theta=\sum_{u\ne r}\theta_u.
+\]
+\end{corollary}
+
+\begin{proof}
+Lemma~\ref{lem:root} with $S\le\Theta$, since $\abs{1-Re^{i\varphi}}$ is
+nondecreasing in $\varphi\in[0,\pi]$ for $R\ge0$.
+\end{proof}
+
+\section{The Diagonal Lemma}\label{sec:diagonal}
+
+Throughout this section $n\ge1$ and $\alpha\in(0,\pi/2]$.
+
+\begin{lemma}[Subadditivity of cosine products]\label{lem:subadd}
+If $\theta_j\ge0$ and $\sum_j\theta_j\le\pi/2$, then
+$\prod_j\cos\theta_j\ge\cos\bigl(\sum_j\theta_j\bigr)$.
+\end{lemma}
+
+\begin{proof}
+Induction on $n$. All partial sums lie in $[0,\pi/2]$, so the sines and cosines
+involved are nonnegative. Then $\cos(a+b)=\cos a\cos b-\sin a\sin b\le\cos a\cos b$,
+and multiplying the inductive inequality by $\cos\theta_n\ge0$ preserves it.
+\end{proof}
+
+\begin{remark}
+The hypothesis $\sum\theta_j\le\pi/2$ matters for large angle sums. With $n=4$ and
+$\theta_j=\pi/2-\varepsilon$ we get $\prod\cos\theta_j=\sin^4\varepsilon\approx0$ while
+$\cos\sum\theta_j\approx1$. For $\sum\theta_j\in(\pi/2,\pi]$ the inequality holds
+trivially, because $\cos\sum\theta_j\le0$.
+\end{remark}
+
+\begin{lemma}[Jensen for $\log\cos$]\label{lem:jensen}
+$\log\cos$ is strictly concave on $[0,\pi/2)$, since $(\log\cos)''=-\sec^2<0$. Hence
+for $\theta_j\in[0,\pi/2)$ with $\Theta=\sum\theta_j$ we have
+$\prod_j\cos\theta_j\le\cos^n(\Theta/n)$, with equality if and only if all
+$\theta_j$ are equal.
+\end{lemma}
+
+\begin{lemma}[Diagonal Lemma]\label{lem:diagonal}
+\[
+\max_{\theta\in[0,\alpha]^n}\Bigl|1-\prod_{j=1}^nw(\theta_j)\Bigr|=\max_{t\in[0,\alpha]}\bigl|1-w(t)^n\bigr|.
+\]
+Moreover, for every $\theta\in[0,\alpha]^n$, with $R=\prod\cos\theta_j$ and
+$\Theta=\sum\theta_j$,
+\[
+\bigl|1-Re^{i\min(\Theta,\pi)}\bigr|\le\max_{t\in[0,\alpha]}\abs{1-w(t)^n}.
+\]
+\end{lemma}
+
+\begin{proof}
+The inequality ``$\ge$'' is the diagonal choice. For ``$\le$'', write
+$\prod w(\theta_j)=Re^{i\Theta}$ and $\varphi:=\min(\Theta,\pi)$, so that
+$\abs{1-Re^{i\varphi}}^2=f_\varphi(R):=1-2R\cos\varphi+R^2$. For $\Theta\le\pi$ this is
+the value at $\theta$. For $\Theta>\pi$ it dominates that value, because
+$\abs{1-Re^{i\Theta}}\le1+R$.
+
+\emph{Some $\theta_j=\pi/2$.} Then $\alpha=\pi/2$, $R=0$ and the value is $1$, which the
+diagonal attains at $t=\pi/2$. Assume from now on that all $\theta_j<\pi/2$.
+
+\emph{Case $\Theta\le\pi$.} First, $R\ge\cos\Theta$: by Lemma~\ref{lem:subadd} if
+$\Theta\le\pi/2$, and trivially otherwise. Next, $f_\Theta'(R)=2(R-\cos\Theta)\ge0$ on
+$[R,\cos^n(\Theta/n)]$, so Lemma~\ref{lem:jensen} gives
+$f_\Theta(R)\le f_\Theta(\cos^n(\Theta/n))=\abs{1-w(\Theta/n)^n}^2$. Finally
+$\Theta/n\le\alpha$.
+
+\emph{Case $\Theta>\pi$.} Then $n\alpha>\pi$, so $n\ge3$ and $\pi/n<\alpha$. By
+Lemma~\ref{lem:jensen} and the monotonicity of $\cos$,
+\[
+\abs{1-Re^{i\varphi}}=1+R\le1+\cos^n(\Theta/n)\le1+\cos^n(\pi/n)=\abs{1-w(\pi/n)^n},
+\]
+since $w(\pi/n)^n=-\cos^n(\pi/n)$.
+\end{proof}
+
+\begin{remark}
+The split at $\Theta=\pi$ is necessary: for $\Theta>\pi$ the bound $R\ge\cos\Theta$,
+and with it the monotonicity in $R$, can fail.
+\end{remark}
+
+\section{Upper bound}\label{sec:upper}
+
+\begin{theorem}\label{thm:upper}
+$C^P_T(\eta)\le C_k(\eta)$.
+\end{theorem}
+
+\begin{proof}
+Normalize by (N1) and (N2). If $k=1$, then $R_r=P_rF_r$ and $E^P_T=0$. Otherwise
+Corollary~\ref{cor:envelope} and the second part of Lemma~\ref{lem:diagonal}, with
+$n=k-1$ and $\alpha=\arcsin\eta$, give $E^P_T\le\eta\,C_k(\eta)$.
+\end{proof}
+
+\section{The universal sharp witness}\label{sec:witness}
+
+\begin{theorem}[Universal sharp witness]\label{thm:witness}
+Let $T$ be a finite rooted tree with $k$ internal nodes, $\eta\in(0,1]$, and choose
+$\theta_v\in[0,\arcsin\eta]$ for the non-root internal nodes. The realization below
+is \PMTA-admissible with $M=1$, $\rho=\eta$ and unit leaves, and
+\[
+E^P_T=\Bigl|1-\prod_{v\in\Vint\setminus\{r\}}w(\theta_v)\Bigr|.
+\]
+\end{theorem}
+
+\emph{Construction.} All spaces are $\R^2\cong\C$ with $e_0=1$, and all leaves carry
+$e_0$. For an internal $v$, let $I_v$ be its internal-child slots and $L_v$ its leaf
+slots.
+\begin{itemize}
+\item At non-root $v$: $P_v(z)=\mathrm{Re}(z)$ (rank one) and
+  $\mu_v(x)=e^{i\theta_v}\prod_{j\in I_v}x_j\prod_{\ell\in L_v}\mathrm{Re}(x_\ell)$
+  (complex product).
+\item At the root: $P_r=I$ and
+  $\mu_r(x)=\prod_{j\in I_r}x_j\prod_{\ell\in L_r}\mathrm{Re}(x_\ell)$.
+\end{itemize}
+
+\begin{proof}
+\emph{Norms.} Since $\abs{\prod x_j}=\prod\abs{x_j}$ and $\abs{\mathrm{Re}(x)}\le\abs x$,
+every law has norm $1$.
+
+\emph{Closure at non-root $v$.} Take internal slots in $\Ran P=\R$ and arbitrary leaf
+slots. Every factor is real, so the output is $e^{i\theta_v}t$ with $t$ real and
+$\abs t\le\prod\norm x$. Hence
+$\norm{Q_v\mu_v(x)}=\abs{\sin\theta_v}\abs t\le\eta\prod\norm x$. At the root, $Q_r=0$.
+
+\emph{Evaluation.} By induction, every non-root internal $v$ satisfies
+$F_v=e^{i\Phi_v}$ and $R_v=A_v$, where
+$\Phi_v=\sum_{u\in\Vint(T_v)}\theta_u$ and $A_v=\prod_{u\in\Vint(T_v)}\cos\theta_u$.
+At a leaf-only node, $F_v=e^{i\theta_v}$ and $R_v=\mathrm{Re}(e^{i\theta_v})=\cos\theta_v$.
+In the inductive step,
+$R_v=\mathrm{Re}\bigl(e^{i\theta_v}\prod_jA_{c_j}\bigr)=\cos\theta_v\prod_jA_{c_j}$
+because the $A$'s are real. At the root, $F_r=e^{i\Theta}$ and $R_r=\prod_{v\ne r}\cos\theta_v$
+with $\Theta=\sum_{v\ne r}\theta_v$, and $P_r=I$ gives
+\[
+E^P_T=\bigl|e^{i\Theta}-\textstyle\prod\cos\theta_v\bigr|=\bigl|1-\prod w(\theta_v)\bigr|,
+\]
+using $\abs{1-\bar z}=\abs{1-z}$.
+\end{proof}
+
+\begin{corollary}\label{cor:lower}
+$C^P_T(\eta)\ge C_k(\eta)$.
+\end{corollary}
+
+\begin{proof}
+In Theorem~\ref{thm:witness} take
+$\theta_v\equiv\theta_*\in\arg\max_{0\le\theta\le\arcsin\eta}\abs{1-w(\theta)^{k-1}}$.
+For $k=1$ both sides are $0$.
+\end{proof}
+
+\begin{remark}[The asymptotic witness]
+An earlier construction multiplied the phases of leaf slots as well and read an
+imaginary part, which gives $\abs{\sin((k-1)\theta)}$. As written, it violates leaf-slot
+closure; routing leaves through $\mathrm{Re}(\cdot)$ repairs it. The repaired family proves
+$\lim_{\eta\downarrow0}C^P_T(\eta)=k-1$, but for $k\ge3$ it does not attain $C_k(\eta)$.
+Indeed,
+\[
+\abs{1-w(\theta)^n}^2=\sin^2(n\theta)+\bigl(\cos^n\theta-\cos(n\theta)\bigr)^2.
+\]
+\end{remark}
+
+\section{Proof of Theorem R and scope}\label{sec:proof}
+
+\begin{proof}[Proof of Theorem R]
+Theorem~\ref{thm:upper} and Corollary~\ref{cor:lower}.
+\end{proof}
+
+\subsection*{Degenerate cases}
+\begin{itemize}
+\item $\eta=0$ is outside the class.
+\item $\eta=1$ with some $\theta=\pi/2$, or some $\rho_i=0$: Lemma~\ref{lem:lemma3} and
+  Lemma~\ref{lem:diagonal}.
+\item $R_v=0$ or $\tilde R=0$: Lemma~\ref{lem:lemma3}.
+\item $P_v\in\{0,I\}$: no division by $\norm{P_vg}$ occurs.
+\item $\norm{F_v}<1$: allowed by Lemma~\ref{lem:realization}.
+\item Angle labels above $\pi$: the truncation $\min(\cdot,\pi)$ and the case
+  $\Theta>\pi$ in Lemma~\ref{lem:diagonal}.
+\item Collinear or one-dimensional factors: the reductions in Theorem~\ref{thm:TA}.
+\item Arity $0$ and arbitrary arity: Lemma~\ref{lem:lemma3} and Theorem~\ref{thm:TA}.
+\item Mixed leaf and internal children: (N2) for the upper bound, and the
+  $\mathrm{Re}$-gates for the witness.
+\item $k=1$: Theorem~\ref{thm:upper} and Corollary~\ref{cor:lower}.
+\end{itemize}
+
+\subsection*{Scope}
+\begin{itemize}
+\item \emph{Complex spaces.} The upper bound plausibly transfers by realification;
+  this is not claimed here. The witness has complex-bilinear norm $\sqrt2$, and the
+  complex lower bound is open.
+\item \emph{Directed acyclic graphs.} Proposition~\ref{prop:unroll} fails as stated.
+\item \emph{Other variants.} Shared laws, fixed ranks and oblique projectors are
+  outside \PMTA.
+\end{itemize}
+
+\subsection*{Computational controls (not premises)}
+\begin{itemize}
+\item Random falsification of Lemma~\ref{lem:lemma3}: $344\,000$ node cases at
+  arities $1$--$3$, plus adversarial optimization. Every flagged case was a
+  discretization artifact of the $\theta$-grid.
+\item Cutting-plane LP evaluation of Theorem~\ref{thm:TA} for $m=2,3,4$: the upper
+  estimate is within $1.6\cdot10^{-7}$ of the bound.
+\item $14\,000$ degenerate node cases at the proof angle: largest violation
+  $6.7\cdot10^{-16}$.
+\item The witness on $4000$ random trees ($k\le10$, arity $\le4$): attainment error
+  $\le3.6\cdot10^{-15}$.
+\item The Diagonal Lemma for $n\le12$: no excess beyond grid resolution.
+\end{itemize}
+
+\section{Consequences}\label{sec:consequences}
+
+Write $n=k-1$ and $s=\sin^2\theta$. Then $\abs{1-w(\theta)^n}^2=E_k(s)$, where
+\[
+E_k(s):=1+(1-s)^n-2(1-s)^{n/2}\cos(n\theta)
+\]
+is a polynomial in $s$, because $\cos^n\theta\cos(n\theta)$ is an even polynomial in
+$\cos\theta$. Suppose $E_k$ has a unique critical point $s_c(k)$ in
+$(0,\sin^2(\pi/n))$. Then
+\[
+C_k(\eta)=\begin{cases}\sqrt{E_k(\eta^2)}/\eta,& \eta^2\le s_c(k),\\ \sqrt{E_k(s_c(k))}/\eta,&\eta^2\ge s_c(k).\end{cases}
+\]
+There are two regimes: below the critical leakage the extremizer uses the whole
+budget, and above it the absolute error saturates. Uniqueness of the critical point
+was verified in exact arithmetic for $3\le k\le12$.
+
+\begin{center}\small
+\renewcommand{\arraystretch}{1.2}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{c|l|c|c|c}
+$k$ & $E_k(s)$ & $s_c(k)$ & $\max_\eta\eta C_k(\eta)$ & $a_k$\\\hline
+$2$ & $s$ & $1$ & $1$ & $0$\\
+$3$ & $s(4-3s)$ & $2/3$ & $2/\sqrt3$ & $3/4$\\
+$4$ & $s(9-15s+7s^2)$ & $3/7$ & $9/7$ & $5/2$\\
+$5$ & $s(4-3s)(4-8s+5s^2)$ & $\tfrac35-\tfrac{\sqrt{21}}{15}$ & $1.38090\ldots$ & $11/2$\\
+$6$ & $s(25-100s+160s^2-115s^3+31s^4)$ & $\tfrac{15-\sqrt{70}}{31}$ & $1.45299\ldots$ & $10$\\
+$7$ & $s(4-3s)(1-3s+3s^2)(9-15s+7s^2)$ & cubic root & $1.50959\ldots$ & $65/4$
+\end{tabular}
+\end{center}
+
+\begin{proposition}[Second-order coefficient]\label{prop:ak}
+As $\eta\downarrow0$,
+\[
+C_k(\eta)=(k-1)-a_k\eta^2+O(\eta^4),\qquad a_k=\frac{(k-1)(k-2)(k+6)}{24}.
+\]
+\end{proposition}
+
+\begin{proof}
+For small $\eta$ the maximum is attained at $\theta=\arcsin\eta$, since
+$\abs{1-w^n}$ is increasing near $0$. We have
+$\log w(\theta)=i\theta-\theta^2/2+O(\theta^4)$, so $X:=n\log w=in\theta-n\theta^2/2+O(\theta^4)$
+and
+\[
+\abs{1-e^X}^2=n^2\theta^2+\bigl(\tfrac{n^2}4-\tfrac{n^3}2-\tfrac{n^4}{12}\bigr)\theta^4+O(\theta^6).
+\]
+Hence $\abs{1-w^n}=n\theta\bigl(1+(\tfrac18-\tfrac n4-\tfrac{n^2}{24})\theta^2\bigr)+O(\theta^5)$.
+Substituting $\theta=\eta+\eta^3/6+O(\eta^5)$ and dividing by $\eta$ gives
+$n-\frac{n(n-1)(n+7)}{24}\eta^2+O(\eta^4)$.
+\end{proof}
+
+The coefficient grows like $k^3/24$. The sequence $3/4,\,5/2$ at $k=3,4$ does
+\emph{not} determine it: the quadratic $(k-2)(2k-3)/4$ fits both values but predicts
+$a_5=21/4$ instead of $11/2$.
+
+\begin{proposition}[Large $k$]\label{prop:largek}
+Let $G_k:=\max_{\eta\in(0,1]}\eta\,C_k(\eta)$ and let $\eta_c(k)$ be the leakage at
+which the maximum over $\theta$ is first attained. Then
+$1+\cos^{k-1}\bigl(\tfrac{\pi}{k-1}\bigr)\le G_k<2$, so $G_k\to2$, and
+$\eta_c(k)\le\sin\bigl(\tfrac{\pi}{k-1}\bigr)\to0$.
+\end{proposition}
+
+\begin{proof}
+The proof of Lemma~\ref{lem:diagonal} shows that the maximum of $\abs{1-w^n}$ over
+$[0,\pi/2]$ is attained in $[0,\pi/n]$. At $\theta=\pi/n$ we have
+$w^n=-\cos^n(\pi/n)$. Moreover $\abs{1-w^n}\le1+\cos^n\theta<2$ for $\theta>0$. Finally
+$\cos^n(\pi/n)=\exp(-\pi^2/(2n)+O(n^{-3}))\to1$.
+\end{proof}
+
+Numerically, $G_k=2-\pi^2/(2k)+o(1/k)$ and $k\,\eta_c(k)\to\pi$. Neither monotonicity
+in $k$ nor these asymptotic constants are proved here.
+
+\begin{remark}[Why the Löwner order O2]
+A weaker candidate order compares the rotated distances
+$\abs{a-\lambda\zeta e^{i\varphi}}$ and $\abs{1-\lambda ze^{i\varphi}}$ for all
+$\lambda\in[0,1]$ and $\varphi\in[0,\pi]$. It contains strictly more states: in random
+sampling about $7\%$ of the states it dominates are not O2-dominated. It is not
+needed. What makes the induction close is that O2 allows the dilation angle to be
+chosen \emph{smaller} than the accumulated label (Lemma~\ref{lem:N-}). An earlier
+attempt that forced the angle to equal the label required case-by-case repairs and
+did not extend beyond four internal nodes.
+\end{remark}
+
+\section*{Questions for the reviewer}
+
+\begin{question}
+Is Theorem~\ref{thm:TA} correct for arbitrary finite arity? Is it known, for
+instance in the theory of projective tensor norms, contractive dilations, or
+scaled relative graphs?
+\end{question}
+
+\begin{question}
+Does the contraction and dilation argument in Lemma~\ref{lem:lemma3} correctly carry
+the raw pair $(f,g)$ to a dominating chain pair at angle $\tilde\psi+\theta_v$? In
+particular, is Lemma~\ref{lem:N-} applied under its exact hypotheses?
+\end{question}
+
+\begin{question}
+Does any step use closure beyond the trajectory form (TC)?
+\end{question}
+
+\begin{thebibliography}{9}
+\bibitem{RHY} E.~K.~Ryu, R.~Hannah, X.~Yin, \emph{Scaled relative graphs: nonexpansive operators via 2D Euclidean geometry}, Math.\ Program.\ (2022); arXiv:1902.09788.
+\bibitem{Ryan} R.~A.~Ryan, \emph{Introduction to Tensor Products of Banach Spaces}, Springer (2002).
+\bibitem{NF} B.~Sz.-Nagy, C.~Foia\c{s}, H.~Bercovici, L.~K\'erchy, \emph{Harmonic Analysis of Operators on Hilbert Space}, 2nd ed., Springer (2010).
+\end{thebibliography}
+
+\end{document}

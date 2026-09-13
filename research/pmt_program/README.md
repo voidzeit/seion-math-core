@@ -110,8 +110,12 @@ obstruction.
    inequality, hostile audit). Next: independent review by a functional
    analyst (Theorem T, Lemma B, dilations) and a numerical analyst (class,
    leaf freezing, Lemma F). No broad k=5 exploration until it is reviewed.
-   Corrections create `theorem_R_v2/`; Paper I is restructured around
-   Theorem R only after review.
+   Corrections are published as v2.1+ in new commits (tag `theorem-R-v2-review` = `3d920f9`);
+   Paper I is restructured around Theorem R only after review.
+   Review artifacts: `papers/theorem_R_review_note/theorem_R.pdf` (10 pp., full proof) and
+   `papers/lemma3_note/lemma3_O2.pdf` (3 pp., tensor angle inequality ⟹ O2 preservation).
+   Machine-checked in Lean 4 + Mathlib (`lean/`): the Diagonal Lemma (6.1–6.3) and the
+   evaluation of the universal sharp witness (8.1); O2/Lemma 3 deliberately not formalised.
 
 1. Independent review of `CHAIN_ALL_K.md` §2 and `K4_TOPOLOGY.md` §3.3–3.4
    (the two new proofs everything else leans on).
