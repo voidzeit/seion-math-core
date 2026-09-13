@@ -1,0 +1,6 @@
+{"field": "R", "eta": 0.1, "d": 2, "seed": 7, "best_ratio": 2.9600651645736695, "chain_ratio": 2.975012605015313, "first_order_3": 3.0}
+{"field": "R", "eta": 0.1, "d": 3, "seed": 7, "best_ratio": 2.950064177628436, "chain_ratio": 2.975012605015313, "first_order_3": 3.0}
+{"field": "C", "eta": 0.1, "d": 2, "seed": 7, "best_ratio": 2.9480222545719985, "chain_ratio": 2.975012605015313, "first_order_3": 3.0}
+{"field": "C", "eta": 0.1, "d": 3, "seed": 7, "best_ratio": 2.9334582621686414, "chain_ratio": 2.975012605015313, "first_order_3": 3.0}
+{"field": "R", "eta": 0.03, "d": 2, "seed": 11, "best_ratio": 2.9946177742668847, "chain_ratio": 2.9977501013259924, "first_order_3": 3.0}
+{"field": "C", "eta": 0.03, "d": 2, "seed": 11, "best_ratio": 2.98202708863287, "chain_ratio": 2.9977501013259924, "first_order_3": 3.0}

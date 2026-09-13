@@ -206,3 +206,31 @@
   `research/math_closure/k4_exploration/PMT_K4_FRONTIER.md`,
   `claims/claims_registry.yaml`, and `claims/theorem_registry.yaml`.
 - **Status:** accepted_with_external_review_pending.
+
+## D-0015 — Freeze PMT-A and narrow the program to sharp PMT constants
+
+- **Date:** 2026-09-13
+- **Decision:** All new sharp-constant statements cite the single class
+  `research/pmt_program/ADMISSIBLE_CLASS_PMT_A.md` (real field; complex
+  variant tracked as `PMT-A[C]`). The research program is narrowed to the
+  question "determine `C_T^P(eta)` and its dependence on depth, leakage and
+  topology", organized as Papers I (k<=3, universal bounds, asymptotic
+  sharpness), II (rebracketing, certificates, DAGs) and III (higher depth).
+  Cosmology, KGE, VECTRA, T4, proteins and mass-gap material are out of scope
+  for these papers.
+- **Reason:** Class declarations were scattered across three files with a
+  real/complex ambiguity (M16 field caveat) and a leaf-closure convention
+  conflict (M18/M19). One frozen reference removes both.
+- **Evidence:** `research/pmt_program/README.md`.
+- **Status:** accepted_with_external_review_pending.
+
+## D-0016 — Replace the conjecture `a_k=(k-2)(2k-3)/4`
+
+- **Date:** 2026-09-13
+- **Decision:** Record `a_k=(k-1)(k-2)(k+6)/24` (chains; all trees under
+  Conjecture R) and mark `(k-2)(2k-3)/4` refuted at `k=5` (`11/2 != 21/4`).
+- **Reason:** The two agree only at `k=3,4`. The general-k chain proof draft
+  (`research/pmt_program/CHAIN_ALL_K.md`), the exact Gram SDP at `k=5,6`, and
+  exact rational certificates at `k=5` all give `11/2`.
+- **Status:** accepted_with_external_review_pending (the refutation of the
+  numerical value at k=5 is independent of the proof draft: SDP + certificate).

@@ -1,5 +1,21 @@
 # Current state
 
+## 2026-09-13 — PMT sharp-constant program (branch `research/pmt-sharp-program`)
+
+- Froze the canonical class `research/pmt_program/ADMISSIBLE_CLASS_PMT_A.md`
+  (real; `PMT-A[C]` separate) and narrowed the program to `C_T^P(eta)`.
+- Generalized the k=4 dilation/angle proof to chains of every k (Theorem C):
+  `C_{k,chain} = max_{theta<=asin eta} |1-(cos theta e^{i theta})^{k-1}|/eta`,
+  `a_k=(k-1)(k-2)(k+6)/24`; refuted `a_k=(k-2)(2k-3)/4` at k=5 (D-0016).
+  Gram SDP agrees at k=3..6 (<=1.6e-6); constants table k=2..12 exact.
+- Exact rational dual certificates for the chain Gram SDP at 7 points
+  (k=3,4,5), verified by a stdlib-only verifier with negative controls.
+- k=4 topology: proof drafts for BBR and STAR (plus universal witness) give
+  the chain constant for all four skeletons in PMT-A; cutting-plane LP
+  controls agree to <3e-8. Complex class open (retention obstruction).
+- Paper I LaTeX draft (uncompiled: no TeX on host). All items advisory;
+  no theorem-registry promotion.
+
 ## 2026-09-09 — k4 chain/mixed advisory proof and Gram study
 
 - On isolated branch `codex/pmt-k4-chain-gram`, added a complete advisory

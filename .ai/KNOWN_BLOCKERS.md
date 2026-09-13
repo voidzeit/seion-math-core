@@ -24,6 +24,18 @@ These blockers are not silently downgraded by successful software tests.
   complete advisory dilation/angle proof draft, but no independent review or
   official theorem approval. The historical k>=4 OPEN_PROBLEM classification
   remains in force. Numerical agreement cannot close this approval gap.
+- **PMT-PROGRAM-REVIEW (2026-09-13):** `research/pmt_program/` adds proof
+  drafts for chains of every k (Theorem C), k=4 BBR and STAR (topology
+  independence at k=4), and a universal lower-bound witness. None is
+  independently reviewed; exact certificates cover only 7 rational chain
+  points. Theorem-registry promotion stays blocked on human review.
+- **PMT-FIELD-C (2026-09-13):** `PMT-A[C]` lower bounds for skeletons with a
+  multilinear vertex having >=2 internal children are not established
+  (exception: MIXED, whose witness uses matrices and gates); the
+  real phase witness complexifies with norm sqrt2 and a retention obstruction
+  is proved. Do not state k>=4 non-chain sharp constants over C.
+- **PMT-LATEX (2026-09-13):** no TeX toolchain on this workstation;
+  `papers/pmt_I_sharp_stability/main.tex` is uncompiled.
 - **PMT-K4-SEARCH-NORMS:** the historical k4 optimizer's alternating/grid
   multilinear norm estimates do not certify global admissibility. New chain
   searches check the whole linear matrix block; no historical run is promoted.
