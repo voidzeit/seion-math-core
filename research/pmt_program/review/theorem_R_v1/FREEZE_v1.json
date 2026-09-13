@@ -16,5 +16,5 @@
  },
  "rule": "Do not edit frozen files. Any correction creates theorem_R_v2/ with a changelog.",
  "hash_basis": "SHA-256 of the committed git blob (LF line endings)",
- "correction": "TENSOR_ANGLE_INEQUALITY_v1.md hash recomputed from the committed blob: the first manifest hashed a CRLF working copy. Content unchanged."
+ "correction": "Hashes of TENSOR_ANGLE_INEQUALITY_v1.md and outputs/edge_cases.json recomputed from the committed blobs: the first manifest hashed CRLF working copies written on Windows. Content unchanged."
 }
