@@ -9,10 +9,12 @@
   "AUDIT_v1.md": "bde12626724d2cd77ae3beb2723ef4b4dd1aed8a97d1e1b0f26d4bf00f143de2",
   "README.md": "889bce3c2b8c5792b87396db309332806274bac1afb3d4d9ae9c6e8853eb587f",
   "REVIEW_PACKAGE_v1.md": "cf40832546f2dba8fc8b06c3e6679d79c9677d6700ed7c2d5a8665e26dd54927",
-  "TENSOR_ANGLE_INEQUALITY_v1.md": "d06dd83fcf3d09a745d4933fd0268f6af11a4ad29cce8d74c64d57e3fce02520",
+  "TENSOR_ANGLE_INEQUALITY_v1.md": "455adf6fc4593640d837f5efa94242b3c76f3ee1359ea3cd255fc577d8b0089f",
   "THEOREM_R_DRAFT_v1.md": "822636938b666456947194cd03c9e38bfea3d109608cb760c8cc61166033942c",
   "edge_cases.py": "3e5a3af0c79898dfa527a67d97951e5a3a8282f0b4e53585ddc4dd3ab3987399",
-  "outputs/edge_cases.json": "15a4c1f9bf3c2e664d5b133c4ec3c3791917b4745823399e72237171a4bb3cf2"
+  "outputs/edge_cases.json": "00244be015089a285e4eb5fbf942524aa0cec1c512eb3236811ea6eb2c26c1ed"
  },
- "rule": "Do not edit frozen files. Any correction creates theorem_R_v2/ with a changelog."
+ "rule": "Do not edit frozen files. Any correction creates theorem_R_v2/ with a changelog.",
+ "hash_basis": "SHA-256 of the committed git blob (LF line endings)",
+ "correction": "TENSOR_ANGLE_INEQUALITY_v1.md hash recomputed from the committed blob: the first manifest hashed a CRLF working copy. Content unchanged."
 }
