@@ -1,0 +1,26 @@
+{
+ "version": "v2",
+ "frozen": "2026-09-13",
+ "status": "ADVISORY_PROOF_DRAFT",
+ "canonical": "research/pmt_program/review/theorem_R_v2/THEOREM_R_v2.md",
+ "supersedes": [
+  "research/pmt_program/THEOREM_R_DRAFT.md@f80f4e8",
+  "research/pmt_program/review/theorem_R_v1 (frozen, kept)"
+ ],
+ "content_commit": "dc565de351401ad64d79a8f66f9b42bbfdc731fc",
+ "hash_basis": "SHA-256 of the committed git blob (LF line endings)",
+ "files_sha256": {
+  "CHANGELOG_v2.md": "4e52d76e2e1da8e3a2bcb57dda614a0c0c1188b50e62883c02a5ecefb7ae4adf",
+  "README.md": "32b089c6de84b1cccc766aa08a5ce62758ac7e1e3d5de0a1dd660f9b2b88e672",
+  "THEOREM_R_v2.md": "021668cef6257c79b74341f8606d7a8ff4f62733d04162dab0872612c83d8d9a",
+  "asymptotic_vs_sharp.py": "7747fcdfe27ce0ed7057c7ee350f5d22ed49637252d75c4bf8aef55042b54656",
+  "diagonal_lemma_check.py": "5d879d044a21b7322c06e48df379c629a4d00df5ea521ef17bb113ddfbbcdff6",
+  "edge_cases_v2.py": "559d21e6cab75e100605058370df9b4deea344c5665ef2e12489923224dcc650",
+  "outputs/asymptotic_vs_sharp.json": "d3bfff4b38f8393062132886f95c4b2af2f3f383a5f60f9d829e23e00bdd32d0",
+  "outputs/diagonal_lemma_check.json": "a9f0d104927ab3590bc86630fc88ef80ac51c649ada4610657d2fe44b89ccd3b",
+  "outputs/edge_cases_v2.json": "e7408667ab0228e213b5e7fdeb734d8da9308dd1afca3cd6b7b4fce62a478de5",
+  "outputs/sharp_witness_check.json": "4cefd022f6714c456e782310fcb45f5d1ec823eab51d9be81674171a56419d2b",
+  "sharp_witness_check.py": "ea6925e2a7fe0b0b5df0614c27f1af0440d0534d84754d3f5c80dfcbefb4ff88"
+ },
+ "rule": "Do not edit frozen files. Corrections create theorem_R_v3/ with a changelog."
+}
