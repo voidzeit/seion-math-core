@@ -33,7 +33,7 @@ C_T^P(η)  =?  C_k(η) := max_{0 ≤ θ ≤ arcsin η} |1 − (cos θ · e^{iθ}
 | `a_k = (k−2)(2k−3)/4` | **refuted** at `k=5` (`11/2 ≠ 21/4`) | same |
 | chain recursion `z ↦ z·w(θ)` on the Thales arc | proof draft | `RECURSION.md` §1 |
 | multiplicative state for all trees | conjecture; proved k ≤ 4 | `RECURSION.md` §2 |
-| **Theorem R: `C_T^P = C_k` for every tree** (Lemma 3 in order O2, tensor angle inequality) | proof draft; falsification campaign found no counterexample | `THEOREM_R_DRAFT.md`, `lemma3/LEMMA3_CAMPAIGN.md` |
+| **Theorem R: `C_T^P = C_k` for every tree** (Lemma 3 in order O2, tensor angle inequality) | proof draft; falsification campaign found no counterexample | `THEOREM_R_DRAFT.md`, `lemma3/LEMMA3_CAMPAIGN.md`; frozen review version `review/theorem_R_v1/` |
 | complex class: BBR/STAR at k=4, field dependence at k=5 | open (retention obstruction proved) | `K4_TOPOLOGY.md` §6 |
 
 Depth: `a_k ~ k³/24`; critical leakage `η_c(k)` decreases
@@ -104,6 +104,14 @@ the k = 5 frontier and Conjecture R; the complex class and the retention
 obstruction.
 
 ## Next work, in priority order
+
+0. **Theorem R review (current priority).** Frozen package
+   `review/theorem_R_v1/` (explicit Lemmas A–G, standalone tensor angle
+   inequality, hostile audit). Next: independent review by a functional
+   analyst (Theorem T, Lemma B, dilations) and a numerical analyst (class,
+   leaf freezing, Lemma F). No broad k=5 exploration until it is reviewed.
+   Corrections create `theorem_R_v2/`; Paper I is restructured around
+   Theorem R only after review.
 
 1. Independent review of `CHAIN_ALL_K.md` §2 and `K4_TOPOLOGY.md` §3.3–3.4
    (the two new proofs everything else leans on).
