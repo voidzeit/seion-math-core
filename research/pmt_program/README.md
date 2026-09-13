@@ -33,6 +33,7 @@ C_T^P(η)  =?  C_k(η) := max_{0 ≤ θ ≤ arcsin η} |1 − (cos θ · e^{iθ}
 | `a_k = (k−2)(2k−3)/4` | **refuted** at `k=5` (`11/2 ≠ 21/4`) | same |
 | chain recursion `z ↦ z·w(θ)` on the Thales arc | proof draft | `RECURSION.md` §1 |
 | multiplicative state for all trees | conjecture; proved k ≤ 4 | `RECURSION.md` §2 |
+| **Theorem R: `C_T^P = C_k` for every tree** (Lemma 3 in order O2, tensor angle inequality) | proof draft; falsification campaign found no counterexample | `THEOREM_R_DRAFT.md`, `lemma3/LEMMA3_CAMPAIGN.md` |
 | complex class: BBR/STAR at k=4, field dependence at k=5 | open (retention obstruction proved) | `K4_TOPOLOGY.md` §6 |
 
 Depth: `a_k ~ k³/24`; critical leakage `η_c(k)` decreases
