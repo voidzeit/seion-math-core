@@ -1,5 +1,18 @@
 # Current state
 
+## 2026-09-13 — Theorem R canonical source v2
+
+- Branch `research/pmt-sharp-program`. Lemma 3 campaign (`3d65272`): no
+  counterexample in 344k cases; O2 is the surviving order.
+- Theorem R draft (`f80f4e8`) frozen as review v1 (`review/theorem_R_v1/`,
+  hashes verified after fresh checkout), then rewritten as the single canonical
+  source `review/theorem_R_v2/THEOREM_R_v2.md`. Mathematics unchanged. Adds
+  the Diagonal Lemma split (Σ ≤ π/2 hypothesis, case split at Θ = π) and a
+  standalone universal sharp witness with exact attainment on 4000 random trees.
+  Terminology: k = number of internal nodes.
+- Status ADVISORY_PROOF_DRAFT; no independent review; no Lean/TeX toolchain on
+  host.
+
 ## 2026-09-13 — PMT sharp-constant program (branch `research/pmt-sharp-program`)
 
 - Froze the canonical class `research/pmt_program/ADMISSIBLE_CLASS_PMT_A.md`

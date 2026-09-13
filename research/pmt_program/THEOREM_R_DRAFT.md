@@ -1,3 +1,5 @@
+> **Superseded** by `review/theorem_R_v2/THEOREM_R_v2.md` (canonical, 2026-09-13). Kept unchanged below for provenance.
+
 # Theorem R (topology independence) — proof draft
 
 Status: **ADVISORY_PROOF_DRAFT** (2026-09-13). Not independently reviewed. It
