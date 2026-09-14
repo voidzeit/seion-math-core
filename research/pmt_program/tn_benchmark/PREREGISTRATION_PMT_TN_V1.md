@@ -151,3 +151,17 @@ Runs are never overwritten.
 ## 8. Order of execution
 
 F6 → F8 (done as tests before freezing) → F1 + F5 → F2 → F3 + F4 → F7 → analysis.
+
+---
+
+## Amendment 1 (2026-09-13, before any analysed run)
+
+* **Seeding.** Instance seeds in F1/F2 were derived with Python `hash()` of tuples containing strings,
+  which is salted per process, so instances were not reproducible. Replaced by `stable_seed()` (CRC32
+  of the parameter tuple). Random bracketings in F1 are now a deterministic function of
+  `(n, seed, kind, index)`, so the same tree is used across ranks and data (needed for H4). The first
+  full F1 launch and the smoke runs are kept under
+  `artifacts/pmt_tn_benchmark/2026-09-13-v1/*-nondeterministic-seeds/` and excluded from analysis.
+  No hypothesis, criterion or grid was changed.
+* **Full-subspace certificate.** For fixed-projector families each record also carries
+  `B_R_full = G_k(η̂^full) · M̂^k · L`, reported next to the trajectory certificate.
