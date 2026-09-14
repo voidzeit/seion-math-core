@@ -210,7 +210,7 @@ def figures(data, figdir, h6):
         ax.set_title(c); ax.set_xlabel("k")
     axes[0][0].set_ylabel("eta_hat")
     fig.colorbar(sc, ax=axes[0].tolist(), label="E_obs / B_R")
-    fig.savefig(figdir / "fig1_k_eta_ratio.png", dpi=130); plt.close(fig)
+    fig.savefig(figdir / "fig1_k_eta_ratio.png", dpi=130, bbox_inches="tight"); plt.close(fig)
 
     # 2. F1 per bracketing
     if "F1" in data:
