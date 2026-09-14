@@ -1,0 +1,12 @@
+{
+ "benchmark": "PMT_TN_BENCHMARK_V1",
+ "family": "F3",
+ "quick": false,
+ "command": "run.py F3",
+ "git_commit": "3424abc181efb78040c7bf8ae80799e868c5eb08",
+ "date": "2026-09-13",
+ "python": "3.12.5 (tags/v3.12.5:ff3bc82, Aug  6 2024, 20:45:27) [MSC v.1940 64 bit (AMD64)]",
+ "numpy": "2.4.2",
+ "platform": "Windows-10-10.0.19045-SP0",
+ "preregistration": "research/pmt_program/tn_benchmark/PREREGISTRATION_PMT_TN_V1.md"
+}

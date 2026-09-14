@@ -1,0 +1,21 @@
+{
+ "n_runs": 35,
+ "labels": {
+  "EXPECTED_VIOLATION_NEGATIVE_CONTROL": 35
+ },
+ "ratio_max": null,
+ "ratio_median": null,
+ "min_slack_1_minus_ratio": null,
+ "gain_median": null,
+ "gain_min": null,
+ "relative_certificate_median": null,
+ "fraction_relative_certificate_lt_1": null,
+ "deflation_median": null,
+ "eta_hat_median": null,
+ "k_range": [
+  2,
+  6
+ ],
+ "family": "F8",
+ "seconds": 1.7550008296966553
+}

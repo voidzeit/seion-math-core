@@ -44,3 +44,6 @@ academic_submission_package_v2_20260801/LICENSE text eol=lf
 
 # Frozen review packages: SHA-256 manifests are computed over LF content; never convert line endings.
 research/pmt_program/review/** -text
+
+# PMT-TN benchmark artifacts: artifact_hashes.json is computed over the LF bytes written by run.py.
+artifacts/pmt_tn_benchmark/** -text

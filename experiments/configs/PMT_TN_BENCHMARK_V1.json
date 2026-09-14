@@ -1,0 +1,33 @@
+{
+  "name": "PMT_TN_BENCHMARK_V1",
+  "preregistration": "research/pmt_program/tn_benchmark/PREREGISTRATION_PMT_TN_V1.md",
+  "theory": "research/pmt_program/review/theorem_R_v2/THEOREM_R_v2.md@theorem-R-v2-review",
+  "certificate": {"B_R": "G_k(eta_hat) * M_hat**k * leaf_product", "B_naive": "(k-1)*eta_hat*M_hat**k*leaf_product",
+                  "M_hat": "max_v M_hat_v", "replay_trigger": 1e-10, "replay_dps": 50},
+  "hardware": "cpu_only (B-0012)",
+  "families": {
+    "F1": {"n": [4, 8, 16, 32], "chi": [8, 16, 32], "rank": [1, 2, 4, "chi/2"],
+           "data": ["decay_0.3", "decay_1.0"], "topologies": ["left", "right", "balanced", "random:5"], "seeds": [0, 1, 2]},
+    "F5": {"parent": ["F1", "F2"], "F1_data": ["gaussian", "orthogonal"], "F2_W": ["gaussian"]},
+    "F2": {"n_leaves": [8, 16, 32], "leaf_dim": 4, "chi": [8, 16], "rank": [2, 4, 6],
+           "W": ["canonical"], "topologies": ["balanced", "caterpillar", "random:3"],
+           "n_train": 512, "n_test": 64, "seeds": [0, 1]},
+    "F3": {"n_spins": [8, 10, 12], "h": [0.5, 1.0, 2.0], "rank": [1, 2, 4, 8],
+           "inputs": {"bitstrings_sampled_by_prob": 64, "random_product_states": 16}},
+    "F4": {"n_vars": 8, "grid": 4, "functions": ["inv_sum", "gauss_sum", "sin_sum"], "rank": [1, 2, 3],
+           "test_points": 128},
+    "F6": {"random_trees": 200, "k": [2, 12], "equal_angle_fraction_of_eta_c": [0.01, 0.999], "unequal": 200},
+    "F7": {"backend": "torch_cpu_float64", "chi": [2, 3], "k": [3, 4, 5, 7],
+           "topologies": ["chain", "balanced", "star", "random"], "restarts": 16, "steps": 1500,
+           "amendment2": {"variants": ["coiso", "opnorm"], "rank": "1..chi-1", "optimizer": "adam lr 0.03 cosine->0.002",
+                          "smooth_max_beta": 200, "G_grid": 1025, "net_h": {"2": 0.0005, "3": 0.004},
+                          "d_span_tol": 1e-3, "H5_rule": {"ratio_rigorous_min": 0.9, "chi": 3, "d_span": 3, "M_gap_rel_max": 0.01}}},
+    "F7R": {"backend": "torch_cpu_float64", "topologies": ["chain", "balanced"], "k": [3, 5, 7], "chi": 2, "rank": 1,
+            "variant": "opnorm", "eta_target": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "penalty": 1000.0,
+            "restarts": 16, "steps": 1500, "H6_rule": "max E non-decreasing in eta_t and constant within 2% for eta_t >= eta_c(k)"},
+    "F8": {"F8a": {"k": [2, 4, 6], "theta": [0.05, 0.1, 0.2], "lambda": [1.2, 1.5, 2.0]},
+           "F8b": {"theta": [0.1, 0.3], "c": [1.0, 3.0]},
+           "F8c": {"theta": [0.1, 0.2], "d": [4, 9]}}
+  },
+  "hypotheses": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8"]
+}

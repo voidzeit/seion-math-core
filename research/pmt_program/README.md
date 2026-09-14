@@ -5,6 +5,16 @@ Started 2026-09-12. All proofs here are **ADVISORY_PROOF_DRAFT** until an
 independent human review; numerical results are `NUMERICAL_OBSERVATION`;
 exact certificates are machine-checked at the stated points only.
 
+> **Update 2026-09-14 — Theorem R machine-checked (normalised, single-space form).**
+> - The upper bound, the universal witness with full PMT-A admissibility, and the sharp constant
+>   (`theorem_R_upper`, `theorem_R_lower`, `theorem_R_sSup`) build in Lean 4 / Mathlib v4.33.1.
+>   There is no `sorry`, and only the standard axioms are used.
+> - The formal upper bound uses a new **lifted-angle proof** (`lifted_angle/LIFTED_ANGLE_PROOF.md`),
+>   not the frozen v2 dilation argument.
+> - Open for human review: the **specification** (Lean definitions) and two elementary reductions
+>   (scaling; per-node spaces → one ambient space). Both are listed in `lean/README.md`.
+> - Novelty is still not established.
+
 ## Central question
 
 > **Determine `C_T^P(η)` and characterize its dependence on depth, leakage, and topology.**

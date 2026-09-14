@@ -1,0 +1,21 @@
+{
+ "n_runs": 1152,
+ "labels": {
+  "WITHIN_CERTIFICATE": 1152
+ },
+ "ratio_max": 0.0038678304789446227,
+ "ratio_median": 4.962434601512631e-05,
+ "min_slack_1_minus_ratio": 0.9961321695210554,
+ "gain_median": 0.35805401750036503,
+ "gain_min": 0.25188149163239565,
+ "relative_certificate_median": 474.44806687477774,
+ "fraction_relative_certificate_lt_1": 0.0,
+ "deflation_median": 0.003181782108903536,
+ "eta_hat_median": 0.7026827876068996,
+ "k_range": [
+  7,
+  7
+ ],
+ "family": "F4",
+ "seconds": 82.93950033187866
+}
