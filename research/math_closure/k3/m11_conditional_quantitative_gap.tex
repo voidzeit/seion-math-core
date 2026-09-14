@@ -1,0 +1,86 @@
+\section*{M11: Conditional quantitative gap below the M9 envelope}
+\label{sec:k3-m11-conditional-gap}
+
+This result isolates the angle--magnitude trade-off left open by M10.  It is
+stated for the ordered $k=3$ chain and is deliberately conditional: at the
+second internal node, the linear map obtained by freezing its sibling leaf is
+assumed to attain its operator norm $M$ on the normalized first propagated
+defect direction.  No global sharpness claim follows.
+
+Normalize the leaf product to one and set $M=1$; write
+$\rho=\eta$.  Let $D_1\perp R_1$ be the first-node normal and reduced
+components, put $q=\|D_1\|$ and $p=\|R_1\|$, and let $Q=I-P_2$.  Under the
+stated saturation hypothesis, the two unit input directions at node 2 have
+images $x,y$ satisfying
+\[
+  \|x\|=1,\qquad x\perp y,\qquad \|y\|\le1.
+\]
+Write $s=\|Qy\|\le\eta$.  Since $Q$ is an orthogonal projector and
+$x\perp y$,
+\[
+  |\langle x,Qy\rangle|\le s\sqrt{1-s^2}.
+\]
+Indeed, decompose $Qy=\alpha x+w$ with $w\perp x$.  The projection identity
+$\langle Qy,y\rangle=\|Qy\|^2$ and $\|y\|\le1$ imply
+$\|w\|\ge s^2$, hence $\alpha^2=s^2-\|w\|^2\le s^2(1-s^2)$.
+
+The root operator norm and Pythagoras give
+$p\le\sqrt{1-q^2}$.  Therefore
+\[
+ E_T^{\mathrm{proj}}\le
+ \sqrt{q^2+(1-q^2)s^2+2q\sqrt{1-q^2}\,s\sqrt{1-s^2}}.
+\]
+Put $q=\sin\alpha$, $s=\sin\beta$.  The squared right-hand side is
+\[
+ f(\alpha,\beta)=
+ \sin^2\alpha+\cos^2\alpha\sin^2\beta
+ 2\sin\alpha\cos\alpha\sin\beta\cos\beta.
+\]
+With $u=\tan\alpha$, $v=\tan\beta$,
+\[
+ f=\frac{(u+v)^2+u^2v^2}{(1+u^2)(1+v^2)}.
+\]
+The partial derivatives are
+\[
+ \partial_u f=\frac{2(u+v-u^2v)}{(1+u^2)^2(1+v^2)},
+ \qquad
+ \partial_v f=\frac{2(u+v-uv^2)}{(1+u^2)(1+v^2)^2}.
+\]
+An interior critical point has $u=v=\sqrt2$ and value $4/3$.  The global
+upper bound follows directly from
+\[
+  4(1+u^2)(1+v^2)-3\big((u+v)^2+u^2v^2\big)
+  =u^2v^2+u^2+v^2-6uv+4
+  \ge (uv-2)^2,
+\]
+using $u^2+v^2\ge2uv$; equality is possible only at
+$u=v=\sqrt2$.  If the square is bounded by
+$0\le u,v\le\tan(\arcsin\eta)$ with $\eta\le\sqrt{2/3}$, the boundary
+derivatives have sign $u+v-u^2v\ge0$ up to the corner, so the maximum is at
+$u=v$, namely $q=s=\eta$.  If $\eta\ge\sqrt{2/3}$, the square contains the
+global equality point.  Thus
+\[
+ \boxed{
+ G(\eta)=
+ \begin{cases}
+  \eta\sqrt{4-3\eta^2}, & 0<\eta\le\sqrt{2/3},\\[2mm]
+  2/\sqrt3, & \sqrt{2/3}\le\eta\le1,
+ \end{cases}}
+ \]
+and, for general $M$ and leaf product $L_T$,\[
+ E_T^{\mathrm{proj}}\le M^3L_TG(\eta).
+\]
+Relative to the universal denominator $\rho M^2L_T=\eta M^3L_T$, the
+conditional normalized bound is
+\[
+ \frac{G(\eta)}\eta=
+ \begin{cases}
+  \sqrt{4-3\eta^2}, & \eta\le\sqrt{2/3},\\[2mm]
+  2/(\sqrt3\,\eta), & \eta\ge\sqrt{2/3}.
+ \end{cases}
+\]
+This is strictly below the M9 envelope in the tested open interval, but it is
+not an unconditional replacement for $U_3$: configurations can approach the
+envelope without exact first-propagator saturation. The exact constants,
+symbolic transition, and scope are registered in
+`m11_conditional_quantitative_gap.py` and the theorem registry.

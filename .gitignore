@@ -31,6 +31,9 @@ artifacts/release/*
 *.out
 *.synctex.gz
 
+# Projected-graphs-v5 PDF visual-QA renders; final PDFs and manifests are kept.
+tmp/pdfs/projected_graphs_v5*/
+
 # spectral/runs/: legacy A-N v17 run evidence, deliberately preserved as
 # local historical evidence rather than committed canonical source (see
 # spectral/legacy/v17/ on research/spectral-a-to-n-v18 for the immutable,
@@ -52,3 +55,23 @@ runs/
 # DB100K+, YAGO3-10). Not committed — large third-party data, not
 # repository source. Fetch/place locally before running seion_kgr_v26_train.py.
 data/
+
+# campaigns/*/tier*/ and campaigns/*/*_run/: individual run output
+# directories (checkpoints, per-run manifests) from the Gate 12 campaign.
+# Compact summaries, preregistration, and logs directly under
+# campaigns/gate12/ ARE committed; per-run .pt checkpoints are not.
+campaigns/*/*_run/
+campaigns/*/tier*/
+campaigns/*/screening/
+campaigns/*/confirmatory/
+
+# release/: PDF package intermediate QA renders and the final compiled ZIP
+# archive are bulky derived artifacts, not source -- kept local-only, same
+# convention as runs/ above. The LaTeX sources, compiled PDFs, and compact
+# JSON/checksum manifests under release/*/{sources,pdf,manifests}/ (except
+# pdf/qa_png/) ARE committed.
+release/*/pdf/qa_png/
+release/*_PDF_PACKAGE.zip
+
+# Isolated CPU dependencies for the PMT k4 study (not research evidence).
+tmp/pmt_k4_deps/

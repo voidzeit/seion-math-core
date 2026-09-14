@@ -1,10 +1,14 @@
 \section*{M2: Classification theorem for $k=2$}
 \label{sec:theorem}
 
-\subsection*{Class $A$ (general): certified enclosure}
+\subsection*{Class $A$ (general): exact normalized constant}
 
-\textbf{Theorem (prior work, re-verified this pass).} For class $A$
-(\S admissible\_classes), the proved universal bound is
+\textbf{Theorem.} For class $A$ (\S admissible\_classes), the normalized
+class-level constant is exactly
+\[
+  \boxed{C_{2,\mathcal A}^P(\eta)=1\qquad(0<\eta\le1).}
+\]
+The proved universal bound is
 \[
   E_T^{\mathrm{proj}} \;\le\; (k-1)\,\rho\, M^{k-1} L_T \;=\; \rho M L_T,
   \qquad k=2,
@@ -18,8 +22,13 @@ no configuration exceeds it. \textbf{No counterexample to the upper bound
 itself exists anywhere in the atlas.}
 \[
   \boxed{\;0 \;\le\; C_T^{\mathrm{proj}}(\eta; A) \;\le\; \eta\; M \cdot L_T\;}
-  \qquad \text{gap certified, not closed: \textsc{open\_with\_certified\_gap}.}
+  \qquad \text{the upper bound is attained by the explicit witness below.}
 \]
+
+The matching lower bound is supplied by the explicit repeated-law rank-two
+witness in `class_A_exact_constant.tex` (equivalently the V5-B witness),
+which attains $E_T^{\mathrm{proj}}=\rho M$. Therefore the class-level
+supremum equals the upper bound after normalization by $\rho M L_T$.
 
 \subsection*{Class $B$ (homogeneous chain, gated rotation): exact value — new this pass}
 
@@ -73,11 +82,8 @@ exact rows (all at $\eta=1$; \S k2/certified\_enclosures).
 
 \subsection*{What remains open}
 
-Class $B$'s exact value does not close class $A$: it is one saturating
-family within a much larger admissible class, and the theorem above says
-nothing about whether some \emph{other} law/topology could exceed
-$\eta^2$ (while still remaining $\le \eta M L_T$) or approach the bound
-faster than linearly in $\eta$. The general class-$A$ gap remains
-\textsc{open\_with\_certified\_gap} for $\eta<1$; only the exact boundary
-behavior at $\eta=1$ and the precise shape of the approach (linear in
-$\eta$) are new, closed facts from this pass.
+Class $B$'s exact construction value is smaller than the class-level
+supremum for $\eta<1$, but it is not the class-level extremal problem.
+The remaining questions concern higher-arity $k=2$ variants, the broader
+gated-planar repeated-law subclass, and extensions beyond the declared
+finite-dimensional binary class; they are not gaps in class $A$ itself.

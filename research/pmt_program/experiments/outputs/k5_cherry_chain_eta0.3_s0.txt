@@ -1,0 +1,1 @@
+{"skeleton": "1,2->3->4->r", "eta": 0.3, "seed": 0, "chain_G5": 1.0557896807603302, "witness_at_theta_star_sdp_value": 1.0557896834079126, "best_sdp_upper_value": 1.0557896834196627, "excess": 2.6593325319623773e-09}

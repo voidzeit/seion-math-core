@@ -1,0 +1,26 @@
+{
+  "svd": {
+    "cosine_median": 3.477285172305964e-16,
+    "eps_realized_median": 1.0,
+    "eps_op_median": 0.9727925236080014,
+    "excluded_a_zero": 60
+  },
+  "rotated": {
+    "cosine_median": 4.182913692611022e-16,
+    "eps_realized_median": 1.0,
+    "eps_op_median": 0.9749825081124291,
+    "excluded_a_zero": 60
+  },
+  "perturbed": {
+    "cosine_median": 0.0007714323725357772,
+    "eps_realized_median": 0.999997340570266,
+    "eps_op_median": 0.9743993707479195,
+    "excluded_a_zero": 60
+  },
+  "random": {
+    "cosine_median": 0.02422601886328962,
+    "eps_realized_median": 0.9669366471026009,
+    "eps_op_median": 0.970973319892896,
+    "excluded_a_zero": 60
+  }
+}

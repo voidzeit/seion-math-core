@@ -1,0 +1,1 @@
+{"field": "R", "m": 3, "sup_gain_found": 3.999253730469127, "norm_check": 0.9999999999999999, "real_value_k_minus_1": 4.0}

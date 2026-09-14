@@ -1,0 +1,7 @@
+{
+ "O2_states_failing_O1": 0,
+ "O1_states_failing_O2": 2642,
+ "n": 40000,
+ "max_O1_violation_of_O2_states": 5.81756864903582e-14,
+ "max_O2_violation_of_O1_states": 0.37644089384170254
+}

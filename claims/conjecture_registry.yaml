@@ -1,4 +1,10 @@
 conjectures:
+  - id: PROPOSAL_PMT_K4_CHAIN_MIXED_FINITE_ETA_20260909
+    statement: "For independent-law four-node chains and mixed binary trees, C(eta)=sqrt(9-15 eta^2+7 eta^4) up to sqrt(3/7), and 9/(7 eta) thereafter."
+    status: CONJECTURE
+    proof_status: COMPLETE_ADVISORY_PROOF_DRAFT_PENDING_INDEPENDENT_REVIEW
+    proof: research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md
+    blockers: [independent proof review, theorem-level novelty comparison]
   - id: CONJ_CLOSURE_RECOVERY
     statement: "Under identifiable spectral separation and adequate sampling, closure-minimizing projectors may recover invariant subspaces more reliably than generic baselines."
     status: CONJECTURE
@@ -7,4 +13,3 @@ conjectures:
     statement: "Gauge-aligned finite tensor features may persist across a suitable resolution sequence."
     status: CONJECTURE
     blockers: [choice of maps, topology, uniform estimates]
-

@@ -1,0 +1,43 @@
+{
+  "config": {
+    "dims": [
+      3
+    ],
+    "etas": [
+      0.5
+    ],
+    "classes": [
+      "same_law"
+    ],
+    "batch": 512,
+    "steps": 80,
+    "device": "cuda"
+  },
+  "device": "cuda",
+  "runs": [
+    {
+      "value": 3.0908438758626335,
+      "chi": -1.0,
+      "eT": 1.1245996147095583,
+      "eTM": 1.966244261153075,
+      "batch": 512,
+      "class": "same_law",
+      "dim": 3,
+      "rank": 1,
+      "eta": 0.5,
+      "peak_vram_gb": 0.07403776
+    },
+    {
+      "value": 3.8813346628193295,
+      "chi": -0.999730612826991,
+      "eT": 1.8865517954313462,
+      "eTM": 1.9950440849898798,
+      "batch": 512,
+      "class": "same_law",
+      "dim": 3,
+      "rank": 2,
+      "eta": 0.5,
+      "peak_vram_gb": 0.07403776
+    }
+  ]
+}

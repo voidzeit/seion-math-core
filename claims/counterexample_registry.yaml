@@ -7,4 +7,21 @@ counterexamples:
     claim: THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1
     construction: "A product with A(y,x,z) nonzero shows standard curvature is a difference of associators, not one raw associator."
     status: REFUTED
-
+  - id: CE_V5_GROWING_TREE_NODEWISE_SUPPORT
+    claim: OPEN_V5_DIMENSION_RANK_REDUCTION
+    construction: >-
+      For every depth n, an independent-law binary chain in R^(n+2) with
+      node j law mu_j(x,y)=e_(j+1)<e_j,x><e_0,y>, proper projector rank n+1,
+      norm-one laws, zero evaluated closure residual, and orthogonal values
+      e_0,...,e_n. Any nodewise value-preserving support has rank at least n+1.
+    proof: research/math_closure/dimension_rank/growing_tree_dimension_counterexample.tex
+    implementation: research/math_closure/dimension_rank/growing_tree_dimension_counterexample.py
+    status: CERTIFIED_OBSTRUCTION
+    scope:
+      - independent node laws
+      - growing binary-chain depth
+      - preserve all leaf and internal-node values
+    exclusions:
+      - root-only representation after changing intermediate laws
+      - same-law restrictions
+      - fixed typed tree

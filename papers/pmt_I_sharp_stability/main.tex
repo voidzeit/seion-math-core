@@ -1,0 +1,451 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Open problem}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Vint}{V_{\mathrm{int}}}
+\newcommand{\amb}{\mathrm{amb}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\PMTA}{\textsf{PMT-A}}
+
+\title[Sharp stability for projected multilinear trees]{Sharp stability for projected multilinear trees}
+\author{Draft --- SEION Math Core}
+\date{Draft of 13 September 2026. Status: advisory; not independently reviewed; novelty not established.}
+
+\begin{document}
+
+\begin{abstract}
+A projected multilinear tree evaluates a finite rooted tree of multilinear maps
+between finite-dimensional Hilbert spaces, projecting orthogonally after every
+internal operation. We measure the projected error $E^P_T=\norm{P_rF_r-R_r}$
+between the projected ambient value and the recursively projected value under a
+uniform operator-norm budget $M$ and a closure budget $\rho=\eta M$ on the
+component of each law that leaves the retained subspace on already-projected
+inputs. We prove the universal stability bounds
+$\norm{F_v-R_v}\le k_v\rho M^{k_v-1}L_v$ and $E^P_T\le(k-1)\rho M^{k-1}L_T$,
+determine the extremal constants exactly for $k\le 3$ internal vertices
+($C_1^P=0$, $C_2^P=1$, and $C_3^P=W_3$ with
+$W_3(\eta)=\sqrt{4-3\eta^2}$ for $\eta\le\sqrt{2/3}$ and $2/(\sqrt3\,\eta)$
+above), independently of arities, skeleton, dimensions and ranks, with explicit
+two-dimensional extremizers and a complete equality analysis. For every tree we
+give an explicit admissible family showing
+$C^P_T(\eta)\ge\max_{0\le\theta\le\arcsin\eta}\lvert 1-(\cos\theta\,e^{i\theta})^{k-1}\rvert/\eta$,
+whence $\lim_{\eta\downarrow0}C_T^P(\eta)=k-1$: the naive accumulation of local
+errors is sharp to first order but not at any positive leakage.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Hierarchical computations that alternate a multilinear operation with an
+orthogonal reduction appear whenever a model is compressed layer by layer:
+tensor-network contraction with truncation, Galerkin projection of polynomial
+nonlinearities, reduced-order models of recursive compositions, and structured
+neural architectures with low-rank bottlenecks. If every local law nearly
+preserves the retained subspaces, how much error can reach the output?
+
+A telescoping argument bounds the answer by the number of local error sources.
+The question studied here is extremal: what is the best constant, uniformly over
+all laws, dimensions and projector ranks, for a given tree and a given relative
+leakage $\eta=\rho/M$? The answer is governed by orthogonality: the part of a
+value removed by a projector is orthogonal to the part retained, and this
+Pythagorean coupling prevents all local sources from saturating simultaneously.
+
+\subsection*{Main results}
+Let $k$ be the number of internal vertices.
+\begin{enumerate}[label=(\roman*)]
+\item (Theorem~\ref{thm:ambient}, Theorem~\ref{thm:projected}) $\norm{F_v-R_v}\le k_v\rho M^{k_v-1}L_v$ at every vertex and $E_T^P\le (k-1)\rho M^{k-1}L_T$.
+\item (Theorem~\ref{thm:k2}) $C_2^P(\eta)=1$ with a three-condition characterization of saturation.
+\item (Theorems~\ref{thm:W3chain}, \ref{thm:W3branch}, \ref{thm:W3universal}) For every tree with three internal vertices, $C_T^P(\eta)=W_3(\eta)$, attained in dimension two with rank-one projectors; equality forces the leakage and transport angles to coincide at $\min\{\arcsin\eta,\arcsin\sqrt{2/3}\}$.
+\item (Theorem~\ref{thm:universalwitness}) For every tree, $C_T^P(\eta)\ge \max_{\theta\le\arcsin\eta}\lvert1-(\cos\theta e^{i\theta})^{k-1}\rvert/\eta$, hence $\lim_{\eta\downarrow0}C^P_T(\eta)=k-1$.
+\end{enumerate}
+The lower bound in (iv) is attained for chains of every length and for all trees
+with four internal vertices; these results, the second-order coefficient and a
+finite-dimensional extremal recursion are the subject of a companion paper.
+
+\subsection*{Scope} All statements concern the single class \PMTA{} of
+Definition~\ref{def:PMTA}. Changing any of its clauses (shared laws, fixed ranks,
+oblique projectors, ambient instead of projected closure, closure only along the
+evaluated trajectory, a non-projecting root) changes the problem.
+
+\section{The class \PMTA}\label{sec:class}
+
+\begin{definition}[Trees, spaces, laws]
+$T$ is a finite ordered rooted tree with internal vertices $\Vint(T)$, leaves
+$L(T)$, root $r$ and $k=k(T)=\lvert\Vint(T)\rvert\ge1$. Each internal $v$ has ordered
+children $c_1(v),\dots,c_{m_v}(v)$, $m_v\ge1$, and every internal vertex has a leaf
+below it. Every vertex $w$ carries a finite-dimensional real Hilbert space $H_w$.
+Every internal $v$ carries a multilinear map
+$\mu_v:H_{c_1(v)}\times\dots\times H_{c_{m_v}(v)}\to H_v$ with
+$\norm{\mu_v}:=\sup\{\norm{\mu_v(x_1,\dots,x_{m_v})}:\norm{x_i}\le1\}$, and an
+orthogonal projector $P_v$ on $H_v$ of arbitrary rank; $Q_v:=I-P_v$. For leaves put
+$\widehat P_\ell:=I$ and for internal $v$, $\widehat P_v:=P_v$.
+\end{definition}
+
+\begin{definition}[Evaluations and errors]
+Leaves carry data $z_\ell\in H_\ell$. Put $F_\ell=R_\ell=z_\ell$ and, for internal $v$,
+\[
+F_v=\mu_v(F_{c_1(v)},\dots,F_{c_{m_v}(v)}),\qquad R_v=P_v\,\mu_v(R_{c_1(v)},\dots,R_{c_{m_v}(v)}).
+\]
+The ambient, projected and normal errors are $E^\amb_T=\norm{F_r-R_r}$,
+$E^P_T=\norm{P_rF_r-R_r}$, $E^N_T=\norm{Q_rF_r}$.
+\end{definition}
+
+Since $P_rF_r-R_r\in\Ran P_r$ and $Q_rF_r\in\Ran Q_r$,
+\begin{equation}\label{eq:pyth}
+(E^\amb_T)^2=(E_T^P)^2+(E^N_T)^2 .
+\end{equation}
+
+\begin{definition}[Projected closure defect]
+$\rho_v^\proj:=\sup\{\norm{Q_v\mu_v(x_1,\dots,x_{m_v})}:\ x_i\in\Ran\widehat P_{c_i(v)},\ \norm{x_i}\le1\}.$
+\end{definition}
+
+The supremum runs over the whole product of projected subspaces; in leaf slots
+every vector is allowed.
+
+\begin{definition}[\PMTA]\label{def:PMTA}
+Let $M>0$ and $0<\rho\le M$, $\eta:=\rho/M$. A realization (spaces, laws,
+projectors, nonzero leaves) is \emph{$(M,\rho)$-admissible} if $\norm{\mu_v}\le M$
+and $\rho^\proj_v\le\rho$ for every internal $v$; laws are chosen independently at
+different vertices. With $L_T:=\prod_\ell\norm{z_\ell}$,
+\[
+C_T^P(\eta):=\sup\frac{E^P_T}{\rho M^{k-1}L_T},
+\]
+the supremum over all admissible realizations with $\rho=\eta M$, all dimensions and
+all ranks. Write $G_T(\eta):=\eta\, C^P_T(\eta)$.
+\end{definition}
+
+\begin{lemma}[Scaling]\label{lem:scaling}
+Under $\mu_v\mapsto\lambda\mu_v$ ($\lambda>0$, all $v$) and $z_\ell\mapsto\nu_\ell z_\ell$,
+$E^P_T/(\rho M^{k-1}L_T)$ is invariant. Hence one may take $M=1$, $\rho=\eta$,
+$\norm{z_\ell}=1$.
+\end{lemma}
+\begin{proof}
+Each internal vertex contributes one factor $\lambda$ to $F_r$ and $R_r$, each leaf
+one factor $\nu_\ell$; $\rho$ and $M$ scale by $\lambda$, so the denominator scales by
+$\lambda^k\prod\nu_\ell$.
+\end{proof}
+
+\begin{lemma}[Leaf freezing]\label{lem:freezing}
+Fixing all leaf arguments of $\mu_v$ at their values produces a multilinear map on
+the internal-child slots with norm $\le\norm{\mu_v}$ and projected defect
+$\le\rho^\proj_v$, and leaves $F$, $R$ unchanged. A vertex without internal children
+becomes a vector $f_v=\mu_v(\text{leaves})$ with $\norm{f_v}\le M L_v$ and
+$\norm{Q_vf_v}\le\rho L_v$; conversely, any such vector and any multilinear map on
+internal slots arise from an admissible law (use the rank-one law
+$(x_1,\dots)\mapsto\prod_j\ip{x_j}{\hat z_j}f_v$, and coordinate gates
+$\ip{\cdot}{\hat z}$ in added leaf slots).
+\end{lemma}
+\begin{proof}
+Restricting a supremum to a subset of admissible inputs cannot increase it; gates
+have norm one and, on the constraint set of $\rho^\proj$, leaf slots are
+unrestricted, so the defect of the extended law equals that of the original.
+\end{proof}
+
+Consequently $C^P_T$ depends only on the \emph{internal skeleton} of $T$ (the
+rooted tree induced on $\Vint(T)$).
+
+\section{Universal stability}
+
+For a vertex $v$ let $T_v$ be its subtree, $k_v=\lvert\Vint(T_v)\rvert$ and
+$L_v=\prod_{\ell\in L(T_v)}\norm{z_\ell}$ ($k_\ell=0$ for leaves).
+
+\begin{lemma}[Stability lemma]\label{lem:stability}
+$\norm{F_v}\le M^{k_v}L_v$ and $\norm{R_v}\le M^{k_v}L_v$.
+\end{lemma}
+\begin{proof}
+Induction on $k_v$: $\norm{F_v}\le M\prod_i\norm{F_{c_i}}\le M^{1+\sum_ik_{c_i}}L_v$ and
+$k_v=1+\sum_ik_{c_i}$; for $R_v$ use also $\norm{P_v}\le1$.
+\end{proof}
+
+\begin{theorem}[Ambient discrepancy]\label{thm:ambient}
+For every vertex, $\norm{F_v-R_v}\le k_v\,\rho\,M^{k_v-1}L_v$.
+\end{theorem}
+\begin{proof}
+Trivial at leaves. For internal $v$ with $m=m_v$,
+\[
+F_v-R_v=\bigl[\mu_v(F_{c_1},\dots,F_{c_m})-\mu_v(R_{c_1},\dots,R_{c_m})\bigr]+Q_v\mu_v(R_{c_1},\dots,R_{c_m}).
+\]
+All $R_{c_i}$ lie in $\Ran\widehat P_{c_i}$, so the second term has norm
+$\le\rho\prod_i\norm{R_{c_i}}\le\rho M^{k_v-1}L_v$ by Lemma~\ref{lem:stability}. The
+first term telescopes into $m$ terms, the $i$-th containing $F_{c_i}-R_{c_i}$,
+$F_{c_j}$ for $j<i$ and $R_{c_j}$ for $j>i$; by induction and
+Lemma~\ref{lem:stability} it is at most $k_{c_i}\rho M^{k_v-1}L_v$. Sum.
+\end{proof}
+
+\begin{theorem}[Projected error bound]\label{thm:projected}
+$E^P_T\le (k-1)\,\rho\,M^{k-1}L_T$, i.e.\ $C^P_T(\eta)\le k-1$.
+\end{theorem}
+\begin{proof}
+$P_rF_r-R_r=P_r[\mu_r(F_{c_i})-\mu_r(R_{c_i})]$ because $P_rQ_r=0$; telescope as above
+and use $\sum_ik_{c_i}=k-1$.
+\end{proof}
+
+\begin{corollary}
+$C_1^P\equiv0$ (as $R_r=P_rF_r$), and by \eqref{eq:pyth},
+$E^\amb_T\le\sqrt{((k-1)\rho M^{k-1}L_T)^2+(E^N_T)^2}$ with
+$E^N_T\le\norm{F_r}\le M^kL_T$.
+\end{corollary}
+
+\section{Two internal vertices}
+
+By Lemma~\ref{lem:freezing} take the chain $f\mapsto\mu_2$: vertex $1$ is a vector
+$f=F_1$ and vertex $2$ a linear map $A=\mu_2(\cdot,\text{leaves})$. Normalize by
+Lemma~\ref{lem:scaling}. Put $R_1=P_1f$, $D:=Q_1f$.
+
+\begin{lemma}\label{lem:k2identity}
+$E^P_T=\norm{P_2AD}$.
+\end{lemma}
+\begin{proof}
+$F_2=AR_1+AD$ and $R_2=P_2AR_1$, so $P_2F_2-R_2=P_2AD$.
+\end{proof}
+
+\begin{theorem}\label{thm:k2}
+$C^P_2(\eta)=1$ for all $\eta\in(0,1]$. In the unnormalized form,
+$E^P_T=\rho ML_T$ holds if and only if
+\textup{(EQ1)} $\norm{\mu_2(D,\cdot)}$ saturates $M\norm{D}\prod\norm{z}$ on the leaves of vertex~$2$,
+\textup{(EQ2)} $\norm{D}=\rho\prod_{\ell\in L(T_1)}\norm{z_\ell}$, and
+\textup{(EQ3)} $\mu_2(D,\text{leaves})\in\Ran P_2$.
+\end{theorem}
+\begin{proof}
+$E^P_T\le\norm{AD}\le\norm{D}\le\eta$; equality throughout is (EQ3), (EQ1), (EQ2).
+Extremizer: $H=\R^2$ with basis $e_0,e_1$, leaves $e_0$, $P_1=P_2=e_0e_0^{\top}$,
+$\mu_1(x,y)=\ip{x}{e_0}\ip{y}{e_0}(\sqrt{1-\eta^2}\,e_0+\eta e_1)$ (norm $1$, defect $\eta$),
+$\mu_2(x,y)=\ip{x}{e_1}\ip{y}{e_0}\,e_0$ (norm $1$; on $\Ran P_1=\R e_0$ it vanishes,
+so its defect is $0$). Then $F_2=\eta e_0$, $R_2=0$, $E^P_T=\eta$.
+\end{proof}
+
+\section{Three internal vertices}
+
+After freezing leaves there are two skeletons: the \emph{chain} $1\to2\to r$ and
+the \emph{branching} $\{a,b\}\to r$. Normalize $M=L_T=1$, $\rho=\eta$.
+
+\subsection{The Gram lemma}
+
+\begin{lemma}[Projector--contraction Gram lemma]\label{lem:gram}
+Let $N$ be linear with $\norm{N}\le1$, $u,v$ orthonormal, $Q$ an orthogonal projector,
+$s:=\norm{QNv}$. Then $\lvert\ip{Nu}{QNv}\rvert\le s\sqrt{1-s^2}$.
+\end{lemma}
+\begin{proof}
+$K:=N^{\top}QN$ satisfies $0\preceq K\preceq I$. On $\mathrm{span}\{u,v\}$ write
+$K_{vv}=s^2$, $K_{uu}=a$, $K_{uv}=c$. Positivity of $K$ and $I-K$ gives
+$c^2\le as^2$ and $c^2\le(1-a)(1-s^2)$, so
+$c^2\le\max_{a\in[0,1]}\min\{as^2,(1-a)(1-s^2)\}=s^2(1-s^2)$.
+\end{proof}
+
+\subsection{The extremal function}
+
+For $u,v\ge0$ let
+\[
+f(u,v):=\frac{(u+v)^2+u^2v^2}{(1+u^2)(1+v^2)}.
+\]
+With $u=\tan\alpha$, $v=\tan\beta$: $f=\sin^2(\alpha+\beta)+\sin^2\alpha\sin^2\beta
+=\sin^2\alpha+\cos^2\alpha\sin^2\beta+2\sin\alpha\cos\alpha\sin\beta\cos\beta$.
+
+\begin{lemma}\label{lem:f}
+\textup{(a)} $4(1+u^2)(1+v^2)-3[(u+v)^2+u^2v^2]=(uv-2)^2+(u-v)^2$; hence $f\le 4/3$
+with equality iff $u=v=\sqrt2$.
+\textup{(b)} $\partial_uf=2(u+v-u^2v)/((1+u^2)^2(1+v^2))\ge0$ on $[0,\sqrt2]^2$, and symmetrically
+for $\partial_vf$.
+\textup{(c)} For $\tau:=\tan\arcsin\eta$: $\max_{[0,\tau]^2}f=\eta^2(4-3\eta^2)$ if
+$\eta\le\sqrt{2/3}$ and $4/3$ otherwise.
+\end{lemma}
+\begin{proof}
+(a) Expand. (b) Differentiate; if $u\le1$ the numerator is positive, and if
+$1<u\le\sqrt2$ then $u+v(1-u^2)\ge u+\sqrt2(1-u^2)=-(\sqrt2u+1)(u-\sqrt2)\ge0$.
+(c) If $\eta\le\sqrt{2/3}$ then $\tau\le\sqrt2$ and by (b) the maximum is at
+$(\tau,\tau)$, where $f=\eta^2(4-3\eta^2)$; otherwise $(\sqrt2,\sqrt2)$ is feasible.
+\end{proof}
+
+\begin{definition}
+$W_3(\eta):=\sqrt{4-3\eta^2}$ for $0<\eta\le\sqrt{2/3}$ and $W_3(\eta):=2/(\sqrt3\,\eta)$ for
+$\sqrt{2/3}\le\eta\le1$.
+\end{definition}
+
+\subsection{Chain}
+
+\begin{theorem}\label{thm:W3chain}
+For the chain, $C^P_T(\eta)\le W_3(\eta)$.
+\end{theorem}
+\begin{proof}
+Vertex $1$ is a vector $f$, $\norm f\le1$, $q:=\norm{Q_1f}\le\eta$, $p:=\norm{P_1f}\le\sqrt{1-q^2}$
+(orthogonality). Vertices $2$ and $r$ are contractions $N$ and $A$. With
+$D_1=qu_0$, $R_1=pv_0$ ($u_0\perp v_0$ unit; the degenerate cases follow by
+continuity) and $s:=\norm{Q_2Nv_0}\le\eta$,
+\[
+F_2-R_2=N D_1+Q_2NR_1=qNu_0+pQ_2Nv_0 ,\qquad E_T^P=\norm{P_rA(F_2-R_2)}\le\norm{F_2-R_2}.
+\]
+By Lemma~\ref{lem:gram}, $\norm{F_2-R_2}^2\le q^2+p^2s^2+2qps\sqrt{1-s^2}$, which
+increases in $p$; put $p=\sqrt{1-q^2}$, $q=\sin\alpha$, $s=\sin\beta$ to obtain $f(\tan\alpha,\tan\beta)$
+with $\alpha,\beta\le\arcsin\eta$. Lemma~\ref{lem:f}(c) and division by $\eta^2$ finish.
+\end{proof}
+
+\begin{proposition}[Chain extremizer]\label{prop:chainext}
+Let $t=\min\{\eta,\sqrt{2/3}\}$, $c=\sqrt{1-t^2}$, $H=\R^2$, leaves $e_0$, all
+$P=e_0e_0^\top$, $\mu_1(x,y)=\ip x{e_0}\ip y{e_0}(ce_0+te_1)$, $N_te_0=-ce_0+te_1$,
+$N_te_1=te_0+ce_1$, $\mu_2(x,y)=\ip y{e_0}N_tx$, $v:=F_2-R_2$,
+$\mu_3(x,y)=\ip y{e_0}\ip x{v/\norm v}e_0$. The realization is admissible with
+defects $t,t,0$ and $E^P_T=t\sqrt{4-3t^2}$; hence $C^P_{\mathrm{chain}}=W_3$.
+\end{proposition}
+\begin{proof}
+Norms: rank-one maps with unit vectors and an orthogonal matrix. Defects:
+$\norm{Q\mu_1}=t$; on $\Ran P=\R e_0$, $QN_te_0=te_1$; $\mu_3$ maps into $\Ran P$.
+$D_1=te_1$, $R_1=ce_0$, $v=tN_te_1+cQN_te_0=t^2e_0+2tce_1$,
+$\norm v^2=t^4+4t^2c^2=t^2(4-3t^2)$.
+\end{proof}
+
+\subsection{Branching}
+
+\begin{lemma}[Unit children]\label{lem:unit}
+In maximizing $E^P_T$ over the value $f$ of a vertex without internal children, one
+may assume $\norm f=1$; then $f=\cos\alpha\,\hat R+\sin\alpha\,\hat D$ with $\hat R\in\Ran P$,
+$\hat D\in\Ran Q$ unit and $\alpha\in[0,\arcsin\eta]$.
+\end{lemma}
+\begin{proof}
+$E^P_T$ is the norm of an expression linear in $f$ (as $R=Pf$), hence convex in $f$
+on the convex set $\{\norm f\le1,\norm{Qf}\le\eta\}$, whose extreme points are unit
+vectors once $\Ran P\ne0$ (if $P=0$, enlarge $H$ by one direction added to $\Ran P$ and
+extend laws by zero).
+\end{proof}
+
+\begin{theorem}\label{thm:W3branch}
+For the branching skeleton, $C^P_T(\eta)\le W_3(\eta)$, with equality.
+\end{theorem}
+\begin{proof}
+Scalarize by a unit $\omega\in\Ran P_r$: $\tau(x,y):=\ip\omega{\mu_r(x,y)}$ is a
+bilinear form of norm $\le1$ and $E_T^P=\sup_\omega[\tau(f_a,f_b)-\tau(R_a,R_b)]$. By
+Lemma~\ref{lem:unit} restrict $\tau$ to the planes $\mathrm{span}\{\hat R_a,\hat D_a\}$,
+$\mathrm{span}\{\hat R_b,\hat D_b\}$, where it is a $2\times2$ matrix of operator norm
+$\le1$ and $\tau(f_a,f_b)-\tau(R_a,R_b)=\ip{\tau}{K}$,
+\[
+K=\begin{pmatrix}0&\cos\alpha\sin\beta\\ \sin\alpha\cos\beta&\sin\alpha\sin\beta\end{pmatrix}.
+\]
+By operator/nuclear duality the supremum is $\norm K_*$, and for $2\times2$ real
+matrices $\norm K_*^2=(\sigma_1+\sigma_2)^2=\norm K_F^2+2\lvert\det K\rvert
+=\sin^2(\alpha+\beta)+\sin^2\alpha\sin^2\beta=f(\tan\alpha,\tan\beta)$. Apply
+Lemma~\ref{lem:f}(c). Equality: take $\alpha=\beta=\arcsin t$ with $t$ as in
+Proposition~\ref{prop:chainext}, children $\mu_a=\mu_b=\mu_1$, and
+$\mu_r(x,y)=(x^\top Uy)\,e_0$ with $U$ the orthogonal polar factor of $K$.
+\end{proof}
+
+\subsection{Universality and equality geometry}
+
+\begin{theorem}\label{thm:W3universal}
+For every finite ordered tree $T$ with three internal vertices and all arities,
+$C^P_T(\eta)=W_3(\eta)$, attained in $\R^2$ with rank-one projectors.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:freezing}, Theorems~\ref{thm:W3chain}, \ref{thm:W3branch} and
+Proposition~\ref{prop:chainext}.
+\end{proof}
+
+\begin{proposition}[Two regimes]
+Let $\eta_c=\sqrt{2/3}$ and $G_3(\eta)=\eta W_3(\eta)$. For $\eta\le\eta_c$ every
+extremizer of the proof uses the full budget ($q=s=\eta$) and $G_3=\eta\sqrt{4-3\eta^2}$ increases;
+for $\eta\ge\eta_c$ the optimum freezes at $q=s=\sqrt{2/3}$ and $G_3\equiv2/\sqrt3$: the admissible
+set still grows but the worst absolute error does not.
+The two propagated contributions meet at the angle $\arcsin\min\{\eta,\eta_c\}$ and equality
+requires vertex $1$ to saturate its norm, vertex $2$ to saturate its norm on the normal direction,
+the extremal Gram matrix in Lemma~\ref{lem:gram}, and a lossless root.
+\end{proposition}
+\begin{proof}
+Equality in Lemma~\ref{lem:f}(a) holds only at $u=v=\sqrt2$, i.e.\ $q=s=\sqrt{2/3}$; below
+$\eta_c$ strict monotonicity in (b) forces the corner. Trace equality back through the proof of
+Theorem~\ref{thm:W3chain}.
+\end{proof}
+
+\begin{remark}
+$W_3(\eta)<2$ for $\eta>0$, $W_3(\eta)=2-\tfrac34\eta^2+O(\eta^4)$. A cruder
+triangle-inequality envelope has its own transition at $\eta_\star=\sqrt{(\sqrt5-1)/2}\ne\eta_c$;
+it is not needed.
+\end{remark}
+
+\section{Asymptotic sharpness for every tree}
+
+Identify $\R^2\cong\C$ and write $w(\theta):=\cos\theta\,e^{i\theta}$.
+
+\begin{theorem}[Universal witness]\label{thm:universalwitness}
+For every finite ordered tree $T$ with $k$ internal vertices and $\eta\in(0,1]$,
+\[
+C^P_T(\eta)\ \ge\ \frac1\eta\max_{0\le\theta\le\arcsin\eta}\bigl\lvert1-w(\theta)^{k-1}\bigr\rvert .
+\]
+\end{theorem}
+\begin{proof}
+All spaces $\R^2$, leaves $e_0=1$, $P_v$ the projection onto $\R$. Fix
+$\theta\le\arcsin\eta$. For non-root internal $v$,
+$\mu_v(x_1,\dots,x_m)=e^{i\theta}\prod_{i\ \mathrm{internal}}x_i\prod_{j\ \mathrm{leaf}}\ip{x_j}{e_0}$,
+a real multilinear map of norm $1$. On projected inputs every factor is real, so
+$\norm{Q_v\mu_v}=\lvert\sin\theta\rvert\prod\norm{x}$: $\rho^\proj_v=\sin\theta\le\eta$, leaf slots
+included. By induction $F_v=e^{ik_v\theta}$ and $R_v=\cos^{k_v}\theta$. At the root let
+$\mu_r(x)=\mathrm{Re}\bigl(\lambda\prod x_i\prod\ip{x_j}{e_0}\bigr)e_0$ with $\lvert\lambda\rvert=1$:
+norm $1$, image in $\Ran P_r$, defect $0$, and
+$E^P_T=\lvert\mathrm{Re}(\lambda(e^{i(k-1)\theta}-\cos^{k-1}\theta))\rvert$, which equals
+$\lvert1-w(\theta)^{k-1}\rvert$ for a suitable $\lambda$.
+\end{proof}
+
+\begin{corollary}\label{cor:limit}
+$\lim_{\eta\downarrow0}C^P_T(\eta)=k-1$ for every $T$.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:projected} and $\lvert1-w(\theta)^{k-1}\rvert/\sin\theta\to k-1$ as $\theta\to0$.
+\end{proof}
+
+\begin{remark}
+With $\mu_r$ replaced by the non-root law and $P_r$ the real projection, the same family gives
+$E^\amb_T=\lvert e^{ik\theta}-\cos^k\theta\rvert$, so the constant $k$ of
+Theorem~\ref{thm:ambient} is also asymptotically sharp. For $k=2,3$ the bound of
+Theorem~\ref{thm:universalwitness} equals $C_2^P$ and $W_3$. Earlier phase constructions that
+multiplied leaf slots by complex phases violate the closure hypothesis on leaf slots (fixing all
+but one argument and rotating the remaining leaf produces defect $1$); the coordinate gates above
+avoid this.
+\end{remark}
+
+\section{Remarks on the field}
+
+All upper bounds above hold verbatim for complex Hilbert spaces and complex-multilinear laws
+(scalarize with $\mathrm{Re}\ip\cdot\cdot$ and work on real planes). The extremizers of
+Theorem~\ref{thm:k2} and Section~5 use rank-one maps, coordinate gates and real orthogonal
+matrices, hence are complex-multilinear with the same norms, so $C_2^P$ and $W_3$ are the same over
+$\C$. The witness of Theorem~\ref{thm:universalwitness} uses the multiplication of $\R^2\cong\C$ at
+vertices with two or more internal children; its complex-bilinear extension has norm $\sqrt2$.
+Over $\C$, Corollary~\ref{cor:limit} therefore holds as proved for chains (where only linear stages
+occur); for general skeletons it is open.
+
+\section{Open problems}
+
+\begin{problem} Determine $C^P_T(\eta)$ for $k\ge4$. (Chains of every length and all trees with
+four internal vertices attain the bound of Theorem~\ref{thm:universalwitness}; see the companion
+paper.)\end{problem}
+\begin{problem} Is $C^P_T(\eta)$ independent of the skeleton for every $k$?\end{problem}
+\begin{problem} Second-order asymptotics $C^P_T(\eta)=(k-1)-a_T\eta^2+o(\eta^2)$: is
+$a_T=(k-1)(k-2)(k+6)/24$ for every $T$?\end{problem}
+\begin{problem} Complex, same-law, fixed-rank and oblique-projector variants; directed acyclic
+graphs.\end{problem}
+
+\section*{Reproducibility note}
+Symbolic checks of Lemma~\ref{lem:f} and numerical controls are in the accompanying repository
+(\texttt{research/pmt\_program/experiments}); they are controls, not premises.
+
+\begin{thebibliography}{9}
+\bibitem{RHY} E.~K.~Ryu, R.~Hannah, X.~Yin, \emph{Scaled relative graphs: nonexpansive operators via 2D Euclidean geometry}, Math.\ Program.\ (2022); arXiv:1902.09788.
+\bibitem{VB} L.~Vandenberghe, S.~Boyd, \emph{Semidefinite programming}, SIAM Rev.\ 38 (1996).
+\bibitem{O} T.~Oikhberg, \emph{Products of orthogonal projections}, Proc.\ AMS 127 (1999).
+\end{thebibliography}
+
+\end{document}

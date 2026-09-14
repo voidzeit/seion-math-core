@@ -1,0 +1,40 @@
+\section{Asymptotic sharpness for the shared diamond DAG}
+\label{sec:diamond-dag-asymptotic-sharpness}
+
+Consider the ordered binary DAG with leaves $x_0,x_1,x_2$, shared node
+$u=\mu_u(x_0,x_1)$, branches
+$\ell=\mu_\ell(u,x_2)$ and $r=\mu_r(x_0,u)$, and unprojected root
+$t=\mu_t(\ell,r)$.  Project $u,\ell,r$ onto the real axis
+$P(z)=\operatorname{Re}(z)$ in $\mathbb C\simeq\mathbb R^2$, and assume unit
+leaves, operator norm at most one, and uniform normal-operator defect at most
+$\eta$ at the three projected nodes.  The bounded-domain recurrence gives
+\begin{align*}
+ D_u&\le\eta,\\
+ D_\ell,D_r&\le\eta+D_u\le2\eta,\\
+ D_t&\le D_\ell+D_r\le4\eta.
+\end{align*}
+The coefficient $4$ is the path constant: the local source at $u$ has two
+paths to the root, while each branch source has one.
+
+To attain this coefficient asymptotically, choose every node law to be
+\begin{equation*}
+ \mu_\theta(z,w)=e^{i\theta}zw,
+ \qquad \theta=\arcsin(\eta),
+\end{equation*}
+with all leaves equal to $1$.  Complex multiplication has bilinear operator
+norm one and the normal operator defect is $|\sin\theta|=\eta$.  The exact
+ambient values at $u,\ell,r$ are $e^{i\theta},e^{2i\theta},e^{2i\theta}$,
+whereas the recursively projected values are
+$\cos\theta,\cos^2\theta,\cos^2\theta$.  The unprojected root error is exactly
+\begin{equation*}
+ E_\diamond(\eta)=\left|e^{4i\theta}-\cos^4\theta\right|.
+\end{equation*}
+Since $\theta=\arcsin\eta$,
+\begin{equation*}
+ \lim_{\eta\downarrow0}\frac{E_\diamond(\eta)}{\eta}=4.
+\end{equation*}
+Therefore the normalized asymptotic constant of the declared independent-law
+shared-diamond class is exactly $4$.  This is an asymptotic, fixed-topology
+result; it does not claim fixed-$\eta$ equality, arbitrary-DAG sharpness, or
+sharpness under same-law restrictions.
+

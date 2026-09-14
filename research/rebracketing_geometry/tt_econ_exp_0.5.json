@@ -1,0 +1,105 @@
+{
+  "config": {
+    "bond": 12,
+    "physical": 3,
+    "cores": 6,
+    "ranks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "instances": 60,
+    "tolerances": [
+      0.3,
+      0.1,
+      0.03,
+      0.01,
+      0.003,
+      0.001
+    ],
+    "seed": 20260818,
+    "decay": "exp",
+    "decay_rate": 0.5,
+    "label": "exp-0.5",
+    "csv": "tt_econ_exp_0.5.csv",
+    "json": "tt_econ_exp_0.5.json"
+  },
+  "soundness_violations": 0,
+  "frontier": [
+    {
+      "tolerance": 0.3,
+      "instances": 60,
+      "tax_m24_storage": 2.112,
+      "tax_pyth_storage": 2.112,
+      "recovered_storage": 0.0,
+      "tax_m24_flops": 2.8100147275405005,
+      "tax_pyth_flops": 2.8100147275405005,
+      "recovered_flops": 0.0,
+      "q_frontier_pyth": 0.6929868429313627
+    },
+    {
+      "tolerance": 0.1,
+      "instances": 60,
+      "tax_m24_storage": 1.2571428571428571,
+      "tax_pyth_storage": 1.2571428571428571,
+      "recovered_storage": 0.0,
+      "tax_m24_flops": 1.394057476863127,
+      "tax_pyth_flops": 1.394057476863127,
+      "recovered_flops": 0.0,
+      "q_frontier_pyth": 0.27244497066991347
+    },
+    {
+      "tolerance": 0.03,
+      "instances": 60,
+      "tax_m24_storage": 1.0,
+      "tax_pyth_storage": 1.0,
+      "recovered_storage": NaN,
+      "tax_m24_flops": 1.0,
+      "tax_pyth_flops": 1.0,
+      "recovered_flops": NaN,
+      "q_frontier_pyth": 0.08173349120097403
+    },
+    {
+      "tolerance": 0.01,
+      "instances": 60,
+      "tax_m24_storage": 1.0,
+      "tax_pyth_storage": 1.0,
+      "recovered_storage": NaN,
+      "tax_m24_flops": 1.0,
+      "tax_pyth_flops": 1.0,
+      "recovered_flops": NaN,
+      "q_frontier_pyth": 0.027244497066991342
+    },
+    {
+      "tolerance": 0.003,
+      "instances": 60,
+      "tax_m24_storage": 1.0,
+      "tax_pyth_storage": 1.0,
+      "recovered_storage": NaN,
+      "tax_m24_flops": 1.0,
+      "tax_pyth_flops": 1.0,
+      "recovered_flops": NaN,
+      "q_frontier_pyth": 0.008173349120097404
+    },
+    {
+      "tolerance": 0.001,
+      "instances": 60,
+      "tax_m24_storage": 1.0,
+      "tax_pyth_storage": 1.0,
+      "recovered_storage": NaN,
+      "tax_m24_flops": 1.0,
+      "tax_pyth_flops": 1.0,
+      "recovered_flops": NaN,
+      "q_frontier_pyth": 0.0027244497066991344
+    }
+  ]
+}

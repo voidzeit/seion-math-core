@@ -1,0 +1,61 @@
+\section*{M10 endpoint addendum: strict gap at $\eta=1$}
+\label{sec:m10-endpoint-eta-one}
+
+\textbf{Historical-scope correction.} This addendum preserves the original
+compactness route as provenance. The M10 equality obstruction used below is a
+chain argument and should not be read as a branching proof. The current
+endpoint result for both topologies is stronger and is supplied by M14--M15:
+\[
+ C_{3,\mathrm{ind}}^{P,\mathrm{chain}}(1)
+ =C_{3,\mathrm{ind}}^{P,\mathrm{branch}}(1)
+ =\frac{2}{\sqrt3}<\sqrt2=U_3(1).
+\]
+
+\paragraph{Statement.}
+In the independent-law binary $k=3$ chain and branching classes, the M9
+envelope at the endpoint is
+\[
+  U_3(1)=\sqrt{2}.
+\]
+No individual admissible configuration attains this value, and the fixed-tree
+support-compression theorem reduces the endpoint supremum to a finite union
+of compact classes.  Consequently
+\[
+  C_{3,\mathrm{ind}}^P(1)<\sqrt{2}.
+\]
+
+\paragraph{Proof.}
+At $\eta=1$ one has $\rho=M$.  The M9 scalar envelope is
+\[
+ h(q)=M^2q+M\rho\sqrt{M^2-q^2},
+ \qquad 0\le q\le\rho,
+\]
+whose unique maximizer is the interior point
+\[
+ q^*=\frac{M}{\sqrt2},
+ \qquad h(q^*)=\sqrt2\,M^3.
+\]
+Both equality contributions are strictly positive:
+\[
+ M^2q^*=\frac{M^3}{\sqrt2}>0,
+ \qquad
+ M\rho\sqrt{M^2-(q^*)^2}=\frac{M^3}{\sqrt2}>0.
+\]
+Therefore equality in the M9 envelope would require the same three
+conditions used in M10: exact operator-norm saturation on the first
+propagated direction at the second node, exact operator-norm saturation on
+the corresponding root direction, and equality in the final triangle
+inequality for both nonzero propagated contributions.  M10's
+projector-independent Step 1 shows that the second propagated contribution
+cannot be a nonzero scalar multiple of the first.  Its Step 2 then shows that
+the simultaneous root saturation and triangle equality are impossible.  The
+argument only requires $q^*>0$ and a nonzero second contribution; it does not
+require $\rho<M$.  Hence no individual configuration attains $U_3(1)$.
+
+Finally, fixed-tree support compression supplies a uniform finite support
+dimension bound for these two fixed topologies.  The admissible tensor,
+projector, and unit-leaf parameter sets in the resulting finite union are
+compact, and the projected error is continuous.  The supremum is therefore a
+maximum in that compact union.  Since no point attains $\sqrt2$, the maximum
+is strictly smaller than $\sqrt2$.  The gap is not quantified and the exact
+endpoint constant remains open. $\square$

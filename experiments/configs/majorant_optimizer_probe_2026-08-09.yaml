@@ -1,0 +1,20 @@
+id: adaptive_tensor_network_majorant_optimizer_probe_2026_08_09
+status: exploratory_not_preregistered
+purpose: compare exact fitted-majorant allocation with the historical pathwise heuristic
+command: python applications/adaptive_tensor_network/experiments/run_majorant_optimizer_probe.py
+topologies:
+  - chain_depth3
+  - balanced_binary_4leaf
+seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+fit_batch_size: 300
+eval_batch_size: 300
+methods:
+  - pathwise_global
+  - pathwise_majorant_optimal
+outputs:
+  raw: applications/adaptive_tensor_network/results/majorant_optimizer_probe_2026-08-09.json
+  report: applications/adaptive_tensor_network/results/MAJORANT_OPTIMIZER_PROBE_2026-08-09.md
+limitations:
+  - empirical_path_factors_are_not_validated_operator_norms
+  - no_true_error_superiority_or_allocator_optimality_claim
+  - historical_level1_records_are_unchanged

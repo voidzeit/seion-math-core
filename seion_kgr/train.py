@@ -11,6 +11,7 @@ reciprocal relation ids — this mirrors a documented v25 limitation
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import sys
@@ -22,16 +23,238 @@ import numpy as np
 import torch
 
 from . import geometry, projection, rank_controller, reproducibility as repro
-from .data import KnowledgeGraph, TripleDataset, load_knowledge_graph, sample_negatives, tiny_kg
+from .data import (
+    KnowledgeGraph,
+    TripleDataset,
+    load_knowledge_graph,
+    sample_negatives,
+    tiny_kg,
+    train_only_filter_view,
+)
+from .context import build_context_adjacency, build_context_index, build_query_context, context_spec_dict
 from .evaluate import evaluate
+from .frontier_ops import build_csr_adjacency
 from .losses import n3_regularizer, negative_sampling_loss
 from .model import SeionKGRv26
 from .rank_controller import ModuleDiagnostics
 from .reasoner import Adjacency
+from .structural_kernel import StructuralKernelResidual, build_kernel, load_e8_info, load_e8_kernel
+
+try:
+    import psutil
+except ImportError:  # pragma: no cover — perf logging degrades gracefully without it
+    psutil = None
 
 
 def _inverse_relation(r: int, num_rel_orig: int) -> int:
     return r + num_rel_orig if r < num_rel_orig else r - num_rel_orig
+
+
+ROUTER_PARAM_NAMES = ("gamma_raw", "eta_raw", "epsilon_raw", "path_scale_raw", "seion_scale_raw")
+
+
+def build_optimizer_param_groups(model: SeionKGRv26, lr: float, router_lr_multiplier: float) -> list:
+    """Gate 13.1: the router gates (``gamma_raw``/``eta_raw`` on the model,
+    ``epsilon_raw`` inside ``structural_kernel`` when enabled) get their own
+    ``AdamW`` param group at ``router_lr_multiplier x lr`` — a near-zero-
+    gradient-at-init gate (see model.py docstring) needs a faster-moving
+    optimizer step to actually open within a realistic epoch budget, without
+    also inflating the LR for the base/path/seion weight matrices."""
+    router_params, other_params = [], []
+    for name, param in model.named_parameters():
+        if not param.requires_grad:
+            continue
+        leaf = name.rsplit(".", 1)[-1]
+        (router_params if leaf in ROUTER_PARAM_NAMES else other_params).append(param)
+    return [
+        {"params": other_params, "lr": lr},
+        {"params": router_params, "lr": lr * router_lr_multiplier},
+    ]
+
+
+def compute_path_reasoner_perf(
+    model: SeionKGRv26, kg: KnowledgeGraph, adjacency, device: torch.device, seed: int, epoch: int, sample_size: int = 256,
+) -> Dict[str, Any]:
+    """Gate 13.2b performance instrumentation: times ONE
+    ``_run_path_reasoner`` call (forward only, no grad) on a sample of real
+    validation triples, and reports what is directly measurable from a
+    ``PathReasonerOutput`` without further instrumenting the reasoner's
+    internals. Deliberately narrower than the full field list the mission
+    brief sketches (no ``expanded_edges_per_second``/``selector_keep_ratio``
+    — those would need per-layer candidate counts the current
+    ``BatchedPathReasoner``/``PathReasoner`` APIs don't expose externally;
+    logged here as ``None`` rather than approximated). ``cpu_ram_mb`` is
+    ``max(rss_before, rss_after)`` around the timed call — a coarse proxy,
+    not a continuously-sampled true peak (``gpu_allocated_peak_mb`` IS a
+    true peak, via ``torch.cuda.max_memory_allocated``)."""
+    if not model.enable_path:
+        return {}
+    sample = kg.valid[:sample_size] if len(kg.valid) > sample_size else kg.valid
+    if not sample:
+        return {}
+    h = torch.tensor([t[0] for t in sample], device=device)
+    r = torch.tensor([t[1] for t in sample], device=device)
+    t = torch.tensor([t[2] for t in sample], device=device)
+    query_vecs = model.relation(r)
+
+    rss_before = float(psutil.Process().memory_info().rss) / 1e6 if psutil is not None else None
+    if device.type == "cuda":
+        torch.cuda.reset_peak_memory_stats(device)
+    model.eval()
+    start = time.time()
+    with torch.no_grad():
+        output = model._run_path_reasoner(h, r, t, adjacency, query_vecs, seed, False)
+    wall_sec = time.time() - start
+    model.train()
+    gpu_peak_mb = float(torch.cuda.max_memory_allocated(device)) / 1e6 if device.type == "cuda" else None
+    rss_after = float(psutil.Process().memory_info().rss) / 1e6 if psutil is not None else None
+    cpu_ram_mb = max(rss_before, rss_after) if psutil is not None else None
+
+    n = int(h.numel())
+    per_query_counts = torch.bincount(output.query_ids, minlength=n).float() if output.query_ids.numel() else torch.zeros(n)
+    mean_frontier_size = float(per_query_counts.mean().item())
+    p95_frontier_size = float(torch.quantile(per_query_counts, 0.95).item()) if n > 0 else 0.0
+    gold_reach_rate = float(output.reached_mask(torch.arange(n, device=device), t).float().mean().item())
+
+    return {
+        "epoch": epoch,
+        "path_backend": model.path_backend,
+        "sample_size": n,
+        "wall_seconds": wall_sec,
+        "queries_per_second": n / wall_sec if wall_sec > 0 else None,
+        "mean_frontier_size": mean_frontier_size,
+        "p95_frontier_size": p95_frontier_size,
+        "gold_reach_rate": gold_reach_rate,
+        "expanded_edges_per_second": None,  # not exposed by the current reasoner APIs, see docstring
+        "selector_keep_ratio": None,  # not exposed by the current reasoner APIs, see docstring
+        "frontier_empty_rate": float((per_query_counts == 0).float().mean().item()),
+        "gold_unreached_rate": 1.0 - gold_reach_rate,
+        "candidate_reachable_rate": None,
+        "effective_depth": None,
+        "neighbors_explored": None,
+        "fallback_used": None,
+        "cpu_ram_mb": cpu_ram_mb,
+        "gpu_allocated_peak_mb": gpu_peak_mb,
+    }
+
+
+def _pearson_corr(x: torch.Tensor, y: torch.Tensor) -> float:
+    x = x - x.mean()
+    y = y - y.mean()
+    denom = (x.pow(2).sum().sqrt() * y.pow(2).sum().sqrt()).clamp_min(1e-12)
+    return float((x * y).sum() / denom)
+
+
+# Gate 13 signed-gate declaration (see model.py's module docstring): each
+# entry is (breakdown key for the GATED contribution, breakdown key for the
+# RAW pre-gate branch score, a getter returning (raw_alpha_weight, gate_g_max)
+# for that branch's router parameter — the kernel branch's gate lives inside
+# `model.structural_kernel`, not on `model` itself, hence the getter indirection).
+_GATE_BRANCHES = (
+    ("gamma_path", "gamma_path_raw", lambda m: (m.gamma_raw.weight, m.gate_g_max)),
+    ("eta_seion", "eta_seion_raw", lambda m: (m.eta_raw.weight, m.gate_g_max)),
+    ("eta_generic", "eta_generic_raw", lambda m: (m.eta_raw.weight, m.gate_g_max)),
+    ("kernel_structural", "kernel_structural_raw", lambda m: (m.structural_kernel.epsilon_raw.weight, m.structural_kernel.gate_g_max)),
+)
+
+
+def compute_gate_diagnostics(
+    model: SeionKGRv26, kg: KnowledgeGraph, adjacency, device: torch.device, seed: int, epoch: int, sample_size: int = 512,
+) -> list:
+    """Gate 13.1 acceptance evidence + signed-gate diagnostics (post-13.2b
+    precision): per-branch gate displacement from its zero init and the RMS
+    share of the total score the gated branch actually contributes, sampled
+    on real validation triples (not the training batch, so this never
+    influences gradients). Returns one record per active branch (path,
+    seion, structural kernel), or ``[]`` if none are enabled.
+
+    **The gates are signed** (`gamma_r = gate_g_max * tanh(alpha_r) in
+    (-gate_g_max, gate_g_max)`, not a `(0,1)` mixing weight — see model.py's
+    docstring), so this reports `signed_*` and `absolute_*` contributions
+    separately: a negative `signed_branch_contribution` means the branch
+    learned to SUBTRACT from the base score for that relation, which is not
+    a failure mode."""
+    records = []
+    if not (model.enable_path or model.enable_seion or model.enable_generic_residual or model.enable_structural_kernel):
+        return records
+    sample = kg.valid[:sample_size] if len(kg.valid) > sample_size else kg.valid
+    if not sample:
+        return records
+    h = torch.tensor([t[0] for t in sample], device=device)
+    r = torch.tensor([t[1] for t in sample], device=device)
+    t = torch.tensor([t[2] for t in sample], device=device)
+    model.eval()
+    with torch.no_grad():
+        _, breakdown = model.score_positive(h, r, t, adjacency, seed, training=False, return_breakdown=True)
+    model.train()
+    s_total_rms = float(breakdown["s_total"].pow(2).mean().sqrt().item()) if "s_total" in breakdown else 0.0
+    s_base = breakdown["s_base"].detach()
+    if model.standalone_mode != "residual":
+        standalone_branches = (
+            ("gamma_path", "gamma_path_raw", model.path_scale_raw),
+            ("eta_seion", "eta_seion_raw", model.seion_scale_raw),
+        )
+        # Standalone scales are relation-indexed.  Diagnostics are computed
+        # from a validation sample, but the scale summary must use an
+        # explicit relation index tensor rather than an undefined batch-local
+        # variable (there is no ``r_ids`` in this function's scope).
+        r_ids = torch.arange(kg.num_relations_total, device=device)
+        for contribution_key, raw_key, scale_embedding in standalone_branches:
+            if contribution_key not in breakdown or scale_embedding is None:
+                continue
+            scale = model._positive_scale(scale_embedding, r_ids).detach()
+            contribution = breakdown[contribution_key].detach()
+            raw_branch_score = breakdown[raw_key].detach()
+            records.append({
+                "epoch": epoch,
+                "branch": contribution_key,
+                "mode": model.standalone_mode,
+                "gate_signed_mean": None,
+                "gate_absolute_mean": None,
+                "scale_mean": float(scale.mean().item()),
+                "scale_absolute_mean": float(scale.abs().mean().item()),
+                "branch_score_rms": float(raw_branch_score.pow(2).mean().sqrt().item()),
+                "signed_branch_contribution": float(contribution.mean().item()),
+                "absolute_branch_contribution": float(contribution.abs().mean().item()),
+                "correlation_with_base_score": _pearson_corr(contribution, s_base),
+                "rms_contribution_ratio": float(contribution.pow(2).mean().sqrt().item()) / s_total_rms if s_total_rms > 0 else 0.0,
+            })
+        return records
+    for gated_key, raw_key, getter in _GATE_BRANCHES:
+        if gated_key not in breakdown:
+            continue
+        alpha_weight, gate_g_max = getter(model)
+        alpha = alpha_weight.squeeze(-1).detach()
+        gamma = gate_g_max * torch.tanh(alpha)
+        gated_contribution = breakdown[gated_key].detach()  # gamma * s_branch_raw, per-query
+        raw_branch_score = breakdown[raw_key].detach()  # s_branch_raw (pre-gate), per-query
+        branch_rms = float(gated_contribution.pow(2).mean().sqrt().item())
+        records.append({
+            "epoch": epoch,
+            "branch": gated_key,
+            "alpha_mean": float(alpha.mean().item()),
+            "gate_signed_mean": float(gamma.mean().item()),
+            "gate_absolute_mean": float(gamma.abs().mean().item()),
+            "gamma_displacement_mean": float(gamma.abs().mean().item()),  # gamma(0) == 0 exactly, so |gamma - gamma(0)| == gate_absolute_mean
+            "branch_score_rms": float(raw_branch_score.pow(2).mean().sqrt().item()),
+            "signed_branch_contribution": float(gated_contribution.mean().item()),
+            "absolute_branch_contribution": float(gated_contribution.abs().mean().item()),
+            "correlation_with_base_score": _pearson_corr(gated_contribution, s_base),
+            "rms_contribution_ratio": branch_rms / s_total_rms if s_total_rms > 0 else 0.0,
+        })
+    return records
+
+
+def build_structural_kernel(variant: str, dim: int, num_relations_total: int, seed: int, kernel_dim: int, gate_g_max: float = 1.0) -> Any:
+    """Contract CLM_KGR_018 control battery, wired for CLI use. Returns
+    ``None`` for ``variant="none"`` (the default — branch disabled)."""
+    if variant == "none":
+        return None
+    needs_real_e8 = variant in ("E8_exact", "permuted_indices", "sign_shuffled")
+    e8_kernel = load_e8_kernel() if needs_real_e8 else None
+    e8_info = load_e8_info() if variant == "E8_exact" else None
+    K, provenance = build_kernel(variant, e8_kernel=e8_kernel, dim=kernel_dim, seed=seed, e8_info=e8_info)
+    return StructuralKernelResidual(dim=dim, K=K, num_relations_total=num_relations_total, provenance=provenance, gate_g_max=gate_g_max)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -48,10 +271,56 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--path_layers", type=int, default=2)
     p.add_argument("--path_max_neighbors", type=int, default=32)
     p.add_argument("--path_proj_rank", type=int, default=0)
+    p.add_argument(
+        "--path_selector_mode",
+        choices=["full_neighborhood", "budgeted_bfs", "learned_topk"],
+        default="budgeted_bfs",
+        help="oracle_or_gold_path_debug_mode is intentionally not CLI-exposed: synthetic-fixture-only",
+    )
+    p.add_argument(
+        "--path_backend", choices=["legacy", "batched"], default="legacy",
+        help="Gate 13.2b: legacy=reasoner.PathReasoner (default, unchanged), "
+             "batched=reasoner_batched.BatchedPathReasoner (CSR + vectorized, learned_topk not yet supported)",
+    )
+    p.add_argument(
+        "--standalone_mode", choices=["residual", "warm_started_decoder", "end_to_end"], default="residual",
+        help="Standalone sufficiency regime: residual keeps the base scorer; warm_started_decoder/end_to_end disable it and use positive non-residual branch scales.",
+    )
     p.add_argument("--enable_seion", action="store_true")
+    p.add_argument("--enable_generic_residual", action="store_true", help="Use the parameter-matched additive low-rank residual control instead of SEION")
     p.add_argument("--seion_rank", type=int, default=32)
+    p.add_argument(
+        "--enable_true_triadic_context", action="store_true",
+        help="Gate 14A: use the deterministic query-conditioned context c_(h,r) for SEION/Generic",
+    )
+    p.add_argument(
+        "--context_max_neighbors", type=int, default=32,
+        help="Gate 14A fixed context budget; neighbors are sorted by (relation,target)",
+    )
+
+    p.add_argument(
+        "--structural_kernel_variant",
+        choices=["none", "zero_kernel", "random_scale_matched", "permuted_indices", "sign_shuffled", "E8_exact"],
+        default="none",
+        help="none = branch disabled (default). E8_exact/permuted_indices/sign_shuffled require "
+             "E8_Exact_v18_2/f_E8.npy on local disk (not committed to git).",
+    )
+    p.add_argument("--structural_kernel_dim", type=int, default=248, help="ignored for E8_exact/permuted_indices/sign_shuffled (kernel_dim is fixed by the loaded file)")
+    p.add_argument("--structural_kernel_seed", type=int, default=0)
 
     p.add_argument("--epochs", type=int, default=3)
+    p.add_argument(
+        "--early_stopping_patience", type=int, default=0,
+        help="Stop after this many consecutive validation evaluations without improvement; 0 disables early stopping.",
+    )
+    p.add_argument(
+        "--early_stopping_min_delta", type=float, default=0.0,
+        help="Minimum validation-MRR increase required to reset early-stopping patience.",
+    )
+    p.add_argument(
+        "--early_stopping_min_epochs", type=int, default=0,
+        help="Do not early-stop before this many completed epochs.",
+    )
     p.add_argument("--batch_size", type=int, default=256)
     p.add_argument("--neg_k", type=int, default=32)
     p.add_argument("--adversarial_temperature", type=float, default=1.0)
@@ -59,6 +328,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--lr", type=float, default=1e-3)
     p.add_argument("--weight_decay", type=float, default=0.0)
     p.add_argument("--grad_clip", type=float, default=1.0)
+    p.add_argument("--gate_g_max", type=float, default=1.0, help="Gate 13.1: max |gamma_r|/|eta_r| residual gate magnitude (gamma_r = gate_g_max * tanh(alpha_r))")
+    p.add_argument("--gate_init", type=float, default=0.0, help="Initial signed residual gate; historical Gate 13 defaults to zero")
+    p.add_argument("--router_lr_multiplier", type=float, default=5.0, help="Gate 13.1: LR multiplier for the router (gamma_raw/eta_raw) optimizer param group, relative to --lr")
 
     p.add_argument("--fi_weight", type=float, default=0.0)
     p.add_argument("--fi_samples", type=int, default=8)
@@ -72,10 +344,31 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--entity_block_eval", type=int, default=2048)
     p.add_argument("--eval_subset", type=float, default=1.0)
     p.add_argument("--eval_max_queries", type=int, default=0, help="0 = no cap; smoke runs should set this")
+    p.add_argument(
+        "--skip_test_eval", action="store_true",
+        help="Gate 13.5 test-set discipline: skip the end-of-run test evaluation "
+             "(final_metrics.json's \"test\" field is null, \"test_eval_skipped\" is true) "
+             "-- for screening campaigns where test must be opened exactly once, across "
+             "all frozen configs, not once per run",
+    )
 
     p.add_argument("--cpu", action="store_true")
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--negative-filter", choices=("train_valid_test", "train_only"),
+                   default="train_valid_test",
+                   help="which known-positive tables mask TRAINING negatives (B-0014). "
+                        "'train_valid_test' reproduces earlier runs but leaks held-out "
+                        "membership into training; 'train_only' is the non-leaking choice. "
+                        "Evaluation always keeps the full filters.")
     p.add_argument("--resume", type=str, default="", help="path to a last.pt/best.pt checkpoint to resume from")
+    p.add_argument(
+        "--init_from_checkpoint", type=str, default="",
+        help="Gate 13.5 §8: seed this run's OVERLAPPING params (entity/relation embeddings, base-expert "
+             "weights) from a DIFFERENT (typically smaller-architecture, e.g. A0) checkpoint via a "
+             "strict=False partial load -- unlike --resume, this starts epoch 0 / a fresh optimizer and "
+             "does not require matching configuration_id. Params absent from the source checkpoint "
+             "(e.g. a fresh A1/A2/A3's path_reasoner/seion submodules) keep their own random init.",
+    )
     return p
 
 
@@ -116,47 +409,158 @@ def _module_diagnostics(model: SeionKGRv26, args: argparse.Namespace, last_batch
 
 
 def train(args: argparse.Namespace) -> Dict[str, Any]:
+    if args.path_backend == "batched" and args.path_selector_mode == "learned_topk":
+        # Explicit rejection, not a silent fallback to a different mode or
+        # to the legacy backend: BatchedPathReasoner's constructor already
+        # raises on this combination (see reasoner_batched.py's
+        # SUPPORTED_SELECTOR_MODES), but failing here — before any KG
+        # loading or model construction — gives a fast, unambiguous error
+        # instead of burning wall-clock first.
+        raise NotImplementedError(
+            "learned_topk is not yet supported by the batched path backend"
+        )
     repro.set_seed(args.seed)
     device = torch.device("cpu" if args.cpu or not torch.cuda.is_available() else "cuda")
+    if device.type == "cuda":
+        torch.cuda.reset_peak_memory_stats(device)
 
+    run_manifest = None
     if args.out_dir:
-        repro.build_run_contract(
+        resolved_config = vars(args).copy()
+        # The default residual mode is the legacy Stage 4 behavior. Keep its
+        # configuration identity stable after adding standalone-only CLI
+        # modes, while retaining the field for explicit W/E runs.
+        if args.standalone_mode == "residual":
+            resolved_config.pop("standalone_mode", None)
+        run_manifest = repro.build_run_contract(
             args.out_dir, sys.argv, {"train": args.train, "valid": args.valid, "test": args.test},
+            resolved_config=resolved_config, resume_from=args.resume or None, allow_existing=bool(args.resume),
         )
 
     kg = load_knowledge_graph(args.train, args.valid, args.test)
+    # B-0014: full filters are right for evaluation, leaking for training negatives.
+    negative_kg = train_only_filter_view(kg) if args.negative_filter == "train_only" else kg
+    structural_kernel = build_structural_kernel(
+        args.structural_kernel_variant, args.dim, kg.num_relations_total, args.structural_kernel_seed, args.structural_kernel_dim,
+        gate_g_max=args.gate_g_max,
+    )
     model = SeionKGRv26(
         num_entities=kg.num_entities, num_relations_total=kg.num_relations_total, dim=args.dim,
         base_expert=args.base_expert, enable_path=args.enable_path, enable_seion=args.enable_seion,
+        enable_generic_residual=args.enable_generic_residual,
         seion_rank=args.seion_rank, path_rank=args.path_rank, path_layers=args.path_layers,
         path_max_neighbors=args.path_max_neighbors, path_proj_rank=args.path_proj_rank,
+        path_selector_mode=args.path_selector_mode, structural_kernel=structural_kernel,
+        gate_g_max=args.gate_g_max, gate_init=args.gate_init, path_backend=args.path_backend, standalone_mode=args.standalone_mode,
     ).to(device)
-    adjacency = Adjacency.build(kg) if args.enable_path else None
+    if args.enable_true_triadic_context and not (args.enable_seion or args.enable_generic_residual):
+        raise ValueError("--enable_true_triadic_context requires --enable_seion or --enable_generic_residual")
+    if args.context_max_neighbors <= 0:
+        raise ValueError("--context_max_neighbors must be positive")
+    if args.init_from_checkpoint:
+        if args.resume:
+            raise ValueError("--init_from_checkpoint and --resume are mutually exclusive (partial cross-config seeding vs. identical-config continuation)")
+        src_ckpt = repro.load_checkpoint(args.init_from_checkpoint)
+        incompatible = model.load_state_dict(src_ckpt["model_state"], strict=False)
+        if incompatible.unexpected_keys:
+            raise ValueError(
+                f"--init_from_checkpoint source has params this model does not: {incompatible.unexpected_keys} "
+                "-- expected the source to be an architectural SUBSET of this run (e.g. A0 seeding A1/A2/A3), "
+                "never the other way around"
+            )
+        if args.out_dir:
+            repro.save_json({
+                "source_checkpoint": str(args.init_from_checkpoint),
+                "source_checkpoint_sha256": repro.sha256_file(args.init_from_checkpoint),
+                "loaded_keys": sorted(set(src_ckpt["model_state"].keys()) - set(incompatible.missing_keys)),
+                "fresh_init_keys": sorted(incompatible.missing_keys),
+                "gate_init_preserved": bool(args.gate_init != 0.0),
+            }, Path(args.out_dir) / "init_from_checkpoint_manifest.json")
+        if args.gate_init != 0.0:
+            raw_init = math.atanh(args.gate_init / args.gate_g_max)
+            with torch.no_grad():
+                model.gamma_raw.weight.fill_(raw_init)
+                model.eta_raw.weight.fill_(raw_init)
+    # Gate 13.2b: `adjacency` must be the type the active path_backend
+    # expects — model.py's `_run_path_reasoner` dispatches on
+    # `self.path_backend` alone and trusts the caller to have passed the
+    # matching adjacency representation.
+    if args.enable_path:
+        adjacency = Adjacency.build(kg)
+        if args.path_backend == "batched":
+            # CSR tensors are built on CPU (real Python-level dict traversal
+            # gains nothing from a GPU) — move once, here, to match the
+            # model's device, exactly like `.to(device)` above.
+            adjacency = build_csr_adjacency(adjacency, kg.num_entities).to(device)
+    else:
+        adjacency = None
+    context_adjacency = build_context_adjacency(kg) if args.enable_true_triadic_context else None
+    context_index = build_context_index(kg, args.context_max_neighbors).to(device) if args.enable_true_triadic_context else None
+    if context_adjacency is not None and args.out_dir:
+        repro.save_json({"spec": context_spec_dict(), "max_neighbors": args.context_max_neighbors}, Path(args.out_dir) / "context_manifest.json")
+    if structural_kernel is not None and args.out_dir:
+        repro.save_json(structural_kernel.provenance.to_dict(), Path(args.out_dir) / "kernel_manifest.json")
 
     dataset = TripleDataset(kg.train)
-    loader = torch.utils.data.DataLoader(dataset, batch_size=args.batch_size, shuffle=True, drop_last=False)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    # Gate 13.5 §8: an explicit generator seeded directly from args.seed, NOT
+    # DataLoader's default (RandomSampler auto-seeds itself by drawing one
+    # value off the AMBIENT global torch RNG, whose position at this point
+    # depends on how many parameters were just randomly initialized above —
+    # a different count for A0 vs. A1/A2/A3 under enable_path/enable_seion.
+    # Without this, the same --seed would silently shuffle train triples in
+    # a DIFFERENT order per config, breaking the paired-seed design the
+    # ablation matrix depends on. +1000 offset keeps it clear of `rng`
+    # (seed+1) and `gen` (seed+2) below.
+    data_gen = torch.Generator()
+    data_gen.manual_seed(args.seed + 1000)
+    loader = torch.utils.data.DataLoader(dataset, batch_size=args.batch_size, shuffle=True, drop_last=False, generator=data_gen)
+    optimizer = torch.optim.AdamW(build_optimizer_param_groups(model, args.lr, args.router_lr_multiplier), weight_decay=args.weight_decay)
     rng = np.random.default_rng(args.seed + 1)
     gen = torch.Generator(device=device)
     gen.manual_seed(args.seed + 2)
+    rng_generators = {"data_loader": data_gen, "geometry": gen}
 
     metrics_path = Path(args.out_dir) / "metrics.jsonl" if args.out_dir else None
     rank_history_path = Path(args.out_dir) / "rank_history.jsonl" if args.out_dir else None
     error_attribution_path = Path(args.out_dir) / "error_attribution.jsonl" if args.out_dir else None
+    gate_diagnostics_path = Path(args.out_dir) / "gate_diagnostics.jsonl" if args.out_dir else None
+    path_reasoner_perf_path = Path(args.out_dir) / "path_reasoner_perf.jsonl" if args.out_dir else None
     start = time.time()
     history: list[Dict[str, Any]] = []
+    batch_order_hasher = hashlib.sha256()
+    negative_sample_hasher = hashlib.sha256()
 
     start_epoch = 0
     global_step = 0
     best_mrr = -math.inf
+    best_epoch = None
+    evals_without_improvement = 0
+    stopped_early = False
+    parent_execution_id = None
     if args.resume:
         ckpt = repro.load_checkpoint(args.resume)
+        repro.restore_rng_state(ckpt.get("rng_state", {}), numpy_rng=rng, generators=rng_generators)
+        parent_execution_id = ckpt.get("args", {}).get("_execution_id")
+        parent_config_id = ckpt.get("args", {}).get("_configuration_id")
+        this_config_id = run_manifest["configuration_id"] if run_manifest else None
+        if parent_config_id is not None and this_config_id is not None and parent_config_id != this_config_id:
+            raise ValueError(
+                f"--resume checkpoint's configuration_id ({parent_config_id}) does not match this "
+                f"run's resolved configuration_id ({this_config_id}) — mandate §I.5 forbids treating "
+                "a config change as a resume; start a fresh --out_dir instead. (Checked BEFORE loading "
+                "the state dict, so this fails with a clear message instead of a raw shape-mismatch error.)"
+            )
         model.load_state_dict(ckpt["model_state"])
         optimizer.load_state_dict(ckpt["optimizer_state"])
         start_epoch = int(ckpt["epoch"]) + 1
         global_step = int(ckpt["global_step"])
         best_mrr = float(ckpt["best_mrr"])
-        print(f"[resume] loaded {args.resume}: start_epoch={start_epoch} best_mrr={best_mrr}", file=sys.stderr)
+        best_epoch = ckpt.get("best_epoch")
+        evals_without_improvement = int(ckpt.get("evaluations_without_improvement", 0))
+        if run_manifest is not None:
+            run_manifest["parent_execution_id"] = parent_execution_id
+            repro.save_json(run_manifest, Path(args.out_dir) / "run_manifest.json")
+        print(f"[resume] loaded {args.resume}: start_epoch={start_epoch} best_mrr={best_mrr} parent_execution_id={parent_execution_id}", file=sys.stderr)
 
     for epoch in range(start_epoch, args.epochs):
         model.train()
@@ -168,14 +572,56 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
             r_inv_ids = torch.tensor(
                 [_inverse_relation(int(r), kg.num_relations_original) for r in r_ids.tolist()], device=device,
             )
-            tail_negs = sample_negatives(h_ids, r_ids, t_ids, kg, args.neg_k, rng, device)
-            head_negs = sample_negatives(t_ids, r_inv_ids, h_ids, kg, args.neg_k, rng, device)  # unfiltered, see docstring
+            tail_negs = sample_negatives(h_ids, r_ids, t_ids, negative_kg, args.neg_k, rng, device)
+            head_negs = sample_negatives(t_ids, r_inv_ids, h_ids, negative_kg, args.neg_k, rng, device)  # unfiltered, see docstring
+            batch_order_hasher.update(torch.stack((h_ids, r_ids, t_ids), dim=1).detach().cpu().contiguous().numpy().tobytes())
+            negative_sample_hasher.update(torch.cat((tail_negs, head_negs), dim=1).detach().cpu().contiguous().numpy().tobytes())
+
+            forward_context = None
+            backward_context = None
+            forward_context_stats = None
+            backward_context_stats = None
+            if context_adjacency is not None:
+                forward_context, forward_context_stats = build_query_context(
+                    h_ids, r_ids, t_ids, kg, model.entity.weight, model.relation.weight,
+                    max_neighbors=args.context_max_neighbors, adjacency=context_adjacency, context_index=context_index,
+                )
+                backward_context, backward_context_stats = build_query_context(
+                    t_ids, r_inv_ids, h_ids, kg, model.entity.weight, model.relation.weight,
+                    max_neighbors=args.context_max_neighbors, adjacency=context_adjacency, context_index=context_index,
+                )
 
             optimizer.zero_grad(set_to_none=True)
-            pos_fwd = model.score_positive(h_ids, r_ids, t_ids, adjacency, args.seed, training=True)
-            neg_fwd = model.score_tail_candidates(h_ids, r_ids, tail_negs, adjacency, args.seed, training=True, gold_tail_ids=t_ids)
-            pos_bwd = model.score_positive(t_ids, r_inv_ids, h_ids, adjacency, args.seed, training=True)
-            neg_bwd = model.score_tail_candidates(t_ids, r_inv_ids, head_negs, adjacency, args.seed, training=True, gold_tail_ids=h_ids)
+            # Positive and negative scores for one direction share the exact
+            # same path query, seed, and training-time edge exclusions. Reuse
+            # the frontier so the batched backend traverses each direction
+            # once per batch rather than once for positives and once again for
+            # negatives. The optional output is also accepted by the legacy
+            # backend and leaves all score/readout semantics unchanged.
+            fwd_path_output = (
+                model._run_path_reasoner(h_ids, r_ids, t_ids, adjacency, model.relation(r_ids), args.seed, True)
+                if args.enable_path and adjacency is not None else None
+            )
+            bwd_path_output = (
+                model._run_path_reasoner(t_ids, r_inv_ids, h_ids, adjacency, model.relation(r_inv_ids), args.seed, True)
+                if args.enable_path and adjacency is not None else None
+            )
+            pos_fwd = model.score_positive(
+                h_ids, r_ids, t_ids, adjacency, args.seed, training=True,
+                context=forward_context, path_output=fwd_path_output,
+            )
+            neg_fwd = model.score_tail_candidates(
+                h_ids, r_ids, tail_negs, adjacency, args.seed, training=True,
+                gold_tail_ids=t_ids, context=forward_context, path_output=fwd_path_output,
+            )
+            pos_bwd = model.score_positive(
+                t_ids, r_inv_ids, h_ids, adjacency, args.seed, training=True,
+                context=backward_context, path_output=bwd_path_output,
+            )
+            neg_bwd = model.score_tail_candidates(
+                t_ids, r_inv_ids, head_negs, adjacency, args.seed, training=True,
+                gold_tail_ids=h_ids, context=backward_context, path_output=bwd_path_output,
+            )
 
             loss_fwd = negative_sampling_loss(pos_fwd, neg_fwd, args.adversarial_temperature)
             loss_bwd = negative_sampling_loss(pos_bwd, neg_bwd, args.adversarial_temperature)
@@ -210,6 +656,18 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                 last_batch_grad_norms["seion_scorer"] = float(
                     sum(p.grad.norm().item() for p in model.seion_scorer.parameters() if p.grad is not None)
                 )
+            if args.enable_path and model.gamma_raw.weight.grad is not None:
+                last_batch_grad_norms["gamma_raw"] = float(model.gamma_raw.weight.grad.norm().item())
+            if args.enable_path and model.standalone_mode != "residual" and model.path_scale_raw.weight.grad is not None:
+                last_batch_grad_norms["path_scale_raw"] = float(model.path_scale_raw.weight.grad.norm().item())
+            if args.enable_seion and model.eta_raw.weight.grad is not None:
+                last_batch_grad_norms["eta_raw"] = float(model.eta_raw.weight.grad.norm().item())
+            if args.enable_generic_residual and model.eta_raw.weight.grad is not None:
+                last_batch_grad_norms["eta_raw"] = float(model.eta_raw.weight.grad.norm().item())
+            if args.enable_seion and model.standalone_mode != "residual" and model.seion_scale_raw.weight.grad is not None:
+                last_batch_grad_norms["seion_scale_raw"] = float(model.seion_scale_raw.weight.grad.norm().item())
+            if model.enable_structural_kernel and model.structural_kernel.epsilon_raw.weight.grad is not None:
+                last_batch_grad_norms["epsilon_raw"] = float(model.structural_kernel.epsilon_raw.weight.grad.norm().item())
             optimizer.step()
             global_step += 1
 
@@ -220,18 +678,47 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
 
         epoch_metrics = {name: v / max(n, 1) for name, v in sums.items()}
         record: Dict[str, Any] = {"epoch": epoch, "train": epoch_metrics, "wall_sec": time.time() - epoch_start}
+        if context_adjacency is not None:
+            context_probe_h = torch.tensor([x[0] for x in kg.valid[: min(len(kg.valid), 256)]], device=device, dtype=torch.long)
+            context_probe_r = torch.tensor([x[1] for x in kg.valid[: min(len(kg.valid), 256)]], device=device, dtype=torch.long)
+            context_probe_t = torch.tensor([x[2] for x in kg.valid[: min(len(kg.valid), 256)]], device=device, dtype=torch.long)
+            with torch.no_grad():
+                _, context_probe_stats = build_query_context(
+                    context_probe_h, context_probe_r, context_probe_t, kg, model.entity.weight, model.relation.weight,
+                    max_neighbors=args.context_max_neighbors, adjacency=context_adjacency, context_index=context_index,
+                )
+            record["context"] = context_probe_stats
 
         is_eval_epoch = (epoch + 1) % args.eval_every == 0 or epoch == args.epochs - 1
         if is_eval_epoch:
             eval_subset = args.eval_subset
             if args.eval_max_queries > 0:
                 eval_subset = min(eval_subset, args.eval_max_queries / max(len(kg.valid), 1))
-            valid = evaluate(model, kg, "valid", device, args.eval_batch, args.entity_block_eval, adjacency, eval_subset, args.seed)
+            valid = evaluate(
+                model, kg, "valid", device, args.eval_batch, args.entity_block_eval, adjacency,
+                eval_subset, args.seed, context_adjacency=context_adjacency,
+                context_max_neighbors=args.context_max_neighbors, context_index=context_index,
+            )
             record["valid"] = valid
             current_mrr = valid["combined"]["MRR"]
+            # Preserve exact best-checkpoint semantics.  ``min_delta`` only
+            # controls whether patience resets; it must not suppress a
+            # smaller strict improvement from becoming the true best.pt.
             record["new_best"] = current_mrr > best_mrr
-            if current_mrr > best_mrr:
+            meaningful_improvement = current_mrr > best_mrr + args.early_stopping_min_delta
+            if record["new_best"]:
                 best_mrr = current_mrr
+                best_epoch = epoch
+            if meaningful_improvement:
+                evals_without_improvement = 0
+            else:
+                evals_without_improvement += 1
+            record["early_stopping"] = {
+                "patience": args.early_stopping_patience,
+                "min_delta": args.early_stopping_min_delta,
+                "min_epochs": args.early_stopping_min_epochs,
+                "evaluations_without_improvement": evals_without_improvement,
+            }
 
             diagnostics = _module_diagnostics(model, args, last_batch_grad_norms)
             if diagnostics and rank_history_path is not None:
@@ -244,34 +731,99 @@ def train(args: argparse.Namespace) -> Dict[str, Any]:
                 )
                 repro.append_jsonl({"epoch": epoch, "diagnostics": [d.__dict__ for d in diagnostics], "policy_comparison": comparison}, rank_history_path)
 
+            perf_record = compute_path_reasoner_perf(model, kg, adjacency, device, args.seed, epoch)
+            if perf_record and path_reasoner_perf_path is not None:
+                repro.append_jsonl(perf_record, path_reasoner_perf_path)
+
+            gate_records = compute_gate_diagnostics(model, kg, adjacency, device, args.seed, epoch)
+            if gate_records and gate_diagnostics_path is not None:
+                if args.standalone_mode == "residual":
+                    grad_key = {"gamma_path": "gamma_raw", "eta_seion": "eta_raw", "eta_generic": "eta_raw", "kernel_structural": "epsilon_raw"}
+                else:
+                    grad_key = {"gamma_path": "path_scale_raw", "eta_seion": "seion_scale_raw", "eta_generic": "eta_raw", "kernel_structural": "epsilon_raw"}
+                for rec in gate_records:
+                    rec["grad_alpha_norm"] = last_batch_grad_norms.get(grad_key[rec["branch"]], 0.0)
+                    repro.append_jsonl(rec, gate_diagnostics_path)
+
             if args.enable_path and model.path_reasoner.projector.enabled and error_attribution_path is not None:
                 sample = torch.randn(16, args.dim)
                 leak = projection.measure_closure_leakage_sample(model.path_reasoner.projector, sample)
                 repro.append_jsonl({"epoch": epoch, "closure_leakage": leak}, error_attribution_path)
 
         if args.out_dir:
-            rng_state = repro.rng_state_snapshot(args.seed, rng)
+            rng_state = repro.rng_state_snapshot(args.seed, rng, generators=rng_generators)
             args_dict = {k: v for k, v in vars(args).items()}
-            repro.save_checkpoint(Path(args.out_dir) / "last.pt", model.state_dict(), optimizer.state_dict(), epoch, global_step, best_mrr, args_dict, rng_state)
+            args_dict["_configuration_id"] = run_manifest["configuration_id"] if run_manifest else None
+            args_dict["_execution_id"] = run_manifest["execution_id"] if run_manifest else None
+            args_dict["_parent_execution_id"] = parent_execution_id
+            repro.save_checkpoint(
+                Path(args.out_dir) / "last.pt", model.state_dict(), optimizer.state_dict(), epoch,
+                global_step, best_mrr, args_dict, rng_state, best_epoch, evals_without_improvement,
+            )
             if is_eval_epoch and record.get("new_best"):
-                repro.save_checkpoint(Path(args.out_dir) / "best.pt", model.state_dict(), optimizer.state_dict(), epoch, global_step, best_mrr, args_dict, rng_state)
+                repro.save_checkpoint(
+                    Path(args.out_dir) / "best.pt", model.state_dict(), optimizer.state_dict(), epoch,
+                    global_step, best_mrr, args_dict, rng_state, best_epoch, evals_without_improvement,
+                )
 
         history.append(record)
         if metrics_path is not None:
             repro.append_jsonl(record, metrics_path)
         print(json.dumps(record, default=str), flush=True)
 
-    test_subset = args.eval_subset
-    if args.eval_max_queries > 0:
-        test_subset = min(test_subset, args.eval_max_queries / max(len(kg.test), 1))
-    test_metrics = evaluate(model, kg, "test", device, args.eval_batch, args.entity_block_eval, adjacency, test_subset, args.seed)
+        if (
+            args.early_stopping_patience > 0
+            and is_eval_epoch
+            and evals_without_improvement >= args.early_stopping_patience
+            and epoch + 1 >= args.early_stopping_min_epochs
+        ):
+            stopped_early = True
+            break
+
+    if args.skip_test_eval:
+        # Gate 13.5 test-set discipline (campaigns/gate13/gate13_5/preregistration.md
+        # sec10): a screening campaign that evaluates test at the end of EVERY run
+        # opens it once per run, not once total. "test": null here is a deliberate,
+        # visible placeholder -- not a silently-skipped field -- so a screening
+        # run's final_metrics.json can never be mistaken for a completed
+        # confirmatory one. A separate one-time pass (run_gate13_5.py's
+        # evaluate_test_frozen stage) computes real test metrics after all
+        # configs' best epochs are frozen from validation alone.
+        test_metrics = None
+    else:
+        test_subset = args.eval_subset
+        if args.eval_max_queries > 0:
+            test_subset = min(test_subset, args.eval_max_queries / max(len(kg.test), 1))
+        test_metrics = evaluate(
+            model, kg, "test", device, args.eval_batch, args.entity_block_eval, adjacency,
+            test_subset, args.seed, context_adjacency=context_adjacency,
+            context_max_neighbors=args.context_max_neighbors, context_index=context_index,
+        )
     result = {
         "status": "COMPLETED",
         "base_expert": args.base_expert,
         "enable_path": args.enable_path,
         "enable_seion": args.enable_seion,
+        "enable_generic_residual": args.enable_generic_residual,
+        "standalone_mode": args.standalone_mode,
         "test": test_metrics,
+        "test_eval_skipped": bool(args.skip_test_eval),
+        "early_stopping": {
+            "enabled": args.early_stopping_patience > 0,
+            "patience": args.early_stopping_patience,
+            "min_delta": args.early_stopping_min_delta,
+            "min_epochs": args.early_stopping_min_epochs,
+            "stopped_early": stopped_early,
+            "best_epoch": best_epoch,
+            "evaluations_without_improvement": evals_without_improvement,
+        },
         "wall_sec": time.time() - start,
+        # whole-run peak, tracked since immediately after device selection above --
+        # distinct from measure_path_reasoner_perf's own narrower probe-scoped peak.
+        "gpu_peak_mb": float(torch.cuda.max_memory_allocated(device)) / 1e6 if device.type == "cuda" else None,
+        "batch_order_sha256": batch_order_hasher.hexdigest(),
+        "negative_sample_sha256": negative_sample_hasher.hexdigest(),
+        "context_spec": context_spec_dict() if context_adjacency is not None else None,
     }
     if args.out_dir:
         if args.enable_path:

@@ -1,0 +1,17 @@
+{
+  "schema": "gate13.5-parallel-launch-attempt-v1",
+  "attempt_id": "stage4-seed2-a1-a3-powerShell-argument-list-error",
+  "classification": "FAILED_LAUNCH_ARGUMENT_CONSTRUCTION",
+  "training_started": false,
+  "test_opened": false,
+  "pids": [52984, 53256, 58424],
+  "arms": ["seed2_A1", "seed2_A2", "seed2_A3"],
+  "failure": "PowerShell automatic variable $args was used while constructing Start-Process arguments; Python exited with unknown option --out_dir.",
+  "numerical_artifacts_created": false,
+  "logs_preserved": [
+    "campaigns/gate13/gate13_5/stage4_seed2_A1.stderr.log",
+    "campaigns/gate13/gate13_5/stage4_seed2_A2.stderr.log",
+    "campaigns/gate13/gate13_5/stage4_seed2_A3.stderr.log"
+  ],
+  "corrective_action": "Relauch with explicit non-automatic PowerShell argument-list variables."
+}

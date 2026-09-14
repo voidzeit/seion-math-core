@@ -1,0 +1,7 @@
+{
+  "method": "1-epoch screening, FB15K-237, dim=64, eval_max_queries=200, seed=1, GPU (real RTX PRO 5000 Blackwell)",
+  "valid_MRR": {"complex": 0.22098201513290405, "distmult": 0.2195436805486679, "tucker": 0.25340408086776733, "cp": 0.20918625593185425},
+  "test_MRR": {"complex": 0.2458966225385666, "distmult": 0.24753686785697937, "tucker": 0.252603143453598, "cp": 0.21403928101062775},
+  "selected_best_base": "tucker",
+  "selection_rule": "highest valid MRR (not test), per preregistration.md's finalist-selection rule applied to base-expert selection"
+}

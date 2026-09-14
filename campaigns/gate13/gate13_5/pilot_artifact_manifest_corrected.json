@@ -1,0 +1,24 @@
+{
+  "schema": "gate13.5-corrected-pilot-artifact-manifest-v1",
+  "label": "PROTOCOL_CORRECTION_BEFORE_STAGE4",
+  "test_opened": false,
+  "commit": "f52f898b8e6e9a7bcf637f8b046107c19b511fb3",
+  "artifacts": {
+    "protocol_correction_before_stage4.json": "4d7b63ba09b23898069876b9c919483abc9fae6e36135c5ca51475b95a1835ca",
+    "pilot_contrasts_corrected.json": "d94ec84e2338737fedbb3edae1d27179aa95bc45217c41f06ff6fdc7abcf81a",
+    "pilot_epoch_audit_corrected.json": "14494409553ab45186251d736b64433731ae8a94778be989c3883a7fa8f5a5f4",
+    "preregistration.md": "6b6ff2a3939cb7296504483c201dc402f43fe87a10870b3548b80dc4024bcf53",
+    "run_registry.csv": "e39bd338a33f1c70bd5f687ba98334cd3924c169bc5b8c7a1390cf333ab58f63"
+  },
+  "matched_control": {
+    "execution_id": "78db52b2dac24f4d",
+    "run_directory": "runs/pilot/seed1_A0_matched_control_20260806",
+    "run_manifest_sha256": "8b0cebc7b5adb56dba42ee801218f721f347e953e9a3e369b27f691232c33129",
+    "resolved_config_sha256": "961fd5f28e1b46d4c97f9ed0f7b180731d7743c8df79f121b02f2dd4a8259b9e",
+    "metrics_sha256": "106256cf44e412dea34c3b1c4b0f642b391f30f77db72b479899c20dd9fd7f92",
+    "final_metrics_sha256": "7461f016cb2575633b47bfdcbb131157c22d6a2e8a14750f615c6d9961c502bd",
+    "matched_control_provenance_sha256": "4c7762361f4237739200dbfa752af21616dbaffeaf459aee8cb3424b7d0aa135",
+    "best_checkpoint_sha256": "52b323bc2ab36c6f294979029b77bb86d5c716d11062ab239afcdeb25b874864",
+    "last_checkpoint_sha256": "5165659aab0ce4b01c67bb10e5fdf395f692584a22fa9890747d56d9a66f5526"
+  }
+}

@@ -1,0 +1,1022 @@
+[
+  {
+    "eta": 0.005,
+    "effective_leakage": 0.005,
+    "construction_status": "CERTIFIED_WITNESS",
+    "certificate_basis": "explicit analytic family, report section 6",
+    "approval_status": "PENDING_INDEPENDENT_REVIEW",
+    "floating_audit": {
+      "status": "NUMERICAL_CANDIDATE",
+      "globally_checked_in_floating_point": true,
+      "stages": [
+        {
+          "operator_norm": 0.9999999999999999,
+          "projected_closure_norm": 0.005,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.005,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.005,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.0,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        }
+      ],
+      "tolerance": 1e-10,
+      "projected_error": 0.01499968750039063,
+      "normalized_error": 2.9999375000781257,
+      "source_sum_residual": 5.826570237572881e-17
+    },
+    "typed_projected_error": 0.01499968750039063,
+    "target_normalized": 2.9999375000781265,
+    "phase_reference_normalized": 2.9999000000000002,
+    "second_order_quotient": 2.499996874938404,
+    "source_gram_at_stage3": [
+      [
+        2.499999999999999e-05,
+        2.499937499999999e-05,
+        2.4998125031249992e-05
+      ],
+      [
+        2.499937499999999e-05,
+        2.499937499999999e-05,
+        2.499875001562499e-05
+      ],
+      [
+        2.4998125031249992e-05,
+        2.499875001562499e-05,
+        2.499875001562499e-05
+      ]
+    ],
+    "operators": [
+      [
+        [
+          0.999987499921874
+        ],
+        [
+          0.005
+        ]
+      ],
+      [
+        [
+          0.999987499921874,
+          -0.005
+        ],
+        [
+          0.005,
+          0.999987499921874
+        ]
+      ],
+      [
+        [
+          0.999987499921874,
+          -0.005
+        ],
+        [
+          0.005,
+          0.999987499921874
+        ]
+      ],
+      [
+        [
+          -0.005000041667010218,
+          0.9999874997135355
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ]
+    ]
+  },
+  {
+    "eta": 0.01,
+    "effective_leakage": 0.01,
+    "construction_status": "CERTIFIED_WITNESS",
+    "certificate_basis": "explicit analytic family, report section 6",
+    "approval_status": "PENDING_INDEPENDENT_REVIEW",
+    "floating_audit": {
+      "status": "NUMERICAL_CANDIDATE",
+      "globally_checked_in_floating_point": true,
+      "stages": [
+        {
+          "operator_norm": 0.9999999999999999,
+          "projected_closure_norm": 0.01,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.01,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.01,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.0,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        }
+      ],
+      "tolerance": 1e-10,
+      "projected_error": 0.029997500012501045,
+      "normalized_error": 2.9997500012501046,
+      "source_sum_residual": 6.754579534584693e-17
+    },
+    "typed_projected_error": 0.029997500012501045,
+    "target_normalized": 2.999750001250104,
+    "phase_reference_normalized": 2.9996,
+    "second_order_quotient": 2.4999874989584114,
+    "source_gram_at_stage3": [
+      [
+        0.00010000000000000003,
+        9.999000000000002e-05,
+        9.997000200000003e-05
+      ],
+      [
+        9.999000000000002e-05,
+        9.999000000000002e-05,
+        9.998000100000002e-05
+      ],
+      [
+        9.997000200000003e-05,
+        9.998000100000002e-05,
+        9.998000100000002e-05
+      ]
+    ],
+    "operators": [
+      [
+        [
+          0.9999499987499375
+        ],
+        [
+          0.01
+        ]
+      ],
+      [
+        [
+          0.9999499987499375,
+          -0.01
+        ],
+        [
+          0.01,
+          0.9999499987499375
+        ]
+      ],
+      [
+        [
+          0.9999499987499375,
+          -0.01
+        ],
+        [
+          0.01,
+          0.9999499987499375
+        ]
+      ],
+      [
+        [
+          -0.01000033334444201,
+          0.9999499954162708
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ]
+    ]
+  },
+  {
+    "eta": 0.02,
+    "effective_leakage": 0.02,
+    "construction_status": "CERTIFIED_WITNESS",
+    "certificate_basis": "explicit analytic family, report section 6",
+    "approval_status": "PENDING_INDEPENDENT_REVIEW",
+    "floating_audit": {
+      "status": "NUMERICAL_CANDIDATE",
+      "globally_checked_in_floating_point": true,
+      "stages": [
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.02,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.02,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.02,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.0,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        }
+      ],
+      "tolerance": 1e-10,
+      "projected_error": 0.05998000040013338,
+      "normalized_error": 2.9990000200066693,
+      "source_sum_residual": 6.69494841509799e-17
+    },
+    "typed_projected_error": 0.05998000040013338,
+    "target_normalized": 2.999000020006669,
+    "phase_reference_normalized": 2.9984,
+    "second_order_quotient": 2.4999499833278094,
+    "source_gram_at_stage3": [
+      [
+        0.0004000000000000001,
+        0.0003998400000000001,
+        0.0003995201280000001
+      ],
+      [
+        0.0003998400000000001,
+        0.0003998400000000001,
+        0.0003996800640000001
+      ],
+      [
+        0.0003995201280000001,
+        0.0003996800640000001,
+        0.0003996800640000001
+      ]
+    ],
+    "operators": [
+      [
+        [
+          0.999799979995999
+        ],
+        [
+          0.02
+        ]
+      ],
+      [
+        [
+          0.999799979995999,
+          -0.02
+        ],
+        [
+          0.02,
+          0.999799979995999
+        ]
+      ],
+      [
+        [
+          0.999799979995999,
+          -0.02
+        ],
+        [
+          0.02,
+          0.999799979995999
+        ]
+      ],
+      [
+        [
+          -0.02000266702219842,
+          0.9997999266413251
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ]
+    ]
+  },
+  {
+    "eta": 0.05,
+    "effective_leakage": 0.05,
+    "construction_status": "CERTIFIED_WITNESS",
+    "certificate_basis": "explicit analytic family, report section 6",
+    "approval_status": "PENDING_INDEPENDENT_REVIEW",
+    "floating_audit": {
+      "status": "NUMERICAL_CANDIDATE",
+      "globally_checked_in_floating_point": true,
+      "stages": [
+        {
+          "operator_norm": 0.9999999999999999,
+          "projected_closure_norm": 0.05,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.05,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.05,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.0,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        }
+      ],
+      "tolerance": 1e-10,
+      "projected_error": 0.14968753914404498,
+      "normalized_error": 2.9937507828808996,
+      "source_sum_residual": 9.686920183523808e-17
+    },
+    "typed_projected_error": 0.14968753914404498,
+    "target_normalized": 2.9937507828808996,
+    "phase_reference_normalized": 2.99,
+    "second_order_quotient": 2.4996868476401697,
+    "source_gram_at_stage3": [
+      [
+        0.0025,
+        0.0024937500000000003,
+        0.0024812812500000004
+      ],
+      [
+        0.0024937500000000003,
+        0.0024937500000000003,
+        0.002487515625
+      ],
+      [
+        0.0024812812500000004,
+        0.002487515625,
+        0.002487515625
+      ]
+    ],
+    "operators": [
+      [
+        [
+          0.998749217771909
+        ],
+        [
+          0.05
+        ]
+      ],
+      [
+        [
+          0.998749217771909,
+          -0.05
+        ],
+        [
+          0.05,
+          0.998749217771909
+        ]
+      ],
+      [
+        [
+          0.998749217771909,
+          -0.05
+        ],
+        [
+          0.05,
+          0.998749217771909
+        ]
+      ],
+      [
+        [
+          -0.05004170137422832,
+          0.9987471292191896
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ]
+    ]
+  },
+  {
+    "eta": 0.1,
+    "effective_leakage": 0.1,
+    "construction_status": "CERTIFIED_WITNESS",
+    "certificate_basis": "explicit analytic family, report section 6",
+    "approval_status": "PENDING_INDEPENDENT_REVIEW",
+    "floating_audit": {
+      "status": "NUMERICAL_CANDIDATE",
+      "globally_checked_in_floating_point": true,
+      "stages": [
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.1,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.1,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.1,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0000000000000002,
+          "projected_closure_norm": 0.0,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        }
+      ],
+      "tolerance": 1e-10,
+      "projected_error": 0.2975012605015313,
+      "normalized_error": 2.975012605015313,
+      "source_sum_residual": 5.594315114139762e-17
+    },
+    "typed_projected_error": 0.2975012605015313,
+    "target_normalized": 2.9750126050153134,
+    "phase_reference_normalized": 2.9599999999999995,
+    "second_order_quotient": 2.49873949846866,
+    "source_gram_at_stage3": [
+      [
+        0.01,
+        0.0099,
+        0.009702
+      ],
+      [
+        0.0099,
+        0.0099,
+        0.009801
+      ],
+      [
+        0.009702,
+        0.009801,
+        0.009801
+      ]
+    ],
+    "operators": [
+      [
+        [
+          0.99498743710662
+        ],
+        [
+          0.1
+        ]
+      ],
+      [
+        [
+          0.99498743710662,
+          -0.1
+        ],
+        [
+          0.1,
+          0.99498743710662
+        ]
+      ],
+      [
+        [
+          0.99498743710662,
+          -0.1
+        ],
+        [
+          0.1,
+          0.99498743710662
+        ]
+      ],
+      [
+        [
+          -0.10033444249237043,
+          0.9949537675941256
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ]
+    ]
+  },
+  {
+    "eta": 0.2,
+    "effective_leakage": 0.2,
+    "construction_status": "CERTIFIED_WITNESS",
+    "certificate_basis": "explicit analytic family, report section 6",
+    "approval_status": "PENDING_INDEPENDENT_REVIEW",
+    "floating_audit": {
+      "status": "NUMERICAL_CANDIDATE",
+      "globally_checked_in_floating_point": true,
+      "stages": [
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.2,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.2,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.2,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.0,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        }
+      ],
+      "tolerance": 1e-10,
+      "projected_error": 0.5800413778343748,
+      "normalized_error": 2.9002068891718737,
+      "source_sum_residual": 1.1443916996305594e-16
+    },
+    "typed_projected_error": 0.5800413778343748,
+    "target_normalized": 2.9002068891718737,
+    "phase_reference_normalized": 2.8400000000000003,
+    "second_order_quotient": 2.494827770703156,
+    "source_gram_at_stage3": [
+      [
+        0.04,
+        0.038400000000000004,
+        0.035328
+      ],
+      [
+        0.038400000000000004,
+        0.038400000000000004,
+        0.036864
+      ],
+      [
+        0.035328,
+        0.036864,
+        0.036864
+      ]
+    ],
+    "operators": [
+      [
+        [
+          0.9797958971132712
+        ],
+        [
+          0.2
+        ]
+      ],
+      [
+        [
+          0.9797958971132712,
+          -0.2
+        ],
+        [
+          0.2,
+          0.9797958971132712
+        ]
+      ],
+      [
+        [
+          0.9797958971132712,
+          -0.2
+        ],
+        [
+          0.2,
+          0.9797958971132712
+        ]
+      ],
+      [
+        [
+          -0.2027019315286937,
+          0.9792404847403607
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ]
+    ]
+  },
+  {
+    "eta": 0.5,
+    "effective_leakage": 0.5,
+    "construction_status": "CERTIFIED_WITNESS",
+    "certificate_basis": "explicit analytic family, report section 6",
+    "approval_status": "PENDING_INDEPENDENT_REVIEW",
+    "floating_audit": {
+      "status": "NUMERICAL_CANDIDATE",
+      "globally_checked_in_floating_point": true,
+      "stages": [
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.5,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.5,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.5,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0000000000000002,
+          "projected_closure_norm": 0.0,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        }
+      ],
+      "tolerance": 1e-10,
+      "projected_error": 1.1924240017711818,
+      "normalized_error": 2.3848480035423636,
+      "source_sum_residual": 0.0
+    },
+    "typed_projected_error": 1.1924240017711818,
+    "target_normalized": 2.384848003542364,
+    "phase_reference_normalized": 2.0,
+    "second_order_quotient": 2.460607985830544,
+    "source_gram_at_stage3": [
+      [
+        0.24999999999999994,
+        0.18749999999999994,
+        0.09374999999999997
+      ],
+      [
+        0.18749999999999994,
+        0.18749999999999994,
+        0.14062499999999997
+      ],
+      [
+        0.09374999999999997,
+        0.14062499999999997,
+        0.14062499999999997
+      ]
+    ],
+    "operators": [
+      [
+        [
+          0.8660254037844386
+        ],
+        [
+          0.5
+        ]
+      ],
+      [
+        [
+          0.8660254037844386,
+          -0.5
+        ],
+        [
+          0.5,
+          0.8660254037844386
+        ]
+      ],
+      [
+        [
+          0.8660254037844386,
+          -0.5
+        ],
+        [
+          0.5,
+          0.8660254037844386
+        ]
+      ],
+      [
+        [
+          -0.5447047794019223,
+          0.8386278693775346
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ]
+    ]
+  },
+  {
+    "eta": 0.6546536707079771,
+    "effective_leakage": 0.6546536707079771,
+    "construction_status": "CERTIFIED_WITNESS",
+    "certificate_basis": "explicit analytic family, report section 6",
+    "approval_status": "PENDING_INDEPENDENT_REVIEW",
+    "floating_audit": {
+      "status": "NUMERICAL_CANDIDATE",
+      "globally_checked_in_floating_point": true,
+      "stages": [
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.6546536707079771,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.6546536707079771,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.6546536707079771,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0000000000000002,
+          "projected_closure_norm": 0.0,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        }
+      ],
+      "tolerance": 1e-10,
+      "projected_error": 1.285714285714286,
+      "normalized_error": 1.9639610121239321,
+      "source_sum_residual": 2.220446049250313e-16
+    },
+    "typed_projected_error": 1.285714285714286,
+    "target_normalized": 1.9639610121239317,
+    "phase_reference_normalized": 1.2857142857142858,
+    "second_order_quotient": 2.4174243050441597,
+    "source_gram_at_stage3": [
+      [
+        0.42857142857142844,
+        0.24489795918367344,
+        0.03498542274052483
+      ],
+      [
+        0.24489795918367344,
+        0.24489795918367346,
+        0.13994169096209916
+      ],
+      [
+        0.03498542274052483,
+        0.13994169096209916,
+        0.13994169096209916
+      ]
+    ],
+    "operators": [
+      [
+        [
+          0.7559289460184545
+        ],
+        [
+          0.6546536707079771
+        ]
+      ],
+      [
+        [
+          0.7559289460184545,
+          -0.6546536707079771
+        ],
+        [
+          0.6546536707079771,
+          0.7559289460184545
+        ]
+      ],
+      [
+        [
+          0.7559289460184545,
+          -0.6546536707079771
+        ],
+        [
+          0.6546536707079771,
+          0.7559289460184545
+        ]
+      ],
+      [
+        [
+          -0.7559289460184544,
+          0.6546536707079774
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ]
+    ]
+  },
+  {
+    "eta": 0.8,
+    "effective_leakage": 0.6546536707079771,
+    "construction_status": "CERTIFIED_WITNESS",
+    "certificate_basis": "explicit analytic family, report section 6",
+    "approval_status": "PENDING_INDEPENDENT_REVIEW",
+    "floating_audit": {
+      "status": "NUMERICAL_CANDIDATE",
+      "globally_checked_in_floating_point": true,
+      "stages": [
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.6546536707079771,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.6546536707079771,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.6546536707079771,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0000000000000002,
+          "projected_closure_norm": 0.0,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        }
+      ],
+      "tolerance": 1e-10,
+      "projected_error": 1.285714285714286,
+      "normalized_error": 1.6071428571428574,
+      "source_sum_residual": 2.220446049250313e-16
+    },
+    "typed_projected_error": 1.285714285714286,
+    "target_normalized": 1.6071428571428572,
+    "phase_reference_normalized": 0.4399999999999997,
+    "second_order_quotient": 2.176339285714285,
+    "source_gram_at_stage3": [
+      [
+        0.42857142857142844,
+        0.24489795918367344,
+        0.03498542274052483
+      ],
+      [
+        0.24489795918367344,
+        0.24489795918367346,
+        0.13994169096209916
+      ],
+      [
+        0.03498542274052483,
+        0.13994169096209916,
+        0.13994169096209916
+      ]
+    ],
+    "operators": [
+      [
+        [
+          0.7559289460184545
+        ],
+        [
+          0.6546536707079771
+        ]
+      ],
+      [
+        [
+          0.7559289460184545,
+          -0.6546536707079771
+        ],
+        [
+          0.6546536707079771,
+          0.7559289460184545
+        ]
+      ],
+      [
+        [
+          0.7559289460184545,
+          -0.6546536707079771
+        ],
+        [
+          0.6546536707079771,
+          0.7559289460184545
+        ]
+      ],
+      [
+        [
+          -0.7559289460184544,
+          0.6546536707079774
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ]
+    ]
+  },
+  {
+    "eta": 1.0,
+    "effective_leakage": 0.6546536707079771,
+    "construction_status": "CERTIFIED_WITNESS",
+    "certificate_basis": "explicit analytic family, report section 6",
+    "approval_status": "PENDING_INDEPENDENT_REVIEW",
+    "floating_audit": {
+      "status": "NUMERICAL_CANDIDATE",
+      "globally_checked_in_floating_point": true,
+      "stages": [
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.6546536707079771,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.6546536707079771,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0,
+          "projected_closure_norm": 0.6546536707079771,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        },
+        {
+          "operator_norm": 1.0000000000000002,
+          "projected_closure_norm": 0.0,
+          "projector_hermitian_residual": 0.0,
+          "projector_idempotent_residual": 0.0
+        }
+      ],
+      "tolerance": 1e-10,
+      "projected_error": 1.285714285714286,
+      "normalized_error": 1.285714285714286,
+      "source_sum_residual": 2.220446049250313e-16
+    },
+    "typed_projected_error": 1.285714285714286,
+    "target_normalized": 1.2857142857142858,
+    "phase_reference_normalized": 1.0,
+    "second_order_quotient": 1.7142857142857142,
+    "source_gram_at_stage3": [
+      [
+        0.42857142857142844,
+        0.24489795918367344,
+        0.03498542274052483
+      ],
+      [
+        0.24489795918367344,
+        0.24489795918367346,
+        0.13994169096209916
+      ],
+      [
+        0.03498542274052483,
+        0.13994169096209916,
+        0.13994169096209916
+      ]
+    ],
+    "operators": [
+      [
+        [
+          0.7559289460184545
+        ],
+        [
+          0.6546536707079771
+        ]
+      ],
+      [
+        [
+          0.7559289460184545,
+          -0.6546536707079771
+        ],
+        [
+          0.6546536707079771,
+          0.7559289460184545
+        ]
+      ],
+      [
+        [
+          0.7559289460184545,
+          -0.6546536707079771
+        ],
+        [
+          0.6546536707079771,
+          0.7559289460184545
+        ]
+      ],
+      [
+        [
+          -0.7559289460184544,
+          0.6546536707079774
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ]
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "name": "pmt-observatory",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PMT 3D Mathematical Observatory - interactive instrument for Projected Multilinear Trees",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "standalone": "npm run build && node scripts/build_standalone.mjs",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "selfcheck": "vitest run tests/self_checks.test.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,6 @@
+{
+ "trees": 4000,
+ "max_abs_error_random_angles": 6.661338147750939e-16,
+ "max_abs_error_sharp_ratio_vs_Ck": 3.552713678800501e-15,
+ "max_closure_excess_over_sin_theta": 1.1102230246251565e-16
+}

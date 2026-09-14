@@ -1,0 +1,32 @@
+\section*{No tree-size-uniform nodewise support bound for independent laws}
+\label{sec:growing-tree-dimension-obstruction}
+
+The fixed-tree support-compression theorem is necessarily size-dependent if
+the compressed configuration must preserve every leaf and every internal-node
+value.  The following explicit family gives a certified obstruction.
+
+\textbf{Proposition.} For every depth $n\ge 1$ there is a binary chain with
+$n$ independent bilinear laws, operator norm one, and a proper orthogonal
+projector with zero evaluated closure residual, for which the leaf and all
+internal-node values span dimension $n+1$.  Hence no dimension bound that is
+independent of the tree depth can preserve all those nodewise values.
+
+\textbf{Construction and proof.} Work in $\mathbb R^{n+2}$, let every leaf
+equal $e_0$, and let the projector be the identity on
+$\operatorname{span}\{e_0,\ldots,e_n\}$ and zero on $e_{n+1}$.  At chain node
+$j=0,\ldots,n-1$, use the independently chosen law
+\[
+  \mu_j(x,y)=e_{j+1}\langle e_j,x\rangle\langle e_0,y\rangle.
+\]
+Its operator norm is one.  Induction gives the value $e_{j+1}$ at node $j$,
+so the leaf and node values are $e_0,e_1,\ldots,e_n$.  They are orthonormal,
+and therefore have span rank $n+1$.  All evaluated values lie in the projector
+range, so the closure residual is zero; the projector is nevertheless proper
+because of the unused coordinate $e_{n+1}$.  Since $n$ is arbitrary, the
+nodewise support rank diverges with tree size.  The executable witness is
+`growing_tree_dimension_counterexample.py`.
+
+This proposition does not rule out a smaller representation for a root-only
+objective after changing intermediate laws, nor does it settle same-law or
+fixed-type restrictions.  It closes only the unrestricted independent-law
+version of a tree-size-uniform nodewise support-compression claim.

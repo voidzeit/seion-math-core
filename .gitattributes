@@ -41,3 +41,6 @@ academic_submission_package_v2_20260801/**/*.sh text eol=lf
 academic_submission_package_v2_20260801/**/*.bib text eol=lf
 academic_submission_package_v2_20260801/**/*.cff text eol=lf
 academic_submission_package_v2_20260801/LICENSE text eol=lf
+
+# Frozen review packages: SHA-256 manifests are computed over LF content; never convert line endings.
+research/pmt_program/review/** -text

@@ -1,0 +1,75 @@
+id: ATN_THRESHOLD_GATE_V1
+status: declared_before_full_execution
+declared_at: 2026-08-16
+purpose: >-
+  Decide whether measured downstream first-order allocation has a terminal-
+  quality advantage over competitive local discarded-energy cutoff policies
+  in the two synthetic landscapes with exact terminal oracles.
+
+scope:
+  topology: heterogeneous_chain
+  ambient_dimension: 16
+  problem_sizes: [8, 10]
+  seeds: [0, 1, 2, 3, 4]
+  initial_rank_fraction: 0.25
+  rounds: 6
+  rank_additions_per_round: 3
+  total_rank_additions: 18
+  projector_bases: frozen
+  reason_bases_frozen: terminal error must remain a function of final ranks so the exact oracle is valid
+
+policies:
+  - uniform
+  - threshold_static
+  - threshold_adaptive
+  - measured_first_order
+  - full_pairwise
+  - rollout_first_order_h6
+
+threshold_static:
+  rule: "r_i(tau) = min {r >= r_i_base : sum_{j>r} sigma_ij^2 <= tau}"
+  tau_selection: common threshold chosen from fitted spectra to attain the exact final rank budget
+  execution: one_shot
+
+threshold_adaptive:
+  rule: same common tail-energy cutoff
+  tau_selection: recomputed every round to add exactly three ranks
+  signal: discarded energy in frozen fitted basis after upstream truncations propagate on the calibration batch
+  basis_refit: false
+
+cost_currencies:
+  rank_budget: exact terminal sum of ranks
+  forward_evaluations: objective evaluations plus explicit adaptive calibration forwards
+  memory_proxy: compressed-coordinate parameter bytes plus peak float64 batched activation bytes
+  wall_time: single-process CPU seconds excluding common instance construction
+
+primary_estimand:
+  formula: "delta = (E_threshold - E_terminal_star) - (E_FO - E_terminal_star) = E_threshold - E_FO"
+  pairing: same problem size and seed
+  positive_direction: FO_lower_terminal_error
+  uncertainty: deterministic paired bootstrap percentile interval with 100000 resamples
+  practical_equivalence_margin: 0.01_of_initial_error
+
+per_comparison_gate:
+  FO_WINS: lower endpoint of 95_percent_CI_for_mean_normalized_delta is greater than zero
+  THRESHOLD_WINS: upper endpoint of 95_percent_CI_for_mean_normalized_delta is less than zero
+  PRACTICAL_TIE: 95_percent_CI lies entirely within [-0.01, 0.01]
+  INCONCLUSIVE: none of the above
+
+overall_gate:
+  GO_FO_EQUAL_RANK: FO_WINS against both threshold policies at both m values
+  STOP_FO_COMPETITIVE: a threshold policy THRESHOLD_WINS at both m values and is no worse in all reported cost currencies
+  THRESHOLD_CAPTURES_CHEAP_VALUE: no FO_WINS comparison and every mean absolute normalized delta is at most 0.01
+  MIXED_OR_INCONCLUSIVE: none of the above
+
+required_outputs:
+  - applications/adaptive_tensor_network/results/threshold_gate_m8_m10_raw.json
+  - applications/adaptive_tensor_network/results/threshold_gate_summary.csv
+  - applications/adaptive_tensor_network/results/THRESHOLD_GATE_V1_FINDINGS.md
+
+limitations:
+  - five seeds per problem size
+  - synthetic fixed-basis chains only
+  - analytical memory proxy rather than measured RSS or VRAM
+  - wall time is descriptive and not a robust hardware benchmark
+  - a production basis-refitting cutoff remains a later real-system baseline

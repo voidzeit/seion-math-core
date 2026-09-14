@@ -1,0 +1,113 @@
+{
+  "schema": "gate13.5-generic-residual-matched-audit-v1",
+  "protocol": "TuckER plus SEION versus parameter-matched non-ternary low-rank residual",
+  "commit": "762c3103cc40e6046857e047c0a13a9bcf538685",
+  "dataset": "FB15K-237",
+  "configuration": {
+    "dim": 64,
+    "batch_size": 256,
+    "epochs": 15,
+    "global_step": 31890,
+    "gate_g_max": 0.5,
+    "base_expert": "tucker",
+    "enable_path": false,
+    "enable_seion": false,
+    "enable_generic_residual": true,
+    "standalone_mode": "residual",
+    "generic_parameter_match": "exactly equal parameter count to SEION at rank 32",
+    "negative_sampling": "neg_k=64, adversarial_temperature=1.0",
+    "evaluator": "seion_kgr.evaluate.evaluate (blocked filtered evaluator)",
+    "skip_test_eval": true
+  },
+  "runs": [
+    {
+      "seed": 1,
+      "execution_id": "723bda49909c4bc9",
+      "configuration_id": "c8a3d55ed7cb38ae",
+      "out_dir": "campaigns/gate13/gate13_5/runs/residual_control/R2_seed1_20260807",
+      "best_epoch": 14,
+      "best_valid_mrr": 0.35806983709335327,
+      "final_valid_mrr": 0.35806983709335327,
+      "hits_at_1": 0.27373823523521423,
+      "hits_at_3": 0.38999143242836,
+      "hits_at_10": 0.5252067446708679,
+      "head_mrr": 0.23568031191825867,
+      "tail_mrr": 0.4804593324661255,
+      "wall_sec": 869.5982582569122,
+      "peak_vram_mb": 137.37472,
+      "gate_signed_mean": -0.0413093492388725,
+      "gate_absolute_mean": 0.102126397192478,
+      "branch_score_rms": 63.3844375610352,
+      "signed_branch_contribution": -5.65876770019531,
+      "gate_gradient_norm": 0.312578111886978,
+      "best_checkpoint_sha256": "0764702082c218bf6503e3c98f964c1cf8a0937887a195d6fdb38f954e387a53"
+    },
+    {
+      "seed": 2,
+      "execution_id": "435f66760d444751",
+      "configuration_id": "58b9d20539054859",
+      "out_dir": "campaigns/gate13/gate13_5/runs/residual_control/R2_seed2_retry2_20260807",
+      "best_epoch": 14,
+      "best_valid_mrr": 0.35642215609550476,
+      "final_valid_mrr": 0.35642215609550476,
+      "hits_at_1": 0.27071571350097656,
+      "hits_at_3": 0.39078983664512634,
+      "hits_at_10": 0.5271171927452087,
+      "head_mrr": 0.23483161628246307,
+      "tail_mrr": 0.47801268100738525,
+      "wall_sec": 761.4552140235901,
+      "peak_vram_mb": 137.37472,
+      "gate_signed_mean": -0.00425582565367222,
+      "gate_absolute_mean": 0.102069079875946,
+      "branch_score_rms": 62.1695289611816,
+      "signed_branch_contribution": -5.76578187942505,
+      "gate_gradient_norm": 0.314666360616684,
+      "best_checkpoint_sha256": "f8abc59af43de2209fa239b8e8560390e9fbe3645492f44f89ad4fcaaf220683"
+    },
+    {
+      "seed": 3,
+      "execution_id": "d2980306141948a0",
+      "configuration_id": "d8a412a5fa79f75d",
+      "out_dir": "campaigns/gate13/gate13_5/runs/residual_control/R2_seed3_20260807",
+      "best_epoch": 14,
+      "best_valid_mrr": 0.3544815480709076,
+      "final_valid_mrr": 0.3544815480709076,
+      "hits_at_1": 0.26817792654037476,
+      "hits_at_3": 0.38808098435401917,
+      "hits_at_10": 0.5254918932914734,
+      "head_mrr": 0.2314852923154831,
+      "tail_mrr": 0.4774777889251709,
+      "wall_sec": 849.2951946258545,
+      "peak_vram_mb": 137.37472,
+      "gate_signed_mean": -0.0417276583611965,
+      "gate_absolute_mean": 0.104256600141525,
+      "branch_score_rms": 61.5234451293945,
+      "signed_branch_contribution": -5.68650054931641,
+      "gate_gradient_norm": 0.36277636885643,
+      "best_checkpoint_sha256": "406577c9ac6dc9a0966f96dea0064edb1e8d13ed59bc69319ef7b2413335c13f"
+    }
+  ],
+  "summary": {
+    "mean_best_valid_mrr": 0.3563245137532552,
+    "sample_sd_best_valid_mrr": 0.00179613614389362,
+    "matched_A2_mean_best_valid_mrr": 0.3550289074579875,
+    "R2_minus_A2_mean": 0.00129560629526774,
+    "R2_minus_A2_per_seed": [0.00187018513679504, 0.00205850601196289, -0.0000418722629547119],
+    "interpretation": "The generic control is statistically close to A2 in this three-seed screening; a clear structural SEION advantage is not demonstrated.",
+    "test_opened": false,
+    "all_metrics_finite": true,
+    "all_runs_completed": true
+  },
+  "deviations": [
+    {
+      "attempt": "R2_seed2_20260807",
+      "classification": "ORCHESTRATION_INVALID_ENTRYPOINT",
+      "detail": "The nonexistent seion-core train subcommand exited before metrics were written; artifacts preserved."
+    },
+    {
+      "attempt": "R2_seed2_retry1_20260807",
+      "classification": "ORCHESTRATION_INVALID_MODULE_INVOCATION",
+      "detail": "seion_kgr/train.py was invoked as a script and failed on relative imports before metrics; artifacts preserved."
+    }
+  ]
+}

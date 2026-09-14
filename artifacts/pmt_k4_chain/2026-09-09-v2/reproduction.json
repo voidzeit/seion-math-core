@@ -1,0 +1,420 @@
+{
+  "controls": [
+    {
+      "contract": "C2",
+      "eta": 0.05,
+      "observed": 1.0,
+      "expected": 1.0,
+      "audit": {
+        "status": "NUMERICAL_CANDIDATE",
+        "globally_checked_in_floating_point": true,
+        "stages": [
+          {
+            "operator_norm": 0.9999999999999999,
+            "projected_closure_norm": 0.05,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          },
+          {
+            "operator_norm": 1.0,
+            "projected_closure_norm": 0.0,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          }
+        ],
+        "tolerance": 1e-10,
+        "projected_error": 0.05,
+        "normalized_error": 1.0,
+        "source_sum_residual": 0.0
+      }
+    },
+    {
+      "contract": "M14_chain",
+      "eta": 0.05,
+      "observed": 1.9981241202688087,
+      "expected": 1.9981241202688085
+    },
+    {
+      "contract": "M15_branch",
+      "eta": 0.05,
+      "observed": 1.9981241202688085,
+      "expected": 1.9981241202688085
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 2,
+      "eta": 0.05,
+      "observed": 0.05,
+      "expected": 0.05
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 3,
+      "eta": 0.05,
+      "observed": 0.0998749217771909,
+      "expected": 0.0998749217771909
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 4,
+      "eta": 0.05,
+      "observed": 0.14950000000000002,
+      "expected": 0.14950000000000002
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 6,
+      "eta": 0.05,
+      "observed": 0.24750500000000003,
+      "expected": 0.24750500000000003
+    },
+    {
+      "contract": "C2",
+      "eta": 0.2,
+      "observed": 1.0,
+      "expected": 1.0,
+      "audit": {
+        "status": "NUMERICAL_CANDIDATE",
+        "globally_checked_in_floating_point": true,
+        "stages": [
+          {
+            "operator_norm": 1.0,
+            "projected_closure_norm": 0.2,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          },
+          {
+            "operator_norm": 1.0,
+            "projected_closure_norm": 0.0,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          }
+        ],
+        "tolerance": 1e-10,
+        "projected_error": 0.2,
+        "normalized_error": 1.0,
+        "source_sum_residual": 0.0
+      }
+    },
+    {
+      "contract": "M14_chain",
+      "eta": 0.2,
+      "observed": 1.9697715603592214,
+      "expected": 1.969771560359221
+    },
+    {
+      "contract": "M15_branch",
+      "eta": 0.2,
+      "observed": 1.9697715603592203,
+      "expected": 1.969771560359221
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 2,
+      "eta": 0.2,
+      "observed": 0.2,
+      "expected": 0.2
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 3,
+      "eta": 0.2,
+      "observed": 0.3919183588453085,
+      "expected": 0.3919183588453085
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 4,
+      "eta": 0.2,
+      "observed": 0.5680000000000001,
+      "expected": 0.5680000000000001
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 6,
+      "eta": 0.2,
+      "observed": 0.8451199999999999,
+      "expected": 0.84512
+    },
+    {
+      "contract": "C2",
+      "eta": 0.5,
+      "observed": 1.0,
+      "expected": 1.0,
+      "audit": {
+        "status": "NUMERICAL_CANDIDATE",
+        "globally_checked_in_floating_point": true,
+        "stages": [
+          {
+            "operator_norm": 1.0,
+            "projected_closure_norm": 0.5,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          },
+          {
+            "operator_norm": 1.0,
+            "projected_closure_norm": 0.0,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          }
+        ],
+        "tolerance": 1e-10,
+        "projected_error": 0.5,
+        "normalized_error": 1.0,
+        "source_sum_residual": 0.0
+      }
+    },
+    {
+      "contract": "M14_chain",
+      "eta": 0.5,
+      "observed": 1.8027756377319948,
+      "expected": 1.8027756377319946
+    },
+    {
+      "contract": "M15_branch",
+      "eta": 0.5,
+      "observed": 1.802775637731995,
+      "expected": 1.8027756377319946
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 2,
+      "eta": 0.5,
+      "observed": 0.5,
+      "expected": 0.5
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 3,
+      "eta": 0.5,
+      "observed": 0.8660254037844386,
+      "expected": 0.8660254037844387
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 4,
+      "eta": 0.5,
+      "observed": 0.9999999999999998,
+      "expected": 1.0
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 6,
+      "eta": 0.5,
+      "observed": 0.49999999999999967,
+      "expected": 0.49999999999999956
+    },
+    {
+      "contract": "C2",
+      "eta": 0.6546536707079771,
+      "observed": 1.0,
+      "expected": 1.0,
+      "audit": {
+        "status": "NUMERICAL_CANDIDATE",
+        "globally_checked_in_floating_point": true,
+        "stages": [
+          {
+            "operator_norm": 1.0,
+            "projected_closure_norm": 0.6546536707079771,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          },
+          {
+            "operator_norm": 1.0,
+            "projected_closure_norm": 0.0,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          }
+        ],
+        "tolerance": 1e-10,
+        "projected_error": 0.6546536707079771,
+        "normalized_error": 1.0,
+        "source_sum_residual": 0.0
+      }
+    },
+    {
+      "contract": "M14_chain",
+      "eta": 0.6546536707079771,
+      "observed": 1.6475089420958282,
+      "expected": 1.647508942095828
+    },
+    {
+      "contract": "M15_branch",
+      "eta": 0.6546536707079771,
+      "observed": 1.6475089420958275,
+      "expected": 1.647508942095828
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 2,
+      "eta": 0.6546536707079771,
+      "observed": 0.6546536707079771,
+      "expected": 0.6546536707079771
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 3,
+      "eta": 0.6546536707079771,
+      "observed": 0.989743318610787,
+      "expected": 0.989743318610787
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 4,
+      "eta": 0.6546536707079771,
+      "observed": 0.8416975766245423,
+      "expected": 0.841697576624542
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 6,
+      "eta": 0.6546536707079771,
+      "observed": 0.4141686488152504,
+      "expected": 0.41416864881525045
+    },
+    {
+      "contract": "C2",
+      "eta": 0.8,
+      "observed": 1.0,
+      "expected": 1.0,
+      "audit": {
+        "status": "NUMERICAL_CANDIDATE",
+        "globally_checked_in_floating_point": true,
+        "stages": [
+          {
+            "operator_norm": 0.9999999999999999,
+            "projected_closure_norm": 0.8,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          },
+          {
+            "operator_norm": 1.0,
+            "projected_closure_norm": 0.0,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          }
+        ],
+        "tolerance": 1e-10,
+        "projected_error": 0.8,
+        "normalized_error": 1.0,
+        "source_sum_residual": 0.0
+      }
+    },
+    {
+      "contract": "M14_chain",
+      "eta": 0.8,
+      "observed": 1.4422205101855956,
+      "expected": 1.4422205101855956
+    },
+    {
+      "contract": "M15_branch",
+      "eta": 0.8,
+      "observed": 1.442220510185595,
+      "expected": 1.4422205101855956
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 2,
+      "eta": 0.8,
+      "observed": 0.8,
+      "expected": 0.8
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 3,
+      "eta": 0.8,
+      "observed": 0.9599999999999999,
+      "expected": 0.96
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 4,
+      "eta": 0.8,
+      "observed": 0.3519999999999995,
+      "expected": 0.3519999999999998
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 6,
+      "eta": 0.8,
+      "observed": 0.9971199999999998,
+      "expected": 0.99712
+    },
+    {
+      "contract": "C2",
+      "eta": 1.0,
+      "observed": 1.0,
+      "expected": 1.0,
+      "audit": {
+        "status": "NUMERICAL_CANDIDATE",
+        "globally_checked_in_floating_point": true,
+        "stages": [
+          {
+            "operator_norm": 1.0,
+            "projected_closure_norm": 1.0,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          },
+          {
+            "operator_norm": 1.0,
+            "projected_closure_norm": 0.0,
+            "projector_hermitian_residual": 0.0,
+            "projector_idempotent_residual": 0.0
+          }
+        ],
+        "tolerance": 1e-10,
+        "projected_error": 1.0,
+        "normalized_error": 1.0,
+        "source_sum_residual": 0.0
+      }
+    },
+    {
+      "contract": "M14_chain",
+      "eta": 1.0,
+      "observed": 1.1547005383792515,
+      "expected": 1.1547005383792517
+    },
+    {
+      "contract": "M15_branch",
+      "eta": 1.0,
+      "observed": 1.1547005383792517,
+      "expected": 1.1547005383792517
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 2,
+      "eta": 1.0,
+      "observed": 1.0,
+      "expected": 1.0
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 3,
+      "eta": 1.0,
+      "observed": 0.0,
+      "expected": 1.2246467991473532e-16
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 4,
+      "eta": 1.0,
+      "observed": 1.0,
+      "expected": 1.0
+    },
+    {
+      "contract": "M19_gated_ambient_leaves",
+      "k": 6,
+      "eta": 1.0,
+      "observed": 1.0,
+      "expected": 1.0
+    }
+  ],
+  "negative_control": {
+    "contract": "ungated_M18_M19_under_canonical_ambient_leaves",
+    "eta": 0.2,
+    "trajectory_defect": 0.2,
+    "global_bottom_defect": 1.0,
+    "status": "REJECTED_INADMISSIBLE",
+    "historical_evidence_preserved": true
+  }
+}

@@ -9,6 +9,37 @@
 
 These blockers are not silently downgraded by successful software tests.
 
+## PMT k4 audit — 2026-09-09
+
+- **PMT-K4-LEAF-CONVENTION:** the ungated M18/M19 phase law has global
+  projected-input closure 1 at a bottom node under the canonical ambient-leaf
+  convention, although its chosen trajectory has defect eta. Historical files
+  and statuses are preserved. The additive gated construction in
+  `src/seion_core/pmt/phase.py` preserves the phase values with canonical
+  global closure <=eta. The negative control and proof are in
+  `research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md` §2 and
+  `artifacts/pmt_k4_chain/2026-09-09-v1/reproduction.json`. Resolution: review
+  and reconcile the historical wording explicitly, not by a silent rewrite.
+- **PMT-K4-PROOF-REVIEW:** the chain/mixed formula and a_chain=5/2 have a
+  complete advisory dilation/angle proof draft, but no independent review or
+  official theorem approval. The historical k>=4 OPEN_PROBLEM classification
+  remains in force. Numerical agreement cannot close this approval gap.
+- **PMT-PROGRAM-REVIEW (2026-09-13):** `research/pmt_program/` adds proof
+  drafts for chains of every k (Theorem C), k=4 BBR and STAR (topology
+  independence at k=4), and a universal lower-bound witness. None is
+  independently reviewed; exact certificates cover only 7 rational chain
+  points. Theorem-registry promotion stays blocked on human review.
+- **PMT-FIELD-C (2026-09-13):** `PMT-A[C]` lower bounds for skeletons with a
+  multilinear vertex having >=2 internal children are not established
+  (exception: MIXED, whose witness uses matrices and gates); the
+  real phase witness complexifies with norm sqrt2 and a retention obstruction
+  is proved. Do not state k>=4 non-chain sharp constants over C.
+- **PMT-LATEX (2026-09-13):** no TeX toolchain on this workstation;
+  `papers/pmt_I_sharp_stability/main.tex` is uncompiled.
+- **PMT-K4-SEARCH-NORMS:** the historical k4 optimizer's alternating/grid
+  multilinear norm estimates do not certify global admissibility. New chain
+  searches check the whole linear matrix block; no historical run is promoted.
+
 ## V3 strict-gate blockers
 
 | ID | Blocker | Impact | Evidence | Resolution condition |
@@ -19,3 +50,10 @@ These blockers are not silently downgraded by successful software tests.
 | B-0008 | The extended schedule is resource-gated: 4/460,800 optimizer trajectories and 0/8,400 extended performance cells are complete. | The extended matrix cannot support release claims. | `artifacts/research_v3/extended_progress_v3.json` | Resume to completion under an authorized compute budget with all failures retained. |
 | B-0009 | Three of four automated adversarial reviews recommend major revision; there are zero independent human reviews. | Preprint/submission approval is blocked. | `artifacts/reviews_v3/review_summary_v3.json` | Obtain four independent human reviews at least acceptable as preprint and address their findings. |
 | B-0010 | A pre-existing user-owned `.obsidian/workspace.json` edit is intentionally preserved. | The literal clean-worktree gate remains false even after SEION deliverables are committed. | `git status --porcelain` | The user decides how to handle that unrelated file; automation must not discard it. |
+| B-0011 | The preregistered FB15K237 full batched training acceptance completes but exceeds the 300-second wall-clock ceiling; path-frontier reuse and a reversible matmul-precision probe did not close the gap. | The operational performance gate remains open on this hardware, although correctness and completion pass. | `tests/kgr/test_gate13_2b_acceptance_run.py`; `.ai/CURRENT_STATE.md`; `.ai/evidence/ledger.jsonl` | An authorized backend/system optimization or revised, explicitly approved resource budget must reduce the same acceptance configuration below 300 seconds; do not change the scientific configuration silently. |
+| B-0012 | Two Windows bugchecks were observed on 2026-08-09 during the broader compute session: `0x00020001` and `0x0000001E`. WER grouped them as `INTEL_IOMMU_TIMEOUT_IMAGE_GenuineIntel.sys` and `AV_nt!ExpPoolTrackerChargeEntry`, respectively. | GPU experimentation is paused because the cause may be driver, IOMMU/firmware, thermal, power, or workload related; no hardware-performance claim should be extended from the affected session. | Windows System/Application WER events 1001/41/6008; `C:\WINDOWS\MEMORY.DMP`; protected WER/minidump paths; `.ai/CURRENT_STATE.md` | Obtain debugger access to the dump(s), review BIOS/IOMMU and Intel/NVIDIA driver state, then run a small CPU-only smoke test followed by a bounded GPU canary before any long job. |
+
+
+**B-0012 evidence, 2026-08-25.** Second incident of this class: `torch.AcceleratorError: CUDA error: unknown error` raised inside `torch.linalg.eigh` during the `S_2^same-mu` convergence ladder at rung 2 (steps=600, per-cell=4096), aborting the run. A bounded canary immediately afterwards PASSED (5x float64 `eigh` on 2000x2000, device healthy, 0 MiB resident), so the device recovered, but idle temperature read 80 C. Partial data preserved in `research/rebracketing_geometry/rg_s2_convergence_v1_PARTIAL.json`. No long GPU job should be relaunched before the B-0012 exit criteria are met.
+| B-0014 | Evaluation-time known-positive filter tables are reused to build or mask **training** negatives across the KGE trainers. Because `load_knowledge_graph` folds VALID and TEST into `tails_of_hr`/`heads_of_rt`, every held-out gold is exempted from ever receiving negative gradient for its own query. A controlled A/B on FB15K-237 (identical seed/config/eval subset, matched wall clock) measured the inflation at **+0.312 MRR, 0.51818 leaking vs 0.20571 fixed** — about 60% of the metric was artefact. | Every KGE metric produced by an affected trainer is inflated by held-out leakage. This is a sufficient mechanical explanation for the historical `MRR=0.6116475`, whose TEST-usage status moves from `UNKNOWN_NOT_ESTABLISHED` to established leakage. No file-access sentinel can detect this class of defect. | `.ai/LEAKAGE_FINDING_MINING_FILTER_2026-08-10.md`; `tests/kgr/test_mining_filter_no_valid_leak.py`; `runs/SEALED_SOTA_V1_FB15K237_D256_2H` vs `runs/SEALED_SOTA_V2_FB15K237_D256_2H_NOLEAK` All **seven** affected trainers now expose a TRAIN-only negative filter (`--mining-filter` on the sealed runner, `--negative-filter` elsewhere), sharing `data.train_only_filter_view`; defaults preserve historical behaviour so old runs stay reproducible. A standing statistical detector is pinned by `tests/kgr/test_no_heldout_leak_in_training_negatives.py`. **Remaining work:** 29 `runs/TTN_FB15K237_*` directories plus `runs/SPECTRAL_MIXTURE_*`, `runs/SRATM_*_DISCOVERY_*`, `runs/V25_FB237_*` and `runs/KGR_V26_*` were produced under the leaking default; every predictive-quality metric from them must be re-run with `train_only` or withdrawn. Certificates and rank/spectral diagnostics computed *on* those checkpoints remain true of those tensors and are not automatically void. |
+| B-0013 | The paused sealed SRATM step-704 run cannot be resumed under a fully reconciled provenance contract: its manifest records `git_head=cf663bc6…`, that commit does not contain the sealed trainer, and the persisted `config.json` says `max_steps=256` while the checkpoint-embedded protocol says `max_steps=1024`. | The checkpoint is numerically intact, but continuation would create an ambiguous genealogy and cannot support a clean teacher freeze or convergence claim. | `runs/SRATM_FB15K237_SEALED_FROM_ZERO_D256_B512_23GB_2026-08-10/resume_manifest.json`; checkpoint SHA256 `7afd916f7171587cc74654005353734c9fcfc4f381ef720ef7464ca7d6154306` | Reconcile the original trainer source/config provenance, or explicitly authorize a new sealed continuation campaign with an immutable copied checkpoint and a newly registered protocol. |

@@ -1,0 +1,261 @@
+protocol_id: certified_kge_confirmatory_v1
+version: "1.0"
+status: declared_not_executed
+authority: declared
+purpose: >-
+  Confirmatory evaluation of certified post-training score-space compression for
+  frozen multilinear knowledge-graph scorers. Opportunity, certificate,
+  predictive preservation, hardware realization, replication, and
+  generalization are separate gates.
+scope:
+  primary_question: >-
+    Can a frozen multilinear TTN scorer be compressed by a train-calibrated
+    spectral/certified policy while preserving declared score and ranking
+    tolerances and reducing same-backend online cost?
+  out_of_scope: >-
+    SOTA claims, universal claims from finite samples, treating query count as
+    independent training replicates, and comparing compressed code against an
+    intentionally unoptimized full baseline.
+  claim_labels: [PROVED, CERTIFIED, EMPIRICAL, OPEN, REFUTED]
+
+data:
+  split_policy: official_splits_loaded_once
+  partition_roles:
+    train: fit_model_and_calibration_statistics
+    calibration: deterministic_train_only_query_subset_for_projectors_and_spectra
+    valid: select_tolerances_ranks_and_hyperparameters_only
+    test: single_final_confirmation_after_all_freezes
+  calibration:
+    source_split: train
+    seed: 13579
+    query_count: 8192
+    sampling: deterministic_without_replacement_when_available
+  validation_probe:
+    seed: 24680
+    query_count: 8192
+  test_policy:
+    projector_fit: forbidden
+    rank_selection: forbidden
+    hyperparameter_selection: forbidden
+    opening_rule: once_after_protocol_and_model_freeze
+  datasets:
+    - id: FB15K237
+      name: FB15K-237
+      train: data/FB15K-237/train.txt
+      valid: data/FB15K-237/valid.txt
+      test: data/FB15K-237/test.txt
+      role: primary_replication_dataset
+    - id: WN18RR
+      name: WN18RR
+      train: data/WN18RR/train.txt
+      valid: data/WN18RR/valid.txt
+      test: data/WN18RR/test.txt
+      role: exact_protocol_replication_dataset
+  ranking_protocol: filtered_entity_prediction
+
+model:
+  primary_architecture:
+    id: branching_ttn_k3
+    equation: score = mu3(mu1(h1,r1), mu2(h2,r2), t)
+    topology: branching
+    internal_nodes: 3
+    truncable_nodes: [branch1, branch2]
+    root_projection: false
+    full_then_freeze: true
+  confirmatory_dimensions:
+    D: 128
+    branch_dim: 128
+  deferred_dimensions: [256]
+  deferred_topologies: [chain_k3, chain_k5, chain_k7]
+  training_seeds: [42, 7, 17, 27, 37, 47, 57, 67, 77, 87]
+  training_budget:
+    max_epochs: 500
+    early_stopping_metric: filtered_valid_mrr
+    patience_evaluations: 15
+    model_selection: best_valid_checkpoint_only
+  frozen_model_rule: no_weights_or_embeddings_changed_after_full_checkpoint_selection
+
+projection_and_allocation:
+  calibration_fit: train_only
+  whitening: candidate_gram_support_safe_pseudoinverse
+  projector: P = Q_r Q_r^T
+  execution: transformed_coordinates_and_precomputed_candidate_tables
+  fine_tuning_after_projection: forbidden_in_primary_campaign
+  tolerance_grid:
+    - 0.1
+    - 0.05
+    - 0.02
+    - 0.01
+    - 0.005
+    - 0.002
+    - 0.001
+    - 0.0005
+    - 0.0002
+    - 0.0001
+    - 0.00005
+    - 0.00002
+    - 0.00001
+    - 0.000005
+    - 0.000002
+    - 0.000001
+    - 0.0000005
+    - 0.0000002
+    - 0.0000001
+  internal_rank_grid: [1, 2, 4, 8, 16, 24, 32, 48, 64, 96, 128]
+  output_rank_grid: [8, 16, 24, 32, 48, 64, 96, 128]
+  policies:
+    - full_rank
+    - uniform
+    - spectral_oracle
+    - certificate_driven
+    - validation_driven
+    - oracle_retrospective
+  selection_rules:
+    spectral_oracle: diagnostic_only_not_deployable
+    oracle_retrospective: test_or_observed_error_only_after_selection_and_never_deployable
+    certificate_driven: minimize_declared_cost_subject_to_B_le_tolerance
+    validation_driven: minimize_declared_cost_subject_to_E_valid_le_tolerance
+    tie_break: lower_rank_then_lexicographic_relation_order
+
+metrics:
+  score_error:
+    observed: [E_train, E_calibration, E_valid, E_test]
+    certificate: [B_global, B_query, B_over_E, max_E_minus_B]
+    validity: [N_evaluated, N_violations, violation_rate, max_E_minus_B]
+    association_secondary: [pearson_B_E, spearman_B_E]
+  ranking:
+    standard: [MRR, Hits@1, Hits@3, Hits@10]
+    observed: [rank_equal_fraction, RE@1, RE@3, RE@10]
+    certified: [CCR@1, CCR@3, CCR@10]
+    boundary_definition: m_q_K = score_K - score_K_plus_1
+    certificate_rule: m_q_K > 2 * B_q implies top_K_invariant
+  resources:
+    analytical: [contraction_units, active_rank, core_storage, package_storage, basis_storage]
+    hardware: [wall_time_p50, wall_time_p95, qps, peak_vram, peak_ram]
+    speedup:
+      scorer: T_full_same_kernel / T_compressed_same_kernel
+      end_to_end: T_full_filtered_evaluation / T_compressed_filtered_evaluation
+      certified_throughput: max_qps_subject_to_B_le_tolerance / qps_full
+  statistical_unit:
+    training_quality: seed
+    hardware_repeats: independent_timing_repeat
+    query_rows: observations_not_independent_replicates
+
+hardware:
+  primary_comparison: transformed_full_and_transformed_compressed_same_backend
+  excluded_from_online_timer:
+    - projector_fit
+    - whitening
+    - transformed_core_construction
+    - transformed_entity_table_construction
+    - compilation
+  required_controls:
+    - same_query_set
+    - same_dtype
+    - same_batch_size_or_declared_best_vs_best_autotuning
+    - same_candidate_block
+    - cuda_warmup_and_explicit_synchronization
+    - alternating_condition_order_when_paired
+  repeats: 30
+  bootstrap_replicates: 10000
+  positive_speedup_rule: ci95_lower_speedup_gt_1
+  robust_speedup_rule: median_end_to_end_speedup_ge_1_5_and_ci95_lower_gt_1
+  vram:
+    hard_project_ceiling_gb: 23
+    staged_caps_gb: [4, 8, 12, 16, 20]
+    escalation_requires_stable_previous_stage: true
+    current_blocker: B-0012
+    long_training_allowed_while_blocker_open: false
+  performance_objective: maximize_sustainable_throughput_not_vram_occupancy
+
+quality_and_equivalence:
+  deltas:
+    MRR: 0.005
+    Hits@1: 0.01
+    Hits@3: 0.01
+    Hits@10: 0.01
+  criterion: absolute_difference_within_declared_delta
+  equivalence_is_not_exact_equality: true
+
+gates:
+  G0_numerical_correctness:
+    pass: algebraic_equivalence_and_declared_tests_pass
+  G1_stable_execution:
+    pass: staged_canaries_stable_without_bugcheck_nan_or_unbounded_memory
+    status: blocked_by_B-0012
+  G2_spectral_opportunity:
+    pass: complete_preregistered_tolerance_curve_and_G_spectral_reported
+    target: G_spectral_ge_1_5
+  G3_certificate_capture:
+    pass: G_cert_gt_1_and_Pi_cert_reported_without_test_selection
+  G4_prediction_preservation:
+    pass: zero_declared_certificate_violations_and_quality_deltas_within_limits
+  G5_hardware_realization:
+    pass: same_kernel_CI95_lower_speedup_gt_1
+    robust_target: end_to_end_speedup_ge_1_5
+  G6_cross_seed_replication:
+    pass: ten_preregistered_seeds_reported_as_seed_level_statistics
+  G7_cross_dataset_replication:
+    pass: exact_protocol_replication_on_FB15K237_and_WN18RR
+  G8_cross_topology_or_model:
+    pass: chain_or_external_tensor_model_replicates_the_full_reporting_table
+  advancement_rule: no_gate_skipping_and_no_post_test_protocol_changes
+
+artifact_contract:
+  required_files:
+    - manifest.json
+    - config.yaml
+    - environment.json
+    - git_state.json
+    - dataset_fingerprint.json
+    - training_metrics.jsonl
+    - validation_metrics.json
+    - test_metrics.json
+    - spectral_audit.json
+    - certificate_results.json
+    - rank_allocations.json
+    - pareto_front.json
+    - hardware_raw.jsonl
+    - hardware_summary.json
+    - checkpoint_best.pt
+    - checkpoint_last.pt
+    - FINAL_STATUS.md
+  manifest_fields:
+    - exact_command
+    - code_sha
+    - git_branch
+    - seed
+    - dataset_hashes
+    - gpu
+    - pytorch_version
+    - cuda_version
+    - start_utc
+    - end_utc
+    - artifact_hashes
+
+reporting:
+  primary_table_columns:
+    - MRR_full
+    - MRR_compressed
+    - delta_MRR
+    - B
+    - E_observed
+    - violations
+    - CCR@1
+    - CCR@10
+    - G_spectral
+    - G_cert
+    - Pi_cert
+    - C_uniform
+    - C_cert
+    - S_scorer
+    - S_E2E
+    - peak_vram_reduction
+  report_full_curves: true
+  report_negative_controls: true
+  no_claims_from_finite_queries_as_universal: true
+
+verification_commands:
+  focused_tests: python -m pytest -q tests/kgr/test_score_space.py tests/kgr/test_ttn_branching.py
+  governance_audit: python -m seion_core.cli.main governance audit --json
+  deduplicate_runs: python -m seion_core.cli.main governance dedupe-runs

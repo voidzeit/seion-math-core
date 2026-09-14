@@ -1,0 +1,50 @@
+\section*{Exact formula for arity-compatible gated-rotation trees}
+\label{sec:gated-rotation-general-arity}
+
+The binary theorem extends to finite ordered rooted trees with variable
+arity.  At an internal node of arity $m\ge2$, use the arity-compatible law
+\[
+  \mu_m(x_1,\ldots,x_m)
+  =R_\theta x_1\prod_{j=2}^m\langle e_0,x_j\rangle,
+\]
+with the same active planar rotation $R_\theta$ for every $m$.  Let all
+leaves be $e_0$, and let the coordinate projector contain $e_0$ while its
+complement contains the active normal coordinate.
+
+For an ordered rooted tree $T$, define
+\[
+ d(\text{leaf})=0,\qquad d((T_1,\ldots,T_m))=1+d(T_1),
+\]
+and
+\[
+ a(\text{leaf})=1,\qquad
+ a((T_1,\ldots,T_m))
+ =a(T_1)\prod_{j=2}^m a(T_j)\cos(d(T_j)\theta).
+\]
+If $k(T)$ is the number of internal nodes and
+$c=\cos\theta=\sqrt{1-\eta^2}$, then
+\[
+  \boxed{
+  E_T^{\mathrm{proj}}(\eta)=
+  \left|a(T)\cos(d(T)\theta)-c^{k(T)}\right|
+  }
+\]
+in the $M=L_T=1$ normalization.  A common law scale $M$ multiplies the
+right-hand side by $M^{k(T)}$.
+
+\textbf{Proof.}  Inductively write the ambient value as
+$z_T=a(T)R_\theta^{d(T)}e_0$.  At a node, each secondary child contributes
+the scalar
+$a(T_j)\cos(d(T_j)\theta)$ to its gate, while the first child contributes
+one additional rotation.  This gives exactly the displayed recurrence for
+$a$ and $d$.  For projected evaluation write $r_T=b(T)e_0$.  Since
+$P R_\theta e_0=c e_0$, every internal node gives
+$b(T)=c\prod_j b(T_j)$.  Induction therefore yields
+$b(T)=c^{k(T)}$.  Projecting the ambient root gives
+$Pz_T=a(T)\cos(d(T)\theta)e_0$, proving the formula. $\square$
+
+The exact repository evaluator `gated_rotation_general_arity.py` checks all
+ordered shapes with up to three internal nodes and arities two and three at
+four dimension/rank pairs.  This theorem is restricted to the shared
+arity-compatible gated law and unit $e_0$ leaves; it does not establish the
+global extremal constants for independent or arbitrary multilinear laws.

@@ -1,0 +1,55 @@
+\section*{M23: Exact unary-operator reduction for the rank-one/common-leaf same-law chain}
+\label{sec:m23-rank-one-same-law-reduction}
+
+Consider the strict binary $k=3$ left chain with one repeated real bilinear
+law $\mu$, a common unit projected leaf $e_0$, and the rank-one projector
+$P=e_0e_0^*$, with $Q=I-P$. Assume $\|\mu\|_{\rm op}\le M$ and
+$\|Q\mu(e_0,e_0)\|\le\rho=\eta M$. Define the unary restriction
+\[
+ A:V\to V,\qquad A x:=\mu(x,e_0).
+\]
+Then $\|A\|_{\rm op}\le M$ and $\|QAe_0\|\le\rho$. The ambient chain
+output is $A^3e_0$, while the recursively projected output is
+$PAPAPAe_0$. Since $PAP=\langle e_0,Ae_0\rangle P$,
+\[
+ E_{\rm proj}
+ =\left|\langle e_0,A^3e_0\rangle
+ -\langle e_0,Ae_0\rangle^3\right|.
+\tag{M23.1}
+\]
+
+Conversely, every finite-dimensional real contraction $A$ is realized by the
+gated repeated law
+\[
+ \mu_A(x,y)=A x\,\langle e_0,y\rangle,
+\]
+which has $\|\mu_A\|_{\rm op}=\|A\|_{\rm op}$ and
+ $Q\mu_A(e_0,e_0)=QAe_0$. Therefore the strict same-law/common-leaf class
+has exactly the following equivalent extremal formulation (after scaling
+$M=1$):
+\[
+ C_{3,\mathrm{same},r=1}^{P}(\eta)
+ =\sup_{\substack{\dim V<\infty,\ \|A\|\le1\\
+                         \|QAe_0\|\le\eta}}
+ \frac{\left|\langle e_0,A^3e_0\rangle
+ -\langle e_0,Ae_0\rangle^3\right|}{\eta}.
+\tag{M23.2}
+\]
+
+\textbf{Theorem.} Equations (M23.1)--(M23.2) are exact under the stated
+rank-one, common-leaf, same-law assumptions.
+
+\textbf{Proof.} The forward identity follows by freezing the second input of
+each node at the common leaf. The ambient recurrence is $x_{j+1}=Ax_j$.
+The projected recurrence is $r_{j+1}=PA r_j$, and rank one gives
+$PAP=\langle e_0,Ae_0\rangle P$. The output projection of the ambient
+recurrence is $\langle e_0,A^3e_0\rangle e_0$, proving (M23.1). For the
+reverse inclusion, the displayed gated law is bilinear and has the claimed
+operator and closure norms, so every admissible $A$ is an admissible repeated
+law. Taking suprema gives (M23.2). $\square$
+
+This is a reduction, not the missing low-$\eta$ extremal evaluation. M22
+settles the high-$\eta$ rotation subfamily; the value of (M23.2) for
+$0<\eta<\sqrt{2/3}$, rank-one/common-leaf branching, and broader
+same-law/gated classes remains open and requires a separate optimization or
+global inequality.

@@ -1,0 +1,38 @@
+\section*{M22: Rank-one/common-leaf same-law chain at high $\eta$}
+\label{sec:m22-rank-one-high-eta}
+
+Consider the strict binary $k=3$ chain class with a single repeated bilinear
+law, a common unit projected leaf $e_0$, and the rank-one projector
+$P=e_0e_0^*$.  The independent-law M14 theorem supplies the upper bound
+$C_{3,\mathrm{same},r=1}^P(\eta)\le W_3(\eta)$ because this class is a
+subclass of the independent-law class.
+
+For $\eta\ge\alpha:=\sqrt{2/3}$, use one repeated gated rotation law
+\[
+ \mu(x,y)=A x\langle e_0,y\rangle,
+ \qquad
+ A=\begin{pmatrix}1/\sqrt3&-\sqrt{2/3}\\
+                    \sqrt{2/3}&1/\sqrt3\end{pmatrix}.
+\]
+Its norm is one and its projected-input closure defect is $\alpha\le\eta$.
+The ambient chain output is $A^3e_0$, while the recursively projected output
+is $P A P A P A e_0$.  Therefore
+\[
+ \|P A^3e_0-P A P A P A e_0\|
+ =3\alpha^2/\sqrt3=2/\sqrt3.
+\]
+After normalization by $\eta$, this is
+\[
+ \frac{2}{\sqrt3\,\eta}=W_3(\eta),
+ \qquad \alpha\le\eta\le1.
+\]
+
+\textbf{Theorem.} In the rank-one/common-leaf same-law chain class,
+\[
+ \boxed{C_{3,\mathrm{same},r=1}^P(\eta)=W_3(\eta)}
+ \qquad\text{for }\sqrt{2/3}\le\eta\le1.
+\]
+The low-defect regime $0<\eta<\sqrt{2/3}$ remains open for this strict
+class; branching, gated variants beyond this rotation family, and $k\ge4$
+fixed-$\eta$ sharpness remain separate questions.
+\hfill$\square$

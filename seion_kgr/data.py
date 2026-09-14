@@ -7,6 +7,7 @@ here — v26 does not offer a non-reciprocal mode, unlike v25's
 """
 from __future__ import annotations
 
+import dataclasses
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Mapping, Sequence, Tuple
@@ -102,6 +103,32 @@ def build_filters(base_triples: Sequence[TripleI], valid: Sequence[TripleI], tes
     tails_np = {k: np.asarray(sorted(v), dtype=np.int64) for k, v in tails.items()}
     heads_np = {k: np.asarray(sorted(v), dtype=np.int64) for k, v in heads.items()}
     return tails_np, heads_np
+
+
+def train_only_filter_view(kg: KnowledgeGraph) -> KnowledgeGraph:
+    """A KG view whose filter tables are rebuilt from TRAIN triples alone.
+
+    ``load_knowledge_graph`` folds VALID and TEST into ``tails_of_hr`` /
+    ``heads_of_rt``.  Those tables are correct for *evaluation* -- the standard
+    filtered protocol must not penalise a model for ranking another true triple
+    highly.  They are wrong for generating *training* negatives: masking a
+    candidate means it can never be sampled, so it never receives negative
+    gradient, so every held-out gold is permanently shielded for its own query.
+    Measured on FB15K-237 that shields 28,926 held-out golds across 13,591
+    actively-trained query keys, and inflates VALID MRR by ~0.31 (blocker
+    B-0014, ``.ai/LEAKAGE_FINDING_MINING_FILTER_2026-08-10.md``).
+
+    Use this view for negative sampling/mining; keep the original ``kg`` for
+    evaluation.  Filtering training negatives against TRAIN is correct and is
+    retained -- a TRAIN positive is a genuine false negative.
+    """
+    original = [
+        (int(h), int(r), int(t))
+        for h, r, t in kg.train
+        if int(r) < kg.num_relations_original
+    ]
+    tails, heads = build_filters(original, [], [])
+    return dataclasses.replace(kg, tails_of_hr=tails, heads_of_rt=heads)
 
 
 def load_knowledge_graph(train_path: str, valid_path: str, test_path: str) -> KnowledgeGraph:

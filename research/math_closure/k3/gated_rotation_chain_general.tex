@@ -1,0 +1,38 @@
+\section*{General left-comb formula for the gated-planar rotation law}
+\label{sec:gated-rotation-general-chain}
+
+\textbf{Theorem.} Let $C_k$ be the left-comb binary chain with $k\ge1$
+internal nodes. Use the same declared gated-planar rotation law at every
+node, unit leaves equal to $e_0$ in the reduced space, and a coordinate
+orthogonal projector $P$ with $1\le r<n$. Put
+\[
+  c=\sqrt{1-\eta^2},\qquad \theta=\arcsin\eta.
+\]
+Then, in the normalization $M=L_T=1$,
+\[
+  E_{C_k}^{\mathrm{proj}}(\eta)
+  =\left|T_k(c)-c^k\right|
+  =\left|\cos(k\theta)-\cos^k\theta\right|,
+  \qquad 0\le\eta\le1,
+\]
+where $T_k$ is the Chebyshev polynomial of the first kind. For a law scaled
+by $M$, the error is multiplied by $M^k$.
+
+\textbf{Proof.} Let $z_j$ be the ambient value of the $j$-node left comb,
+with $z_0=e_0$. Every sibling leaf is $e_0$, so the gate equals one and
+the recurrence is $z_j=T_\eta z_{j-1}$. Hence $z_k=T_\eta^k e_0$, whose
+reduced coordinate is $\cos(k\theta)=T_k(c)$. The recursively projected
+value starts at $r_0=e_0$ and obeys
+\[
+  r_j=P\,T_\eta r_{j-1}=c\,r_{j-1},
+\]
+so $r_k=c^k e_0$. The projected-root error is the absolute difference of
+these reduced coordinates. The active plane is contained in every ambient
+space, so the argument is independent of $n$ and $r$. The exact symbolic
+repository evaluator verifies the formula for multiple $k,n,r$ in
+`gated_rotation_chain_general.py`. $\square$
+
+\textbf{Scope boundary.} This closes the declared homogeneous gated-rotation
+left-comb family only. It does not determine the global independent-law or
+repeated-law extremal constant for arbitrary laws, topologies, dimensions, or
+projector ranks.

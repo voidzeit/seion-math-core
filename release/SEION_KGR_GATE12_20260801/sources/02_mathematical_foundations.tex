@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\title{}
+\begin{document}
+\TitlePage{02 --- Mathematical Foundations and Claim Status}{SEION-KGR v26 MAX}{Purpose: state precisely what is proved, what is checked, and what remains open, using the repository's own six-level epistemic vocabulary. Nothing here re-derives a theorem already proved in \texttt{docs/theorems\_v3/} or \texttt{papers/kernel\_integrated\_laws\_v5/}; each is cited at its canonical location.}
+
+\tableofcontents
+
+\section{Epistemic vocabulary}
+Every claim in this repository, and in this document, carries exactly one status:
+\DefC\ (fixes notation, no truth claim), \Proved\ (exact identity, no standing assumption),
+\ProvedU\ (theorem with declared, checked hypotheses), \NumTested\ (measured on finite runs
+with recorded seed/dtype/artifact path), \Explor\ (ran, not preregistered or not confirmatory),
+\OpenC\ (no proof or systematic evidence yet). A claim never receives a stronger label here
+than it has in the source theorem or claim registry it depends on.
+
+Four namespaces are kept structurally separate throughout this campaign (never merged):
+\texttt{certified\_bound}, \texttt{empirical\_majorant}, \texttt{empirical\_error\_predictor},
+\texttt{observed\_error}.
+
+\section{Typed spaces and the CP ternary law}
+For a finite type system $\mathcal T$, each type $\tau$ carries an ambient space $V_\tau$ and,
+optionally, a reduced space $W_\tau$ with isometry $Q_\tau: W_\tau \to V_\tau$
+($Q_\tau^*Q_\tau = I$) and orthogonal projector $P_\tau = Q_\tau Q_\tau^*$. The seionic ternary
+law is
+\[
+  \mu(x,a,q) = O\big[(Ax) \odot (Ba) \odot (Cq)\big],
+\]
+a CP (canonical polyadic) instance of the general typed $n$-ary law already fixed in
+\texttt{docs/definitions/nary\_laws.md}. \textbf{Status: \Proved} that this equals the dense
+contraction $K_{d ijk} = \sum_\alpha O_{d\alpha}A_{\alpha i}B_{\alpha j}C_{\alpha k}$ by direct
+substitution --- verified independently (nested-loop reconstruction, no shared code path with the
+vectorized form) in \texttt{seion\_kgr\_reference\_fp64.py} and cross-checked against the batched
+package implementation in \texttt{tests/kgr/test\_perf\_and\_parity.py} (identical weights,
+identical output, $\mathrm{atol}=10^{-4}$).
+
+\subsection{Gauge group}
+The CP factorization has a gauge group: per-component scale $(c_0,c_1,c_2,c_3)$ with
+$\prod c_j = 1$, and permutation of the rank/component axis. \textbf{Status: \DefC}, both halves
+now tested with explicit negative controls proving the checks are not vacuous
+(\texttt{tests/kgr/test\_algebra.py}). Raw CP factors must never be compared across seeds/runs
+directly --- confirmed empirically in the finite-tree track's own numerical study (pairwise
+near-orthogonal subspaces at comparable loss).
+
+\section{Projection and closure}
+For an orthogonal projector $P$ and multilinear law $\mu$, the closure residual is
+$r_\mu = (I-P)\mu(P\cdot,\ldots,P\cdot)$. \textbf{Status: \ProvedU} (isometry/idempotence exact
+under FP64, Gate 1: residuals $<10^{-10}$; under FP32 training, residuals $\sim10^{-7}$ after real
+gradient steps --- \texttt{campaigns/gate12/} smoke evidence). The \emph{sample-mean} closure
+leakage ratio used as a training signal is explicitly \textbf{not} an operator-norm certificate
+(\texttt{docs/definitions/projectors.md}) --- this campaign's certification module
+(\S\ref{sec:cert}) enforces that distinction in code, not just in prose.
+
+\section{Exact subset expansion and the $k$/$k-1$ theorem}
+For a typed multilinear tree node $v$ with children $c_1,\ldots,c_a$,
+\[
+  \Delta_v = r_v(R_{c_1},\ldots,R_{c_a}) + \!\!\sum_{\varnothing \neq S \subseteq \{1,\ldots,a\}}\!\! \mu_v(Y_1^S,\ldots,Y_a^S),
+  \qquad Y_i^S = \begin{cases} D_{c_i} & i \in S \\ R_{c_i} & i \notin S\end{cases}.
+\]
+\textbf{Status: \Proved} (\texttt{docs/theorems\_v3/exact\_subset\_expansion.md},
+\texttt{THM\_V3\_EXACT\_SUBSET\_EXPANSION}). This campaign adds a \textbf{conformance test}
+(\texttt{tests/kgr/test\_recursive\_projection.py}) verifying the concrete \texttt{CPTernaryLaw}
+object satisfies this identity to machine precision, with a negative control showing a
+deliberately non-multilinear law correctly \emph{fails} the same check.
+
+The projected/reduced root error bound
+$E_T^{\mathrm{proj}} = E_T^{\mathrm{red}} \le (k-1)\rho M^{k-1} L_T$ (vs. the ambient bound with
+coefficient $k$) is \textbf{\ProvedU} (\texttt{docs/theorems\_v3/homogeneous\_constants.md}).
+Sharpness at a fixed $\eta = \rho/M$ is explicitly \OpenC\ there and remains so.
+
+\section{Pathwise majorant and rank allocation}
+The pathwise majorant $\widehat B_{\text{root}} = \sum_v \lambda_v \prod_{e} h_e$ is
+\textbf{\ProvedU} as an upper bound for the declared scalar recursion
+(\texttt{THM\_V3\_NODEWISE\_PATH\_SUM}). Whether pathwise-alone is a good \emph{rank allocation
+policy} is a separate, empirical question: the confirmatory Level-1 evidence in
+\texttt{applications/adaptive\_tensor\_network/results/LEVEL1\_FINDINGS.md} shows pathwise loses
+to \texttt{uniform} and \texttt{local\_error\_greedy} at equal budget, while the majorant itself
+was empirically a valid upper bound in 100/100 measured triples (ratio
+$\mathrm{true}/\mathrm{majorant} \in [0.35,0.93]$, never $>1$). This campaign's
+\texttt{seion\_kgr/rank\_controller.py} accordingly ships a \emph{hybrid feature} policy as the
+recommended default, never pathwise alone (\textbf{Status: \DefC}, tested in
+\texttt{tests/kgr/test\_seion\_kgr\_package.py}).
+
+\section{State-to-score-to-ranking certification}
+\label{sec:cert}
+The elementary theorem --- margin $> 2\varepsilon$ in score space implies exact rank-order
+preservation under any perturbation bounded by $\varepsilon$ --- is \textbf{\Proved} (a direct
+triangle-inequality argument). This campaign's \texttt{seion\_kgr/certification.py} implements
+the full chain honestly: it certifies (\texttt{state\_error\_bound}$=0$, hence
+\texttt{score\_linf\_bound}$=0$) \emph{only} when nothing is being approximated in the score path
+--- no rank-reducing projector, no nonlinear envelope. The moment either is present, certification
+correctly and unconditionally returns \texttt{NOT\_CERTIFIED}, verified by a test with a
+$2000$-point margin that still refuses certification (margin size cannot buy back a missing
+assumption check). \textbf{Status: the general (compressed-model) certification chain remains
+\OpenC}; the narrow zero-compression case is now a real, tested, \ProvedU\ result.
+
+\section{Kernel-integrated extension}
+The $L^2$ ternary kernel boundedness, composite-kernel associator-defect representation, and
+finite cohomology descent results are \textbf{\ProvedU}, inherited unchanged from
+\texttt{papers/kernel\_integrated\_laws\_v5/main.tex}. None of this is needed for, or invoked by,
+the finite discrete KG case this campaign benchmarks; it remains scoped exactly as before.
+
+\section{Full claim matrix}
+See \texttt{docs/SEION\_KGR\_CLAIM\_MATRIX.md} (repository root) for the complete, currently
+$30+$-row table, including this campaign's explicit old-status/new-status changelog for every
+claim it touched. This document summarizes; it does not replace that table as the source of truth.
+
+\end{document}

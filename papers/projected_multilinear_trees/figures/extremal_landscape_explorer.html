@@ -1,0 +1,382 @@
+<title>Extremal Landscape — Projected Multilinear Trees, k=3</title>
+<style>
+  :root{
+    --ink:#0E1416; --panel:#141C1F; --raised:#1B252A; --line:#2A363A;
+    --text:#DDE7E9; --muted:#7C9096; --dim:#4C5F65;
+    --crit:#E8484F; --crit-soft:rgba(232,72,79,.16);
+    --lo:#0E3B45; --mid:#5E8C7A; --hi:#D8C08A;
+    --grid:rgba(124,144,150,.16);
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --ink:#F4F6F5; --panel:#FFFFFF; --raised:#EDF1F0; --line:#D3DCDA;
+      --text:#14201F; --muted:#5C6E70; --dim:#93A3A4;
+      --crit:#C42B33; --crit-soft:rgba(196,43,51,.10);
+      --grid:rgba(20,32,31,.12);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#0E1416; --panel:#141C1F; --raised:#1B252A; --line:#2A363A;
+    --text:#DDE7E9; --muted:#7C9096; --dim:#4C5F65;
+    --crit:#E8484F; --crit-soft:rgba(232,72,79,.16); --grid:rgba(124,144,150,.16);
+  }
+  :root[data-theme="light"]{
+    --ink:#F4F6F5; --panel:#FFFFFF; --raised:#EDF1F0; --line:#D3DCDA;
+    --text:#14201F; --muted:#5C6E70; --dim:#93A3A4;
+    --crit:#C42B33; --crit-soft:rgba(196,43,51,.10); --grid:rgba(20,32,31,.12);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--ink); color:var(--text);
+    font:14px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+    font-variant-numeric:tabular-nums}
+
+  header{padding:22px 26px 14px;border-bottom:1px solid var(--line)}
+  h1{margin:0;font-size:17px;font-weight:600;letter-spacing:-.01em}
+  .sub{margin:5px 0 0;color:var(--muted);font-size:12.5px;max-width:70ch}
+  .eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--dim);margin:0 0 7px}
+
+  .wrap{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:0;
+    min-height:calc(100vh - 96px)}
+  @media (max-width:900px){.wrap{grid-template-columns:1fr}}
+
+  .stage{position:relative;background:var(--panel);border-right:1px solid var(--line);
+    display:flex;flex-direction:column}
+  @media (max-width:900px){.stage{border-right:0;border-bottom:1px solid var(--line)}}
+  #view{display:block;width:100%;flex:1;min-height:390px;cursor:grab;touch-action:none}
+  #view:active{cursor:grabbing}
+  .hint{position:absolute;left:16px;bottom:12px;font-size:10.5px;color:var(--dim);
+    letter-spacing:.05em;pointer-events:none}
+
+  .strip{border-top:1px solid var(--line);padding:12px 16px 14px;background:var(--panel)}
+  #curves{display:block;width:100%;height:104px}
+
+  .rail{background:var(--panel);padding:20px 20px 26px;display:flex;
+    flex-direction:column;gap:20px;overflow-y:auto}
+
+  .field label{display:flex;justify-content:space-between;align-items:baseline;
+    font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+    margin-bottom:9px}
+  .field label b{font-size:19px;letter-spacing:0;text-transform:none;color:var(--text);
+    font-weight:600}
+  input[type=range]{width:100%;accent-color:var(--crit);height:22px}
+  input[type=range]:focus-visible{outline:2px solid var(--crit);outline-offset:3px}
+
+  .readouts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .cell{background:var(--raised);padding:11px 12px}
+  .cell .k{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+  .cell .v{font-size:17px;margin-top:3px;letter-spacing:-.01em}
+  .cell.wide{grid-column:1/-1}
+
+  .regime{border:1px solid var(--line);border-radius:3px;padding:13px 14px;
+    background:var(--raised);transition:border-color .25s,background .25s}
+  .regime .name{font-size:12.5px;font-weight:600;letter-spacing:.01em}
+  .regime .why{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.5}
+  .regime.locked{border-color:var(--crit);background:var(--crit-soft)}
+  .regime.locked .name{color:var(--crit)}
+  .lockbar{height:2px;background:var(--line);margin-top:11px;border-radius:2px;
+    overflow:hidden}
+  .lockbar i{display:block;height:100%;width:0%;background:var(--crit);
+    transition:width .25s}
+
+  .toggles{display:flex;flex-direction:column;gap:8px}
+  .tg{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--muted);
+    cursor:pointer}
+  .tg input{accent-color:var(--crit);width:14px;height:14px;cursor:pointer}
+  .tg:hover{color:var(--text)}
+
+  .note{font-size:11.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--line);
+    padding-top:15px}
+  .note code{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--text)}
+  .marker{display:inline-block;width:7px;height:7px;border-radius:50%;
+    background:var(--crit);vertical-align:middle;margin-right:5px}
+</style>
+
+<header>
+  <p class="eyebrow">Projected multilinear trees · three internal vertices</p>
+  <h1>The peak is fixed. Only the reachable region grows.</h1>
+  <p class="sub">The surface <span class="mono">E(q,s)</span> does not depend on the closure budget.
+    η controls only how much of it you are allowed to reach — the square <span class="mono">[0,η]²</span>.
+    That is what <span class="mono">η<sub>c</sub>=√(2/3)</span> actually is: the moment the admissible
+    region first touches the global extremizer.</p>
+</header>
+
+<div class="wrap">
+  <div class="stage">
+    <canvas id="view"></canvas>
+    <p class="hint">drag to rotate · scroll to zoom</p>
+    <div class="strip"><canvas id="curves"></canvas></div>
+  </div>
+
+  <aside class="rail">
+    <div class="field">
+      <label for="eta">closure budget η = ρ/M <b class="mono" id="etaOut">0.400</b></label>
+      <input type="range" id="eta" min="0.02" max="1" step="0.002" value="0.4">
+    </div>
+
+    <div class="readouts">
+      <div class="cell"><div class="k">t optimal</div><div class="v mono" id="tOut">—</div></div>
+      <div class="cell"><div class="k">reached / peak</div><div class="v mono" id="pcOut">—</div></div>
+      <div class="cell"><div class="k">G₃(η) absolute</div><div class="v mono" id="gOut">—</div></div>
+      <div class="cell"><div class="k">W₃(η) constant</div><div class="v mono" id="wOut">—</div></div>
+      <div class="cell wide"><div class="k">universal bound k−1</div><div class="v mono">2.000000</div></div>
+    </div>
+
+    <div class="regime" id="regime">
+      <div class="name" id="regName">budget-limited</div>
+      <div class="why" id="regWhy">The corner of the square is the best reachable point.
+        Raising η still buys error.</div>
+      <div class="lockbar"><i id="lockFill"></i></div>
+    </div>
+
+    <div class="toggles">
+      <label class="tg"><input type="checkbox" id="tDiag" checked> diagonal q = s → g(t)=t√(4−3t²)</label>
+      <label class="tg"><input type="checkbox" id="tSquare" checked> admissible square [0,η]²</label>
+      <label class="tg"><input type="checkbox" id="tPeak" checked> global extremizer</label>
+      <label class="tg"><input type="checkbox" id="tGhost"> earlier budgets</label>
+    </div>
+
+    <p class="note">
+      <span class="marker"></span>Peak at <code>(√⅔, √⅔, 2/√3)</code> = <code>(0.816497, 0.816497, 1.154701)</code>.
+      Below η<sub>c</sub> the extremizer spends the whole budget, <code>t = η</code>. Above it the
+      extremizer freezes at <code>t = √⅔ &lt; η</code> and the absolute error stops growing — so
+      <code>W₃ = G₃/η</code> falls purely because the denominator keeps rising.
+    </p>
+  </aside>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const ETA_C = Math.sqrt(2/3), E_MAX = 2/Math.sqrt(3);
+
+  const surf = (q,s) => Math.sqrt(
+    q*q + (1-q*q)*s*s + 2*q*Math.sqrt(1-q*q)*s*Math.sqrt(1-s*s));
+  const G3 = e => e <= ETA_C ? e*Math.sqrt(4-3*e*e) : E_MAX;
+  const W3 = e => G3(e)/e;
+
+  // --- self-check: the picture must agree with the theorem ---------------
+  (function check(){
+    let best=0,bq=0,bs=0;
+    for(let i=0;i<=400;i++)for(let j=0;j<=400;j++){
+      const v=surf(i/400,j/400); if(v>best){best=v;bq=i/400;bs=j/400;}
+    }
+    console.assert(Math.abs(best-E_MAX)<1e-5, "peak height", best, E_MAX);
+    console.assert(Math.abs(bq-ETA_C)<5e-3 && Math.abs(bs-ETA_C)<5e-3, "peak location");
+    for(const e of [0.1,0.35,ETA_C,0.9,1.0]){
+      let m=0; const N=500;
+      for(let i=0;i<=N;i++)for(let j=0;j<=N;j++){
+        const q=e*i/N, s=e*j/N; const v=surf(q,s); if(v>m)m=v;
+      }
+      console.assert(Math.abs(m-G3(e))<2e-3, "budget max", e, m, G3(e));
+    }
+    console.log("self-check ok — surface, peak and budget maxima match W₃");
+  })();
+
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const view = document.getElementById("view"), vx = view.getContext("2d");
+  const curves = document.getElementById("curves"), cx2 = curves.getContext("2d");
+
+  let az = -0.86, el = 0.50, zoom = 1, eta = 0.4;
+  let drag = null;
+
+  function fit(cv,ctx){
+    const r = cv.getBoundingClientRect(), d = window.devicePixelRatio||1;
+    cv.width = Math.max(1,r.width*d); cv.height = Math.max(1,r.height*d);
+    ctx.setTransform(d,0,0,d,0,0);
+    return {w:r.width, h:r.height};
+  }
+
+  // orthographic-with-mild-perspective projection
+  function proj(x,y,z,w,h,S){
+    const X = x-0.5, Y = y-0.5, Z = z-0.55;
+    const ca=Math.cos(az), sa=Math.sin(az);
+    const X1 = X*ca - Y*sa, Y1 = X*sa + Y*ca;
+    const ce=Math.cos(el), se=Math.sin(el);
+    const up = Z*ce - Y1*se, depth = Y1*ce + Z*se;
+    const f = 1/(1 + depth*0.16);
+    return {x: w/2 + X1*S*f, y: h/2 - up*S*f + h*0.06, d: depth};
+  }
+
+  function ramp(t){
+    t = Math.max(0,Math.min(1,t));
+    const c1=[14,59,69], c2=[94,140,122], c3=[216,192,138];
+    const [a,b,u] = t<0.5 ? [c1,c2,t*2] : [c2,c3,(t-0.5)*2];
+    return `rgb(${Math.round(a[0]+(b[0]-a[0])*u)},${Math.round(a[1]+(b[1]-a[1])*u)},${Math.round(a[2]+(b[2]-a[2])*u)})`;
+  }
+
+  const N = 44;
+  function drawView(){
+    const {w,h} = fit(view,vx);
+    const S = Math.min(w,h)*0.98*zoom;
+    vx.clearRect(0,0,w,h);
+
+    const quads = [];
+    for(let i=0;i<N;i++){
+      for(let j=0;j<N;j++){
+        const q0=i/N,q1=(i+1)/N,s0=j/N,s1=(j+1)/N;
+        const pts=[[q0,s0],[q1,s0],[q1,s1],[q0,s1]].map(([q,s])=>{
+          const z=surf(q,s); const p=proj(q,s,z,w,h,S); p.z=z; return p;
+        });
+        const zc=(pts[0].z+pts[1].z+pts[2].z+pts[3].z)/4;
+        const dc=(pts[0].d+pts[1].d+pts[2].d+pts[3].d)/4;
+        const inside = (q1<=eta+1e-9 && s1<=eta+1e-9);
+        quads.push({pts,zc,dc,inside});
+      }
+    }
+    quads.sort((a,b)=>b.dc-a.dc);
+
+    for(const Qd of quads){
+      vx.beginPath();
+      vx.moveTo(Qd.pts[0].x,Qd.pts[0].y);
+      for(let k=1;k<4;k++) vx.lineTo(Qd.pts[k].x,Qd.pts[k].y);
+      vx.closePath();
+      vx.fillStyle = ramp(Qd.zc/E_MAX);
+      vx.globalAlpha = Qd.inside ? 0.96 : 0.30;
+      vx.fill();
+      vx.globalAlpha = Qd.inside ? 0.30 : 0.09;
+      vx.strokeStyle = "rgba(255,255,255,.5)"; vx.lineWidth = 0.5; vx.stroke();
+    }
+    vx.globalAlpha = 1;
+
+    if(document.getElementById("tGhost").checked){
+      for(const e of [0.25,0.5,0.7]){
+        if(e>=eta) continue;
+        floorSquare(e,w,h,S,"rgba(124,144,150,.45)",1,[3,3]);
+      }
+    }
+    if(document.getElementById("tSquare").checked){
+      const atC = Math.abs(eta-ETA_C)<0.006;
+      floorSquare(eta,w,h,S, atC?css("--crit"):css("--text"), atC?2.4:1.6, null);
+    }
+
+    if(document.getElementById("tDiag").checked){
+      vx.beginPath();
+      for(let i=0;i<=200;i++){
+        const t=i/200, p=proj(t,t,surf(t,t),w,h,S);
+        i?vx.lineTo(p.x,p.y):vx.moveTo(p.x,p.y);
+      }
+      vx.strokeStyle=css("--crit"); vx.lineWidth=2; vx.globalAlpha=.85; vx.stroke();
+      vx.globalAlpha=1;
+    }
+
+    // the point the current budget can actually reach
+    const t = Math.min(eta,ETA_C);
+    const pr = proj(t,t,surf(t,t),w,h,S);
+    vx.beginPath(); vx.arc(pr.x,pr.y,5.5,0,7); vx.fillStyle=css("--crit"); vx.fill();
+    vx.strokeStyle=css("--panel"); vx.lineWidth=1.6; vx.stroke();
+
+    if(document.getElementById("tPeak").checked){
+      const pk = proj(ETA_C,ETA_C,E_MAX,w,h,S);
+      vx.beginPath(); vx.arc(pk.x,pk.y,9,0,7);
+      vx.strokeStyle=css("--crit"); vx.lineWidth=1.4;
+      vx.globalAlpha = eta>=ETA_C-1e-9 ? 1 : .45; vx.stroke(); vx.globalAlpha=1;
+      vx.font="11px ui-monospace,Menlo,monospace"; vx.fillStyle=css("--crit");
+      vx.textAlign="center"; vx.fillText("2/√3", pk.x, pk.y-15);
+    }
+  }
+
+  function floorSquare(e,w,h,S,color,lw,dash){
+    const c=[[0,0],[e,0],[e,e],[0,e],[0,0]].map(([a,b])=>proj(a,b,0,w,h,S));
+    vx.beginPath(); vx.moveTo(c[0].x,c[0].y);
+    for(let k=1;k<c.length;k++) vx.lineTo(c[k].x,c[k].y);
+    vx.setLineDash(dash||[]); vx.strokeStyle=color; vx.lineWidth=lw;
+    vx.globalAlpha=.9; vx.stroke(); vx.setLineDash([]); vx.globalAlpha=1;
+  }
+
+  function drawCurves(){
+    const {w,h} = fit(curves,cx2);
+    cx2.clearRect(0,0,w,h);
+    const L=42,R=12,T=12,B=22, pw=w-L-R, ph=h-T-B;
+    const X = e => L + e*pw, Y = v => T + ph - (v/2.15)*ph;
+
+    cx2.strokeStyle=css("--grid"); cx2.lineWidth=1;
+    for(const v of [0,0.5,1,1.5,2]){
+      cx2.beginPath(); cx2.moveTo(L,Y(v)); cx2.lineTo(L+pw,Y(v)); cx2.stroke();
+      cx2.fillStyle=css("--dim"); cx2.font="9.5px ui-monospace,Menlo,monospace";
+      cx2.textAlign="right"; cx2.fillText(v.toFixed(1), L-6, Y(v)+3);
+    }
+    cx2.setLineDash([2,3]); cx2.strokeStyle=css("--dim");
+    cx2.beginPath(); cx2.moveTo(L,Y(2)); cx2.lineTo(L+pw,Y(2)); cx2.stroke();
+    cx2.setLineDash([]);
+
+    const line=(f,color,lw)=>{
+      cx2.beginPath();
+      for(let i=0;i<=300;i++){
+        const e=0.02+(0.98)*i/300, p={x:X(e),y:Y(f(e))};
+        i?cx2.lineTo(p.x,p.y):cx2.moveTo(p.x,p.y);
+      }
+      cx2.strokeStyle=color; cx2.lineWidth=lw; cx2.stroke();
+    };
+    line(W3, css("--mid")||"#5E8C7A", 1.8);
+    line(G3, css("--crit"), 2.2);
+
+    cx2.strokeStyle=css("--crit"); cx2.globalAlpha=.35; cx2.setLineDash([3,3]);
+    cx2.beginPath(); cx2.moveTo(X(ETA_C),T); cx2.lineTo(X(ETA_C),T+ph); cx2.stroke();
+    cx2.setLineDash([]); cx2.globalAlpha=1;
+
+    cx2.beginPath(); cx2.moveTo(X(eta),T); cx2.lineTo(X(eta),T+ph);
+    cx2.strokeStyle=css("--text"); cx2.lineWidth=1.2; cx2.globalAlpha=.6; cx2.stroke();
+    cx2.globalAlpha=1;
+    cx2.beginPath(); cx2.arc(X(eta),Y(G3(eta)),4,0,7); cx2.fillStyle=css("--crit"); cx2.fill();
+    cx2.beginPath(); cx2.arc(X(eta),Y(W3(eta)),3.5,0,7); cx2.fillStyle="#5E8C7A"; cx2.fill();
+
+    cx2.fillStyle=css("--dim"); cx2.font="9.5px ui-monospace,Menlo,monospace";
+    cx2.textAlign="center"; cx2.fillText("η", L+pw/2, h-5);
+    cx2.textAlign="left";
+    cx2.fillText("G₃ absolute", L+6, T+11);
+    cx2.fillStyle="#5E8C7A"; cx2.fillText("W₃ constant", L+6, T+23);
+  }
+
+  function sync(){
+    const t = Math.min(eta,ETA_C), locked = eta >= ETA_C-1e-9;
+    document.getElementById("etaOut").textContent = eta.toFixed(3);
+    document.getElementById("tOut").textContent   = t.toFixed(6);
+    document.getElementById("gOut").textContent   = G3(eta).toFixed(6);
+    document.getElementById("wOut").textContent   = W3(eta).toFixed(6);
+    document.getElementById("pcOut").textContent  = (100*G3(eta)/E_MAX).toFixed(1)+"%";
+    const reg = document.getElementById("regime");
+    reg.classList.toggle("locked", locked);
+    document.getElementById("regName").textContent = locked ? "geometry-limited" : "budget-limited";
+    document.getElementById("regWhy").textContent = locked
+      ? "The square already contains the peak. More budget reaches only lower ground, so the absolute error is frozen at 2/√3."
+      : "The corner of the square is the best reachable point. Raising η still buys error.";
+    document.getElementById("lockFill").style.width = (100*Math.min(1,eta/ETA_C)).toFixed(1)+"%";
+    drawView(); drawCurves();
+  }
+
+  document.getElementById("eta").addEventListener("input", e=>{
+    eta = parseFloat(e.target.value); sync();
+  });
+  for(const id of ["tDiag","tSquare","tPeak","tGhost"])
+    document.getElementById(id).addEventListener("change", sync);
+
+  view.addEventListener("pointerdown", e=>{
+    drag={x:e.clientX,y:e.clientY}; view.setPointerCapture(e.pointerId);
+  });
+  view.addEventListener("pointermove", e=>{
+    if(!drag) return;
+    az += (e.clientX-drag.x)*0.008;
+    el = Math.max(-0.15, Math.min(1.32, el + (e.clientY-drag.y)*0.006));
+    drag={x:e.clientX,y:e.clientY}; drawView();
+  });
+  view.addEventListener("pointerup", ()=>{drag=null});
+  view.addEventListener("wheel", e=>{
+    e.preventDefault();
+    zoom = Math.max(0.55, Math.min(1.9, zoom * (e.deltaY>0?0.94:1.06)));
+    drawView();
+  }, {passive:false});
+
+  addEventListener("resize", sync);
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", sync);
+  new MutationObserver(sync).observe(document.documentElement,
+    {attributes:true, attributeFilter:["data-theme"]});
+  sync();
+})();
+</script>

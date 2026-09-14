@@ -334,3 +334,207 @@ class TensorNetwork:
 
         reduced_children = self.reduced_children_of_root(leaf_batch, ranks)
         return self.cores[self.topology.root.node_id].apply(reduced_children)
+
+    def validated_error_certificate(
+        self, leaf_batch: list[np.ndarray], ranks: dict[str, int]
+    ) -> dict[str, object]:
+        """Compute a sound finite-batch sup-norm error certificate.
+
+        For a core tensor ``K_v``, its Frobenius norm is a valid upper bound on
+        the multilinear operator norm.  Let ``U_v`` be recursively propagated
+        value bounds and let ``D_v`` bound the difference between the ambient
+        value and the recursively projected value.  Telescoping one child
+        slot at a time gives
+
+        ``D_v <= C_v + M_v * sum_i(prod_{j != i} U_j) * D_i``
+
+        at projected nodes, where ``C_v`` is the measured normal residual of
+        the reduced raw output.  At the root ``C_root=0`` because this network
+        does not project the root.  The resulting root bound is deterministic
+        for the supplied finite leaf batch and ranks; it is not a claim about
+        unbounded inputs or a replacement for validated tensor spectral norms.
+        """
+
+        ambient_values = self.ambient_forward(leaf_batch)
+        reduced_raw = self.reduced_forward(leaf_batch, ranks)
+        root_id = self.topology.root.node_id
+
+        def max_batch_norm(values: np.ndarray) -> float:
+            if values.shape[0] == 0:
+                return 0.0
+            return float(np.max(np.linalg.norm(values, axis=1)))
+
+        leaf_bounds = {
+            str(index): max_batch_norm(values)
+            for index, values in enumerate(leaf_batch)
+        }
+        value_bounds: dict[str, float] = dict(leaf_bounds)
+        error_bounds: dict[str, float] = dict.fromkeys(leaf_bounds, 0.0)
+        actual_errors: dict[str, float] = {}
+        closure_residuals: dict[str, float] = {}
+        operator_norm_enclosures: dict[str, float] = {}
+
+        for node in self.topology.nodes_postorder:
+            child_bounds = [
+                leaf_bounds[str(child)] if isinstance(child, int) else value_bounds[child.node_id]
+                for child in node.children
+            ]
+            core_bound = float(np.linalg.norm(self.cores[node.node_id].tensor.ravel()))
+            operator_norm_enclosures[node.node_id] = core_bound
+            value_bound = core_bound * float(np.prod(child_bounds))
+            propagated = 0.0
+            for index, child in enumerate(node.children):
+                child_id = str(child) if isinstance(child, int) else child.node_id
+                other_product = float(np.prod([bound for j, bound in enumerate(child_bounds) if j != index]))
+                propagated += other_product * error_bounds[child_id]
+            propagated *= core_bound
+
+            raw = reduced_raw[node.node_id]
+            if node.node_id == root_id:
+                projected = raw
+                closure = 0.0
+                error_bound = propagated
+            else:
+                rank = ranks.get(node.node_id, node.ambient_dim)
+                projected = self.projectors[node.node_id].project(raw, rank)
+                closure = max_batch_norm(raw - projected)
+                error_bound = closure + propagated
+            closure_residuals[node.node_id] = closure
+            value_bounds[node.node_id] = value_bound
+            error_bounds[node.node_id] = error_bound
+            actual_errors[node.node_id] = max_batch_norm(ambient_values[node.node_id] - projected)
+
+        return {
+            "root_bound": float(error_bounds[root_id]),
+            "root_actual_sup": float(actual_errors[root_id]),
+            "bound_holds": actual_errors[root_id] <= error_bounds[root_id] + 1.0e-10,
+            "value_bounds": value_bounds,
+            "error_bounds": error_bounds,
+            "actual_errors": actual_errors,
+            "closure_residuals": closure_residuals,
+            "operator_norm_enclosures": operator_norm_enclosures,
+        }
+
+    def global_error_certificate(
+        self,
+        leaf_norm_bounds: list[float] | tuple[float, ...],
+        ranks: dict[str, int] | None = None,
+    ) -> dict[str, object]:
+        """Certify the root error for all inputs in a bounded leaf domain.
+
+        If every leaf ``x_l`` satisfies ``||x_l|| <= leaf_norm_bounds[l]``,
+        this method returns a deterministic upper bound for the root error of
+        the ambient versus recursively projected evaluations.  The core
+        Frobenius norm encloses each multilinear operator norm, and the
+        projected normal term is enclosed by the Frobenius norm of
+        ``(I-P_v)K_v``.  No sampled input is used by the bound.
+
+        The returned ``rank_costs`` expose the separable local costs used by
+        the scalable certificate allocator.  The root is omitted because the
+        network convention does not project it.
+        """
+
+        if len(leaf_norm_bounds) != len(self.topology.leaf_dims):
+            raise ValueError("one norm bound is required for every leaf")
+        if any(float(bound) < 0.0 for bound in leaf_norm_bounds):
+            raise ValueError("leaf norm bounds must be nonnegative")
+        if ranks is None:
+            ranks = {
+                node.node_id: node.ambient_dim
+                for node in self.topology.nodes_postorder
+            }
+
+        root_id = self.topology.root.node_id
+        leaf_bounds = {str(index): float(bound) for index, bound in enumerate(leaf_norm_bounds)}
+        value_bounds: dict[str, float] = dict(leaf_bounds)
+        error_bounds: dict[str, float] = dict.fromkeys(leaf_bounds, 0.0)
+        operator_norm_enclosures: dict[str, float] = {}
+        normal_norm_enclosures: dict[str, tuple[float, ...]] = {}
+        rank_costs: dict[str, tuple[float, ...]] = {}
+
+        for node in self.topology.nodes_postorder:
+            child_bounds = [
+                leaf_bounds[str(child)] if isinstance(child, int) else value_bounds[child.node_id]
+                for child in node.children
+            ]
+            core = self.cores[node.node_id].tensor
+            core_flat = core.reshape(node.ambient_dim, -1)
+            operator_bound = float(np.linalg.norm(core_flat))
+            operator_norm_enclosures[node.node_id] = operator_bound
+            value_bounds[node.node_id] = operator_bound * float(np.prod(child_bounds))
+            if node.node_id == root_id:
+                normal_bounds = (0.0,) * (node.ambient_dim + 1)
+            else:
+                projector = self.projectors[node.node_id]
+                identity = np.eye(node.ambient_dim)
+                normal_values = []
+                for rank in range(node.ambient_dim + 1):
+                    if rank <= 0:
+                        retained = np.zeros((node.ambient_dim, 0))
+                    elif rank >= node.ambient_dim:
+                        retained = projector.basis
+                    else:
+                        retained = projector.basis[:, :rank]
+                    output_residual = identity - retained @ retained.T
+                    normal_values.append(float(np.linalg.norm(output_residual @ core_flat)))
+                normal_bounds = tuple(normal_values)
+            normal_norm_enclosures[node.node_id] = normal_bounds
+
+            propagated = 0.0
+            for index, child in enumerate(node.children):
+                child_id = str(child) if isinstance(child, int) else child.node_id
+                other_product = float(np.prod([bound for j, bound in enumerate(child_bounds) if j != index]))
+                propagated += other_product * error_bounds[child_id]
+            propagated *= operator_bound
+            local_normal = 0.0
+            if node.node_id != root_id:
+                rank = max(1, min(int(ranks.get(node.node_id, node.ambient_dim)), node.ambient_dim))
+                local_normal = normal_bounds[rank] * float(np.prod(child_bounds))
+            error_bounds[node.node_id] = propagated + local_normal
+
+        downstream_gains: dict[str, float] = {root_id: 1.0}
+        parent_of: dict[str, tuple[NodeSpec, int]] = {}
+        for parent in self.topology.nodes_postorder:
+            for index, child in enumerate(parent.children):
+                if isinstance(child, NodeSpec):
+                    parent_of[child.node_id] = (parent, index)
+        frontier = [self.topology.root]
+        while frontier:
+            parent = frontier.pop(0)
+            for index, child in enumerate(parent.children):
+                if not isinstance(child, NodeSpec):
+                    continue
+                parent_children_bounds = [
+                    leaf_bounds[str(grandchild)]
+                    if isinstance(grandchild, int)
+                    else value_bounds[grandchild.node_id]
+                    for grandchild in parent.children
+                ]
+                other_product = float(
+                    np.prod([bound for j, bound in enumerate(parent_children_bounds) if j != index])
+                )
+                edge_gain = operator_norm_enclosures[parent.node_id] * other_product
+                downstream_gains[child.node_id] = downstream_gains[parent.node_id] * edge_gain
+                frontier.append(child)
+
+        for node in self.topology.nodes_postorder:
+            if node.node_id == root_id:
+                continue
+            input_product = float(np.prod([
+                leaf_bounds[str(child)] if isinstance(child, int) else value_bounds[child.node_id]
+                for child in node.children
+            ]))
+            rank_costs[node.node_id] = tuple(
+                downstream_gains[node.node_id] * value * input_product
+                for value in normal_norm_enclosures[node.node_id]
+            )
+
+        return {
+            "root_bound": float(error_bounds[root_id]),
+            "value_bounds": value_bounds,
+            "error_bounds": error_bounds,
+            "operator_norm_enclosures": operator_norm_enclosures,
+            "normal_norm_enclosures": normal_norm_enclosures,
+            "downstream_gains": downstream_gains,
+            "rank_costs": rank_costs,
+        }

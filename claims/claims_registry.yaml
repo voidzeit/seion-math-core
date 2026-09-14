@@ -19,6 +19,14 @@ claims:
     proof: docs/theorems/curvature_associator.md
     symbolic_checks: [artifacts/symbolic/curvature_identity.json]
     counterexamples: [docs/counterexamples/curvature_without_symmetry.md]
+  - id: THM_AFFINE_CONNECTION_TORSION_ASSOCIATOR_V1
+    title: Induced affine curvature equals torsion term minus antisymmetrized associator
+    status: proved_under_assumptions
+    statement: "For nabla_XY=D_XY+X star Y on the affine space of a finite-dimensional square bilinear product, R_affine(x,y)=[L_x,L_y] and R_affine(x,y)z=T(x,y) star z-A^-(x,y,z)."
+    assumptions: [finite-dimensional square bilinear product, standard flat derivative, constant-vector curvature convention]
+    proof: docs/theorems/affine_connection_torsion_associator.md
+    evidence: [src/seion_core/geometry/affine_connection.py, tests/unit/test_affine_connection.py]
+    limitations: [not a metric theorem, not a physical claim, separate from THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1]
   - id: THM_COHOMOLOGY_DESCENT_FINITE_V1
     title: Commuting finite operator descends to cohomology
     status: proved_under_assumptions
@@ -51,3 +59,102 @@ claims:
     assumptions: [no uniform spectral gap]
     evidence: [src/seion_core/projectors/snapping.py, tests/numerical/test_snapping.py]
 
+  - id: EMP_ATN_FO_PARETO_M8_M10_V1
+    title: Measured first order dominates immediate pairwise and step-greedy policies in the exact small terminal landscapes
+    status: empirical
+    statement: "For the five executed heterogeneous D=16 chain instances at each of m=8 and m=10, measured first order has both lower mean exact-terminal regret and fewer forward evaluations than full pairwise, low-rank pairwise q4, and exhaustive step-greedy under the same rank trajectory."
+    assumptions: [frozen projector bases, six rounds, three rank additions per round, exact terminal enumeration, recorded evaluation accounting]
+    evidence: [applications/adaptive_tensor_network/results/policy_scaling_m8.json, applications/adaptive_tensor_network/results/policy_scaling_m10.json, applications/adaptive_tensor_network/results/engineering_pareto_front.csv, applications/adaptive_tensor_network/ENGINEERING_ADVANTAGE_REGISTER.md]
+
+  - id: EMP_ATN_ROLLOUT_TRADEOFF_M8_M10_V1
+    title: Full-horizon rollout exchanges much higher evaluation cost for lower exact-terminal regret
+    status: empirical
+    statement: "In the executed m=8 and m=10 exact terminal landscapes, first-order-base horizon-6 rollout lowers mean terminal regret relative to measured first order while consuming two to three orders of magnitude more objective evaluations; neither policy dominates the other in error versus evaluation cost."
+    assumptions: [heterogeneous D=16 chains, five seeds per size, fixed first-order continuation, exact terminal enumeration]
+    evidence: [applications/adaptive_tensor_network/results/rollout_calibration_m8_raw.json, applications/adaptive_tensor_network/results/rollout_calibration_m10_raw.json, applications/adaptive_tensor_network/results/HORIZON_SCALING_M38_FINDINGS.md, applications/adaptive_tensor_network/results/engineering_pareto_front.csv]
+
+  - id: REFUTED_ATN_PATHWISE_GENERAL_SUPERIORITY_V1
+    title: General equal-rank superiority of pathwise allocation
+    status: refuted
+    statement: "The preregistered hypothesis that pathwise_global lowers true root error against the best of uniform, singular-energy, and local-error-greedy allocation at equal total rank is contradicted in the registered Level 1 synthetic campaign."
+    assumptions: [Level 1 preregistration, two declared topologies, ten seeds, equal rank budgets]
+    evidence: [applications/adaptive_tensor_network/experiments/PREREGISTRATION.md, applications/adaptive_tensor_network/results/level1_analysis.json, applications/adaptive_tensor_network/results/APPLIED_VALIDATION_STATUS_2026-08-09.md]
+
+  - id: REFUTED_ATN_CERTIFICATE_ACTION_RANKING_M36_V1
+    title: M24/M25 certificate deltas as useful action-ranking surrogates
+    status: refuted
+    statement: "Across the 15 executed M36 states, none of the scalar, restricted, or Gram-aware certificate deltas selected the true best action; tighter certification did not improve action ranking."
+    assumptions: [m=8, heterogeneous synthetic regime, 56 candidate bundles per state, three states per seed, five seeds]
+    evidence: [applications/adaptive_tensor_network/results/certificate_alignment_raw.json, applications/adaptive_tensor_network/results/m36_analysis.json, applications/adaptive_tensor_network/results/CERTIFICATE_ALIGNMENT_M36_FINDINGS.md]
+
+  - id: EMP_ATN_REFF_QDEC_ASSOCIATION_M37_V1
+    title: Effective interaction rank is associated with per-instance decision-rank requirement
+    status: empirical
+    statement: "In the executed M37 synthetic configurations, participation-ratio effective rank has Spearman association 0.710, 0.776, and 0.749 with q_dec95 at D=8, D=16, and D=32; no held-out capacity-planning advantage is claimed."
+    assumptions: [M37 family design, per-configuration decision-aware rank definition, synthetic networks]
+    evidence: [applications/adaptive_tensor_network/results/m37_decision_rank.csv, applications/adaptive_tensor_network/results/HETEROGENEITY_MECHANISM_M37_FINDINGS.md]
+
+  - id: OPEN_ATN_THRESHOLD_COMPETITOR_V1
+    title: Downstream-aware allocation versus standard static and adaptive truncation thresholds
+    status: superseded
+    statement: "This missing-baseline question was resolved by ATN_THRESHOLD_GATE_V1 and its predeclared fixed-size V1B precision extension; see EMP_ATN_FO_THRESHOLD_REGIME_SPLIT_V1."
+    assumptions: [matched rank, memory, evaluation, and wall-clock budgets required]
+    evidence: [experiments/configs/ATN_THRESHOLD_GATE_V1.yaml, experiments/configs/ATN_THRESHOLD_GATE_V1B.yaml, applications/adaptive_tensor_network/results/THRESHOLD_GATE_V1B_FINDINGS.md, applications/adaptive_tensor_network/ENGINEERING_ADVANTAGE_REGISTER.md]
+
+  - id: EMP_ATN_FO_THRESHOLD_REGIME_SPLIT_V1
+    title: Measured first order has a regime-limited terminal advantage over truncation thresholds
+    status: empirical
+    statement: "In the pooled identical-design synthetic exact-terminal sample of 35 seeds, measured first order does not separate from static or adaptive threshold at m=8, while at m=10 it has lower mean normalized terminal error than both thresholds with paired bootstrap intervals above zero. Threshold remains much cheaper in forward evaluations, so no general Pareto dominance or universal FO advantage is established."
+    assumptions: [frozen projector bases, heterogeneous D=16 chains, six rounds, three rank additions per round, equal terminal rank, exact terminal objective, V1B declared after V1 and before its new seeds, pooled analysis descriptive]
+    evidence: [experiments/configs/ATN_THRESHOLD_GATE_V1.yaml, experiments/configs/ATN_THRESHOLD_GATE_V1B.yaml, applications/adaptive_tensor_network/results/threshold_gate_m8_m10_raw.json, applications/adaptive_tensor_network/results/threshold_gate_v1b_raw.json, applications/adaptive_tensor_network/results/threshold_gate_v1b_summary.json, applications/adaptive_tensor_network/results/THRESHOLD_GATE_V1B_FINDINGS.md]
+
+  - id: PROPOSAL_PMT_K4_CHAIN_MIXED_FINITE_ETA_20260909
+    title: Advisory sharp four-node chain and mixed-topology formula
+    status: conjecture
+    statement: "Proposed C(eta)=sqrt(9-15 eta^2+7 eta^4) below sqrt(3/7), and 9/(7 eta) above, with a_chain=5/2."
+    assumptions: [independent laws, finite-dimensional Hilbert spaces, orthogonal projectors, ambient leaves, full projected-input closure, chain or mixed binary topology]
+    proof: research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md
+    proof_status: COMPLETE_ADVISORY_PROOF_DRAFT_PENDING_INDEPENDENT_REVIEW
+    evidence: [tests/pmt/test_chain_gram.py, scripts/run_pmt_k4_chain.py, experiments/configs/PMT_K4_CHAIN_GRAM_V1.json, experiments/configs/PMT_K4_CHAIN_GRAM_V2.json, artifacts/pmt_k4_chain/2026-09-09-v1/run_manifest.json, artifacts/pmt_k4_chain/2026-09-09-v2/run_manifest.json]
+    limitations: [no automatic theorem approval, numerical SDP output not certified, branch-below equality remains open, novelty not established]
+
+  - id: DEF_PMT_CANONICAL_TYPED_MODEL_V1
+    title: Canonical finite-dimensional Projected Multilinear Tree model
+    status: definition
+    statement: "A PMTModel binds a finite ordered typed tree, dense multilinear node laws, orthogonal output projectors, and ambient leaf vectors; leaves use the identity projector convention."
+    assumptions: [finite-dimensional real or complex typed Hilbert spaces, internal arity at least two, output-first dense law coordinates]
+    evidence: [src/seion_core/pmt/model.py, src/seion_core/pmt/evaluation.py, docs/pmt/README.md, tests/pmt/test_pmt_core.py]
+
+  - id: THM_PMT_ROOT_ERROR_DECOMPOSITION_V1
+    title: PMT root error decomposition
+    status: proved_under_assumptions
+    statement: "For orthogonal root projection, ambient root error squared equals projected-root error squared plus normal-root error squared."
+    assumptions: [finite-dimensional Hilbert space, orthogonal root projector, recursively projected root in the projector range]
+    proof: research/CANONICAL_W3_PROOF.md
+    evidence: [src/seion_core/pmt/evaluation.py, tests/pmt/test_pmt_core.py]
+
+  - id: THM_PMT_PROJECTED_K_MINUS_ONE_V1
+    title: Universal projected-root k-minus-one bound
+    status: proved_under_assumptions
+    statement: "For k internal vertices with law norm at most M, projected-input closure defect at most rho, and leaf product L_T, the projected-root error is at most (k-1) rho M^(k-1) L_T."
+    assumptions: [finite-dimensional real or complex Hilbert spaces, finite ordered rooted tree, orthogonal projectors, projected-input closure convention]
+    proof: research/CANONICAL_W3_PROOF.md
+    evidence: [src/seion_core/pmt/bounds.py, src/seion_core/research_v3/certificates.py, tests/research_v3/regression/test_projected_k_minus_one.py]
+    limitations: [implementation exposes the theorem contract; arbitrary-law fixed-eta sharpness is not inferred from the bound]
+
+  - id: THM_PMT_W3_FIXED_ETA_V1
+    title: Exact independent-law k3 W3 contract
+    status: proved_under_assumptions
+    statement: "For the declared independent-law finite-dimensional k=3 chain, branching, and finite-arity reductions, the normalized projected-root constant is W3(eta), with the piecewise formula implemented by w3(eta) and attained by analytic two-dimensional witnesses."
+    assumptions: [0 < eta <= 1, finite-dimensional real or complex Hilbert spaces, orthogonal projectors, independently selectable node laws, projected-input closure convention]
+    proof: research/CANONICAL_W3_PROOF.md
+    evidence: [src/seion_core/pmt/bounds.py, src/seion_core/pmt/extremizers.py, tests/pmt/test_pmt_core.py, tests/math_closure/test_m14_exact_chain_constant.py, tests/math_closure/test_m15_exact_branching_constant.py, tests/math_closure/test_m20_k3_arbitrary_arity_exact_constant.py]
+    limitations: [novelty and independent human review remain pending; same-law restrictions are separate classes]
+
+  - id: OPEN_PMT_FIXED_ETA_K4_PLUS_V1
+    title: Fixed-eta PMT constants for k at least four
+    status: open
+    statement: "The exact independent-law fixed-eta constant for k>=4 remains open; the universal k-1 upper coefficient and small-eta asymptotic information do not determine it."
+    assumptions: [finite ordered rooted topology, finite-dimensional Hilbert spaces, orthogonal projectors, projected-input closure convention]
+    evidence: [src/seion_core/pmt/frontier.py, docs/pmt/README.md, research/math_closure/k4_exploration/PMT_K4_FRONTIER.md, research/math_closure/k4_exploration/optimizer.py]
+    limitations: [numerical searches remain observations and cannot populate exact_constant]

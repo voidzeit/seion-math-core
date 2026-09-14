@@ -1,0 +1,47 @@
+{
+  "id": "PMT_K4_CHAIN_GRAM_V1",
+  "scope": "independent-law canonical PMT, ambient leaves, four-node chain",
+  "backend": "numpy-scipy-cvxpy",
+  "device": "cpu",
+  "precision": "float64",
+  "etas": [
+    0.05,
+    0.2,
+    0.5,
+    0.6546536707079771,
+    0.8,
+    1.0
+  ],
+  "asymptotic_etas": [
+    0.1,
+    0.05,
+    0.02,
+    0.01,
+    0.005
+  ],
+  "dimensions_ranks": [
+    [
+      2,
+      1
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      2
+    ]
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_iterations": 200,
+  "tolerance": 1e-10,
+  "sdp_solver": "CLARABEL",
+  "status_policy": "numerical optimizers never emit CERTIFIED_WITNESS or sharpness",
+  "topology_gate": "no comparative k4 topology search before chain proof characterization",
+  "proof_report": "research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md"
+}

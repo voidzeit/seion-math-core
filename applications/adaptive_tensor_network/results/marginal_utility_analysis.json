@@ -1,0 +1,402 @@
+{
+  "heterogeneous_k6": {
+    "score_local": {
+      "n_configs": 50,
+      "spearman_mean": 0.5399999999999999,
+      "spearman_ci_95": [
+        0.44599999999999995,
+        0.6299999999999999
+      ],
+      "top1_accuracy": 0.56,
+      "top3_overlap": 0.72,
+      "normalized_regret_mean": 0.3060521396451511,
+      "n_regret": 50
+    },
+    "score_path": {
+      "n_configs": 50,
+      "spearman_mean": 0.5579999999999999,
+      "spearman_ci_95": [
+        0.4699999999999999,
+        0.638
+      ],
+      "top1_accuracy": 0.5,
+      "top3_overlap": 0.7533333333333333,
+      "normalized_regret_mean": 0.32008805590956513,
+      "n_regret": 50
+    },
+    "score_m24": {
+      "n_configs": 50,
+      "spearman_mean": 0.21199999999999997,
+      "spearman_ci_95": [
+        0.06799999999999999,
+        0.344
+      ],
+      "top1_accuracy": 0.38,
+      "top3_overlap": 0.66,
+      "normalized_regret_mean": 0.5119789362589271,
+      "n_regret": 50
+    },
+    "score_m25": {
+      "n_configs": 50,
+      "spearman_mean": 0.302,
+      "spearman_ci_95": [
+        0.17399999999999996,
+        0.4240499999999997
+      ],
+      "top1_accuracy": 0.32,
+      "top3_overlap": 0.6733333333333333,
+      "normalized_regret_mean": 0.5454973331941021,
+      "n_regret": 50
+    }
+  },
+  "heterogeneous_k10": {
+    "score_local": {
+      "n_configs": 50,
+      "spearman_mean": 0.20533333333333334,
+      "spearman_ci_95": [
+        0.09398333333333332,
+        0.3083416666666666
+      ],
+      "top1_accuracy": 0.24,
+      "top3_overlap": 0.52,
+      "normalized_regret_mean": 1.262904913831575,
+      "n_regret": 50
+    },
+    "score_path": {
+      "n_configs": 50,
+      "spearman_mean": 0.24633333333333338,
+      "spearman_ci_95": [
+        0.14066666666666666,
+        0.3493333333333333
+      ],
+      "top1_accuracy": 0.38,
+      "top3_overlap": 0.48,
+      "normalized_regret_mean": 1.3166742838394294,
+      "n_regret": 50
+    },
+    "score_m24": {
+      "n_configs": 50,
+      "spearman_mean": -0.037666666666666654,
+      "spearman_ci_95": [
+        -0.140025,
+        0.06367499999999997
+      ],
+      "top1_accuracy": 0.16,
+      "top3_overlap": 0.3466666666666666,
+      "normalized_regret_mean": 0.9153917652905852,
+      "n_regret": 50
+    },
+    "score_m25": {
+      "n_configs": 50,
+      "spearman_mean": 0.041333333333333326,
+      "spearman_ci_95": [
+        -0.064,
+        0.14467499999999994
+      ],
+      "top1_accuracy": 0.16,
+      "top3_overlap": 0.38,
+      "normalized_regret_mean": 0.9148503701255328,
+      "n_regret": 50
+    }
+  },
+  "heterogeneous_k16": {
+    "score_local": {
+      "n_configs": 50,
+      "spearman_mean": 0.07092857142857141,
+      "spearman_ci_95": [
+        -0.00629642857142856,
+        0.1442196428571428
+      ],
+      "top1_accuracy": 0.12,
+      "top3_overlap": 0.34,
+      "normalized_regret_mean": 1.4887411960082924,
+      "n_regret": 50
+    },
+    "score_path": {
+      "n_configs": 50,
+      "spearman_mean": 0.05414285714285713,
+      "spearman_ci_95": [
+        -0.03000178571428571,
+        0.1352910714285714
+      ],
+      "top1_accuracy": 0.16,
+      "top3_overlap": 0.32,
+      "normalized_regret_mean": 1.1338110794611376,
+      "n_regret": 50
+    },
+    "score_m24": {
+      "n_configs": 50,
+      "spearman_mean": 0.010642857142857143,
+      "spearman_ci_95": [
+        -0.07493392857142857,
+        0.09222142857142854
+      ],
+      "top1_accuracy": 0.06,
+      "top3_overlap": 0.22,
+      "normalized_regret_mean": 0.8358337249840194,
+      "n_regret": 50
+    },
+    "score_m25": {
+      "n_configs": 50,
+      "spearman_mean": 0.05392857142857141,
+      "spearman_ci_95": [
+        -0.031103571428571425,
+        0.13972142857142847
+      ],
+      "top1_accuracy": 0.06,
+      "top3_overlap": 0.2533333333333333,
+      "normalized_regret_mean": 1.0106938999226414,
+      "n_regret": 50
+    }
+  },
+  "heterogeneous_k24": {
+    "score_local": {
+      "n_configs": 50,
+      "spearman_mean": 0.042588932806324115,
+      "spearman_ci_95": [
+        -0.009293972332015812,
+        0.09229693675889325
+      ],
+      "top1_accuracy": 0.14,
+      "top3_overlap": 0.2,
+      "normalized_regret_mean": 0.9813733677681747,
+      "n_regret": 50
+    },
+    "score_path": {
+      "n_configs": 50,
+      "spearman_mean": 0.02110671936758893,
+      "spearman_ci_95": [
+        -0.04383942687747035,
+        0.08577272727272726
+      ],
+      "top1_accuracy": 0.14,
+      "top3_overlap": 0.2533333333333333,
+      "normalized_regret_mean": 0.9131902552389629,
+      "n_regret": 50
+    },
+    "score_m24": {
+      "n_configs": 50,
+      "spearman_mean": 0.04126482213438734,
+      "spearman_ci_95": [
+        -0.018620553359683798,
+        0.10147035573122526
+      ],
+      "top1_accuracy": 0.04,
+      "top3_overlap": 0.08,
+      "normalized_regret_mean": 0.9693913766149583,
+      "n_regret": 50
+    },
+    "score_m25": {
+      "n_configs": 50,
+      "spearman_mean": -0.013833992094861665,
+      "spearman_ci_95": [
+        -0.07808794466403163,
+        0.05033942687747034
+      ],
+      "top1_accuracy": 0.04,
+      "top3_overlap": 0.09333333333333332,
+      "normalized_regret_mean": 0.9754489636873506,
+      "n_regret": 50
+    }
+  },
+  "iid_k6": {
+    "score_local": {
+      "n_configs": 50,
+      "spearman_mean": 0.06599999999999998,
+      "spearman_ci_95": [
+        -0.06805000000000001,
+        0.21399999999999994
+      ],
+      "top1_accuracy": 0.16,
+      "top3_overlap": 0.64,
+      "normalized_regret_mean": 0.7335059183163877,
+      "n_regret": 50
+    },
+    "score_path": {
+      "n_configs": 50,
+      "spearman_mean": 0.14,
+      "spearman_ci_95": [
+        -0.0020500000000000097,
+        0.27604999999999974
+      ],
+      "top1_accuracy": 0.24,
+      "top3_overlap": 0.64,
+      "normalized_regret_mean": 0.7070172938356666,
+      "n_regret": 50
+    },
+    "score_m24": {
+      "n_configs": 50,
+      "spearman_mean": -0.009999999999999998,
+      "spearman_ci_95": [
+        -0.14999999999999997,
+        0.12
+      ],
+      "top1_accuracy": 0.22,
+      "top3_overlap": 0.58,
+      "normalized_regret_mean": 0.6000754635775855,
+      "n_regret": 50
+    },
+    "score_m25": {
+      "n_configs": 50,
+      "spearman_mean": -0.023999999999999987,
+      "spearman_ci_95": [
+        -0.15199999999999997,
+        0.096
+      ],
+      "top1_accuracy": 0.2,
+      "top3_overlap": 0.6,
+      "normalized_regret_mean": 0.647738481285694,
+      "n_regret": 50
+    }
+  },
+  "iid_k10": {
+    "score_local": {
+      "n_configs": 50,
+      "spearman_mean": -0.11766666666666666,
+      "spearman_ci_95": [
+        -0.20800833333333335,
+        -0.02662500000000023
+      ],
+      "top1_accuracy": 0.1,
+      "top3_overlap": 0.29333333333333333,
+      "normalized_regret_mean": 0.897596299545816,
+      "n_regret": 50
+    },
+    "score_path": {
+      "n_configs": 50,
+      "spearman_mean": 0.07333333333333333,
+      "spearman_ci_95": [
+        -0.02733333333333335,
+        0.1733416666666666
+      ],
+      "top1_accuracy": 0.22,
+      "top3_overlap": 0.36666666666666664,
+      "normalized_regret_mean": 0.8338858995939248,
+      "n_regret": 50
+    },
+    "score_m24": {
+      "n_configs": 50,
+      "spearman_mean": -0.024000000000000004,
+      "spearman_ci_95": [
+        -0.12468333333333333,
+        0.07433333333333332
+      ],
+      "top1_accuracy": 0.18,
+      "top3_overlap": 0.3133333333333333,
+      "normalized_regret_mean": 0.7549136610405861,
+      "n_regret": 50
+    },
+    "score_m25": {
+      "n_configs": 50,
+      "spearman_mean": -0.0040000000000000105,
+      "spearman_ci_95": [
+        -0.10200000000000001,
+        0.085
+      ],
+      "top1_accuracy": 0.1,
+      "top3_overlap": 0.34,
+      "normalized_regret_mean": 0.8856774110053176,
+      "n_regret": 50
+    }
+  },
+  "iid_k16": {
+    "score_local": {
+      "n_configs": 50,
+      "spearman_mean": 0.013571428571428562,
+      "spearman_ci_95": [
+        -0.059717857142857135,
+        0.0870017857142857
+      ],
+      "top1_accuracy": 0.04,
+      "top3_overlap": 0.20666666666666664,
+      "normalized_regret_mean": 1.4215315090803815,
+      "n_regret": 50
+    },
+    "score_path": {
+      "n_configs": 50,
+      "spearman_mean": -0.009571428571428571,
+      "spearman_ci_95": [
+        -0.07522857142857141,
+        0.0560017857142857
+      ],
+      "top1_accuracy": 0.1,
+      "top3_overlap": 0.18666666666666665,
+      "normalized_regret_mean": 1.1959317140200443,
+      "n_regret": 50
+    },
+    "score_m24": {
+      "n_configs": 50,
+      "spearman_mean": 0.034642857142857135,
+      "spearman_ci_95": [
+        -0.04035714285714285,
+        0.10693035714285712
+      ],
+      "top1_accuracy": 0.06,
+      "top3_overlap": 0.22666666666666666,
+      "normalized_regret_mean": 1.4575603321279704,
+      "n_regret": 50
+    },
+    "score_m25": {
+      "n_configs": 50,
+      "spearman_mean": 0.024714285714285716,
+      "spearman_ci_95": [
+        -0.0438642857142857,
+        0.0975
+      ],
+      "top1_accuracy": 0.06,
+      "top3_overlap": 0.2533333333333333,
+      "normalized_regret_mean": 1.251172023368945,
+      "n_regret": 50
+    }
+  },
+  "iid_k24": {
+    "score_local": {
+      "n_configs": 50,
+      "spearman_mean": -0.06217391304347826,
+      "spearman_ci_95": [
+        -0.12170009881422927,
+        -0.0015938735177865987
+      ],
+      "top1_accuracy": 0.12,
+      "top3_overlap": 0.10666666666666666,
+      "normalized_regret_mean": 1.7720883176020874,
+      "n_regret": 50
+    },
+    "score_path": {
+      "n_configs": 50,
+      "spearman_mean": 0.019308300395256904,
+      "spearman_ci_95": [
+        -0.04680286561264822,
+        0.08019318181818162
+      ],
+      "top1_accuracy": 0.08,
+      "top3_overlap": 0.12,
+      "normalized_regret_mean": 0.9140944882557196,
+      "n_regret": 50
+    },
+    "score_m24": {
+      "n_configs": 50,
+      "spearman_mean": -0.026422924901185765,
+      "spearman_ci_95": [
+        -0.08539871541501977,
+        0.03263389328063238
+      ],
+      "top1_accuracy": 0.1,
+      "top3_overlap": 0.11333333333333333,
+      "normalized_regret_mean": 1.6596040916942476,
+      "n_regret": 50
+    },
+    "score_m25": {
+      "n_configs": 50,
+      "spearman_mean": -0.03883399209486166,
+      "spearman_ci_95": [
+        -0.08690217391304349,
+        0.010022727272727261
+      ],
+      "top1_accuracy": 0.1,
+      "top3_overlap": 0.13333333333333333,
+      "normalized_regret_mean": 1.6668183582081726,
+      "n_regret": 50
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "BASE_SHA": "69de7849e7fefe1aefab97807ff2aaecd646abf0",
+  "CAMPAIGN_START_SHA": null,
+  "DATASET_HASHES": {
+    "note": "reused verbatim from campaigns/gate12/preregistration.md section 2; Gate 13 does not modify data/",
+    "FB15K-237": {
+      "train": "6e4c2782169af21e9743f3b1d200886f5d595bf6bc504ec1351720949c5cdfae",
+      "valid": "cf6309010852f6a8d47a45df830a426415d1ee6f7a3970a8376ff1fb81db4a5c",
+      "test": "5711cf41623ceb4eacc50eb6108a3ca6565c7492e3caaf82a3e355cc660d1574"
+    },
+    "WN18RR": {
+      "train": "038612e783c215ee5f3ca9fbfca27b8d0739be1028fe4ee7c174aecf0b83d5df",
+      "valid": "453ce7202afa58094a04d2b1560ee2b02660f1c260b32ce6651c8ccedd1028ab",
+      "test": "0383bceaaa1096cf3c03ec021ed0048068e2355dbfc0239b292cefdac821cec5"
+    }
+  },
+  "E8_HASH": "unchanged from Gate 12; E8_Exact_v18_2/f_E8.npy, local-disk-only, not committed to git",
+  "SEEDS": {
+    "gate13_synthetic_acceptance_tests": 0,
+    "future_screening_reused_from_gate12_tier0": [1, 2],
+    "future_full_screening": [1, 2, 3],
+    "future_confirmatory": [1, 2, 3, 4, 5]
+  },
+  "PRIMARY_METRIC": {
+    "H_ROUTER": "rms_contribution_ratio = RMS(gamma_r * s_path) / RMS(s_total) on path-necessary relations",
+    "H_SCALING": "max_abs_state_diff between legacy and batched reasoner; wall_clock_full_epoch_sec"
+  },
+  "MINIMUM_EFFECT": {
+    "delta_gate": 0.05,
+    "rms_contribution_ratio": 0.05
+  },
+  "NONINFERIORITY_MARGIN": {
+    "H_SCALING_parity_tolerance": 1.0e-4
+  },
+  "session_type": "single interactive agent session, wall-clock budget of hours not days",
+  "hardware": "same as Gate 12: single RTX PRO 5000 Blackwell 24GB, one heavy run at a time (fallback CPU if unavailable in this session)",
+  "scope_executed_this_campaign": ["13.0", "13.1", "13.2"],
+  "scope_open": ["13.3", "13.4", "13.5", "13.6", "13.7", "13.8", "13.9", "13.10"]
+}

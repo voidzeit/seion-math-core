@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PMT Mathematical Observatory</title>
+<style>
+  :root{
+    --ink:#0E1416; --panel:#141C1F; --raised:#1B252A; --line:#2A363A;
+    --text:#DDE7E9; --muted:#7C9096; --dim:#4C5F65;
+    --crit:#E8484F; --crit-soft:rgba(232,72,79,.14);
+    --ok:#7FB069; --bad:#E8484F; --grid:rgba(124,144,150,.16);
+  }
+  @media (prefers-color-scheme:light){
+    :root{--ink:#F4F6F5;--panel:#FFF;--raised:#EDF1F0;--line:#D3DCDA;--text:#14201F;
+      --muted:#5C6E70;--dim:#93A3A4;--crit:#C42B33;--crit-soft:rgba(196,43,51,.09);
+      --ok:#4E7A38;--grid:rgba(20,32,31,.12);}
+  }
+  :root[data-theme="dark"]{--ink:#0E1416;--panel:#141C1F;--raised:#1B252A;--line:#2A363A;
+    --text:#DDE7E9;--muted:#7C9096;--dim:#4C5F65;--crit:#E8484F;--ok:#7FB069;
+    --crit-soft:rgba(232,72,79,.14);--grid:rgba(124,144,150,.16);}
+  :root[data-theme="light"]{--ink:#F4F6F5;--panel:#FFF;--raised:#EDF1F0;--line:#D3DCDA;
+    --text:#14201F;--muted:#5C6E70;--dim:#93A3A4;--crit:#C42B33;--ok:#4E7A38;
+    --crit-soft:rgba(196,43,51,.09);--grid:rgba(20,32,31,.12);}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--ink);color:var(--text);overflow:hidden;
+    font:13.5px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+  .mono{font-family:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+    font-variant-numeric:tabular-nums}
+  header{display:flex;align-items:baseline;gap:14px;padding:11px 18px;
+    border-bottom:1px solid var(--line);flex:0 0 auto}
+  h1{margin:0;font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+  .eq{color:var(--muted);font-size:12px}
+  .vbadge{margin-left:auto;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+    padding:3px 9px;border:1px solid;border-radius:2px;font-weight:600}
+  .vbadge.ok{color:var(--ok);border-color:var(--ok)}
+  .vbadge.bad{color:var(--bad);border-color:var(--bad)}
+  .body{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 300px;min-height:0}
+  #stage{position:relative;background:var(--panel);border-right:1px solid var(--line);
+    display:flex;flex-direction:column;min-height:0}
+  #gl{flex:1;display:block;width:100%;min-height:0;cursor:grab;touch-action:none}
+  #ov{position:absolute;left:0;top:0;width:100%;pointer-events:none}
+  #gl:active{cursor:grabbing}
+  .strip{border-top:1px solid var(--line);padding:9px 14px 11px;flex:0 0 auto}
+  #plot{display:block;width:100%;height:96px}
+  .hint{position:absolute;left:14px;bottom:120px;font-size:10px;color:var(--dim);
+    letter-spacing:.05em;pointer-events:none}
+  aside{background:var(--panel);padding:15px 16px 20px;overflow-y:auto;
+    display:flex;flex-direction:column;gap:15px}
+  .lbl{display:flex;justify-content:space-between;align-items:baseline;font-size:9.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+  .lbl b{font-size:15px;letter-spacing:0;text-transform:none;color:var(--text)}
+  input[type=range]{width:100%;accent-color:var(--crit)}
+  input[type=range]:focus-visible{outline:2px solid var(--crit);outline-offset:3px}
+  .row{display:flex;gap:7px}
+  button,select{background:var(--raised);color:var(--text);border:1px solid var(--line);
+    border-radius:2px;padding:5px 9px;font:inherit;font-size:11.5px;cursor:pointer}
+  button:hover{border-color:var(--muted)}
+  button:focus-visible,select:focus-visible{outline:2px solid var(--crit);outline-offset:2px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:2px;overflow:hidden}
+  .cell{background:var(--raised);padding:8px 10px}
+  .cell .k{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+  .cell .v{font-size:14.5px;margin-top:2px}
+  .regime{border:1px solid var(--line);border-radius:2px;padding:10px 12px;background:var(--raised)}
+  .regime.locked{border-color:var(--crit);background:var(--crit-soft)}
+  .regime .n{font-size:12px;font-weight:600}
+  .regime.locked .n{color:var(--crit)}
+  .regime .w{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5}
+  .tg{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted);cursor:pointer}
+  .tg input{accent-color:var(--crit)}
+  .chk{display:flex;gap:8px;align-items:baseline;font-size:10.5px;padding:2px 0}
+  .cid{font-size:8.5px;letter-spacing:.1em;font-weight:700;width:32px}
+  .chk.ok .cid{color:var(--ok)} .chk.bad .cid{color:var(--bad)}
+  .cname{color:var(--muted);flex:1;font-size:10px}
+  .cres{color:var(--dim);font-size:9.5px}
+  .tl{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);padding:1px 0}
+  .tl b{color:var(--text);font-weight:500;font-size:10px}
+  h3{margin:0;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .fatal{padding:50px 30px;text-align:center;color:var(--muted)}
+  .fatalTitle{color:var(--bad);font-weight:700;letter-spacing:.1em;font-size:14px;margin-bottom:10px}
+  footer{flex:0 0 auto;border-top:1px solid var(--line);padding:7px 18px;display:flex;
+    gap:16px;align-items:center;font-size:10.5px;color:var(--muted)}
+  .cell.wide2{grid-column:1/-1}
+  body.present aside,body.present .strip,body.present footer .sec,body.present .hint{display:none}
+  body.present .body{grid-template-columns:1fr}
+  /* Narrow viewports: the scene keeps priority and the rail becomes a scrolling
+     panel beneath it, rather than squeezing the canvas into a sliver. */
+  @media (max-width:940px){
+    body{overflow:auto}
+    .body{grid-template-columns:1fr}
+    #stage{border-right:0;border-bottom:1px solid var(--line)}
+    #gl{min-height:46vh}
+    aside{max-height:none}
+    header{flex-wrap:wrap;gap:8px}
+    .eq{flex-basis:100%;order:3;font-size:11px}
+    .vbadge{margin-left:0}
+  }
+  @media (max-width:520px){
+    .grid2{grid-template-columns:1fr}
+    .row{flex-wrap:wrap}
+    #gl{min-height:40vh}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>PMT Mathematical Observatory</h1>
+  <span class="eq mono">E(q,s)² = q² + (1−q²)s² + 2q√(1−q²)·s√(1−s²)</span>
+  <span class="vbadge" id="verifiedBadge">checking…</span>
+</header>
+
+<div class="body">
+  <div id="stage">
+    <canvas id="gl"></canvas>
+    <canvas id="ov"></canvas>
+    <p class="hint">drag to orbit · scroll to zoom</p>
+    <div class="strip"><canvas id="plot"></canvas></div>
+  </div>
+
+  <aside>
+    <div>
+      <div class="lbl"><label for="eta">closure budget η</label> <b class="mono" id="etaOut">0.400000</b></div>
+      <input type="range" id="eta" min="0.02" max="1" step="0.0005" value="0.4">
+      <div class="row" style="margin-top:7px">
+        <button id="toEtaC">jump to η<sub>c</sub></button>
+        <button id="play">sweep η</button>
+        <button id="orbit">auto-orbit</button>
+        <button id="reset">reset camera</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="cell"><div class="k">t optimal</div><div class="v mono" id="tOut">—</div></div>
+      <div class="cell"><div class="k">regime</div><div class="v mono" id="regOut">—</div></div>
+      <div class="cell"><div class="k">G₃(η) absolute</div><div class="v mono" id="gOut">—</div></div>
+      <div class="cell"><div class="k">W₃(η) constant</div><div class="v mono" id="wOut">—</div></div>
+      <div class="cell"><div class="k">deficit 2−W₃</div><div class="v mono" id="dOut">—</div></div>
+      <div class="cell"><div class="k">bound k−1</div><div class="v mono">2.000000</div></div>
+    </div>
+
+    <div class="regime" id="regBox">
+      <div class="n" id="regName">regime</div>
+      <div class="w" id="regWhy"></div>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:8px">probe point on the surface</h3>
+      <div class="lbl"><label for="v_q">q &nbsp; first leakage</label> <b class="mono" id="o_v_q">0.3500</b></div>
+      <input type="range" id="v_q" min="0" max="0.999" step="0.001" value="0.35">
+      <div class="lbl" style="margin-top:8px"><label for="v_s">s &nbsp; second leakage</label> <b class="mono" id="o_v_s">0.6200</b></div>
+      <input type="range" id="v_s" min="0" max="0.999" step="0.001" value="0.62">
+      <div class="grid2" style="margin-top:10px">
+        <div class="cell"><div class="k">E at probe</div><div class="v mono" id="peOut">—</div></div>
+        <div class="cell"><div class="k">status</div><div class="v mono" style="font-size:12px" id="pinOut">—</div></div>
+        <div class="cell"><div class="k">ξ, ζ tangents</div><div class="v mono" style="font-size:12px" id="pxOut">—</div></div>
+        <div class="cell"><div class="k">f / bound 4·3⁻¹</div><div class="v mono" style="font-size:12px" id="pfOut">—</div></div>
+        <div class="cell wide2"><div class="k">S(ξ,ζ) — zero only at the extremizer</div><div class="v mono" id="psOut">—</div></div>
+      </div>
+      <div style="display:none"><span id="pqOut"></span></div>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:8px">scaling — Lemma 7.1</h3>
+      <div class="lbl"><label for="v_M">operator bound M</label> <b class="mono" id="o_v_M">1.000</b></div>
+      <input type="range" id="v_M" min="0.25" max="3" step="0.005" value="1">
+      <div class="lbl" style="margin-top:8px"><label for="v_LT">leaf product L_T</label> <b class="mono" id="o_v_LT">1.000</b></div>
+      <input type="range" id="v_LT" min="0.25" max="3" step="0.005" value="1">
+      <div class="grid2" style="margin-top:10px">
+        <div class="cell"><div class="k">absolute G₃·M³·L_T</div><div class="v mono" id="absOut">—</div></div>
+        <div class="cell"><div class="k">W₃ normalised</div><div class="v mono" id="wOut2">—</div></div>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin:8px 0 0;line-height:1.5">
+        Move either slider: every absolute quantity changes, the normalised
+        constant does not. That invariance is what lets the theorem fix
+        M = L_T = 1 without loss of generality.</p>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:8px">layers</h3>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label class="tg"><input type="checkbox" id="t_square" checked> admissible square [0,η]²</label>
+        <label class="tg"><input type="checkbox" id="t_diagonal" checked> diagonal q=s → g(t)</label>
+        <label class="tg"><input type="checkbox" id="t_peak" checked> reachable extremizer</label>
+        <label class="tg"><input type="checkbox" id="t_axis" checked> axes and tick values</label>
+        <label class="tg"><input type="checkbox" id="t_contour" checked> isolines of E</label>
+        <label class="tg"><input type="checkbox" id="t_probe" checked> probe point</label>
+        <label class="tg"><input type="checkbox" id="t_sections" checked> cross-sections through probe</label>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:7px">self-checks <span class="mono" id="checkTime" style="float:right;font-size:9px;color:var(--dim)"></span></h3>
+      <div id="checks"></div>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:7px">telemetry</h3>
+      <div id="tel"></div>
+      <div class="row" style="margin-top:9px">
+        <select id="quality"></select>
+        <button id="shot">PNG</button>
+        <button id="snap">state</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span class="mono" id="fps">—</span>
+  <span class="sec" id="statusLine"></span>
+  <span class="sec" style="margin-left:auto"><button id="present">presentation mode</button></span>
+</footer>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+\section*{M24/M25: Sound finite-batch certificates by restricted gains and Gram refinement}
+\label{sec:m24-m25-finite-batch-certificates}
+
+\paragraph{Scope.}
+These are \emph{finite-batch} statements. Everything below is quantified over
+a fixed finite family of leaf data and a fixed rank assignment; nothing here
+is a claim about unbounded inputs, and neither certificate is a computational
+shortcut (both evaluations are needed to form the bound). Their content is
+that the root discrepancy is \emph{compositionally attributable} to per-node
+sources with explicit transport factors, and that two specific composition
+rules are sound and monotonically ordered.
+
+\paragraph{Setup.}
+Let $T$ be a finite ordered rooted tree with root $r$, internal vertices
+carrying multilinear laws $\mu_v$ and orthogonal projectors $P_v$ of
+prescribed rank. Fix a finite index set $n\in\{1,\dots,N\}$ of samples, and
+for each $n$ leaf data $z_\ell^{(n)}$. Define, for each $n$:
+\[
+  F_\ell^{(n)}:=z_\ell^{(n)},\qquad
+  F_v^{(n)}:=\mu_v\bigl(F_{c_1(v)}^{(n)},\dots,F_{c_m(v)}^{(n)}\bigr),
+\]
+\[
+  R_\ell^{(n)}:=z_\ell^{(n)},\qquad
+  \widetilde R_v^{(n)}:=\mu_v\bigl(R_{c_1(v)}^{(n)},\dots,R_{c_m(v)}^{(n)}\bigr),
+  \qquad
+  R_v^{(n)}:=
+  \begin{cases}
+    P_v\widetilde R_v^{(n)}, & v\ne r,\\
+    \widetilde R_v^{(n)}, & v=r.
+  \end{cases}
+\]
+The root is not projected, matching the convention under which the
+projected-root discrepancy is measured in the root's own space. Put
+\[
+  \delta_v^{(n)}:=F_v^{(n)}-R_v^{(n)}\quad(v\ne r),
+  \qquad
+  \delta_\ell^{(n)}:=0,
+  \qquad
+  E^{(n)}:=F_r^{(n)}-\widetilde R_r^{(n)}.
+\]
+
+\paragraph{Definition (effective slot map).}
+For an internal $v$ with children $c_1,\dots,c_m$, a slot $j$, and a sample
+$n$, let $M_{v,j}^{(n)}:H_{c_j}\to H_v$ be the linear map
+\[
+  \boxed{\;
+  M_{v,j}^{(n)}(u)
+  :=\mu_v\bigl(R_{c_1}^{(n)},\dots,R_{c_{j-1}}^{(n)},\,u,\,
+               F_{c_{j+1}}^{(n)},\dots,F_{c_m}^{(n)}\bigr).\;}
+\tag{1}
+\]
+Slots below $j$ carry reduced values, slots above $j$ carry ambient values.
+Linearity in $u$ is immediate from multilinearity of $\mu_v$.
+
+\paragraph{Lemma 1 (exact telescoping).}
+For every internal $v$ and every $n$,
+\[
+  F_v^{(n)}-\widetilde R_v^{(n)}
+  =\sum_{j=1}^{m}M_{v,j}^{(n)}\bigl(\delta_{c_j}^{(n)}\bigr).
+\tag{2}
+\]
+
+\emph{Proof.} Write $x_i:=F_{c_i}^{(n)}$, $y_i:=R_{c_i}^{(n)}$. Then
+\[
+ \mu_v(x_1,\dots,x_m)-\mu_v(y_1,\dots,y_m)
+ =\sum_{j=1}^m\Bigl[\mu_v(y_{<j},x_j,x_{>j})-\mu_v(y_{<j},y_j,x_{>j})\Bigr],
+\]
+a telescoping sum in which consecutive terms cancel. By multilinearity in
+slot $j$ the $j$-th bracket equals $\mu_v(y_{<j},x_j-y_j,x_{>j})
+=M_{v,j}^{(n)}(x_j-y_j)$, and $x_j-y_j=\delta_{c_j}^{(n)}$. $\square$
+
+Note that (2) is an identity, not an estimate: no slack has been introduced
+yet. All subsequent looseness is attributable to how (2) is bounded.
+
+\paragraph{Definition (M24 bound).}
+Set $B_\ell^{(n)}:=0$ at leaves, and recursively in postorder
+\[
+  \gamma_v^{(n)}:=\bigl\|(I-P_v)\widetilde R_v^{(n)}\bigr\|,
+  \qquad
+  p_v^{(n)}:=\sum_{j=1}^m\bigl\|M_{v,j}^{(n)}\bigr\|_{\mathrm{op}}\,B_{c_j}^{(n)},
+\]
+\[
+  B_v^{(n)}:=
+  \begin{cases}
+    p_v^{(n)}+\gamma_v^{(n)}, & v\ne r,\\
+    p_r^{(n)}, & v=r.
+  \end{cases}
+\tag{3}
+\]
+
+\paragraph{Theorem M24 (per-sample soundness).}
+For every $n$ and every internal $v\ne r$, $\;\|\delta_v^{(n)}\|\le B_v^{(n)}$,
+and at the root
+\[
+  \boxed{\;\bigl\|E^{(n)}\bigr\|\le B_r^{(n)}.\;}
+\tag{4}
+\]
+
+\emph{Proof.} Induction on the postorder. At a leaf both sides vanish. Let
+$v$ be internal and assume the claim at every child. By Lemma 1 and
+subadditivity,
+\[
+ \bigl\|F_v^{(n)}-\widetilde R_v^{(n)}\bigr\|
+ \le\sum_j\bigl\|M_{v,j}^{(n)}\bigr\|_{\mathrm{op}}\bigl\|\delta_{c_j}^{(n)}\bigr\|
+ \le\sum_j\bigl\|M_{v,j}^{(n)}\bigr\|_{\mathrm{op}}B_{c_j}^{(n)}=p_v^{(n)},
+\tag{5}
+\]
+the second step using the inductive hypothesis and nonnegativity of operator
+norms. If $v=r$ then $E^{(n)}=F_r^{(n)}-\widetilde R_r^{(n)}$ and (4) follows
+from (5). If $v\ne r$, decompose
+\[
+ \delta_v^{(n)}
+ =F_v^{(n)}-P_v\widetilde R_v^{(n)}
+ =\underbrace{\bigl(F_v^{(n)}-\widetilde R_v^{(n)}\bigr)}_{=:a_v^{(n)}}
+ +\underbrace{(I-P_v)\widetilde R_v^{(n)}}_{=:b_v^{(n)}},
+\tag{6}
+\]
+so $\|\delta_v^{(n)}\|\le\|a_v^{(n)}\|+\|b_v^{(n)}\|\le p_v^{(n)}+\gamma_v^{(n)}$.
+$\square$
+
+\paragraph{Corollary M24.1 (sound reduction).}
+$\displaystyle\max_n\bigl\|E^{(n)}\bigr\|\le\max_n B_r^{(n)}$.
+Immediate from (4).
+
+\paragraph{Proposition M24.2 (per-sample propagation is never looser).}
+Let $\bar B$ denote the batch-decoupled variant, obtained by maximizing each
+ingredient over the batch before composing:
+\[
+  \bar B_\ell:=0,\qquad
+  \bar B_v:=\sum_j\Bigl(\max_n\bigl\|M_{v,j}^{(n)}\bigr\|_{\mathrm{op}}\Bigr)\bar B_{c_j}
+  +\max_n\gamma_v^{(n)}\quad(v\ne r).
+\]
+Then $\max_nB_v^{(n)}\le\bar B_v$ for every $v$.
+
+\emph{Proof.} Induction. For nonnegative reals,
+$\max_n\sum_j\alpha_j^{(n)}\beta_j^{(n)}\le\sum_j(\max_n\alpha_j^{(n)})(\max_n\beta_j^{(n)})$,
+since each term is bounded by the corresponding product of maxima and the
+maximum of a sum is at most the sum of maxima. Applying this to (3) and using
+$\max_nB_{c_j}^{(n)}\le\bar B_{c_j}$ gives the claim. $\square$
+
+The inequality is generally strict: $\bar B$ pairs the sample maximizing a
+gain with the (different) sample maximizing the incoming error, a
+configuration realized by no single sample. Since the defect is incurred once
+per level it compounds multiplicatively in the depth.
+
+\paragraph{Definition (M25 bound).}
+Retain $\gamma_v^{(n)}$ and define, with $G_\ell^{(n)}:=0$,
+\[
+  \pi_v^{(n)}:=\sum_j\bigl\|M_{v,j}^{(n)}\bigr\|_{\mathrm{op}}G_{c_j}^{(n)},
+  \qquad
+  \nu_v^{(n)}:=\sum_j\bigl\|(I-P_v)M_{v,j}^{(n)}\bigr\|_{\mathrm{op}}G_{c_j}^{(n)},
+\]
+\[
+  \kappa_v^{(n)}:=\min\bigl(\nu_v^{(n)},\pi_v^{(n)}\bigr),
+  \qquad
+  G_v^{(n)}:=
+  \begin{cases}
+   \sqrt{\bigl(\pi_v^{(n)}\bigr)^2+\bigl(\gamma_v^{(n)}\bigr)^2
+         +2\kappa_v^{(n)}\gamma_v^{(n)}}, & v\ne r,\\[1mm]
+   \pi_r^{(n)}, & v=r.
+  \end{cases}
+\tag{7}
+\]
+
+\paragraph{Theorem M25 (Gram refinement).}
+For every $n$ and every $v$,
+\[
+  \boxed{\;\bigl\|\delta_v^{(n)}\bigr\|\le G_v^{(n)}\le B_v^{(n)}\;}
+\tag{8}
+\]
+(with $\|E^{(n)}\|\le G_r^{(n)}$ at the root), where $B$ is computed by (3).
+
+\emph{Proof.} Soundness, by induction. The bound (5) holds verbatim with
+$B_{c_j}$ replaced by $G_{c_j}$, giving $\|a_v^{(n)}\|\le\pi_v^{(n)}$; the
+root case follows. For $v\ne r$ use the orthogonal decomposition (6). Since
+$P_v$ is an orthogonal projector, $I-P_v$ is self-adjoint and idempotent and
+$b_v^{(n)}=(I-P_v)b_v^{(n)}$, whence
+\[
+ \bigl\langle a_v^{(n)},b_v^{(n)}\bigr\rangle
+ =\bigl\langle (I-P_v)a_v^{(n)},b_v^{(n)}\bigr\rangle
+ \le\bigl\|(I-P_v)a_v^{(n)}\bigr\|\,\bigl\|b_v^{(n)}\bigr\|.
+\]
+By Lemma 1, $(I-P_v)a_v^{(n)}=\sum_j(I-P_v)M_{v,j}^{(n)}(\delta_{c_j}^{(n)})$,
+so $\|(I-P_v)a_v^{(n)}\|\le\nu_v^{(n)}$. Combining with the Cauchy--Schwarz
+bound $\langle a_v,b_v\rangle\le\|a_v\|\|b_v\|\le\pi_v^{(n)}\gamma_v^{(n)}$
+gives $\langle a_v,b_v\rangle\le\kappa_v^{(n)}\gamma_v^{(n)}$. Therefore
+\[
+ \bigl\|\delta_v^{(n)}\bigr\|^2
+ =\bigl\|a_v^{(n)}\bigr\|^2+\bigl\|b_v^{(n)}\bigr\|^2
+  +2\bigl\langle a_v^{(n)},b_v^{(n)}\bigr\rangle
+ \le\bigl(\pi_v^{(n)}\bigr)^2+\bigl(\gamma_v^{(n)}\bigr)^2
+  +2\kappa_v^{(n)}\gamma_v^{(n)},
+\]
+which is $\bigl(G_v^{(n)}\bigr)^2$.
+
+Ordering: $\kappa_v^{(n)}\le\pi_v^{(n)}$ by definition, so
+\[
+ \bigl(G_v^{(n)}\bigr)^2
+ \le\bigl(\pi_v^{(n)}\bigr)^2+\bigl(\gamma_v^{(n)}\bigr)^2
+   +2\pi_v^{(n)}\gamma_v^{(n)}
+ =\bigl(\pi_v^{(n)}+\gamma_v^{(n)}\bigr)^2 ,
+\]
+and $\pi_v^{(n)}\le p_v^{(n)}$ follows inductively from $G_{c_j}\le B_{c_j}$.
+$\square$
+
+\paragraph{Proposition M25.1 (equality and strict improvement).}
+At a node $v\ne r$ the refinement is strict, $G_v^{(n)}<\pi_v^{(n)}+\gamma_v^{(n)}$,
+if and only if
+\[
+  \gamma_v^{(n)}>0
+  \quad\text{and}\quad
+  \nu_v^{(n)}<\pi_v^{(n)} .
+\]
+Since $\|(I-P_v)M\|_{\mathrm{op}}\le\|M\|_{\mathrm{op}}$ always, the
+refinement is never worse. Equality $\nu_v^{(n)}=\pi_v^{(n)}$ holds exactly
+when, for each $j$ contributing a nonzero $G_{c_j}^{(n)}$, some maximizing
+singular direction of $M_{v,j}^{(n)}$ has image entirely inside
+$\operatorname{Ran}(I-P_v)$.
+
+\emph{Magnitude.} When $\nu_v\ll\pi_v$ the bound degrades to
+$\sqrt{\pi_v^2+\gamma_v^2}$, i.e.\ Pythagorean rather than linear addition;
+the gain over $\pi_v+\gamma_v$ is then largest when $\pi_v\approx\gamma_v$
+(a factor $1/\sqrt2$) and vanishes when either term dominates. This is the
+finite-batch counterpart of the $k=3$ orthogonality mechanism
+$D_1\perp R_1$, and, as there, it is a second-order effect: it does not
+change the leading accumulation rate.
+
+\paragraph{Proposition M24.3 (dominance over the Frobenius certificate).}
+Let $A$ denote the scalar certificate that propagates value bounds
+$U_\ell:=\max_n\|z_\ell^{(n)}\|$, $U_v:=\|\mu_v\|_F\prod_iU_{c_i}$, uses slot
+gains $\|\mu_v\|_F\prod_{i\ne j}U_{c_i}$ and closures $\max_n\gamma_v^{(n)}$,
+combined additively. Then $B_v^{(n)}\le A_v$ for every $v,n$; hence
+$\max_nG_r^{(n)}\le\max_nB_r^{(n)}\le A_r$.
+
+\emph{Proof.} First, $U_v\ge\max_n\max\bigl(\|F_v^{(n)}\|,\|R_v^{(n)}\|\bigr)$
+by induction, using $\|\mu_v(x_1,\dots,x_m)\|\le\|\mu_v\|_F\prod_i\|x_i\|$
+(the Frobenius norm of the unfolding dominates the multilinear operator norm)
+and $\|P_v\|_{\mathrm{op}}\le1$. Consequently, from (1),
+\[
+ \bigl\|M_{v,j}^{(n)}\bigr\|_{\mathrm{op}}
+ \le\|\mu_v\|_F\prod_{i\ne j}\bigl\|(\text{slot }i\text{ value})^{(n)}\bigr\|
+ \le\|\mu_v\|_F\prod_{i\ne j}U_{c_i},
+\]
+which is exactly $A$'s slot gain, and $\gamma_v^{(n)}\le\max_n\gamma_v^{(n)}$.
+Induction on the postorder then gives $B_v^{(n)}\le A_v$. $\square$
+
+\paragraph{Boundary.}
+The certified chain is
+$\|E^{(n)}\|\le G_r^{(n)}\le B_r^{(n)}$ and
+$\max_nB_r^{(n)}\le\min(\bar B_r,\,A_r)$.
+None of these statements bounds $C_T^P(\eta)$ or any other extremal constant:
+they are instance-wise, for the given laws, projectors, ranks and batch. In
+particular they do not contradict the coherent-accumulation witness for the
+free-law class, and they say nothing about how $B_r$ behaves as depth grows
+--- empirically it still grows geometrically, at a rate governed by the
+step $\|M\delta\|\le\sigma_{\max}(M)\|\delta\|$ in (5), which is the only
+remaining source of slack in Lemma 1's otherwise exact expansion.
+Replacing that step by directional (subspace or ellipsoid) transport is the
+subject of M28 and is not claimed here.

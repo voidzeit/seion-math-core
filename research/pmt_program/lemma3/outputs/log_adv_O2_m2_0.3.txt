@@ -1,0 +1,1 @@
+{"order": "O2", "m": 2, "eta": 0.3, "min_margin_certified_norm": 0.0, "counterexample": false}

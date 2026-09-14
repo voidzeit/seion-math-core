@@ -1,0 +1,52 @@
+\section*{Exact $k=2$ constant for a contractive gated-planar repeated law}
+\label{sec:m17-gated-contraction}
+
+Let $P$ be an orthogonal projector, choose unit vectors
+$e_0\in\operatorname{Ran}P$ and $e_1\in\ker P$, and put $Q=I-P$.  Consider
+the repeated gated law
+\[
+  \mu_A(x,y)=A x\,\langle e_0,y\rangle,
+\]
+where $A$ maps the active plane
+$\operatorname{span}\{e_0,e_1\}$ into itself, $\|A\|\le M$, and
+$\|QAP\|\le\rho=\eta M$.  Use unit leaves $e_0$ at the binary chain's
+three leaves.  Define $C_{2,\mathrm{gate\text{-}contr}}^P(\eta)$ as the
+supremum of the projected error normalized by $\rho M$ over this class.
+
+\textbf{Theorem.}
+\[
+  \boxed{C_{2,\mathrm{gate\text{-}contr}}^P(\eta)=1
+  \qquad(0<\eta\le1).}
+\]
+
+\textbf{Proof.}  The ambient value is $A^2e_0$ and the recursively
+projected value is $PAPAe_0$.  Hence the projected-root difference is the
+exact identity
+\[
+  P A^2e_0-PAPAe_0=PAQ A e_0.
+\]
+Because $e_0\in\operatorname{Ran}P$,
+$\|Q A e_0\|\le\|QAP\|\le\rho$, while
+$\|PAQ\|\le\|A\|\le M$.  Therefore
+$E_{\mathrm{proj}}\le M\rho$.
+
+For sharpness, on the active plane take
+\[
+  A=\begin{pmatrix}0&M\\\rho&0\end{pmatrix}
+\]
+and let $A$ vanish on the orthogonal complement.  Since $0<\rho\le M$,
+$\|A\|=M$ and $\|QAP\|=\rho$.  Moreover
+$PAQ A e_0=M\rho e_0$, so the upper bound is attained.  The gate has norm
+one, hence $\|\mu_A\|=\|A\|$, and the same law is used at both nodes.
+\hfill$\square$
+
+The canonical orthogonal gated rotation is the special case
+$A=M R_\theta$ with $\sin\theta=\eta$; it has the narrower value
+$E_{\mathrm{proj}}=\eta^2M^2$.  The theorem shows that orthogonality of the
+active operator, rather than law sharing itself, is what prevents saturation
+for that narrower construction.
+
+\textbf{Boundary.}  This closes the explicitly defined contractive gated-planar
+subclass.  It does not claim a result for every possible meaning of
+``broader gated-planar'', for variable gates, arbitrary leaf directions, or
+non-planar shared laws.

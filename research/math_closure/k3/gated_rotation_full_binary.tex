@@ -1,0 +1,68 @@
+\section*{Exact formula for every ordered full-binary gated-rotation tree}
+\label{sec:gated-rotation-full-binary}
+
+Let $T$ be a finite ordered full-binary tree.  Use the same homogeneous
+gated-planar rotation law at every internal node, unit leaves equal to $e_0$,
+and a coordinate orthogonal projector whose range contains $e_0$ and whose
+complement contains the active coordinate $e_r$.  Write
+\[
+  c=\cos\theta=\sqrt{1-\eta^2},
+  \qquad \eta=\sin\theta,
+\]
+and let $k(T)$ be the number of internal nodes.  Define recursively
+\[
+  d(\text{leaf})=0, \qquad
+  d((A,B))=1+d(A),
+\]
+and
+\[
+  a(\text{leaf})=1, \qquad
+  a((A,B))=a(A)a(B)\cos(d(B)\theta).
+\]
+Then, in the $M=L_T=1$ normalization,
+\[
+  \boxed{
+  E_T^{\mathrm{proj}}(\eta)=
+  \left|a(T)\cos(d(T)\theta)-c^{k(T)}\right|.
+  }
+\]
+For a law scaled by $M$, the right-hand side is multiplied by $M^{k(T)}$.
+
+\textbf{Proof.}  Let $z_T$ denote the ambient value.  The gated law is
+\[
+  \mu(x,y)=R_\theta x\,\langle e_0,y\rangle,
+\]
+where $R_\theta$ is the active planar rotation.  Induction gives
+\[
+  z_T=a(T)R_\theta^{d(T)}e_0.
+\]
+Indeed, if $z_A=a(A)R_\theta^{d(A)}e_0$ and
+$z_B=a(B)R_\theta^{d(B)}e_0$, then
+\[
+  z_{(A,B)}=a(A)a(B)\cos(d(B)\theta)
+  R_\theta^{d(A)+1}e_0.
+\]
+The recursively projected value has the form $r_T=b(T)e_0$.  Since
+$P R_\theta e_0=c e_0$ and both projected child gates equal their $e_0$
+coordinates, induction gives
+\[
+  b(\text{leaf})=1, \qquad b((A,B))=c\,b(A)b(B),
+  \qquad b(T)=c^{k(T)}.
+\]
+Finally $Pz_T=a(T)\cos(d(T)\theta)e_0$, which proves the formula.
+The argument uses only the active two-plane and is therefore independent of
+the ambient dimension and projector rank, subject to the stated coordinate
+conditions.  The exact repository evaluator
+`gated_rotation_full_binary.py` verifies every ordered shape through four
+internal nodes at several dimension/rank pairs.  $\square$
+
+\textbf{Special cases.}  For the left comb, $a(T)=1$ and the formula reduces
+to $|T_k(c)-c^k|$.  For the three-node branching tree,
+$a(T)=c$ and $d(T)=2$, giving $\eta^2c$.  Thus the earlier closed forms are
+instances of one topology-wide recurrence.
+
+\textbf{Scope boundary.}  This closes the declared homogeneous gated-planar
+rotation family for every finite ordered full-binary topology.  It does not
+determine the global extremal constants for independent or arbitrary laws,
+nor does it prove the universal $(k-1)$ coefficient sharp for that larger
+class.

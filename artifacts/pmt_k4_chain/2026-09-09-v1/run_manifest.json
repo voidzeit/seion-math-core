@@ -1,0 +1,50 @@
+{
+  "run_id": "2026-09-09-v1",
+  "created_utc": "2026-09-09T05:07:19.302300+00:00",
+  "command": "\"C:\\Users\\Eliuth Chavero\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" scripts/run_pmt_k4_chain.py --output artifacts/pmt_k4_chain/2026-09-09-v1",
+  "branch": "codex/pmt-k4-chain-gram",
+  "commit": "9f1c6d291ef1bb84d2c50602e80090305538c321",
+  "dirty_worktree": "M .gitignore\n?? artifacts/pmt_k4_chain/\n?? experiments/configs/PMT_K4_CHAIN_GRAM_V1.json\n?? research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md\n?? research/math_closure/k4_exploration/CHAIN_PLAN.md\n?? research/math_closure/k4_exploration/chain_analysis.py\n?? research/math_closure/k4_exploration/chain_gram_sdp.py\n?? research/math_closure/k4_exploration/chain_search.py\n?? scripts/run_pmt_k4_chain.py\n?? src/seion_core/pmt/chain.py\n?? src/seion_core/pmt/phase.py\n?? tests/pmt/test_chain_gram.py",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "device": "cpu",
+  "precision": "float64",
+  "packages": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "cvxpy": "1.9.2",
+    "clarabel": "0.11.1",
+    "sympy": "1.14.0",
+    "pytest": "9.1.1",
+    "PyYAML": "6.0.3"
+  },
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "source_hashes": {
+    "scripts/run_pmt_k4_chain.py": "05189463e7c9acb4501300447ae87936b754ee2625980c62e11551c04cb2d5a7",
+    "experiments/configs/PMT_K4_CHAIN_GRAM_V1.json": "b98c63bafcb77020e99782bdfbd4f9edda6d6acf8a49f66c0ba813d48f1b8d6b",
+    "src/seion_core/pmt/__init__.py": "a9a6cf26419a77d6e53fec15d866d070800a572406d3d7d8126dfe459b79b4bd",
+    "src/seion_core/pmt/bounds.py": "5fdb361dc3fb6af78f53765bb0d5c989a01a58107b329fb002f580572079c548",
+    "src/seion_core/pmt/certificates.py": "d86e682b5bb72c01895efef002c3333e93bd583f95d3864ff4c4dc5bf2d27139",
+    "src/seion_core/pmt/chain.py": "c658cc7fa54c6cc1512314b2af7ef4f4ca5c3b48276e0d52357fb8d08957667c",
+    "src/seion_core/pmt/evaluation.py": "f4b7b782835f85696612dcaa19dea6526fefeb1782570640890aef72d117678f",
+    "src/seion_core/pmt/extremizers.py": "a403bcd60b022a8240424a0181ab706859d24696a8942f91a9cce0d907a72a59",
+    "src/seion_core/pmt/frontier.py": "dd7ecdccfc214f2aa2dfdaaef17da09a32591eb3845d70df0552be10e2b88b59",
+    "src/seion_core/pmt/model.py": "465b5e9866d7ea828236ac65fc49843d89e2702533536eb68f809c2b024da5d2",
+    "src/seion_core/pmt/phase.py": "ea2ac96b964fc001fdee74640322962f57474cdb27ff1bd7991c164c7ab8e721",
+    "research/math_closure/k4_exploration/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "research/math_closure/k4_exploration/certify_candidate.py": "f703d1d55a5a88609e35a5a6e1abf12d0bc17430bfbfdd105b9bac7e585b7606",
+    "research/math_closure/k4_exploration/chain_analysis.py": "4c41e85d967fc695e0bc7be23a9c65e8ed6fd460f6136ebf44f46c8769cfcafb",
+    "research/math_closure/k4_exploration/chain_gram_sdp.py": "28fb0edebb99a9b00dc3ba6c01ef42a3d08ae7d37ef88785ed6bcb9503e20493",
+    "research/math_closure/k4_exploration/chain_search.py": "8855ab940c7dc3ecbdf54ab333bb8adff0df1d359aaca8a052416f41014b033a",
+    "research/math_closure/k4_exploration/optimizer.py": "2ccbef27be1062e20611ce8c7981cc7a02c95a3fd54e71b54fb5d424dade6126",
+    "research/math_closure/k4_exploration/skeletons.py": "206a602487482ec521c4849070ffd52cde958a2d8090d48705dca89825808570",
+    "research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md": "c8fa2dc7ed4cbd4837c78acf4115a30bdf782f1e53896066ce0a6a862e3a5d36",
+    "papers/projected_multilinear_trees/CANONICAL_FORMALIZATION.md": "61e58c509828785a831d5ae1882d99f530bf91708db99eabb0f475b1e5caf5fa"
+  },
+  "status": "COMPLETE",
+  "authority": "observed",
+  "finished_utc": "2026-09-09T05:08:10.073450+00:00"
+}

@@ -1,0 +1,8 @@
+......................................                                   [100%]
+============================== warnings summary ===============================
+tests/pmt/test_chain_gram.py::test_gram_sdp_calibrates_known_controls_and_records_precision[3-1.0]
+  C:\Documents\metamaths\seion-math-core\research\math_closure\k4_exploration\chain_gram_sdp.py:47: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+    value = problem.solve(solver=solver, **options)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+38 passed, 1 warning in 2.18s

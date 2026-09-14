@@ -1,0 +1,41 @@
+{
+  "schema": "gate13.5-protocol-correction-v1",
+  "label": "PROTOCOL_CORRECTION_BEFORE_STAGE4",
+  "reason": "missing matched second-stage A0 control",
+  "status": "COMPLETED_FOR_SEED1_STOP_BEFORE_STAGE4",
+  "test_opened": false,
+  "stage4_launched": false,
+  "pretraining_baseline_seed1": {
+    "execution_id": "fd68dd16d9ca4bac",
+    "role": "PRETRAIN_BASE_SEED1",
+    "best_checkpoint": "campaigns/gate13/gate13_5/runs/pilot/seed1_A0/best.pt",
+    "artifacts_preserved": true
+  },
+  "matched_control_seed1": {
+    "execution_id": "78db52b2dac24f4d",
+    "config_id": "A0",
+    "role": "MATCHED_WARM_START_CONTROL",
+    "configuration_id": "e6cfbb2384bf89b2",
+    "source_checkpoint_sha256": "2622dfd5cc699f0b71c1e57deb23c929cbfe88bd9c402355d55c35872c079e0d",
+    "status": "COMPLETED",
+    "best_valid_epoch": 14,
+    "best_valid_mrr": 0.3197874426841736,
+    "global_step": 31890,
+    "test": null
+  },
+  "seeds_2_and_3_protocol": [
+    "Train a seed-specific pretraining baseline B_s.",
+    "Freeze B_s/best.pt.",
+    "Launch A0, A1, A2, and A3 from the same B_s checkpoint.",
+    "Reset the optimizer identically for all four arms.",
+    "Use the same DataLoader generator seed and batch order for all four arms."
+  ],
+  "branch_hyperparameters_changed": false,
+  "corrected_contrasts": "pilot_contrasts_corrected.json",
+  "corrected_audit": "pilot_epoch_audit_corrected.json",
+  "prior_contrasts": {
+    "status": "INVALID_FOR_CAUSAL_ATTRIBUTION",
+    "control_execution_id": "fd68dd16d9ca4bac",
+    "control_role": "PRETRAIN_BASE_SEED1"
+  }
+}

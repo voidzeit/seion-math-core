@@ -1,0 +1,78 @@
+{
+  "schema": "gate13.5-stage4-residual-audit-v2",
+  "created_utc": "2026-08-06T08:00:00Z",
+  "interpretation": "test_closed_matched_residual_screening; seed2/3 pretraining baselines and matched second-stage A0 controls are recorded separately",
+  "protocol_correction": {
+    "status": "PROTOCOL_CORRECTION_BEFORE_STAGE4_CLOSEOUT",
+    "reason": "seed2_A0 and seed3_A0 were pretraining sources B2/B3, not matched second-stage controls",
+    "pretraining_roles": {"seed2_A0": "PRETRAIN_BASE_SEED2", "seed3_A0": "PRETRAIN_BASE_SEED3"},
+    "matched_controls_completed": true,
+    "test_opened": false
+  },
+  "commit": "f52f898b8e6e9a7bcf637f8b046107c19b511fb3",
+  "configuration": {
+    "dataset": "FB15K-237_full",
+    "epochs": 15,
+    "final_epoch": 14,
+    "global_step": 31890,
+    "batch_size": 256,
+    "gate_g_max": 0.5,
+    "path_backend": "batched",
+    "path_selector_mode": "budgeted_bfs",
+    "path_rank": 16,
+    "path_layers": 2,
+    "path_max_neighbors": 16,
+    "path_proj_rank": 0,
+    "evaluator": "seion_kgr.evaluate.evaluate (blocked filtered evaluator)",
+    "test_eval_skipped": true
+  },
+  "runs": {
+    "seed1": {
+      "A0_matched": {"execution_id": "78db52b2dac24f4d", "role": "MATCHED_WARM_START_CONTROL", "best_valid_mrr": 0.3197874426841736, "final_valid_mrr": 0.3197874426841736, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "52b323bc2ab36c6f294979029b77bb86d5c716d11062ab239afcdeb25b874864", "test_closed": true},
+      "A1": {"execution_id": "9a60519a1ff34f57", "best_valid_mrr": 0.36123332381248474, "final_valid_mrr": 0.36123332381248474, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "bb96473580d6f15fd070b841c0c4b03aa6c2f705e9b4feba7963c83d925b435b", "test_closed": true},
+      "A2": {"execution_id": "688496ecfa8b4226", "best_valid_mrr": 0.3561996519565582, "final_valid_mrr": 0.3561996519565582, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "889e69b38ffa71439af71b280eb0f1a9ce2e61c348e3c55435be3c2917804c38", "test_closed": true},
+      "A3": {"execution_id": "48778a1093c74ea9", "best_valid_mrr": 0.3591277003288269, "final_valid_mrr": 0.3591277003288269, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "f0ab486fb1287c1ae8e5a0bf0827aeb976e301ac705e9db7707462a488a35551", "test_closed": true}
+    },
+    "seed2": {
+      "pretrain_baseline_B2": {"execution_id": "71077436cc804d01", "role": "PRETRAIN_BASE_SEED2", "checkpoint_sha256": "031ac2436c6499fc41af3bd9fdc2009ec3c61e3176ad75095df0c48fc4156435", "preserved": true},
+      "A0_matched": {"execution_id": "cfe0d199d1be4bf1", "role": "MATCHED_STAGE4_CONTROL", "best_valid_mrr": 0.32284948229789734, "final_valid_mrr": 0.32284948229789734, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "84dcf47fd80716363470c5226f6e689d93087813545da51a4010fd1447b868b9", "wall_sec": 486.179386138916, "peak_vram_mb": 124.55936, "test_closed": true},
+      "A1": {"execution_id": "787153e119514947", "best_valid_mrr": 0.36240822076797485, "final_valid_mrr": 0.36240822076797485, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "dc277d8fc08cfe13172781c5e63b8ec6f35f84c0a9997fbc3f747511cdec3698", "test_closed": true},
+      "A2": {"execution_id": "720e18f7fb0a419d", "best_valid_mrr": 0.35436365008354187, "final_valid_mrr": 0.35436365008354187, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "63f44923c9aee1a3316f6f1e13a996c7fcc33dfd322677e7257c3f0e8bc6a7e0", "test_closed": true},
+      "A3": {"execution_id": "3b998c7247d14c34", "best_valid_mrr": 0.3583356738090515, "final_valid_mrr": 0.3583356738090515, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "f94b13e346279f99b689f52bdc9bf469d2e6f5f682e024475381d9f3b4ca5732", "test_closed": true}
+    },
+    "seed3": {
+      "pretrain_baseline_B3": {"execution_id": "f9fe03afa57a4387", "role": "PRETRAIN_BASE_SEED3", "checkpoint_sha256": "9ab6389a1c8a2bd7b92d83b613b69362cb11db4ae373d7688b1ac8bfcbebcb8a", "preserved": true},
+      "A0_matched": {"execution_id": "5fbdad38040f41bb", "role": "MATCHED_STAGE4_CONTROL", "best_valid_mrr": 0.321262001991272, "final_valid_mrr": 0.321262001991272, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "08c52d8cb604dc587eb4d623a491cee7ec29ab5a92fc988ba0c7f8bc34320c97", "wall_sec": 524.3228406906128, "peak_vram_mb": 124.55936, "test_closed": true},
+      "A1": {"execution_id": "4d9b75c8000345bb", "best_valid_mrr": 0.3592849373817444, "final_valid_mrr": 0.3592849373817444, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "6cb5d87c567a6dbd75d1bd1c6a497231d04a930d9ae602606511e5a9e5a982c2", "test_closed": true},
+      "A2": {"execution_id": "0f3996d1bad84505", "best_valid_mrr": 0.3545234203338623, "final_valid_mrr": 0.3545234203338623, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "30c7a79dbb2d4dc4f06e6674d815ceb53830d1f040cb20c6e6fff28629a5af37", "test_closed": true},
+      "A3": {"execution_id": "277ecb72b5b345ed", "best_valid_mrr": 0.3572535216808319, "final_valid_mrr": 0.3572535216808319, "best_valid_epoch": 14, "epochs": 15, "checkpoint_sha256": "f28b19f4517a66ec0cd840f65b925d3254274cac5109fb06e784587ae89141e9", "test_closed": true}
+    }
+  },
+  "contrasts_final_valid_mrr": {
+    "seed1": {"path_on_base": 0.04144588112831116, "seion_on_base": 0.036412209272384644, "path_with_seion": 0.0029280483722686768, "seion_with_path": -0.002105623483657837, "combined": 0.03934025764465332, "interaction": -0.03851783275604248},
+    "seed2": {"path_on_base": 0.039558738470077515, "seion_on_base": 0.03151416778564453, "path_with_seion": 0.0039720237255096436, "seion_with_path": -0.00407254695892334, "combined": 0.035486191511154175, "interaction": -0.03558671474456787},
+    "seed3": {"path_on_base": 0.03802293539047241, "seion_on_base": 0.03326141834259033, "path_with_seion": 0.0027301013469696045, "seion_with_path": -0.0020314157009124756, "combined": 0.035991519689559937, "interaction": -0.03529283404350281}
+  },
+  "contrast_validity": {
+    "seed1": {"basis": "matched_A0", "status": "VALID_FOR_RESIDUAL_ATTRIBUTION"},
+    "seed2": {"basis": "matched_A0", "status": "VALID_FOR_RESIDUAL_ATTRIBUTION", "pre_correction_A0_status": "INVALID_FOR_CAUSAL_ATTRIBUTION"},
+    "seed3": {"basis": "matched_A0", "status": "VALID_FOR_RESIDUAL_ATTRIBUTION", "pre_correction_A0_status": "INVALID_FOR_CAUSAL_ATTRIBUTION"}
+  },
+  "integrity": {
+    "all_runs_have_15_unique_epochs": true,
+    "all_runs_final_epoch_14": true,
+    "all_runs_global_step_31890": true,
+    "all_metrics_finite": true,
+    "all_test_values_null": true,
+    "all_test_row_counts_zero": true,
+    "dataset_hashes_unchanged": true,
+    "paired_initialization_source_per_seed": true,
+    "matched_a0_controls_seed2_3": true,
+    "best_checkpoint_selection_matches_epoch_argmax": true,
+    "best_mrr_checkpoint_metadata_present": true,
+    "rng_contract_for_exact_resume": "incomplete; checkpoint exposes torch, numpy, and seed keys, but not separately verified Python/CUDA/DataLoader-generator states"
+  },
+  "runtime_boundary": "Predictive metrics are operationally valid under per-process state isolation; the parallel Stage4 wall times remain confounded by GPU contention and are not comparable efficiency evidence.",
+  "scientific_boundary": "These are validation-only matched residual screening observations; no test result, finalist selection, or confirmatory causal claim is authorized.",
+  "standalone_status": "PAUSED_UNTIL_MATCHED_STAGE4_FREEZE"
+}

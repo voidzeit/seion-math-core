@@ -1,0 +1,21 @@
+id: dag_certificate_probe_2026-08-09
+status: exploratory_not_preregistered
+objective: >-
+  Validate the shared-subexpression global domain certificate and its exact
+  finite rank allocator on a held-out tensor-network DAG.
+topology: shared_diamond
+seeds: 20
+fit_batch_size: 100
+eval_batch_size: 300
+leaf_domain: rowwise_norm_at_most_one
+budgets: [4, 6, 8, 10, 12, 14, 16]
+methods:
+  - global_certificate_optimal
+  - rank_aware_certificate_optimal
+  - uniform
+authoritative_implementation: applications/adaptive_tensor_network/experiments/run_dag_certificate_probe.py
+raw_output: applications/adaptive_tensor_network/results/dag_certificate_probe_2026-08-09.json
+limitations:
+  - one finite synthetic DAG topology
+  - Frobenius norm operator enclosures are conservative
+  - no universal allocator superiority claim

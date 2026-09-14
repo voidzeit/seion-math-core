@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{09 --- Negative Results, Limitations, and Open Problems}{SEION-KGR v26 MAX}{Purpose: state plainly what did not work, what remains unresolved, and what must not be claimed. This document exists so that the strongest-looking result elsewhere in this package cannot be read in isolation.}
+
+\tableofcontents
+
+\section{Hypotheses not supported by this campaign's evidence}
+No hypothesis from \texttt{preregistration.md} (H1--H4) is confirmed or refuted by confirmatory
+evidence in this campaign --- none was collected (\S\ref{sec:scope}). What follows are honestly
+labeled screening/exploratory/engineering findings only.
+
+\section{The path-reasoner residual gate did not open in a real training run}
+\label{sec:gate}
+A 40-epoch run on a small synthetic structured graph (16 entities, TuckER base + path reasoner,
+dim 12) left the path branch's residual gate $\sigma(\gamma_r)$ at essentially its near-zero
+init value ($0.0180$ vs. init $0.0180$) --- the path branch had negligible measured influence on
+the final score throughout training. Consequently, a queried-edge-leakage negative control on the
+same setup showed a null effect size (leaky MRR $=$ clean MRR exactly, $0.2961$), which technically
+satisfies "did not get worse" but is a weak, non-differentiating result, investigated rather than
+accepted at face value (\texttt{campaigns/gate12/negative\_controls\_results.json}).
+
+\textbf{This is flagged as assumption A25 (OPEN) in the assumption ledger.} It is a genuine open
+question for any future Gate 12 confirmatory campaign: does the near-zero-init residual router
+open meaningfully within realistic training budgets on real benchmark data, or does the gate need
+a separate learning-rate schedule, a warm-start, or a different initialization to ever contribute?
+If the gate systematically fails to open, the entire premise of "start as baseline, only grow if
+helpful" collapses into "never grows" --- indistinguishable from the branch not existing at all.
+This must be checked before any claim that the path/seionic/E8 branches improve MRR.
+
+\section{The path reasoner does not scale to full-dataset batches within this session's compute budget}
+\label{sec:scale}
+A live timing probe (A3 configuration: TuckER + path reasoner + seionic branch, full WN18RR,
+batch\_size 256, 1 epoch, GPU) ran over 8 minutes without completing training a single epoch, and
+was stopped. A CPU retry with a 5,000-triple subsample and batch\_size 128 was used instead for
+Tier~0's A3 ladder point (\S\ref{sec:scope}); see \texttt{preregistration.md} \S11 for the logged
+deviation. The root cause is architectural, not a bug: \texttt{PathReasoner.run\_batch\_frontiers}
+is a per-sample Python loop (BFS frontier expansion), which does not vectorize across the batch
+dimension the way the base experts' pure-GEMM scoring does. \textbf{This is a real, unresolved
+engineering limitation, not a smoke-test inconvenience} --- any future Gate 12 confirmatory
+campaign on full FB15K-237/WN18RR with the path reasoner enabled needs either a batched/vectorized
+BFS reimplementation or a much longer compute budget (hours, not minutes, per configuration) before
+it can be run at the scale the mandate specifies.
+
+\subsection{GPU was not faster for this workload}
+The same A3 configuration on GPU (kernel-launch-overhead-bound, many tiny per-sample tensor ops)
+did not complete within the same wall-clock budget where a CPU run made visible progress. This is
+consistent with, not contrary to, the finite-tree track's own prior finding (measured
+$3.2$--$3.5\times$ GPU slowdown for small operations in a 208-configuration sweep,
+\texttt{numerical\_study}) and the mandate's own explicit warning against assuming GPU always wins.
+Device selection for path-reasoner-enabled runs should default to CPU, or a properly batched
+GPU-friendly reimplementation is needed --- neither is done in this campaign.
+
+\section{Certification coverage is honestly near-zero for any compressed model}
+\S\ref{sec:cert-limits}(referencing 07): the certification chain (Phase B4) only ever certifies
+the case where no rank-reducing projector and no nonlinear envelope are in the score path. For any
+model with the path reasoner enabled (which always introduces the LayerNorm+tanh envelope),
+certified coverage is exactly $0\%$ --- not a bug, the honest and correct output of a chain that
+refuses to certify what it cannot check. Closing this gap requires either a checked operator-norm
+bound on closure leakage (assumption A4, still not granted anywhere in this repository) or a
+checked Lipschitz constant for the nonlinear envelope (A6, likewise not granted). Neither is solved
+in this campaign.
+
+\section{E8's causal contribution remains entirely open}
+The E8 residual branch and its four matched controls are now implemented and unit-tested
+(Phase B3), including two tests running the actual real E8 kernel locally. \textbf{No
+E8-vs-controls statistical comparison on any benchmark dataset was run in this campaign.} Any
+future claim that E8's specific structure causes a measured gain requires running all five
+variants under matched seeds/schedule/compute and applying the preregistered statistical test
+(\texttt{preregistration.md} \S8) --- not attempted here, and explicitly \OpenC\ in the claim
+matrix (CLM\_KGR\_018).
+
+\section{Scope of what this campaign's Phase C evidence actually is}
+\label{sec:scope}
+\texttt{campaigns/gate12/tier0/}: A0 (TuckER-only) at full dataset scale, 2 seeds, both FB15K-237
+and WN18RR; A3 (TuckER + path + seionic) on a 5,000-triple subsample, 2 seeds, both datasets. This
+is \textbf{screening-tier, not confirmatory} --- 2 seeds is explicitly insufficient for any
+variance claim (reported per-seed, never as mean$\pm$std as if that were meaningful), the ablation
+ladder covers only 2 of the preregistered 13 points, and no dataset was run at the full
+preregistered epoch budget for A3. See \texttt{04\_gate12\_confirmatory\_benchmark\_report.tex} for
+the numbers themselves, reported with this scope caveat repeated, not just stated once here.
+
+\section{What must not be claimed from this campaign}
+\begin{itemize}
+  \item No SOTA claim. No protocol-compatible external-literature comparison was performed.
+  \item No claim that the path reasoner, seionic branch, projection, rank controller, or E8
+        residual \emph{causally improves} MRR on any benchmark dataset --- Tier~0's A0-vs-A3
+        comparison is 2-seed, reduced-scale, and (per \S\ref{sec:gate}) confounded by the gate
+        possibly never opening.
+  \item No certified compression claim for any model using the path reasoner.
+  \item No claim about GPU being faster than CPU for this architecture in general.
+\end{itemize}
+
+\end{document}

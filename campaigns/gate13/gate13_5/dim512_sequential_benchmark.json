@@ -1,0 +1,16 @@
+{
+  "schema": "gate13.5-dim512-sequential-benchmark-v1",
+  "status": "INCOMPLETE_RUNTIME_BENCHMARK",
+  "execution_id": "9c369811331d4c84",
+  "configuration_id": "73d1c32c6cbb726b",
+  "seed": 1,
+  "dim": 512,
+  "batch_size": 256,
+  "completed_epochs": [0],
+  "epoch_zero_train_wall_sec": 185.90467643737793,
+  "observed_peak_vram_mb": 4942,
+  "test_opened": false,
+  "termination": "controlled_stop_before_full_matrix_due_to_excessive_sequential_runtime",
+  "artifacts_preserved": true,
+  "note": "dim=512 fit the 24 GB VRAM envelope. A second high-dimensional attempt uses the same dim with a larger matched batch size to improve sequential throughput; no numerical artifact from this benchmark is reused as a scientific run."
+}

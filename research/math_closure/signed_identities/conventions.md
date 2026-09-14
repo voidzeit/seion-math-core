@@ -36,3 +36,9 @@ for these identities and must not be conflated:
    — the source of the `derivative_free_constant` values in
    `constants_table.csv`, a genuine (if not exhaustive) search over the
    admissible class of arbitrary bounded multilinear laws.
+
+The restricted zero result for the projected Jacobiator is now a registered
+theorem, with exact proof and evaluator check in
+`structured_gated_rotation_jacobiator.tex` and
+`structured_gated_rotation_jacobiator.py`. It must not be conflated with the
+generic-law extremal search.

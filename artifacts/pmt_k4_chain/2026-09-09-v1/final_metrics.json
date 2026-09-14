@@ -1,0 +1,13 @@
+{
+  "reproduction_max_absolute_residual": 6.661338147750939e-16,
+  "reproduction_control_count": 42,
+  "candidate_count": 54,
+  "candidate_optimizer_nonconverged_count": 54,
+  "candidate_inadmissible_after_global_rescale_count": 0,
+  "candidate_max_excess_over_formula": -6.150639109137046e-09,
+  "sdp_max_k4_formula_gap_absolute": 2.4004500609464685e-09,
+  "sdp_warning_count": 3,
+  "sdp_minimum_psd_eigenvalue": -8.278287844859098e-10,
+  "finite_eta_sharpness_authority": "ADVISORY_ANALYTIC_PROOF_NOT_SOLVER_CERTIFICATION",
+  "topology_comparison": "OPEN; no equality inferred from chain"
+}

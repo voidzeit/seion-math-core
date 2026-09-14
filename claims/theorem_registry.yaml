@@ -1,4 +1,15 @@
 theorems:
+  - id: PROPOSAL_PMT_K4_CHAIN_MIXED_FINITE_ETA_20260909
+    statement: "Proposed sharp chain/mixed constant: sqrt(9-15 eta^2+7 eta^4) for eta<=sqrt(3/7); 9/(7 eta) above. In particular a_chain=5/2."
+    dependencies: [THM_PMT_W3_FIXED_ETA_V1]
+    hypotheses: [independent node laws, finite-dimensional real or complex Hilbert spaces, orthogonal projectors, ambient leaves, global projected-input closure budget, chain or mixed binary topology]
+    proof_location: research/math_closure/k4_exploration/CHAIN_GRAM_REPORT.md
+    implementation: research/math_closure/k4_exploration/chain_analysis.py
+    numerical_verification: tests/pmt/test_chain_gram.py
+    epistemic_status: CONJECTURE
+    proof_status: COMPLETE_ADVISORY_PROOF_DRAFT_PENDING_INDEPENDENT_REVIEW
+    approval_status: NOT_APPROVED
+    limitations: [existing OPEN_PMT classification preserved pending review, branch-below equality not established, no novelty claim]
   - id: THM_STANDARD_CURVATURE_ASSOCIATOR_DIFFERENCE_V1
     statement: "R_standard(x,y)z = A(y,x,z)-A(x,y,z)."
     dependencies: [DEF_NARY_LAW_V1]
@@ -6,6 +17,15 @@ theorems:
     proof_location: docs/theorems/curvature_associator.md
     symbolic_verification: artifacts/symbolic/curvature_identity.json
     epistemic_status: PROVED
+  - id: THM_AFFINE_CONNECTION_TORSION_ASSOCIATOR_V1
+    statement: "For a finite-dimensional square bilinear product and the affine connection nabla_XY=D_XY+X star Y, the curvature on constant vectors is R_affine(x,y)=[L_x,L_y] and R_affine(x,y)z=T(x,y) star z-A^-(x,y,z)."
+    dependencies: [DEF_NARY_LAW_V1]
+    hypotheses: [finite-dimensional square bilinear product, standard flat derivative on the associated affine space, stated associator and curvature conventions]
+    proof_location: docs/theorems/affine_connection_torsion_associator.md
+    implementation: src/seion_core/geometry/affine_connection.py
+    numerical_verification: tests/unit/test_affine_connection.py
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+    limitations: ["algebraic finite-dimensional identity", "no metric or physical interpretation", "distinct from R_standard=[L_x,L_y]-L_[x,y]"]
   - id: THM_COHOMOLOGY_DESCENT_FINITE_V1
     statement: "T d = d T implies a well-defined action on finite cohomology."
     dependencies: [DEF_NARY_LAW_V1]
@@ -14,3 +34,37 @@ theorems:
     symbolic_verification: null
     epistemic_status: PROVED_UNDER_ASSUMPTIONS
 
+  - id: THM_PMT_ROOT_ERROR_DECOMPOSITION_V1
+    statement: "For a finite recursively projected multilinear tree with an orthogonal root projector, ambient root error squared equals projected-root error squared plus normal-root error squared."
+    dependencies: [DEF_NARY_LAW_V1]
+    hypotheses: [finite-dimensional Hilbert spaces, orthogonal projectors, recursively projected root lies in the root projector range]
+    proof_location: research/CANONICAL_W3_PROOF.md
+    implementation: src/seion_core/pmt/evaluation.py
+    symbolic_verification: tests/pmt/test_pmt_core.py
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+
+  - id: THM_PMT_PROJECTED_K_MINUS_ONE_V1
+    statement: "For k internal vertices, uniform operator norm bound M, projected-input closure budget rho, and leaf product L_T, E_T^P <= (k-1) rho M^(k-1) L_T."
+    dependencies: [THM_PMT_ROOT_ERROR_DECOMPOSITION_V1]
+    hypotheses: [finite ordered rooted tree, finite-dimensional real or complex Hilbert spaces, orthogonal projectors, projected-input closure convention]
+    proof_location: research/CANONICAL_W3_PROOF.md
+    implementation: src/seion_core/pmt/bounds.py
+    numerical_verification: tests/research_v3/regression/test_projected_k_minus_one.py
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+
+  - id: THM_PMT_W3_FIXED_ETA_V1
+    statement: "For the declared independent-law finite-dimensional k=3 classes, the normalized projected-root constant is the piecewise W_3(eta) function and the analytic chain/branch witnesses attain it."
+    dependencies: [THM_PMT_PROJECTED_K_MINUS_ONE_V1]
+    hypotheses: [0 < eta <= 1, independent node laws, orthogonal projectors, projected-input closure convention, chain or branching skeleton with the finite-arity reduction]
+    proof_location: research/CANONICAL_W3_PROOF.md
+    implementation: src/seion_core/pmt/bounds.py;src/seion_core/pmt/extremizers.py
+    numerical_verification: tests/pmt/test_pmt_core.py;tests/math_closure/test_m14_exact_chain_constant.py;tests/math_closure/test_m15_exact_branching_constant.py
+    epistemic_status: PROVED_UNDER_ASSUMPTIONS
+
+  - id: OPEN_PMT_FIXED_ETA_K4_PLUS_V1
+    statement: "The exact independent-law fixed-eta projected-root constant remains open for k>=4; numerical search records cannot upgrade this status."
+    dependencies: [THM_PMT_PROJECTED_K_MINUS_ONE_V1]
+    hypotheses: [finite ordered topology, finite-dimensional Hilbert spaces, orthogonal projectors]
+    proof_location: research/math_closure/k4_exploration/PMT_K4_FRONTIER.md
+    implementation: src/seion_core/pmt/frontier.py
+    epistemic_status: OPEN_PROBLEM

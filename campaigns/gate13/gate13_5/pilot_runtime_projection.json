@@ -1,0 +1,14 @@
+{
+  "schema": "gate13.5-stage3-runtime-projection-v1",
+  "generated_utc": "2026-08-06T03:05:04.6282906Z",
+  "commit": "f52f898b8e6e9a7bcf637f8b046107c19b511fb3",
+  "assumption": "Stage 4 uses the same 15-epoch A0-A3 matrix for three seeds, sequentially, with comparable hardware and no test evaluation during training",
+  "stage3_wall_sec": {"A0":657.9917161464691,"A1":3030.161679506302,"A2":879.9419901371002,"A3":3592.8607907295227,"total":8160.956176919394},
+  "stage3_total_hours": 2.266932271366498,
+  "stage4_projection_sec": 24482.86853075818,
+  "stage4_projection_hours": 6.795241314099494,
+  "stage4_projection_note": "3 x the observed A0+A1+A2+A3 seed-1 wall-time sum; excludes one-time orchestration overhead and any reruns",
+  "peak_vram_observed_mb": {"A0":124.55936,"A1":468.911104,"A2":137.767936,"A3":467.5456},
+  "runtime_risk": "A3 is the limiting configuration at approximately 59.88 minutes per 15-epoch run; retain sequential single-GPU scheduling",
+  "test_closed": true
+}

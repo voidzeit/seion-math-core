@@ -1,0 +1,135 @@
+{
+  "status": "V1B_FIXED_SIZE_EXTENSION_COMPLETE",
+  "extension_preregistered_gate": "MIXED_OR_INCONCLUSIVE",
+  "combined_decision": "DOMAIN_LIMITED_FO_ADVANTAGE_AT_M10_NO_GENERAL_GO",
+  "extension_only": [
+    {
+      "sample": "v1b_new_seeds",
+      "m": 8,
+      "threshold": "threshold_static",
+      "seed_count": 30,
+      "mean_normalized_delta_threshold_minus_fo": -0.0061721172888189076,
+      "median_normalized_delta_threshold_minus_fo": 0.012684218262381527,
+      "ci95": [
+        -0.051960192763738144,
+        0.03379630159982801
+      ],
+      "fo_win_count": 17,
+      "threshold_win_count": 13,
+      "verdict": "INCONCLUSIVE"
+    },
+    {
+      "sample": "v1b_new_seeds",
+      "m": 8,
+      "threshold": "threshold_adaptive",
+      "seed_count": 30,
+      "mean_normalized_delta_threshold_minus_fo": -0.01077892386282239,
+      "median_normalized_delta_threshold_minus_fo": -0.009063141552118788,
+      "ci95": [
+        -0.05797995012050525,
+        0.031318883803459825
+      ],
+      "fo_win_count": 14,
+      "threshold_win_count": 16,
+      "verdict": "INCONCLUSIVE"
+    },
+    {
+      "sample": "v1b_new_seeds",
+      "m": 10,
+      "threshold": "threshold_static",
+      "seed_count": 30,
+      "mean_normalized_delta_threshold_minus_fo": 0.05405047268204954,
+      "median_normalized_delta_threshold_minus_fo": 0.06062162828717532,
+      "ci95": [
+        -0.0002270080782418468,
+        0.10103867985733428
+      ],
+      "fo_win_count": 25,
+      "threshold_win_count": 5,
+      "verdict": "INCONCLUSIVE"
+    },
+    {
+      "sample": "v1b_new_seeds",
+      "m": 10,
+      "threshold": "threshold_adaptive",
+      "seed_count": 30,
+      "mean_normalized_delta_threshold_minus_fo": 0.046567501599564215,
+      "median_normalized_delta_threshold_minus_fo": 0.05344584012431294,
+      "ci95": [
+        -0.005124270454813443,
+        0.08907754567116247
+      ],
+      "fo_win_count": 23,
+      "threshold_win_count": 7,
+      "verdict": "INCONCLUSIVE"
+    }
+  ],
+  "pooled_same_design_descriptive": [
+    {
+      "sample": "pooled",
+      "m": 8,
+      "threshold": "threshold_static",
+      "seed_count": 35,
+      "mean_normalized_delta_threshold_minus_fo": 0.0031694343070435703,
+      "median_normalized_delta_threshold_minus_fo": 0.0196608802454673,
+      "ci95": [
+        -0.03842408492607431,
+        0.04064200264007428
+      ],
+      "fo_win_count": 21,
+      "threshold_win_count": 14,
+      "verdict": "INCONCLUSIVE"
+    },
+    {
+      "sample": "pooled",
+      "m": 8,
+      "threshold": "threshold_adaptive",
+      "seed_count": 35,
+      "mean_normalized_delta_threshold_minus_fo": -0.00209512302163847,
+      "median_normalized_delta_threshold_minus_fo": 0.01773008548634335,
+      "ci95": [
+        -0.044666626957816556,
+        0.036858409818022846
+      ],
+      "fo_win_count": 18,
+      "threshold_win_count": 17,
+      "verdict": "INCONCLUSIVE"
+    },
+    {
+      "sample": "pooled",
+      "m": 10,
+      "threshold": "threshold_static",
+      "seed_count": 35,
+      "mean_normalized_delta_threshold_minus_fo": 0.05935601142430881,
+      "median_normalized_delta_threshold_minus_fo": 0.06314798537292717,
+      "ci95": [
+        0.009856099973307669,
+        0.10336007714382413
+      ],
+      "fo_win_count": 29,
+      "threshold_win_count": 6,
+      "verdict": "FO_WINS"
+    },
+    {
+      "sample": "pooled",
+      "m": 10,
+      "threshold": "threshold_adaptive",
+      "seed_count": 35,
+      "mean_normalized_delta_threshold_minus_fo": 0.05132011579220995,
+      "median_normalized_delta_threshold_minus_fo": 0.054163973102097855,
+      "ci95": [
+        0.004388864736384715,
+        0.09144219068104013
+      ],
+      "fo_win_count": 27,
+      "threshold_win_count": 8,
+      "verdict": "FO_WINS"
+    }
+  ],
+  "interpretation": [
+    "V1B was declared only after V1 was inconclusive and is reported separately.",
+    "The pooled rows combine identical fixed-basis designs for precision but do not rewrite the V1 result.",
+    "Positive delta means lower FO terminal error; exact oracle cancels from the paired contrast.",
+    "No screened-rollout gate is opened because FO did not achieve the predeclared general GO at both sizes."
+  ]
+}

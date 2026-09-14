@@ -1,0 +1,54 @@
+{
+  "generated_utc": "2026-09-09T05:18:48.290116+00:00",
+  "claim_id": "PROPOSAL_PMT_K4_CHAIN_MIXED_FINITE_ETA_20260909",
+  "runs": [
+    {
+      "run": "2026-09-09-v1",
+      "path": "artifacts\\pmt_k4_chain\\2026-09-09-v1",
+      "manifest_sha256": "7f0faaedcc1b6af2a98de0da96749dd4ae63b1499dde1980c9442f02f5412871",
+      "hash_manifest_sha256": "9963fb914a85fdba2b1be514892ba5c75966403e0105f3ce9adc61fa59f11f44",
+      "verified_artifact_count": 8,
+      "metrics": {
+        "reproduction_max_absolute_residual": 6.661338147750939e-16,
+        "reproduction_control_count": 42,
+        "candidate_count": 54,
+        "candidate_optimizer_nonconverged_count": 54,
+        "candidate_inadmissible_after_global_rescale_count": 0,
+        "candidate_max_excess_over_formula": -6.150639109137046e-09,
+        "sdp_max_k4_formula_gap_absolute": 2.4004500609464685e-09,
+        "sdp_warning_count": 3,
+        "sdp_minimum_psd_eigenvalue": -8.278287844859098e-10,
+        "finite_eta_sharpness_authority": "ADVISORY_ANALYTIC_PROOF_NOT_SOLVER_CERTIFICATION",
+        "topology_comparison": "OPEN; no equality inferred from chain"
+      },
+      "status": "NUMERICAL_EVIDENCE_WITH_ADVISORY_ANALYTIC_PROOF"
+    },
+    {
+      "run": "2026-09-09-v2",
+      "path": "artifacts\\pmt_k4_chain\\2026-09-09-v2",
+      "manifest_sha256": "ff36ea2e3486d07a321e8c5bae0d2ff4d12ace1783dea2dd1aed63234be4caf8",
+      "hash_manifest_sha256": "58ac09db431fc4fa52bc4e562ec01503b5eeaed7aa4ad1ea1938e232568d8c32",
+      "verified_artifact_count": 51,
+      "metrics": {
+        "reproduction_max_absolute_residual": 6.661338147750939e-16,
+        "reproduction_control_count": 42,
+        "candidate_count": 24,
+        "candidate_optimizer_nonconverged_count": 1,
+        "candidate_inadmissible_after_global_rescale_count": 0,
+        "candidate_max_excess_over_formula": -2.6033619704435296e-10,
+        "sdp_max_k4_formula_gap_absolute": 2.4004500609464685e-09,
+        "sdp_warning_count": 3,
+        "sdp_minimum_psd_eigenvalue": -8.278287844859098e-10,
+        "finite_eta_sharpness_authority": "ADVISORY_ANALYTIC_PROOF_NOT_SOLVER_CERTIFICATION",
+        "topology_comparison": "OPEN; no equality inferred from chain"
+      },
+      "status": "NUMERICAL_EVIDENCE_WITH_ADVISORY_ANALYTIC_PROOF"
+    }
+  ],
+  "generator": "scripts/summarize_pmt_k4_chain.py",
+  "generator_sha256": "310833f58517a95e18c0678c3ad7b409bd76723bc1e1b9c59df2d3973d657fc6",
+  "proof_report_sha256": "6f6953395a17228dccc23fd0d6446868b82b088fa2b42f1602968b214982d0f4",
+  "regression_log_sha256": "11e94e7914b0c9b32b63dee54df87ec23f404c49a0d2956775f439f1ed8810b5",
+  "governance_tests_log_sha256": "01e30fe8dd19e10bd3ee8076322f642492998cd31b5f6b97477d6727bdf6f3fa",
+  "topology_controls_sha256": "0f347ac2fe72c5708ac530a293bbc6755565d6f10b0b892d1a408ce8e2936f38"
+}

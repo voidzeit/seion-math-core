@@ -1,0 +1,44 @@
+{
+  "D6_iid": {
+    "I_neg_energy": 0.48665934186437865,
+    "H_neg_energy": 0.5156553778261441,
+    "H_psd_fraction": 0.0,
+    "diag_positive_fraction": 0.46904761904761905,
+    "diagonal_dominance": 0.27096235827457493
+  },
+  "D6_heterogeneous": {
+    "I_neg_energy": 0.4718148892015242,
+    "H_neg_energy": 0.413823836637961,
+    "H_psd_fraction": 0.0,
+    "diag_positive_fraction": 0.5166666666666667,
+    "diagonal_dominance": 0.46724371519075864
+  },
+  "D16_iid": {
+    "I_neg_energy": 0.5023194069198217,
+    "H_neg_energy": 0.565080870808702,
+    "H_psd_fraction": 0.0,
+    "diag_positive_fraction": 0.5023809523809524,
+    "diagonal_dominance": 0.37388611675889405
+  },
+  "D16_heterogeneous": {
+    "I_neg_energy": 0.4705884385748831,
+    "H_neg_energy": 0.46441481651073485,
+    "H_psd_fraction": 0.0,
+    "diag_positive_fraction": 0.5142857142857143,
+    "diagonal_dominance": 1.2459183253947974
+  },
+  "D32_iid": {
+    "I_neg_energy": 0.5106729819174449,
+    "H_neg_energy": 0.511595273636702,
+    "H_psd_fraction": 0.0,
+    "diag_positive_fraction": 0.46190476190476193,
+    "diagonal_dominance": 0.4500039163860278
+  },
+  "D32_heterogeneous": {
+    "I_neg_energy": 0.45406563997101224,
+    "H_neg_energy": 0.4538141581399066,
+    "H_psd_fraction": 0.0,
+    "diag_positive_fraction": 0.4976190476190476,
+    "diagonal_dominance": 2.416052555563515
+  }
+}

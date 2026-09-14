@@ -1,0 +1,1 @@
+{"m": 3, "cases": 80, "max_excess_lower_minus_bound": -0.005540277010539663, "max_excess_upper_minus_bound": 5.19907623619531e-08, "counterexample": false}

@@ -1,0 +1,57 @@
+\section*{Asymptotic $(k-1)$ sharpness for every finite binary tree}
+\label{sec:m18-binary-tree-asymptotic}
+
+Let $T$ be any finite ordered full-binary tree with $k\ge1$ internal
+vertices.  Work on the real plane $\mathbb R^2$ identified with $\mathbb C$, with
+$P(z)=\operatorname{Re}(z)$, unit leaves equal to $1$, and put
+$\theta=\arcsin\eta$, $c=\cos\theta$.  At every internal vertex other than
+the root use the independently selectable law
+\[
+  \mu_\theta(z,w)=e^{i\theta}zw,
+\]
+where complex multiplication is the Euclidean norm-one bilinear law.  At
+the root use instead
+\[
+  \mu_\star(z,w)=\bigl(\operatorname{Im}z\operatorname{Re}w
+  +\operatorname{Re}z\operatorname{Im}w\bigr)\,1.
+\]
+Both laws have operator norm one; the non-root closure defect is exactly
+$\sin\theta=\eta$, while the root closure defect is zero.
+
+\textbf{Theorem.}  For this witness,
+\[
+  E_T^{\mathrm{proj}}(\eta)
+  =\left|\sin\bigl((k-1)\theta\bigr)\right|
+  =\left|\sin\bigl((k-1)\arcsin\eta\bigr)\right|.
+\]
+Consequently, for the independent-law extremal constant,
+\[
+  \boxed{
+  \lim_{\eta\downarrow0} C_{T,\mathrm{ind}}^P(\eta)=k-1.
+  }
+\]
+
+\textbf{Proof.}  For every subtree $S$ rooted at a non-root internal vertex,
+complex multiplication and the one rotation at each internal vertex give the
+ambient value $F_S=e^{i k(S)\theta}$, independently of the shape of $S$.
+The recursively projected value is $R_S=c^{k(S)}$.  If the root children
+contain $k_L$ and $k_R$ internal vertices, then $k_L+k_R=k-1$ and the root
+ambient value is
+\[
+ \mu_\star(e^{ik_L\theta},e^{ik_R\theta})
+ =\sin(k_L\theta)\cos(k_R\theta)
+  +\cos(k_L\theta)\sin(k_R\theta)
+ =\sin((k-1)\theta).
+\]
+The root's recursively projected inputs are real, so $\mu_\star$ returns
+zero in the projected evaluation.  This proves the exact witness formula.
+The universal projected-root theorem gives
+$C_{T,\mathrm{ind}}^P(\eta)\le k-1$ for every $\eta$.  Dividing the witness
+formula by $\eta$ and using
+$\sin((k-1)\arcsin\eta)/\eta\to k-1$ gives the matching lower limit.
+\hfill$\square$
+
+For a general operator scale $M$, multiply every internal law by $M$; the
+error and denominator both scale by $M^k$.  The theorem is asymptotic in
+$\eta$ and does not assert fixed-$\eta$ equality, nor does it cover variable
+arity or growing-tree limits.

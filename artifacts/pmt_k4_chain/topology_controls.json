@@ -1,0 +1,98 @@
+[
+  {
+    "topology": "mixed",
+    "eta": 0.05,
+    "observed": 2.9937507828809,
+    "analytic_lower": 2.9937507828808996,
+    "residual": 4.440892098500626e-16,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "branch_below",
+    "eta": 0.05,
+    "observed": 2.9937507828809,
+    "analytic_lower": 2.9937507828808996,
+    "residual": 4.440892098500626e-16,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "mixed",
+    "eta": 0.2,
+    "observed": 2.9002068891718733,
+    "analytic_lower": 2.9002068891718737,
+    "residual": 4.440892098500626e-16,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "branch_below",
+    "eta": 0.2,
+    "observed": 2.9002068891718737,
+    "analytic_lower": 2.9002068891718737,
+    "residual": 0.0,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "mixed",
+    "eta": 0.5,
+    "observed": 2.384848003542364,
+    "analytic_lower": 2.384848003542364,
+    "residual": 0.0,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "branch_below",
+    "eta": 0.5,
+    "observed": 2.3848480035423636,
+    "analytic_lower": 2.384848003542364,
+    "residual": 4.440892098500626e-16,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "mixed",
+    "eta": 0.6546536707079771,
+    "observed": 1.963961012123931,
+    "analytic_lower": 1.9639610121239317,
+    "residual": 6.661338147750939e-16,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "branch_below",
+    "eta": 0.6546536707079771,
+    "observed": 1.9639610121239315,
+    "analytic_lower": 1.9639610121239317,
+    "residual": 2.220446049250313e-16,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "mixed",
+    "eta": 0.8,
+    "observed": 1.6071428571428565,
+    "analytic_lower": 1.6071428571428572,
+    "residual": 6.661338147750939e-16,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "branch_below",
+    "eta": 0.8,
+    "observed": 1.607142857142857,
+    "analytic_lower": 1.6071428571428572,
+    "residual": 2.220446049250313e-16,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "mixed",
+    "eta": 1.0,
+    "observed": 1.2857142857142854,
+    "analytic_lower": 1.2857142857142858,
+    "residual": 4.440892098500626e-16,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  },
+  {
+    "topology": "branch_below",
+    "eta": 1.0,
+    "observed": 1.2857142857142856,
+    "analytic_lower": 1.2857142857142858,
+    "residual": 2.220446049250313e-16,
+    "status": "NUMERICAL_CHECK_OF_ANALYTIC_WITNESS"
+  }
+]

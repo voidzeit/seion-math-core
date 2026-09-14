@@ -1,0 +1,51 @@
+\section*{Asymptotic $(k-1)$ sharpness for every finite arity-compatible tree}
+\label{sec:m19-finite-arity-asymptotic}
+
+Let $T$ be any finite ordered rooted tree with arity at least two at each
+internal vertex, and let $k$ be its number of internal vertices.  Identify the
+real plane with $\mathbb C$, take $P(z)=\operatorname{Re}(z)$, unit leaves,
+and set $\theta=\arcsin\eta$.  At every non-root vertex of arity $m$ use
+\[
+  \mu_{m,\theta}(z_1,\ldots,z_m)=e^{i\theta}z_1\cdots z_m,
+\]
+viewed as a real $m$-linear map on $\mathbb R^2\cong\mathbb C$.  At the root,
+of arity $d$, use
+\[
+  \mu_{\star,d}(z_1,\ldots,z_d)=
+  \operatorname{Im}(z_1\cdots z_d)\,1.
+\]
+Both maps have operator norm one.  Every non-root projected input is real, so
+the local non-root closure defect is $\sin\theta=\eta$, while the root defect
+is zero.
+
+\textbf{Theorem.}  The witness has
+\[
+  E_T^{\mathrm{proj}}(\eta)=
+  \left|\sin\bigl((k-1)\theta\bigr)\right|
+  =\left|\sin\bigl((k-1)\arcsin\eta\bigr)\right|.
+\]
+Consequently, the universal projected-root coefficient is asymptotically
+sharp for every fixed finite arity-compatible topology:
+\[
+  \boxed{\displaystyle
+  \lim_{\eta\downarrow0}C_{T,\mathrm{ind}}^P(\eta)=k-1.}
+\]
+
+\textbf{Proof.}  For a subtree $S$ rooted at a non-root internal vertex,
+real-plane multiplication gives the ambient value
+$F_S=e^{ik(S)\theta}$, independently of both its shape and the arities of
+its vertices.  Recursive projection gives $R_S=\cos(\theta)^{k(S)}$.
+If the root children have internal-node counts $k_1,\ldots,k_d$, then
+$\sum_j k_j=k-1$ and the ambient root output is
+\[
+ \operatorname{Im}\prod_{j=1}^d e^{ik_j\theta}
+ =\sin((k-1)\theta).
+\]
+All recursively projected child outputs are real, so the projected root
+output is zero.  This proves the witness formula.  The universal projected
+bound supplies the upper limit $k-1$, and division by $\eta$ gives the stated
+limit.
+\hfill$\square$
+
+The result is asymptotic in $\eta$ and does not assert fixed-$\eta$ equality,
+same-law/gated sharpness, or uniformity for growing trees.

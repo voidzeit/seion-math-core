@@ -1,0 +1,86 @@
+{
+  "m8_first_order": {
+    "final": 2.3517619270134387,
+    "vs_oracle": -0.25147845320460305,
+    "sum_instant_regret": 0.1038825568314754,
+    "A_T": 2.188379290358348,
+    "evaluations": 390.0
+  },
+  "m8_full_pairwise": {
+    "final": 2.6032403802180415,
+    "vs_oracle": 0.0,
+    "sum_instant_regret": 0.0,
+    "A_T": NaN,
+    "evaluations": 558.0
+  },
+  "m8_lowrank_pairwise": {
+    "final": 2.6032403802180415,
+    "vs_oracle": 0.0,
+    "sum_instant_regret": 0.0,
+    "A_T": NaN,
+    "evaluations": 558.0
+  },
+  "m14_first_order": {
+    "final": 4.001580077883305,
+    "vs_oracle": 0.05273442120824597,
+    "sum_instant_regret": 0.040154794731521726,
+    "A_T": 0.06043552371890515,
+    "evaluations": 2274.0
+  },
+  "m14_full_pairwise": {
+    "final": 3.923061404817186,
+    "vs_oracle": -0.025784251857873475,
+    "sum_instant_regret": 0.005056230185493948,
+    "A_T": 4.393727018428944,
+    "evaluations": 2820.0
+  },
+  "m14_lowrank_pairwise": {
+    "final": 3.9137536914438,
+    "vs_oracle": -0.035091965231259646,
+    "sum_instant_regret": 0.013331088276075912,
+    "A_T": 4.685248001212444,
+    "evaluations": 2820.0
+  },
+  "m23_first_order": {
+    "final": 6.873284886859377,
+    "vs_oracle": 0.1711155938543573,
+    "sum_instant_regret": 0.09956579932114525,
+    "A_T": 1.2928679399108773,
+    "evaluations": 3744.0
+  },
+  "m23_full_pairwise": {
+    "final": 6.6995123974253765,
+    "vs_oracle": -0.0026568955796430296,
+    "sum_instant_regret": 0.0011488596727113887,
+    "A_T": 1.9031461005706314,
+    "evaluations": 5262.0
+  },
+  "m23_lowrank_pairwise": {
+    "final": 6.686994086581293,
+    "vs_oracle": -0.015175206423727014,
+    "sum_instant_regret": 0.0027874481110701232,
+    "A_T": 0.9715172837955282,
+    "evaluations": 5262.0
+  },
+  "m31_first_order": {
+    "final": 25.936708980269277,
+    "vs_oracle": 0.09225100915543531,
+    "sum_instant_regret": 0.0132294077529543,
+    "A_T": -5.546898200793801,
+    "evaluations": 3792.0
+  },
+  "m31_full_pairwise": {
+    "final": 25.942763489848275,
+    "vs_oracle": 0.09830551873443276,
+    "sum_instant_regret": 0.0059952930306025705,
+    "A_T": -4.924500579008915,
+    "evaluations": 6582.0
+  },
+  "m31_lowrank_pairwise": {
+    "final": 25.907391051476413,
+    "vs_oracle": 0.06293308036257213,
+    "sum_instant_regret": 0.0005956120576815493,
+    "A_T": -116.36934571106318,
+    "evaluations": 6582.0
+  }
+}

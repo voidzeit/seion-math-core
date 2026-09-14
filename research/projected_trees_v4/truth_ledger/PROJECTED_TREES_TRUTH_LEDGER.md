@@ -1,0 +1,174 @@
+# Projected Trees Truth Ledger
+
+Status: P0 baseline frozen and reproduced locally; P1–P5 and P6A–P7A
+implemented as bounded v4 extensions.
+
+Observed on 2026-08-08 from branch `campaign/gate13-closeout` at commit
+`c491c032579b9239f2c7216801d174f86c11c4de`.
+
+## Scope
+
+This ledger covers the finite-dimensional projected-tree theory only:
+finite typed ordered trees, real or complex Hilbert spaces, orthogonal
+projectors, bounded multilinear laws, ambient evaluation, and recursively
+projected evaluation. It does not transfer claims to KGE, SEION scoring,
+continuum limits, infinite trees, or general neural networks.
+
+## Epistemic statuses
+
+- `PROVED`: exact algebraic identity or proof valid in its declared scope.
+- `PROVED_UNDER_ASSUMPTIONS`: theorem conditional on explicit hypotheses.
+- `EXACT_CONSTRUCTION`: exact formula for a restricted admissible family.
+- `CERTIFIED_LOWER_BOUND`: validated construction; not a supremum proof.
+- `CERTIFIED_UPPER_BOUND`: rigorous upper bound; not fixed-parameter sharpness.
+- `NUMERICAL_CONJECTURE`: computational evidence only.
+- `DISPROVED`: counterexample to a statement outside its hypotheses.
+- `OPEN`: no matching theorem/construction currently closes the question.
+- `NOVELTY_NOT_ESTABLISHED`: mathematically supported but not a novelty claim.
+
+## Current P0 reproduction
+
+| Command | Result | Authority |
+|---|---:|---|
+| `python -m pytest tests/research_v3 -q` | 30 passed | current source/tests |
+| `python research/math_closure/k2/exact_examples/chain_gated_rotation_eta_squared.py` | passed | exact restricted construction |
+| `python research/math_closure/k3/certificates/chain_and_branching_closed_forms.py` | passed | exact restricted constructions |
+
+The prior v3 technical audit remains historical evidence: 69 tests, 15,493
+unique scientific instances, 81,445 tree occurrences, 80,870 unique tree
+hashes, 1,530 leakage masks, zero bound-violation margin, and maximum recorded
+CPU/GPU discrepancy `1.922112502494855e-08`. It was not re-executed as the
+full 15-stage campaign in this P0 pass.
+
+## Exact and conditional mathematical results
+
+| ID | Statement | Status | Evidence |
+|---|---|---|---|
+| PT-001 | `E_amb^2 = E_proj^2 + E_normal^2` and `E_red = E_proj` at the root | `PROVED_UNDER_ASSUMPTIONS` | `docs/theorems_v3/typed_model.md`; `src/seion_core/research_v3/projected_evaluation.py` |
+| PT-002 | Exact local subset expansion: local normal residual plus one term for every nonempty erroneous-child subset | `PROVED` | `docs/theorems_v3/exact_subset_expansion.md`; `src/seion_core/research_v3/error_expansion.py` |
+| PT-003 | Ambient universal bound `E_amb <= k rho M^(k-1) L_T` | `CERTIFIED_UPPER_BOUND` | `docs/theorems_v3/homogeneous_constants.md` |
+| PT-004 | Projected/reduced universal bound `E_proj = E_red <= (k-1) rho M^(k-1) L_T` | `CERTIFIED_UPPER_BOUND` | `docs/theorems_v3/homogeneous_constants.md`; `tests/research_v3/regression/test_projected_k_minus_one.py` |
+| PT-005 | Root local residual is removed exactly by the final projection | `PROVED` | `docs/theorems_v3/exact_subset_expansion.md` |
+| PT-006 | Sign-partitioned ratio ordering minimizes the declared scalar telescoping certificate | `PROVED_UNDER_ASSUMPTIONS` | `docs/theorems_v3/telescoping_order.md`; `src/seion_core/research_v3/telescoping_order.py` |
+| PT-007 | Mixed-mask dynamic program is a valid typed-tree certificate with `O(|T| 3^a_max + |T| a_max log a_max)` declared complexity | `PROVED_UNDER_ASSUMPTIONS` | `docs/theorems_v3/nodewise_certificates.md` |
+| PT-008 | Residual-source path-sum certificate is valid for the declared telescoping gains | `PROVED_UNDER_ASSUMPTIONS` | `docs/theorems_v3/nodewise_certificates.md` |
+| PT-009 | Representation and projection/closure error can be separated under the declared operator perturbation hypotheses | `PROVED_UNDER_ASSUMPTIONS` | `docs/theorems_v3/cp_projection_budget.md` |
+| PT-010 | Projected five-input ternary associator has triangle coefficient `2` under the declared conventions | `CERTIFIED_UPPER_BOUND` | `docs/theorems_v3/signed_forests.md`; `claims/theorem_registry_v3.yaml` |
+| PT-011 | Scalar DAG recurrence admits an `O(|V|+|E|)` source-resolved reverse dynamic program without tree unrolling | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/dag/proof/dag_native_source_resolved.md`; `src/seion_core/research_v4/dag_certificate.py` |
+| PT-012 | First-order source-aware vector DAG coefficients aggregate all paths carrying the same source before norm; the resulting bound is no larger than the pathwise triangle certificate | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/dag/source_aware/proof/P6A_first_order_source_aware.md`; `src/seion_core/research_v4/source_aware_dag.py`; `tests/research_v4/test_source_aware.py` |
+| PT-013 | First-order signed source aggregation for a signed forest is no larger than the treewise triangle certificate and can be strictly smaller | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/cancellation/associator/P7A_signed_source_certificate.md`; `src/seion_core/research_v4/signed_certificate.py`; `tests/research_v4/test_source_aware.py` |
+| PT-014 | Finite multilinear DAG errors admit an exact finite source polynomial indexed by multi-indices; repeated source use is preserved and order truncation has an omitted-term norm bound | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/dag/source_aware/proof/P6B_exact_source_polynomial.md`; `src/seion_core/research_v4/higher_order_source_polynomial.py`; `tests/research_v4/test_higher_order_source_polynomial.py` |
+| PT-015 | A finite signed expression over P6B source polynomials admits a coefficient-wise signed cancellation certificate with `B_actual <= B_signed <= B_treewise`, including higher-order and mixed-source terms | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/cancellation/associator/P7B_nonlinear_signed_source_polynomial.md`; `src/seion_core/research_v4/signed_source_polynomial.py`; `tests/research_v4/test_signed_source_polynomial.py` |
+| PT-016 | A generic signed compositional-expression engine instantiates associator, Jacobiator, and Filippov-defect expressions over P6B polynomials without duplicated certification logic | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/cancellation/P7C_generic_signed_compositional_expression.md`; `src/seion_core/research_v4/signed_compositional_expression.py`; `tests/research_v4/test_signed_compositional_expression.py` |
+| PT-017 | Under the declared three-term convention, the Jacobiator is certified as a calculated defect with signed and treewise bounds; no vanishing identity is assumed | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/cancellation/P7C_status.json`; `tests/research_v4/test_signed_compositional_expression.py` |
+| PT-018 | Under the declared `T0 - sum_i Ti` convention, the Filippov expression is certified as a calculated defect with signed and treewise bounds | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/cancellation/P7C_status.json`; `tests/research_v4/test_signed_compositional_expression.py` |
+| PT-019 | Finite multilinear norm enclosures provide individually certified upper bounds via rank-one, interval, flattening, CP, and Frobenius methods; heuristic iterations are never labelled exact | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/norms/P8_validated_norms.md`; `src/seion_core/research_v4/operator_norm_enclosures.py`; `tests/research_v4/test_p8_p10_registry.py` |
+| PT-020 | Certificate selection returns the minimum among individually sound certified upper bounds and rejects uncertified candidates | `PROVED_UNDER_ASSUMPTIONS` | `src/seion_core/research_v4/certificate_selector.py`; `tests/research_v4/test_p8_p10_registry.py` |
+| PT-021 | Approximate-law error is separated into representation, closure, and representation/closure interaction contributions | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/approximation/P10_approximate_law_error.md`; `src/seion_core/research_v4/approximate_law_error.py`; `tests/research_v4/test_p8_p10_registry.py` |
+| PT-022 | Finite DAG/tree topology metrics and the universal projected-root bound can be recorded without upgrading topology dependence to sharpness | `PROVED_UNDER_ASSUMPTIONS` | `src/seion_core/research_v4/topology_registry.py`; `tests/research_v4/test_p8_p10_registry.py` |
+| PT-023 | Extremal evidence is maintained as monotone lower/upper bands with explicit gap/status classification | `PROVED_UNDER_ASSUMPTIONS` | `research/projected_trees_v4/sharpness/registry_status.md`; `src/seion_core/research_v4/extremal_registry.py`; `tests/research_v4/test_extremal_registry.py` |
+| PT-024 | Declared gated-planar rotation has exactly zero projected error for the three-term binary Jacobiator convention | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/signed_identities/structured_gated_rotation_jacobiator.tex`; `research/math_closure/signed_identities/structured_gated_rotation_jacobiator.py`; `tests/math_closure/test_structured_gated_rotation_jacobiator.py` |
+| PT-025 | For every finite left-comb binary chain under the declared homogeneous gated-planar rotation law, the projected error is `|T_k(c)-c^k|` in the `M=L=1` normalization, with `c=sqrt(1-eta^2)` | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k3/gated_rotation_chain_general.tex`; `research/math_closure/k3/gated_rotation_chain_general.py`; `tests/math_closure/test_gated_rotation_chain_general.py` |
+| PT-026 | For every finite ordered full-binary topology under the declared homogeneous gated-planar rotation law, `E_proj=|a(T)cos(d(T)theta)-cos(theta)^k|` with the recursive `a,d` invariants | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k3/gated_rotation_full_binary.tex`; `research/math_closure/k3/gated_rotation_full_binary.py`; `tests/math_closure/test_gated_rotation_full_binary.py` |
+| PT-027 | For every finite ordered rooted tree with arities at least two under the arity-compatible homogeneous gated-planar rotation law, the same recursive `a,d` formula gives the exact projected error | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k3/gated_rotation_general_arity.tex`; `research/math_closure/k3/gated_rotation_general_arity.py`; `tests/math_closure/test_gated_rotation_general_arity.py` |
+| PT-028 | Under first-propagator operator-norm saturation in the ordered `k=3` chain, the conditional normalized bound is `sqrt(4-3 eta^2)` below `sqrt(2/3)` and `2/(sqrt(3) eta)` above | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k3/m11_conditional_quantitative_gap.tex`; `research/math_closure/k3/m11_conditional_quantitative_gap.py`; `tests/math_closure/test_m11_conditional_quantitative_gap.py` |
+| PT-029 | Every fixed finite typed tree admits evaluation-preserving finite-support compression with dimension bound `2*(leaf_count+2*node_count)` per type; for binary `k=3`, this yields the global strict gap below `U_3` on `0<eta<1` via compactness and M10 | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/dimension_rank/fixed_tree_support_compression.tex`; `research/math_closure/dimension_rank/fixed_tree_support_compression.py`; `tests/math_closure/test_fixed_tree_support_compression.py` |
+| PT-030 | Finite source-resolved error calculus: exact multi-index DAG polynomials, same-source first-order recombination, finite truncation remainder, and signed bounds `B_actual <= B_signed <= B_treewise` | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/dag/source_resolved_error_calculus.tex`; `research/math_closure/dag/source_resolved_error_calculus.py`; `tests/math_closure/test_source_resolved_error_calculus.py` |
+| PT-031 | At `eta=1`, M10 non-attainment plus fixed-tree compactness gives `C_3,ind^P(1) < U_3(1)=sqrt(2)` for binary chain and branching classes | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k3/m10_endpoint_eta_one.tex`; `research/math_closure/k3/m10_endpoint_eta_one.py`; `tests/math_closure/test_m10_endpoint_eta_one.py` |
+
+## Restricted exact constructions
+
+| ID | Class | Exact result | Status | Evidence |
+|---|---|---|---|---|
+| PT-K2-B | Homogeneous k=2 chain, gated planar rotation | `E_proj(eta) = eta^2`, independent of tested dimension/rank class | `EXACT_CONSTRUCTION` | `research/math_closure/k2/classification_theorem.tex` |
+| PT-K2-B-SAT | Same class | Saturates the universal k-1 bound only at `eta=1` | `PROVED_UNDER_ASSUMPTIONS` | `research/math_closure/k2/status.md` |
+| PT-K3-CHAIN | k=3 chain, same restricted law | `E_proj(eta)=3 eta^2 sqrt(1-eta^2)`; best ratio `3/4` at `eta=1/sqrt(2)` | `EXACT_CONSTRUCTION` | `research/math_closure/k3/topology_chain.tex` |
+| PT-K3-BRANCH | k=3 branching, same restricted law | `E_proj(eta)=eta^2 sqrt(1-eta^2)`; best ratio `1/4` at `eta=1/sqrt(2)` | `EXACT_CONSTRUCTION` | `research/math_closure/k3/topology_branching.tex` |
+
+These formulas are exact for their restricted admissible families. They do
+not determine the global fixed-eta extremal constants.
+
+## Counterexamples and boundary results
+
+| ID | Result | Status | Evidence |
+|---|---|---|---|
+| PT-CE-001 | Removing exact invariance can break composition/reduction commutation | `DISPROVED` | `claims/counterexample_registry_v2.yaml`; `artifacts/counterexamples_v2/no_invariance_composition.json` |
+| PT-CE-002 | Removing a positive spectral gap can make snapping discontinuous under vanishing perturbations | `DISPROVED` | `claims/counterexample_registry_v2.yaml`; `artifacts/counterexamples_v2/spectral_gap_sweep.json` |
+| PT-CE-003 | The named general six-term GJI identity is not universally zero; collinear-leaf subcase is separately proved zero | `DISPROVED` / `PROVED` by subcase | `research/math_closure/gji/` |
+| PT-CE-004 | Historical duplicate run records are not independent scientific instances | `DISPROVED` as an aggregation assumption | `artifacts/index/run_index_deduplicated.csv` |
+
+## Open theorem targets
+
+| ID | Question | Status | Current boundary |
+|---|---|---|---|
+| PT-O-001 | Exact fixed-eta projected constant `C_T^P(eta)` for general k=2 | `OPEN` | Universal upper bound exists; no global matching construction/theorem |
+| PT-O-002 | Whether dimension 2/rank 1 is universally sufficient for k=2 extremizers | `OPEN` | Restricted planar family is not a dimension-reduction theorem |
+| PT-O-003 | General k=3 sharpness by topology, dimension, rank, field, and repeated-map policy | `OPEN` | Chain/branching restricted forms do not close class A |
+| PT-O-004 | Exact nonlinear cancellation-aware constants for associator, Jacobiator, Filippov, and general GJI | `OPEN` | P7B/P7C close finite signed-defect inequalities; universal sharp constants and identity satisfaction remain open |
+| PT-O-005 | Scalable higher-order/correlation-aware vector DAG source expansion without tree unrolling | `OPEN` | P6B closes the exact finite polynomial layer for small declared DAGs; scalable tail envelopes and broader correlation theory remain open |
+| PT-O-006 | Scalable shared-source/correlation-aware provenance polynomial for DAGs | `OPEN` | P6B exact finite multi-index propagation is implemented; scalable provenance compression remains open |
+| PT-O-007 | Globally tight validated multilinear spectral/operator norm enclosures | `OPEN` | P8 supplies certified finite upper methods; global spectral sharpness remains open |
+| PT-O-008 | Universal dominance ordering among nodewise, pathwise, mixed-mask, and telescoping certificates | `OPEN` | Current documents explicitly avoid a universal dominance claim |
+| PT-O-009 | Nonlinear Lipschitz envelope for LayerNorm, gates, top-k, and neural modules | `OPEN` | Outside the finite multilinear core theorem scope |
+| PT-O-010 | Theorem-level novelty beyond standard finite-dimensional restriction and perturbation consequences | `NOVELTY_NOT_ESTABLISHED` | Independent human and theorem-to-theorem review pending |
+
+## M13 unconditional chain envelope — 2026-08-09
+
+For the independent-law ordered binary chain with three internal nodes, the
+contraction Gram-matrix argument removes the first-propagator saturation
+hypothesis from the M11 estimate. In the normalized variables, the chain
+constant obeys
+`C_3,ind,chain^P(eta) <= W_3(eta)`, where
+`W_3(eta)=sqrt(4-3 eta^2)` for `0<eta<=sqrt(2/3)` and
+`W_3(eta)=2/(sqrt(3) eta)` for `sqrt(2/3)<=eta<=1`.
+The resulting explicit difference `U_3(eta)-W_3(eta)` is strictly positive
+throughout `0<eta<=1`, so this is an unconditional quantitative chain-only
+gap below the M9 envelope. It does not improve the branching class, establish
+sharpness of `W_3`, or determine the exact chain constant.
+
+The canonical proof, executable scalar check, and focused tests are
+`research/math_closure/k3/m13_unconditional_chain_envelope.tex`,
+`research/math_closure/k3/m13_unconditional_chain_envelope.py`, and
+`tests/math_closure/test_m13_unconditional_chain_envelope.py`.
+
+## M14 exact independent-law chain constant — 2026-08-09
+
+The M13 upper envelope is attained by an explicit two-dimensional real
+independent-law witness with a rank-one coordinate projector. Hence the exact
+ordered-chain constant is `W_3(eta)` for every `0<eta<=1`: it is
+`sqrt(4-3 eta^2)` up to `sqrt(2/3)` and `2/(sqrt(3) eta)` thereafter. The
+construction has operator norm one at all three nodes and residual caps no
+larger than `eta`. This closes the chain fixed-eta problem, not the branching
+problem or the arbitrary-tree conjecture.
+
+Evidence: `research/math_closure/k3/m14_exact_chain_constant.tex`,
+`research/math_closure/k3/m14_exact_chain_constant.py`, and
+`tests/math_closure/test_m14_exact_chain_constant.py`.
+
+## M15 exact independent-law branching constant — 2026-08-09
+
+For binary branching, scalarization of the root and nuclear/operator-norm
+duality give the same `W_3(eta)` upper envelope as M13. An explicit
+dimension-two rank-one polar-factor root witness attains it for every
+`0<eta<=1`. Thus the independent-law branching constant is exactly `W_3`;
+same-law/gated and arbitrary-tree sharpness remain open.
+
+Evidence: `research/math_closure/k3/m15_exact_branching_constant.tex`,
+`research/math_closure/k3/m15_exact_branching_constant.py`, and
+`tests/math_closure/test_m15_exact_branching_constant.py`.
+
+## P0 conclusion
+
+The baseline is technically reproducible and mathematically coherent in its
+declared finite typed-tree scope. The strongest current results are the
+projected-root `(k-1)` upper bound plus exact local expansion, the scalar
+`O(|V|+|E|)` DAG recurrence, the P6A first-order source-aware vector
+certificate, and the P7A first-order signed-source certificate. Fixed-eta
+sharpness, dimension/rank universality, higher-order DAG provenance, and
+nonlinear cancellation-aware constants remain open. No optimizer output or
+finite atlas row is promoted to a sharpness theorem.
+
+## Preservation boundary
+
+Gate 13.5, Gate 14A, KGE artifacts, historical runs, failed runs, and prior
+paper claims are not rewritten by this ledger.

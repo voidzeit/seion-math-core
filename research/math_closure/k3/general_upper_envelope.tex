@@ -1,0 +1,148 @@
+\section*{M9: General $k=3$ upper envelope for chain and branching topologies}
+\label{sec:k3-upper-envelope}
+
+\textbf{Motivation.} \texttt{research/projected\_trees\_v5/extremal/
+V5B\_EXTREMAL\_STATUS.md} records a certified \emph{lower} witness curve
+$L_3(\eta)$ for the independent-law $k=3$ class, squeezed against the
+universal upper bound $2$ only in the limit $\eta\to0$, and explicitly
+flags a candidate tightened upper envelope as
+\texttt{CONDITIONAL\_ON\_UNPROVED\_SCALAR\_REDUCTION} -- it was never
+proved, and its stated assumptions (``$E_{\mathrm{proj}}\le2AB$,
+$A^2+B^2\le M^2$'') are not dimensionally consistent with the actual
+witness value $2Mq\sqrt{M^2-q^2}$ (a stray factor of $M$ is missing; that
+conditional claim is superseded by the theorem below, not repaired).
+This note proves an unconditional, strictly tighter-than-universal upper
+bound directly from the exact local error algebra, for \emph{both} the
+chain and branching topologies, with no restriction to rank-one
+projectors or any specific witness family.
+
+\textbf{Setup (chain).} Leaves $a,b\to$ node 1 ($\mu_1$) $\to$, combined
+with leaf $c$, node 2 ($\mu_2$) $\to$, combined with leaf $d$, root node 3
+($\mu_3$). All laws bilinear, $\|\mu_v\|_{\mathrm{op}}\le M$; orthogonal
+projectors $P_1,P_2,P_3$ at every internal node; each node's own closure-
+residual operator norm $\le\rho$ (as in \texttt{docs/theorems\_v3/
+homogeneous\_constants.md}'s definition of $\rho_v$, applied to that
+node's own -- already projected where applicable -- inputs). Arbitrary
+finite dimension, arbitrary projector rank.
+
+\textbf{Derivation.} Write $D_1:=(I-P_1)\mu_1(a,b)$, $R_1:=P_1\mu_1(a,b)$.
+Bilinearity gives (telescoping through node 2, then node 3):
+\[
+  F_2-R_2 \;=\; \mu_2(D_1,c) \;+\; (I-P_2)\mu_2(R_1,c) \;=:\; S_1+S_2,
+\]
+\[
+  E_T^{\mathrm{proj}} \;=\; \big\|P_3\mu_3(S_1,d)+P_3\mu_3(S_2,d)\big\|
+  \;\le\; \underbrace{\|\mu_3(S_1,d)\|}_{T_1} + \underbrace{\|\mu_3(S_2,d)\|}_{T_2}.
+\]
+Bound each term using only the declared operator-norm/closure-residual
+caps: $T_1\le M\|S_1\|\|d\|\le M(M\|D_1\|\|c\|)\|d\|=M^2q\,L_T$, where
+$q:=\|D_1\|/(\|a\|\|b\|)\in[0,\rho]$ (bounded by node 1's own closure
+residual); and $T_2\le M\|S_2\|\|d\|\le M(\rho\|R_1\|\|c\|)\|d\|$. The key
+step is bounding $\|R_1\|$ \emph{jointly} with $q$, not independently: since
+$P_1$ is an \emph{orthogonal} projector, $R_1\perp D_1$, so Pythagoras gives
+$\|R_1\|^2+\|D_1\|^2=\|\mu_1(a,b)\|^2\le M^2\|a\|^2\|b\|^2$, hence
+$\|R_1\|\le\|a\|\|b\|\sqrt{M^2-q^2}$. Substituting,
+\[
+  \boxed{\;E_T^{\mathrm{proj}}/L_T \;\le\; h(q) := M^2q + M\rho\sqrt{M^2-q^2}, \qquad q\in[0,\rho].\;}
+\]
+
+\textbf{Branching topology -- separate, explicit derivation.} Root
+combines two independent children: $u_1=\mu_1(a,b)$ (children $a,b$),
+$u_2=\mu_2(c,d)$ (children $c,d$), root value $\mu_3(u_1,u_2)$; orthogonal
+projectors $P_{u_1},P_{u_2},P_3$. Write
+$D_{u_1}:=(I-P_{u_1})\mu_1(a,b)$, $R_{u_1}:=P_{u_1}\mu_1(a,b)$,
+$F_{u_2}:=\mu_2(c,d)$ (ambient, ungprojected), $R_{u_2}:=P_{u_2}\mu_2(c,d)$,
+$D_{u_2}:=F_{u_2}-R_{u_2}=(I-P_{u_2})\mu_2(c,d)$.
+
+By the same logic as M8's proof (Section~\ref{sec:k2-iff}): $E_T^{
+\mathrm{proj}}=\|P_3(F_3-R_3)\|$ where $F_3=\mu_3(F_{u_1},F_{u_2})$,
+$R_3=P_3\mu_3(R_{u_1},R_{u_2})$. Bilinearity gives the exact expansion
+(add and subtract $\mu_3(R_{u_1},F_{u_2})$ -- \emph{not} the naive
+three-term expansion $\mu_3(D_{u_1},R_{u_2})+\mu_3(R_{u_1},D_{u_2})+
+\mu_3(D_{u_1},D_{u_2})$, which double-counts):
+\[
+  F_3-R_3'
+  = \mu_3(F_{u_1},F_{u_2})-\mu_3(R_{u_1},R_{u_2})
+  = \big[\mu_3(F_{u_1},F_{u_2})-\mu_3(R_{u_1},F_{u_2})\big]
+  + \big[\mu_3(R_{u_1},F_{u_2})-\mu_3(R_{u_1},R_{u_2})\big],
+\]
+where $R_3':=\mu_3(R_{u_1},R_{u_2})$ is the \emph{unprojected} ambient
+value at $(R_{u_1},R_{u_2})$ (so $R_3=P_3R_3'$; the identity above holds
+before $P_3$ is applied, exactly as in M8's proof, and $P_3$ is applied to
+both sides afterward). Each bracket collapses by bilinearity in one slot
+at a time (second slot fixed at $F_{u_2}$ in the first bracket, first
+slot fixed at $R_{u_1}$ in the second):
+\[
+  F_3-R_3' = \mu_3(D_{u_1},F_{u_2}) + \mu_3(R_{u_1},D_{u_2}),
+\]
+so, applying $P_3$ (using $P_3(F_3-R_3)=P_3(F_3-R_3')$ since
+$R_3=P_3R_3'$ means $P_3R_3=P_3P_3R_3'=P_3R_3'$):
+\[
+  E_T^{\mathrm{proj}} = \big\|P_3\mu_3(D_{u_1},F_{u_2}) + P_3\mu_3(R_{u_1},D_{u_2})\big\|
+  \le \underbrace{\|\mu_3(D_{u_1},F_{u_2})\|}_{T_1'} + \underbrace{\|\mu_3(R_{u_1},D_{u_2})\|}_{T_2'}.
+\]
+Bound each term exactly as in the chain case: $T_1'\le M\|D_{u_1}\|\|F_{u_2}\|
+\le M(q_1\|a\|\|b\|)(M\|c\|\|d\|)=M^2q_1L_T$ (using $\|F_{u_2}\|=
+\|\mu_2(c,d)\|\le M\|c\|\|d\|$ and $q_1:=\|D_{u_1}\|/(\|a\|\|b\|)\le\rho$);
+$T_2'\le M\|R_{u_1}\|\|D_{u_2}\|\le M(\|a\|\|b\|\sqrt{M^2-q_1^2})(\rho\|c\|\|d\|)$
+(using the \emph{same} Pythagorean bound $\|R_{u_1}\|\le\|a\|\|b\|
+\sqrt{M^2-q_1^2}$ at node $u_1$, since $P_{u_1}$ is orthogonal, and
+$\|D_{u_2}\|\le\rho\|c\|\|d\|$). Summing:
+\[
+  E_T^{\mathrm{proj}}/L_T \le M^2q_1 + M\rho\sqrt{M^2-q_1^2} = h(q_1),
+\]
+\textbf{the identical function $h$ as the chain}, now derived explicitly
+rather than asserted. \textbf{The topologies are not distinguished by
+this bound}; whether the true supremum distinguishes them (as the
+restricted gated-planar family does: chain best ratio $3/4$ vs.\ branch
+$1/4$, M3) remains open at this level of generality.
+
+\textbf{Maximizing $h$.} $h'(q)=M^2-M\rho q/\sqrt{M^2-q^2}=0$ at
+$q_c=M^2/\sqrt{M^2+\rho^2}$ (from $M^2(M^2-q^2)=\rho^2q^2$). Writing
+$\eta=\rho/M$, $q_c\le\rho$ iff $\eta^2\ge(\sqrt5-1)/2$, i.e.\
+$\eta\ge\eta_\star:=\sqrt{(\sqrt5-1)/2}\approx0.786151$. Since $h$ is
+concave in $q$ with $h'(0)=M^2>0$:
+\[
+  U_3(\eta) \;:=\; \max_{q\in[0,\rho]} h(q)\big/(\rho M^2) \;=\;
+  \begin{cases}
+    1+\sqrt{1-\eta^2}, & 0<\eta\le\eta_\star \quad(\text{boundary } q=\rho),\\[2pt]
+    \sqrt{1+\eta^2}/\eta, & \eta_\star<\eta\le1 \quad(\text{interior } q=q_c).
+  \end{cases}
+\]
+The two branches agree exactly at $\eta=\eta_\star$, where both equal the
+golden ratio $\varphi=(1+\sqrt5)/2\approx1.618034$ -- verified symbolically
+(\texttt{verify\_continuity\_at\_transition}), a non-trivial closed-form
+check any correct re-derivation should reproduce exactly.
+
+\[
+  \boxed{\;L_3(\eta) \;\le\; C_{3,\mathrm{ind}}^{P}(\eta) \;\le\; U_3(\eta) \;<\; 2 \quad \text{for every } \eta\in(0,1],\;}
+\]
+with $U_3(\eta)\to2$ as $\eta\to0$ (recovering the already-proved
+asymptotic squeeze) and, at the opposite extreme, $U_3(1)=\sqrt2\approx
+1.41421$ -- a $29\%$ reduction from the trivial universal bound of $2$.
+
+\textbf{Numerical corroboration (not a proof).} 42 random-tensor trials
+(both topologies, ambient dimension $\{2,3\}$, projector rank $\{1,\dim-1\}$,
+seven $\eta$ values spanning $[0.05,1]$) found zero violations of
+$E_T^{\mathrm{proj}}\le U_3(\eta)\rho M^2L_T$ within a $2\%$ numerical-
+estimation tolerance (\texttt{scripts/verify\_k3\_bound.py}, reproduced in
+this session's scratch directory). This is a weak, non-adversarial sanity
+check -- achieved ratios stayed well below the bound (typically $10$--$50\%$
+of it), so this does not stress-test tightness -- offered only as
+corroboration against a derivation error, not as evidence toward
+sharpness.
+
+\textbf{Status.} \texttt{PROVED} as an upper bound (unconditional; no
+scalar-reduction assumption, no rank-one restriction -- this supersedes the
+\texttt{CONDITIONAL\_ON\_UNPROVED\_SCALAR\_REDUCTION} bookkeeping entry in
+\texttt{v5b\_extremal.py}, which should now be read as historical). Fixed-
+$\eta$ global sharpness for $k=3$ remains \texttt{OPEN\_WITH\_CERTIFIED\_
+GAP} -- the gap between $L_3$ and $U_3$ narrowed substantially (e.g.\ at
+$\eta=1$: from $[1,2]$ to $[1,\sqrt2]$, relative gap $(2-1)/2=50\%\to
+(\sqrt2-1)/\sqrt2\approx29\%$; at $\eta=0.9$: relative gap shrinks from
+$44\%$ to $26\%$) but did not close. \texttt{approval\_status:
+PENDING\_HUMAN\_REVIEW}.
+
+\textbf{Implementation.} \texttt{src/seion\_core/research\_v5/
+k3\_upper\_bound.py}; tests in
+\texttt{tests/research\_v5\_test\_k3\_upper\_bound.py}.

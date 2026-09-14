@@ -1,0 +1,108 @@
+{
+  "freeze": "MATH_CORE_V5_2026-08-11",
+  "title": "Projected Multilinear Trees: Sharp Error Constants Under Approximate Closure",
+  "branch": "campaign/gate13-closeout",
+  "git_head": "d894890083b74d13635d7308e5930a96bb13fb1b",
+  "artifacts": [
+    {
+      "path": "research/math_closure/FROZEN_CORE_V5_2026-08-11.md",
+      "sha256_worktree": "BC344AAAC34222DEA6E40D8F6C97A8FEB2994C22250D6B89B211191841EB9323",
+      "committed_at_head": true,
+      "blob": "f7dcc0312fe8"
+    },
+    {
+      "path": "claims/theorem_registry_v5.yaml",
+      "sha256_worktree": "43483A25679771DA56E487A7454059A54689017939CC5C238148849A65A5A901",
+      "committed_at_head": true,
+      "blob": "cf683c8754e1"
+    },
+    {
+      "path": "research/math_closure/k2/saturation_iff_theorem.tex",
+      "sha256_worktree": "0B9B09D2FF51DEAFC3DDDC87C9CF119B3CE0199275AF5B63E5E564426C171B2A",
+      "committed_at_head": true,
+      "blob": "5cda98b1f68c"
+    },
+    {
+      "path": "research/math_closure/k3/general_upper_envelope.tex",
+      "sha256_worktree": "1FA29054C047C05BA091A9FDA7F860C748DCD82EE97466E626FB341AF0D1E775",
+      "committed_at_head": true,
+      "blob": "33e91c7e7fd6"
+    },
+    {
+      "path": "research/math_closure/k3/m13_unconditional_chain_envelope.tex",
+      "sha256_worktree": "636374DC70E3D3584221E42C6A6805640E7AAA94E1B3B621A691C6DF386C1024",
+      "committed_at_head": true,
+      "blob": "549a2c61bbda"
+    },
+    {
+      "path": "research/math_closure/k3/m14_exact_chain_constant.tex",
+      "sha256_worktree": "4D3D1B0F057A0ABDE39349146EDB03F464833C018525444538F3E239E2AF4D63",
+      "committed_at_head": true,
+      "blob": "6ceb2ca07145"
+    },
+    {
+      "path": "research/math_closure/k3/m15_exact_branching_constant.tex",
+      "sha256_worktree": "0CC398F0B3540F8ABF35FD0B69E06D084F4003B4B1BA05CCED247AC4AAD648DF",
+      "committed_at_head": true,
+      "blob": "c03cc1df6d32"
+    },
+    {
+      "path": "research/math_closure/k3/m16_general_binary_class_corollary.tex",
+      "sha256_worktree": "8D12CF1523E22A279CC7A50ED4860BE31F663B8FD7FF289AE501FCE5800D4C55",
+      "committed_at_head": true,
+      "blob": "013d40e4c8dc"
+    },
+    {
+      "path": "research/math_closure/k3/m20_k3_arbitrary_arity_exact_constant.tex",
+      "sha256_worktree": "55037074C640FF2C52165E8BBDE8EFEA9BB30CBC8F43235AD636A7C77CA68BC0",
+      "committed_at_head": true,
+      "blob": "f70fe7707b49"
+    },
+    {
+      "path": "research/math_closure/k3/m18_binary_tree_asymptotic_sharpness.tex",
+      "sha256_worktree": "84B346476306EAFA3BD51D1875D930973469F9D4BFAC48BE956354E29DEFE715",
+      "committed_at_head": true,
+      "blob": "cb84233207ba"
+    },
+    {
+      "path": "research/math_closure/k3/m19_finite_arity_asymptotic_sharpness.tex",
+      "sha256_worktree": "FD310A7DDAEA3F60023DFA9992B16F970A05C1579D6EB2219972FB97BF675C93",
+      "committed_at_head": true,
+      "blob": "a3ae6ce7ce90"
+    },
+    {
+      "path": "research/math_closure/dag/exact_path_constant.tex",
+      "sha256_worktree": "C297C151F154D5B0446EF53680E21756664BFAD7F4F64CA7AC31517D3AD4647C",
+      "committed_at_head": true,
+      "blob": "5571a97a2f20"
+    },
+    {
+      "path": "research/math_closure/dag/dag_asymptotic_sharpness.tex",
+      "sha256_worktree": "D733516B832D22F144D3B45EB1F81787F410A580312EB4A500D75CF5E3E4FA73",
+      "committed_at_head": true,
+      "blob": "11b4b62530a7"
+    },
+    {
+      "path": "research/math_closure/dimension_rank/growing_tree_dimension_counterexample.tex",
+      "sha256_worktree": "A1BEC7989181B6E97C9DF8B5B873F3C819CF9443CA8E244F8337E0CFA7A8C9C8",
+      "committed_at_head": true,
+      "blob": "b8de33a41534"
+    },
+    {
+      "path": "research/math_closure/dimension_rank/fixed_tree_support_compression.tex",
+      "sha256_worktree": "C5B46BD172B31BCCB87A18577E91EB68AE92DE2FE9B8EB9089234496E76C8A97",
+      "committed_at_head": true,
+      "blob": "e259de2ed56e"
+    }
+  ],
+  "missing": [],
+  "uncommitted_at_head": [],
+  "reconstructible_from_git": true,
+  "status": "FROZEN_RECONSTRUCTIBLE",
+  "note": "A freeze is only meaningful if its artifacts can be recovered later. The 2026-08-09 review manifest recorded a registry hash present in no blob on any ref, so that snapshot cannot be diffed against. Commit every listed artifact and regenerate before treating this freeze as authoritative.",
+  "epistemic_status": {
+    "novelty": "NOT_ESTABLISHED (0 of 41 registry entries)",
+    "independent_human_review": "NONE",
+    "verdict": "CANDIDATE_FOR_EXTERNAL_REVIEW_NOT_APPROVED"
+  }
+}

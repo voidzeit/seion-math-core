@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{04 --- Gate 12 Screening-Tier Benchmark Report}{SEION-KGR v26 MAX (NOT a confirmatory report)}{Purpose: report the Tier 0 numbers in full, with the confound stated before any interpretation, not after.}
+
+\tableofcontents
+
+\section*{Read this first}
+\textbf{This is a 2-seed screening pass, not a Gate 12 confirmatory result.} The mandate's own
+protocol (\texttt{preregistration.md} \S5/\S8) requires 5 seeds, full dataset scale, the full
+13-point ablation ladder, and statistical testing with multiple-comparison correction before any
+number here could support a confirmatory claim. None of that was executed. Every number below is
+labeled \texttt{SCREENING (reduced)}.
+
+\section{Datasets}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Dataset & Split & SHA-256 (first 16 hex) \\
+\midrule
+FB15K-237 & train & \texttt{6e4c2782169af21e} \\
+FB15K-237 & valid & \texttt{cf6309010852f6a8} \\
+FB15K-237 & test  & \texttt{5711cf41623ceb4e} \\
+WN18RR    & train & \texttt{038612e783c215ee} \\
+WN18RR    & valid & \texttt{453ce7202afa5809} \\
+WN18RR    & test  & \texttt{0383bceaaa1096cf} \\
+\bottomrule
+\end{tabular}
+\end{center}
+Full hashes: \texttt{campaigns/gate12/preregistration.md} \S2.
+
+\section{Base-expert selection}
+1-epoch screening, FB15K-237, dim=64, eval\_max\_queries=200, seed=1, real GPU:
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Base expert & Valid MRR & Test MRR \\
+\midrule
+\textbf{TuckER (selected)} & \textbf{0.2534} & \textbf{0.2526} \\
+ComplEx & 0.2210 & 0.2459 \\
+DistMult & 0.2195 & 0.2475 \\
+CP & 0.2092 & 0.2140 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{A0 (TuckER alone, full dataset) vs. A3 (TuckER+path+seion, 5{,}000-triple subsample)}
+\begin{center}
+\small
+\begin{tabular}{llrrrrrr}
+\toprule
+Config & Dataset & Seed & Test MRR & Valid MRR & Hits@1 & Hits@10 & Wall (s) \\
+\midrule
+A0 & FB15K-237 & 1 & 0.2795 & 0.2912 & 0.1917 & 0.4450 & 78.2 \\
+A0 & FB15K-237 & 2 & 0.2774 & 0.2895 & 0.1867 & 0.4550 & 84.9 \\
+A0 & WN18RR    & 1 & 0.4414 & 0.4140 & 0.4233 & 0.4767 & 22.3 \\
+A0 & WN18RR    & 2 & 0.4235 & 0.4073 & 0.3933 & 0.4700 & 24.3 \\
+\midrule
+A3 & FB15K-237 & 1 & 0.0095 & 0.0119 & 0.0050 & 0.0250 & 217.2 \\
+A3 & FB15K-237 & 2 & 0.0229 & 0.0090 & 0.0200 & 0.0300 & 214.6 \\
+A3 & WN18RR    & 1 & 0.0018 & 0.0034 & 0.0000 & 0.0050 & 53.4 \\
+A3 & WN18RR    & 2 & 0.0030 & 0.0138 & 0.0000 & 0.0150 & 53.4 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{The A0/A3 comparison is confounded --- stated before interpretation}
+A3 trained on a 5{,}000-triple subsample (1.8\% of FB15K-237's, 5.8\% of WN18RR's full training
+split) for 3 epochs; A0 trained on the full split for 5 epochs. This deviation was logged in
+\texttt{preregistration.md} \S11 \emph{before} any A3 result was generated (a live timing probe
+showed the full-scale A3 configuration did not complete one epoch in over 8 minutes; see
+\texttt{09\_negative\_results.pdf}). \textbf{The large MRR gap
+between A0 and A3 must not be read as evidence about the path/seionic branches} --- a
+same-data-scale, same-epoch-budget comparison was not executed.
+
+\section{Head/tail breakdown}
+\begin{center}
+\begin{tabular}{llrr}
+\toprule
+Config & Dataset (seed-1) & Head MRR & Tail MRR \\
+\midrule
+A0 & FB15K-237 & 0.1929 & 0.3662 \\
+A0 & WN18RR & 0.4209 & 0.4620 \\
+A3 & FB15K-237 & 0.0015 & 0.0175 \\
+A3 & WN18RR & 0.0021 & 0.0016 \\
+\bottomrule
+\end{tabular}
+\end{center}
+A0's head/tail ratio ($\approx0.53$ FB15K-237, $\approx0.91$ WN18RR) is within the reasonable
+range the preregistration's finalist-selection rule declared ($[0.3,3.0]$); no severe collapse
+observed for the base expert alone at this screening scale.
+
+\section{Compute}
+All A0 runs used the real RTX PRO 5000 Blackwell (GPU faster for pure-GEMM base-expert scoring).
+All A3 runs used CPU (GPU was measurably slower for the path reasoner's per-sample workload during
+the timing probe --- see \texttt{09}). No VRAM/host-RAM profiling was collected in this campaign
+(a real gap, listed in \texttt{09}).
+
+\section{Statistical treatment}
+None applied. 2 seeds is reported per-seed only (above), never as mean$\pm$std, per
+\texttt{preregistration.md} \S9's explicit instruction that this would misrepresent a 2-point
+sample as a distributional estimate.
+
+\end{document}

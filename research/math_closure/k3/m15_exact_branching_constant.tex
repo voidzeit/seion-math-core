@@ -1,0 +1,99 @@
+\section*{M15: Exact fixed-$\eta$ constant for the independent-law $k=3$ branching tree}
+\label{sec:m15-exact-branching}
+
+Consider the ordered binary branching tree with two internal children and a
+projected root. Let $C_{3,\mathrm{ind}}^{P,\mathrm{branch}}(\eta)$ be the
+projected-root constant normalized by $\rho M^2L_T$. Then
+\[
+ C_{3,\mathrm{ind}}^{P,\mathrm{branch}}(\eta)\le W_3(\eta),
+\]
+where $W_3$ is the M13 piecewise function. M15 shows that this bound is exact.
+
+\subsection*{Upper bound}
+
+By homogeneity, normalize $M=1$ and all leaf norms to one; the general
+statement follows by restoring the factor $\rho M^2L_T$.
+
+Write the two child errors as $D_1$ and $D_2$, and their projected child
+values as $R_1$ and $R_2$. Put
+\[
+ q=\frac{\|D_1\|}{\|a\|\|b\|},\qquad
+ p=\frac{\|R_1\|}{\|a\|\|b\|},\qquad
+ a_2=\frac{\|F_2\|}{\|c\|\|d\|},\qquad
+ b_2=\frac{\|D_2\|}{\|c\|\|d\|}.
+\]
+Orthogonality at the first child gives $p\le\sqrt{1-q^2}$, while
+$0\le q\le\rho$, $0\le b_2\le\rho$, and $b_2\le a_2\le1$. For any unit
+root output direction $z$, scalarization gives a bilinear form
+$B_z(x,y)=\langle z,\mu_3(x,y)\rangle$ with operator norm at most one.
+The two root inputs have orthogonal first factors, and the normalized second
+factors have inner product $b_2/a_2$, since $D_2\perp R_2$ and
+$F_2=R_2+D_2$. The nuclear/operator-norm duality for the resulting two-term
+matrix therefore gives
+\[
+ |B_z(D_1,F_2)+B_z(R_1,D_2)|
+ \le \|a_2q\,u f^*+b_2p\,v d^*\|_*
+ \|a\|\|b\|\|c\|\|d\|,
+\]
+and, using $u\perp v$,
+\[
+ E_T^P/L_T
+ \le \sqrt{q^2a_2^2+p^2b_2^2
+       +2qpb_2\sqrt{a_2^2-b_2^2}}.
+\tag{M15.1}
+\]
+The right side increases with $a_2$, so set $a_2=1$. It also increases with
+$p$ and is bounded by $p=\sqrt{1-q^2}$. Writing $s=b_2$ reduces
+(M15.1) exactly to the M13 scalar objective
+\[
+ \sqrt{q^2+(1-q^2)s^2
+       +2q\sqrt{1-q^2}\,s\sqrt{1-s^2}}.
+\]
+Maximizing over $q,s\in[0,\rho]$ gives
+\[
+ C_{3,\mathrm{ind}}^{P,\mathrm{branch}}(\eta)\le W_3(\eta).
+\tag{M15.2}
+\]
+
+\subsection*{Attainment}
+
+Take $M=1$, $L_T=1$, $\rho=\eta$, $P=e_0e_0^*$ in $\mathbb R^2$, and
+\[
+ t=\min\{\eta,\sqrt{2/3}\},\qquad p=\sqrt{1-t^2},\qquad
+ f=t e_1+p e_0,qquad d=e_1.
+\]
+Each child law is the rank-one bilinear law sending unit leaves $e_0,e_0$
+to $f$. Thus $D_1=t e_1$, $R_1=p e_0$, $D_2=t e_1$, and
+$R_2=p e_0$. Define the root scalar bilinear form by the polar factor of
+\[
+ K=t\,e_1 f^*+pt\,e_0d^*.
+\]
+That is, choose a matrix $A$ with $\|A\|_{op}=1$ such that
+\[
+ \langle A,K\rangle_F=\|K\|_*.
+\]
+Set $\mu_3(x,y)=\langle x,Ay\rangle e_0$ (transpose/conjugation is chosen
+according to the field convention). Its operator norm is one and its root
+closure residual is zero because its output lies in $\mathrm{Range}(P)$.
+The exact projected error is
+\[
+ E_T^P=\|K\|_*
+ =\sqrt{t^2+p^2t^2+2pt^2\sqrt{1-t^2}}.
+\tag{M15.3}
+\]
+For $t=\eta\le\sqrt{2/3}$, division by $\eta$ gives
+$\sqrt{4-3\eta^2}$. For $t=\sqrt{2/3}$, it gives
+$2/(\sqrt3\,\eta)$. Hence the upper bound is attained in both regimes:
+\[
+ \boxed{C_{3,\mathrm{ind}}^{P,\mathrm{branch}}(\eta)=W_3(\eta).}
+\]
+The earlier M10 equality obstruction is a chain argument and is not needed
+for branching; the branching equality is controlled by the nuclear norm of
+the two-term bilinear root functional. \hfill$\square$
+
+\subsection*{Boundary}
+
+This closes the independent-law fixed-$\eta$ constants for both binary
+$k=3$ topologies: chain by M14 and branching by M15. It does not close
+same-law/gated subclasses, arbitrary-tree $(k-1)$ sharpness, global multilinear
+norm sharpness, novelty, or independent human review.

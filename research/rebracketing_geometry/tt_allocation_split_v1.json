@@ -1,0 +1,57 @@
+{
+  "config": {
+    "bond": 8,
+    "physical": 3,
+    "cores": 5,
+    "max_rank": 8,
+    "instances": 40,
+    "rate_low": 0.6,
+    "rate_high": 2.6,
+    "tolerances": [
+      0.3,
+      0.1,
+      0.03,
+      0.01
+    ],
+    "seed": 20260818,
+    "json": "tt_allocation_split_v1.json"
+  },
+  "rows": [
+    {
+      "tolerance": 0.3,
+      "uniform_oracle": 1.3647771147771146,
+      "uniform_cert": 2.8701941377997717,
+      "perbond_cert": 2.399579293945491,
+      "threshold": 1.1101260835303388,
+      "allocation_gain": 1.1961238976522737,
+      "instances": 40
+    },
+    {
+      "tolerance": 0.1,
+      "uniform_oracle": 1.290303319799379,
+      "uniform_cert": 1.8430173292558614,
+      "perbond_cert": 1.7261707988980717,
+      "threshold": 1.0962962962962963,
+      "allocation_gain": 1.067691175422722,
+      "instances": 40
+    },
+    {
+      "tolerance": 0.03,
+      "uniform_oracle": 1.1818181818181819,
+      "uniform_cert": 1.2455089820359282,
+      "perbond_cert": 1.2381391064025795,
+      "threshold": 1.047337278106509,
+      "allocation_gain": 1.005952380952381,
+      "instances": 40
+    },
+    {
+      "tolerance": 0.01,
+      "uniform_oracle": 1.0833333333333333,
+      "uniform_cert": 1.0833333333333333,
+      "perbond_cert": 1.0833333333333333,
+      "threshold": 1.0,
+      "allocation_gain": 1.0,
+      "instances": 40
+    }
+  ]
+}

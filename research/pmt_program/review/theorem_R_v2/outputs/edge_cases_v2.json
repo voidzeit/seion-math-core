@@ -1,0 +1,31 @@
+{
+ "cases": 8000,
+ "max_v_O2": 6.661338147750939e-16,
+ "max_v_root": 2.220446049250313e-16,
+ "theta_star_out_of_budget": 0,
+ "violations": 0,
+ "counts_by_m": {
+  "0": 2069,
+  "1": 1984,
+  "2": 2018,
+  "3": 1929
+ },
+ "counts_P_rank0": 1926,
+ "counts_P_full": 2067,
+ "counts_eta1": 1682,
+ "counts_eta_tiny": 3177,
+ "counts_rho_zero": 364,
+ "counts_chi_ge_pi": 1301,
+ "worst": {
+  "m": 1,
+  "eta": 0.3,
+  "P_rank": 2,
+  "rho_in": 0.91,
+  "chi_in": 0.609385308030795,
+  "theta_star": 0.056388851698145115,
+  "theta_star_within_budget": true,
+  "v_O2": 6.661338147750939e-16,
+  "v_root": -0.4893962374748392,
+  "v": 6.661338147750939e-16
+ }
+}

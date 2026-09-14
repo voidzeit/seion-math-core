@@ -1,0 +1,18 @@
+{
+  "pairing_mechanism": {
+    "batch_order": "explicit torch.Generator seeded at args.seed+1000, decoupled from model-construction RNG consumption (train.py, commit 5094d44)",
+    "base_initialization": "A0 trained first per seed; A1/A2/A3 for that seed use --init_from_checkpoint <that seed's A0 best.pt> (train.py, commit 5094d44), sharing tucker/embedding weights at step 0",
+    "verification_tests": [
+      "tests/kgr/test_gate13_5_paired_seeding.py::test_dataloader_batch_order_independent_of_prior_rng_consumption",
+      "tests/kgr/test_gate13_5_paired_seeding.py::test_init_from_checkpoint_seeds_overlap_and_leaves_new_branches_fresh",
+      "tests/kgr/test_gate13_5_paired_seeding.py::test_init_from_checkpoint_rejects_reverse_direction_and_resume_combo"
+    ],
+    "verification_status": "all 3 pass, full tests/kgr suite 170/170 at commit 5094d44"
+  },
+  "pairs": [
+    {"seed": 1, "order": ["A0", "A1", "A2", "A3"], "a0_checkpoint": "campaigns/gate13/gate13_5/runs/pilot/seed1_A0_matched_control_20260806/best.pt", "a0_execution_id": "78db52b2dac24f4d"},
+    {"seed": 2, "order": ["B2", "A0_matched", "A1", "A2", "A3"], "pretrain_checkpoint": "campaigns/gate13/gate13_5/runs/full/seed2_A0/best.pt", "pretrain_execution_id": "71077436cc804d01", "matched_a0_checkpoint": "campaigns/gate13/gate13_5/runs/full/seed2_A0_matched/best.pt", "matched_a0_execution_id": "cfe0d199d1be4bf1"},
+    {"seed": 3, "order": ["B3", "A0_matched", "A1", "A2", "A3"], "pretrain_checkpoint": "campaigns/gate13/gate13_5/runs/full/seed3_A0/best.pt", "pretrain_execution_id": "f9fe03afa57a4387", "matched_a0_checkpoint": "campaigns/gate13/gate13_5/runs/full/seed3_A0_matched/best.pt", "matched_a0_execution_id": "5fbdad38040f41bb"}
+  ],
+  "note": "Seed 1 uses the audited matched warm-start control. For seeds 2 and 3, the existing A0-labelled runs are pretraining baselines B_s; matched A0 controls are executed as separate fresh runs from B_s/best.pt with optimizer reset and test evaluation closed."
+}

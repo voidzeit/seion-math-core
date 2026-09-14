@@ -1,0 +1,1 @@
+{"order": "O1", "m": 3, "eta": 0.6, "cases": 3000, "violations_lemma3": 0, "violations_root": 0, "max_v_lemma3": -0.6031674079399815, "max_v_root": -0.23846922444062552, "max_v_lemma3_proof_theta": 0.0}

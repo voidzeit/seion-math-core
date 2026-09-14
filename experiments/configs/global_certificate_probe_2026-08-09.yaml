@@ -1,0 +1,17 @@
+id: adaptive_tensor_network_global_certificate_probe_2026_08_09
+status: exploratory_not_preregistered
+purpose: evaluate a scalable domain-certified rank allocator on normalized leaves
+command: python applications/adaptive_tensor_network/experiments/run_global_certificate_probe.py
+topologies: [chain_depth3, balanced_binary_4leaf]
+seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+fit_batch_size: 80
+eval_batch_size: 300
+leaf_domain: each normalized leaf row has norm <= 1
+methods: [pathwise_global, global_certificate_optimal]
+outputs:
+  raw: applications/adaptive_tensor_network/results/global_certificate_probe_2026-08-09.json
+  report: applications/adaptive_tensor_network/results/GLOBAL_CERTIFICATE_PROBE_2026-08-09.md
+limitations:
+  - frobenius_enclosure_is_conservative
+  - no_universal_allocator_superiority_claim
+  - not_preregistered

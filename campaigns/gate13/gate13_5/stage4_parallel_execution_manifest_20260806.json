@@ -1,0 +1,66 @@
+{
+  "schema": "gate13.5-stage4-parallel-execution-v2",
+  "created_utc": "2026-08-06T07:10:00Z",
+  "git_commit": "f52f898b8e6e9a7bcf637f8b046107c19b511fb3",
+  "test_opened": false,
+  "parallel_policy": {
+    "authorized_by_user": true,
+    "gpu_limit_gb": 24,
+    "maximum_concurrent_training_processes": 5,
+    "observed_peak_group_vram_mb": 6428,
+    "observed_gpu_utilization_percent": 94,
+    "result": "within_vram_capacity"
+  },
+  "orchestration": {
+    "initial_sequential_orchestrator_pid": 65936,
+    "orchestrator_stop": "controlled_before_seed2_A0_completion_to_prevent_duplicate_sequential_launches",
+    "failed_launch_attempt_artifact": "campaigns/gate13/gate13_5/stage4_parallel_launch_attempt_20260806.json",
+    "failed_attempt_created_training_artifacts": false
+  },
+  "seed_pairs": [
+    {
+      "seed": 1,
+      "A0_execution_id": "78db52b2dac24f4d",
+      "A0_checkpoint": "campaigns/gate13/gate13_5/runs/pilot/seed1_A0_matched_control_20260806/best.pt",
+      "A0_role": "MATCHED_WARM_START_CONTROL",
+      "A1_execution_id": "9a60519a1ff34f57",
+      "A2_execution_id": "688496ecfa8b4226",
+      "A3_execution_id": "48778a1093c74ea9"
+    },
+    {
+      "seed": 2,
+      "A0_execution_id": "71077436cc804d01",
+      "A0_checkpoint": "campaigns/gate13/gate13_5/runs/full/seed2_A0/best.pt",
+      "A0_role": "PRETRAIN_BASE_SEED2",
+      "A0_matched_execution_id": "cfe0d199d1be4bf1",
+      "A0_matched_checkpoint": "campaigns/gate13/gate13_5/runs/full/seed2_A0_matched/best.pt",
+      "A0_matched_role": "MATCHED_STAGE4_CONTROL",
+      "A1_execution_id": "787153e119514947",
+      "A2_execution_id": "720e18f7fb0a419d",
+      "A3_execution_id": "3b998c7247d14c34"
+    },
+    {
+      "seed": 3,
+      "A0_execution_id": "f9fe03afa57a4387",
+      "A0_checkpoint": "campaigns/gate13/gate13_5/runs/full/seed3_A0/best.pt",
+      "A0_role": "PRETRAIN_BASE_SEED3",
+      "A0_matched_execution_id": "5fbdad38040f41bb",
+      "A0_matched_checkpoint": "campaigns/gate13/gate13_5/runs/full/seed3_A0_matched/best.pt",
+      "A0_matched_role": "MATCHED_STAGE4_CONTROL",
+      "A1_execution_id": "4d9b75c8000345bb",
+      "A2_execution_id": "0f3996d1bad84505",
+      "A3_execution_id": "277ecb72b5b345ed"
+    }
+  ],
+  "matched_control_completion": {
+    "seed2": {"execution_id": "cfe0d199d1be4bf1", "execution_mode": "sequential_after_parallel_group", "test_opened": false},
+    "seed3": {"execution_id": "5fbdad38040f41bb", "execution_mode": "sequential_after_parallel_group", "test_opened": false}
+  },
+  "deviations": [
+    "The sequential runner was stopped in a controlled manner before it could duplicate A1/A2/A3 launches.",
+    "One malformed parallel launch attempt was preserved as an engineering artifact and produced no training output.",
+    "No numerical artifact was overwritten; all final runs used new empty output directories.",
+    "The parallel seed2/seed3 A0-labelled runs were pretraining baselines B2/B3; matched A0 controls were added sequentially and are the causal baseline for the corrected audit.",
+    "Parallel-group wall times are retained as operational evidence but excluded from clean efficiency comparisons because of GPU contention."
+  ]
+}

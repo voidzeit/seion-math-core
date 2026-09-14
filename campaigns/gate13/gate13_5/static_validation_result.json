@@ -1,0 +1,106 @@
+{
+  "checks": [
+    {
+      "name": "dataset_exists:FB15K-237:train",
+      "passed": true,
+      "detail": "C:\\Documents\\metamaths\\seion-math-core\\data\\FB15K-237\\train.txt"
+    },
+    {
+      "name": "dataset_hash_matches:FB15K-237:train",
+      "passed": true,
+      "detail": "expected=6e4c2782169af21e9743f3b1d200886f5d595bf6bc504ec1351720949c5cdfae actual=6e4c2782169af21e9743f3b1d200886f5d595bf6bc504ec1351720949c5cdfae"
+    },
+    {
+      "name": "dataset_exists:FB15K-237:valid",
+      "passed": true,
+      "detail": "C:\\Documents\\metamaths\\seion-math-core\\data\\FB15K-237\\valid.txt"
+    },
+    {
+      "name": "dataset_hash_matches:FB15K-237:valid",
+      "passed": true,
+      "detail": "expected=cf6309010852f6a8d47a45df830a426415d1ee6f7a3970a8376ff1fb81db4a5c actual=cf6309010852f6a8d47a45df830a426415d1ee6f7a3970a8376ff1fb81db4a5c"
+    },
+    {
+      "name": "dataset_exists:FB15K-237:test",
+      "passed": true,
+      "detail": "C:\\Documents\\metamaths\\seion-math-core\\data\\FB15K-237\\test.txt"
+    },
+    {
+      "name": "dataset_hash_matches:FB15K-237:test",
+      "passed": true,
+      "detail": "expected=5711cf41623ceb4eacc50eb6108a3ca6565c7492e3caaf82a3e355cc660d1574 actual=5711cf41623ceb4eacc50eb6108a3ca6565c7492e3caaf82a3e355cc660d1574"
+    },
+    {
+      "name": "dataset_exists:WN18RR:train",
+      "passed": true,
+      "detail": "C:\\Documents\\metamaths\\seion-math-core\\data\\WN18RR\\train.txt"
+    },
+    {
+      "name": "dataset_hash_matches:WN18RR:train",
+      "passed": true,
+      "detail": "expected=038612e783c215ee5f3ca9fbfca27b8d0739be1028fe4ee7c174aecf0b83d5df actual=038612e783c215ee5f3ca9fbfca27b8d0739be1028fe4ee7c174aecf0b83d5df"
+    },
+    {
+      "name": "dataset_exists:WN18RR:valid",
+      "passed": true,
+      "detail": "C:\\Documents\\metamaths\\seion-math-core\\data\\WN18RR\\valid.txt"
+    },
+    {
+      "name": "dataset_hash_matches:WN18RR:valid",
+      "passed": true,
+      "detail": "expected=453ce7202afa58094a04d2b1560ee2b02660f1c260b32ce6651c8ccedd1028ab actual=453ce7202afa58094a04d2b1560ee2b02660f1c260b32ce6651c8ccedd1028ab"
+    },
+    {
+      "name": "dataset_exists:WN18RR:test",
+      "passed": true,
+      "detail": "C:\\Documents\\metamaths\\seion-math-core\\data\\WN18RR\\test.txt"
+    },
+    {
+      "name": "dataset_hash_matches:WN18RR:test",
+      "passed": true,
+      "detail": "expected=0383bceaaa1096cf3c03ec021ed0048068e2355dbfc0239b292cefdac821cec5 actual=0383bceaaa1096cf3c03ec021ed0048068e2355dbfc0239b292cefdac821cec5"
+    },
+    {
+      "name": "cuda_available",
+      "passed": true,
+      "detail": "NVIDIA RTX PRO 5000 Blackwell Generation Laptop GPU"
+    },
+    {
+      "name": "evaluator_importable",
+      "passed": true,
+      "detail": "seion_kgr.evaluate.evaluate"
+    },
+    {
+      "name": "dataset_load_deterministic",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "train_cli_flag_present:enable_path",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "train_cli_flag_present:enable_seion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "train_cli_flag_present:init_from_checkpoint",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "train_cli_flag_present:skip_test_eval",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "train_cli_flag_present:gate_g_max",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "all_passed": true,
+  "commit_sha": "75dfffb1b053cfdb7e5a047b5629f875396f2ba3"
+}

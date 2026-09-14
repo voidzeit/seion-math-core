@@ -1,0 +1,64 @@
+{
+  "protocol": "GATE13.5_STANDALONE_ARCHITECTURAL_SUFFICIENCY",
+  "status": "PREREGISTERED_BEFORE_EXECUTION",
+  "created_utc": "2026-08-06T07:20:00Z",
+  "question": "Can Path and/or SEION produce the final link-prediction ranking without using the TuckER decoder?",
+  "regimes": {
+    "WARM_STARTED_DECODER_SUFFICIENCY": {
+      "arms": {
+        "W0": {"tucker_scorer": true, "path": false, "seion": false},
+        "W1": {"tucker_scorer": false, "path": true, "seion": false},
+        "W2": {"tucker_scorer": false, "path": false, "seion": true},
+        "W3": {"tucker_scorer": false, "path": true, "seion": true}
+      },
+      "initialization": "same seed-specific pretraining baseline B_s/best.pt; W1-W3 load overlapping representations and freeze the unused TuckER decoder; optimizer reset",
+      "claim_boundary": "decoder sufficiency only; representations may contain TuckER-pretrained knowledge"
+    },
+    "END_TO_END_ARCHITECTURAL_SUFFICIENCY": {
+      "arms": {
+        "E0": {"tucker_scorer": true, "path": false, "seion": false},
+        "E1": {"tucker_scorer": false, "path": true, "seion": false},
+        "E2": {"tucker_scorer": false, "path": false, "seion": true},
+        "E3": {"tucker_scorer": false, "path": true, "seion": true}
+      },
+      "initialization": "paired fresh initialization by seed; no TuckER-produced checkpoint is loaded; same DataLoader generator seed and negative sampling",
+      "claim_boundary": "full architectural sufficiency only if the independent initialization and paired-state checks pass"
+    }
+  },
+  "standalone_design": {
+    "score": "positive learned per-relation scale times internally normalized branch score",
+    "path_score": "LayerNorm(reached) dot LayerNorm(target_embedding) / sqrt(dim)",
+    "seion_score": "LayerNorm(q_seion) dot LayerNorm(T(entity_embedding))",
+    "scale": "softplus(raw_scale)+1e-6, initialized to approximately 1",
+    "candidate_set_normalization": false,
+    "batchnorm_on_scores": false,
+    "base_decoder": "zero contribution and frozen when standalone_mode is warm_started_decoder or end_to_end"
+  },
+  "frozen_parameters": {
+    "dataset": "full FB15K-237",
+    "seed_set": [1, 2, 3],
+    "epochs": 15,
+    "batch_size": 256,
+    "neg_k": 64,
+    "gate_g_max": 0.5,
+    "evaluator": "full blocked filtered evaluator",
+    "skip_test_eval": true,
+    "path_backend": "batched",
+    "path_selector_mode": "budgeted_bfs",
+    "path_rank": 16,
+    "path_layers": 2,
+    "path_max_neighbors": 16,
+    "path_proj_rank": 0,
+    "dim": 64,
+    "base_expert": "tucker"
+  },
+  "required_microtests": [
+    "Path internal parameters have nonzero gradient on the first batch",
+    "SEION internal parameters have nonzero gradient on the first batch",
+    "initial standalone scores are finite and non-degenerate",
+    "W1-W3 loaded shared embedding hashes match W0 source checkpoint",
+    "E1-E3 paired initialization hashes match their E0 embedding initialization",
+    "Path coverage records frontier-empty rate, gold reach rate, and explicit nulls for unsupported depth/neighbor counters"
+  ],
+  "test_discipline": "No test evaluation, test-opening manifest, finalist selection, or scientific improvement claim before separate authorization."
+}

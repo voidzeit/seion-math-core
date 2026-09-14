@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\begin{document}
+\TitlePage{06 --- Projection, Compression, and Rank Allocation}{SEION-KGR v26 MAX}{Purpose: state what the projection layer and rank controller actually do, what is tested, and what a Pareto study would require.}
+
+\tableofcontents
+
+\section{Projection layer}
+\texttt{seion\_kgr/kernels.py::StiefelProjector}: $Q$ on the Stiefel manifold via QR retraction
+of a learned parameter, $P = QQ^*$. \textbf{Status: \ProvedU} that $Q^*Q=I$ holds by construction
+of QR (any $R$), verified after real gradient steps (isometry/idempotent residuals
+$\sim10^{-7}$, not just at init) --- this caught a real bug during the base engineering work: an
+earlier sign-disambiguation step (\texttt{torch.sign(...).clamp\_min(1e-12)}) silently replaced
+negative signs with $10^{-12}$ and shrank that column to near zero, breaking orthonormality after
+training; fixed by removing the unneeded correction (QR's $Q$ is orthonormal regardless of sign
+convention).
+
+\texttt{seion\_kgr/projection.py::measure\_closure\_leakage\_sample} computes the sample-mean
+closure-leakage ratio --- explicitly labeled an \texttt{empirical\_error\_predictor}, never a
+certified bound (\S07).
+
+\section{Rank allocation policies}
+Six policies in \texttt{seion\_kgr/rank\_controller.py}: \texttt{uniform},
+\texttt{singular\_energy}, \texttt{gradient\_sensitivity}, \texttt{pathwise},
+\texttt{local\_error\_greedy}, \texttt{hybrid} (the recommended default, a weighted combination of
+the other four's signals), plus \texttt{random} as a control. \textbf{Status: \DefC}, all six
+unit-tested for budget/max-rank compliance; \texttt{hybrid} verified structurally distinct from
+\texttt{pathwise} alone (never defaults to the single signal the confirmatory
+\texttt{adaptive\_tensor\_network} evidence already showed loses to \texttt{uniform} and
+\texttt{local\_error\_greedy} at equal budget --- assumption A12).
+
+\texttt{compare\_policies} runs every policy through a caller-supplied objective and reports
+regret against the best-tried (not a proven oracle) --- unit-tested with a hand-computed objective,
+not run against a real trained model's rank-allocation decision in this campaign.
+
+\section{Instrumentation wired into training}
+\texttt{seion\_kgr/train.py}'s \texttt{\_module\_diagnostics} computes, per epoch (when the
+relevant branch is enabled): closure leakage (path reasoner only, if its projector is enabled),
+singular-energy-uncaptured (via exact SVD of the CP law's output weight matrix), and
+gradient-sensitivity (last-batch gradient norm on that module's parameters, an explicit
+simplification stated in code comments). These feed \texttt{rank\_history.jsonl} together with a
+\texttt{compare\_policies} call each eval epoch --- real, executed, verified end to end on real
+WN18RR data (\texttt{campaigns/gate12/audit\_smoke\_run\_selector} class of runs during Phase B
+development; superseded by Tier~0 for this package's canonical evidence).
+
+\section{What is NOT done: a Pareto study}
+\label{sec:pareto}
+\textbf{No MRR-vs-rank/VRAM/latency Pareto curve was generated on benchmark data in this
+campaign.} The instrumentation to produce one exists and is tested (above), but running it across
+a rank sweep on FB15K-237/WN18RR at meaningful scale requires the same path-reasoner-scaling
+resolution needed for a real confirmatory campaign (\S09) --- not attempted here, given the
+session's compute budget was spent on engineering closure and a bounded 2-ladder-point screening
+pass instead, per the mandate's own priority order (item 7, "projection/rank-controller Pareto
+study", explicitly ranked below primary screening and confirmatory work).
+
+\textbf{Status: OPEN.} This is the single most concrete, cheaply-scoped follow-up: given the
+instrumentation already exists, a rank sweep at fixed budget on the Tier~0 A3 configuration
+(TuckER + path + seion, subsampled data) would produce a real, if still screening-tier, Pareto
+curve within a session of similar length to this one.
+
+\end{document}

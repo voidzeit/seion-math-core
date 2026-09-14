@@ -1,0 +1,20 @@
+{
+ "version": "v1",
+ "frozen": "2026-09-13",
+ "status": "ADVISORY_PROOF_DRAFT",
+ "source_draft": "research/pmt_program/THEOREM_R_DRAFT.md",
+ "source_commit": "f80f4e8825e991252160e60eb693bc08dd07b9a7",
+ "source_draft_sha256": "822636938b666456947194cd03c9e38bfea3d109608cb760c8cc61166033942c",
+ "files_sha256": {
+  "AUDIT_v1.md": "bde12626724d2cd77ae3beb2723ef4b4dd1aed8a97d1e1b0f26d4bf00f143de2",
+  "README.md": "889bce3c2b8c5792b87396db309332806274bac1afb3d4d9ae9c6e8853eb587f",
+  "REVIEW_PACKAGE_v1.md": "cf40832546f2dba8fc8b06c3e6679d79c9677d6700ed7c2d5a8665e26dd54927",
+  "TENSOR_ANGLE_INEQUALITY_v1.md": "455adf6fc4593640d837f5efa94242b3c76f3ee1359ea3cd255fc577d8b0089f",
+  "THEOREM_R_DRAFT_v1.md": "822636938b666456947194cd03c9e38bfea3d109608cb760c8cc61166033942c",
+  "edge_cases.py": "3e5a3af0c79898dfa527a67d97951e5a3a8282f0b4e53585ddc4dd3ab3987399",
+  "outputs/edge_cases.json": "00244be015089a285e4eb5fbf942524aa0cec1c512eb3236811ea6eb2c26c1ed"
+ },
+ "rule": "Do not edit frozen files. Any correction creates theorem_R_v2/ with a changelog.",
+ "hash_basis": "SHA-256 of the committed git blob (LF line endings)",
+ "correction": "Hashes of TENSOR_ANGLE_INEQUALITY_v1.md and outputs/edge_cases.json recomputed from the committed blobs: the first manifest hashed CRLF working copies written on Windows. Content unchanged."
+}

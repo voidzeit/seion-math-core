@@ -1,0 +1,1 @@
+{"n": 1500, "max_ratio_to_Ck": 0.9994040707631219, "worst_k": 2, "worst_eta": 0.5, "worst_noise": 0.0, "count_ratio_gt_1": 0}

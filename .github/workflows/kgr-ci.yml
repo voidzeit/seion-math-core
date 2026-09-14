@@ -1,0 +1,103 @@
+name: seion-kgr-ci
+on:
+  push:
+    paths:
+      - 'seion_kgr/**'
+      - 'seion_kgr_reference_fp64.py'
+      - 'seion_kgr_v26_train.py'
+      - 'tests/kgr/**'
+      - 'docs/SEION_KGR_*.md'
+      - 'pyproject.toml'
+      - '.github/workflows/kgr-ci.yml'
+  pull_request:
+    paths:
+      - 'seion_kgr/**'
+      - 'seion_kgr_reference_fp64.py'
+      - 'seion_kgr_v26_train.py'
+      - 'tests/kgr/**'
+      - 'docs/SEION_KGR_*.md'
+      - 'pyproject.toml'
+      - '.github/workflows/kgr-ci.yml'
+  workflow_dispatch:
+
+jobs:
+  kgr-cpu:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONHASHSEED: '0'
+      CUBLAS_WORKSPACE_CONFIG: ':4096:8'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install package and test/research dependencies (CPU torch only)
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[test,research]'
+
+      - name: Reference FP64 oracle self-test (Fase 1, Gate 0/1/3/7 checks)
+        run: python seion_kgr_reference_fp64.py --self_test
+
+      - name: Trainer self-test (16 architecture combinations, CPU)
+        run: python seion_kgr_v26_train.py --self_test
+
+      - name: Full seion_kgr pytest battery (property-based + negative controls)
+        run: >
+          python -m pytest tests/kgr -q
+          --junitxml=kgr_ci_artifacts/pytest_kgr.xml
+
+      - name: Tiny synthetic end-to-end smoke test (file-based CLI path, not --self_test)
+        run: |
+          mkdir -p kgr_ci_artifacts
+          python - <<'PYEOF'
+          import pathlib
+          scratch = pathlib.Path("kgr_ci_artifacts/synthetic")
+          scratch.mkdir(parents=True, exist_ok=True)
+          triples = [
+              ("e0", "r0", "e1"), ("e1", "r0", "e2"), ("e2", "r1", "e3"),
+              ("e3", "r1", "e4"), ("e4", "r0", "e5"), ("e5", "r1", "e0"),
+          ]
+          def write(name, rows):
+              (scratch / name).write_text("\n".join("\t".join(r) for r in rows) + "\n")
+          write("train.txt", triples)
+          write("valid.txt", triples[:2])
+          write("test.txt", triples[2:4])
+          PYEOF
+          python seion_kgr_v26_train.py \
+            --train kgr_ci_artifacts/synthetic/train.txt \
+            --valid kgr_ci_artifacts/synthetic/valid.txt \
+            --test kgr_ci_artifacts/synthetic/test.txt \
+            --out_dir kgr_ci_artifacts/synthetic_run \
+            --dim 8 --base_expert distmult --epochs 1 --batch_size 4 \
+            --neg_k 2 --eval_max_queries 4 --entity_block_eval 8 --cpu --seed 1
+          test -f kgr_ci_artifacts/synthetic_run/final_metrics.json
+
+      - name: Determinism spot-check (same seed, two oracle runs, byte-identical numerics)
+        run: |
+          python - <<'PYEOF'
+          import json, subprocess, sys
+          def run():
+              out = subprocess.run(
+                  [sys.executable, "seion_kgr_reference_fp64.py", "--self_test", "--seed", "7"],
+                  capture_output=True, text=True, check=True,
+              )
+              return json.loads(out.stdout)
+          a, b = run(), run()
+          assert a == b, "oracle self-test is not deterministic across repeated CI invocations"
+          print("determinism spot-check OK")
+          PYEOF
+
+      - name: Archive JUnit results and compact manifests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kgr-ci-artifacts
+          path: |
+            kgr_ci_artifacts/pytest_kgr.xml
+            kgr_ci_artifacts/synthetic_run/final_metrics.json
+            kgr_ci_artifacts/synthetic_run/run_manifest.json
+          retention-days: 14
+          if-no-files-found: warn
