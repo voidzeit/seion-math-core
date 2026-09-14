@@ -1,0 +1,21 @@
+{
+ "n_runs": 400,
+ "labels": {
+  "WITHIN_CERTIFICATE": 400
+ },
+ "ratio_max": 1.0000000000000007,
+ "ratio_median": 0.9999999999999996,
+ "min_slack_1_minus_ratio": -6.661338147750939e-16,
+ "gain_median": 0.8395481395953344,
+ "gain_min": 0.15960525970317666,
+ "relative_certificate_median": 1.1920747657349158,
+ "fraction_relative_certificate_lt_1": 0.405,
+ "deflation_median": 1.0,
+ "eta_hat_median": 0.29036919960618446,
+ "k_range": [
+  2,
+  12
+ ],
+ "family": "F6",
+ "seconds": 24.420502424240112
+}

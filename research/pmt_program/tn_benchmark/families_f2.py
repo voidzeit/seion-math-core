@@ -16,8 +16,8 @@ import itertools
 
 import numpy as np
 
-from pmt_eval import Node
-from seeding import stable_seed, law_norm_lower_bound
+from pmt_eval import Node, law_norm_lower_bound
+from seeding import stable_seed
 
 
 def tree_shape(n: int, kind: str, rng):
