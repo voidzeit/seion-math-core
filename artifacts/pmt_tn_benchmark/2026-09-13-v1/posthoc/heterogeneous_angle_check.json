@@ -1,0 +1,85 @@
+{
+ "status": "POST_HOC_EXPLORATORY",
+ "inputs_sha256": {
+  "F1": "f72d5dd54f340b5dd3f5dd9dcbd1d6fab9113af45c18bd88c2f2c514968c54d0",
+  "F2": "79ea601aedf4f92eee4fe45bb073312b81f549587bfc72ac551cee69797798f5",
+  "F3": "5a710cecb457a3453494afb545cc0f66375e3d5b3c8fadce72441d7fc460e635",
+  "F4": "c0d0a21cd32fdeed49cb8973c7093ceca69947384225f348e97b17524c56064c",
+  "F6": "528e131b8823c36d807bce1a343bc6e64d1734b08d035443d62db86591830d90",
+  "F7": "af7c0d138ce59111242e956498b68a068a338af880eb08d2ca833ed1d1796cdf",
+  "F7R": "0bb57ed7b13f6d0bf380d641e13086f80dd0725559df22033f8c4036ba82a7f4"
+ },
+ "corner": {
+  "F1": {
+   "runs": 4224,
+   "violations": 0,
+   "max_E_over_corner_bound": 0.2831683650184862,
+   "violations_by_config": {}
+  },
+  "F2": {
+   "runs": 23040,
+   "violations": 0,
+   "max_E_over_corner_bound": 0.03522353800915289,
+   "violations_by_config": {}
+  },
+  "F3": {
+   "runs": 2880,
+   "violations": 0,
+   "max_E_over_corner_bound": 0.6338322987961231,
+   "violations_by_config": {}
+  },
+  "F4": {
+   "runs": 1152,
+   "violations": 0,
+   "max_E_over_corner_bound": 0.005861907875809765,
+   "violations_by_config": {}
+  },
+  "F6": {
+   "runs": 400,
+   "violations": 0,
+   "max_E_over_corner_bound": 1.0000000000000004,
+   "violations_by_config": {}
+  },
+  "F7": {
+   "runs": 1536,
+   "violations": 42,
+   "max_E_over_corner_bound": 1.0124179022681798,
+   "violations_by_config": {
+    "coiso/balanced/k7": 2,
+    "coiso/star/k5": 5,
+    "coiso/star/k7": 33,
+    "coiso/random/k7": 2
+   }
+  },
+  "F7R": {
+   "runs": 960,
+   "violations": 0,
+   "max_E_over_corner_bound": 0.9994312034679143,
+   "violations_by_config": {}
+  }
+ },
+ "boxmax_frozen_checks": [
+  {
+   "instance": "instances/instance_000551.json",
+   "variant": "coiso",
+   "topology": "star",
+   "k": 7,
+   "angle_sum_over_pi": 1.9356382589064034,
+   "E_over_scale": 0.9999999999999936,
+   "corner": 0.9999999079206285,
+   "boxmax": 1.4948801947072992,
+   "G_k_eta_max": 1.509590370786036
+  },
+  {
+   "instance": "instances/instance_000563.json",
+   "variant": "coiso",
+   "topology": "star",
+   "k": 7,
+   "angle_sum_over_pi": 1.7168454167306693,
+   "E_over_scale": 0.9999999999999944,
+   "corner": 0.9999999972542494,
+   "boxmax": 1.473082035448882,
+   "G_k_eta_max": 1.509590370786036
+  }
+ ]
+}
