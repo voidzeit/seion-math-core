@@ -76,6 +76,8 @@ def run_instance(inst: dict, rng) -> dict:
                 "eta_nodes_max_min": [max(out["eta_nodes"].values()), min(out["eta_nodes"].values())]})
     if label == "REPLAY_TRIGGERED" and "replay" in inst:
         rec["replay"] = inst["replay"](out, c)
+        if rec["replay"].get("survives_replay"):
+            rec["label"] = "THEOREM_R_COUNTEREXAMPLE_CANDIDATE"
     return rec
 
 
@@ -104,7 +106,7 @@ def main():
     quick = "--quick" in sys.argv
     import importlib
     mod = importlib.import_module({"F1": "families_f1", "F2": "families_f2", "F3": "families_f3",
-                                   "F4": "families_f4", "F6": "families_controls_runs",
+                                   "F4": "families_f4", "F7": "families_f7", "F7R": "families_f7", "F6": "families_controls_runs",
                                    "F8": "families_controls_runs"}[family])
     date = dt.date.today().isoformat()
     base = Path(os.environ["PMT_TN_OUT"]) if os.environ.get("PMT_TN_OUT") else ROOT / "artifacts" / "pmt_tn_benchmark"
@@ -112,25 +114,34 @@ def main():
     if outdir.exists():
         raise SystemExit(f"refusing to overwrite {outdir}")
     outdir.mkdir(parents=True)
+    commit_at_launch = git_commit()
     rng = np.random.default_rng(20260914)
     t0 = time.time()
     records = []
     with open(outdir / "runs.jsonl", "w", encoding="utf-8", newline="\n") as fh:
         for inst in mod.instances(family, quick=quick):
             rec = run_instance(inst, rng)
+            if "frozen" in inst and (inst.get("save_frozen") or rec["label"] == "REPLAY_TRIGGERED"):
+                (outdir / "instances").mkdir(exist_ok=True)
+                fname = f"instance_{len(records):06d}.json"
+                with open(outdir / "instances" / fname, "w", encoding="utf-8", newline="\n") as fi:
+                    json.dump({"meta": inst["meta"], "label": rec["label"], "ratio_obs_to_BR": rec["ratio_obs_to_BR"],
+                               "M_hat": rec["M_hat"], **inst["frozen"]}, fi)
+                rec["frozen_instance"] = f"instances/{fname}"
             records.append(rec)
             fh.write(json.dumps(rec) + "\n")
     summary = summarize(records)
     summary["family"] = family
     summary["seconds"] = time.time() - t0
     manifest = {"benchmark": "PMT_TN_BENCHMARK_V1", "family": family, "quick": quick,
-                "command": " ".join(sys.argv), "git_commit": git_commit(), "date": date,
+                "command": " ".join(sys.argv), "git_commit": commit_at_launch, "date": date,
                 "python": sys.version, "numpy": np.__version__, "platform": platform.platform(),
                 "preregistration": "research/pmt_program/tn_benchmark/PREREGISTRATION_PMT_TN_V1.md"}
     for name, obj in (("run_manifest.json", manifest), ("final_metrics.json", summary)):
         with open(outdir / name, "w", encoding="utf-8", newline="\n") as fh:
             json.dump(obj, fh, indent=1)
-    hashes = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(outdir.iterdir()) if p.is_file()}
+    hashes = {p.relative_to(outdir).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+              for p in sorted(outdir.rglob("*")) if p.is_file()}
     with open(outdir / "artifact_hashes.json", "w", encoding="utf-8", newline="\n") as fh:
         json.dump(hashes, fh, indent=1)
     print(json.dumps(summary, indent=1))

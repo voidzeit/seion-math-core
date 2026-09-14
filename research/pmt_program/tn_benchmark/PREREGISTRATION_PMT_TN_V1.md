@@ -165,3 +165,51 @@ F6 → F8 (done as tests before freezing) → F1 + F5 → F2 → F3 + F4 → F7 
   No hypothesis, criterion or grid was changed.
 * **Full-subspace certificate.** For fixed-projector families each record also carries
   `B_R_full = G_k(η̂^full) · M̂^k · L`, reported next to the trajectory certificate.
+
+## Amendment 2 (2026-09-13, before any full F7 run)
+
+Written after F1, F3, F4 (and F6, F8) full campaigns and a 200-step F7 smoke run whose output was kept outside
+the artifact tree. No criterion of H1–H4, H7, H8 is changed.
+
+* **Autodiff backend.** PyTorch 2.7.1, CPU only (`CUDA_VISIBLE_DEVICES=""` forced in the module), float64.
+* **F7 network model.** `k` internal nodes, all value spaces `ℝ^χ`, arbitrary real multilinear node laws,
+  unit leaves, fixed orthogonal rank-`r` projectors (`r = 1..χ−1`), root `P = I`. Node arity is 2 for
+  chain, balanced and random topologies; the star has a root of arity `k − 1` (no leaves) and `k − 1`
+  leaf-only children of arity 2.
+* **Two variants.**
+  * `coiso` — the preregistered F7: orthonormal-row flattening, `M̂ = 1` rigorous.
+  * `opnorm` — added. Each law is normalised by a block-power-iteration estimate of its operator norm, so
+    rotation-type laws (the `ℝ² ≅ ℂ` witness has flattening norm `√2` but operator norm 1) are
+    representable. Without it, H5 would measure the flattening slack rather than sharpness.
+* **Objective.** Maximise `log E − log G_k(η_smooth)` with `M = 1`, where `η_smooth = logsumexp(200 η_v)/200`
+  and `G_k` is a 1025-point grid maximum. Adam (lr 0.03, cosine to 0.002), 1500 steps, 16 restarts batched.
+  Operator-norm maximisers are warm-started, with global re-initialisation every 100 steps.
+* **Final evaluation.** Every restart is one PMT instance evaluated by the standard pipeline (`run_instance`)
+  with a **rigorous** `M̂ = max_v M̂^up_v`:
+  * `M̂^up_v = min(flattening norm, net bound)`;
+  * the net bound (arity 2 only) is `max_{y∈N} σ_max(W_v(y,·)) / (1 − δ)` over a radially projected
+    cube-surface net with covering radius `δ = h√(χ−1)/2`, `h = 0.0005` (`χ = 2`) or `0.004` (`χ = 3`);
+  * it is computed for every restart when `χ = 2`, and for the best restart of each configuration when `χ = 3`.
+
+  H1 uses this certificate and the §6 replay; an mpmath replay hook is attached to every F7 instance.
+  Descriptive only: `ratio_est` with `M̂^low` (128-restart power iteration, a lower bound), and
+  `M_gap_rel = (M̂^up − M̂^low)/M̂^low`.
+* **Frozen instances.** The best restart per configuration (by `ratio_est`; F7R: by `E_obs`) and every
+  replay-triggered restart are written to `instances/` with all tensors, projector bases, leaves and topology.
+* **H5 operationalised.** `d_span` is the maximum over nodes of the numerical rank (relative tolerance
+  `1e-3`) of `{F_v, μ_v(R_children), R_v}`. A configuration counts as a **near-sharp non-witness network**
+  only if its best restart has:
+  * **rigorous** `ratio ≥ 0.9`;
+  * `χ = 3` and `d_span = 3`;
+  * `M_gap_rel ≤ 1e-2`.
+
+  Configurations with `ratio_est ≥ 0.9` but rigorous `ratio < 0.9` (e.g. star roots of arity ≥ 3, which only
+  have the flattening bound) are reported as "estimate only".
+* **H6 operationalised (family id `F7R`).** Topologies chain and balanced; `k ∈ {3, 5, 7}`; `χ = 2`, `r = 1`;
+  `opnorm` variant; `η_t ∈ {0.1, …, 1.0}`. Maximise `E − 10³·relu(η_smooth − η_t)²`.
+  * Report the best `E_obs`, its `η̂`, `G_k(η_t)` and `G_k(η̂)`.
+  * The flattening claim is supported if `max E_obs` is non-decreasing in `η_t` and constant within 2% for
+    `η_t ≥ η_c(k)`.
+* **Runner.** The git commit in `run_manifest.json` is captured at launch (before: at the end of the run).
+  The F2 full campaign was launched at `3424abc`, before this change; its manifest records the HEAD at the
+  time it finished.
