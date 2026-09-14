@@ -1,0 +1,11 @@
+{
+  "T1": 9.603429163007604e-13,
+  "T2": 2.1073424255447017e-08,
+  "T3": 2.1073424255447017e-08,
+  "T4": 4.7121607776121884e-08,
+  "T5": 1.7763568394002505e-15,
+  "T6_mismatch": 0,
+  "T2_cos": 2.220446049250313e-16,
+  "T3_adversarial": -0.0007183741416948181,
+  "note": "T1-T3,T5: max violation (<= ~1e-12 expected). T4: max abs error. T6: mismatches away from the boundary."
+}
