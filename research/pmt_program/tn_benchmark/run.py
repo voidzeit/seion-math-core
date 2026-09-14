@@ -9,6 +9,7 @@ from __future__ import annotations
 import datetime as dt
 import hashlib
 import json
+import os
 import math
 import platform
 import subprocess
@@ -106,7 +107,8 @@ def main():
                                    "F4": "families_f4", "F6": "families_controls_runs",
                                    "F8": "families_controls_runs"}[family])
     date = dt.date.today().isoformat()
-    outdir = ROOT / "artifacts" / "pmt_tn_benchmark" / f"{date}-v1" / (family + ("-quick" if quick else ""))
+    base = Path(os.environ["PMT_TN_OUT"]) if os.environ.get("PMT_TN_OUT") else ROOT / "artifacts" / "pmt_tn_benchmark"
+    outdir = base / f"{date}-v1" / (family + ("-quick" if quick else ""))
     if outdir.exists():
         raise SystemExit(f"refusing to overwrite {outdir}")
     outdir.mkdir(parents=True)
