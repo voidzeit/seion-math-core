@@ -1,0 +1,153 @@
+# PMT-TN Benchmark V1 — preregistration
+
+Frozen before any run of F1–F5 or F7. The commit that adds this file is the preregistration
+reference; changes after that commit are recorded in a dated amendment section, never edited in place.
+Machine-readable grid: `experiments/configs/PMT_TN_BENCHMARK_V1.json`.
+
+Theory under test: Theorem R, canonical source `research/pmt_program/review/theorem_R_v2/THEOREM_R_v2.md`
+(tag `theorem-R-v2-review`), status `ADVISORY_PROOF_DRAFT`. Results of this benchmark are
+`NUMERICAL_OBSERVATION`.
+
+---
+
+## 1. Certificate
+
+With uniform law-norm budget `M`, relative leakage `η = ρ/M`, `k` internal nodes and leaf product
+`L = ∏‖z_ℓ‖`:
+
+```
+B_R     = η · C_k(η) · M^k · L = G_k(η) · M^k · L,   G_k(η) = max_{0≤θ≤arcsin η} |1 − (cos θ e^{iθ})^{k−1}|
+B_naive = (k − 1) · η · M^k · L
+```
+
+**Correction to the design draft.** The draft used `M^{k−1}`. The correct factor is `M^k`, because
+`C = E/(ρ M^{k−1} L)` and `ρ = ηM`. Deflation is `D = ‖F_r‖ / (M^k L)`.
+
+### Uniform `M`
+
+`M̂ := max_v M̂_v`, where `M̂_v` is a certified upper bound on node `v`'s multilinear operator norm.
+Provenance is one of:
+
+* `analytic` — proved in the family description;
+* `flattening` — the minimum over matrix flattenings of the spectral norm, which is a valid upper bound.
+
+Heterogeneous per-node `M_v` products are **not** used: Theorem R assumes a uniform budget. They
+belong to a future extension.
+
+### Leakage
+
+Trajectory leakage:
+
+```
+η̂_v = ‖Q_v μ_v(R_children)‖ / (M̂ · ∏ ‖R_c‖ · ∏ ‖z_ℓ‖)      (children R and leaf data of node v)
+η̂   = max over non-root internal nodes.
+```
+
+Theorem R v2 claims its upper bound in the trajectory-closure class (§1.2), so `B_R` with `η̂` is a
+certificate **conditional on the draft being correct**. For fixed-projector families (F2–F4) the
+full-subspace upper bound `η̂^full` is also reported:
+
+```
+η̂^full_v = ‖Q_v W_v (P_children ⊗ …)‖_flattening / M̂
+```
+
+### Root
+
+`P_r = I` in every family, so `E^P = ‖F_r − R_r‖` is the ordinary truncated-contraction error.
+
+## 2. Projector semantics
+
+1. **Adaptive truncation (F1).** The node's projector is chosen by SVD of the reduced intermediate
+   `μ_v(R_children)` during the run. The map `X ↦ U_r(X)U_r(X)ᵀX` is **not** a fixed linear
+   projector. Each run is therefore certified **conditionally on the frozen projector it produced**:
+   the run is one PMT realization with that `P_v`.
+2. **Fixed projectors (F2–F4).** Projectors are computed before test evaluation and frozen:
+   * F2: PCA on a training batch;
+   * F3, F4: TT-SVD / HT-SVD of the exact object.
+
+   The same `P_v` is used for every test input, and `η̂^full` applies.
+3. **SVD is not PMT.** TT-SVD and HT-SVD are non-multilinear algorithms; they only **select** the
+   projectors. The PMT instance certified is the **subsequent multilinear contraction** with those
+   frozen projectors.
+
+Every projector is validated by the orthogonality check (idempotence and self-adjointness on random
+inputs, tolerance `1e-9`). A failure marks the run `INVALID_PROJECTOR` and excludes it from H1.
+
+## 3. Families
+
+| id | description | translation | projectors | `M̂` |
+|---|---|---|---|---|
+| F1 | Product of `n` matrices `A_i ∈ ℝ^{χ×χ}` (unit Frobenius) under a bracketing tree; each intermediate `Z` is truncated two-sided to rank `r`: `P(Z) = U_rU_rᵀ Z V_rV_rᵀ` | L (matrices are leaves, law = matrix product) | adaptive | `analytic` = 1 (`‖XY‖_F ≤ ‖X‖_F‖Y‖_F`, attained) |
+| F2 | Binary TTN on `n` unit leaf vectors in `ℝ^4`; node law `W_v(a, b, ·)` | W | fixed, PCA of reduced node outputs on 512 training inputs, rank `r` | `flattening` (canonical `W`: exactly 1) |
+| F3 | TFIM ground state (open chain, `J = 1`, field `h`), exact diagonalisation; exact left-canonical MPS by TT-SVD; amplitude evaluation `ψ(s)` and product-state overlaps; bond projectors onto the top-`r` Schmidt vectors | W, chain | fixed (TT-SVD) | `flattening` (= 1 for left-canonical cores) |
+| F4 | Exact Hierarchical Tucker (balanced binary, 8 variables, 4 grid points each, unit Frobenius) of smooth functions; point evaluation with leaf data `U_ℓ[i_ℓ]`; node projectors onto top-`r` HT singular vectors | W | fixed (HT-SVD) | `flattening` (coisometric transfer tensors; root normalised) |
+| F5 | Unstructured data variants of F1 (Gaussian, scaled orthogonal) and F2 (Gaussian `W` normalised by flattening norm) | L / W | as parent | as parent |
+| F6 | Positive control: universal sharp witness (Theorem 8.1) on random trees, equal angles `≤ θ_c(k)` and unequal angles | — | `Re` | `analytic` = 1 |
+| F7 | Adversarial: maximise `E_obs / B_R` over canonical (coisometric) node tensors, orthogonal rank-`r` projectors and unit leaves; PyTorch **CPU float64** | W | fixed per candidate | `flattening` = 1 (exact for coisometries) |
+| F8 | Constructed negative controls with analytic ratio: F8a `M` underestimated (ratio `λ`), F8b oblique projector with orthogonal leakage measurement (`√(1+c²)`), F8c self-trace law with `M̂ = 1` claimed (`√d`) | — | — | deliberately invalid |
+
+**Hardware.** CPU only. GPU use is excluded by the active blocker B-0012.
+
+## 4. Metrics per run
+
+* **Structure:** `family, variant, topology, k, n, χ, r, seed`.
+* **Budgets:** `M̂, M_provenance, η̂, η̂^full` (F2–F4), per-node `η̂_v`.
+* **Norms and errors:** `E_obs, ‖F_r‖, L`.
+* **Certificates:** `B_naive, B_R`.
+* **Ratios:** `ratio = E_obs/B_R`, `gain = B_R/B_naive`, deflation `D`, `B_R/‖F_r‖`.
+* **Validators:** projector orthogonality, and a sampled lower bound on the law norm (F1, F2, F6, F8).
+* **Label:** `WITHIN_CERTIFICATE`, `REPLAY_TRIGGERED`, `EXPECTED_VIOLATION_NEGATIVE_CONTROL`,
+  `EXPECTED_VIOLATION_MISSING`, `INVALID_PROJECTOR`.
+* **Exploratory** (not a certificate): the per-node angle expression `|1 − ∏_v cos θ_v e^{iθ_v}|` with
+  `sin θ_v = η̂_v`.
+
+## 5. Hypotheses and criteria
+
+| # | hypothesis | criterion |
+|---|---|---|
+| **H1** soundness | `E_obs ≤ B_R` for all valid runs of F1–F7 | a float64 excess `ratio > 1 + 1e-10` is a **replay trigger** only (protocol §6); a run is labelled `THEOREM_R_COUNTEREXAMPLE_CANDIDATE` only if the excess survives replay |
+| **H2** positive control | F6 equal-angle runs: `ratio = 1 ± 1e-9`; unequal angles: `ratio ≤ 1 + 1e-10` | all runs |
+| **H3** negative controls | every F8 run is labelled `EXPECTED_VIOLATION_NEGATIVE_CONTROL` with the analytic ratio (rel. `1e-9`), **and** its validator flags the defect (F8a, F8c: sampled norm lower bound `> M̂`; F8b: non-orthogonal projector) | all runs; otherwise the pipeline is declared unreliable and no other family is interpreted |
+| **H4** contraction order (F1) | at fixed data and `k`, differences in `B_R` across bracketings are fully explained by `η̂`; `E_obs` and `η̂` are reported per bracketing | descriptive; report the order that minimises `η̂` at equal cost |
+| **H5** sharpness beyond the witness (F7) | the best `ratio` found per topology | reported values; `≥ 0.9` counts as "near-sharp non-witness network" only if the optimum is not supported on 2-dimensional value spans |
+| **H6** regime (F7) | for fixed `k`, the adversarial absolute error flattens for `η > η_c(k)` | curve reported |
+| **H7** usefulness *(may fail)* | in F2–F4, `B_R/‖F_r‖ < 1` for at least 50% of runs at the largest preregistered rank | fraction reported whatever the outcome |
+| **H8** gain | distribution of `B_R/B_naive` in the `(k, η̂)` plane | descriptive |
+
+## 6. Replay protocol (H1)
+
+A run with `ratio > 1 + 1e-10` that is not an F8 control is replayed in this order:
+
+1. recompute `M̂` (flattening norms with SVD in float64, then mpmath 50 digits), `η̂` and all projector
+   checks;
+2. recompute `E_obs` and `G_k` in mpmath (50 digits) from the frozen instance data;
+3. freeze the complete instance (all tensors, projectors, leaves, tree) as JSON with hashes.
+
+Only if `ratio > 1` persists after steps 1–2 is it labelled `THEOREM_R_COUNTEREXAMPLE_CANDIDATE`, and it
+is then escalated as evidence against Lemma 3, or against the translation, before any other
+interpretation.
+
+## 7. Outputs
+
+Each campaign writes `artifacts/pmt_tn_benchmark/<date>-v1/<family>/`:
+
+* `runs.jsonl`
+* `run_manifest.json` (command, commit, environment)
+* `final_metrics.json`
+* `artifact_hashes.json`
+* replay instances, if any
+
+Runs are never overwritten.
+
+**Analysis** (`analyze.py`):
+
+1. `(k, η̂)` plane coloured by `ratio`;
+2. box plots per bracketing (F1);
+3. gain curve against `kη̂`;
+4. deflation histograms per family and translation;
+5. cost against certificate Pareto front (F1);
+6. H1 table (runs, triggers, candidates, minimum slack `1 − ratio`).
+
+## 8. Order of execution
+
+F6 → F8 (done as tests before freezing) → F1 + F5 → F2 → F3 + F4 → F7 → analysis.
