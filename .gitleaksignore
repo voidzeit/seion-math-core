@@ -1,0 +1,31 @@
+# gitleaks false positives: BibTeX citation keys (e.g. "citation_key": "kolda2009tensor")
+# in prior-art verdict files, flagged by the generic-api-key rule. Verified line by line 2026-09-15.
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:137
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:151
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:168
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:183
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:21
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:211
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:285
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:300
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:332
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:348
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:375
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:466
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:5
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:518
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:52
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:66
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:95
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:115
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:148
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:195
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:256
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:271
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:302
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:318
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:349
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:365
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:396
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:5
+a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts_het.json:generic-api-key:82
