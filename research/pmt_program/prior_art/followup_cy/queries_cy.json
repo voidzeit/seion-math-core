@@ -1,0 +1,36 @@
+{
+  "version": "PRIOR-ART-R-CY v1",
+  "frozen": "2026-09-14",
+  "families": {
+    "CY1": {"name": "tightness of composition constants (averaged / firmly nonexpansive / conic operators)", "queries": [
+      "tight averagedness constant composition of averaged operators",
+      "composition of m averaged operators tight coefficient",
+      "firmly nonexpansive composition contraction factor tight",
+      "conic operators composition sharp coefficient",
+      "averaged nonexpansive operators composition optimal constant",
+      "composition of finitely many averaged mappings averagedness constant"
+    ]},
+    "CY2": {"name": "scaled relative graphs of compositions", "queries": [
+      "scaled relative graph composition tight",
+      "scaled relative graph Minkowski product",
+      "scaled relative graph averaged operators",
+      "graphical analysis of operator compositions scaled relative graph",
+      "scaled relative graph product of several operators"
+    ]},
+    "CY3": {"name": "Minkowski products of disks / arcs; maximum modulus over products", "queries": [
+      "Minkowski product of disks averaged operators",
+      "Minkowski product of circular arcs",
+      "product of circular arcs maximum modulus",
+      "Minkowski products of complex disks Cartesian oval",
+      "complex disk products exact region",
+      "maximum distance from one of a product of complex numbers on circles"
+    ]},
+    "CY4": {"name": "compositions of projections / relaxed projections with sharp constants", "queries": [
+      "composition of projections averagedness constant tight",
+      "product of orthogonal projections worst case different angles sharp bound",
+      "relaxed projections composition averaged operator constant",
+      "cyclic projections sharp rate heterogeneous angles",
+      "tight contraction factor composition of three operators"
+    ]}
+  }
+}

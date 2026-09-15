@@ -1,0 +1,55 @@
+{
+ "query": "quantum Zeno dragging nonuniform measurement angles optimal",
+ "url": "https://api.openalex.org/works?search=quantum+Zeno+dragging+nonuniform+measurement+angles+optimal&per-page=25",
+ "total": 3,
+ "records": [
+  {
+   "title": "Practical Guide for Building Superconducting Quantum Devices",
+   "year": 2021,
+   "venue": "PRX Quantum",
+   "doi": "10.1103/prxquantum.2.040202",
+   "arxiv": "",
+   "authors": "Yvonne Y. Gao; M. A. Rol; Steven Touzard; Chen Wang",
+   "abstract": "Quantum computing offers a powerful new paradigm of information processing that has the potential to transform a wide range of industries.In the pursuit of the tantalizing promises of a universal quantum computer, a multitude of new knowledge and expertise has been developed, enabling the construction of novel quantum algorithms as well as increasingly robust quantum hardware.In particular, we have witnessed rapid progress in the circuit quantum electrodynamics (cQED) technology, which has emerged as one of the most promising physical systems that is capable of addressing the key challenges in realizing full-stack quantum computing on a large scale.In this Tutorial, we present some of the most crucial building blocks developed by the cQED community in recent years and a précis of the latest achievements towards robust universal quantum computation.More importantly, we aim to provide a synoptic outline of the core techniques that underlie most cQED experiments and offer a practical guide for a novice experimentalist to design, construct, and characterize their first quantum device.",
+   "cited_by": 90,
+   "openalex": "https://openalex.org/W3212431276",
+   "zbmath": "",
+   "msc": "",
+   "source": "openalex",
+   "family": "O6",
+   "query": "quantum Zeno dragging nonuniform measurement angles optimal"
+  },
+  {
+   "title": "Nuclear spins in nanostructures",
+   "year": 2009,
+   "venue": "physica status solidi (b)",
+   "doi": "10.1002/pssb.200945229",
+   "arxiv": "",
+   "authors": "W. A. Coish; J. Baugh",
+   "abstract": "Abstract We review recent theoretical and experimental advances toward understanding the effects of nuclear spins in confined nanostructures. These systems, which include quantum dots, defect centers, and molecular magnets, are particularly interesting for their importance in quantum information processing devices, which aim to coherently manipulate single electron spins with high precision. On one hand, interactions between confined electron spins and a nuclear‐spin environment provide a decoherence source for the electron, and on the other, a strong effective magnetic field that can be used to execute local coherent rotations. A great deal of effort has been directed toward understanding the details of the relevant decoherence processes and to find new methods to manipulate the coupled electron–nuclear system. A sequence of spectacular new results have provided understanding of spin‐bath decoherence, nuclear spin diffusion, and preparation of the nuclear state through dynamic polarization and more general manipulation of the nuclear‐spin density matrix through “state narrowing.” These results demonstrate the richness of this physical system and promise many new mysteries for the future. magnified image",
+   "cited_by": 139,
+   "openalex": "https://openalex.org/W2135226622",
+   "zbmath": "",
+   "msc": "",
+   "source": "openalex",
+   "family": "O6",
+   "query": "quantum Zeno dragging nonuniform measurement angles optimal"
+  },
+  {
+   "title": "Quantum-Enhanced Measurements with Atoms in Cavities: Superradiance and Spin Squeezing",
+   "year": 2016,
+   "venue": "CU Scholar (University of Colorado Boulder)",
+   "doi": "",
+   "arxiv": "",
+   "authors": "Kevin C. Cox",
+   "abstract": "Advances in engineering quantum systems are expected to lead to a new generation of quantum technology with fundamentally new capabilities and no classical analogue. Specifically, in the near future, quantum entanglement may become useful for enhancing state-of-the-art atomic clocks and sensors. I have performed experiments using laser-cooled rubidium atoms trapped in a high finesse optical cavity to explore quantum and collective enhancements to precision measurements.\\nIn this thesis, I will present a recent experiment to create record amounts of entanglement-enhancement, or spin squeezing, in a proof-of-principle atomic sensor using entanglement-generating collective measurements. We have demonstrated up to a factor of 60 in directly observed spin squeezing beyond the standard quantum limit for an unentangled quantum sensor and have demonstrated squeezing with real-time feedback to create deterministic entangled states. Second, I will present a new method that has generated over a factor of 10 in homogeneous entanglement that could be resolvable in free-space quantum sensors such as matter-wave interferometers and discuss a new method to reduce errors in manipulating collective spin states using reversible dephasing. These experiments and methods are directly applicable to some of the world's best optical lattice clocks such as those housed here at JILA and NIST.\\nIn addition, I have studied and demonstrated a proof-of-principle superradiant laser that relies on collectively enhanced laser emission. These lasers have the potential to realize state-of-the-art frequency purity useful for optical atomic clocks and long baseline interferometry. I will discuss an experiment that demonstrates injection locking of a superradiant laser for the first time as well as explores the collective synchronization behaviors in the system. This study of synchronization informs research on current and future narrow linewidth superradiant lasers and may also provide a platform for fu",
+   "cited_by": 0,
+   "openalex": "https://openalex.org/W2559623724",
+   "zbmath": "",
+   "msc": "",
+   "source": "openalex",
+   "family": "O6",
+   "query": "quantum Zeno dragging nonuniform measurement angles optimal"
+  }
+ ]
+}

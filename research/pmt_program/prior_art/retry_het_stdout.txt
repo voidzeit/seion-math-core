@@ -1,0 +1,2 @@
+arxiv O1 0 ERROR  0 retry pass: HTTPError: HTTP Error 503: Service Unavailable
+semanticscholar O1 1 ERROR  0 retry pass: HTTPError: HTTP Error 429: 

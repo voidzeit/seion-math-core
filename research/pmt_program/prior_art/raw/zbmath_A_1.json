@@ -1,0 +1,23 @@
+{
+ "query": "\"tree tensor network\" truncation error",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=%22tree+tensor+network%22+truncation+error&page=0&results_per_page=25",
+ "total": 1,
+ "records": [
+  {
+   "title": "Rank-adaptive time integration of tree tensor networks",
+   "year": "2023",
+   "venue": "SIAM Journal on Numerical Analysis",
+   "doi": "10.1137/22M1473790",
+   "arxiv": "2201.10291",
+   "authors": "Ceruti, Gianluca; Lubich, Christian; Sulz, Dominik",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "7670862",
+   "msc": "65L05;65L20;65L70;81Q05",
+   "source": "zbmath",
+   "family": "A",
+   "query": "\"tree tensor network\" truncation error"
+  }
+ ]
+}

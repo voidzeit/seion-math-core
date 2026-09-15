@@ -1,0 +1,23 @@
+{
+ "query": "\"tensor train\" rounding quasi-optimal error bound",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=%22tensor+train%22+rounding+quasi-optimal+error+bound&page=0&results_per_page=25",
+ "total": 1,
+ "records": [
+  {
+   "title": "Faster tensor train decomposition for sparse data",
+   "year": "2022",
+   "venue": "Journal of Computational and Applied Mathematics",
+   "doi": "10.1016/j.cam.2021.113972",
+   "arxiv": "1908.02721",
+   "authors": "Li, Lingjie; Yu, Wenjian; Batselier, Kim",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "7460157",
+   "msc": "65F99;15A69;65F55",
+   "source": "zbmath",
+   "family": "A",
+   "query": "\"tensor train\" rounding quasi-optimal error bound"
+  }
+ ]
+}

@@ -1479,3 +1479,53 @@ changed paths, and limitations. Historical artifact runs remain under
   - Floating SDP primal/dual results are not outward-rounded numerical certificates; all optimizer failures preserved.
   - V1 predates source snapshots; V2 source snapshot is hash-verified. The current report adds literature comparison after the V2 snapshot.
   - No GPU, release, push, merge, commit, or external-repository mutation.
+
+
+## 2026-09-14 — Theorem R Lean formalization, style contract, PRIOR-ART-R first pass
+
+- Command: `lake exe cache get` · `lake build` · `lake env lean AxiomsCheck.lean` (research/pmt_program/lean) | `python research/pmt_program/lifted_angle/lifted_angle_check.py` | `python research/pmt_program/prior_art/harvest.py` | `python research/pmt_program/prior_art/snowball.py round1_seed` / `round1_fix` | `python research/pmt_program/prior_art/merge_pool.py` | `python research/pmt_program/prior_art/build_matrix.py` | `python research/pmt_program/prior_art/build_bib.py`
+- Branch/commit: Lean work merged via PR #7 into `main` `f219172`; prior-art work on `research/prior-art-r` (from `f219172`), uncommitted.
+- Outcome: **verified_formalization_and_reproducible_literature_review**
+- Summary: Theorem R (normalized, single ambient space) machine-checked via lifted-angle proof (8715 jobs, no sorry, standard axioms). Style contract frozen. PRIOR-ART-R: 47 frozen queries, OpenAlex/zbMATH harvest, 14-anchor snowball, 1745 L1 / 58 L2 / 22 L3 reviews; no threat 4–5; R6 technique largely known; R7 known only for alpha = pi/2; claim matrix and 36-entry Crossref-validated bibliography. Heterogeneous H1/H2/H4 identified as consequences of the formal architecture; formalization started on `research/heterogeneous-theorem-r`.
+- Validation: Lean build and axioms check; lifted-angle numerical checks T1–T6 (post hoc, no violation); M7-A snapping checks; prior-art consistency audit of 180 low-threat keyword rows; L2-vs-adjudicated mismatch report (1 recorded: Huang–Ryu–Yin L2=3 vs L3=1).
+- Changed files (prior-art branch, uncommitted):
+  - `research/pmt_program/prior_art/` (protocol, scripts, raw, screening, theorem_comparisons, matrices, bibliography, quarantine)
+  - `research/pmt_program/paper/STYLE_CONTRACT.md`
+  - `.ai/CURRENT_STATE.md`, `.ai/DECISIONS.md`, `.ai/TASKS.md`, `.ai/KNOWN_BLOCKERS.md`, `.ai/HANDOFF.md`, `.ai/RUN_HISTORY.md`
+- Limitations:
+  - Novelty not established; manual MathSciNet/Scholar, second snowball round, Zniyed–Boyer full text and Feshchenko adjudication pending.
+  - Level 1–3 judgments are agent-assisted readings, recorded per source; APIs drift (raw responses stored).
+  - N1 and per-node-space reductions not formalized; no independent human review.
+  - No release; no commit on the prior-art branch.
+
+## 2026-09-14 — Heterogeneous Theorem R Lean formalization (H1, H2, H4; H3 isolated)
+
+- **Commands:** in worktree `seion-pmt-hetero`, `research/pmt_program/lean`:
+  `lake exe cache get`, `lake build`, `lake env lean AxiomsCheck.lean`, and a
+  source grep for `sorry|admit|axiom|native_decide|implemented_by|extern`.
+- **Branch/commit:** `research/heterogeneous-theorem-r` from `f219172`, uncommitted.
+- **Outcome:** **verified_formalization**
+- **Summary:**
+  - New files `PMTFormal/Heterogeneous/{BoxConstant, Upper, Witness, Sharp,
+    Permutation, Attainment, Scaled, CappedDiagonal}.lean`.
+  - Declarations: `gBox`, `heterogeneous_upper`, `heterogeneous_witness`,
+    `heterogeneous_lower`, `heterogeneous_sSup`, `gBox_perm`,
+    `heterogeneous_placement_independent`, `uniform_gBox_eq`, attainment
+    lemmas, and the scaled `M_v > 0` form.
+  - H3 is recorded as `CappedEqualAngle : List ℝ → Prop`, proved only for
+    equal defects, plus the easy half. Nothing else imports it.
+- **Validation:** 8723 jobs built. 39 `#print axioms` lines, with the single
+  distinct axiom set `[propext, Classical.choice, Quot.sound]`. The grep found
+  no `sorry`/`admit`/`axiom`.
+- **Changed files:**
+  - `seion-pmt-hetero`: `research/pmt_program/lean/PMTFormal/Heterogeneous/*.lean`,
+    `PMTFormal.lean`, `AxiomsCheck.lean`, `README.md`, `BUILD_LOG.md`.
+  - `seion-pmt-tn`: `papers/paper_a/references.bib` (DOI fix) and the `.ai/*`
+    memory files.
+- **Limitations:**
+  - No human review of the specification.
+  - `M_v = 0` and per-node spaces not formalized.
+  - H3 open.
+  - Novelty not established; the PRIOR-ART-R-HET mini-round was launched
+    separately.
+  - No commit, push or release.

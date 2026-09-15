@@ -1,0 +1,55 @@
+{
+ "query": "\"hierarchical Tucker\" nodewise truncation error tolerance",
+ "url": "https://api.openalex.org/works?search=%22hierarchical+Tucker%22+nodewise+truncation+error+tolerance&per-page=25",
+ "total": 3,
+ "records": [
+  {
+   "title": "Incremental Hierarchical Tucker Decomposition",
+   "year": 2026,
+   "venue": "Journal of Computational Physics",
+   "doi": "10.1016/j.jcp.2026.115360",
+   "arxiv": "",
+   "authors": "Doruk Aksoy; Alex Gorodetsky",
+   "abstract": "We present two new algorithms for approximating and updating the hierarchical Tucker decomposition of tensor streams. The first algorithm, Batch Hierarchical Tucker - leaf to root (BHT-l2r), proposes an alternative and more efficient way of approximating a batch of similar tensors in hierarchical Tucker format. The second algorithm, Hierarchical Tucker - Rapid Incremental Subspace Expansion (HT-RISE), updates the batch hierarchical Tucker representation of an accumulated tensor as new batches of tensors become available. The HT-RISE algorithm is suitable for the online setting and never requires full storage or reconstruction of all data while providing a solution to the incremental Tucker decomposition problem. We provide theoretical guarantees for both algorithms and demonstrate their effectiveness on physical and cyber-physical data. The proposed BHT-l2r algorithm and the batch hierarchical Tucker format offers up to $6.2\\times$ compression and $3.7\\times$ reduction in time over the hierarchical Tucker format. The proposed HT-RISE algorithm also offers up to $3.1\\times$ compression and $3.2\\times$ reduction in time over a state of the art incremental tensor train decomposition algorithm.",
+   "cited_by": 0,
+   "openalex": "https://openalex.org/W4405766209",
+   "zbmath": "",
+   "msc": "",
+   "source": "openalex",
+   "family": "O1",
+   "query": "\"hierarchical Tucker\" nodewise truncation error tolerance"
+  },
+  {
+   "title": "Certified Quantum Schrödinger Control via Hierarchical Tucker Models",
+   "year": 2026,
+   "venue": "arXiv (Cornell University)",
+   "doi": "",
+   "arxiv": "",
+   "authors": "Nahid Binandeh Dehaghani; Rafal Wisniewski; A. Pedro Aguiar",
+   "abstract": "High-dimensional Schrödinger systems arising from tensor-product discretizations suffer from exponential state growth, making direct controller synthesis and real-time closed-loop simulation computationally challenging. Hierarchical Tucker (HT) tensor representations offer scalable low-rank surrogates, but the impact of fixed-rank truncation on closed-loop stability is not well understood. This paper develops a local robustness framework for sampled-data feedback control implemented with fixed-rank HT projections. By viewing each truncation as a bounded, rank-dependent perturbation of the nominal closed loop, and assuming a local phase-invariant contraction certificate together with trajectory-level hierarchical spectral decay, we show that the HT-projected dynamics are practically exponentially stable: trajectories converge to a dimension-independent tube whose radius decreases with the prescribed rank. We further obtain an explicit logarithmic rank-accuracy relation and establish conditions under which controllers designed on the HT-truncated surrogate model retain practical exponential tracking guarantees when deployed on the full system, together with an explicit bound quantifying the resulting surrogate-to-plant mismatch. A compact lattice example demonstrates the applicability of the framework.",
+   "cited_by": 0,
+   "openalex": "https://openalex.org/W7140238261",
+   "zbmath": "",
+   "msc": "",
+   "source": "openalex",
+   "family": "O1",
+   "query": "\"hierarchical Tucker\" nodewise truncation error tolerance"
+  },
+  {
+   "title": "Adaptive tensor methods for high dimensional problems",
+   "year": 2023,
+   "venue": "",
+   "doi": "10.70675/f9ea95cdze8acz4d7ez8a75zb6c9cdfd35d3",
+   "arxiv": "",
+   "authors": "María Fuente Ruiz",
+   "abstract": "Méthodes tensorielles adaptatives pour problèmes haute dimensionnelles Cette thèse vise à trouver des méthodes numériques pour approximer des fonctions multivariées. Elle couvre trois perspectives différentes: une méthode d'approximation de tenseur (Somme de Tensor Trains), une méthode d'approximation de tenseur locale basée sur le regroupement (HOSVD local), et une méthode basée sur l'apprentissage profond pour approximer une solution d'une EDP de convection diffusion. La première partie du travail propose une méthode pour approximer un tenseur en tant que somme de Tensor Trains, basée sur un algorithme gourmand et le TT-SVD. La seconde partie propose une méthode d'approximation de tenseur locale qui récupère une solution approximée au format HOSVD local, basée sur le regroupement et une recherche entre les combinaisons de partitions possibles pour minimiser la mémoire nécessaire pour stocker l'approximation. Les résultats montrent un bon taux de compression par rapport à HOSVD.",
+   "cited_by": 0,
+   "openalex": "https://openalex.org/W4392264018",
+   "zbmath": "",
+   "msc": "",
+   "source": "openalex",
+   "family": "O1",
+   "query": "\"hierarchical Tucker\" nodewise truncation error tolerance"
+  }
+ ]
+}

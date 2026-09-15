@@ -1,0 +1,33 @@
+{
+  "frozen_at": "2026-09-14T17:05:21",
+  "note": "PRIOR-ART-R-HET: hashes taken before the first logged query of this round; round-1 scripts listed to prove they are used unchanged; commit pending user instruction",
+  "sha256": {
+    "SEARCH_PROTOCOL_HET.md": "7fc7b3699c3f7e2dbdeab41d9e60690779fb0ae1c062494a289594f4b1afbb5f",
+    "queries_het.json": "861ac32c0faa6dfa859ebf958d62fb376cb48257721a194ebf16396b95878f33",
+    "het_round.py": "dc855c8f09e1e95f125dd86d93a42e15923f17a5e1e26b965148c8bbfa01a78d",
+    "harvest.py": "dc455661de5d02c2a67921498c4a1b2621bcfd02f88407a74143004fedd4215d",
+    "snowball.py": "4f77971dc6b3dffb5c7cbd8972a224c9f62e19c4d8e0143b52fee4b3c526ed3e",
+    "merge_pool.py": "607ba67d9d26b8fb2cf582d6d20d1e70f8c4692c9ee4ab9eb1492562a873ed66",
+    "build_matrix.py": "fb3722ea7f3862fc32d619d76239d0435dbf080a319c587a47310c8f39c1462a",
+    "build_bib.py": "13540a7c191208c3ac7830893068adaec9365b5f3902e699a06b4e52527d4fa4",
+    "../HETEROGENEOUS_THEOREM_R.md": "95bef9f176770a50503e6f481372d3f82463ac0045c5cb9d4d2b81f515b37bb8"
+  },
+  "post_hoc_changes": [
+    {
+      "at": "2026-09-14T17:38:54",
+      "file": "SEARCH_PROTOCOL_HET.md",
+      "reason": "POST_HOC deviation entries appended to section 9 (coverage, Level-1 recording, L2/L3 access, anchors); sections 1-8 unchanged",
+      "sha256": "bee8d4e72e02d775babfe75a3b96d628219ccc9f5f05cd41fec36bca1e4f0af1",
+      "other_frozen_files_unchanged": [
+        "queries_het.json",
+        "het_round.py",
+        "harvest.py",
+        "snowball.py",
+        "merge_pool.py",
+        "build_matrix.py",
+        "build_bib.py",
+        "../HETEROGENEOUS_THEOREM_R.md"
+      ]
+    }
+  ]
+}

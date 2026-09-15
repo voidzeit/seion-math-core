@@ -1,0 +1,39 @@
+{
+ "query": "product of orthogonal projections sharp norm bound",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=product+of+orthogonal+projections+sharp+norm+bound&page=0&results_per_page=25",
+ "total": 2,
+ "records": [
+  {
+   "title": "\\(L_\\infty\\)-upper bound of \\(L_2\\)-projections onto splines at a geometric mesh",
+   "year": "1983",
+   "venue": "Journal of Approximation Theory",
+   "doi": "10.1016/0021-9045(83)90039-4",
+   "arxiv": "",
+   "authors": "Jia, Rong-Qing",
+   "abstract": "",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "3816262",
+   "msc": "41A15;41A44",
+   "source": "zbmath",
+   "family": "C",
+   "query": "product of orthogonal projections sharp norm bound"
+  },
+  {
+   "title": "Integrability of orthogonal projections, and applications to Furstenberg sets",
+   "year": "2022",
+   "venue": "Advances in Mathematics",
+   "doi": "10.1016/j.aim.2022.108567",
+   "arxiv": "2107.04471",
+   "authors": "Dąbrowski, Damian; Orponen, Tuomas; Villa, Michele",
+   "abstract": "Let \\(d\\in\\mathbb{Z}_{\\ge 1}\\) and \\(s\\in[0,d]\\). A probability measure \\(\\mu\\) on \\(\\mathbb{R}^d\\) is \\(s\\)-Frostman if the \\(\\mu\\)-measure of any ball of radius \\(r\\) is bounded by \\(Cr^s\\) for some constant \\(C\\). If \\(V\\) is a subspace of \\(\\mathbb{R}^d\\), \\(\\pi_V\\) denotes the orthogonal projection \\(\\mathbb{R}^d\\to V\\). If \\(\\mu\\) is \\(s\\)-Frostman for some \\(s>n\\), then it is well known since the works of Marstrand, Kaufman and Mattila that \\(\\pi_V(\\mu)\\) is absolutely continuous (with respect to the Lebesgue measure) for almost all choices of an \\(n\\)-dimensional subspace \\(V\\). The first main result of the paper is a quantitative refinement of this fact. It is proved that the function \\(V\\to\\|\\pi_V(\\mu)\\|_p\\) has finite \\(L^p\\) norm on the Grassmannian of \\(n\\) dimensional subspaces provided \\(1\\le p<(2d-n-s)/(d-s)\\). This range is sharp if \\(d\\ge 2\\), \\(0<n<d\\) and \\(d-1\\le s\\le d\\), while the problem of determining the optimal range in other cases remains open. This result is closely related to \\(L^p\\to L^{p,\\alpha}\\) estimates for the \\(n\\)-plane transform, which has a substantial literature. The paper [\\textit{R. S. Strichartz}, Duke Math. J. 48, No 4, 699--727 (1981; Zbl 0477.44003)] is the most closely related. See Remark 1.6 for further references. The proof of the above result is based on complex interpolation and it is inspired by the above mentioned paper of Strichartz. The motivation for studying the above \\(L^p\\) norm estimates comes from the problem of bounding the dimension of Furstenberg \\((s,t)\\)-sets, that is, subsets \\(K\\) of the plane such that there is a \\(t\\) dimensional set \\(\\mathcal{L}\\) of affine lines such that \\(\\dim_H (K\\cap \\ell)\\ge s\\) for all \\(\\ell\\in\\mathcal{L}\\). It is proved in the paper that \\[ \\dim_H K \\ge 2s+(1-s)(1-t), \\] for such sets, which improves on the previous best results in the range \\(s>1/2\\), \\(t>1\\). The paper also contains a generalization to appropriately defined Furstenberg sets in \\(\\mathbb{R}^d\\). The ",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "7574802",
+   "msc": "28A80;28A78;44A12",
+   "source": "zbmath",
+   "family": "C",
+   "query": "product of orthogonal projections sharp norm bound"
+  }
+ ]
+}

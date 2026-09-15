@@ -1,0 +1,7 @@
+[
+  {"key": "CY15", "id": "10.1016/j.jmaa.2014.11.044", "expect_title": "Compositions and convex combinations of averaged nonexpansive operators", "expect_first_author": "Combettes", "expect_year": [2014, 2015]},
+  {"key": "HRY20", "id": "10.1016/j.jmaa.2020.124211", "expect_title": "Tight coefficients of averaged operators via scaled relative graph", "expect_first_author": "Huang", "expect_year": [2019, 2020]},
+  {"key": "RHY22", "id": "10.1007/s10107-021-01639-w", "expect_title": "Scaled relative graphs: nonexpansive operators via 2D Euclidean geometry", "expect_first_author": "Ryu", "expect_year": [2021, 2022]},
+  {"key": "OY02", "id": "10.1081/NFA-120003674", "expect_title": "Non-strictly convex minimization over the fixed point set of an asymptotically shrinking nonexpansive mapping", "expect_first_author": "Ogura", "expect_year": [2002]},
+  {"key": "PAT21", "id": "title:The scaled relative graph of a linear operator", "expect_title": "The scaled relative graph of a linear operator", "expect_first_author": "Pates", "expect_year": [2021, 2022]}
+]

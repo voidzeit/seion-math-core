@@ -1,0 +1,23 @@
+{
+ "query": "Lean formalization functional analysis inequality",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=Lean+formalization+functional+analysis+inequality&page=0&results_per_page=25",
+ "total": 1,
+ "records": [
+  {
+   "title": "13th international conference on interactive theorem proving, ITP 2022, Haifa, Israel, August 7--10, 2022",
+   "year": "2022",
+   "venue": "LIPIcs -- Leibniz International Proceedings in Informatics",
+   "doi": "10.4230/LIPIcs.ITP.2022.0",
+   "arxiv": "",
+   "authors": "",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "7573871",
+   "msc": "68-06;68V15;00B25",
+   "source": "zbmath",
+   "family": "H",
+   "query": "Lean formalization functional analysis inequality"
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+  "version": "PRIOR-ART-R v1",
+  "frozen": "2026-09-14",
+  "families": {
+    "A": {"name": "hierarchical / tree tensor approximation", "claims": ["R1a","R1b","R2","R3","R9"], "queries": [
+      "\"hierarchical Tucker\" truncation error bound",
+      "\"tree tensor network\" truncation error",
+      "hierarchical tensor format orthogonal projection error estimate",
+      "\"tensor train\" rounding quasi-optimal error bound",
+      "\"dimension tree\" hierarchical SVD approximation error",
+      "\"tree tensor network\" error accumulation"]},
+    "B": {"name": "error propagation through computation trees", "claims": ["R1a","R1b","R3","R10","R12"], "queries": [
+      "error propagation multilinear computation tree projection",
+      "perturbation bound composition of multilinear maps",
+      "stability of hierarchical multilinear computations",
+      "recursive multilinear approximation error accumulation",
+      "error amplification composition bounded multilinear maps"]},
+    "C": {"name": "projections and angles", "claims": ["R1a","R6"], "queries": [
+      "product of orthogonal projections sharp norm bound",
+      "Friedrichs angle product of projections",
+      "principal angles between subspaces sharp estimate projection",
+      "norm of product of projections cosine of angle power"]},
+    "D": {"name": "sharp multilinear inequalities", "claims": ["R1b","R6","R7"], "queries": [
+      "sharp inequality bounded multilinear map Hilbert space best constant",
+      "multilinear contraction angle inequality",
+      "projective tensor norm inequality angle between vectors",
+      "extremizers multilinear inequality Hilbert space"]},
+    "E": {"name": "spherical lift / fidelity / angle metrics", "claims": ["R6"], "queries": [
+      "generalized fidelity subnormalized states purified distance",
+      "purified distance monotonicity",
+      "angle metric closed unit ball Hilbert space contraction",
+      "Bures angle monotonicity contraction"]},
+    "F": {"name": "tree-structure independence", "claims": ["R3"], "queries": [
+      "error bound independent of tree structure tensor network",
+      "truncation error independent of dimension tree",
+      "bound independent of parenthesization multilinear"]},
+    "G": {"name": "extremizers / planar reduction", "claims": ["R4","R5","R7"], "queries": [
+      "two-dimensional extremizer sharp inequality Hilbert space",
+      "extremal problem reduces to two-dimensional subspace operator norm",
+      "equal angles extremizer product of cosines maximization"]},
+    "H": {"name": "formalization", "claims": ["R8"], "queries": [
+      "Lean formalization functional analysis inequality",
+      "formal verification numerical analysis error bound proof assistant",
+      "Mathlib formalization Hilbert space"]},
+    "I": {"name": "alternating projections, sharp rates", "claims": ["R1a","R1b","R6"], "queries": [
+      "alternating projections rate of convergence sharp constant",
+      "Kayalar Weinert alternating projections error",
+      "rate of convergence method of alternating projections cosine Friedrichs"]},
+    "J": {"name": "quantum Zeno / repeated projective measurements", "claims": ["R1a","R5","R7"], "queries": [
+      "quantum Zeno effect repeated projective measurements bound",
+      "Zeno dragging error bound projections",
+      "survival probability repeated measurements cosine power"]},
+    "K": {"name": "hybrid arguments / gentle measurement / channel sequences", "claims": ["R6","R12"], "queries": [
+      "hybrid argument quantum query lower bound",
+      "gentle measurement lemma sequential measurements",
+      "error accumulation sequence of quantum channels bound"]},
+    "L": {"name": "numerical range / products of contractions", "claims": ["R2","R7"], "queries": [
+      "numerical range products of contractions disk",
+      "products of operators numerical range bound complex plane"]},
+    "M": {"name": "DMRG / MPS truncation error accumulation", "claims": ["R1a","R9","R10"], "queries": [
+      "DMRG truncation error accumulation discarded weight",
+      "matrix product state truncation error bound sequential SVD"]},
+    "N": {"name": "layerwise compression error in neural networks", "claims": ["R9","R10"], "queries": [
+      "layerwise pruning error propagation bound deep network",
+      "compounding approximation error layers Lipschitz quantization bound"]}
+  },
+  "sources": {
+    "openalex": {"per_query": 25, "sort": "relevance", "role": "primary discovery + citation graph"},
+    "arxiv": {"per_query": 25, "sort": "relevance", "delay_s": 4, "role": "preprints"},
+    "zbmath": {"per_query": 25, "role": "mathematics-specific second coverage + MSC"},
+    "semanticscholar": {"per_query": 10, "delay_s": 5, "role": "best effort; skipped on rate limit (logged)"},
+    "crossref": {"role": "metadata/DOI validation only, not discovery"},
+    "mathscinet": {"role": "MANUAL (subscription)", "queries": "same as above; logged by the author"},
+    "google_scholar": {"role": "MANUAL (no automated access)", "queries": "same as above; logged by the author"}
+  }
+}

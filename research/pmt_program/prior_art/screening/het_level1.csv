@@ -1,0 +1,1179 @@
+key,threat,claims,reason,level2
+errortransportationinsvdbasedtensortrainapproximations,3,H1;H2,[abs] Local SVD truncations transported through general dimension trees with node-wise (heterogeneous) local errors; tree-dependent conditioning factors (contrast H2); exact Pythagorean identity only for chains; abstract only [seen_in_round1],yes
+certifiedquantumschrdingercontrolviahierarchicaltuckermodels,1,H1,[abs] Fixed-rank HT truncation as bounded perturbation in closed-loop control; background,no
+10.1137/21m1415911,2,H1;H2,[abs] Tree-based PCA with rank adaptation to a prescribed error; error bound in expectation built from node-wise contributions; non-sharp [seen_in_round1],no
+10.1103/physrevb.107.214203,0,,[abs] unrelated to H1-H4,no
+10.1103/prxquantum.3.040339,1,H1,"[abs] MPS fidelity vs bond dimension for QAOA; per-gate fidelity model, background",no
+10.1103/physrevx.10.041038,2,H1;H2,"[abs] Eq. (17): multi-qubit fidelity approx. product of heterogeneous per-gate truncation fidelities (heuristic, verified numerically); no bound",no
+10.48550/arxiv.2309.15761,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.3150/21-bej1371,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.48550/arxiv.1811.04455,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.48550/arxiv.2302.03886,2,H2;H3,[abs] Rank (core shape) allocation under size constraint with reconstruction-error guarantees extended to tree tensor networks; additive tail budgets,no
+10.48550/arxiv.2512.11967,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/090764049,0,,[abs] unrelated to H1-H4,no
+10.1142/s0218202512500236,0,,[abs] unrelated to H1-H4,no
+10.1103/physrevb.85.165146,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/revmodphys.82.277,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1103/physrevlett.128.190501,0,,[abs] unrelated to H1-H4,no
+10.1103/ycty-d5f9,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.48550/arxiv.2412.00858,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/120863927,0,,[abs] unrelated to H1-H4,no
+10.48550/arxiv.2412.14460,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/1361-6420/aaa998,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/vqks-cr6x,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1090/s0894-0347-02-00398-3,2,H1;H4,[abs] Xu-Zikatanov identity for norm of product of heterogeneous (I-P_j); exact but different quantity [seen_in_round1],no
+onthedesignandanalysisofoperatorsplittingschemes,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1606.01327,0,,[abs] unrelated to H1-H4,no
+10.1137/140992291,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1002/nla.1818,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1016/j.matpur.2015.05.002,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1403.0981,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/120885723,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.5555/2230976.2230988,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.22331/q-2023-03-30-964,2,H1,[abs] Truncated TTN circuit simulation with per-truncation fidelity estimates [seen_in_round1],no
+10.3390/dynamics3030033,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10444-020-09797-9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+arxiv:2608.02849,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/prxquantum.1.020318,0,,[title] unrelated to H1-H4,no
+10.1146/annurev-fluid-010816-060042,0,,[title] unrelated to H1-H4,no
+10.4230/lipics.tqc.2024.2,0,,[title] unrelated to H1-H4,no
+10.1137/22m1473790,2,H1;H2,[abs] Thm A.1 tree-shape-independent (d-1) truncation bound with uniform node tolerance (root tolerance may differ); telescoping; non-sharp [seen_in_round1],no
+10.1088/2058-9565/acae3e,0,,[title] unrelated to H1-H4,no
+10.1103/physrevx.15.021052,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+minkowskiproductsofunitquaternionsets,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevresearch.6.033325,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/rzgm-cywf,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.21468/scipostphyslectnotes.86,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1103/prxquantum.5.010308,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.jcp.2026.115360,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1140/epjqt/s40507-025-00368-9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1126/sciadv.adl4895,0,,[title] unrelated to H1-H4,no
+10.22331/q-2024-12-27-1580,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1103/x4gs-g63p,0,,[title] unrelated to H1-H4,no
+10.1088/1367-2630/16/3/033014,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+treetensornetworkreservoircomputinghierarchicalensemblewithinvariantphaseboundaries,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1606.05535,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+highresolutiontensornetworkfouriermethodsforexponentiallycompressednongaussianaggregatedistributions,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+localtensortrainsurrogatesforquantumlearningmodels,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1111/nph.16923,0,,[title] unrelated to H1-H4,no
+10.1561/2200000067,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1038/s41534-022-00654-9,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2011.09202,0,,[title] unrelated to H1-H4,no
+10.1007/jhep04(2026)183,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+dynamicalsimulationsofschrdingersequationviarankadaptivetensordecompositions,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+quantumclassicalcrossoverinfaulttolerantquantumdynamicssimulation,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2302.09019,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2306.14887,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2206.04701,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s00211-017-0891-9,0,,[title] unrelated to H1-H4,no
+10.1016/j.jat.2006.02.005,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1109/tsp.2017.2690524,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1214/23-ss144,0,,[title] unrelated to H1-H4,no
+10.1002/gamm.201310004,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/07070111x,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/s0895479896305696,1,H1,[abs] HOSVD per-mode tails sum bound; background [seen_in_round1],no
+10.1145/2512329,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/090764189,3,H1;H2,"[abs] HSVD: error of product of node-wise projections bounded by root-sum-square of heterogeneous node tails in any order (placement/order-independent, non-sharp sqrt(2d-3)); linear tensor setting [seen_in_round1]",yes
+10.1007/s00041-009-9094-9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1109/msp.2013.2297439,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1090/gsm/128,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1201/b16113-19,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1506.00062,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.14279/depositonce-3474,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/21m1412190,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1801.02662,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1016/j.jcp.2024.113110,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevresearch.3.023005,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevc.111.034317,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1126/science.adx2728,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1145/3295500.3356155,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/lawp.2026.3686466,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2509.00805,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1115/pvp2023-106426,0,,[title] unrelated to H1-H4,no
+hierarchicalmultiscaleadaptivevariablefidelitywaveletbasedturbulencemodelingwithlagrangianspatiallyvariablethresholding,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s41467-019-09436-y,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevx.13.041052,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2608.25503,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physreva.95.022316,0,,[title] unrelated to H1-H4,no
+10.1109/tmi.2019.2898271,0,,[title] unrelated to H1-H4,no
+10.1103/physrevlett.129.090502,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/prxquantum.3.010344,0,,[title] unrelated to H1-H4,no
+10.1038/s41586-023-06096-3,0,,[title] unrelated to H1-H4,no
+10.1103/physreva.109.062437,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+tensorproductmethodsinnumericalsimulationofhighdimensionaldynamicalproblems,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1126/science.ado6285,0,,[title] unrelated to H1-H4,no
+10.1002/qua.24898,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1103/revmodphys.93.045003,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+furmathematikindennaturwissenschaftenleipzighierarchicalsingularvaluedecompositionoftensors,3,H1;H2,"[abs] HSVD: error of product of node-wise projections bounded by root-sum-square of heterogeneous node tails in any order (placement/order-independent, non-sharp sqrt(2d-3)); linear tensor setting",yes
+10.1515/rnam-2013-0009,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.48550/arxiv.2501.07904,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.21468/scipostphys.9.5.070,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.48550/arxiv.2410.03572,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1063/5.0223107,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevx.6.011023,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s41467-019-09039-7,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.48550/arxiv.2609.00870,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevd.104.114501,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.laa.2013.03.016,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.2478/cmam-2011-0020,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1002/nla.2158,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1109/access.2022.3215525,0,,[title] unrelated to H1-H4,no
+10.1002/nla.2174,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1145/3002151.3002167,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1080/01621459.2021.1938082,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2002.09735,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2006.06762,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.3389/fnsys.2010.00147,0,,[title] unrelated to H1-H4,no
+10.1103/physrevb.90.045144,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/56px-qsxx,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2309.07961,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+pepskitjlajuliapackageforprojectedentangledpairstatesimulations,0,,[title] unrelated to H1-H4,no
+10.21468/scipostphys.15.6.222,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10957-018-1328-z,0,,[title] unrelated to H1-H4,no
+10.1016/j.cma.2021.114181,0,,[title] unrelated to H1-H4,no
+explorandoopapeldaconectividadeentrequbitsparaaexpressibilidadeeemaranhamentoemarquiteturasdecircuitosqunticosparametriz,0,,[title] unrelated to H1-H4,no
+10.1137/090748330,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1016/j.laa.2011.08.010,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1016/j.laa.2015.04.015,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/130926328,1,H1,[abs] Abstract checked: agglomerative choice of dimension tree with rank-adaptive cross approximation; no node-wise error theorem indicated,no
+10.1007/978-3-319-08159-5_12,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10208-016-9314-z,2,H1;H2,[abs] Node-wise soft thresholding in HT with global error estimates in terms of node thresholds; non-sharp,no
+10.48550/arxiv.1403.2048,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.48550/arxiv.1509.05009,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1201/b18981,0,,[title] unrelated to H1-H4,no
+10.1137/100818893,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1017/s0962492911000055,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/140976546,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1007/s00211-008-0143-0,0,,[title] unrelated to H1-H4,no
+10.1063/1.4940774,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.jco.2013.10.001,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.2478/cmam-2011-0016,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1016/j.laa.2011.04.019,0,,[title] unrelated to H1-H4,no
+10.1002/nla.1951,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+timeintegrationoftensortrains,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.22331/q-2021-04-15-431,0,,[title] unrelated to H1-H4,no
+10.1016/j.jcp.2024.112943,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1021/acs.jctc.2c01089,0,,[title] unrelated to H1-H4,no
+10.1007/s40324-018-0177-x,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/21m1402170,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+analysisofthetailoredcoupledclustermethodinquantumchemistry,0,,[title] unrelated to H1-H4,no
+10.1016/j.jcp.2020.109341,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/19m128689x,2,H2;H3,[abs] Allocation of a global error budget across subtensors/nodes; additive budget,no
+10.1007/s00365-023-09620-w,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/18m121160x,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/050644756,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.7566/jpsj.91.062001,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/qce57702.2023.00119,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.5.010334,0,,[title] unrelated to H1-H4,no
+10.1002/rnc.4590040305,2,H1;H4,[abs] Value set of product of uncertain factors with disk uncertainty (heterogeneous radii); round-1 L3 abstract only,no
+10.3182/20050703-6-cz-1902.01880,0,,[title] unrelated to H1-H4,no
+10.1103/gxdn-zwrw,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2306.17837,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1145/3731251,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tvt.2013.2283505,1,H3,[abs] Water-filling with cumulative caps; background,no
+10.1109/grc.2007.31,0,,[title] unrelated to H1-H4,no
+10.1109/grc.2007.107,0,,[title] unrelated to H1-H4,no
+10.1038/s41534-025-01157-z,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s41467-022-29939-5,0,,[title] unrelated to H1-H4,no
+10.1016/j.asej.2024.102896,0,,[title] unrelated to H1-H4,no
+10.1137/16m1082469,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s41586-023-06927-3,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1710.05867,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1109/tsp.2023.3282705,0,,[title] unrelated to H1-H4,no
+10.1287/ijoo.2021.0065,1,H3,"[abs] Resource allocation with generalized bounds; quadratic, background",no
+10.1287/ijoc.2021.1104,2,H3,[abs] Separable convex resource allocation with bound constraints (breakpoint solutions); H3 technique only,no
+restrictionsonnoncliffordfaulttoleranceandrulingoutbeyondsqlquantummetrology,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1302.1555,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2110.07505,0,,[title] unrelated to H1-H4,no
+10.1109/tvt.2002.807223,0,,[title] unrelated to H1-H4,no
+10.1109/tcomm.2014.2382095,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1811.10573,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s41467-023-36329-y,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1407.3124,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+lowprecisionrankcompensationformatricesandtensortrains,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+apracticalinvestigationontimeintegrationinthequantizedtensortrainformat,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1021/acs.jctc.6c00487,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1146/annurev-conmatphys-031720-030658,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.21468/scipostphys.7.5.060,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.3390/s19194188,0,,[title] unrelated to H1-H4,no
+10.1093/jom/ufac006,0,,[title] unrelated to H1-H4,no
+tensornetworkkalmanfilterforlargescalemimosystemswithapplicationtoadaptiveoptics,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/access.2023.3268797,0,,[title] unrelated to H1-H4,no
+10.1007/s00366-024-01958-4,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2301.04824,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2107.11442,0,,[title] unrelated to H1-H4,no
+10.1371/journal.pbio.1000157,0,,[title] unrelated to H1-H4,no
+10.3390/app14041491,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tcsvt.2019.2945918,0,,[title] unrelated to H1-H4,no
+10.22331/q-2021-03-15-410,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1126/science.abi8794,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2005.06787,0,,[title] unrelated to H1-H4,no
+10.1103/physrevx.7.031016,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/1367-2630/11/5/055027,0,,[title] unrelated to H1-H4,no
+10.1103/physrevb.88.045132,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.48550/arxiv.2207.08243,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1038/s41586-022-04725-x,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1126/science.abg1919,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1038/s41534-020-0257-5,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-030-34489-4,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.22331/q-2022-05-09-709,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+tensornetworkcontractionsmethodsandapplicationstoquantummanybodysystems,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1063/5.0077770,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/prxquantum.3.020331,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1214/009053604000000067,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1016/s0022-0000(03)00025-4,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1016/j.optlaseng.2018.04.019,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1090/s0002-9947-1950-0051437-7,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1090/s0894-0347-08-00600-0,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1214/ss/1009213727,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1088/0266-5611/14/4/001,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1090/s0025-5718-1985-0771029-9,0,,[title] unrelated to H1-H4,no
+10.1093/imanum/22.3.329,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1016/j.matpur.2004.09.017,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1215/s0012-7094-96-08310-6,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1111/rssb.12228,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+modulusofconicallyaveragedmappingsanditsapplicationstoanglesbetweentwosubspaces,1,H1,[abs] Conical averagedness modulus and Friedrichs/Dixmier angles for two subspaces; background,no
+10.48550/arxiv.2505.22363,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s00205-015-0845-2,0,,[title] unrelated to H1-H4,no
+10.1016/j.jat.2006.02.006,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.7494/opmath.2013.33.3.467,0,,[title] unrelated to H1-H4,no
+10.1051/m2an/2020081,0,,[title] unrelated to H1-H4,no
+10.1137/100809799,0,,[title] unrelated to H1-H4,no
+10.32917/hmj/1206137309,0,,[title] unrelated to H1-H4,no
+10.1007/s00023-020-00935-z,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1402.5460,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1088/0953-8984/21/39/395502,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1088/0266-5611/19/2/201,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevb.98.155134,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.physletb.2019.05.034,0,,[title] unrelated to H1-H4,no
+10.1088/0034-4885/76/5/056201,0,,[title] unrelated to H1-H4,no
+10.1007/jhep07(2014)079,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1088/0034-4885/80/1/016502,0,,[title] unrelated to H1-H4,no
+10.1088/1126-6708/2002/09/011,0,,[title] unrelated to H1-H4,no
+10.1145/258734.258843,0,,[title] unrelated to H1-H4,no
+10.12942/lrr-2011-8,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1090/s0002-9947-2011-05325-0,0,,[title] unrelated to H1-H4,no
+10.1086/428890,0,,[title] unrelated to H1-H4,no
+10.2140/apde.2012.5.397,0,,[title] unrelated to H1-H4,no
+10.1007/jhep10(2015)003,0,,[title] unrelated to H1-H4,no
+10.1155/2014/598531,0,,[title] unrelated to H1-H4,no
+10.6092/unibo/amsdottorato/7612,0,,[title] unrelated to H1-H4,no
+10.1109/tpami.2022.3163667,0,,[title] unrelated to H1-H4,no
+10.1103/revmodphys.90.035006,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.32657/10356/137381,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2003.08657,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.14711/thesis-hdl152294,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.11606/d.76.2024.tde-24042024-083735,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+quantumenhancedmeasurementswithatomsincavitiessuperradianceandspinsqueezing,0,,[title] unrelated to H1-H4,no
+10.1109/comst.2018.2861361,0,,[title] unrelated to H1-H4,no
+10.1103/physrevd.82.072004,0,,[title] unrelated to H1-H4,no
+10.1109/18.737524,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.jmva.2018.03.008,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1021/ct400219n,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.3389/fnbot.2017.00041,0,,[title] unrelated to H1-H4,no
+10.3847/0004-637x/833/1/3,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1137/s0036144593251710,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1081/nfa-200045815,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.3934/jdg.2014.1.331,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1304.7078,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s11075-017-0310-4,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1088/1361-6420/33/4/044003,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.23919/acc.2017.7963671,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tsp.2007.907808,0,,[title] unrelated to H1-H4,no
+10.1115/1.2888303,0,,[title] unrelated to H1-H4,no
+10.1137/140957822,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevlett.91.147902,2,H1;H2,"[abs] Per-step truncation errors accumulate additively in TEBD-type simulation (heterogeneous, first-order) [seen_in_round1]",no
+10.1137/110845768,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/120876459,0,,[title] unrelated to H1-H4,no
+10.1007/s10543-013-0444-2,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s00211-013-0544-6,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1007/s10543-013-0454-0,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.48550/arxiv.1004.0095,0,,[title] unrelated to H1-H4,no
+10.1016/j.chemphys.2018.05.029,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10915-023-02352-w,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1021/acs.jctc.4c00751,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.21468/scipostphys.8.1.005,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10915-025-02860-x,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/16m1055323,0,,[title] unrelated to H1-H4,no
+10.1137/20m1345062,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1080/14789940801912366,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1103/physrevlett.99.220405,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevlett.124.037201,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1103/physrevlett.123.190501,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1103/physrevlett.125.060503,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.22331/q-2023-02-02-912,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevlett.127.240502,0,,[title] unrelated to H1-H4,no
+10.22331/q-2020-09-11-318,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physreva.104.022407,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevlett.133.120603,0,,[title] unrelated to H1-H4,no
+10.1103/physrevb.107.014307,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1080/00207179008934139,0,,[title] unrelated to H1-H4,no
+10.1063/1.3496901,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.23919/acc50511.2021.9482940,1,H1,[abs] SOS outer approximations of Minkowski operations; background,no
+10.1103/physrevlett.93.040502,2,H1;H2,[abs] TEBD truncation errors add over steps (heterogeneous additive budget),no
+10.1103/physrevlett.93.076401,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/1742-5468/2004/04/p04005,0,,[title] unrelated to H1-H4,no
+10.1088/1367-2630/12/5/055026,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1103/physrevlett.128.220503,0,,[title] unrelated to H1-H4,no
+10.1103/physreva.80.022334,0,,[title] unrelated to H1-H4,no
+10.1103/physrevlett.131.180601,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/ybnf-rjw8,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/ymzz-923j,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1098/rspa.2023.0655,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1111/geb.12637,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+arxiv:2110.12564,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.paerosci.2019.100554,0,,[title] unrelated to H1-H4,no
+tensorbasedreducedordermodelingforoptimizationbasedinverseproblems,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2409.09471,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2608.07526,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.physrep.2006.09.003,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1111/pala.12042,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1128/microbiolspec.rwr-0008-2017,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/prxquantum.4.020304,2,H1,[abs] Per-step fidelity accounting for truncated circuit simulation; empirical/heuristic multiplicativity [seen_in_round1],no
+10.1103/revmodphys.91.045001,0,,[title] unrelated to H1-H4,no
+10.1074/jbc.m510889200,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physreva.101.022308,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1186/1741-7007-4-35,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s41534-024-00805-0,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.22331/q-2020-03-26-248,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1038/s41586-023-06481-y,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.3389/fmats.2019.00075,0,,[title] unrelated to H1-H4,no
+10.2307/2344305,0,,[title] unrelated to H1-H4,no
+10.1109/tcomm.2006.887503,0,,[title] unrelated to H1-H4,no
+10.1038/s41586-019-1666-5,0,,[title] unrelated to H1-H4,no
+10.1103/physreva.104.022403,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.3.020347,0,,[title] unrelated to H1-H4,no
+10.1103/physreva.110.052612,0,,[title] unrelated to H1-H4,no
+10.5075/epfl-thesis-6958,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1140/epjd/e2020-100571-8,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.21468/scipostphyslectnotes.8,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1017/s0962492922000125,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1109/access.2019.2909490,0,,[title] unrelated to H1-H4,no
+10.70675/f9ea95cdze8acz4d7ez8a75zb6c9cdfd35d3,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/15m1036919,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/140953289,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1007/s11222-024-10480-y,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2509.11890,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1049/itr2.12383,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.23919/jsee.2023.000159,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/1361-6633/ab6311,0,,[title] unrelated to H1-H4,no
+10.1007/s10208-013-9187-3,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+tensorbasedregressionmodelsandapplications,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/1361-6420/abd85a,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1412.3951,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/1.9781611974829.ch4,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/20m1314653,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.14279/depositonce-8109,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2301.13339,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2001.08187,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/hpec43674.2020.9286234,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s41598-025-16905-6,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.48550/arxiv.2201.07473,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.3934/cac.2023008,0,,[title] unrelated to H1-H4,no
+10.1016/j.laa.2026.08.022,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.32657/10356/152350,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2506.04732,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1145/2532169,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+continuouslowranktensordecompositionswithapplicationstostochasticoptimalcontrolanddataassimilation,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.3390/math13132116,0,,[title] unrelated to H1-H4,no
+10.1016/j.neunet.2024.106393,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.sigpro.2025.110191,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1145/3695053.3731408,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tnnls.2025.3609797,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1145/3278607,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1109/access.2019.2949814,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1038/s41598-024-75964-3,0,,[title] unrelated to H1-H4,no
+10.3390/rs11111382,0,,[title] unrelated to H1-H4,no
+10.1145/3487045,0,,[title] unrelated to H1-H4,no
+10.52339/tjet.v42i2.853,0,,[title] unrelated to H1-H4,no
+10.1088/1367-2630/17/5/053002,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevlett.133.010603,0,,[title] unrelated to H1-H4,no
+10.1017/9781009398671.002,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.48550/arxiv.2307.10327,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2506.04380,0,,[title] unrelated to H1-H4,no
+10.1038/s41534-022-00618-z,0,,[title] unrelated to H1-H4,no
+10.1103/p8dn-glcw,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1063/5.0225367,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s11784-017-0417-1,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2207.04015,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.48550/arxiv.1506.01556,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/revmodphys.77.259,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1051/0004-6361/201525830,0,,[title] unrelated to H1-H4,no
+10.17863/cam.32861,0,,[title] unrelated to H1-H4,no
+10.12942/lrr-2004-9,0,,[title] unrelated to H1-H4,no
+10.1098/rsta.2014.0440,0,,[title] unrelated to H1-H4,no
+10.1109/jstsp.2021.3112295,0,,[title] unrelated to H1-H4,no
+10.1029/2008jf001114,0,,[title] unrelated to H1-H4,no
+10.3847/1538-4365/ac80f6,0,,[title] unrelated to H1-H4,no
+10.22331/q-2020-08-10-306,0,,[title] unrelated to H1-H4,no
+10.17863/cam.43700,0,,[title] unrelated to H1-H4,no
+10.5555/1046920.1088718,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1109/access.2020.2997783,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2109.14449,0,,[title] unrelated to H1-H4,no
+10.17863/cam.52,0,,[title] unrelated to H1-H4,no
+10.1137/19m1304854,2,H4,"[abs] Tight contraction factors of compositions via performance estimation; sharpness methodology, different functional",no
+10.1088/1361-6420/adb8c6,0,,[title] unrelated to H1-H4,no
+10.1109/26.662641,0,,[title] unrelated to H1-H4,no
+10.1002/j.1538-7305.1984.tb00076.x,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2006.874822,0,,[title] unrelated to H1-H4,no
+10.1137/090752286,2,H1;H2,[abs] TT-SVD: error <= sqrt(sum eps_k^2) with heterogeneous unfolding errors; tolerance eps/sqrt(d-1) per core (uniform allocation); non-sharp [seen_in_round1],no
+10.1137/120887795,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/978-3-642-28027-6,2,H1;H2,"[abs] Monograph: HOSVD truncation in HT, error <= sqrt(sum over nodes of discarded tails) (Thm 11.58); heterogeneous, non-sharp [seen_in_round1]",no
+10.1007/s00365-011-9131-1,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/110833142,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1137/120864210,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1051/m2an/2014019,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/978-3-319-06379-9_3,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1002/cem.1236,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10543-013-0455-z,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/100799010,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1007/s00211-011-0419-7,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/100785715,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/110843587,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s00607-003-0037-z,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.cpc.2013.12.017,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/110857520,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1007/s00211-011-0437-5,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/130949919,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10208-012-9136-6,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1007/s00791-012-0183-y,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10208-015-9265-9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1134/s1064562409040115,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1134/s1064562409040036,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s00211-011-0393-0,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s00211-009-0276-9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/s0370-1573(99)00047-2,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1002/sapm192761164,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1137/06066518x,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1002/sapm19287139,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1002/cem.1244,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/09076578x,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1017/s0962492914000087,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s00211-012-0464-x,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+anewconvergenceproofforthehigherorderpowermethodandgeneralizations,0,,[title] unrelated to H1-H4,no
+10.1137/140978223,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/100811647,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.jco.2015.06.005,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.laa.2017.02.028,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1051/m2an/2015071,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.3929/ethz-a-007587832,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+adaptivenearoptimalranktensorapproximationforhighdimensionaloperatorequations,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.3929/ethz-a-010554062,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/978-3-030-31351-7_9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/978-3-319-69802-1_9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.jcp.2022.111646,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.jcp.2018.08.057,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1016/j.jcp.2019.109125,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1063/1.5001569,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.jcp.2021.110295,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1364/oe.26.027201,0,,[title] unrelated to H1-H4,no
+10.1145/3469720,0,,[title] unrelated to H1-H4,no
+10.1137/20m1372500,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1515/cmam-2018-0028,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s40574-020-00247-4,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/22m1515045,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s11222-022-10087-1,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.jcp.2023.112378,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/20m1341659,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1002/9781119417774.ch12,0,,[title] unrelated to H1-H4,no
+10.1103/physreva.70.052328,0,,[title] unrelated to H1-H4,no
+10.1088/1361-6633/aaa98a,0,,[title] unrelated to H1-H4,no
+10.1088/1742-6596/454/1/012064,0,,[title] unrelated to H1-H4,no
+10.1103/physrevlett.128.030501,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/2058-9565/ad04e6,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physreva.105.052404,0,,[title] unrelated to H1-H4,no
+10.1103/physrevb.106.245102,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1021/acs.jctc.4c00903,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevresearch.6.033057,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevresearch.4.033142,0,,[title] unrelated to H1-H4,no
+10.1016/j.laa.2010.08.026,1,H1,[abs] Product numerical range; background,no
+10.1109/cdc.2005.1582719,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s41534-024-00955-1,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s42254-025-00853-1,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevresearch.6.043288,0,,[title] unrelated to H1-H4,no
+10.1103/physreva.109.052616,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevb.111.245115,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevb.111.094310,0,,[title] unrelated to H1-H4,no
+10.1021/acs.jctc.4c00200,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.scib.2025.10.016,0,,[title] unrelated to H1-H4,no
+10.1103/physrevb.110.085149,0,,[title] unrelated to H1-H4,no
+10.1103/zwn1-f981,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/qce65121.2025.00254,0,,[title] unrelated to H1-H4,no
+10.5802/crphys.229,0,,[title] unrelated to H1-H4,no
+10.1016/j.cpc.2026.110136,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tmc.2021.3115262,0,,[abs] unrelated to H1-H4,no
+10.1109/tvt.2015.2435746,0,,[abs] unrelated to H1-H4,no
+10.36227/techrxiv.14672643,0,,[abs] unrelated to H1-H4,no
+waterfillingisuniversallyminimaxoptimal,1,H3,[abs] Online water-filling; background,no
+10.1109/twc.2020.3042977,0,,[abs] unrelated to H1-H4,no
+10.1109/tit.2006.876220,1,H3,[abs] Mercury water-filling; background,no
+10.1109/twc.2013.061713.130278,2,H3,"[abs] Geometric water-filling incl. individual peak-power caps (GWFPP): capped-level allocation min(cap, level); H3 technique only",no
+10.1109/tit.2008.926399,0,,[abs] unrelated to H1-H4,no
+10.1109/twc.2009.12.090394,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tsp.2016.2641381,0,,[abs] unrelated to H1-H4,no
+10.1109/tsg.2011.2177103,1,,"[abs] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tcomm.2015.2468215,0,,[abs] unrelated to H1-H4,no
+10.1109/tvt.2017.2743058,0,,[abs] unrelated to H1-H4,no
+10.1109/jsac.2022.3143237,0,,[abs] unrelated to H1-H4,no
+10.3847/1538-4365/ab929b,0,,[title] unrelated to H1-H4,no
+10.1016/j.comnet.2022.108820,0,,[title] unrelated to H1-H4,no
+10.1145/3603269.3604857,0,,[title] unrelated to H1-H4,no
+10.1016/j.biotechadv.2023.108305,0,,[title] unrelated to H1-H4,no
+10.1007/s10462-023-10449-9,0,,[title] unrelated to H1-H4,no
+10.1186/1752-0509-1-24,0,,[title] unrelated to H1-H4,no
+10.1109/tdsc.2004.2,0,,[title] unrelated to H1-H4,no
+10.1038/s41598-019-43176-9,0,,[title] unrelated to H1-H4,no
+10.1103/physreve.69.066138,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1109/tcomm.2020.2973976,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.5566/ias.v26.p83-92,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/jsac.2015.2391531,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1808.01707,2,H3,[abs] Unified water-filling variants incl. bounded (capped) levels; H3 technique only,no
+10.48550/arxiv.2211.16581,0,,[title] unrelated to H1-H4,no
+10.1038/s41524-023-01034-3,0,,[title] unrelated to H1-H4,no
+10.1145/2788396,0,,[title] unrelated to H1-H4,no
+10.1145/3360546,0,,[title] unrelated to H1-H4,no
+10.1109/ojcoms.2022.3195219,0,,[title] unrelated to H1-H4,no
+10.1016/j.cirp.2018.05.009,0,,[title] unrelated to H1-H4,no
+10.1109/tac.2017.2672902,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2004.826164,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2003.815387,0,,[title] unrelated to H1-H4,no
+10.1109/tit.2012.2191700,0,,[title] unrelated to H1-H4,no
+10.1109/twc.2012.060412.111829,0,,[title] unrelated to H1-H4,no
+10.1109/lcomm.2017.2723890,0,,[title] unrelated to H1-H4,no
+10.1109/comst.2016.2618870,0,,[title] unrelated to H1-H4,no
+10.1109/tie.2016.2532842,0,,[title] unrelated to H1-H4,no
+10.1109/jsac.2011.110613,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2009.2032039,0,,[title] unrelated to H1-H4,no
+10.1109/jstsp.2010.2052784,0,,[title] unrelated to H1-H4,no
+10.1109/twc.2014.2371465,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2020.2973488,2,H3,[abs] Unified water-filling variants incl. bounded (capped) levels; H3 technique only,no
+10.1109/tii.2017.2671923,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2017.2762286,0,,[title] unrelated to H1-H4,no
+10.1109/icassp.2019.8683655,0,,[title] unrelated to H1-H4,no
+10.1109/msp.2009.933446,0,,[title] unrelated to H1-H4,no
+10.1109/tvt.2009.2029438,0,,[title] unrelated to H1-H4,no
+10.1109/jsac.2019.2947926,0,,[title] unrelated to H1-H4,no
+10.1038/s41534-023-00703-x,0,,[title] unrelated to H1-H4,no
+10.1109/infocom53939.2023.10228915,0,,[title] unrelated to H1-H4,no
+10.1023/a:1018910412112,2,H1;H4,"[abs] Minkowski products of complex sets, boundary via logarithmic Gauss map; no box-constrained arcs or |1-z| objective",no
+10.5555/1281920.1281948,0,,[title] unrelated to H1-H4,no
+10.1007/bf03323019,0,,[title] unrelated to H1-H4,no
+10.7153/oam-10-53,2,H1,"[abs] Minkowski products of convex complex sets and product numerical range; heterogeneous factors, no error functional",no
+10.1007/s10444-019-09687-9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s42254-021-00348-9,0,,[title] unrelated to H1-H4,no
+10.1039/d2cs00203e,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1038/s41524-019-0221-0,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1016/j.media.2017.07.005,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1103/physrevx.11.011020,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+tketaretargetablecompilerfornisqdevices,0,,[title] unrelated to H1-H4,no
+10.1103/physrevx.8.011044,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1214/aos/1176347963,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1016/j.cpc.2021.108171,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1016/j.jmaa.2020.124211,3,H4;H1,[abs] Tightness of heterogeneous two-factor composition constant via Minkowski product of two different disks (Cartesian oval); heterogeneous sharpness for n=2 in a different functional [seen_in_round1],yes
+10.1088/0034-4885/70/6/r03,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1086/382125,0,,[title] unrelated to H1-H4,no
+10.1016/j.physrep.2020.07.006,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2012.07436,0,,[title] unrelated to H1-H4,no
+10.1017/s0962492924000023,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.18653/v1/2021.acl-long.418,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1090/mcom/3885,0,,[title] unrelated to H1-H4,no
+10.1007/s11633-022-1340-5,0,,[title] unrelated to H1-H4,no
+10.1088/1367-2630/aa65bc,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.5.037001,0,,[title] unrelated to H1-H4,no
+10.1093/gji/ggw084,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.3390/rs13112232,0,,[title] unrelated to H1-H4,no
+10.1093/gji/ggae131,0,,[title] unrelated to H1-H4,no
+algorithmesparalllespourlesdcompositionsdestenseurs,0,,[title] unrelated to H1-H4,no
+10.1017/9781009180412.003,0,,[title] unrelated to H1-H4,no
+10.1109/jproc.2021.3060483,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1109/access.2019.2945545,0,,[title] unrelated to H1-H4,no
+10.1613/jair.1.11674,0,,[title] unrelated to H1-H4,no
+10.1038/s43586-022-00121-x,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1512.07108,0,,[title] unrelated to H1-H4,no
+10.1109/tnnls.2021.3070843,0,,[title] unrelated to H1-H4,no
+10.1007/s10462-023-10466-8,0,,[title] unrelated to H1-H4,no
+10.1145/3743128,0,,[title] unrelated to H1-H4,no
+10.1613/jair.4992,0,,[title] unrelated to H1-H4,no
+10.1353/lan.2019.0009,0,,[title] unrelated to H1-H4,no
+10.1007/s11831-023-09899-9,0,,[title] unrelated to H1-H4,no
+10.1103/physrevresearch.2.023068,0,,[title] unrelated to H1-H4,no
+10.3390/info10040122,0,,[title] unrelated to H1-H4,no
+10.1007/b72010,0,,[title] unrelated to H1-H4,no
+10.3390/e22040446,0,,[title] unrelated to H1-H4,no
+10.1007/s11831-023-10009-y,0,,[title] unrelated to H1-H4,no
+10.1063/5.0006002,0,,[title] unrelated to H1-H4,no
+10.1016/j.patcog.2017.10.009,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1908.08351,0,,[title] unrelated to H1-H4,no
+10.2136/vzj2015.09.0131,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2302.09149,0,,[title] unrelated to H1-H4,no
+10.1063/5.0005188,0,,[title] unrelated to H1-H4,no
+10.1016/j.xcrp.2021.100359,0,,[title] unrelated to H1-H4,no
+10.23919/jsee.2023.000080,0,,[title] unrelated to H1-H4,no
+10.1016/j.sysarc.2024.103114,0,,[title] unrelated to H1-H4,no
+10.1109/access.2024.3382189,0,,[title] unrelated to H1-H4,no
+10.1016/j.sysarc.2023.102990,0,,[title] unrelated to H1-H4,no
+10.1561/9781638280514,0,,[title] unrelated to H1-H4,no
+10.4230/lipics.giscience.2025.3,0,,[title] unrelated to H1-H4,no
+autonomiccorenetworkmanagementsystem,0,,[title] unrelated to H1-H4,no
+10.1145/3746709.3746773,0,,[title] unrelated to H1-H4,no
+10.1128/msystems.01001-23,0,,[title] unrelated to H1-H4,no
+10.1007/s10444-024-10175-y,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/comst.2020.2970550,0,,[title] unrelated to H1-H4,no
+10.1007/s11704-026-60308-3,0,,[title] unrelated to H1-H4,no
+10.1145/1015706.1015817,0,,[title] unrelated to H1-H4,no
+10.1186/s13174-018-0087-2,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1016/s1474-4422(22)00309-x,0,,[title] unrelated to H1-H4,no
+10.28945/479,0,,[title] unrelated to H1-H4,no
+10.22331/q-2024-03-14-1287,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2109.01051,0,,[title] unrelated to H1-H4,no
+10.1007/s10489-024-05747-w,0,,[title] unrelated to H1-H4,no
+10.1186/s40537-021-00444-8,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1186/s40537-019-0192-5,0,,[title] unrelated to H1-H4,no
+10.1016/j.neuroimage.2013.04.087,0,,[title] unrelated to H1-H4,no
+10.1109/tmi.2013.2265603,0,,[title] unrelated to H1-H4,no
+10.1613/jair.2934,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1103/revmodphys.81.1773,0,,[title] unrelated to H1-H4,no
+10.1186/s40537-021-00516-9,0,,[title] unrelated to H1-H4,no
+10.1038/s41580-021-00407-0,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1505.04406,0,,[title] unrelated to H1-H4,no
+10.1016/j.inffus.2021.05.008,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1186/s40537-020-0285-1,0,,[title] unrelated to H1-H4,no
+10.1007/s11263-020-01359-2,0,,[title] unrelated to H1-H4,no
+10.1007/s11548-014-1118-5,0,,[title] unrelated to H1-H4,no
+10.1007/s11042-023-17192-x,0,,[title] unrelated to H1-H4,no
+10.1145/3637841,0,,[title] unrelated to H1-H4,no
+10.1109/tetc.2023.3346944,0,,[title] unrelated to H1-H4,no
+10.1109/jproc.2022.3226481,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2402.09748,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2102.00554,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1007/s11704-024-40663-9,0,,[title] unrelated to H1-H4,no
+10.1029/eo056i011p00838,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2501.00365,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s40747-025-02019-z,0,,[title] unrelated to H1-H4,no
+10.1103/physrevlett.93.207204,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1088/1742-5468/2007/10/p10014,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevlett.100.030504,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1103/physrevx.8.031012,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1038/ncomms1147,0,,[title] unrelated to H1-H4,no
+10.21468/scipostphyslectnotes.7,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/1367-2630/8/12/305,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/ncomms5213,0,,[title] unrelated to H1-H4,no
+10.1103/physrevlett.133.010601,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1088/2058-9565/ab4eb5,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/revmodphys.94.015004,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1038/s41586-022-04940-6,0,,[title] unrelated to H1-H4,no
+10.22331/q-2019-09-02-181,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.physrep.2022.08.003,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+continuousvariablequantumneuralnetworks,0,,[title] unrelated to H1-H4,no
+10.1103/physrevresearch.1.033063,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.4.027001,0,,[title] unrelated to H1-H4,no
+10.1038/s43588-022-00311-3,0,,[title] unrelated to H1-H4,no
+10.1140/epjd/e2015-60464-1,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1103/physrevx.8.031022,0,,[title] unrelated to H1-H4,no
+10.1038/s41467-022-32550-3,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.2.010342,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physreve.82.036702,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.5287/ora-aekrx2qq0,0,,[title] unrelated to H1-H4,no
+10.18725/oparu-3293,0,,[title] unrelated to H1-H4,no
+10.53846/goediss-8867,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.48550/arxiv.2308.10796,0,,[title] unrelated to H1-H4,no
+10.5282/edoc.20329,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2410.00973,0,,[title] unrelated to H1-H4,no
+10.1038/s41586-024-08449-y,0,,[title] unrelated to H1-H4,no
+10.1038/s41534-017-0038-y,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1103/physrevx.10.021067,0,,[title] unrelated to H1-H4,no
+10.1088/2515-7647/ac1ef4,0,,[title] unrelated to H1-H4,no
+10.1103/physreva.100.010302,0,,[title] unrelated to H1-H4,no
+10.1140/epjqt/s40507-022-00138-x,0,,[title] unrelated to H1-H4,no
+10.1038/s41534-017-0018-2,0,,[title] unrelated to H1-H4,no
+10.1103/physrevx.11.041039,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1109/tqe.2020.3030314,0,,[title] unrelated to H1-H4,no
+10.22331/q-2021-06-17-479,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.3.010329,0,,[title] unrelated to H1-H4,no
+10.6028/nist.ir.8413,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1021/acs.chemrev.0c00665,0,,[title] unrelated to H1-H4,no
+10.1063/5.0004997,0,,[title] unrelated to H1-H4,no
+10.1175/2009jcli3062.1,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.0904.3523,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1063/1.869686,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1070/rm1977v032n06abeh003859,0,,[title] unrelated to H1-H4,no
+10.1214/09-aos729,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1109/access.2015.2430359,0,,[title] unrelated to H1-H4,no
+10.1186/1743-0003-5-25,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1016/j.jmaa.2014.11.044,3,H1;H2;H4,"[abs] Averagedness constant of compositions of m operators with heterogeneous alpha_i, symmetric in the alpha_i (order-independent); tight for m=2 (Ogura-Yamada/HRY); different functional and linear-composition model [seen_in_round1]",yes
+10.1007/s10898-021-01057-4,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1186/s13663-021-00709-0,2,H4;H1,"[abs] Compositions of different special Lipschitz classes with tight examples; heterogeneous composition constants, different functional",no
+10.48550/arxiv.1407.5100,3,H1;H2;H4,"[abs] Averagedness constant of compositions of m operators with heterogeneous alpha_i, symmetric in the alpha_i (order-independent); tight for m=2 (Ogura-Yamada/HRY); different functional and linear-composition model [seen_in_round1]",yes
+10.48550/arxiv.1805.09396,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2408.09981,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1912.01593,3,H4;H1,[abs] Tightness of heterogeneous two-factor composition constant via Minkowski product of two different disks (Cartesian oval); heterogeneous sharpness for n=2 in a different functional [seen_in_round1],yes
+10.1007/s10107-024-02182-0,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1007/978-3-030-25939-6_15,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.13118/themelis-andreas_phd2018,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1912.13165,2,H4;H1,"[abs] Compositions of different special Lipschitz classes with tight examples; heterogeneous composition constants, different functional",no
+10.1007/s10957-022-02136-6,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.2303.15876,0,,[title] unrelated to H1-H4,no
+operatortheoryforanalysisofconvexoptimizationmethodsinmachinelearning,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2204.01877,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1201/9781003597988,0,,[title] unrelated to H1-H4,no
+10.1090/s0002-9947-05-03742-6,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.4171/ggd/134,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-030-56341-7,0,,[title] unrelated to H1-H4,no
+10.1016/j.laa.2014.01.017,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-319-11080-6,0,,[title] unrelated to H1-H4,no
+10.1070/rm1999v054n05abeh000204,0,,[title] unrelated to H1-H4,no
+10.1090/s0894-0347-1992-1126118-x,0,,[title] unrelated to H1-H4,no
+reggefiniteelementswithapplicationsinsolidmechanicsandrelativity,0,,[title] unrelated to H1-H4,no
+10.1090/noti1617,0,,[title] unrelated to H1-H4,no
+10.1016/j.jfa.2012.08.028,0,,[title] unrelated to H1-H4,no
+10.1007/s11075-018-0608-x,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.12942/lrr-2009-4,0,,[title] unrelated to H1-H4,no
+10.5445/ir/1000043647,0,,[title] unrelated to H1-H4,no
+finiteorderautomorphismsofhiggsbundlestheoryandapplication,0,,[title] unrelated to H1-H4,no
+10.1107/s0021889807021206,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1051/0004-6361/201321529,0,,[title] unrelated to H1-H4,no
+10.1007/s00440-011-0397-9,0,,[title] unrelated to H1-H4,no
+10.1145/355984.355989,0,,[title] unrelated to H1-H4,no
+10.1088/0953-8984/14/11/301,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1002/jcc.21287,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1016/s0024-3795(00)00095-1,0,,[title] unrelated to H1-H4,no
+10.1088/0034-4885/40/9/001,0,,[title] unrelated to H1-H4,no
+10.1007/s00041-008-9035-z,0,,[title] unrelated to H1-H4,no
+10.1016/s0377-0427(00)00509-4,0,,[title] unrelated to H1-H4,no
+10.4310/atmp.2003.v7.n1.a6,0,,[title] unrelated to H1-H4,no
+10.1017/jfm.2021.812,0,,[title] unrelated to H1-H4,no
+10.1073/pnas.1907377117,0,,[title] unrelated to H1-H4,no
+10.1017/cbo9780511622656,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.jmoneco.2014.08.005,0,,[title] unrelated to H1-H4,no
+10.1103/revmodphys.82.2557,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2013.2283840,0,,[title] unrelated to H1-H4,no
+10.1016/j.physrep.2008.11.001,0,,[title] unrelated to H1-H4,no
+10.1016/s0047-259x(03)00057-5,0,,[title] unrelated to H1-H4,no
+10.1016/j.ultras.2020.106309,0,,[title] unrelated to H1-H4,no
+10.1088/1475-7516/2006/05/018,0,,[title] unrelated to H1-H4,no
+10.1016/j.physrep.2010.05.003,0,,[title] unrelated to H1-H4,no
+10.1103/revmodphys.80.1355,0,,[title] unrelated to H1-H4,no
+10.32614/cran.package.pracma,0,,[title] unrelated to H1-H4,no
+10.1146/annurev-fluid-010518-040401,0,,[title] unrelated to H1-H4,no
+10.1016/s0377-0427(00)00348-4,0,,[title] unrelated to H1-H4,no
+10.1088/0264-9381/33/13/133001,0,,[title] unrelated to H1-H4,no
+10.1016/s0024-3795(02)00291-4,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/9.599969,0,,[title] unrelated to H1-H4,no
+10.1103/physrevb.88.075133,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/1126-6708/2001/01/010,0,,[title] unrelated to H1-H4,no
+10.1016/j.physletb.2005.05.040,0,,[title] unrelated to H1-H4,no
+10.1103/revmodphys.75.559,0,,[title] unrelated to H1-H4,no
+10.1088/0004-6256/144/6/192,0,,[title] unrelated to H1-H4,no
+10.1016/j.cam.2006.11.006,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/1475-7516/2021/05/073,0,,[title] unrelated to H1-H4,no
+10.1088/1126-6708/2001/02/047,0,,[title] unrelated to H1-H4,no
+10.1142/s0217751x0502519x,0,,[title] unrelated to H1-H4,no
+10.1088/1361-6633/aaae14,0,,[title] unrelated to H1-H4,no
+10.1103/physrevb.102.245113,0,,[title] unrelated to H1-H4,no
+10.1088/1126-6708/2003/07/038,0,,[title] unrelated to H1-H4,no
+10.1103/revmodphys.71.983,0,,[title] unrelated to H1-H4,no
+10.1088/1126-6708/2004/05/079,0,,[title] unrelated to H1-H4,no
+10.12942/lrr-2008-9,0,,[title] unrelated to H1-H4,no
+10.1016/j.combustflame.2014.04.018,0,,[title] unrelated to H1-H4,no
+10.1016/j.cpc.2015.08.039,0,,[title] unrelated to H1-H4,no
+10.1086/521375,0,,[title] unrelated to H1-H4,no
+10.1214/aoap/1019737664,0,,[title] unrelated to H1-H4,no
+10.1007/jhep06(2011)005,0,,[title] unrelated to H1-H4,no
+10.1103/revmodphys.69.995,0,,[title] unrelated to H1-H4,no
+10.4310/atmp.2000.v4.n5.a1,0,,[title] unrelated to H1-H4,no
+10.3847/1538-4365/aa876b,0,,[title] unrelated to H1-H4,no
+10.1088/1742-5468/2008/12/p12015,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/s0370-1573(03)00120-0,0,,[title] unrelated to H1-H4,no
+10.3934/math.20231135,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.3390/sym14101996,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.3390/fractalfract7110806,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/2040-8978/19/1/013001,0,,[title] unrelated to H1-H4,no
+10.1112/blms/15.5.401,0,,[title] unrelated to H1-H4,no
+10.1007/s00006-019-0959-y,0,,[title] unrelated to H1-H4,no
+10.3836/tjm/1255958684,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1145/4078.4081,0,,[title] unrelated to H1-H4,no
+10.1007/s10231-017-0666-z,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1145/136035.136037,0,,[title] unrelated to H1-H4,no
+10.12942/lrr-2011-3,0,,[title] unrelated to H1-H4,no
+10.1109/access.2022.3149276,0,,[title] unrelated to H1-H4,no
+onhyperbolicsurfacetessellationsandequivariantspacelikeconvexpolyhedralsurfacesinminkowskispace,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.12942/lrr-2008-6,0,,[title] unrelated to H1-H4,no
+10.2298/fil2103015k,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.comgeo.2009.12.003,0,,[title] unrelated to H1-H4,no
+10.3390/mi15070809,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.0711.3226,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-642-03196-0,0,,[title] unrelated to H1-H4,no
+10.1016/j.physrep.2020.05.004,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1146/annurev-fluid-031821-104935,0,,[title] unrelated to H1-H4,no
+10.3847/2041-8213/ab1141,0,,[title] unrelated to H1-H4,no
+10.2307/1269506,0,,[title] unrelated to H1-H4,no
+10.1111/1467-9868.00082,0,,[title] unrelated to H1-H4,no
+10.1109/5.53403,0,,[title] unrelated to H1-H4,no
+10.4310/atmp.1997.v1.n1.a2,0,,[title] unrelated to H1-H4,no
+10.1109/tuffc.2007.240,0,,[title] unrelated to H1-H4,no
+10.1016/j.jcss.2003.07.012,0,,[title] unrelated to H1-H4,no
+10.1021/acs.chemrev.0c00767,0,,[title] unrelated to H1-H4,no
+10.1103/physrevd.85.122006,0,,[title] unrelated to H1-H4,no
+10.1103/physrevx.9.011042,0,,[title] unrelated to H1-H4,no
+10.1051/0004-6361/201219196,0,,[title] unrelated to H1-H4,no
+10.1016/j.physrep.2023.12.002,0,,[title] unrelated to H1-H4,no
+10.1016/c2009-0-12846-5,0,,[title] unrelated to H1-H4,no
+10.1088/0004-6256/150/3/80,0,,[title] unrelated to H1-H4,no
+10.18452/16704,0,,[title] unrelated to H1-H4,no
+10.1038/s41467-022-29973-3,0,,[title] unrelated to H1-H4,no
+10.1016/j.ejor.2007.01.057,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-662-21637-8,0,,[title] unrelated to H1-H4,no
+10.1016/j.aiia.2020.09.002,0,,[title] unrelated to H1-H4,no
+10.1088/0029-5515/54/5/054006,0,,[title] unrelated to H1-H4,no
+10.3386/w24096,0,,[title] unrelated to H1-H4,no
+computationalhapticsthesandpapersystemforsynthesizingtextureforaforcefeedbackdisplay,0,,[title] unrelated to H1-H4,no
+10.1016/0898-1221(92)90135-5,0,,[title] unrelated to H1-H4,no
+10.1111/jzs.12010,0,,[title] unrelated to H1-H4,no
+10.17848/9781417505937.ch4,0,,[title] unrelated to H1-H4,no
+10.3386/w25358,0,,[title] unrelated to H1-H4,no
+10.1111/2041-210x.70131,0,,[title] unrelated to H1-H4,no
+socialnetworksidentityandeconomicbehaviorempiricalevidencefromindia,0,,[title] unrelated to H1-H4,no
+10.2172/15015945,0,,[title] unrelated to H1-H4,no
+terrainosaurusrealisticterrainsynthesisusinggeneticalgorithms,0,,[title] unrelated to H1-H4,no
+10.1186/1687-6180-2012-226,0,,[title] unrelated to H1-H4,no
+10.1090/s0273-0979-06-01126-8,0,,[title] unrelated to H1-H4,no
+10.1093/nar/30.7.1575,0,,[title] unrelated to H1-H4,no
+10.1002/wcms.1493,0,,[title] unrelated to H1-H4,no
+10.1145/2517349.2522739,0,,[title] unrelated to H1-H4,no
+10.1890/es12-00048.1,0,,[title] unrelated to H1-H4,no
+10.1093/bib/bbab159,0,,[title] unrelated to H1-H4,no
+10.1613/jair.301,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1093/nar/gku616,0,,[title] unrelated to H1-H4,no
+10.1016/s0004-3702(98)00023-x,0,,[title] unrelated to H1-H4,no
+10.1109/msp.2014.2377273,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1607.00653,0,,[title] unrelated to H1-H4,no
+thetheoryandpracticeofconcurrency,0,,[title] unrelated to H1-H4,no
+10.1145/2366231.2337217,0,,[title] unrelated to H1-H4,no
+10.1109/sp.2015.9,0,,[title] unrelated to H1-H4,no
+10.1613/jair.1327,0,,[title] unrelated to H1-H4,no
+10.1093/nsr/nwad128,0,,[title] unrelated to H1-H4,no
+10.1016/s0024-3795(99)00134-2,0,,[title] unrelated to H1-H4,no
+10.1146/annurev-control-061520-010504,0,,[title] unrelated to H1-H4,no
+10.1016/j.nonrwa.2023.104021,0,,[title] unrelated to H1-H4,no
+verifiableblindprobabilisticerrorcancellation,0,,[title] unrelated to H1-H4,no
+10.1007/s00778-017-0480-7,0,,[title] unrelated to H1-H4,no
+10.1613/jair.1.11228,0,,[title] unrelated to H1-H4,no
+10.1145/296854.277632,0,,[title] unrelated to H1-H4,no
+10.1145/2785956.2787472,0,,[title] unrelated to H1-H4,no
+10.1371/journal.pcbi.1000069,0,,[title] unrelated to H1-H4,no
+10.1007/11426639_9,0,,[title] unrelated to H1-H4,no
+10.1021/acs.chemrev.1c00838,0,,[title] unrelated to H1-H4,no
+10.4086/toc.2013.v009a004,0,,[title] unrelated to H1-H4,no
+10.1016/j.techfore.2018.04.032,0,,[title] unrelated to H1-H4,no
+10.1145/319806.319814,0,,[title] unrelated to H1-H4,no
+10.36001/phmconf.2011.v3i1.2070,0,,[title] unrelated to H1-H4,no
+10.1145/1103900.1103907,0,,[title] unrelated to H1-H4,no
+10.1145/3605776,0,,[title] unrelated to H1-H4,no
+10.1002/adom.201800272,0,,[title] unrelated to H1-H4,no
+10.3390/math14122166,0,,[title] unrelated to H1-H4,no
+10.1007/s10518-023-01645-7,0,,[title] unrelated to H1-H4,no
+10.1007/978-1-4302-5927-5,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.2.030312,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.2.040202,0,,[title] unrelated to H1-H4,no
+10.1002/pssb.200945229,0,,[title] unrelated to H1-H4,no
+10.1007/s11831-008-9019-9,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.22331/q-2018-01-31-49,0,,[title] unrelated to H1-H4,no
+10.1088/2058-9565/ab79b1,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1038/s42254-023-00603-1,0,,[title] unrelated to H1-H4,no
+10.1088/2058-9565/aaa331,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/jproc.2019.2954005,0,,[title] unrelated to H1-H4,no
+10.1109/tqe.2021.3068355,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1088/2058-9565/abae7d,0,,[title] unrelated to H1-H4,no
+10.1088/2058-9565/aaa5cc,0,,[title] unrelated to H1-H4,no
+10.1145/3565271,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tsipn.2015.2448520,0,,[title] unrelated to H1-H4,no
+10.3390/quantum7010002,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.compchemeng.2019.106630,0,,[title] unrelated to H1-H4,no
+10.1007/s11128-019-2326-2,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/access.2021.3109816,0,,[title] unrelated to H1-H4,no
+10.1155/2015/931256,0,,[title] unrelated to H1-H4,no
+10.2307/1941447,0,,[title] unrelated to H1-H4,no
+10.1086/300337,0,,[title] unrelated to H1-H4,no
+10.2139/ssrn.1520062,0,,[title] unrelated to H1-H4,no
+constraintonthematterantimattersymmetryviolatingphaseinneutrinooscillations,0,,[title] unrelated to H1-H4,no
+10.7551/mitpress/9780262033589.001.0001,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1038/s41586-020-2177-0,0,,[title] unrelated to H1-H4,no
+10.1023/a:1007612920971,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1002/2016rg000529,0,,[title] unrelated to H1-H4,no
+10.1051/0004-6361/201936386,0,,[title] unrelated to H1-H4,no
+10.1088/1126-6708/2001/08/055,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-319-48311-5,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1007/978-1-4419-9467-7,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1088/0266-5611/20/1/006,0,,[title] unrelated to H1-H4,no
+10.1007/s10957-012-0245-9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/s1570-579x(01)80028-8,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1080/02331930412331327157,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/120872802,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/978-3-642-30901-4,0,,[title] unrelated to H1-H4,no
+10.1016/s1570-579x(01)80010-0,0,,[title] unrelated to H1-H4,no
+10.1080/02331934.2012.733883,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/090754297,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/s1570-579x(01)80009-4,0,,[title] unrelated to H1-H4,no
+10.1007/s11228-010-0147-7,0,,[title] unrelated to H1-H4,no
+10.1137/070683374,0,,[title] unrelated to H1-H4,no
+10.1081/nfa-120003674,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+onaveragedfirmlynonexpansiveandquasinonexpansiveoperatorsandmoreofthat,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.5860/choice.26-5109,0,,[title] unrelated to H1-H4,no
+10.5860/choice.41-5348,0,,[title] unrelated to H1-H4,no
+10.1007/s11228-017-0421-z,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tsp.2021.3069677,0,,[title] unrelated to H1-H4,no
+10.1109/tcyb.2019.2908091,0,,[title] unrelated to H1-H4,no
+10.1007/s00245-019-09584-z,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/17m112806x,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10107-018-1321-1,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/16m1073741,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tcns.2017.2754358,0,,[title] unrelated to H1-H4,no
+10.1088/1361-6420/ab551e,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/15m1018253,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1704.07338,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s11075-017-0282-4,0,,[title] unrelated to H1-H4,no
+10.1109/tac.2020.3011916,0,,[title] unrelated to H1-H4,no
+10.1109/cdc.2016.7798401,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tcns.2020.3018703,0,,[title] unrelated to H1-H4,no
+10.1007/s10957-017-1061-z,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.1507.07095,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.automatica.2020.109269,0,,[title] unrelated to H1-H4,no
+stochasticapproximationsandperturbationsinforwardbackwardsplittingformonotoneoperators,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.23952/jano.4.2022.2.09,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tetci.2021.3098831,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/tac.2018.2808442,1,H4,[abs] Abstract checked (Banjac-Goulart): tight linear rate bounds for strongly quasi-nonexpansive splitting operators; background [seen_in_round1],no
+10.1080/02331934.2018.1426584,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10107-021-01639-w,2,H1;H4,"[abs] SRG of composition contained in product of SRGs with heterogeneous factors; 'angles add, lengths multiply' (round-1 L3)",no
+10.1007/s10957-018-1443-x,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.23919/ecc.2018.8550342,0,,[title] unrelated to H1-H4,no
+10.1080/02331934.2018.1505885,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1704.03563,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s11228-022-00631-6,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/icassp.2019.8682318,0,,[title] unrelated to H1-H4,no
+10.1587/transfun.2022eap1118,0,,[title] unrelated to H1-H4,no
+10.1080/02331934.2020.1767101,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2004.01442,0,,[title] unrelated to H1-H4,no
+10.1287/moor.2023.0186,0,,[title] unrelated to H1-H4,no
+10.1016/j.apnum.2020.06.005,0,,[title] unrelated to H1-H4,no
+10.3390/sym12050750,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1601.00698,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1186/s13660-019-2097-4,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1155/2019/7376263,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1002/0471200611,0,,[title] unrelated to H1-H4,no
+10.1002/047174882x,0,,[title] unrelated to H1-H4,no
+10.1063/1.4822961,0,,[title] unrelated to H1-H4,no
+10.1002/ett.4460100604,0,,[title] unrelated to H1-H4,no
+matrixcomputations3rded,0,,[title] unrelated to H1-H4,no
+10.1049/ep.1969.0319,0,,[title] unrelated to H1-H4,no
+capacityofmultiantennagaussianchannels,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2003.815393,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-7091-2945-6,0,,[title] unrelated to H1-H4,no
+10.1109/26.974266,0,,[title] unrelated to H1-H4,no
+10.1109/78.995062,0,,[title] unrelated to H1-H4,no
+10.1109/78.771047,0,,[title] unrelated to H1-H4,no
+10.1109/26.339844,0,,[title] unrelated to H1-H4,no
+10.1109/tcom.1976.1093255,0,,[title] unrelated to H1-H4,no
+10.1109/tit.1967.1053971,0,,[title] unrelated to H1-H4,no
+10.1109/18.761338,0,,[title] unrelated to H1-H4,no
+10.1002/j.1538-7305.1985.tb00269.x,0,,[title] unrelated to H1-H4,no
+10.1109/18.333852,0,,[title] unrelated to H1-H4,no
+10.1007/978-1-4615-6281-8_4,0,,[title] unrelated to H1-H4,no
+10.1109/jsac.2003.810324,0,,[title] unrelated to H1-H4,no
+10.1109/vetecf.2000.886308,0,,[title] unrelated to H1-H4,no
+10.1109/icc.2003.1204410,0,,[title] unrelated to H1-H4,no
+understandingdigitalsubscriberlinetechnology,0,,[title] unrelated to H1-H4,no
+largesystemanalysisoflinearprecodingincorrelatedmisobroadcastchannelsunderlimitedfeedback,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2013.2293126,0,,[title] unrelated to H1-H4,no
+10.1561/0100000018,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2007.907807,0,,[title] unrelated to H1-H4,no
+10.1109/tnet.2013.2294111,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2010.2043138,0,,[title] unrelated to H1-H4,no
+10.1109/msp.2008.929297,0,,[title] unrelated to H1-H4,no
+10.1109/tie.2018.2815945,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2006.889976,0,,[title] unrelated to H1-H4,no
+10.1016/j.sigpro.2017.06.026,0,,[title] unrelated to H1-H4,no
+10.1109/jsac.2014.2328392,0,,[title] unrelated to H1-H4,no
+10.1145/3007787.3001161,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-319-97142-1_3,0,,[title] unrelated to H1-H4,no
+10.1109/tvt.2009.2021603,0,,[title] unrelated to H1-H4,no
+10.1016/j.sigpro.2019.05.001,0,,[title] unrelated to H1-H4,no
+10.1109/tsp.2005.859241,0,,[title] unrelated to H1-H4,no
+10.1109/twc.2016.2604800,0,,[title] unrelated to H1-H4,no
+10.1109/tsg.2014.2303096,0,,[title] unrelated to H1-H4,no
+10.1007/978-1-4612-3094-6,0,,[title] unrelated to H1-H4,no
+10.1007/bf02289464,0,,[title] unrelated to H1-H4,no
+10.1007/978-1-4612-0981-2,0,,[title] unrelated to H1-H4,no
+10.1007/978-0-8176-4948-7,0,,[title] unrelated to H1-H4,no
+10.1515/9781400830244,0,,[title] unrelated to H1-H4,no
+molecularelectronicstructuretheory,0,,[title] unrelated to H1-H4,no
+numericalmethodsforstochasticcomputationsaspectralmethodapproach,0,,[title] unrelated to H1-H4,no
+10.1137/1035134,0,,[title] unrelated to H1-H4,no
+10.1007/978-90-481-3520-2,0,,[title] unrelated to H1-H4,no
+10.1002/9780470238004,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-322-84410-1_3,0,,[title] unrelated to H1-H4,no
+10.4171/067,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1073/pnas.112329799,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1137/070696325,0,,[title] unrelated to H1-H4,no
+10.1016/j.cma.2013.11.015,0,,[title] unrelated to H1-H4,no
+10.1016/s1570-8659(03)10003-8,0,,[title] unrelated to H1-H4,no
+10.1090/mcom/3132,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/978-3-642-03413-8_3,0,,[title] unrelated to H1-H4,no
+dmrgqttapproachtocomputationofthegroundstateforthemolecularschrdingeroperator,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+higherorderpowermethodapplicationinindependentcomponentanalysis,0,,[title] unrelated to H1-H4,no
+10.1016/j.laa.2015.12.016,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevlett.69.2863,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1007/bf02310791,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1007/bf02288367,0,,[title] unrelated to H1-H4,no
+10.1137/s0895479895290954,0,,[title] unrelated to H1-H4,no
+10.1137/050626090,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/bf02099178,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1063/1.1580111,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1016/j.laa.2009.07.024,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1137/040604959,0,,[title] unrelated to H1-H4,no
+10.1007/s10208-010-9072-2,0,,[title] unrelated to H1-H4,no
+10.1103/physrevb.72.180403,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.cpc.2014.01.019,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/0024-3795(93)00070-g,0,,[title] unrelated to H1-H4,no
+10.1515/cmam-2014-0016,0,,[title] unrelated to H1-H4,no
+10.1137/080738970,0,,[title] unrelated to H1-H4,no
+10.1002/cpa.20042,0,,[title] unrelated to H1-H4,no
+10.1016/j.aop.2010.09.012,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1002/9781119019572,0,,[title] unrelated to H1-H4,no
+modernquantumchemistry,0,,[title] unrelated to H1-H4,no
+10.1016/j.acha.2009.04.002,0,,[title] unrelated to H1-H4,no
+foundationsoftheparafacproceduremodelsandconditionsforanexplanatorymultimodelfactoranalysis,0,,[title] unrelated to H1-H4,no
+10.1007/bf01449770,0,,[title] unrelated to H1-H4,no
+10.1146/annurev-physchem-032210-103338,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+nonlinearfunctionalanalysisanditsapplicationsiiivariationalmethodsandoptimization,0,,[title] unrelated to H1-H4,no
+10.1007/978-1-4612-0541-8,0,,[title] unrelated to H1-H4,no
+10.1142/s0219530511001728,0,,[title] unrelated to H1-H4,no
+10.1201/b16113,0,,[title] unrelated to H1-H4,no
+10.11329/jjssj.44.501,0,,[title] unrelated to H1-H4,no
+nonlinearfunctionalanalysisanditsapplicationsivapplicationstomathematicalphysics,0,,[title] unrelated to H1-H4,no
+10.1007/978-1-4939-1323-7,0,,[title] unrelated to H1-H4,no
+10.1016/0029-5582(66)90509-8,0,,[title] unrelated to H1-H4,no
+10.1017/s0962492900002816,0,,[title] unrelated to H1-H4,no
+10.1007/978-1-4612-5020-3,0,,[title] unrelated to H1-H4,no
+10.2307/j.ctv7h0skv,0,,[title] unrelated to H1-H4,no
+10.1016/0167-9473(90)90127-4,0,,[title] unrelated to H1-H4,no
+10.1007/978-1-4612-4566-7,0,,[title] unrelated to H1-H4,no
+10.1103/physreva.103.052416,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s00365-021-09551-4,0,,[title] unrelated to H1-H4,no
+10.1002/qua.25502,0,,[title] unrelated to H1-H4,no
+10.1016/j.physrep.2017.12.003,0,,[title] unrelated to H1-H4,no
+10.1007/s00023-021-01087-4,0,,[title] unrelated to H1-H4,no
+10.1103/physrevapplied.20.014054,0,,[title] unrelated to H1-H4,no
+10.1007/s10444-019-09723-8,0,,[title] unrelated to H1-H4,no
+10.1021/acs.jctc.3c00590,0,,[title] unrelated to H1-H4,no
+10.1016/j.apnum.2022.05.009,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/1.9781611971309,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-642-02431-3,0,,[title] unrelated to H1-H4,no
+10.1007/bf01581204,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1007/3-540-31247-1,0,,[title] unrelated to H1-H4,no
+10.1007/3-540-31246-3,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-319-92775-6,0,,[title] unrelated to H1-H4,no
+10.1007/978-0-387-69757-4,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/0022-247x(81)90013-5,0,,[title] unrelated to H1-H4,no
+10.1137/s0363012903427336,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10107-020-01500-6,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/16m1078604,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.jmaa.2010.03.041,0,,[title] unrelated to H1-H4,no
+10.1007/s10898-018-0660-z,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+splittingmethodsformonotoneoperatorswithapplicationstoparalleloptimization,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.48550/arxiv.1902.09827,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s10957-022-02098-9,0,,[title] unrelated to H1-H4,no
+10.48550/arxiv.2001.02061,0,,[title] unrelated to H1-H4,no
+10.1137/23m1609166,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+anadaptivealternatingdirectionsmethodofmultipliers,0,,[title] unrelated to H1-H4,no
+10.1080/02331934.2024.2373896,0,,[title] unrelated to H1-H4,no
+10.1109/tac.2023.3274690,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1007/s10957-020-01734-6,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.22331/q-2018-08-06-79,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1103/revmodphys.69.731,0,,[title] unrelated to H1-H4,no
+10.1038/s41567-018-0124-x,0,,[title] unrelated to H1-H4,no
+10.1016/j.aop.2019.167998,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1103/physreva.99.042318,0,,[title] unrelated to H1-H4,no
+10.1103/physrevlett.127.180502,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.3.020101,0,,[title] unrelated to H1-H4,no
+10.1103/revmodphys.95.035001,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1038/s41534-021-00440-z,0,,[title] unrelated to H1-H4,no
+10.22331/q-2022-12-29-886,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.3.040313,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1063/5.0155213,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.4.040319,0,,[title] unrelated to H1-H4,no
+10.1140/epja/s10050-023-01141-1,0,,[title] unrelated to H1-H4,no
+10.1145/3567955.3567958,0,,[title] unrelated to H1-H4,no
+10.1088/1751-8121/ac48ec,0,,[title] unrelated to H1-H4,no
+10.1109/ojcoms.2025.3591842,0,,[title] unrelated to H1-H4,no
+10.1007/s11219-023-09633-5,0,,[title] unrelated to H1-H4,no
+10.1021/acsphotonics.1c00968,0,,[title] unrelated to H1-H4,no
+10.21468/scipostphyslectnotes.99,0,,[title] unrelated to H1-H4,no
+10.1103/physreva.108.032406,0,,[title] unrelated to H1-H4,no
+10.22331/q-2023-05-04-993,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s42484-025-00254-8,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1137/1.9781611970906,0,,[title] unrelated to H1-H4,no
+10.2307/2005805,0,,[title] unrelated to H1-H4,no
+10.1016/c2009-0-21898-8,0,,[title] unrelated to H1-H4,no
+acatalogofspecialplanecurves,0,,[title] unrelated to H1-H4,no
+curvesandsingularities,0,,[title] unrelated to H1-H4,no
+10.1093/oso/9780198534471.001.0001,0,,[title] unrelated to H1-H4,no
+bookofcurves,0,,[title] unrelated to H1-H4,no
+geometryacomprehensivecourse,0,,[title] unrelated to H1-H4,no
+10.1017/cbo9780511807503,0,,[title] unrelated to H1-H4,no
+10.1007/bf01404681,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/0167-8396(94)00008-g,0,,[title] unrelated to H1-H4,no
+10.3138/9781487583279,0,,[title] unrelated to H1-H4,no
+complexintervalarithmeticanditsapplications,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.2307/3618747,0,,[title] unrelated to H1-H4,no
+10.2307/2973184,0,,[title] unrelated to H1-H4,no
+theadvancedgeometryofplanecurvesandtheirapplications,0,,[title] unrelated to H1-H4,no
+10.1023/a:1010318011860,2,H1;H4,[abs] MGA framework (round-1 L3: two-disk ovals); heterogeneous products of complex sets,no
+10.1016/s0167-8396(98)00016-8,0,,[title] unrelated to H1-H4,no
+10.1109/gmap.2000.838260,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/bf02241722,0,,[title] unrelated to H1-H4,no
+traitdescourbesspcialesremarquablesplanesetgauches,0,,[title] unrelated to H1-H4,no
+10.1016/b978-0-12-460510-7.50022-7,0,,[title] unrelated to H1-H4,no
+10.1016/b978-0-12-518850-0.50029-9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.5860/choice.35-2767,0,,[title] unrelated to H1-H4,no
+10.1016/0378-4754(85)90023-0,0,,[title] unrelated to H1-H4,no
+10.5860/choice.32-2184,0,,[title] unrelated to H1-H4,no
+10.1007/978-1-4471-0495-7_21,0,,[title] unrelated to H1-H4,no
+10.1007/s11155-006-2966-7,2,H1;H4,[abs] Polar complex intervals: exact products where argument ranges add and moduli multiply; heterogeneous angle boxes but no cos(theta)e^{i theta} coupling,no
+10.1007/s10444-003-2605-3,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1145/3274659,0,,[title] unrelated to H1-H4,no
+10.1007/s12555-009-0515-y,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1023/b:numa.0000027725.80448.d8,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/978-3-662-05105-4_9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s00283-021-10149-8,0,,[title] unrelated to H1-H4,no
+10.1007/s11075-005-4565-9,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.13001/1081-3810.3910,0,,[title] unrelated to H1-H4,no
+10.1007/978-3-540-87827-8_1,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1007/s00022-019-0502-2,2,H1;H4,"[abs] Bunger-Rump: exact products of two complex disks via Cartesian ovals; scalar heterogeneous product geometry, full disks not arcs",no
+10.3182/20050703-6-cz-1902.00205,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1103/physrevb.48.10345,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated [seen_in_round1]",no
+10.1126/science.abe8770,0,,[title] unrelated to H1-H4,no
+10.1103/physrevlett.127.180501,0,,[title] unrelated to H1-H4,no
+10.1021/acs.chemrev.9b00829,0,,[title] unrelated to H1-H4 [seen_in_round1],no
+10.1073/pnas.1619152114,0,,[title] unrelated to H1-H4,no
+10.1126/science.abb9811,0,,[title] unrelated to H1-H4,no
+10.1038/s41567-020-01105-y,0,,[title] unrelated to H1-H4,no
+10.1063/1.531667,0,,[title] unrelated to H1-H4,no
+10.1038/s41567-021-01409-7,0,,[title] unrelated to H1-H4,no
+10.1109/tqe.2021.3090207,0,,[title] unrelated to H1-H4,no
+10.1016/s0024-3795(00)00322-0,0,,[title] unrelated to H1-H4,no
+10.1038/s41586-024-07998-6,0,,[title] unrelated to H1-H4,no
+10.1103/physrevx.14.041029,0,,[title] unrelated to H1-H4,no
+10.1103/prxquantum.4.040326,0,,[title] unrelated to H1-H4,no
+10.1103/physrevresearch.6.013142,0,,[title] unrelated to H1-H4,no
+10.1073/pnas.2313269120,0,,[title] unrelated to H1-H4,no
+10.1016/j.pnmrs.2024.02.002,0,,[title] unrelated to H1-H4,no
+10.22331/q-2024-11-26-1538,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1063/5.0251601,0,,[title] unrelated to H1-H4,no
+10.1103/9prw-684p,0,,[title] unrelated to H1-H4,no
+10.3390/e27040427,0,,[title] unrelated to H1-H4,no
+10.1103/physrevresearch.7.023018,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1109/sc41406.2024.00086,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1063/5.0224883,0,,[title] unrelated to H1-H4,no
+10.1103/km66-ltpl,0,,[title] unrelated to H1-H4,no
+10.1103/physrevresearch.7.013213,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no
+10.1016/j.physleta.2024.129642,1,,"[title] same broad field; no heterogeneous/nodewise error bound, sharp constant or placement statement indicated",no

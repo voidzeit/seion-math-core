@@ -1,0 +1,4 @@
+openalex CY1 0 OK 37 25 after backoff 30s
+arxiv CY1 0 BLOCKED  0 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: Un
+semanticscholar CY1 0 BLOCKED  0 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: 
+openalex CY1 1 OK 35069 25 

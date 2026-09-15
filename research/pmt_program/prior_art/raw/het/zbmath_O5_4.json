@@ -1,0 +1,23 @@
+{
+ "query": "scaled relative graph composition of operators tight",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=scaled+relative+graph+composition+of+operators+tight&page=0&results_per_page=25",
+ "total": 1,
+ "records": [
+  {
+   "title": "Tight coefficients of averaged operators via scaled relative graph",
+   "year": "2020",
+   "venue": "Journal of Mathematical Analysis and Applications",
+   "doi": "10.1016/j.jmaa.2020.124211",
+   "arxiv": "1912.01593",
+   "authors": "Huang, Xinmeng; Ryu, Ernest K.; Yin, Wotao",
+   "abstract": "The scaled relative graph scheme [\\url{arxiv:1902.09788}] is applied for the tightness of some composition averaged operators by an original geometric analysis.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "7212778",
+   "msc": "47J26;90C25",
+   "source": "zbmath",
+   "family": "O5",
+   "query": "scaled relative graph composition of operators tight"
+  }
+ ]
+}

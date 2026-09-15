@@ -1,0 +1,71 @@
+{
+ "query": "rate of convergence method of alternating projections cosine Friedrichs",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=rate+of+convergence+method+of+alternating+projections+cosine+Friedrichs&page=0&results_per_page=25",
+ "total": 4,
+ "records": [
+  {
+   "title": "The rate of convergence in the method of alternating projections",
+   "year": "2012",
+   "venue": "St. Petersburg Mathematical Journal",
+   "doi": "10.1090/S1061-0022-2012-01202-1",
+   "arxiv": "1006.2047",
+   "authors": "Badea, C.; Grivaux, S.; Müller, V.",
+   "abstract": "Summary: The cosine of the Friedrichs angle between two subspaces is generalized to a parameter associated with several closed subspaces of a Hilbert space. This parameter is employed to analyze the rate of convergence in the von Neumann-Halperin method of cyclic alternating projections. General dichotomy theorems are proved in the Hilbert or Banach space situation, providing conditions under which the alternative QUC/ASC (quick uniform convergence versus arbitrarily slow convergence) holds. Several meanings for ASC are proposed.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "6047296",
+   "msc": "47A58;41A65;65J10",
+   "source": "zbmath",
+   "family": "I",
+   "query": "rate of convergence method of alternating projections cosine Friedrichs"
+  },
+  {
+   "title": "A generalization of the Friedrichs angle and the method of alternating projections",
+   "year": "2010",
+   "venue": "Comptes Rendus. Mathématique. Académie des Sciences, Paris",
+   "doi": "10.1016/j.crma.2009.11.018",
+   "arxiv": "",
+   "authors": "Badea, Catalin; Grivaux, Sophie; Müller, Vladimir",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "5669093",
+   "msc": "46C05",
+   "source": "zbmath",
+   "family": "I",
+   "query": "rate of convergence method of alternating projections cosine Friedrichs"
+  },
+  {
+   "title": "The rate of linear convergence of the Douglas-Rachford algorithm for subspaces is the cosine of the Friedrichs angle",
+   "year": "2014",
+   "venue": "Journal of Approximation Theory",
+   "doi": "10.1016/j.jat.2014.06.002",
+   "arxiv": "1309.4709",
+   "authors": "Bauschke, Heinz H.; Bello Cruz, J. Y.; Nghia, Tran T. A.; Phan, Hung M.; Wang, Xianfu",
+   "abstract": "The paper deals with a convex feasibility problem, namely to find a point in the intersection of two subspaces. The authors completely analyze the Douglas-Rachford splitting algorithm proposed in [\\textit{J. Douglas jun.} and \\textit{H. H. Rachford jun.}, Trans. Am. Math. Soc. 82, 421--439 (1956; Zbl 0070.35401)] and prove that the method converges strongly to the projection of the starting point onto the intersection. The paper complements a basic convergence result proposed in [\\textit{R. Hesse} and \\textit{D. R. Luke}, SIAM J. Optim. 23, No. 4, 2397--2419 (2013; Zbl 1288.65094)] in three ways. First, the authors identify the location of the shadow sequence limit and reveal the Douglas-Rachford method as a best approximation algorithm. Further, they quantify the sharp rate of linear convergence being the cosine of the Friedrichs angle between the subspaces. Finally, they carry out the analysis in a general (possibly infinite-dimensional) Hilbert space. The reader will find here various properties of the Friedrichs angle, the Douglas-Rachford splitting operator, and the reflector. The authors also present some geometric results concerning the lines in the plane (to illustrate the main results), construct an example to illustrate the case when the Friedrichs angle is zero (then one cannot expect linear convergence of the projected iterates of the Douglas-Rachford splitting operator (lack of convergence)), and compare their method to the method of alternating projections.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "6320360",
+   "msc": "49M27;90C25;49M37;47H05;47H09;65K05;65K10",
+   "source": "zbmath",
+   "family": "I",
+   "query": "rate of convergence method of alternating projections cosine Friedrichs"
+  },
+  {
+   "title": "The numerical range and the spectrum of a product of two orthogonal projections",
+   "year": "2014",
+   "venue": "Journal of Mathematical Analysis and Applications",
+   "doi": "10.1016/j.jmaa.2013.09.024",
+   "arxiv": "1212.1996",
+   "authors": "Klaja, Hubert",
+   "abstract": "Let \\(H\\) be a separable complex Hilbert space. For a closed subspace \\(M\\) of \\(H\\), let \\(P_M\\) denote the orthogonal projection onto \\(M\\). The author describes \\(\\overline{W(P_{M_2}P_{M_1})}\\), the closure of the numerical range of the product of two orthogonal projections, as a closed convex hull of the union of elliptical discs with foci at \\(0\\) and \\(\\lambda \\in \\sigma(P_{M_2}P_{M_1})\\), and minor axis length \\(\\sqrt{\\lambda(1-\\lambda)}\\). Under the additional assumption that the positive operator \\(P_{M_1}P_{M_2}P_{M_1}\\) is diagonalizable, the numerical range of \\(P_{M_2}P_{M_1}\\) (without the closure) is given as the convex hull of the union of the same ellipses as before, but this time parameterized by the point spectrum of \\(P_{M_2}P_{M_1}\\). The relationship between the numerical radius of a product of two orthogonal projections and its spectral radius is studied as well. The author also proves that \\(W(P_{M_2}P_{M_1})\\) is included in a sector with vertex at \\(1\\) and whose angular opening can be expressed by the cosine of the Friedrichs angle between the subspaces \\(M_1\\) and \\(M_2\\). Some other interesting results are presented. For instance, an inverse problem is considered: the information about the spectrum of \\(P_{M_2}P_{M_1}\\) is obtained from its numerical range. By counterexamples, two open questions posed by \\textit{M. Nees} [Integral Equations Oper. Theory 35, No. 1, 85--92 (1999; Zbl 0935.47002)] are answered negatively. Finally, the author presents two applications of the obtained results. One is related to the rate of convergence in the method of alternating projections and the other to the uncertainty principle in harmonic analysis.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "6420011",
+   "msc": "47A12",
+   "source": "zbmath",
+   "family": "I",
+   "query": "rate of convergence method of alternating projections cosine Friedrichs"
+  }
+ ]
+}

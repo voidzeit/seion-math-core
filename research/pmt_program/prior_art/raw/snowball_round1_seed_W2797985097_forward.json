@@ -1,0 +1,36 @@
+{
+ "anchor": {
+  "id": "10.1007/s40324-018-00184-5",
+  "family": "A",
+  "why": "SEED_FROM_REPO: Hackbusch 2021 truncation in hierarchical format (TTM/TA KNOWN_ADJACENT_RESULT)"
+ },
+ "direction": "forward",
+ "records": [
+  {
+   "title": "Tree-based tensor formats",
+   "year": 2018,
+   "venue": "SeMA Journal",
+   "doi": "10.1007/s40324-018-0177-x",
+   "arxiv": "",
+   "authors": "Antonio Falcó; Wolfgang Hackbusch; Anthony Nouy",
+   "abstract": "",
+   "cited_by": 18,
+   "openalex": "https://openalex.org/W2895724779",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Singular Value Decomposition in Sobolev Spaces: Part I",
+   "year": 2020,
+   "venue": "Zeitschrift für Analysis und ihre Anwendungen",
+   "doi": "10.4171/zaa/1663",
+   "arxiv": "",
+   "authors": "Mazen Ali; Anthony Nouy",
+   "abstract": "A well known result from functional analysis states that any compact operator between Hilbert spaces admits a singular value decomposition (SVD). This decomposition is a powerful tool that is the workhorse of many methods both in mathematics and applied fields. A prominent application in recent years is the approximation of high-dimensional functions in a low-rank format. This is based on the fact that, under certain conditions, a tensor can be identified with a compact operator and SVD applies to the latter. One key assumption for this application is that the tensor product norm is not weaker than the injective norm. This assumption is not fulfilled in Sobolev spaces, which are widely used in the theory and numerics of partial differential equations. Our goal is the analysis of the SVD in Sobolev spaces. This work consists of two parts. In this manuscript (part I), we address low-rank approximations and minimal subspaces in H^1 . We analyze the H^1 -error of the SVD performed in the ambient L^2 -space. In part II, we will address variants of the SVD in norms stronger than the L^2 -norm. We will provide a few numerical examples that support our theoretical findings.",
+   "cited_by": 3,
+   "openalex": "https://openalex.org/W2995434321",
+   "zbmath": "",
+   "msc": ""
+  }
+ ]
+}

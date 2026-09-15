@@ -57,3 +57,43 @@ These blockers are not silently downgraded by successful software tests.
 **B-0012 evidence, 2026-08-25.** Second incident of this class: `torch.AcceleratorError: CUDA error: unknown error` raised inside `torch.linalg.eigh` during the `S_2^same-mu` convergence ladder at rung 2 (steps=600, per-cell=4096), aborting the run. A bounded canary immediately afterwards PASSED (5x float64 `eigh` on 2000x2000, device healthy, 0 MiB resident), so the device recovered, but idle temperature read 80 C. Partial data preserved in `research/rebracketing_geometry/rg_s2_convergence_v1_PARTIAL.json`. No long GPU job should be relaunched before the B-0012 exit criteria are met.
 | B-0014 | Evaluation-time known-positive filter tables are reused to build or mask **training** negatives across the KGE trainers. Because `load_knowledge_graph` folds VALID and TEST into `tails_of_hr`/`heads_of_rt`, every held-out gold is exempted from ever receiving negative gradient for its own query. A controlled A/B on FB15K-237 (identical seed/config/eval subset, matched wall clock) measured the inflation at **+0.312 MRR, 0.51818 leaking vs 0.20571 fixed** — about 60% of the metric was artefact. | Every KGE metric produced by an affected trainer is inflated by held-out leakage. This is a sufficient mechanical explanation for the historical `MRR=0.6116475`, whose TEST-usage status moves from `UNKNOWN_NOT_ESTABLISHED` to established leakage. No file-access sentinel can detect this class of defect. | `.ai/LEAKAGE_FINDING_MINING_FILTER_2026-08-10.md`; `tests/kgr/test_mining_filter_no_valid_leak.py`; `runs/SEALED_SOTA_V1_FB15K237_D256_2H` vs `runs/SEALED_SOTA_V2_FB15K237_D256_2H_NOLEAK` All **seven** affected trainers now expose a TRAIN-only negative filter (`--mining-filter` on the sealed runner, `--negative-filter` elsewhere), sharing `data.train_only_filter_view`; defaults preserve historical behaviour so old runs stay reproducible. A standing statistical detector is pinned by `tests/kgr/test_no_heldout_leak_in_training_negatives.py`. **Remaining work:** 29 `runs/TTN_FB15K237_*` directories plus `runs/SPECTRAL_MIXTURE_*`, `runs/SRATM_*_DISCOVERY_*`, `runs/V25_FB237_*` and `runs/KGR_V26_*` were produced under the leaking default; every predictive-quality metric from them must be re-run with `train_only` or withdrawn. Certificates and rank/spectral diagnostics computed *on* those checkpoints remain true of those tensors and are not automatically void. |
 | B-0013 | The paused sealed SRATM step-704 run cannot be resumed under a fully reconciled provenance contract: its manifest records `git_head=cf663bc6…`, that commit does not contain the sealed trainer, and the persisted `config.json` says `max_steps=256` while the checkpoint-embedded protocol says `max_steps=1024`. | The checkpoint is numerically intact, but continuation would create an ambiguous genealogy and cannot support a clean teacher freeze or convergence claim. | `runs/SRATM_FB15K237_SEALED_FROM_ZERO_D256_B512_23GB_2026-08-10/resume_manifest.json`; checkpoint SHA256 `7afd916f7171587cc74654005353734c9fcfc4f381ef720ef7464ca7d6154306` | Reconcile the original trainer source/config provenance, or explicitly authorize a new sealed continuation campaign with an immutable copied checkpoint and a newly registered protocol. |
+
+| PMT-HETEROGENEOUS-R (2026-09-14) | The nodewise heterogeneous box bound and capped-equal-angle reduction are conjectural. | The new evaluator can compare candidate bounds and search for counterexamples, but cannot certify a heterogeneous PMT computation or claim sharpness. | `research/pmt_program/HETEROGENEOUS_THEOREM_R.md`; `research/pmt_program/heterogeneous/`; `claims/conjecture_registry.yaml` | Prove H1 and sharpness H4 for arbitrary nodewise defects, or record a counterexample and downgrade the proposed formula. |
+
+**PMT-HETEROGENEOUS-R update (2026-09-14, appended, not a silent rewrite).**
+- A mathematical argument shows that H1, H4 and placement independence follow
+  from the machine-checked lifted-angle architecture:
+  - per-node `node_step`;
+  - the envelope with θ_u ≤ arcsin η_u;
+  - uniform angle scaling for Θ > π;
+  - per-node witness angles.
+- Only the capped-equal-angle reduction (H3) is genuinely open, and it is not
+  needed for the sharp constant `gBox`.
+- The blocker stays open until the Lean formalization on branch
+  `research/heterogeneous-theorem-r` builds without `sorry` and with standard
+  axioms only.
+
+| PMT-THEOREM-R-SPEC (2026-09-14) | Theorem R is machine-checked only in normalized single-ambient-space form. The N1 scaling and per-node-space reductions are on paper, and no human has reviewed that the Lean definitions match PMT-A. | The paper may say "the normalized theorem is formalized"; it may not say "fully formally verified". | `research/pmt_program/lean/README.md`; `research/pmt_program/paper/STYLE_CONTRACT.md` §10 | Formalize both reductions and max attainment, and obtain an attributable review of `Tree.lean` and `WitnessAdm.lean` against `ADMISSIBLE_CLASS_PMT_A.md`. |
+| PRIOR-ART-R-SATURATION (2026-09-14) | The first-pass review found no threat 4–5 among 1763 sources, but the stop criterion is unmet: manual MathSciNet/Scholar steps, a second snowball round, anchors for families C/F/G/L/N, the Zniyed–Boyer full text, and adjudication of Feshchenko 2019 are all pending. | Novelty wording is blocked (`NOVELTY_NOT_ESTABLISHED`). Only "what the present argument adds" is permitted. | `research/pmt_program/prior_art/CLAIM_NOVELTY_MATRIX.md` §4, §6 | Complete criteria 1–5 of `SEARCH_PROTOCOL.md` §8 and log every manual query. |
+
+**PMT-HETEROGENEOUS-R update 2 (2026-09-14, appended).** The Lean resolution
+condition for H1, H4 and placement independence is met on branch
+`research/heterogeneous-theorem-r`: 8723 jobs, no `sorry`, standard axioms
+only. The work is uncommitted and not reviewed by a human. What stays blocked:
+- **H3** (capped-equal-angle, unequal defects) is open. The capped curve is
+  proved to be only a *lower* bound for `gBox`, so it must not be used as a
+  certificate.
+- **Registry promotion** of H1/H4 in `claims/conjecture_registry.yaml` waits
+  for the user's review of the Lean specification (`Upper.lean` admissibility
+  and `Scaled.lean` normalization).
+- **Scope gaps:** per-node ambient spaces are not formalized. `M_v = 0` is
+  covered by `ScaledZero.lean` (upper bound).
+  - Appended correction: per-node ambient spaces are now formalized
+    (`CommonSpace.lean`).
+- **PMT-THEOREM-R-SPEC update (appended):**
+  - Both reductions (N1 scaling, common ambient space) and attainment are now
+    machine-checked for the heterogeneous theorem, and hence for the uniform
+    case via `uniform_gBox_eq`.
+  - The agent audit `lean/SPEC_AUDIT.md` exists.
+  - Remaining resolution condition: an attributable human review of that
+    audit.

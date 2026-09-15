@@ -1,0 +1,257 @@
+[
+ {
+  "key": "CY15",
+  "id": "10.1016/j.jmaa.2014.11.044",
+  "expect_title": "Compositions and convex combinations of averaged nonexpansive operators",
+  "expect_first_author": "Combettes",
+  "expect_year": [
+   2014,
+   2015
+  ],
+  "openalex_ids": [
+   "W1998428773",
+   "W2950378366"
+  ],
+  "checks": [
+   {
+    "openalex_id": "W1998428773",
+    "title": "Compositions and convex combinations of averaged nonexpansive operators",
+    "first_author": "Patrick L. Combettes",
+    "year": 2014,
+    "doi": "10.1016/j.jmaa.2014.11.044",
+    "type": "article",
+    "cited_by_count": 112,
+    "title_match": true,
+    "first_author_match": true,
+    "year_match": true
+   },
+   {
+    "openalex_id": "W2950378366",
+    "title": "Compositions and Convex Combinations of Averaged Nonexpansive Operators",
+    "first_author": "Patrick L. Combettes",
+    "year": 2014,
+    "doi": "10.48550/arxiv.1407.5100",
+    "type": "preprint",
+    "cited_by_count": 1,
+    "title_match": true,
+    "first_author_match": true,
+    "year_match": true
+   }
+  ],
+  "crossref": [
+   {
+    "doi": "10.1016/j.jmaa.2014.11.044",
+    "title": "Compositions and convex combinations of averaged nonexpansive operators",
+    "first_author": "Combettes",
+    "year": 2015,
+    "container": "Journal of Mathematical Analysis and Applications",
+    "title_match": true,
+    "first_author_match": true
+   },
+   {
+    "doi": "10.48550/arxiv.1407.5100",
+    "error": "HTTP 404"
+   }
+  ],
+  "verified": true
+ },
+ {
+  "key": "HRY20",
+  "id": "10.1016/j.jmaa.2020.124211",
+  "expect_title": "Tight coefficients of averaged operators via scaled relative graph",
+  "expect_first_author": "Huang",
+  "expect_year": [
+   2019,
+   2020
+  ],
+  "openalex_ids": [
+   "W3024233472",
+   "W2994365220"
+  ],
+  "checks": [
+   {
+    "openalex_id": "W3024233472",
+    "title": "Tight coefficients of averaged operators via scaled relative graph",
+    "first_author": "Xinmeng Huang",
+    "year": 2020,
+    "doi": "10.1016/j.jmaa.2020.124211",
+    "type": "article",
+    "cited_by_count": 12,
+    "title_match": true,
+    "first_author_match": true,
+    "year_match": true
+   }
+  ],
+  "crossref": [
+   {
+    "doi": "10.1016/j.jmaa.2020.124211",
+    "title": "Tight coefficients of averaged operators via scaled relative graph",
+    "first_author": "Huang",
+    "year": 2020,
+    "container": "Journal of Mathematical Analysis and Applications",
+    "title_match": true,
+    "first_author_match": true
+   }
+  ],
+  "verified": true,
+  "post_hoc_preprint_ids": [
+   {
+    "openalex_id": "W2994365220",
+    "doi": "10.48550/arxiv.1912.01593",
+    "match": true
+   }
+  ]
+ },
+ {
+  "key": "RHY22",
+  "id": "10.1007/s10107-021-01639-w",
+  "expect_title": "Scaled relative graphs: nonexpansive operators via 2D Euclidean geometry",
+  "expect_first_author": "Ryu",
+  "expect_year": [
+   2021,
+   2022
+  ],
+  "openalex_ids": [
+   "W2916081703"
+  ],
+  "checks": [
+   {
+    "openalex_id": "W2916081703",
+    "title": "Scaled relative graphs: nonexpansive operators via 2D Euclidean geometry",
+    "first_author": "Ernest K. Ryu",
+    "year": 2021,
+    "doi": "10.1007/s10107-021-01639-w",
+    "type": "article",
+    "cited_by_count": 19,
+    "title_match": true,
+    "first_author_match": true,
+    "year_match": true
+   }
+  ],
+  "crossref": [
+   {
+    "doi": "10.1007/s10107-021-01639-w",
+    "title": "Scaled relative graphs: nonexpansive operators via 2D Euclidean geometry",
+    "first_author": "Ryu",
+    "year": 2021,
+    "container": "Mathematical Programming",
+    "title_match": true,
+    "first_author_match": true
+   }
+  ],
+  "verified": true,
+  "post_hoc_preprint_ids": [
+   {
+    "openalex_id": "W6948001508",
+    "doi": "10.48550/arxiv.1902.09788",
+    "match": false
+   }
+  ]
+ },
+ {
+  "key": "OY02",
+  "id": "10.1081/NFA-120003674",
+  "expect_title": "Non-strictly convex minimization over the fixed point set of an asymptotically shrinking nonexpansive mapping",
+  "expect_first_author": "Ogura",
+  "expect_year": [
+   2002
+  ],
+  "openalex_ids": [
+   "W2093425777",
+   "W7208263737"
+  ],
+  "checks": [
+   {
+    "openalex_id": "W2093425777",
+    "title": "NON-STRICTLY CONVEX MINIMIZATION OVER THE FIXED POINT SET OF AN ASYMPTOTICALLY SHRINKING NONEXPANSIVE MAPPING",
+    "first_author": "Nobuhiko Ogura",
+    "year": 2002,
+    "doi": "10.1081/nfa-120003674",
+    "type": "article",
+    "cited_by_count": 77,
+    "title_match": true,
+    "first_author_match": true,
+    "year_match": true
+   },
+   {
+    "openalex_id": "W7208529801",
+    "title": "A Non-strictly Convex Minimization over the Fixed Point Set of the Asymptotically Shrinking Nonexpansive Mapping",
+    "first_author": "Ko Yamada",
+    "year": 2002,
+    "doi": "",
+    "type": "article",
+    "cited_by_count": 0,
+    "title_match": false,
+    "first_author_match": false,
+    "year_match": true
+   },
+   {
+    "openalex_id": "W7208263737",
+    "title": "Non-strictly convex minimization over the fixed point set of an asymptotically shrinking nonexpansive mapping",
+    "first_author": "NOBUHIKO OGURA",
+    "year": 2002,
+    "doi": "",
+    "type": "article",
+    "cited_by_count": 0,
+    "title_match": true,
+    "first_author_match": true,
+    "year_match": true
+   }
+  ],
+  "crossref": [
+   {
+    "doi": "10.1081/NFA-120003674",
+    "title": "NON-STRICTLY CONVEX MINIMIZATION OVER THE FIXED POINT SET OF AN ASYMPTOTICALLY SHRINKING NONEXPANSIVE MAPPING",
+    "first_author": "Ogura",
+    "year": 2002,
+    "container": "Numerical Functional Analysis and Optimization",
+    "title_match": true,
+    "first_author_match": true
+   },
+   {
+    "doi": "10.1081/nfa-120003674",
+    "title": "NON-STRICTLY CONVEX MINIMIZATION OVER THE FIXED POINT SET OF AN ASYMPTOTICALLY SHRINKING NONEXPANSIVE MAPPING",
+    "first_author": "Ogura",
+    "year": 2002,
+    "container": "Numerical Functional Analysis and Optimization",
+    "title_match": true,
+    "first_author_match": true
+   }
+  ],
+  "verified": true
+ },
+ {
+  "key": "PAT21",
+  "id": "title:The scaled relative graph of a linear operator",
+  "expect_title": "The scaled relative graph of a linear operator",
+  "expect_first_author": "Pates",
+  "expect_year": [
+   2021,
+   2022
+  ],
+  "openalex_ids": [
+   "W3168792975"
+  ],
+  "checks": [
+   {
+    "openalex_id": "W3168792975",
+    "title": "The Scaled Relative Graph of a Linear Operator",
+    "first_author": "Richard Pates",
+    "year": 2021,
+    "doi": "10.48550/arxiv.2106.05650",
+    "type": "preprint",
+    "cited_by_count": 4,
+    "title_match": true,
+    "first_author_match": true,
+    "year_match": true
+   }
+  ],
+  "crossref": [
+   {
+    "doi": "10.48550/arxiv.2106.05650",
+    "error": "HTTP 404"
+   }
+  ],
+  "verified": true
+ }
+]

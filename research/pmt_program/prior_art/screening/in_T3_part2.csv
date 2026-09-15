@@ -1,0 +1,422 @@
+key,families,title,year,venue,doi
+10.1109/tsp.2013.2243442,I,Low-Complexity DOA Estimation Based on Compressed MUSIC and Its Performance Analysis,2013,IEEE Transactions on Signal Processing,10.1109/tsp.2013.2243442
+10.1023/a:1022631928592,I,Convergence of Bregman Projection Methods for Solving Consistent Convex Feasibility Problems in Reflexive Banach Spaces,1997,Journal of Optimization Theory and Applications,10.1023/a:1022631928592
+10.1080/00207169008803865,I,On the behavior of a block-iterative projection method for solving convex feasibility problems,1990,International Journal of Computer Mathematics,10.1080/00207169008803865
+10.1007/s11075-015-0085-4,I,Optimal Rates of Linear Convergence of Relaxed Alternating Projections and Generalized Douglas-Rachford Methods for Two Subspaces,2015,Numerical Algorithms,10.1007/s11075-015-0085-4
+10.1214/aos/1176348251,I,Efficient Estimation of Linear Functionals of a Probability Measure $P$ with Known Marginal Distributions,1991,The Annals of Statistics,10.1214/aos/1176348251
+10.1080/01630569508816635,I,Strong convergence of expected-projection methods in hilbert spaces,1995,Numerical Functional Analysis and Optimization,10.1080/01630569508816635
+10.1016/0377-0427(92)00123-q,I,Strong convergence of almost simultaneous block-iterative projection methods in Hilbert spaces,1994,Journal of Computational and Applied Mathematics,10.1016/0377-0427(92)00123-q
+10.1137/19m1307329,I,Low Rank Pure Quaternion Approximation for Pure Quaternion Matrices,2021,SIAM Journal on Matrix Analysis and Applications,10.1137/19m1307329
+10.1007/s10589-021-00275-6,I,The circumcentered-reflection method achieves better rates than alternating projections,2021,Computational Optimization and Applications,10.1007/s10589-021-00275-6
+10.1103/physrevlett.90.227902,M,Entanglement in Quantum Critical Phenomena,2003,Physical Review Letters,10.1103/physrevlett.90.227902
+10.1103/physrevlett.91.147902,A;M,Efficient Classical Simulation of Slightly Entangled Quantum Computations,2003,Physical Review Letters,10.1103/physrevlett.91.147902
+10.1103/physrevlett.93.227205,M,Density Matrix Renormalization Group and Periodic Boundary Conditions: A Quantum Information Perspective,2004,Physical Review Letters,10.1103/physrevlett.93.227205
+10.1103/physreva.70.060302,M,Valence-bond states for quantum computation,2004,Physical Review A,10.1103/physreva.70.060302
+10.1147/rd.481.0071,M,Is entanglement monogamous?,2004,IBM Journal of Research and Development,10.1147/rd.481.0071
+isentanglementmonogamous,M,Is Entanglement Monogamous?,2003,CERN Document Server (European Organization for Nuclear Research),
+10.1103/physreva.70.062113,M,Energy as an entanglement witness for quantum many-body systems,2004,Physical Review A,10.1103/physreva.70.062113
+10.1103/physrevlett.90.157903,M,Symmetric Extensions of Quantum States and Local Hidden Variable Theories,2003,Physical Review Letters,10.1103/physrevlett.90.157903
+10.1142/s021974990300036x,M,ENTANGLEMENT AND FRUSTRATION IN ORDERED SYSTEMS,2003,International Journal of Quantum Information,10.1142/s021974990300036x
+10.1103/physrevlett.92.087903,M,Entanglement Frustration for Gaussian States on Symmetric Graphs,2004,Physical Review Letters,10.1103/physrevlett.92.087903
+10.1080/14789940801912366,B;M,"Matrix product states, projected entangled pair states, and variational renormalization group methods for quantum spin systems",2008,Advances In Physics,10.1080/14789940801912366
+10.1088/1751-8113/42/50/504005,M,Entanglement entropy and conformal field theory,2009,Journal of Physics A Mathematical and Theoretical,10.1088/1751-8113/42/50/504005
+10.1088/1742-5468/2007/08/p08024,M,An area law for one-dimensional quantum systems,2007,Journal of Statistical Mechanics Theory and Experiment,10.1088/1742-5468/2007/08/p08024
+10.1103/physrevb.84.165139,M,Classifying quantum phases using matrix product states and projected entangled pair states,2011,Physical Review B,10.1103/physrevb.84.165139
+measurementinducedphasetransitionsinthedynamicsofentanglement,M,Measurement-Induced Phase Transitions in the Dynamics of Entanglement,2019,DSpace@MIT (Massachusetts Institute of Technology),
+10.1103/physrevlett.97.050401,M,Lieb-Robinson Bounds and the Generation of Correlations and Topological Quantum Order,2006,Physical Review Letters,10.1103/physrevlett.97.050401
+10.1103/physrevlett.96.220601,M,"Criticality, the Area Law, and the Computational Power of Projected Entangled Pair States",2006,Physical Review Letters,10.1103/physrevlett.96.220601
+10.1088/1742-5468/2013/09/p09005,M,Area laws in a many-body localized state and its implications for topological order,2013,Journal of Statistical Mechanics Theory and Experiment,10.1088/1742-5468/2013/09/p09005
+10.1103/physrevb.101.104301,M,Theory of the phase transition in random unitary circuits with measurements,2020,Physical review. B./Physical review. B,10.1103/physrevb.101.104301
+10.1103/physrevb.84.235128,M,Complete classification of one-dimensional gapped quantum phases in interacting spin systems,2011,Physical Review B,10.1103/physrevb.84.235128
+10.1103/physrevx.7.021021,M,Quantum Entanglement in Neural Network States,2017,Physical Review X,10.1103/physrevx.7.021021
+10.1103/physrevb.98.235156,M,"Entanglement of exact excited states of Affleck-Kennedy-Lieb-Tasaki models: Exact results, many-body scars, and violation of the strong eigenstate thermalization hypothesis",2018,Physical review. B./Physical review. B,10.1103/physrevb.98.235156
+10.1103/physrevb.83.245134,M,Entanglement spectrum and boundary theories with projected entangled-pair states,2011,Physical Review B,10.1103/physrevb.83.245134
+10.1103/physreva.74.052101,M,Formulation of the uncertainty relations in terms of the Rényi entropies,2006,Physical Review A,10.1103/physreva.74.052101
+10.1103/physrevlett.109.267203,M,Entanglement Entropy for the Long-Range Ising Chain in a Transverse Field,2012,Physical Review Letters,10.1103/physrevlett.109.267203
+10.1103/physrevlett.110.100402,M,Entanglement Renormalization for Quantum Fields in Real Space,2013,Physical Review Letters,10.1103/physrevlett.110.100402
+10.1103/physrevx.3.031015,M,Entanglement Growth in Quench Dynamics with Variable Range Interactions,2013,Physical Review X,10.1103/physrevx.3.031015
+10.1103/physrevlett.97.150404,M,General Entanglement Scaling Laws from Time Evolution,2006,Physical Review Letters,10.1103/physrevlett.97.150404
+informationtheorycodingtheoremsfordiscretememorylesssystems,K,Information Theory: Coding Theorems for Discrete Memoryless Systems,2014,REAL-EOD (Library of the Hungarian Academy of Sciences and the Information Center Oriental Collection),
+10.1103/physreva.59.1070,K,Quantum nonlocality without entanglement,1999,Physical Review A,10.1103/physreva.59.1070
+10.1017/cbo9781139525343,E;K,Quantum Information Theory,2013,Cambridge University Press eBooks,10.1017/cbo9781139525343
+10.1098/rspa.2004.1372,K,Distillation of secret key and entanglement from quantum states,2004,Proceedings of the Royal Society A Mathematical Physical and Engineering Sciences,10.1098/rspa.2004.1372
+10.1109/tit.2004.839515,K,The Private Classical Capacity and Quantum Capacity of a Quantum Channel,2005,IEEE Transactions on Information Theory,10.1109/tit.2004.839515
+10.1007/s00220-014-2122-x,K,Strong Converse for the Classical Capacity of Entanglement-Breaking and Hadamard Channels via a Sandwiched Rényi Relative Entropy,2014,Communications in Mathematical Physics,10.1007/s00220-014-2122-x
+10.1109/tit.2009.2018325,K,Min- and Max-Relative Entropies and a New Entanglement Monotone,2009,IEEE Transactions on Information Theory,10.1109/tit.2009.2018325
+10.1109/comst.2017.2786748,K,A Survey on Quantum Channel Capacities,2018,IEEE Communications Surveys & Tutorials,10.1109/comst.2017.2786748
+asurveyonquantumchannelcapacities,K,A Survey on Quantum Channel Capacities,2018,Surrey Research Insight Open Access (The University of Surrey),
+10.1103/physrevlett.117.020402,K,Relating the Resource Theories of Entanglement and Quantum Coherence,2016,Physical Review Letters,10.1103/physrevlett.117.020402
+10.1007/s00220-011-1302-1,K,Faithful Squashed Entanglement,2011,Communications in Mathematical Physics,10.1007/s00220-011-1302-1
+10.1088/0034-4885/75/4/046001,K,Quantum channels and their entropic characteristics,2012,Reports on Progress in Physics,10.1088/0034-4885/75/4/046001
+10.1103/physreva.72.052317,K,Entanglement of assistance and multipartite state distillation,2005,Physical Review A,10.1103/physreva.72.052317
+10.1109/tit.2004.839476,K,Remote Preparation of Quantum States,2005,IEEE Transactions on Information Theory,10.1109/tit.2004.839476
+10.1103/physrevlett.93.230504,K,A Family of Quantum Protocols,2004,Physical Review Letters,10.1103/physrevlett.93.230504
+10.1109/tit.2008.924726,K,Entanglement-Assisted Capacity of Quantum Multiple-Access Channels,2008,IEEE Transactions on Information Theory,10.1109/tit.2008.924726
+aremotepreparationofquantumstates,K,A.: Remote preparation of quantum states,2003,Bristol Research (University of Bristol),
+10.1145/3428218,K,Projection-based runtime assertions for testing and debugging Quantum programs,2020,Proceedings of the ACM on Programming Languages,10.1145/3428218
+10.1109/tit.2012.2218792,K,Polar Codes for Classical-Quantum Channels,2012,IEEE Transactions on Information Theory,10.1109/tit.2012.2218792
+continuityofquantummutualinformation,E,Continuity of quantum mutual information,2003,arXiv (Cornell University),
+10.1103/physrevlett.109.120403,E,Reliable Quantum State Tomography,2012,Physical Review Letters,10.1103/physrevlett.109.120403
+10.1038/s41534-023-00684-x,E,Advances in device-independent quantum key distribution,2023,npj Quantum Information,10.1038/s41534-023-00684-x
+10.1038/nphys2747,E,An area law for entanglement from exponential decay of correlations,2013,Nature Physics,10.1038/nphys2747
+10.48550/arxiv.1004.1641,E,The decoupling approach to quantum information theory,2010,arXiv (Cornell University),10.48550/arxiv.1004.1641
+10.1103/physrevlett.119.120506,E,Quantum Communication Using Coherent Rejection Sampling,2017,Physical Review Letters,10.1103/physrevlett.119.120506
+10.48550/arxiv.2011.04672,E,Principles of Quantum Communication Theory: A Modern Approach,2020,arXiv (Cornell University),10.48550/arxiv.2011.04672
+10.1007/s00211-013-0544-6,A,$$L^{\infty }$$ estimation of tensor truncations,2013,Numerische Mathematik,10.1007/s00211-013-0544-6
+10.1007/s10589-011-9401-7,I,On the effectiveness of projection methods for convex feasibility problems with linear inequality constraints,2011,Computational Optimization and Applications,10.1007/s10589-011-9401-7
+10.1080/03081088308817526,I,A limit theorem for projections,1983,Linear and Multilinear Algebra,10.1080/03081088308817526
+10.1145/125826.125848,H,The Omega test: a fast and practical integer programming algorithm for dependence analysis,1991,,10.1145/125826.125848
+10.1017/s0960129511000119,H,Type classes for mathematics in type theory,2011,Mathematical Structures in Computer Science,10.1017/s0960129511000119
+10.1145/3573105.3575671,H,Aesop: White-Box Best-First Proof Search for Lean,2023,,10.1145/3573105.3575671
+10.1103/physrevlett.101.250602,B,Classical Simulation of Infinite-Size Quantum Lattice Systems in Two Spatial Dimensions,2008,Physical Review Letters,10.1103/physrevlett.101.250602
+10.1103/physrevlett.116.247204,B,Obtaining Highly Excited Eigenstates of Many-Body Localized Hamiltonians by the Density Matrix Renormalization Group Approach,2016,Physical Review Letters,10.1103/physrevlett.116.247204
+10.1103/physrevlett.124.037201,B,Isometric Tensor Network States in Two Dimensions,2020,Physical Review Letters,10.1103/physrevlett.124.037201
+10.1103/physrevlett.118.017201,B,Finding Matrix Product State Representations of Highly Excited Eigenstates of Many-Body Localized Hamiltonians,2017,Physical Review Letters,10.1103/physrevlett.118.017201
+10.1103/physrevlett.123.190501,B,General-Purpose Quantum Circuit Simulator with Projected Entangled-Pair States and the Quantum Supremacy Frontier,2019,Physical Review Letters,10.1103/physrevlett.123.190501
+10.1103/physrevb.98.085155,B,"Gauge fixing, canonical forms, and optimal truncations in tensor networks with closed loops",2018,Physical review. B./Physical review. B,10.1103/physrevb.98.085155
+10.48550/arxiv.cond-mat/0407066,B,Renormalization algorithms for Quantum-Many Body Systems in two and higher dimensions,2004,arXiv (Cornell University),10.48550/arxiv.cond-mat/0407066
+10.48550/arxiv.1710.05867,B,Pareto-Efficient Quantum Circuit Simulation Using Tensor Contraction Deferral,2017,arXiv (Cornell University),10.48550/arxiv.1710.05867
+10.3389/fams.2022.806549,B,"A Practical Guide to the Numerical Implementation of Tensor Networks I: Contractions, Decompositions, and Gauge Freedom",2022,Frontiers in Applied Mathematics and Statistics,10.3389/fams.2022.806549
+10.1109/sc41405.2020.00028,B,Distributed-Memory DMRG via Sparse and Dense Parallel Tensor Contractions,2020,,10.1109/sc41405.2020.00028
+10.5555/3433701.3433732,B,Distributed-Memory DMRG via Sparse and Dense Parallel Tensor Contractions,2020,arXiv (Cornell University),10.5555/3433701.3433732
+10.1007/s10543-013-0454-0,A,A projector-splitting integrator for dynamical low-rank approximation,2013,BIT Numerical Mathematics,10.1007/s10543-013-0454-0
+10.1103/physrevb.102.094315,A,Time-dependent variational principle with ancillary Krylov subspace,2020,Physical review. B./Physical review. B,10.1103/physrevb.102.094315
+10.1007/s10543-024-01032-x,A,A robust second-order low-rank BUG integrator based on the midpoint rule,2024,BIT Numerical Mathematics,10.1007/s10543-024-01032-x
+10.1016/j.jcp.2024.112757,A,Accelerating the simulation of kinetic shear Alfvén waves with a dynamical low-rank approximation,2024,Journal of Computational Physics,10.1016/j.jcp.2024.112757
+10.1007/s10543-025-01073-w,A,Second-order robust parallel integrators for dynamical low-rank approximation,2025,BIT Numerical Mathematics,10.1007/s10543-025-01073-w
+10.1021/acs.jctc.4c00751,A,Comparison of Matrix Product State and Multiconfiguration Time-Dependent Hartree Methods for Nonadiabatic Dynamics of Exciton Dissociation,2024,Journal of Chemical Theory and Computation,10.1021/acs.jctc.4c00751
+10.1137/110836067,A;F;M,A New Truncation Strategy for the Higher-Order Singular Value Decomposition,2012,SIAM Journal on Scientific Computing,10.1137/110836067
+10.1137/140953289,A;B;M,Alternating Minimal Energy Methods for Linear Systems in Higher Dimensions,2014,SIAM Journal on Scientific Computing,10.1137/140953289
+10.1145/3278607,A;B,Tensor Completion Algorithms in Big Data Analytics,2019,ACM Transactions on Knowledge Discovery from Data,10.1145/3278607
+10.1088/1741-2552/aab2f2,A;B,A review of classification algorithms for EEG-based brain–computer interfaces: a 10 year update,2018,Journal of Neural Engineering,10.1088/1741-2552/aab2f2
+10.5075/epfl-thesis-6958,A;M,Riemannian Optimization for Solving High-Dimensional Problems with Low-Rank Tensor Structure,2016,Infoscience (Ecole Polytechnique Fédérale de Lausanne),10.5075/epfl-thesis-6958
+10.48550/arxiv.1801.09414,C;G,CosFace: Large Margin Cosine Loss for Deep Face Recognition,2018,arXiv (Cornell University),10.48550/arxiv.1801.09414
+10.5555/1046920.1088718,C;G,Clustering on the Unit Hypersphere using von Mises-Fisher Distributions,2005,MPG.PuRe (Max Planck Society),10.5555/1046920.1088718
+10.1103/revmodphys.77.259,B;L;M,The density-matrix renormalization group,2005,Reviews of Modern Physics,10.1103/revmodphys.77.259
+10.1016/j.chemolab.2011.09.001,A,Tensors-structured numerical methods in scientific computing: Survey on recent advances,2011,Chemometrics and Intelligent Laboratory Systems,10.1016/j.chemolab.2011.09.001
+10.1109/tvcg.2019.2904063,A,TTHRESH: Tensor Compression for Multidimensional Visual Data,2019,IEEE Transactions on Visualization and Computer Graphics,10.1109/tvcg.2019.2904063
+10.1137/15m1036919,A,Spectral Tensor-Train Decomposition,2016,SIAM Journal on Scientific Computing,10.1137/15m1036919
+10.1109/access.2019.2949814,A,A Survey on Tensor Techniques and Applications in Machine Learning,2019,IEEE Access,10.1109/access.2019.2949814
+10.1109/access.2019.2908207,A,Tensor-Based Channel Estimation for Massive MIMO-OFDM Systems,2019,IEEE Access,10.1109/access.2019.2908207
+10.1103/physrevx.12.041018,A,Learning Feynman Diagrams with Tensor Trains,2022,Physical Review X,10.1103/physrevx.12.041018
+10.1016/j.cam.2021.113972,A,Faster tensor train decomposition for sparse data,2021,Journal of Computational and Applied Mathematics,10.1016/j.cam.2021.113972
+10.48550/arxiv.1406.2816,A,Computation of the Response Surface in the Tensor Train data format,2014,arXiv (Cornell University),10.48550/arxiv.1406.2816
+10.1103/physrevresearch.7.023087,A,Two-particle calculations with quantics tensor trains: Solving the parquet equations,2025,Physical Review Research,10.1103/physrevresearch.7.023087
+10.48550/arxiv.2207.06135,A,Learning Feynman Diagrams with Tensor Trains,2022,arXiv (Cornell University),10.48550/arxiv.2207.06135
+10.48550/arxiv.1908.02721,A,Faster Tensor Train Decomposition for Sparse Data,2019,arXiv (Cornell University),10.48550/arxiv.1908.02721
+10.48436/1h3fh-q1142,A,"Data for ""Two-particle calculations with quantics tensor trains -- solving the parquet equations""",2024,arXiv (Cornell University),10.48436/1h3fh-q1142
+10.21468/scipostphys.19.2.038,A,Adaptive sampling-based optimization of quantics tensor trains for noisy functions: Applications to quantum simulations,2025,SciPost Physics,10.21468/scipostphys.19.2.038
+10.1137/19m1246080,A,An Adaptive Stochastic Galerkin Tensor Train Discretization for Randomly Perturbed Domains,2020,SIAM/ASA Journal on Uncertainty Quantification,10.1137/19m1246080
+10.1016/j.matcom.2017.10.009,A,Direct tensor-product solution of one-dimensional elliptic equations with parameter-dependent coefficients,2017,Mathematics and Computers in Simulation,10.1016/j.matcom.2017.10.009
+10.1007/s10444-022-09925-7,A,Tensor rank bounds for point singularities in ℝ3,2022,Advances in Computational Mathematics,10.1007/s10444-022-09925-7
+10.1002/nla.2289,A,On algorithms for and computing with the tensor ring decomposition,2020,Numerical Linear Algebra with Applications,10.1002/nla.2289
+10.1007/s10092-021-00439-0,A,Low-rank tensor approximation of singularly perturbed boundary value problems in one dimension,2021,CALCOLO,10.1007/s10092-021-00439-0
+10.1038/s41598-025-16905-6,A,"A fast, accurate and oscillation-free spectral collocation solver for high-dimensional transport problems",2026,Scientific Reports,10.1038/s41598-025-16905-6
+10.1016/j.laa.2014.06.006,A,Quasioptimality of maximum-volume cross interpolation of tensors,2014,Linear Algebra and its Applications,10.1016/j.laa.2014.06.006
+10.1017/s0962492922000125,A,Low-rank tensor methods for partial differential equations,2023,Acta Numerica,10.1017/s0962492922000125
+10.1007/s10208-013-9187-3,A,Adaptive Near-Optimal Rank Tensor Approximation for High-Dimensional Operator Equations,2014,Foundations of Computational Mathematics,10.1007/s10208-013-9187-3
+10.1016/j.jcp.2018.08.057,A,Parallel tensor methods for high-dimensional linear PDEs,2018,Journal of Computational Physics,10.1016/j.jcp.2018.08.057
+sparselowrankapproximationofmultivariatefunctionsapplicationsinuncertaintyquantification,A,Sparse Low Rank Approximation of Multivariate Functions – Applications in Uncertainty Quantification,2014,HAL (Le Centre pour la Communication Scientifique Directe),
+10.48550/arxiv.1711.10105,A,Tensor Completion Algorithms in Big Data Analytics,2017,arXiv (Cornell University),10.48550/arxiv.1711.10105
+10.1103/prxquantum.4.010317,A,Density Matrix Renormalization Group with Tensor Processing Units,2023,PRX Quantum,10.1103/prxquantum.4.010317
+10.1103/physreva.104.052204,A,Unveiling non-Markovian spacetime signaling in open quantum systems with long-range tensor network dynamics,2021,Physical Review A,10.1103/physreva.104.052204
+10.1016/j.apm.2017.07.012,B,A new centrality measure of nodes in multilayer networks under the framework of tensor computation,2017,Applied Mathematical Modelling,10.1016/j.apm.2017.07.012
+10.1615/int.j.uncertaintyquantification.2014010147,B,SPARSE MULTIRESOLUTION REGRESSION FOR UNCERTAINTY PROPAGATION,2014,International Journal for Uncertainty Quantification,10.1615/int.j.uncertaintyquantification.2014010147
+10.1137/13091899x,B,A Least-Squares Method for Sparse Low Rank Approximation of Multivariate Functions,2015,SIAM/ASA Journal on Uncertainty Quantification,10.1137/13091899x
+10.1371/journal.pbio.1000595,B,Genome-Wide and Phase-Specific DNA-Binding Rhythms of BMAL1 Control Circadian Output Functions in Mouse Liver,2011,PLoS Biology,10.1371/journal.pbio.1000595
+10.1016/j.laa.2011.02.026,B,Derivatives for antisymmetric tensor powers and perturbation bounds,2011,Linear Algebra and its Applications,10.1016/j.laa.2011.02.026
+10.1109/tcad.2016.2618879,B,Tensor Computation: A New Framework for High-Dimensional Problems in EDA,2016,IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems,10.1109/tcad.2016.2618879
+10.1111/j.1365-2966.2008.14244.x,B,The fully connectedN-dimensional skeleton: probing the evolution of the cosmic web,2009,Monthly Notices of the Royal Astronomical Society,10.1111/j.1365-2966.2008.14244.x
+10.1137/16m1074941,B,Interpolative Butterfly Factorization,2017,SIAM Journal on Scientific Computing,10.1137/16m1074941
+10.1109/ojcoms.2024.3390000,B,Channel Coding Toward 6G: Technical Overview and Outlook,2024,IEEE Open Journal of the Communications Society,10.1109/ojcoms.2024.3390000
+10.1186/1471-2148-3-3,B,Compensatory mutations cause excess of antagonistic epistasis in RNA secondary structure folding,2003,BMC Evolutionary Biology,10.1186/1471-2148-3-3
+10.1155/2008/823695,B,Simultaneous Eye Tracking and Blink Detection with Interactive Particle Filters,2007,EURASIP Journal on Advances in Signal Processing,10.1155/2008/823695
+10.1088/1748-9326/abd1a0,B,Globally prevalent land nitrogen memory amplifies water pollution following drought years,2020,Environmental Research Letters,10.1088/1748-9326/abd1a0
+10.5194/acp-24-10617-2024,B,"Aerosol composition, air quality, and boundary layer dynamics in the urban background of Stuttgart in winter",2024,Atmospheric chemistry and physics,10.5194/acp-24-10617-2024
+10.1002/cem.1079,B,A new holistic exploratory approach to Systems Biology by Near Infrared Spectroscopy evaluated by chemometrics and data inspection,2007,Journal of Chemometrics,10.1002/cem.1079
+10.1002/mrm.21391,C,Sparse MRI: The application of compressed sensing for rapid MR imaging,2007,Magnetic Resonance in Medicine,10.1002/mrm.21391
+10.18653/v1/p19-2057,C,Sentiment Classification Using Document Embeddings Trained with Cosine Similarity,2019,,10.18653/v1/p19-2057
+10.1109/78.890324,C,Adaptive subspace detectors,2001,IEEE Transactions on Signal Processing,10.1109/78.890324
+10.18653/v1/2022.acl-short.45,C,Problems with Cosine as a Measure of Embedding Similarity for High Frequency Words,2022,,10.18653/v1/2022.acl-short.45
+10.1090/s0002-9947-1991-0989572-5,D,Random products of contractions in Banach spaces,1991,Transactions of the American Mathematical Society,10.1090/s0002-9947-1991-0989572-5
+10.4230/lipics.mfcs.2016.19,D,On Degeneration of Tensors and Algebras,2016,arXiv (Cornell University),10.4230/lipics.mfcs.2016.19
+10.1214/19-ejp342,D,On the stability of matrix-valued Riccati diffusions,2019,Electronic Journal of Probability,10.1214/19-ejp342
+10.1137/17m1112303,D,A Practical Randomized CP Tensor Decomposition,2018,SIAM Journal on Matrix Analysis and Applications,10.1137/17m1112303
+10.1002/hbm.20076,D,Formal characterization and extension of the linearized diffusion tensor model,2004,Human Brain Mapping,10.1002/hbm.20076
+10.1002/mrm.21852,D,The tensor distribution function,2008,Magnetic Resonance in Medicine,10.1002/mrm.21852
+10.1175/jpo-d-11-048.1,D,A Framework for Parameterizing Eddy Potential Vorticity Fluxes,2011,Journal of Physical Oceanography,10.1175/jpo-d-11-048.1
+10.1007/s00440-014-0579-3,D,Concentration inequalities for non-Lipschitz functions with bounded derivatives of higher order,2014,Probability Theory and Related Fields,10.1007/s00440-014-0579-3
+10.48550/arxiv.2203.15993,E,Improved Quantum Algorithms for Fidelity Estimation,2022,arXiv (Cornell University),10.48550/arxiv.2203.15993
+10.1103/physreva.104.062602,E,Generalized measure of quantum Fisher information,2021,Physical Review A,10.1103/physreva.104.062602
+10.1103/physrevlett.128.220502,E,Quantum Algorithm for Petz Recovery Channels and Pretty Good Measurements,2022,Physical Review Letters,10.1103/physrevlett.128.220502
+10.1063/1.4936405,E,The smooth entropy formalism for von Neumann algebras,2015,Journal of Mathematical Physics,10.1063/1.4936405
+10.1109/tit.2020.2981573,E,Partially Smoothed Information Measures,2020,IEEE Transactions on Information Theory,10.1109/tit.2020.2981573
+10.4153/cjm-2011-007-5,E,On Best Proximity Points in Metric and Banach Spaces,2011,Canadian Journal of Mathematics,10.4153/cjm-2011-007-5
+10.1184/r1/6721193,E,Quadric-Based Polygonal Surface Simplification,1999,KiltHub Repository,10.1184/r1/6721193
+10.48550/arxiv.hep-th/9607134,E,The Metric on the Space of Yang-Mills Configurations,1996,arXiv (Cornell University),10.48550/arxiv.hep-th/9607134
+10.1016/j.exmath.2018.01.002,E,On the Bures–Wasserstein distance between positive definite matrices,2018,Expositiones Mathematicae,10.1016/j.exmath.2018.01.002
+10.1295/polymj.23.7,E,"Volume Contraction on Mixing in Poly(vinyl ethylene-co-1,4-butadiene)/Polyisoprene Blends",1991,Polymer Journal,10.1295/polymj.23.7
+10.1029/1999tc001141,E,"Relations between hinterland and foreland shortening: Sevier orogeny, central North American Cordillera",2000,Tectonics,10.1029/1999tc001141
+quantifyingtheinformativenessofsimilaritymeasurements,E,Quantifying the Informativeness of Similarity Measurements,2017,Research Explorer (The University of Manchester),
+10.1214/aos/1031594728,F,Polynomial splines and their tensor products in extended linear modeling: 1994 Wald memorial lecture,1997,The Annals of Statistics,10.1214/aos/1031594728
+10.3390/rs11040382,G,Infrared Small Target Detection Based on Partial Sum of the Tensor Nuclear Norm,2019,Remote Sensing,10.3390/rs11040382
+10.1007/bf02392585,G,Subalgebras of C*-algebras III: Multivariable operator theory,1998,Acta Mathematica,10.1007/bf02392585
+10.1007/978-981-19-9722-8,G,Sine Cosine Algorithm for Optimization,2023,SpringerBriefs in applied sciences and technology,10.1007/978-981-19-9722-8
+10.48550/arxiv.1607.06520,G,Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word Embeddings,2016,arXiv (Cornell University),10.48550/arxiv.1607.06520
+10.3390/rs12030361,G,Filling Gaps of Monthly Terra/MODIS Daytime Land Surface Temperature Using Discrete Cosine Transform Method,2020,Remote Sensing,10.3390/rs12030361
+10.5281/zenodo.20920816,H,"The Bost-Connes Modular Generator as a candidate Hilbert-Pólya Operator, formalized in Lean 4",2026,Zenodo (CERN European Organization for Nuclear Research),10.5281/zenodo.20920816
+10.5281/zenodo.20916427,H,"The Bost-Connes Modular Generator as a candidate Hilbert-Pólya Operator, formalized in Lean 4",2026,Zenodo (CERN European Organization for Nuclear Research),10.5281/zenodo.20916427
+10.5281/zenodo.20925877,H,"The Bost-Connes Modular Generator as a candidate Hilbert-Pólya Operator, formalized in Lean 4",2026,Zenodo (CERN European Organization for Nuclear Research),10.5281/zenodo.20925877
+10.5281/zenodo.20916426,H,"The Bost-Connes Modular Generator as a candidate Hilbert-Pólya Operator, formalized in Lean 4",2026,Zenodo (CERN European Organization for Nuclear Research),10.5281/zenodo.20916426
+leanquantumtowardaiassistedformalizationofquantuminformation,H,Lean-Quantum: Toward AI-Assisted Formalization of Quantum Information,2026,arXiv (Cornell University),
+10.48550/arxiv.2607.05492,H,Lean-Quantum: Toward AI-Assisted Formalization of Quantum Information,2026,arXiv (Cornell University),10.48550/arxiv.2607.05492
+arxiv:2606.19761,H,Finishing Oltean's Completeness Proof in Lean 4 for Hybrid Logic $L(\forall)$,2026,,
+10.1103/physrevlett.87.040402,J,Observation of the Quantum Zeno and Anti-Zeno Effects in an Unstable System,2001,Physical Review Letters,10.1103/physrevlett.87.040402
+10.1103/physrevlett.108.080501,J,Zeno Effect for Quantum Computation and Control,2012,Physical Review Letters,10.1103/physrevlett.108.080501
+10.1088/1742-6596/196/1/012017,J,Quantum Zeno dynamics and quantum Zeno subspaces,2009,Journal of Physics Conference Series,10.1088/1742-6596/196/1/012017
+10.1088/1475-7516/2007/03/012,J,Quantum Zeno effect and the impact of flavour in leptogenesis,2007,Journal of Cosmology and Astroparticle Physics,10.1088/1475-7516/2007/03/012
+10.1103/physrevlett.118.260603,J,Extracting Work from Quantum Measurement in Maxwell’s Demon Engines,2017,Physical Review Letters,10.1103/physrevlett.118.260603
+10.1103/physrevresearch.2.013095,J,Stabilizing open quantum batteries by sequential measurements,2020,Physical Review Research,10.1103/physrevresearch.2.013095
+10.1140/epjd/e2020-100571-8,J,Simulating lattice gauge theories within quantum technologies,2020,The European Physical Journal D,10.1140/epjd/e2020-100571-8
+10.1038/s42005-023-01331-9,J,Constrained optimization via quantum Zeno dynamics,2023,Communications Physics,10.1038/s42005-023-01331-9
+10.22331/q-2020-07-06-289,J,Quantum Zeno Dynamics from General Quantum Operations,2020,Quantum,10.22331/q-2020-07-06-289
+10.1103/physrevx.8.021005,J,Coherent Oscillations inside a Quantum Manifold Stabilized by Dissipation,2018,Physical Review X,10.1103/physrevx.8.021005
+10.1088/0305-4470/30/4/031,J,Quantum Zeno effect and light - dark periods for a single atom,1997,Journal of Physics A Mathematical and General,10.1088/0305-4470/30/4/031
+10.1103/75x7-5ysv,J,"Hybrid Cat-Transmon Architecture for Scalable, Hardware-Efficient Quantum Error Correction",2025,PRX Quantum,10.1103/75x7-5ysv
+ahybriddynamicalsystemstheoryforleggedlocomotion,J,A Hybrid Dynamical Systems Theory for Legged Locomotion,2014,eScholarship (California Digital Library),
+10.22331/q-2026-07-20-2167,J,Optimal schedule of multi-channel quantum Zeno dragging with application to solving the k-SAT problem,2026,Quantum,10.22331/q-2026-07-20-2167
+10.1103/glcd-gm3v,J,Higher-order Zeno sequences,2026,Physical Review Research,10.1103/glcd-gm3v
+10.3390/aerospace12090803,J,Dynamic Event-Triggered Multi-Aircraft Collision Avoidance: A Reference Correction Method Based on APF-CBF,2025,Aerospace,10.3390/aerospace12090803
+zenoassistedquantumheatengines,J,Zeno-Assisted Quantum Heat Engines,2026,arXiv (Cornell University),
+10.1038/s41467-026-74332-1,J,Quantum Zeno effect in the spatial evolution of a single atom,2026,Nature Communications,10.1038/s41467-026-74332-1
+quantumtransportandcontrolofatomicmotionwithlight,J,Quantum transport and control of atomic motion with light,2004,Texas ScholarWorks (Texas Digital Library),
+10.1109/access.2021.3106233,J,Advanced Ensemble Model for Solar Radiation Forecasting Using Sine Cosine Algorithm and Newton’s Laws,2021,IEEE Access,10.1109/access.2021.3106233
+10.1038/sj.neo.7900118,J,Developments Toward Diagnostic Breast Cancer Imaging Using Near-Infrared Optical Measurements and Fluorescent Contrast Agents1,2000,Neoplasia,10.1038/sj.neo.7900118
+10.22331/q-2019-03-11-129,K,Strawberry Fields: A Software Platform for Photonic Quantum Computing,2019,Quantum,10.22331/q-2019-03-11-129
+10.48550/arxiv.2305.13362,K,"On quantum backpropagation, information reuse, and cheating measurement collapse",2023,arXiv (Cornell University),10.48550/arxiv.2305.13362
+explicitcapacityachievingreceiversforopticalcommunicationandquantumreading,K,Explicit capacity-achieving receivers for optical communication and quantum reading,2012,DSpace@MIT (Massachusetts Institute of Technology),
+10.1038/s41467-017-02307-4,E;K,Practical device-independent quantum cryptography via entropy accumulation,2018,Nature Communications,10.1038/s41467-017-02307-4
+10.1038/s41586-023-06481-y,K,High-fidelity parallel entangling gates on a neutral-atom quantum computer,2023,Nature,10.1038/s41586-023-06481-y
+10.1088/0004-6256/140/5/1168,L,CIRCUMPLANETARY DISK FORMATION,2010,The Astronomical Journal,10.1088/0004-6256/140/5/1168
+10.1086/587542,L,Magnetic Braking and Protostellar Disk Formation: The Ideal MHD Limit,2008,The Astrophysical Journal,10.1086/587542
+10.1242/bio.20133830,L,The constant beat: cardiomyocytes adapt their forces by equal contraction upon environmental stiffening,2013,Biology Open,10.1242/bio.20133830
+10.1016/j.jmaa.2010.01.036,L,Numerical range and quasi-sectorial contractions,2010,Journal of Mathematical Analysis and Applications,10.1016/j.jmaa.2010.01.036
+10.1016/j.aim.2012.02.016,L,Dilations of Γ-contractions by solving operator equations,2012,Advances in Mathematics,10.1016/j.aim.2012.02.016
+10.1016/s0024-3795(02)00697-3,L,Finite Blaschke products of contractions,2003,Linear Algebra and its Applications,10.1016/S0024-3795(02)00697-3
+10.1103/revmodphys.74.601,L,Electronic excitations: density-functional versus many-body Green’s-function approaches,2002,Reviews of Modern Physics,10.1103/revmodphys.74.601
+10.1017/9781009398671.002,M,Introduction,2023,Cambridge University Press eBooks,10.1017/9781009398671.002
+10.1103/physrevresearch.5.013190,M,Preparing valence-bond-solid states on noisy intermediate-scale quantum computers,2023,Physical Review Research,10.1103/physrevresearch.5.013190
+10.1103/x5xg-whh1,M,Simulating quantum turbulence with matrix-product states,2026,Physical Review Applied,10.1103/x5xg-whh1
+10.48550/arxiv.2402.06455,M,Quantum Computing and Tensor Networks for Laminate Design: A Novel Approach to Stacking Sequence Retrieval,2024,arXiv (Cornell University),10.48550/arxiv.2402.06455
+10.1109/tpami.2021.3072422,M,Robust Differentiable SVD,2021,IEEE Transactions on Pattern Analysis and Machine Intelligence,10.1109/tpami.2021.3072422
+10.1038/s41534-024-00805-0,M,Quantum state preparation of normal distributions using matrix product states,2024,npj Quantum Information,10.1038/s41534-024-00805-0
+10.1103/physrevb.101.235123,M,Parallel time-dependent variational principle algorithm for matrix product states,2020,Physical review. B./Physical review. B,10.1103/physrevb.101.235123
+10.1109/tii.2019.2916986,M,Efficient Implementation of Truncated Reweighting Low-Rank Matrix Approximation,2019,IEEE Transactions on Industrial Informatics,10.1109/tii.2019.2916986
+10.1137/15m1044680,M,Randomized QR with Column Pivoting,2017,SIAM Journal on Scientific Computing,10.1137/15m1044680
+10.1103/prxquantum.4.020304,M,Density-Matrix Renormalization Group Algorithm for Simulating Quantum Circuits with a Finite Fidelity,2023,PRX Quantum,10.1103/prxquantum.4.020304
+10.3390/math10244730,N,"Perceptron: Learning, Generalization, Model Selection, Fault Tolerance, and Role in the Deep Learning Era",2022,Mathematics,10.3390/math10244730
+10.1609/aaai.v34i04.5718,N,Few Shot Network Compression via Cross Distillation,2020,Proceedings of the AAAI Conference on Artificial Intelligence,10.1609/aaai.v34i04.5718
+10.1137/23m1621320,D,Convergence Analyses of Davis–Yin Splitting via Scaled Relative Graphs,2025,SIAM Journal on Optimization,10.1137/23m1621320
+10.1109/sfcs.1996.548464,K,Fault-tolerant quantum computation,2002,,10.1109/sfcs.1996.548464
+10.1137/090745854,K,Search via Quantum Walk,2011,SIAM Journal on Computing,10.1137/090745854
+10.1103/physrevd.26.1862,J,Environment-induced superselection rules,1982,"Physical review. D. Particles, fields, gravitation, and cosmology/Physical review. D. Particles and fields",10.1103/physrevd.26.1862
+10.1103/physreva.41.2295,J,Quantum Zeno effect,1990,Physical Review A,10.1103/physreva.41.2295
+10.1002/lpor.200810055,J,Quantum‐optical analogies using photonic structures,2008,Laser & Photonics Review,10.1002/lpor.200810055
+10.1016/j.physrep.2006.09.003,J,Dynamics of Loschmidt echoes and fidelity decay,2006,Physics Reports,10.1016/j.physrep.2006.09.003
+10.1103/physrevlett.89.080401,J,Quantum Zeno Subspaces,2002,Physical Review Letters,10.1103/physrevlett.89.080401
+10.1103/physrevlett.85.1762,J,Quantum Computing Using Dissipation to Remain in a Decoherence-Free Subspace,2000,Physical Review Letters,10.1103/physrevlett.85.1762
+10.1103/physrevb.56.15215,J,Measurements with a noninvasive detector and dephasing mechanism,1997,"Physical review. B, Condensed matter",10.1103/physrevb.56.15215
+10.1103/physrevd.16.520,J,Time evolution of unstable quantum states and a resolution of Zeno's paradox,1977,"Physical review. D. Particles, fields, gravitation, and cosmology/Physical review. D. Particles and fields",10.1103/physrevd.16.520
+10.1103/physreva.69.032314,J,Unification of dynamical decoupling and the quantum Zeno effect,2004,Physical Review A,10.1103/physreva.69.032314
+10.1103/physrevlett.86.2699,J,From the Quantum Zeno to the Inverse Quantum Zeno Effect,2001,Physical Review Letters,10.1103/physrevlett.86.2699
+10.1103/physrevlett.110.035302,J,Controlling the Dynamics of an Open Many-Body Quantum System with Localized Dissipation,2013,Physical Review Letters,10.1103/physrevlett.110.035302
+10.1103/physrevb.60.5737,J,Continuous quantum measurement of a double dot,1999,"Physical review. B, Condensed matter",10.1103/physrevb.60.5737
+10.1016/s0370-1573(99)00047-2,A,The multiconfiguration time-dependent Hartree (MCTDH) method: a highly efficient algorithm for propagating wavepackets,2000,Physics Reports,10.1016/s0370-1573(99)00047-2
+10.1137/06066518x,A,Tensor Rank and the Ill-Posedness of the Best Low-Rank Approximation Problem,2008,SIAM Journal on Matrix Analysis and Applications,10.1137/06066518x
+10.1007/s00365-009-9076-9,A,Black Box Low Tensor-Rank Approximation Using Fiber-Crosses,2009,Constructive Approximation,10.1007/s00365-009-9076-9
+10.1109/tsp.2009.2027740,A,Sequential Unfolding SVD for Tensors With Applications in Array Signal Processing,2009,IEEE Transactions on Signal Processing,10.1109/tsp.2009.2027740
+compactmatrixformoftheddimensionaltensordecomposition,A,Compact matrix form of the d-dimensional tensor decomposition,2009,IEICE Proceedings Series,
+10.1137/090752286,A;B,Tensor-Train Decomposition,2011,SIAM Journal on Scientific Computing,10.1137/090752286
+10.1109/jproc.2020.2976475,A,Model Compression and Hardware Acceleration for Neural Networks: A Comprehensive Survey,2020,Proceedings of the IEEE,10.1109/jproc.2020.2976475
+10.1109/tsp.2016.2639466,A,Exact Tensor Completion Using t-SVD,2016,IEEE Transactions on Signal Processing,10.1109/tsp.2016.2639466
+10.1137/1.9781611974829,A,Model Reduction and Approximation,2017,Society for Industrial and Applied Mathematics eBooks,10.1137/1.9781611974829
+10.1145/2915921,A,Tensors for Data Mining and Data Fusion,2016,ACM Transactions on Intelligent Systems and Technology,10.1145/2915921
+10.1007/s00365-011-9131-1,A,O(dlog N)-Quantics Approximation of N-d Tensors in High-Dimensional Numerical Modeling,2011,Constructive Approximation,10.1007/s00365-011-9131-1
+10.1137/100799010,A,Low-Rank Tensor Krylov Subspace Methods for Parametrized Linear Systems,2011,SIAM Journal on Matrix Analysis and Applications,10.1137/100799010
+10.1137/110833142,A;B,Solution of Linear Systems and Matrix Inversion in the TT-Format,2012,SIAM Journal on Scientific Computing,10.1137/110833142
+10.1007/s00211-011-0419-7,A,On manifolds of tensors of fixed TT-rank,2011,Numerische Mathematik,10.1007/s00211-011-0419-7
+10.1137/100785715,A,Tensor-Structured Galerkin Approximation of Parametric and Stochastic Elliptic PDEs,2011,SIAM Journal on Scientific Computing,10.1137/100785715
+10.1109/tbdata.2017.2757942,A,A Big Data-as-a-Service Framework: State-of-the-Art and Perspectives,2017,IEEE Transactions on Big Data,10.1109/tbdata.2017.2757942
+10.1007/s10444-018-9622-8,A,Randomized algorithms for the approximations of Tucker and the tensor train decompositions,2018,Advances in Computational Mathematics,10.1007/s10444-018-9622-8
+10.1137/09076578x,A,Dynamical Tensor Approximation,2010,SIAM Journal on Matrix Analysis and Applications,10.1137/09076578x
+10.1137/100820479,A,Low-Rank Explicit QTT Representation of the Laplace Operator and Its Inverse,2012,SIAM Journal on Matrix Analysis and Applications,10.1137/100820479
+10.1016/j.cpc.2013.12.017,A,Computation of extreme eigenvalues in higher dimensions using block tensor train format,2014,Computer Physics Communications,10.1016/j.cpc.2013.12.017
+10.1137/110857520,A,On Local Convergence of Alternating Schemes for Optimization of Convex Problems in the Tensor Train Format,2013,SIAM Journal on Numerical Analysis,10.1137/110857520
+10.1109/nds.2011.6076873,A,Fast adaptive interpolation of multi-dimensional arrays in tensor train format,2011,,10.1109/nds.2011.6076873
+10.1190/geo2014-0467.1,A,5D seismic data completion and denoising using a novel class of tensor decompositions,2015,Geophysics,10.1190/geo2014-0467.1
+10.1137/19m1257718,A,Low-Rank Tucker Approximation of a Tensor from Streaming Data,2020,SIAM Journal on Mathematics of Data Science,10.1137/19m1257718
+10.1109/tpami.2023.3341688,A,Low-Rank Tensor Function Representation for Multi-Dimensional Data Recovery,2023,IEEE Transactions on Pattern Analysis and Machine Intelligence,10.1109/tpami.2023.3341688
+10.1143/ptp.105.409,M,Two-Dimensional Tensor Product Variational Formulation,2001,Progress of Theoretical Physics,10.1143/ptp.105.409
+1twodimensionaltensorproductvariationalformulation,M,1Two-Dimensional Tensor Product Variational Formulation,2000,,
+10.1103/physrevlett.107.210404,M,Practical Characterization of Quantum Devices without Tomography,2011,Physical Review Letters,10.1103/physrevlett.107.210404
+10.1103/physrevx.8.011006,M,"Neural-Network Quantum States, String-Bond States, and Chiral Topological States",2018,Physical Review X,10.1103/physrevx.8.011006
+10.1109/9780470544907.ch24,E;K,Quantum Information Theory,2009,,10.1109/9780470544907.ch24
+10.1007/978-3-540-30576-7_22,E,Universally Composable Privacy Amplification Against Quantum Adversaries,2005,Lecture notes in computer science,10.1007/978-3-540-30576-7_22
+10.1007/11593447_11,E,Simple and Tight Bounds for Information Reconciliation and Privacy Amplification,2005,Lecture notes in computer science,10.1007/11593447_11
+10.1088/1751-8113/44/9/095305,E,Private randomness expansion with untrusted devices,2011,Journal of Physics A Mathematical and Theoretical,10.1088/1751-8113/44/9/095305
+10.3929/ethz-a-7356080,E,A framework for non-asymptotic quantum information theory,2012,Repository for Publications and Research Data (ETH Zurich),10.3929/ethz-a-7356080
+10.1137/18m1174726,E,Simple and Tight Device-Independent Security Proofs,2019,SIAM Journal on Computing,10.1137/18m1174726
+10.1007/s00220-020-03839-5,E,Entropy Accumulation,2020,Communications in Mathematical Physics,10.1007/s00220-020-03839-5
+10.22331/q-2020-03-26-248,E,Variational Quantum Fidelity Estimation,2020,Quantum,10.22331/q-2020-03-26-248
+10.1109/tit.2011.2162226,E,Noisy Channel Coding via Privacy Amplification and Information Reconciliation,2011,IEEE Transactions on Information Theory,10.1109/tit.2011.2162226
+10.1038/ncomms11419,E,Quantum coding with finite resources,2016,Nature Communications,10.1038/ncomms11419
+10.1109/tit.2011.2177589,E,One-Shot Classical Data Compression With Quantum Side Information and the Distillation of Common Randomness or Secret Keys,2012,IEEE Transactions on Information Theory,10.1109/tit.2011.2177589
+10.1109/tit.2019.2929564,E,Entropy Accumulation With Improved Second-Order Term,2019,IEEE Transactions on Information Theory,10.1109/tit.2019.2929564
+10.1002/sapm192761164,A,The Expression of a Tensor or a Polyadic as a Sum of Products,1927,Studies in Applied Mathematics,10.1002/sapm192761164
+10.1007/978-3-642-28027-6,A,Tensor Spaces and Numerical Tensor Calculus,2012,Springer series in computational mathematics,10.1007/978-3-642-28027-6
+10.1016/0196-6774(90)90014-6,A,Tensor rank is NP-complete,1990,Journal of Algorithms,10.1016/0196-6774(90)90014-6
+10.1007/s10208-012-9136-6,A,On Minimal Subspaces in Tensor Representations,2012,Foundations of Computational Mathematics,10.1007/s10208-012-9136-6
+10.1007/s00365-010-9125-4,A,Regularity of Tensor Product Approximations to Square Integrable Functions,2010,Constructive Approximation,10.1007/s00365-010-9125-4
+10.4171/zaa/1663,A,Singular Value Decomposition in Sobolev Spaces: Part I,2020,Zeitschrift für Analysis und ihre Anwendungen,10.4171/zaa/1663
+10.1007/s10817-017-9440-6,H,The Role of the Mizar Mathematical Library for Interactive Proof Development in Mizar,2017,Journal of Automated Reasoning,10.1007/s10817-017-9440-6
+10.1007/s00006-021-01164-1,H,Formalizing Geometric Algebra in Lean,2022,Advances in Applied Clifford Algebras,10.1007/s00006-021-01164-1
+breakingthe49qubitbarrierinthesimulationofquantumcircuits,B,Breaking the 49-Qubit Barrier in the Simulation of Quantum Circuits,2018,OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information),
+10.1016/j.laa.2011.12.019,B,Computations in quantum tensor networks,2012,Linear Algebra and its Applications,10.1016/j.laa.2011.12.019
+10.48550/arxiv.quant-ph/0603163,B,On the simulation of quantum circuits,2006,arXiv (Cornell University),10.48550/arxiv.quant-ph/0603163
+10.3929/ethz-a-007587832,B,Low-rank tensor methods for linear systems and eigenvalue problems,2012,Repository for Publications and Research Data (ETH Zurich),10.3929/ethz-a-007587832
+10.48550/arxiv.1908.08833,B,DMRG Approach to Optimizing Two-Dimensional Tensor Networks,2019,arXiv (Cornell University),10.48550/arxiv.1908.08833
+10.1007/978-3-030-35554-8,A,Tensor Spaces and Numerical Tensor Calculus,2019,Springer series in computational mathematics,10.1007/978-3-030-35554-8
+10.1016/j.jcp.2025.114191,A,A review of low-rank methods for time-dependent kinetic simulations,2025,Journal of Computational Physics,10.1016/j.jcp.2025.114191
+10.1137/22m1519493,A,A Predictor-Corrector Strategy for Adaptivity in Dynamical Low-Rank Approximations,2023,SIAM Journal on Matrix Analysis and Applications,10.1137/22m1519493
+10.1214/aos/1176347963,A;C;F;G;I;K,Multivariate Adaptive Regression Splines,1991,The Annals of Statistics,10.1214/aos/1176347963
+10.1090/s0002-9947-05-03742-6,B;D;E;G;L,Complex symmetric operators and applications,2005,Transactions of the American Mathematical Society,10.1090/s0002-9947-05-03742-6
+10.1016/0029-5582(65)90598-5,B;D;E,Differential equations of mathematical physics,1965,Nuclear Physics,10.1016/0029-5582(65)90598-5
+10.1111/j.1467-9868.2011.00777.x,C;G;J,An Explicit Link between Gaussian Fields and Gaussian Markov Random Fields: The Stochastic Partial Differential Equation Approach,2011,Journal of the Royal Statistical Society Series B (Statistical Methodology),10.1111/j.1467-9868.2011.00777.x
+10.1016/j.jde.2004.12.003,B;D,The parameterization method for invariant manifolds III: overview and applications,2005,Journal of Differential Equations,10.1016/j.jde.2004.12.003
+10.1561/2200000071,B;D,An Introduction to Deep Reinforcement Learning,2018,Foundations and Trends® in Machine Learning,10.1561/2200000071
+10.48550/arxiv.1912.08957,B;N,Optimization for deep learning: theory and algorithms,2019,arXiv (Cornell University),10.48550/arxiv.1912.08957
+10.1103/physreva.104.032422,B;E,"Fast inversion, preconditioned quantum linear system solvers, fast Green's-function computation, and fast evaluation of matrix functions",2021,Physical Review A,10.1103/physreva.104.032422
+10.1111/rssb.12016,C;I,Large Covariance Estimation by Thresholding Principal Orthogonal Complements,2013,Journal of the Royal Statistical Society Series B (Statistical Methodology),10.1111/rssb.12016
+10.1088/0953-8984/14/11/301,C;L,"First-principles simulation: ideas, illustrations and the CASTEP code",2002,Journal of Physics Condensed Matter,10.1088/0953-8984/14/11/301
+10.48550/arxiv.0904.3523,C;G,Structured Variable Selection with Sparsity-Inducing Norms,2009,arXiv (Cornell University),10.48550/arxiv.0904.3523
+10.1007/s11831-008-9019-9,C;F,Reduced Basis Approximation and a Posteriori Error Estimation for Affinely Parametrized Elliptic Coercive Partial Differential Equations,2008,Archives of Computational Methods in Engineering,10.1007/s11831-008-9019-9
+10.1107/s0021889807021206,C;F,Phaser crystallographic software,2007,Journal of Applied Crystallography,10.1107/s0021889807021206
+10.1186/1743-0003-5-25,C;M,Review on solving the inverse problem in EEG source analysis,2008,Journal of NeuroEngineering and Rehabilitation,10.1186/1743-0003-5-25
+10.7551/mitpress/9780262033589.001.0001,C;G,Semi-Supervised Learning,2006,The MIT Press eBooks,10.7551/mitpress/9780262033589.001.0001
+10.14279/depositonce-2978,C;D,lp-Norm Multiple Kernel Learning,2011,DepositOnce,10.14279/depositonce-2978
+waveletsandsubbandcoding,C;D,Wavelets and Subband Coding,1995,Infoscience (Ecole Polytechnique Fédérale de Lausanne),
+10.1088/1751-8121/ac333c,E;K,Asymptotic Reversibility of Thermal Operations for Interacting Quantum Spin Systems via Generalized Quantum Stein's Lemma,2019,arXiv (Cornell University),10.1088/1751-8121/ac333c
+10.1109/tnnls.2021.3084827,F;N,"A Survey of Convolutional Neural Networks: Analysis, Applications, and Prospects",2021,IEEE Transactions on Neural Networks and Learning Systems,10.1109/tnnls.2021.3084827
+10.1088/0034-4885/76/7/076001,F;J,Quantum error correction for beginners,2013,Reports on Progress in Physics,10.1088/0034-4885/76/7/076001
+10.1103/physrev.108.1175,I;L,Theory of Superconductivity,1957,Physical Review,10.1103/physrev.108.1175
+10.1080/00018732.2014.933502,J;K;M,Quantum trajectories and open many-body quantum systems,2014,Advances In Physics,10.1080/00018732.2014.933502
+10.1016/j.cpc.2021.108171,K;L,"LAMMPS - a flexible simulation tool for particle-based materials modeling at the atomic, meso, and continuum scales",2021,Computer Physics Communications,10.1016/j.cpc.2021.108171
+10.1016/j.peva.2017.08.002,A,On compact solution vectors in Kronecker-based Markovian analysis,2017,Performance Evaluation,10.1016/j.peva.2017.08.002
+10.1007/978-3-319-43425-4_18,A,Compact Representation of Solution Vectors in Kronecker-Based Markovian Analysis,2016,Lecture notes in computer science,10.1007/978-3-319-43425-4_18
+10.1016/j.jcp.2014.01.029,A,Low-rank approximation in the numerical modeling of the Farley–Buneman instability in ionospheric plasma,2014,Journal of Computational Physics,10.1016/j.jcp.2014.01.029
+10.1093/gji/ggw084,A,On the use of sensitivity tests in seismic tomography,2016,Geophysical Journal International,10.1093/gji/ggw084
+10.1038/s41467-020-20729-5,A,A co-design framework of neural networks and quantum circuits towards quantum advantage,2021,Nature Communications,10.1038/s41467-020-20729-5
+10.1103/physreve.106.035208,A,Quantum-inspired method for solving the Vlasov-Poisson equations,2022,Physical review. E,10.1103/physreve.106.035208
+10.3390/e27090950,A,Advances of Quantum Key Distribution and Network Nonlocality,2025,Entropy,10.3390/e27090950
+10.12942/lrr-2014-2,B,Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries,2014,Living Reviews in Relativity,10.12942/lrr-2014-2
+10.1016/j.pbiomolbio.2004.04.002,B,Mathematical and computational techniques to deduce complex biochemical reaction mechanisms,2004,Progress in Biophysics and Molecular Biology,10.1016/j.pbiomolbio.2004.04.002
+10.1002/wcms.1183,B,Machine learning methods in chemoinformatics,2014,Wiley Interdisciplinary Reviews Computational Molecular Science,10.1002/wcms.1183
+10.1016/j.plrev.2020.05.004,B,The growth of cognition: Free energy minimization and the embryogenesis of cortical computation,2020,Physics of Life Reviews,10.1016/j.plrev.2020.05.004
+10.1007/s11831-016-9206-z,B,Plant Species Identification Using Computer Vision Techniques: A Systematic Literature Review,2017,Archives of Computational Methods in Engineering,10.1007/s11831-016-9206-z
+10.1145/3230633,B,A Survey on Gait Recognition,2018,ACM Computing Surveys,10.1145/3230633
+10.1109/tpami.2018.2837742,B,CNN-Based Real-Time Dense Face Reconstruction with Inverse-Rendered Photo-Realistic Face Images,2018,IEEE Transactions on Pattern Analysis and Machine Intelligence,10.1109/tpami.2018.2837742
+10.3390/soilsystems3010011,B,Accurate and Precise Prediction of Soil Properties from a Large Mid-Infrared Spectral Library,2019,Soil Systems,10.3390/soilsystems3010011
+10.48550/arxiv.1709.07604,B,"A Comprehensive Survey of Graph Embedding: Problems, Techniques and Applications",2017,arXiv (Cornell University),10.48550/arxiv.1709.07604
+10.48550/arxiv.1702.05374,B,Domain Adaptation for Visual Applications: A Comprehensive Survey,2017,arXiv (Cornell University),10.48550/arxiv.1702.05374
+10.1007/s43684-023-00060-8,B,Shapley value: from cooperative game to explainable artificial intelligence,2024,Autonomous Intelligent Systems,10.1007/s43684-023-00060-8
+10.12942/lrr-2006-4,B,Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries,2006,Living Reviews in Relativity,10.12942/lrr-2006-4
+10.1049/iet-cvi.2014.0084,B,"Face recognition: challenges, achievements and future directions",2015,IET Computer Vision,10.1049/iet-cvi.2014.0084
+10.1007/s11831-018-9301-4,B,"Virtual, Digital and Hybrid Twins: A New Paradigm in Data-Based Engineering and Engineered Data",2018,Archives of Computational Methods in Engineering,10.1007/s11831-018-9301-4
+10.2172/968212,B,Wind power forecasting : state-of-the-art 2009.,2009,,10.2172/968212
+10.1214/aos/1176325382,B,Semiparametric Analysis of Long-Memory Time Series,1994,The Annals of Statistics,10.1214/aos/1176325382
+10.1016/j.jde.2005.10.005,B,A parameterization method for the computation of invariant tori and their whiskers in quasi-periodic maps: Rigorous results,2005,Journal of Differential Equations,10.1016/j.jde.2005.10.005
+10.1137/090769570,B,Kernel Approximation on Manifolds I: Bounding the Lebesgue Constant,2010,SIAM Journal on Mathematical Analysis,10.1137/090769570
+10.1214/aos/1176324636,B,Log-Periodogram Regression of Time Series with Long Range Dependence,1995,The Annals of Statistics,10.1214/aos/1176324636
+10.1016/j.laa.2007.07.005,B,Linear maps on Mn(C) preserving the local spectrum,2007,Linear Algebra and its Applications,10.1016/j.laa.2007.07.005
+10.4064/sm218-2-1,B,Preconditioners and Korovkin-type theorems for infinite-dimensional bounded linear operators via completely positive maps,2013,Studia Mathematica,10.4064/sm218-2-1
+10.48550/arxiv.1609.06349,B,A review of matrix scaling and Sinkhorn's normal form for matrices and positive maps,2016,arXiv (Cornell University),10.48550/arxiv.1609.06349
+10.4310/jdg/1214457234,B,A mathematical theory of quantum cohomology,1995,Journal of Differential Geometry,10.4310/jdg/1214457234
+10.4171/mems/1,B,Long-Time Dispersive Estimates for Perturbations of a Kink Solution of One-Dimensional Cubic Wave Equations,2022,Memoirs of the European Mathematical Society,10.4171/mems/1
+10.1214/19-aihp987,B,A perturbation analysis of stochastic matrix Riccati diffusions,2020,Annales de l Institut Henri Poincaré Probabilités et Statistiques,10.1214/19-aihp987
+10.1007/978-3-642-04458-8_2,B,The Lyapunov Characteristic Exponents and Their Computation,2009,Lecture notes in physics,10.1007/978-3-642-04458-8_2
+10.2140/apde.2023.16.1133,B,LONG TIME SOLUTIONS FOR QUASILINEAR HAMILTONIAN PERTURBATIONS OF SCHRODINGER AND KLEIN–GORDON EQUATIONS ON TORI,2023,Iris (Roma Tre University),10.2140/apde.2023.16.1133
+10.1109/cvpr.2017.392,B,Dynamic Attention-Controlled Cascaded Shape Regression Exploiting Training Data Augmentation and Fuzzy-Set Sample Weighting,2017,,10.1109/cvpr.2017.392
+10.1371/journal.pone.0004525,B,Metabolic Profiling of the Response to an Oral Glucose Tolerance Test Detects Subtle Metabolic Changes,2009,PLoS ONE,10.1371/journal.pone.0004525
+10.1007/jhep01(2019)026,B,Topological defect lines and renormalization group flows in two dimensions,2019,Journal of High Energy Physics,10.1007/jhep01(2019)026
+10.1016/j.neuroimage.2018.02.055,B,Microstructural imaging of human neocortex in vivo,2018,NeuroImage,10.1016/j.neuroimage.2018.02.055
+10.1371/journal.pcbi.1000029,B,Nonnegative Matrix Factorization: An Analytical and Interpretive Tool in Computational Biology,2008,PLoS Computational Biology,10.1371/journal.pcbi.1000029
+10.1016/j.jrmge.2020.05.011,B,Improved prediction of slope stability using a hybrid stacking ensemble method based on finite element analysis and field data,2020,Journal of Rock Mechanics and Geotechnical Engineering,10.1016/j.jrmge.2020.05.011
+10.1007/s40072-015-0049-7,B,Optimization of mesh hierarchies in multilevel Monte Carlo samplers,2015,Stochastic Partial Differential Equations Analysis and Computations,10.1007/s40072-015-0049-7
+10.1017/s0962492924000023,B,Optimal experimental design: Formulations and computations,2024,Acta Numerica,10.1017/s0962492924000023
+10.1016/j.acha.2006.04.004,B,Diffusion wavelets,2006,Applied and Computational Harmonic Analysis,10.1016/j.acha.2006.04.004
+10.1137/1002004,B,Some Applications of the Pseudoinverse of a Matrix,1960,SIAM Review,10.1137/1002004
+10.1016/j.laa.2009.07.024,A;B,TT-cross approximation for multidimensional arrays,2009,Linear Algebra and its Applications,10.1016/j.laa.2009.07.024
+10.48550/arxiv.1707.08114,B,A Survey on Multi-Task Learning,2017,arXiv (Cornell University),10.48550/arxiv.1707.08114
+10.1016/j.laa.2003.04.001,B,"Stronger-than-Lyapunov notions of matrix stability, or how “flowers” help solve problems in mathematical ecology",2004,Linear Algebra and its Applications,10.1016/j.laa.2003.04.001
+10.1098/rsta.2019.0066,B,Numerical algorithms for high-performance computational science,2020,Philosophical Transactions of the Royal Society A Mathematical Physical and Engineering Sciences,10.1098/rsta.2019.0066
+10.1016/s0166-218x(01)00341-9,B,Pseudo-Boolean optimization,2002,Discrete Applied Mathematics,10.1016/s0166-218x(01)00341-9
+10.1016/s0304-3932(03)00003-5,B,Nonconvex factor adjustments in equilibrium business cycle models: do nonlinearities matter?,2003,Journal of Monetary Economics,10.1016/s0304-3932(03)00003-5
+10.3389/fceng.2021.665415,B,Machine Learning and Metaheuristic Methods for Renewable Power Forecasting: A Recent Review,2021,Frontiers in Chemical Engineering,10.3389/fceng.2021.665415
+10.1109/tcyb.2017.2771229,B,An Improved Mixture of Probabilistic PCA for Nonlinear Data-Driven Process Monitoring,2017,IEEE Transactions on Cybernetics,10.1109/tcyb.2017.2771229
+10.3390/app10072401,B,Air Quality Prediction in Smart Cities Using Machine Learning Technologies Based on Sensor Data: A Review,2020,Applied Sciences,10.3390/app10072401
+10.48550/arxiv.2004.10977,B,Real-time Detection of Clustered Events in Video-imaging data with Applications to Additive Manufacturing,2020,arXiv (Cornell University),10.48550/arxiv.2004.10977
+10.1093/rof/rfv018,B,Revisiting the Risk-Neutral Approach to Optimal Policyholder Behavior: A Study of Withdrawal Guarantees in Variable Annuities,2015,European Finance Review,10.1093/rof/rfv018
+10.1553/etna_vol53s113,B,Block generalized locally Toeplitz sequences: theory and applications in the multidimensional case,2020,ETNA - Electronic Transactions on Numerical Analysis,10.1553/etna_vol53s113
+10.1080/19942060.2021.1984992,B,"Artificial intelligence models for suspended river sediment prediction: state-of-the art, modeling framework appraisal, and proposed future research directions",2021,Engineering Applications of Computational Fluid Mechanics,10.1080/19942060.2021.1984992
+10.1145/273865.273901,B,Probabilistic checking of proofs,1998,Journal of the ACM,10.1145/273865.273901
+10.1016/j.neunet.2020.08.017,B,SympNets: Intrinsic structure-preserving symplectic networks for identifying Hamiltonian systems,2020,Neural Networks,10.1016/j.neunet.2020.08.017
+10.1038/s41593-018-0287-x,B,Widespread RNA editing dysregulation in brains from autistic individuals,2018,Nature Neuroscience,10.1038/s41593-018-0287-x
+10.1007/978-3-662-49896-5_20,B,Recovering Short Generators of Principal Ideals in Cyclotomic Rings,2016,Lecture notes in computer science,10.1007/978-3-662-49896-5_20
+10.1145/3588433,B,Representation Bias in Data: A Survey on Identification and Resolution Techniques,2023,ACM Computing Surveys,10.1145/3588433
+10.5194/acp-19-6749-2019,B,Contrasting physical properties of black carbon in urban Beijing between winter and summer,2019,Atmospheric chemistry and physics,10.5194/acp-19-6749-2019
+10.4230/lipics.stacs.2010.2455,B,Efficient and Error-Correcting Data Structures for Membership and Polynomial Evaluation,2010,DROPS (Schloss Dagstuhl – Leibniz Center for Informatics),10.4230/lipics.stacs.2010.2455
+10.48550/arxiv.1107.0805,B,Index theory for locally compact noncommutative geometries,2011,arXiv (Cornell University),10.48550/arxiv.1107.0805
+10.4230/lipics.icalp.2022.28,B,Factoring and Pairings Are Not Necessary for IO: Circular-Secure LWE Suffices,2022,DROPS (Schloss Dagstuhl – Leibniz Center for Informatics),10.4230/lipics.icalp.2022.28
+10.1016/j.neuroimage.2011.07.072,B,Remembering forward: Neural correlates of memory and prediction in human motor adaptation,2011,NeuroImage,10.1016/j.neuroimage.2011.07.072
+10.48550/arxiv.1907.09415,B,Quantum Computing: Lecture Notes,2019,arXiv (Cornell University),10.48550/arxiv.1907.09415
+10.1016/j.camwa.2020.04.033,B,OpenLB—Open source lattice Boltzmann code,2020,Computers & Mathematics with Applications,10.1016/j.camwa.2020.04.033
+10.1007/s10208-009-9045-5,C,Exact Matrix Completion via Convex Optimization,2009,Foundations of Computational Mathematics,10.1007/s10208-009-9045-5
+10.1063/1.869686,C,Proper orthogonal decomposition and low-dimensional models for driven cavity flows,1998,Physics of Fluids,10.1063/1.869686
+10.1007/s00440-010-0281-z,C,Spectral norm of products of random and deterministic matrices,2010,Probability Theory and Related Fields,10.1007/s00440-010-0281-z
+10.1109/78.533723,C,Exploring estimator bias-variance tradeoffs using the uniform CR bound,1996,IEEE Transactions on Signal Processing,10.1109/78.533723
+10.1214/09-aos729,C,Nearly unbiased variable selection under minimax concave penalty,2010,The Annals of Statistics,10.1214/09-aos729
+10.1143/ptps.62.11,C,"Chapter II. Theory of Resonating Group Method and Generator Coordinate Method, and Orthogonality Condition Model",1977,Progress of Theoretical Physics Supplement,10.1143/ptps.62.11
+10.1006/jcph.1996.0130,C,Efficient Implementation of Weighted ENO Schemes,1996,Journal of Computational Physics,10.1006/jcph.1996.0130
+10.1002/minf.202000171,C,Cheminformatics in Natural Product‐based Drug Discovery,2020,Molecular Informatics,10.1002/minf.202000171
+10.1103/revmodphys.75.543,C,Colloquium : Aligning molecules with strong laser pulses,2003,Reviews of Modern Physics,10.1103/revmodphys.75.543
+10.1016/j.compind.2020.103308,C,Exploring the use of AR technology for co-creative product and packaging design,2020,Computers in Industry,10.1016/j.compind.2020.103308
+10.1103/revmodphys.62.251,C,Reaction-rate theory: fifty years after Kramers,1990,Reviews of Modern Physics,10.1103/revmodphys.62.251
+10.5194/hgss-5-11-2014,C,Carl Friedrich Gauss – General Theory of Terrestrial Magnetism – a revised translation of the German text,2014,History of geo- and space sciences,10.5194/hgss-5-11-2014
+10.1103/physreve.69.066138,C,Estimating mutual information,2004,Physical Review E,10.1103/physreve.69.066138
+10.1184/r1/6586742.v1,C,Minimax Sparse Principal Subspace Estimation in High Dimensions,2018,Figshare,10.1184/r1/6586742.v1
+10.1109/78.700968,C,Fast subspace tracking and neural network learning by a novel information criterion,1998,IEEE Transactions on Signal Processing,10.1109/78.700968
+10.1002/mrm.26701,C,Improved magnetic resonance fingerprinting reconstruction with low‐rank and subspace modeling,2017,Magnetic Resonance in Medicine,10.1002/mrm.26701
+10.1214/17-aos1541,C,Rate-optimal perturbation bounds for singular subspaces with applications to high-dimensional statistics,2018,The Annals of Statistics,10.1214/17-aos1541
+10.1109/tip.2015.2446191,C,A Fast Single Image Haze Removal Algorithm Using Color Attenuation Prior,2015,IEEE Transactions on Image Processing,10.1109/tip.2015.2446191
+10.1186/s40537-016-0043-6,C,A survey of transfer learning,2016,Journal Of Big Data,10.1186/s40537-016-0043-6
+10.1038/s41598-017-11873-y,C,Estimating the intrinsic dimension of datasets by a minimal neighborhood information,2017,Scientific Reports,10.1038/s41598-017-11873-y
+10.1214/09-aos709,C,"PCA consistency in high dimension, low sample size context",2009,The Annals of Statistics,10.1214/09-aos709
+10.1214/18-aos1713,C,Distributed estimation of principal eigenspaces,2019,The Annals of Statistics,10.1214/18-aos1713
+10.1109/tcomm.2020.2973976,C,"Joint Radar and Communication Design: Applications, State-of-the-Art, and the Road Ahead",2020,IEEE Transactions on Communications,10.1109/tcomm.2020.2973976
+10.1023/a:1007612920971,C,Concept Decompositions for Large Sparse Text Data Using Clustering,2001,Machine Learning,10.1023/a:1007612920971
+10.1613/jair.2934,C,From Frequency to Meaning: Vector Space Models of Semantics,2010,Journal of Artificial Intelligence Research,10.1613/jair.2934
+10.1016/j.ijar.2011.07.006,C,Distances in evidence theory: Comprehensive survey and generalizations,2011,International Journal of Approximate Reasoning,10.1016/j.ijar.2011.07.006
+10.1016/j.engstruct.2018.02.024,C,Seismic fragility analysis with artificial neural networks: Application to nuclear power plant equipment,2018,Engineering Structures,10.1016/j.engstruct.2018.02.024
+10.1016/0022-1236(67)90030-4,D,Potential theory on Hilbert space,1967,Journal of Functional Analysis,10.1016/0022-1236(67)90030-4
+10.1016/j.jmaa.2004.06.031,D,Linear polarization constants of Hilbert spaces,2004,Journal of Mathematical Analysis and Applications,10.1016/j.jmaa.2004.06.031
+10.1090/memo/0781,D,Anisotropic Hardy spaces and wavelets,2003,Memoirs of the American Mathematical Society,10.1090/memo/0781
+10.1103/physrevlett.74.2694,D,Dynamical Ensembles in Nonequilibrium Statistical Mechanics,1995,Physical Review Letters,10.1103/physrevlett.74.2694
+10.4064/-38-1-339-360,D,A survey of the Kreiss matrix theorem for power bounded families of matrices and its extensions,1997,Banach Center Publications,10.4064/-38-1-339-360
+10.1090/s0894-0347-99-00309-4,D,Multidimensional van der Corput and sublevel set estimates,1999,Journal of the American Mathematical Society,10.1090/s0894-0347-99-00309-4
+10.1007/978-3-030-32353-0_7,D,Dyadic Harmonic Analysis and Weighted Inequalities: The Sparse Revolution,2019,Applied and numerical harmonic analysis,10.1007/978-3-030-32353-0_7
+10.4036/iis.2010.139,D,"Matrix Analysis: Matrix Monotone Functions, Matrix Means, and Majorization",2010,Interdisciplinary Information Sciences,10.4036/iis.2010.139
+10.1186/s13660-023-03047-4,D,Generalized Hyers–Ulam stability of ρ-functional inequalities,2023,Journal of Inequalities and Applications,10.1186/s13660-023-03047-4
+10.4171/jems/100,D,Null structure and almost optimal local regularity for the Dirac-Klein-Gordon system,2007,Journal of the European Mathematical Society,10.4171/jems/100
+generalizeddescentmethodsforasymmetricsystemsofequationsandvariationalinequalities,D,Generalized Descent Methods for Asymmetric Systems of Equations and Variational Inequalities,1985,DSpace@MIT (Massachusetts Institute of Technology),
+10.57262/die/1356060724,D,Local well-posedness of the generalized Korteweg-de Vries equation in spaces of analytic functions,2002,Differential and Integral Equations,10.57262/die/1356060724
+10.1090/s0002-9947-1989-0983869-1,D,Ergodic attractors,1989,Transactions of the American Mathematical Society,10.1090/s0002-9947-1989-0983869-1

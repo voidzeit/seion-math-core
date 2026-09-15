@@ -1,0 +1,205 @@
+{
+ "anchor": "HRY20",
+ "paper": "DOI:10.1016/j.jmaa.2020.124211",
+ "status": "OK",
+ "records": [
+  {
+   "title": "Stability Analysis of Control Systems With First-Order Reset Elements, a Frequency-Domain Approach",
+   "year": 2025,
+   "venue": "IEEE Access",
+   "doi": "10.1109/ACCESS.2026.3702536",
+   "arxiv": "2502.09309",
+   "authors": "Ali Hosseini; Hassan Hosseinnia",
+   "abstract": "Reset control systems (RCSs) can achieve performance beyond that of conventional linear time-invariant (LTI) controllers, while also allowing analysis directly in the frequency domain using measured frequency response functions (FRFs). Despite this potential, existing frequency-domain stability approaches are typically restricted to specific RCS architectures and commonly depend on parametric plant models, which limits their applicability in practice. In this paper, a generalized <inline-formula> <tex-math notation=\"LaTeX\">$H_{\\beta } $ </tex-math></inline-formula> framework is developed for the most comprehensive class of RCS structures, incorporating pre-, post-, and parallel LTI filters, as well as nonzero after-reset values. Based on this formulation, an FRF-based representation corresponding to the <inline-formula> <tex-math notation=\"LaTeX\">$H_{\\beta } $ </tex-math></inline-formula> transfer function is derived, and frequency-domain sufficient conditions are established to certify the <inline-formula> <tex-math notation=\"LaTeX\">$H_{\\beta } $ </tex-math></inline-formula>-based quadratic stability criterion. As a result, the proposed framework enables direct FRF-based assessment of quadratic stability and convergence for the considered class of reset control systems, using the measured plant FRF together with the known controller and filter transfer functions, without requiring an explicit parametric plant model. The effectiveness and practical relevance of the method are demonstrated through an illustrative industrial case study.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Scaled graphs for reset control system analysis",
+   "year": 2024,
+   "venue": "European Journal of Control",
+   "doi": "10.1016/j.ejcon.2024.101050",
+   "arxiv": "",
+   "authors": "S. van den Eijnden; Thomas Chaffey; T. Oomen; W. Heemels",
+   "abstract": "—Scaled graphs allow for graphical analysis of nonlinear systems, but are generally difficult to compute. The aim of this paper is to develop a method for approximating the scaled graph of reset controllers. A key ingredient in our approach is the generalized Kalman-Yakubovich-Popov lemma to determine input specific input-output properties of a reset controller in the time domain. By combining the obtained time domain properties to cover the full input space, an over-approximation of the scaled graph is constructed. Using this approximation, we establish a feedback interconnection result and provide connections to classical input-output analysis frameworks. Several examples show the relevance of the results for the analysis and design of reset control systems.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Fast Krasnosel'skiĭ-Mann Algorithm with a Convergence Rate of the Fixed Point Iteration of \\(\\boldsymbol{{ o} \\left(\\frac{1}{{ k}} \\right)}\\)",
+   "year": 2023,
+   "venue": "SIAM Journal on Numerical Analysis",
+   "doi": "10.1137/22m1504305",
+   "arxiv": "",
+   "authors": "R. Boț; Dang-Khoa Nguyen",
+   "abstract": "",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Convergence analyses of Davis–Yin splitting via scaled relative graphs II: convex optimization problems",
+   "year": 2022,
+   "venue": "Optimization",
+   "doi": "10.1080/02331934.2025.2544700",
+   "arxiv": "2211.15604",
+   "authors": "Soheun Yi; Ernest K. Ryu",
+   "abstract": "The prior work of [SIAM J. Optim., 2025] used scaled relative graphs (SRG) to analyze the convergence of Davis–Yin splitting (DYS) iterations on monotone inclusion problems. In this work, we use this machinery to analyze DYS iterations on convex optimization problems and obtain state-of-the-art linear convergence rates.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Convergence Analyses of Davis-Yin Splitting via Scaled Relative Graphs",
+   "year": 2022,
+   "venue": "SIAM Journal on Optimization",
+   "doi": "10.1137/23m1621320",
+   "arxiv": "2207.04015",
+   "authors": "Jongmin Lee; Soheun Yi; Ernest K. Ryu",
+   "abstract": "Davis-Yin splitting (DYS) has found a wide range of applications in optimization, but its linear rates of convergence have not been studied extensively. The scaled relative graph (SRG) simplifies the convergence analysis of operator splitting methods by mapping the action of the operator onto the complex plane, but the prior SRG theory did not fully apply to the DYS operator. In this work, we formalize an SRG theory for the DYS operator and use it to obtain tighter contraction factors.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Fast Krasnosel'skii-Mann algorithm with a convergence rate of the fixed point iteration of $o\\left(\\frac{1}{k}\\right)$",
+   "year": 2022,
+   "venue": "",
+   "doi": "",
+   "arxiv": "2206.09462",
+   "authors": "R. Boț; Dang-Khoa Nguyen",
+   "abstract": "The Krasnosel'skii-Mann (KM) algorithm is the most fundamental iterative scheme designed to find a fixed point of an averaged operator in the framework of a real Hilbert space, since it lies at the heart of various numerical algorithms for solving monotone inclusions and convex optimization problems. We enhance the Krasnosel'skii-Mann algorithm with Nesterov's momentum updates and show that the resulting numerical method exhibits a convergence rate for the fixed point residual of $o(1/k)$ while preserving the weak convergence of the iterates to a fixed point of the operator. Numerical experiments illustrate the superiority of the resulting so-called Fast KM algorithm over various fixed point iterative schemes, and also its oscillatory behavior, which is a specific of Nesterov's momentum optimization algorithms.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Circuit Model Reduction with Scaled Relative Graphs",
+   "year": 2022,
+   "venue": "IEEE Conference on Decision and Control",
+   "doi": "10.1109/CDC51059.2022.9993357",
+   "arxiv": "2204.01434",
+   "authors": "Thomas Chaffey; Alberto Padoan",
+   "abstract": "Continued fractions are classical representations of complex objects (for example, real numbers) as sums and inverses of simpler objects (for example, integers). The analogy in linear circuit theory is a chain of series/parallel one-ports: the port behavior is a continued fraction containing the port behaviors of its elements. Truncating a continued fraction is a classical method of approximation, which corresponds to deleting the circuit elements furthest from the port. We apply this idea to chains of series/parallel one-ports composed of arbitrary nonlinear relations. This gives a model reduction method which automatically preserves properties such as incremental positivity. The Scaled Relative Graph (SRG) gives a graphical representation of the original and truncated port behaviors. The difference of these SRGs gives a bound on the approximation error, which is shown to be competitive with existing methods.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "A rolled-off passivity theorem",
+   "year": 2021,
+   "venue": "Systems & control letters (Print)",
+   "doi": "10.1016/j.sysconle.2022.105198",
+   "arxiv": "2108.07634",
+   "authors": "Thomas Chaffey",
+   "abstract": "Given two nonlinear systems which only violate incremental passivity when their incremental gains are sufficiently small, we give a condition for their negative feedback interconnection to have finite incremental gain, which generalizes the incremental small gain and incremental passivity theorems. The property may be determined graphically by plotting the Scaled Relative Graphs (SRGs) of the systems, which provides engineering significance to the mathematical result.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Graphical Nonlinear System Analysis",
+   "year": 2021,
+   "venue": "IEEE Transactions on Automatic Control",
+   "doi": "10.1109/TAC.2023.3234016",
+   "arxiv": "2107.11272",
+   "authors": "Thomas Chaffey; Fulvio Forni; R. Sepulchre",
+   "abstract": "We use the recently introduced concept of a scaled relative graph (SRG) to develop a graphical analysis of input–output properties of feedback systems. The SRG of a nonlinear operator generalizes the Nyquist diagram of an LTI system. In the spirit of classical control theory, important robustness indicators of nonlinear feedback systems are measured as distances between SRGs.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "A Geometric Structure of Acceleration and Its Role in Making Gradients Small Fast",
+   "year": 2021,
+   "venue": "Neural Information Processing Systems",
+   "doi": "",
+   "arxiv": "2106.10439",
+   "authors": "Jongmin Lee; Chanwoo Park; Ernest K. Ryu",
+   "abstract": "Since Nesterov's seminal 1983 work, many accelerated first-order optimization methods have been proposed, but their analyses lacks a common unifying structure. In this work, we identify a geometric structure satisfied by a wide range of first-order accelerated methods. Using this geometric insight, we present several novel generalizations of accelerated methods. Most interesting among them is a method that reduces the squared gradient norm with $\\mathcal{O}(1/K^4)$ rate in the prox-grad setup, faster than the $\\mathcal{O}(1/K^3)$ rates of Nesterov's FGM or Kim and Fessler's FPGM-m.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Outer Approximations of Minkowski Operations on Complex Sets via Sum-of-Squares Optimization",
+   "year": 2021,
+   "venue": "American Control Conference",
+   "doi": "10.23919/ACC50511.2021.9482940",
+   "arxiv": "",
+   "authors": "James Guthrie; Enrique Mallada",
+   "abstract": "We study the problem of finding closed-form outer approximations of Minkowski sums and products of sets in the complex plane. Using polar coordinates, we pose this as an optimization problem in which we find a pair of contours that give lower and upper bounds on the radial distance at a given angle. Through a series of variable transformations we rewrite this as a sum-of-squares optimization problem. Numerical examples are given to demonstrate the performance.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Improved Analysis and Rates for Variance Reduction under Without-replacement Sampling Orders",
+   "year": 2021,
+   "venue": "",
+   "doi": "",
+   "arxiv": "2104.12112",
+   "authors": "Xinmeng Huang; K. Yuan; Xianghui Mao; Wotao Yin",
+   "abstract": "When applying a stochastic algorithm, one must choose an order to draw samples. The practical choices are without-replacement sampling orders, which are empirically faster and more cache-friendly than uniform-iid-sampling but often have inferior theoretical guarantees. Without-replacement sampling is well understood only for SGD without variance reduction. In this paper, we will improve the convergence analysis and rates of variance reduction under without-replacement sampling orders for composite finite-sum minimization. Our results are in two-folds. First, we develop a damped variant of Finito called Prox-DFinito and establish its convergence rates with random reshuffling, cyclic sampling, and shuffling-once, under both convex and strongly convex scenarios. These rates match full-batch gradient descent and are state-of-the-art compared to the existing results for without-replacement sampling with variance-reduction. Second, our analysis can gauge how the cyclic order will influence the rate of cyclic sampling and, thus, allows us to derive the optimal fixed ordering. In the highly data-heterogeneous scenario, Prox-DFinito with optimal cyclic sampling can attain a sample-size-independent convergence rate, which, to our knowledge, is the first result that can match with uniform-iid-sampling with variance reduction. We also propose a practical method to discover the optimal cyclic ordering numerically.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Scaled relative graphs for system analysis",
+   "year": 2021,
+   "venue": "IEEE Conference on Decision and Control",
+   "doi": "10.1109/CDC45484.2021.9683092",
+   "arxiv": "2103.13971",
+   "authors": "Thomas Chaffey; Fulvio Forni; R. Sepulchre",
+   "abstract": "Scaled relative graphs were recently introduced to analyze the convergence of optimization algorithms using two dimensional Euclidean geometry. In this paper, we connect scaled relative graphs to the classical theory of input/output systems. It is shown that the Nyquist diagram of an LTI system on L2 is the convex hull of its scaled relative graph under a particular change of coordinates. The SRG may be used to visualize approximations of static nonlinearities such as the describing function and quadratic constraints, allowing system properties to be verified or disproved. Interconnections of systems correspond to graphical manipulations of their SRGs. This is used to provide a simple, graphical proof of the classical incremental passivity theorem.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Fixed Point Strategies in Data Science",
+   "year": 2020,
+   "venue": "IEEE Transactions on Signal Processing",
+   "doi": "10.1109/TSP.2021.3069677",
+   "arxiv": "2008.02260",
+   "authors": "P. L. Combettes; J. Pesquet",
+   "abstract": "The goal of this article is to promote the use of fixed point strategies in data science by showing that they provide a simplifying and unifying framework to model, analyze, and solve a great variety of problems. They are seen to constitute a natural environment to explain the behavior of advanced convex optimization methods as well as of recent nonlinear methods in data science which are formulated in terms of paradigms that go beyond minimization concepts and involve constructs such as Nash equilibria or monotone inclusions. We review the pertinent tools of fixed point theory and describe the main state-of-the-art algorithms for provenly convergent fixed point construction. We also incorporate additional ingredients such as stochasticity, block-implementations, and non-Euclidean metrics, which provide further enhancements. Applications to signal and image processing, machine learning, statistics, neural networks, and inverse problems are discussed.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Scaled Relative Graph of Normal Matrices",
+   "year": 2019,
+   "venue": "arXiv.org",
+   "doi": "",
+   "arxiv": "2001.02061",
+   "authors": "Xinmeng Huang; Ernest K. Ryu; Wotao Yin",
+   "abstract": "The Scaled Relative Graph (SRG) by Ryu, Hannah, and Yin (arXiv:1902.09788, 2019) is a geometric tool that maps the action of a multi-valued nonlinear operator onto the 2D plane, used to analyze the convergence of a wide range of iterative methods. As the SRG includes the spectrum for linear operators, we can view the SRG as a generalization of the spectrum to multi-valued nonlinear operators. In this work, we further study the SRG of linear operators and characterize the SRG of block-diagonal and normal matrices.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Scaled relative graphs: nonexpansive operators via 2D Euclidean geometry",
+   "year": 2019,
+   "venue": "Mathematical programming",
+   "doi": "10.1007/s10107-021-01639-w",
+   "arxiv": "1902.09788",
+   "authors": "Ernest K. Ryu; Robert Hannah; Wotao Yin",
+   "abstract": "Many iterative methods in applied mathematics can be thought of as fixed-point iterations, and such algorithms are usually analyzed analytically, with inequalities. In this paper, we present a geometric approach to analyzing contractive and nonexpansive fixed point iterations with a new tool called the scaled relative graph. The SRG provides a correspondence between nonlinear operators and subsets of the 2D plane. Under this framework, a geometric argument in the 2D plane becomes a rigorous proof of convergence.",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "Fast Krasnosel’ski˘ı-Mann algorithm with a convergence rate of the ﬁxed point iteration of o p 1 { k q",
+   "year": 2022,
+   "venue": "",
+   "doi": "",
+   "arxiv": "",
+   "authors": "Radu Ioan Boţ; Dang-Khoa Nguyen",
+   "abstract": "",
+   "openalex": "",
+   "source": "s2cites"
+  },
+  {
+   "title": "On the Comparison between Cyclic Sampling and Random Reshuffling",
+   "year": 2021,
+   "venue": "arXiv.org",
+   "doi": "",
+   "arxiv": "",
+   "authors": "Xinmeng Huang; K. Yuan; Xianghui Mao; Wotao Yin",
+   "abstract": "",
+   "openalex": "",
+   "source": "s2cites"
+  }
+ ]
+}

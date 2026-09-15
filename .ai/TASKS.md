@@ -2,6 +2,79 @@
 
 ## Active
 
+- [x] Formalize Theorem R (normalized, single ambient space) in Lean 4 /
+  Mathlib: upper bound, witness admissibility, equality of suprema.
+  Merged in PR #7 (`f219172`).
+- [x] Attainment of the max over θ (`theorem_R_max_attained`, `gBox_attained`)
+  and the N1 scaling reduction for nodewise `M_v > 0`
+  (`heterogeneous_scaled_upper`/`_sSup`). Both are on branch
+  `research/heterogeneous-theorem-r`, uncommitted, 2026-09-14.
+- [x] `M_v = 0` degenerate lemma (`ScaledZero.lean`,
+  `heterogeneous_scaled_upper_nonneg`), 2026-09-14.
+- [x] Per-node spaces → common ambient space (`CommonSpace.lean`,
+  `heterogeneous_multispace_upper`/`_sSup`), 2026-09-14.
+- [x] Agent spec audit paper ↔ Lean (`lean/SPEC_AUDIT.md`), 2026-09-14.
+- [ ] Human review of `SPEC_AUDIT.md` and freeze of the PMT-A^het class
+  definition (author decision).
+- [x] PRIOR-ART-R-CY follow-up, completed 2026-09-14 (`followup_cy/CY_FOLLOWUP_REPORT.md`).
+- [ ] Read Yang–Chen–Qiu 2026 (arXiv, phase-capped products) and
+  Chaffey–Forni–Sepulchre 2023 Thm 5 in full.
+- [ ] Update the R7 attribution: the uncapped equal-angle product of D(½,½)
+  disks is rigorous in Chaffey–Forni–Sepulchre 2023.
+- [ ] `python cy_round.py retry` once arXiv and Semantic Scholar limits clear.
+- [ ] Scholar "cited by" checks for HRY20, RHY22, CY15, Chaffey 2023 and Yang 2026.
+- [x] Formalize heterogeneous Theorem R in `PMTFormal/Heterogeneous/`
+  (branch `research/heterogeneous-theorem-r`, worktree `seion-pmt-hetero`,
+  uncommitted): `gBox`, `heterogeneous_upper`, `heterogeneous_witness`,
+  `heterogeneous_lower`, `heterogeneous_sSup`, `gBox_perm`,
+  `heterogeneous_placement_independent`, `uniform_gBox_eq`. H3 is kept
+  separate in `CappedDiagonal.lean` as a `Prop`. The build is 8723 jobs with no
+  sorry, and 39 `#print axioms` checks show only the standard axioms.
+- [ ] Prove or refute H3 (`CappedEqualAngle`) for unequal defects. The easy
+  half and the equal-defect case are proved.
+- [ ] Reconcile `claims/conjecture_registry.yaml` (H1/H4/placement registered
+  as conjectures by the other session) with the Lean proof after the user
+  reviews; do not edit it silently.
+- [x] Freeze the paper style contract (`research/pmt_program/paper/STYLE_CONTRACT.md`).
+- [x] PRIOR-ART-R first pass: protocol, harvest, snowball, Level 1/2/3
+  screening, matrix, claim matrix, bibliography.
+- [ ] PRIOR-ART-R manual steps:
+  - MathSciNet and Scholar queries (`MANUAL_QUERIES.md`);
+  - download the Zniyed–Boyer 2026 PDF (HAL);
+  - adjudicate Feshchenko 2019;
+  - second snowball round with anchors for families C, F, G, L, N;
+  - targeted heterogeneous mini-round (nonuniform tolerances, nodewise
+    budgets, box-constrained disk products).
+- [x] Fix the wrong Deutsch–Hundal DOI in `papers/paper_a/references.bib`
+  (`10.1006/jmaa.1997.5216` → `10.1006/jmaa.1997.5202`), done 2026-09-14 in
+  worktree `seion-pmt-tn`.
+- [x] Heterogeneous prior-art mini-round PRIOR-ART-R-HET (families O1–O6,
+  preregistered `FREEZE_HET.json`), completed 2026-09-14.
+  - **Scope:** 30 queries, pool of 1178, 8 Level-3 comparison files, no threat 4–5.
+  - **Result file:** `prior_art/CLAIM_NOVELTY_MATRIX_HET.md`.
+- [ ] PRIOR-ART-R-HET manual steps:
+  - Zniyed–Boyer 2026 HAL PDF (bot check);
+  - MathSciNet and Scholar queries (§6 of the HET matrix);
+  - `python het_round.py retry` once arXiv, Semantic Scholar and zbMATH recover;
+  - **priority:** is the Combettes–Yamada 2015 (Prop. 2.5) heterogeneous
+    composition constant known to be tight for m ≥ 3? If yes, re-assess H4.
+- [ ] Review the Lean specification against `ADMISSIBLE_CLASS_PMT_A.md`
+  (human reviewer).
+
+- [x] Implement the heterogeneous Theorem R research scaffold: nodewise
+  scalar box evaluator, conservative uniform fallback certificate, and small-
+  instance discrete error-budget allocator; keep H1/H4 and capped-equal-angle
+  reduction explicitly open.
+- [ ] Prove or refute the heterogeneous box upper bound and capped-equal-angle
+  reduction before using nodewise bounds for production feasibility.
+  - Update 2026-09-14: the box upper bound (H1) and sharpness (H4) are
+    machine-checked on branch `research/heterogeneous-theorem-r`
+    (normalized single-space form plus the scaled `M_v > 0` form).
+  - The capped-equal-angle reduction (H3) remains open. The capped curve is
+    proved to be a **lower** bound for `gBox` (`sSup_capped_le_gBox`), so it
+    is not a safe certificate until H3 is proved. Certified use needs an
+    upper enclosure of `gBox`, or the uniform fallback (U).
+
 - [x] Freeze the confirmatory certified-KGE protocol V1 with train-only
   calibration, valid-only selection, final-test lock, G0--G8 gates, seed-level
   statistics, same-backend hardware rules, and the artifact contract.

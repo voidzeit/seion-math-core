@@ -1,0 +1,51 @@
+{
+  "version": "PRIOR-ART-R-HET v1",
+  "frozen": "2026-09-14",
+  "families": {
+    "O1": {"name": "heterogeneous / nodewise local error bounds in tree tensor networks (HT, TT/MPS, TTN)", "claims": ["H1","H2","H4"], "queries": [
+      "\"hierarchical Tucker\" nodewise truncation error tolerance",
+      "\"tensor train\" local truncation errors accumulation bound",
+      "\"tree tensor network\" local error propagation bound",
+      "hierarchical tensor approximation node-dependent error estimate \"dimension tree\"",
+      "nested compositions approximation error propagation tree tensor network"]},
+    "O2": {"name": "nonuniform truncation tolerances; optimal local tolerance / error budget allocation", "claims": ["H1","H2","H3"], "queries": [
+      "\"TT-SVD\" prescribed accuracy truncation threshold distribution",
+      "adaptive rank truncation tolerance allocation tensor network",
+      "optimal error budget allocation tensor decomposition cores",
+      "hierarchical tensor soft thresholding node-wise thresholds error",
+      "rank allocation tensor train compression error budget"]},
+    "O3": {"name": "nodewise error budgets in quantum simulation / tensor-network contraction", "claims": ["H1","H2","H4"], "queries": [
+      "matrix product state truncation fidelity product of local fidelities",
+      "quantum circuit simulation tensor network truncation fidelity estimate",
+      "\"time-evolving block decimation\" truncation error accumulation bound",
+      "per-gate error budget quantum circuit total error bound",
+      "fidelity multiplicativity truncation tensor network contraction"]},
+    "O4": {"name": "heterogeneous projection defects; products of near-projections / multilinear maps with different angles", "claims": ["H1","H4","H2"], "queries": [
+      "product of orthogonal projections different angles norm estimate",
+      "compositions of averaged operators tight averagedness constant",
+      "Friedrichs angles finite collection of subspaces product norm bound",
+      "perturbation of products of almost orthogonal projections error bound",
+      "sectorial matrices product numerical range angle sum"]},
+    "O5": {"name": "box-constrained products of complex numbers; Minkowski products of arcs/disks", "claims": ["H1","H4","H3"], "queries": [
+      "Minkowski product complex disks different radii boundary",
+      "Minkowski product circular arcs complex plane",
+      "maximize modulus product complex numbers constrained arguments",
+      "water-filling box constraints separable concave maximization",
+      "scaled relative graph composition of operators tight"]},
+    "O6": {"name": "optimal allocation of local tolerances under multiplicative fidelity; angle budgets", "claims": ["H1","H2","H3"], "queries": [
+      "Bures angle triangle inequality sequence of quantum channels error accumulation",
+      "hybrid argument nonuniform query magnitudes bound",
+      "quantum Zeno dragging nonuniform measurement angles optimal",
+      "optimal allocation of approximation errors quantum circuit synthesis",
+      "product of cosines maximization sum of angles constraint"]}
+  },
+  "sources": {
+    "openalex": {"per_query": 25, "sort": "relevance", "role": "primary discovery + citation graph"},
+    "arxiv": {"per_query": 25, "sort": "relevance", "delay_s": 4, "role": "preprints; one retry pass with backoff 30/60/120 s"},
+    "zbmath": {"per_query": 25, "role": "mathematics-specific second coverage + MSC; HTTP 404 = no results"},
+    "semanticscholar": {"per_query": 10, "delay_s": 5, "role": "best effort; one retry pass with backoff 30/60/120 s"},
+    "crossref": {"role": "metadata/DOI validation only, not discovery"},
+    "mathscinet": {"role": "MANUAL (subscription)"},
+    "google_scholar": {"role": "MANUAL (no automated access)"}
+  }
+}

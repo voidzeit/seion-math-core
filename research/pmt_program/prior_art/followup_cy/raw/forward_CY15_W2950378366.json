@@ -1,0 +1,20 @@
+{
+ "anchor": "CY15",
+ "work": "W2950378366",
+ "meta_count": 1,
+ "records": [
+  {
+   "title": "Asynchronous and time-varying proximal type dynamics multi-agent network games",
+   "year": 2019,
+   "venue": "arXiv (Cornell University)",
+   "doi": "10.48550/arxiv.1909.11203",
+   "arxiv": "1909.11203",
+   "authors": "Carlo Cenedese; Giuseppe Belgioioso; Yu Kawano; Sergio Grammatico; Ming Cao",
+   "abstract": "In this paper, we study proximal type dynamics in the context of noncooperative multi-agent network games. These dynamics arise in different applications, since they describe distributed decision making in multi-agent networks, e.g., in opinion dynamics, distributed model fitting and network information fusion, where the goal of each agent is to seek an equilibrium using local information only. We analyse several conjugations of this class of games, providing convergence results, or designing equilibrium seeking algorithms when the original dynamics fail to converge. For the games subject only to local constraints we look into both synchronous/asynchronous dynamics and time-varying communication networks. For games subject in addition to coupling constraints, we design an equilibrium seeking algorithm converging to a special class of game equilibria. Finally, we validate the theoretical results via numerical simulations on opinion dynamics and distributed model fitting.",
+   "cited_by": 3,
+   "openalex": "W2977007652",
+   "type": "preprint",
+   "oa_url": "https://arxiv.org/pdf/1909.11203"
+  }
+ ]
+}

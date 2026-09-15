@@ -1,0 +1,23 @@
+{
+ "query": "products of operators numerical range bound complex plane",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=products+of+operators+numerical+range+bound+complex+plane&page=0&results_per_page=25",
+ "total": 1,
+ "records": [
+  {
+   "title": "Bounds for analytical functions of matrices",
+   "year": "2004",
+   "venue": "Integral Equations and Operator Theory",
+   "doi": "10.1007/s00020-002-1188-6",
+   "arxiv": "",
+   "authors": "Crouzeix, Michel",
+   "abstract": "Let \\(\\Omega\\) be a convex subset of the complex plane and \\(A\\in{\\mathbb C}^{d,d}\\) a square matrix with spectrum Sp\\((A)\\subset \\Omega\\) and numerical range \\(W(A)=\\{(Ax,x): x\\in{\\mathbb C}^d, \\| x\\| =1\\}\\). In this paper, the following bounds \\(\\psi_{\\Omega}(A):=\\sup \\{\\| f(A)\\|: f\\) holomorphic in \\( \\Omega, \\| f\\| _{L^{\\infty}(\\Omega)}\\leq 1\\}\\), \\(\\psi(A):=\\sup \\{\\| p(A)\\|: p\\) polynomial, \\(\\| p\\| _{L^{\\infty}(W(A))}\\leq 1\\}\\), and \\(C_{\\Omega}(d):=\\sup \\{\\psi_{\\Omega}(A): A\\in {\\mathbb C}^{d,d}, W(A)\\subset{\\overline \\Omega}, Sp(A)\\subset \\Omega\\}\\) are considered. The author proves that the bound \\(\\psi_{\\Omega}\\) is attained by a function \\(f\\) which is a Blaschke product, and gives some properties of this bound and an explicit formula in the case of \\(2\\times 2\\) matrices. In this last case, the numerical range is an ellipse and \\(\\psi(A)\\) is expressed as a function of the eccentricity. He shows that the bound \\(C_{\\Omega}(d)\\) is also attained by a upper triangular matrix \\(A\\) and a Blaschke product \\(f\\) in the three following cases: \\(\\Omega\\) is bounded and its boundary is analytic, \\(\\Omega\\) is a convex sector, or \\(\\Omega\\) is a strip.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "2106509",
+   "msc": "47A12;47A60",
+   "source": "zbmath",
+   "family": "L",
+   "query": "products of operators numerical range bound complex plane"
+  }
+ ]
+}

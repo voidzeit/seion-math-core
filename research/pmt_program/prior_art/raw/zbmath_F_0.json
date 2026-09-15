@@ -1,0 +1,71 @@
+{
+ "query": "error bound independent of tree structure tensor network",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=error+bound+independent+of+tree+structure+tensor+network&page=0&results_per_page=25",
+ "total": 4,
+ "records": [
+  {
+   "title": "Proceedings of the 51st annual ACM SIGACT symposium on theory of computing, STOC '19, Phoenix, AZ, USA, June 23--26, 2019",
+   "year": "2019",
+   "venue": "",
+   "doi": "10.1145/3313276",
+   "arxiv": "",
+   "authors": "",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "7119032",
+   "msc": "68-06;68Qxx;00B25",
+   "source": "zbmath",
+   "family": "F",
+   "query": "error bound independent of tree structure tensor network"
+  },
+  {
+   "title": "Proceedings of the 62nd annual IEEE symposium on foundations of computer science, FOCS 2021, virtual conference, February 7--10, 2022",
+   "year": "2022",
+   "venue": "",
+   "doi": "10.1109/FOCS52979.2022",
+   "arxiv": "",
+   "authors": "",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "7639978",
+   "msc": "68-06;94-06;00B25",
+   "source": "zbmath",
+   "family": "F",
+   "query": "error bound independent of tree structure tensor network"
+  },
+  {
+   "title": "Proceedings of the 29th annual ACM-SIAM symposium on discrete algorithms, SODA 2018, New Orleans, LA, USA, January 7--10, 2018",
+   "year": "2018",
+   "venue": "",
+   "doi": "10.1137/1.9781611975031",
+   "arxiv": "",
+   "authors": "",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "6839701",
+   "msc": "68-06;68Wxx;00B25",
+   "source": "zbmath",
+   "family": "F",
+   "query": "error bound independent of tree structure tensor network"
+  },
+  {
+   "title": "Proceedings of the 37th annual ACM-SIAM symposium on discrete algorithms, SODA 2026, Vancouver, Canada, January 11--14, 2026",
+   "year": "2026",
+   "venue": "",
+   "doi": "10.1137/1.9781611978971",
+   "arxiv": "",
+   "authors": "",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "8153204",
+   "msc": "68-06;68Wxx;00B25",
+   "source": "zbmath",
+   "family": "F",
+   "query": "error bound independent of tree structure tensor network"
+  }
+ ]
+}

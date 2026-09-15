@@ -1,0 +1,420 @@
+key,threat,claims,reason,level2
+10.1007/s10543-010-0265-5,2,R1a;R6,Kaczmarz (products of projections) with noise; no sharp tree bound,no
+10.1109/tsg.2016.2580584,0,,power system Kalman filtering,no
+10.1007/s11075-011-9451-z,1,,Kaczmarz acceleration via JL; algorithmic,no
+10.1016/j.csda.2013.03.024,1,,OLS fixed effects computation,no
+10.1088/0266-5611/31/12/125008,1,,phaseless Kaczmarz application,no
+10.1007/s10107-017-1229-1,2,R1a,sparse Kaczmarz linear rate; projection iteration,no
+10.1016/j.laa.2006.07.014,2,R1a,sparse grid combination technique with projections,no
+efficientrankreductionofcorrelationmatrices1,1,,matrix rank reduction,no
+10.48550/arxiv.0905.4482,1,,compressed sensing survey,no
+10.1007/11830924_45,2,R1a,randomized Kaczmarz exponential convergence,no
+10.1007/s00211-012-0512-6,3,R1a;R1b;R6,Meany inequality bounds norm of products of projections,yes
+10.1007/s10851-014-0539-7,1,,block Kaczmarz with inequalities,no
+10.1016/j.jfranklin.2022.09.028,1,,Kaczmarz for Sylvester equations,no
+10.1137/21m1450537,1,,phaseless Kaczmarz convergence,no
+10.1109/tac.2016.2605741,0,,nonparametric system identification,no
+10.48550/arxiv.1612.07838,2,R1a,greedy Kaczmarz rates; projections,no
+10.3929/ethz-a-010377352,1,,random pursuit optimization,no
+10.1007/s00211-021-01207-6,2,R1a;R6,method of reflections convergence (projection-type iteration),no
+10.14288/1.0367781,1,,greedy optimization thesis,no
+10.1109/lcsys.2017.2698179,2,R7,inhomogeneous matrix products,no
+10.1017/cbo9780511840371,2,R7,matrix analysis text incl. numerical range,no
+10.4064/fm-3-1-133-181,1,,Banach thesis; fixed point,no
+10.1137/0314056,1,,proximal point algorithm,no
+10.1007/978-3-319-48311-5,1,,convex analysis monograph,no
+10.1007/bf01581204,1,,Douglas-Rachford splitting,no
+10.1090/s0002-9939-1953-0054846-3,1,,Mann iteration,no
+10.1137/0716071,1,,splitting algorithms,no
+10.1090/s0002-9947-1956-0084194-4,1,,ADI heat conduction,no
+10.1137/1.9781611974997,1,,first-order optimization text,no
+10.1515/9780691213101,1,,pseudospectra monograph,no
+10.1073/pnas.38.8.716,0,,dynamic programming,no
+10.1017/cbo9780511810763,0,,physics methods textbook,no
+10.1007/978-3-319-46128-1_50,1,,PL condition linear convergence,no
+10.1007/s10915-015-0048-x,1,,ADMM linear convergence,no
+10.1007/978-1-4939-1037-3,1,,implicit function theory,no
+10.1007/bfb0120929,1,,polyhedral multifunctions,no
+10.1017/cbo9780511791246,0,,complex variables textbook,no
+10.1007/bf02761171,2,R1a,infinite products of resolvents,no
+10.1137/18m1207260,1,,forward-backward splitting,no
+10.1002/zamm.19290090206,2,R1a,historical Kaczmarz/iterative solution methods,no
+10.1023/b:svan.0000023394.19482.30,1,,variational analysis conditioning,no
+10.1016/0022-247x(77)90152-4,1,,ergodic iteration monotone operators,no
+10.1016/j.jmaa.2014.11.044,3,R1a;R1b;R6,averagedness constants of compositions of operators,yes
+10.1007/s10107-015-0964-4,3,R1a;R12,error accumulation with inexact nonexpansive operators,yes
+10.1137/17m1120099,1,,monotone inclusion algorithm,no
+10.1081/nfa-120003674,1,,fixed point minimization,no
+10.1016/j.jmaa.2009.07.012,1,,metric subregularity proximal point,no
+10.1073/pnas.17.7.417,1,,orthogonal canonical form of matrices,no
+10.1109/tac.2018.2808442,3,R1b;R6,tight rate bounds for operator splitting (projection-type),yes
+10.1007/s10957-019-01517-8,1,,Douglas-Rachford variant,no
+10.1016/j.jmaa.2020.124211,3,R1b;R6;R7,tight coefficients of composed averaged operators via geometric graph,yes
+10.1007/978-3-319-97478-1_1,1,,distributed optimization intro,no
+10.1090/conm/513/10075,1,,firmly nonexpansive extensions,no
+10.1109/tac.2023.3234016,1,,graphical nonlinear system analysis,no
+10.1016/j.ejcon.2024.101050,1,,SRG reset control,no
+10.1007/s10107-024-02182-0,1,,preconditioned proximal point,no
+10.23919/ecc65951.2025.11187068,1,,SRG Lur'e systems,no
+10.1109/cdc45484.2021.9683092,2,R6,scaled relative graphs for interconnections; geometric angle tool,no
+10.1109/tac.2025.3632433,1,,incremental stability homotopy,no
+10.1016/j.ejcon.2025.101335,1,,SRG circuit theory,no
+10.1109/cdc51059.2022.9993357,1,,SRG model reduction,no
+10.1109/tpwrs.2026.3674752,0,,power grid stability,no
+10.1080/02331934.2025.2544700,1,,Davis-Yin SRG convergence,no
+10.1137/24m1656530,1,,FISTA denoiser convergence,no
+10.1016/j.sysconle.2022.105198,1,,passivity theorem,no
+10.1016/j.ejcon.2026.101576,1,,SRG pairs of operators,no
+10.1109/lcsys.2026.3666550,1,,SRG decomposition,no
+10.1109/cdc57313.2025.11312491,0,,SRG Bode diagrams,no
+10.33084/anterior.v23i2.5954,0,,geometry education,no
+10.1109/tac.2023.3274690,0,,monotone circuits,no
+10.1145/237814.237866,1,,Grover search,no
+10.1109/sfcs.1994.365700,0,,Shor factoring,no
+10.1007/bf02650179,0,,Feynman simulation,no
+10.1098/rspa.1985.0070,0,,universal quantum computer,no
+10.1147/rd.176.0525,0,,reversible computation,no
+10.1098/rspa.1992.0167,0,,Deutsch-Jozsa,no
+10.1137/s0097539796300921,2,R12,quantum complexity; includes error accumulation in unitary sequences,no
+10.1137/s0097539796298637,1,,power of quantum computation,no
+10.1145/167088.167097,1,,quantum complexity conference version,no
+10.1098/rspa.1989.0099,0,,quantum networks,no
+tightboundsonquantumsearching,2,R6,tight query bounds via hybrid/angle argument,no
+10.1109/sfcs.1993.366852,1,,quantum circuit complexity,no
+10.1016/0022-0000(88)90028-1,0,,Arthur-Merlin games,no
+10.1109/sfcs.1994.365701,1,,power of quantum computation,no
+10.1137/0210008,0,,random oracle separation,no
+10.1109/sct.1992.215388,0,,quantum structural complexity,no
+10.48550/arxiv.quant-ph/9805022,1,,quantum oracle phase,no
+10.22331/q-2018-08-06-79,0,,NISQ perspective,no
+10.1137/s0097539795293172,0,,Shor factoring,no
+10.1137/s0036144598347011,0,,Shor factoring reprint,no
+10.1126/science.1057726,0,,adiabatic algorithm NP-complete,no
+10.1103/revmodphys.90.015002,1,,adiabatic QC review,no
+10.1103/physreva.67.052307,0,,quantum walk search,no
+10.1103/revmodphys.74.197,1,,relative entropy review,no
+10.1016/j.physrep.2022.08.003,0,,VQE review,no
+10.6028/nist.ir.8105,0,,post-quantum crypto,no
+10.1103/physreva.70.022314,0,,quantum walk spatial search,no
+10.1137/s0097539705447311,0,,element distinctness walk,no
+10.1016/j.iot.2022.100514,0,,AI computing trends,no
+10.1142/s0219749903000383,0,,quantum walks review,no
+10.1016/j.cosrev.2018.11.002,0,,quantum computing survey,no
+10.1103/physreva.60.2746,2,R6,Grover optimality via hybrid/angle argument,no
+10.1103/physrevlett.80.4329,1,,generalized Grover search,no
+10.1126/science.1252319,0,,quantum speedup detection,no
+10.48550/arxiv.quant-ph/0001106,0,,adiabatic quantum computation,no
+10.1109/access.2020.2968985,0,,post-quantum blockchain,no
+10.1103/revmodphys.74.347,0,,information and computation review,no
+10.1038/s41578-022-00434-z,0,,memristors,no
+10.1137/s0097539799359385,1,,fault tolerance threshold,no
+10.1098/rspa.2017.0551,0,,quantum machine learning,no
+10.1007/978-3-642-25385-0_3,0,,quantum random oracles,no
+10.1103/physrevlett.79.4709,0,,single-query search,no
+10.1038/nature10123,0,,negative entropy thermodynamics,no
+10.1145/367701.367709,0,,QC introduction,no
+10.1145/276698.276708,2,R12,mixed-state circuits; diamond norm error composition,no
+10.1103/physreva.57.2403,1,,analog Grover,no
+10.1103/revmodphys.82.1,0,,algebraic quantum algorithms,no
+10.1098/rspa.2015.0301,1,,quantum Monte Carlo speedup,no
+10.1145/276698.276713,0,,quantum communication complexity,no
+10.1145/1008731.1008735,1,,collision lower bounds,no
+quantummachinelearningwhatquantumcomputingmeanstodatamining,0,,quantum ML book,no
+10.1109/jiot.2019.2958788,0,,IoT post-quantum security,no
+10.1080/17445760500355678,1,,quantum computation text review,no
+10.1007/bf01491891,0,,Schrodinger cat paper,no
+10.1515/9783110625097-001,0,,QM foundations chapter,no
+10.1016/0003-4916(71)90133-3,2,R5,decay experiments and repeated measurement (Zeno precursor),no
+10.1216/rmj-1971-1-1-225,1,,decay-scattering system,no
+10.1007/bf01645753,1,,Sz.-Nagy dilation unstable particles,no
+10.1512/iumj.1972.21.21080,3,R1a;R5,missing title; Zeno family 1972 IUMJ (possibly projection product formulas) - resolve,yes
+10.1103/physrevd.24.1516,0,,pointer basis decoherence,no
+10.1103/revmodphys.70.101,1,,quantum jump approach,no
+10.1007/bf01725541,0,,decoherence classicality,no
+10.1364/josab.10.000524,1,,Monte Carlo wave function,no
+10.1103/physreva.68.042319,0,,optical coherent state QC,no
+10.1103/revmodphys.64.339,2,R1a,consistent histories (chains of projectors),no
+10.1021/ct400934c,0,,PYXAID software,no
+10.1103/physrevlett.74.4763,2,R5,interaction-free measurement (Zeno-type projections),no
+10.1103/revmodphys.90.031002,0,,nanophotonic atom lattices,no
+10.1038/35014537,2,R5,anti-Zeno frequent observation,no
+10.1103/physrevlett.65.976,0,,QND photon counting,no
+10.1103/physrevlett.105.130401,0,,small thermal machines,no
+10.1126/science.1155309,1,,dissipation-induced Zeno in molecules,no
+10.1021/cr300092g,0,,ultracold molecules,no
+10.1038/s42254-019-0056-0,0,,quantum imaging,no
+10.1016/s0370-1573(00)00047-8,0,,arrival time QM,no
+10.1002/lpor.201500227,0,,PT-symmetric photonics,no
+10.1038/nphys1641,0,,Leggett-Garg weak measurement,no
+10.1103/revmodphys.88.041001,0,,noise protection review,no
+10.1103/revmodphys.86.1203,1,,quantum channels memory,no
+10.1103/physreva.42.10,0,,non-Hermitian dynamics,no
+10.1088/2040-8978/18/12/123002,0,,whispering gallery optics,no
+10.1016/s0375-9601(99)00365-5,1,,symmetrizing evolutions,no
+10.1016/j.physrep.2012.07.001,1,,weak pre/post-selected measurement,no
+10.1103/physrevlett.87.270405,1,,dynamical decay control,no
+10.1098/rstb.2004.1598,0,,quantum mind model,no
+10.1103/physreva.47.4616,0,,wave function meaning,no
+10.1007/bf02310791,2,R9,N-way Eckart-Young tensor decomposition,no
+10.1063/1.1580111,2,R9,multilayer MCTDH (tree tensor format),no
+10.1073/pnas.112329799,2,R9,separated representations operator calculus,no
+10.1137/06065577,1,,PARAFAC line search,no
+10.1007/s00780-010-0134-8,0,,option pricing,no
+10.1137/080719248,0,,wavelet transform,no
+10.1088/0266-5611/26/2/025007,1,,projected steepest descent inverse problems,no
+10.1088/0266-5611/24/6/065013,1,,compressive Landweber,no
+10.1007/s10444-010-9147-2,0,,adaptive wavelets heat inverse,no
+10.1007/s00365-009-9069-8,1,,multivariate approximation tractability,no
+10.1016/j.jco.2009.10.002,1,,optimal approximation elliptic problems,no
+10.1021/acs.chemrev.9b00829,0,,quantum chemistry algorithms,no
+10.1007/s11633-017-1054-2,2,R3,compositional/tree-structured function approximation,no
+10.1021/acs.jpca.5b03256,2,R9,multilayer MCTDH review (tree tensors),no
+10.1063/1.4871981,1,,sum-of-products vibrational spectra,no
+10.1016/j.euromechsol.2017.11.007,0,,homogenization ROM,no
+10.1016/j.cpc.2019.106869,2,R9,TT cross interpolation,no
+10.1103/physrevmaterials.4.113802,0,,alloy short-range order,no
+10.2307/1968693,1,,von Neumann operator rings,no
+10.2307/1969463,1,,operator rings reduction,no
+10.1007/978-1-4612-5700-4,2,R6,perturbation theory of linear operators (gaps/angles),no
+10.24033/bsmf.90,2,R6,Jordan principal angles between subspaces,no
+10.1109/proc.1983.12598,1,,series-expansion reconstruction,no
+settheoryandlogic,0,,set theory text,no
+10.1007/bf02564273,1,,matrix factorization,no
+10.18311/jims/1960/16934,1,,Hilbert space spectral theory,no
+10.1109/proc.1986.13459,0,,seismic tomography,no
+10.1007/978-3-0348-6253-0,1,,parametric optimization,no
+spectraltheoryinthehilbertspace,1,,Hilbert space spectral theory,no
+10.1137/0322010,1,,stationary process interpolation,no
+10.1109/5.214546,1,,set theoretic estimation (POCS),no
+10.1109/icassp.1991.151014,1,,set theoretic estimation,no
+10.1007/s00041-009-9077-x,2,R1a,randomized Kaczmarz behavior,no
+10.1007/s11075-017-0399-5,2,R6,circumcentered Douglas-Rachford (projections),no
+10.1109/36.79426,0,,Doppler spectral estimation,no
+10.1016/j.jat.2009.12.007,1,,best linear approximations,no
+10.1103/physrevlett.69.2863,2,R9;R10,DMRG density matrix truncation,no
+10.1103/revmodphys.47.773,1,,Wilson RG,no
+10.1103/physreva.40.4277,0,,Werner states,no
+10.1126/science.273.5278.1073,1,,universal quantum simulators (Trotter),no
+10.1007/bf02099178,2,R9,finitely correlated states (MPS),no
+10.1103/physrevlett.93.207204,2,R9,matrix product density operators simulation,no
+10.1103/physrevlett.75.3537,2,R9,DMRG thermodynamic limit,no
+10.1103/physrev.150.321,0,,Bethe ansatz XXZ,no
+10.1103/physrev.150.327,0,,Bethe ansatz XXZ,no
+10.1023/b:joss.0000037230.37166.42,0,,Toeplitz determinants spin chain,no
+10.1007/s00220-004-1087-6,1,,randomizing quantum states,no
+10.1103/physrevlett.94.140601,1,,RG on quantum states,no
+10.1103/physrevlett.93.140402,1,,Lieb-Robinson locality,no
+10.1088/0305-4470/24/16/012,0,,spin-1 models,no
+10.1209/epl/i1998-00381-x,2,R9,variational MPS vs DMRG,no
+10.1002/(sici)1521-3889(199902)8:2<153::aid-andp153>3.0.co;2-n,1,,density matrix spectra integrable,no
+10.1007/bf00399761,0,,Bell inequalities state extension,no
+10.1063/1.1712500,0,,atoms ions QI article,no
+10.1016/j.physleta.2003.12.018,0,,concurrence spin models,no
+10.1007/bf00406552,1,,translation invariant pure states,no
+10.1103/physreva.69.042320,0,,adiabatic spin evolution,no
+10.1103/physrevb.64.214411,0,,QMC XXZ,no
+10.1007/978-3-540-73086-6_12,0,,OEIS,no
+10.1016/j.aop.2010.09.012,2,R9;R10,DMRG/MPS review incl. truncation,no
+10.1080/00018730701223200,0,,optical lattices,no
+10.1103/revmodphys.89.025003,0,,spin liquids,no
+10.1088/1367-2630/11/5/055049,0,,ultracold molecules,no
+10.1038/nphys1157,1,,measurement-based QC,no
+10.1088/1751-8113/40/46/r01,1,,matrix product steady states,no
+10.1126/science.aav9105,0,,SPT Rydberg experiment,no
+10.1103/physrevlett.100.030504,3,R9;R10,MPS simulability vs entropy (truncation error bounds),yes
+10.1080/00018730600766432,2,R9,DMRG trends,no
+10.1103/physrevb.98.235155,0,,exact excited states,no
+10.1016/j.aop.2010.05.008,1,,PEPS ground states topology,no
+10.1103/physrevlett.104.190405,1,,continuous MPS,no
+10.1103/physrevlett.100.167202,1,,string order,no
+10.1103/physrevlett.98.110503,0,,N-representability QMA,no
+10.1103/physrevlett.116.150504,0,,quantum coherence,no
+10.1016/j.nuclphysb.2017.10.012,0,,integrable quench,no
+10.1103/physrevlett.114.220601,1,,variational MPO steady state,no
+quantumtheoryofopensystems,1,,open quantum systems,no
+10.1109/18.651037,0,,channel capacity,no
+10.1103/physreva.56.131,0,,classical capacity,no
+10.1007/978-1-4612-6371-5,1,,C*-algebras text,no
+10.1103/physreva.54.1869,0,,classical capacity,no
+10.1007/978-3-642-66822-7,0,,coding theorems,no
+10.1109/tit.1954.1057459,0,,information theory theorem,no
+10.1109/18.796386,1,,strong converse quantum coding,no
+10.1007/978-3-662-00237-7,0,,coding theorems,no
+10.1016/0034-4877(77)90010-6,0,,quantum channel problems,no
+10.1109/isit.1998.708669,0,,quantum coding theorems,no
+10.1109/18.669165,0,,channel pseudoclassicality,no
+10.48550/arxiv.quant-ph/9809023,0,,quantum coding theorems,no
+10.48550/arxiv.quant-ph/9907077,0,,quantum coding theorems,no
+10.48550/arxiv.quant-ph/9705054,0,,constrained quantum channels,no
+10.48550/arxiv.quant-ph/9807008,0,,QI languages,no
+10.1007/978-3-662-04209-0,0,,QI physics book,no
+10.1017/9781316848142,1,,quantum information theory text (fidelity),no
+10.1103/physreva.72.032317,0,,correlations in states,no
+10.1007/s00220-005-1317-6,0,,simultaneous capacity,no
+10.1109/18.985947,0,,identification strong converse,no
+10.1109/tit.2003.813556,0,,cq capacity formulas,no
+10.1088/1367-2630/18/2/023045,0,,work from coherence,no
+10.3929/ethz-a-005115027,1,,QKD security thesis (purified distance),no
+10.1007/s00220-006-0118-x,0,,state merging,no
+10.1017/9781316809976.001,0,,book preface,no
+10.1109/tit.2009.2039166,0,,correlated noise capacity,no
+10.1088/1367-2630/12/5/055020,0,,quantum CLT,no
+10.1007/s11122-005-0002-x,0,,wiretap channels,no
+10.1038/ncomms8908,0,,quantum Darwinism,no
+10.1109/tit.2008.924665,0,,multiple-access channels,no
+10.1103/physreva.68.042301,0,,data compression side info,no
+10.1103/physrevlett.110.080501,1,,reliability bound transmission,no
+10.1109/tit.2007.896874,1,,cq coding via hypothesis testing,no
+10.1007/s00220-017-2928-4,0,,strong converse exponent,no
+10.1119/1.1463744,1,,Nielsen-Chuang review,no
+10.1145/505482.505499,1,,Nielsen-Chuang review,no
+10.1007/978-3-662-12066-8,0,,information spectrum,no
+10.1103/physreva.71.062310,2,R6;R12,distance measures for processes; composition of errors,no
+informationspectrummethodsininformationtheory,0,,information spectrum,no
+10.1109/tit.2009.2032797,1,,quantum AEP,no
+10.1109/tit.2006.889463,0,,hypothesis testing,no
+10.1109/tit.2009.2018340,1,,smooth entropies,no
+10.1002/andp.19854970419,2,R6,Uhlmann transition probability (fidelity),no
+10.48550/arxiv.0912.4495,0,,one-shot state merging,no
+10.48550/arxiv.quant-ph/0602112,2,R6,sine distance (purified-distance-like),no
+10.1103/revmodphys.91.025001,0,,resource theories,no
+10.1080/00107514.2016.1201896,0,,quantum thermodynamics,no
+10.1038/nphys1734,0,,entropic uncertainty,no
+10.1103/physreva.85.010301,0,,1sDI QKD,no
+10.1038/ncomms1631,0,,finite-key QKD,no
+10.1103/physrevlett.106.110506,0,,smooth entropy uncertainty,no
+10.1038/ncomms4732,0,,MDI QKD,no
+10.1007/978-3-319-21891-5,1,,finite resource QI (purified distance),no
+10.1109/tit.2011.2158473,0,,leftover hashing,no
+10.1109/tit.2013.2276628,0,,finite blocklength quantities,no
+10.1103/physrevlett.110.010503,0,,DI memory attacks,no
+ahierarchyofinformationquantitiesforfiniteblocklengthanalysisofquantumtasks,0,,finite blocklength quantities,no
+10.1137/100813683,0,,Trevisan extractor,no
+10.1038/s41567-020-01147-2,0,,DI randomness,no
+10.1109/tit.2013.2238656,1,,smooth entropy chain rules,no
+10.1145/2885493,0,,randomness expansion,no
+10.1103/physrevapplied.12.024061,0,,twin-field QKD,no
+10.1007/978-3-662-45608-8_22,0,,delegated QC security,no
+10.26421/qic12.5-6-4,1,,data processing inequality,no
+10.1145/2591796.2591843,0,,randomness expansion,no
+10.1103/physrevlett.126.050503,0,,randomness expansion experiment,no
+10.1103/physrevlett.117.260601,0,,entropy axiomatics,no
+10.1007/bf02612715,2,R1a,Pierra product-space projection decomposition,no
+10.1007/bf01697972,2,R1a;R5,Trotter-Lie/Kato product formula with projections,no
+10.1016/j.jat.2010.05.002,3,R1a;R1b,rates/slow convergence of operator (projection) products,yes
+10.1007/3-540-45949-9,1,,Isabelle/HOL,no
+10.1007/3-540-55602-8_217,1,,PVS,no
+10.1007/978-3-662-07964-5,1,,Coq book,no
+interactivetheoremprovingandprogramdevelopmentcoqartthecalculusofinductiveconstructions,1,,Coq book,no
+implementingmathematicswiththenuprlproofdevelopmentsystem,1,,Nuprl,no
+10.1145/75277.75283,0,,type classes,no
+10.1007/bfb0092872,0,,categorical probability,no
+10.1007/978-3-319-21401-6_26,1,R8,Lean prover description,no
+10.1007/978-3-540-71067-7_6,1,,HOL4,no
+10.1007/978-3-540-73595-3_13,0,,SMT E-matching,no
+10.1007/978-3-319-20615-8_17,1,,Mizar,no
+10.1007/978-3-642-03359-9_4,1,,HOL Light,no
+10.1007/s10817-013-9278-5,0,,Sledgehammer SMT,no
+10.6092/issn.1972-5787/1980,1,,Mizar,no
+10.1007/bfb0028402,0,,type classes HOL,no
+10.1007/978-3-642-03359-9_23,1,,packaging structures,no
+10.1007/s10817-012-9250-9,1,,HOL Light Euclidean space,no
+10.6092/issn.1972-5787/4593,0,,hammers,no
+10.1007/978-1-4757-3188-0,0,,ACL2,no
+10.1145/3110278,1,R8,Lean metaprogramming,no
+computeraidedreasoningacl2casestudies,0,,ACL2,no
+10.1007/3-540-48256-3_11,0,,Isabelle locales,no
+10.1007/11541868_7,0,,Coq ring tactic,no
+10.1007/bfb0040259,0,,inductive types CoC,no
+10.1007/s11786-014-0181-1,1,,Coq real analysis library,no
+10.6092/issn.1972-5787/1979,0,,SSReflect,no
+10.1080/00029890.1986.11971923,0,,Fourier-Motzkin,no
+10.1007/978-3-540-74464-1_11,0,,Isabelle type classes,no
+10.1007/978-3-540-24849-1_3,0,,Isabelle locales,no
+10.1007/978-3-642-03359-9_8,0,,unification hints,no
+10.1007/978-3-319-20615-8_1,0,,AFP mining,no
+10.15439/2016f520,0,,Mizar hierarchies,no
+10.1007/978-3-642-22863-6_10,1,,formal linear algebra,no
+10.1007/s11786-008-0053-7,0,,Mizar ATP,no
+10.1145/2854065.2854070,0,,Mizar in Isabelle,no
+10.15439/2017f289,0,,Mizar certification,no
+10.6092/issn.1972-5787/8124,1,,formal asymptotic analysis,no
+10.1007/978-3-319-40229-1_8,0,,congruence closure,no
+10.1007/978-3-319-14125-1_1,1,,formal linear algebra,no
+10.1145/3293880.3294089,0,,Hensel lemma formal,no
+ranknullitytheoreminlinearalgebra,1,,formal rank-nullity,no
+10.1007/3-540-58156-1_17,0,,QED encyclopedia,no
+10.4204/eptcs.290.6,0,,math education models,no
+10.1145/3293880.3294093,1,,Isabelle manifolds linear algebra,no
+topologicalfoundationsforaformaltheoryofmanifolds,0,,formal manifolds,no
+10.4007/annals.2017.185.1.8,0,,cap set,no
+10.4007/annals.2019.190.3.6,0,,sensitivity conjecture,no
+10.1145/3372885.3373830,1,R8,Lean perfectoid spaces,no
+10.5281/zenodo.7118596,0,,Mathematical Components,no
+10.4230/lipics.itp.2019.31,0,,modal logic decision procedures,no
+10.2307/2322281,0,,Fourier-Motzkin,no
+10.1145/3412932.3412935,0,,Lean reference counting,no
+10.4230/lipics.itp.2019.15,1,R8,Lean cap set formalization,no
+10.1145/3372885.3373826,0,,Lean CH independence,no
+10.4230/lipics.itp.2019.19,0,,forcing formalization,no
+10.4230/lipics.itp.2019.12,0,,computability formalization,no
+10.4230/lipics.itcs.2020.56,0,,sensitivity conjecture,no
+10.48550/arxiv.1908.05647,0,,reference counting,no
+10.1007/978-3-030-79876-5_37,1,R8,Lean 4,no
+10.48550/arxiv.2109.00110,0,,MiniF2F benchmark,no
+10.1007/978-3-030-51054-1_1,1,R8,mathlib functional analysis design,no
+10.1145/3437992.3439922,0,,Agda category theory,no
+10.1090/bull/1832,0,,formal turn essay,no
+10.1007/978-3-030-53518-6_16,1,R8,mathlib maintenance,no
+10.1007/978-3-031-57262-3_10,0,,Coq proof transfer,no
+10.1609/aaai.v38i16.29722,0,,transformer memory,no
+10.1145/3437992.3439917,0,,PAC learnability formal,no
+10.1007/s10270-022-01063-4,0,,safety arguments,no
+10.1145/3497775.3503675,0,,Cairo verification,no
+10.1080/10586458.2021.1983489,0,,Lean schemes,no
+10.1090/bull/1839,0,,AI mathematician,no
+10.1090/bull/1831,0,,spec driven math,no
+10.1145/3573105.3575688,0,,sphere eversion formal,no
+10.1007/978-3-031-43513-3_10,0,,Lean premise selection,no
+10.1145/3437992.3439919,0,,Witt vectors,no
+10.1007/978-3-031-98682-6_10,0,,Lean-Auto,no
+10.62056/angy4fe-3,0,,Goppa decoding,no
+10.1145/3573105.3575682,0,,class groups formal,no
+10.1007/s10817-022-09644-0,0,,Dedekind domains formal,no
+10.1109/models50736.2021.00028,0,,Lean safety arguments,no
+10.1007/978-3-030-51054-1_8,0,,validating structures,no
+10.1007/s00778-025-00922-y,0,,DBSP view maintenance,no
+10.1109/icse55347.2025.00002,0,,proof-oriented programming synthesis,no
+10.1145/3658644.3670322,0,,zk Lean proofs,no
+10.3233/com-220416,0,,L2-Betti computability,no
+10.1007/s10817-021-09611-1,0,,Lean-Mathematica,no
+10.1007/978-3-031-16681-5_5,0,,Kruskal-Katona Lean,no
+10.1007/978-3-031-16681-5_1,1,R8,mathlib change of variables,no
+10.1007/978-3-031-17244-1_16,0,,Maude in Lean,no
+10.1007/s10817-021-09593-0,0,,PVS ring theory,no
+10.1007/978-3-030-53518-6_4,0,,theory presentations,no
+10.1145/3776719,0,,multi-modal verifiers,no
+10.1007/978-3-032-07021-0_4,1,R8,growing mathlib,no
+10.1145/3607844,0,,program verification abstractions,no
+10.1145/3573105.3575669,0,,Keller conjecture,no
+10.1145/3573105.3575675,0,,martingale mathlib,no
+10.1145/3497775.3503672,0,,Lie algebras formal,no
+10.1007/978-3-030-99461-7_4,0,,probabilistic program logic,no
+10.1145/3807780,0,,ZX verification,no
+10.1145/3776651,0,,outcome logic,no
+10.1145/3763167,0,,bitvector reasoning,no
+10.1103/physrevb.48.10345,2,R9;R10,DMRG algorithms (truncation),no
+10.1214/ecp.v18-2865,0,,Hanson-Wright concentration,no
+10.2478/cmam-2011-0021,2,R9,DMRG linear algebra in TT format,no
+10.1016/0010-4655(89)90147-1,1,,super-matrix methods,no
+10.1109/tnnls.2024.3443814,0,,capsule networks,no
+10.1016/j.aop.2019.167998,2,R9;R10,MPS time evolution methods (projection errors),no
+10.1007/3-540-10579-4,2,R6,TDVP geometry (projection onto manifold),no
+10.4171/067,2,R9,reduced models numerical analysis (MCTDH),no
+10.1088/0022-3719/6/15/009,0,,transverse Ising,no
+10.1016/j.jcp.2023.112060,1,,conservative DLRA,no
+10.1137/23m1547603,1,,AP energy stable DLRA,no
+10.1016/j.jcp.2024.112827,1,,low-rank chemical master equation,no
+10.1098/rspa.2024.0658,1,,low-rank cross time integration,no
+10.1016/j.jcp.2025.114421,2,R9,randomized DLRA (projection-based low rank),no
+10.1016/j.cpc.2026.110163,1,,low-rank IMEX integrator,no

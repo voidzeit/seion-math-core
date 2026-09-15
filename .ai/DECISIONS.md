@@ -1,5 +1,92 @@
 # Decisions
 
+## 2026-09-14 — Formalized route for Theorem R
+
+- **Decision:** The machine-checked lifted-angle proof is the load-bearing
+  proof of Theorem R, in normalized single-space form. The v2 dilation text
+  stays frozen as historical and review material.
+- **Reason:** Lean 4 / Mathlib checks upper bound, witness admissibility and
+  suprema end to end, with standard axioms only. The v2 argument has no
+  independent review.
+- **Evidence:** `research/pmt_program/lean/` (PR #7, `f219172`),
+  `research/pmt_program/lifted_angle/LIFTED_ANGLE_PROOF.md`.
+- **Status:** accepted. Open: specification review and the N1 and
+  ambient-space reductions.
+
+## 2026-09-14 — Paper style contract and novelty wording
+
+- **Decision:** `research/pmt_program/paper/STYLE_CONTRACT.md` governs all
+  paper text.
+  - "exact" refers to the formula, "sharp" to the inequality, "attained" to
+    the extremizer.
+  - No affirmative novelty claim until PRIOR-ART-R meets its stop criterion.
+    Interim wording is "what the present argument adds".
+- **Reason:** keep claims auditable and aligned with evidence.
+- **Status:** accepted.
+
+## 2026-09-14 — PRIOR-ART-R protocol and verdict labels
+
+- **Decision:** Novelty is assessed claim by claim (R1a–R12, R8 as an
+  artifact claim), using:
+  - a frozen protocol and queries;
+  - Level 1/2/3 screening;
+  - threat scores 0–5, harmonized with the v5 labels;
+  - the deeper reading level overrides a shallower one, with disagreements
+    recorded (Feshchenko 2019: reviewers gave 1 and 3; adjudication pending).
+- **Evidence:** `research/pmt_program/prior_art/SEARCH_PROTOCOL.md`,
+  `CLAIM_NOVELTY_MATRIX.md`, `l3_verdicts.json`.
+- **Status:** accepted. Global status `NOVELTY_NOT_ESTABLISHED`.
+
+## 2026-09-14 — Heterogeneous Theorem R: formalize H1+H2+H4, separate H3
+
+- **Decision:**
+  - Define the heterogeneous sharp constant exactly as the box maximum `gBox`.
+  - Formalize the heterogeneous upper bound, witness, equality of suprema and
+    placement/permutation invariance, plus recovery of the uniform case.
+  - Do this in a dedicated worktree and branch (`seion-pmt-hetero`,
+    `research/heterogeneous-theorem-r`), under
+    `research/pmt_program/lean/PMTFormal/Heterogeneous/`.
+  - The capped-equal-angle reduction (H3) lives in a separate file
+    (`CappedDiagonal`), and nothing depends on it.
+- **Reason:** the lifted-angle architecture already implies H1, H2 and H4, so
+  H3 is only an efficient-evaluation question. A separate worktree avoids
+  mixing with the concurrent session editing `research/pmt_program/heterogeneous/`.
+- **Supersedes (partially):** the 2026-09-14 implementation-boundary decision
+  below. The uniform envelope remains the production-safe certificate until
+  the Lean build of the heterogeneous theorem passes.
+- **Status:** accepted, in progress.
+- **Update 2026-09-14 (appended):** the Lean build passed. Status is
+  implemented and machine-checked on the branch, uncommitted, not
+  human-reviewed. Modelling choices made during the formalization:
+  - **Trees:** a new inductive `HPMTree` carries `e_v` per node; the class
+    `A(T, η)` is given by `dshape = T` and `RootAdmFull`.
+  - **Root defect:** the root defect is part of the skeleton and of full root
+    closure but not of the constant. The sharp theorems assume `e_root ≥ 0`.
+  - **Defect order:** defect lists are in preorder; permutation invariance
+    makes the order irrelevant for the constant.
+  - **Supremum form:** `gBox` is defined as `sSup` over the box, and
+    `gBox_attained` shows it is a max for nonnegative defects.
+  - **Scaled form:** a separate `SPMTree` with `(M_v, ρ_v)`, normalized by
+    `μ ↦ M⁻¹μ` and `z ↦ ‖z‖⁻¹z` (the convention `0⁻¹ = 0` covers zero
+    leaves). `M_v > 0` is part of admissibility.
+  - **H3:** stored as a `Prop` definition (`CappedEqualAngle`), never as an
+    axiom or `sorry`.
+  - **Certificates:** the capped curve is a proven *lower* bound for `gBox`.
+    Certificates must not use it until H3 is proved.
+
+## 2026-09-14 — Heterogeneous Theorem R implementation boundary
+
+- **Decision:** Implement the nodewise scalar box evaluator and error-budget
+  prototype, but use the existing uniform Theorem R envelope as the only
+  feasibility certificate until the heterogeneous upper bound is proved.
+- **Reason:** The corner evaluation is numerically invalid in phase-wrap
+  regimes, and floating-point global optimization cannot establish H1, H4,
+  or the capped-equal-angle reduction.
+- **Evidence:** `research/pmt_program/HETEROGENEOUS_THEOREM_R.md`,
+  `research/pmt_program/tn_benchmark/POSTHOC_HETEROGENEOUS_ANGLE.md`,
+  `research/pmt_program/heterogeneous/`.
+- **Status:** accepted for research tooling; mathematical claims remain open.
+
 ## 2026-09-09 — PMT k4 chain study authority and preservation
 
 - Scope remains independent-law finite-dimensional canonical PMT. New work

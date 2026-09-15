@@ -1,0 +1,23 @@
+{
+ "query": "numerical range products of contractions disk",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=numerical+range+products+of+contractions+disk&page=0&results_per_page=25",
+ "total": 1,
+ "records": [
+  {
+   "title": "Finite Blaschke products of contractions",
+   "year": "2003",
+   "venue": "Linear Algebra and its Applications",
+   "doi": "10.1016/S0024-3795(02)00697-3",
+   "arxiv": "",
+   "authors": "Gau, Hwa-Long; Wu, Pei Yuan",
+   "abstract": "Let \\(A\\) be a contraction operator in the Hilbert space \\(H\\). The famous von Neumann inequality claims that \\(\\|\\varphi(A)\\|\\leq \\|\\varphi\\|_\\infty\\) for any function \\(\\varphi\\) analytic in the disk \\(|z|<R\\) with \\(R>1\\). The case when \\(\\varphi\\) is a finite Blaschke product of the order \\(n\\) is under investigation in the present paper. The authors prove that \\(\\|\\varphi(A)\\|=1\\) if and only if \\(\\|A^n\\|=1\\). Since a sequence \\(\\{\\|A^j\\|\\}\\) is nonincreasing, the value named a norm-one index of \\(A\\) by \\[ k_A=\\sup\\{k: \\|A^k\\|=1\\} \\] comes in quite naturally. The authors give some two-sided bounds for this value in the case when \\(H\\) is finite-dimensional.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "1956811",
+   "msc": "47A30;15A60;47B35",
+   "source": "zbmath",
+   "family": "L",
+   "query": "numerical range products of contractions disk"
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "query": "hybrid argument quantum query lower bound",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=hybrid+argument+quantum+query+lower+bound&page=0&results_per_page=25",
+ "total": 1,
+ "records": [
+  {
+   "title": "Automata, languages and programming. 32nd international colloquium, ICALP 2005, Lisbon, Portugal, July 11--15, 2005. Proceedings.",
+   "year": "2005",
+   "venue": "Lecture Notes in Computer Science",
+   "doi": "10.1007/11523468",
+   "arxiv": "",
+   "authors": "",
+   "abstract": "The articles of this volume will be reviewed individually. The preceding colloquium has been reviewed (see Zbl 1056.68007). Indexed articles: \\textit{Valiant, Leslie G.}, Holographic circuits, 1-15 [Zbl 1081.68022] \\textit{Datta, Anupam; Derek, Ante; Mitchell, John C.; Shmatikov, Vitaly; Turuani, Mathieu}, Probabilistic polynomial-time semantics for a protocol security logic, 16-29 [Zbl 1082.68571] \\textit{Castagna, Giuseppe; Frisch, Alain}, A gentle introduction to semantic subtyping, 30-34 [Zbl 1082.68581] \\textit{Libkin, Leonid}, Logics for unranked trees: An overview, 35-50 [Zbl 1084.68028] \\textit{Gairing, Martin; Lücking, Thomas; Monien, Burkhard; Tiemann, Karsten}, Nash equilibria, the price of anarchy and the fully mixed Nash equilibrium conjecture, 51-65 [Zbl 1084.91006] \\textit{Bille, Philip; Gørtz, Inge}, The tree inclusion problem: In optimal space and faster, 66-77 [Zbl 1085.68566] \\textit{Alstrup, Stephen; Gørtz, Inge Li; Rauhe, Theis; Thorup, Mikkel; Zwick, Uri}, Union-find with constant time deletions, 78-89 [Zbl 1084.68026] \\textit{Franceschini, Gianni; Grossi, Roberto}, Optimal in-place sorting of vectors and records, 90-102 [Zbl 1085.68033] \\textit{Kaligosi, Kanela; Mehlhorn, Kurt; Munro, J. Ian; Sanders, Peter}, Towards optimal multiple selection, 103-114 [Zbl 1085.68030] \\textit{Zimand, Marius}, Simple extractors via constructions of cryptographic pseudo-random generators, 115-127 [Zbl 1081.94037] \\textit{Horvitz, Omer; Katz, Jonathan}, Bounds on the efficiency of ``black-box'' commitment schemes, 128-139 [Zbl 1081.94028] \\textit{Wee, Hoeteck}, On round-efficient argument systems, 140-152 [Zbl 1082.68574] \\textit{Tamassia, Roberto; Triandopoulos, Nikos}, Computational bounds on hierarchical data processing with applications to information security, 153-165 [Zbl 1082.68573] \\textit{Dietzfelbinger, Martin; Weidling, Christoph}, Balanced allocation and dictionaries with tightly packed constant size bins, 166-178 [Zbl 1082.68557] \\textit{Chiniforoos",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "2239888",
+   "msc": "68-06;68Nxx;68Qxx;00B25",
+   "source": "zbmath",
+   "family": "K",
+   "query": "hybrid argument quantum query lower bound"
+  }
+ ]
+}

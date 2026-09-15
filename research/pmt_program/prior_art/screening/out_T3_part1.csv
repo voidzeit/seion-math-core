@@ -1,0 +1,422 @@
+key,threat,claims,reason,level2
+10.1109/tsp.2017.2690524,1,R9,general tensor decomposition/network,no
+10.48550/arxiv.1606.05535,1,R9,general tensor decomposition/network,no
+10.1137/110859063,1,R9,general tensor decomposition/network,no
+10.1016/j.jat.2006.02.005,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1109/msp.2013.2297439,1,R9,general tensor decomposition/network,no
+10.1016/j.laa.2020.05.023,3,R1a;R6,"angles, projections and iterations; possible rate results",yes
+10.1137/22m1473790,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.22331/q-2025-05-28-1755,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2210.03763,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevresearch.3.023236,1,R9,tensor network method/application; no error theorem,no
+10.1561/2200000067,1,R9,general tensor decomposition/network,no
+10.48550/arxiv.2105.13678,0,,unrelated field,no
+10.1090/s0025-5718-1991-1066830-3,1,,broad numerical/operator analysis,no
+10.1016/j.laa.2019.04.025,2,R6,angles between subspaces/projections,no
+10.1088/0031-9155/49/2/010,0,,unrelated field,no
+10.48550/arxiv.1506.05827,1,,multilinear harmonic analysis; different object,no
+introductiontovectorsandtensorsvol1linearandmultilinearalgebra,1,R9,general tensor decomposition/network,no
+10.1109/tsp.2015.2458785,1,R9,general tensor decomposition/network,no
+10.48550/arxiv.1702.06980,1,R9,general tensor decomposition/network,no
+10.1109/tgrs.2015.2503737,0,,unrelated field,no
+10.1007/jhep07(2018)157,0,,unrelated field,no
+10.48550/arxiv.2203.13522,1,,quantum information context; no projection-error bound,no
+10.4310/atmp.2000.v4.n1.a1,0,,unrelated field,no
+10.48550/arxiv.2010.12056,2,R9,dimension-tree CP with perturbation,no
+10.1007/jhep01(2015)073,0,,unrelated field,no
+10.48550/arxiv.1412.8690,0,,unrelated field,no
+10.1137/s0895479896305696,3,R1a;R9,HOSVD; known Tucker truncation error bound,yes
+10.1523/jneurosci.3481-07.2007,0,,unrelated field,no
+10.1215/ijm/1336568522,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1016/j.jat.2017.08.005,3,R1a;R1b,optimal error bound for projection method,yes
+10.1007/bf02551235,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1016/j.jfa.2010.05.018,3,R1a;R6,subspace angles with alternating projector error bounds,yes
+10.48550/arxiv.1501.06603,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1103/prxquantum.5.020366,3,R1b;R5;R7,optimal Zeno dragging schedule; possible equal-angle extremization,yes
+10.48550/arxiv.2311.01631,3,R1b;R5;R7,optimal Zeno dragging schedule; possible equal-angle extremization,yes
+10.1088/1751-8113/45/45/453001,1,,quantum information context; no projection-error bound,no
+10.1088/1367-2630/16/3/033014,2,R9,PEPS contraction schemes,no
+10.21468/scipostphyslectnotes.86,1,R9,tensor network method/application; no error theorem,no
+10.1109/tcs.1978.1084541,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.48550/arxiv.1604.07130,2,,sharp worst-case complexity of cyclic updates; different object,no
+10.1137/21m1463306,2,R1a,Kaczmarz-type products of projections,no
+10.1137/20m1358669,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1137/07070111x,1,R9,general tensor decomposition/network,no
+10.1007/s00041-009-9094-9,2,R9,tree/HT/TT format theory; no sharp accumulation result in title,no
+10.1137/070688316,1,R9,general tensor decomposition/network,no
+10.1002/gamm.201310004,2,R9,low-rank tensor survey incl. truncation,no
+10.1080/03081080600743338,2,R6,angles between subspaces/projections,no
+10.1007/bf02551360,3,R1a;R6,error bounds for oblique projection algorithms,yes
+10.1098/rspa.2009.0202,1,,quantum information context; no projection-error bound,no
+10.1109/tit.2010.2053903,1,,quantum information context; no projection-error bound,no
+10.1145/2432622.2432625,1,,quantum information context; no projection-error bound,no
+10.1103/physrevb.90.064425,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.1801.02662,1,R9,general tensor decomposition/network,no
+10.22331/q-2024-12-27-1580,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1137/090764189,3,R1a;R3;R9,hierarchical SVD; tree-format truncation error bound,yes
+10.1063/5.0153870,1,R9,tensor network method/application; no error theorem,no
+10.1137/23m1565103,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1002/qua.24898,1,R9,tensor network method/application; no error theorem,no
+10.1109/tcad.2014.2369505,1,R9,tensor network method/application; no error theorem,no
+10.2478/cmam-2011-0016,1,R9,general tensor decomposition/network,no
+10.1103/physrevx.9.041017,0,,unrelated field,no
+10.1016/j.laa.2011.08.010,2,R9,tree/HT/TT format theory; no sharp accumulation result in title,no
+10.1016/j.laa.2013.03.016,2,R9,tree/HT/TT format theory; no sharp accumulation result in title,no
+10.48550/arxiv.1509.05009,1,R9,general tensor decomposition/network,no
+10.1002/nla.2174,2,R9,tree/HT/TT format theory; no sharp accumulation result in title,no
+10.48550/arxiv.1402.5649,1,R9,tensor network method/application; no error theorem,no
+10.2478/cmam-2011-0015,1,R9,tensor network method/application; no error theorem,no
+10.1137/24m1687649,2,R9,stability of Gram low-rank approximation; single truncation,no
+tensorproductmethodsinnumericalsimulationofhighdimensionaldynamicalproblems,1,R9,tensor network method/application; no error theorem,no
+10.1002/nla.2158,1,R9,tensor network method/application; no error theorem,no
+10.1371/journal.pcbi.1003359,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.1901.10719,1,R9,tensor network method/application; no error theorem,no
+10.21468/scipostphys.8.2.024,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.21468/scipostphys.9.5.070,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevb.105.214201,1,R9,tensor network method/application; no error theorem,no
+10.1063/5.0218773,1,R9,tensor network method/application; no error theorem,no
+10.1103/physreva.109.022420,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevx.10.041040,0,,unrelated field,no
+10.1038/s41534-021-00443-w,0,,unrelated field,no
+10.1103/8993-8xn5,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2410.03572,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2407.13249,1,R9,tensor network method/application; no error theorem,no
+10.1016/j.jco.2013.10.001,2,R9,HT approximation rates,no
+10.1017/s0962492911000055,1,R9,tensor network method/application; no error theorem,no
+10.1137/21m1402170,1,R9,tensor network method/application; no error theorem,no
+10.1515/rnam-2013-0009,1,R9,tensor network method/application; no error theorem,no
+10.1137/17m1138881,1,R9,tensor network method/application; no error theorem,no
+10.2478/cmam-2011-0020,1,R9,tensor network method/application; no error theorem,no
+10.1093/imanum/drx052,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2501.04157,1,R9,tensor network method/application; no error theorem,no
+treetensornetworksinquantumchemistry,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2609.07319,1,R9,tensor network method/application; no error theorem,no
+10.3389/fams.2022.838601,1,R9,tensor network method/application; no error theorem,no
+10.1007/s10915-025-03078-7,1,R9,tensor network method/application; no error theorem,no
+simulatingnonmarkovianopenquantumdynamicsbyexploitingphysicsinformedneuralnetwork,0,,unrelated field,no
+10.21468/scipostphys.19.4.111,1,,multilinearity in network currents,no
+10.4007/annals.2003.158.635,0,,unrelated field,no
+10.48550/arxiv.1904.00808,1,,multilinear harmonic analysis; different object,no
+10.1186/s13677-023-00586-5,0,,unrelated field,no
+10.4208/cicp.oa-2017-0257,1,,broad numerical/operator analysis,no
+10.48550/arxiv.1706.05341,1,,broad numerical/operator analysis,no
+10.1214/14-aop919,1,,contraction method in probability,no
+10.48550/arxiv.1806.04553,0,,unrelated field,no
+10.1007/978-3-031-48621-0_14,0,,unrelated field,no
+10.48550/arxiv.1311.1616,0,,unrelated field,no
+10.5194/acp-19-11235-2019,0,,unrelated field,no
+10.1088/1475-7516/2004/08/009,0,,unrelated field,no
+10.1016/s0022-1236(03)00218-0,1,,multilinear harmonic analysis; different object,no
+10.1007/bf02392554,1,,multilinear harmonic analysis; different object,no
+10.1007/s00208-019-01816-5,1,,multilinear harmonic analysis; different object,no
+10.2989/16073606.2011.640459,1,,multilinear harmonic analysis; different object,no
+10.4171/jems/458,1,,operator spaces,no
+vectorvaluedbohnenblusthilleinequalities,2,R1b,optimal-constant multilinear inequality; different object,no
+10.48550/arxiv.1311.6747,1,,multilinear harmonic analysis; different object,no
+10.4171/jems/1229,1,,multilinear harmonic analysis; different object,no
+10.1215/20088752-2018-0026,1,,multilinear harmonic analysis; different object,no
+10.48550/arxiv.1809.02449,1,,multilinear harmonic analysis; different object,no
+10.1016/j.jfa.2015.07.001,1,,multilinear harmonic analysis; different object,no
+10.48550/arxiv.1311.3177,2,R1b,optimal-constant multilinear inequality; different object,no
+10.1137/120867172,0,,unrelated field,no
+10.48550/arxiv.1104.4879,0,,unrelated field,no
+10.1007/s11511-006-0006-4,1,,multilinear harmonic analysis; different object,no
+10.1016/j.jmaa.2009.04.021,1,,multilinear harmonic analysis; different object,no
+10.1090/s0002-9939-2010-10656-1,1,,multilinear harmonic analysis; different object,no
+10.1090/s0002-9939-04-07565-3,2,R1b,optimal-constant multilinear inequality; different object,no
+10.1007/s10240-003-0016-0,0,,unrelated field,no
+10.1103/prxquantum.5.010314,1,,quantum information context; no projection-error bound,no
+10.1007/s00023-023-01358-2,1,R9,general tensor decomposition/network,no
+10.1088/1367-2630/12/12/123004,1,R6,fidelity/purified-distance context,no
+10.1007/jhep04(2015)163,0,,unrelated field,no
+10.48550/arxiv.1710.03663,0,,unrelated field,no
+10.1016/j.cma.2019.112762,0,,unrelated field,no
+10.1088/2058-9565/aaea94,1,R9,tensor network method/application; no error theorem,no
+10.1007/jhep06(2015)149,0,,unrelated field,no
+10.48550/arxiv.2201.11729,1,R9,general tensor decomposition/network,no
+10.1214/aoap/1034968224,0,,unrelated field,no
+10.48550/arxiv.1510.00504,1,,broad numerical/operator analysis,no
+10.4007/annals.2013.177.1.1,0,,unrelated field,no
+10.1090/s0002-9947-03-03389-0,1,,best constants for Hardy inequalities; different object,no
+10.1109/access.2020.3002270,0,,unrelated field,no
+10.1002/hipo.22488,0,,unrelated field,no
+10.1523/jneurosci.15-01-00030.1995,0,,unrelated field,no
+10.1101/lm.73504,0,,unrelated field,no
+10.1107/s1600576716008074,0,,unrelated field,no
+10.48550/arxiv.1809.05858,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1103/physrevx.9.031045,0,,unrelated field,no
+10.1117/1.oe.61.8.081808,0,,unrelated field,no
+10.1103/physrevx.14.021022,0,,unrelated field,no
+10.1088/1402-4896/ae7c3f,2,R1a;R7,Zeno dynamics mathematics; possible error bounds,no
+10.1088/1367-2630/aa5cff,0,,unrelated field,no
+10.1088/0034-4885/61/2/002,0,,unrelated field,no
+10.1038/s41586-022-04891-y,0,,unrelated field,no
+10.1086/424914,0,,unrelated field,no
+10.1175/1520-0469(1999)056<1197:peaeca>2.0.co;2,0,,unrelated field,no
+10.1007/s11207-014-0516-8,0,,unrelated field,no
+10.1103/revmodphys.93.045003,1,R9,MPS/PEPS review,no
+overcomingthematrixproductstateencodingbarrierviadmrgguidedprobabilisticimaginarytimeevolution,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2308.12358,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevb.94.035133,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2007.09827,1,,multi-layer estimation,no
+randomizedkaczmarzsolverfornoisylinearsystems,2,R1a,Kaczmarz-type products of projections,no
+10.1088/1367-2630/11/3/033003,0,,unrelated field,no
+10.1103/physrevb.98.205136,1,,quantum Zeno physics/experiment,no
+10.1103/physrevb.100.134306,1,,quantum Zeno physics/experiment,no
+environmentassistedquantumtransport,0,,unrelated field,no
+10.1103/physrevlett.100.090503,1,,quantum Zeno physics/experiment,no
+10.1088/1751-8113/41/49/493001,2,R1a;R7,Zeno dynamics mathematics; possible error bounds,no
+quantumzenodynamicsmathematicalandphysicalaspects,2,R1a;R7,Zeno dynamics mathematics; possible error bounds,no
+10.1137/090748330,3,R1a;R9,TT-SVD; known TT truncation error bound,yes
+10.1137/100818893,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.1403.2048,1,R9,general tensor decomposition/network,no
+10.1038/s41467-019-09039-7,1,R9,tensor network method/application; no error theorem,no
+10.1007/s10208-016-9317-9,2,R9,hierarchical tensors survey for PDEs,no
+10.1007/s11425-012-4363-5,1,,broad numerical/operator analysis,no
+10.1007/s40314-023-02211-2,1,,projection algorithm application,no
+10.1080/00018732.2021.1876991,0,,unrelated field,no
+10.1088/1751-8121/aa6dc3,1,R9,general tensor decomposition/network,no
+10.1103/physrevb.82.205105,1,R9,tensor network method/application; no error theorem,no
+neuralnetworkquantumstatesstringbondstatesandchiraltopologicalstates,0,,unrelated field,no
+10.1103/physrevlett.102.240603,1,R9,tensor network method/application; no error theorem,no
+10.1103/physreva.51.2738,1,,quantum information context; no projection-error bound,no
+10.1103/physreva.63.032312,0,,unrelated field,no
+10.1109/tit.2014.2309968,0,,unrelated field,no
+10.1142/s1230161208000043,0,,unrelated field,no
+10.1109/tit.2004.838115,0,,unrelated field,no
+10.48550/arxiv.0912.5537,0,,unrelated field,no
+10.1109/tit.2009.2025545,1,R6,fidelity/purified-distance context,no
+10.22331/q-2017-07-14-14,1,R6,fidelity/purified-distance context,no
+alargelyselfcontainedandcompletesecurityproofforquantumkeydistribution,1,R6,fidelity/purified-distance context,no
+10.1109/tit.2013.2268533,0,,unrelated field,no
+10.1007/978-1-4613-9425-9,1,R9,general tensor decomposition/network,no
+10.1007/s40324-018-0177-x,2,R9,tree/HT/TT format theory; no sharp accumulation result in title,no
+10.1184/r1/6492902.v1,1,R8,Lean formalization of unrelated content,no
+10.1137/050644756,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevb.78.155117,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevlett.98.140506,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevb.86.245101,1,R9,tensor network method/application; no error theorem,no
+conversionofprojectedentangledpairstatesintoacanonicalform,1,R9,tensor network method/application; no error theorem,no
+10.1137/140976546,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1093/amrx/abv006,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1145/2538688,1,R9,tensor network method/application; no error theorem,no
+timeintegrationoftensortrains,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1080/00268976.2024.2306881,1,R9,tensor network method/application; no error theorem,no
+10.1016/j.cma.2024.117385,1,R9,tensor network method/application; no error theorem,no
+10.1063/5.0301775,1,R9,tensor network method/application; no error theorem,no
+10.1137/24m1661996,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2311.12103,1,R9,tensor network method/application; no error theorem,no
+10.1088/0953-8984/21/39/395502,0,,unrelated field,no
+10.1103/prxquantum.2.030305,0,,unrelated field,no
+10.48550/arxiv.1407.3124,1,R9,general tensor decomposition/network,no
+10.48550/arxiv.2208.10972,1,R9,tensor network method/application; no error theorem,no
+10.1214/009053604000000067,0,,unrelated field,no
+10.1016/j.laa.2015.06.027,2,R1a,Kaczmarz-type products of projections,no
+10.1090/s0002-9947-03-03136-2,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1109/tsp.2014.2339801,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1016/j.jat.2006.02.006,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1111/rssb.12228,0,,unrelated field,no
+10.25675/3.021826,0,,unrelated field,no
+10.1137/130916138,0,,unrelated field,no
+10.1007/s10444-020-09797-9,1,R9,tensor network method/application; no error theorem,no
+10.1109/dsn.2018.00039,0,,unrelated field,no
+10.1088/1361-648x/aa8f79,0,,unrelated field,no
+10.1002/nme.7423,0,,unrelated field,no
+10.1007/s00466-022-02261-z,0,,unrelated field,no
+10.48550/arxiv.2302.03568,1,R9,tensor network method/application; no error theorem,no
+10.3390/app10082808,0,,unrelated field,no
+10.48550/arxiv.2004.01571,1,,tree message-passing inference,no
+10.1007/s10915-022-01868-x,1,R9,tensor network method/application; no error theorem,no
+10.1088/1367-2630/12/2/025007,0,,unrelated field,no
+10.1103/physrevresearch.5.033141,0,,unrelated field,no
+10.48550/arxiv.1705.01598,0,,unrelated field,no
+10.31083/j.fbl2704128,0,,unrelated field,no
+10.1021/acs.chemrev.3c00189,0,,unrelated field,no
+10.1038/s41598-021-83269-y,0,,unrelated field,no
+10.3390/math13030451,0,,unrelated field,no
+10.5772/61471,0,,unrelated field,no
+10.7900/jot.2017dec22.2179,1,,broad numerical/operator analysis,no
+10.1371/journal.pcbi.1008971,0,,unrelated field,no
+10.2140/jomms.2007.2.1019,0,,unrelated field,no
+topicsinsparseapproximation,1,,broad numerical/operator analysis,no
+10.1186/s40323-016-0060-1,1,,broad numerical/operator analysis,no
+10.22028/d291-25990,0,,unrelated field,no
+10.1145/2491533.2491549,0,,unrelated field,no
+10.1007/978-1-4302-5990-9,0,,unrelated field,no
+10.1016/s0022-0000(03)00025-4,0,,unrelated field,no
+10.1090/s0894-0347-08-00600-0,0,,unrelated field,no
+10.1103/physrevb.94.165116,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1090/s0025-5718-10-02334-3,1,,broad numerical/operator analysis,no
+10.1016/j.laa.2010.11.033,2,R6,products of orthogonal projections; structural,no
+10.1214/ss/1009213727,0,,unrelated field,no
+10.1016/0021-9045(84)90018-2,1,,broad numerical/operator analysis,no
+10.1016/j.matpur.2004.09.017,1,,broad numerical/operator analysis,no
+10.1007/s00365-017-9377-3,0,,unrelated field,no
+10.1016/0021-9045(83)90039-4,1,,broad numerical/operator analysis,no
+10.1090/s0002-9947-1950-0051437-7,0,,unrelated field,no
+10.3390/rs10020180,0,,unrelated field,no
+10.5194/bg-10-1849-2013,0,,unrelated field,no
+10.3133/b1532,0,,unrelated field,no
+10.1016/j.ocemod.2017.12.003,0,,unrelated field,no
+10.2307/1990404,0,,unrelated field,no
+10.1002/jcc.23899,0,,unrelated field,no
+10.5281/zenodo.35392,0,,unrelated field,no
+10.1088/1367-2630/7/1/034,0,,unrelated field,no
+10.1016/j.jmaa.2021.125239,2,R6,angles between subspaces/projections,no
+10.1088/1741-2560/13/3/036007,0,,unrelated field,no
+10.7554/elife.49424,0,,unrelated field,no
+10.3389/neuro.01.1.1.016.2007,0,,unrelated field,no
+10.1016/j.aca.2018.03.044,0,,unrelated field,no
+10.1088/0266-5611/14/4/001,0,,unrelated field,no
+10.1016/j.jmva.2018.03.008,0,,unrelated field,no
+10.1021/ct400219n,0,,unrelated field,no
+10.48550/arxiv.1905.06549,0,,unrelated field,no
+10.1007/s11263-011-0468-5,0,,unrelated field,no
+10.2172/5005529,0,,unrelated field,no
+10.1016/j.ress.2015.05.025,0,,unrelated field,no
+10.4310/jdg/1460463562,0,,unrelated field,no
+10.2140/apde.2010.3.359,0,,unrelated field,no
+10.1090/s0894-0347-2014-00801-8,0,,unrelated field,no
+10.4310/acta.2023.v231.n1.a3,0,,unrelated field,no
+10.1016/0024-3795(88)90153-x,1,,broad numerical/operator analysis,no
+10.1007/s00220-011-1309-7,1,,quantum information context; no projection-error bound,no
+10.21468/scipostphys.12.5.157,0,,unrelated field,no
+10.1007/s00220-014-1990-4,1,,quantum information context; no projection-error bound,no
+10.1063/1.4903989,0,,unrelated field,no
+10.1002/bip.22372,0,,unrelated field,no
+10.1103/physrevlett.122.201601,0,,unrelated field,no
+10.1371/journal.pone.0105302,0,,unrelated field,no
+10.1371/journal.pbio.0030196,0,,unrelated field,no
+10.1103/revmodphys.84.1655,0,,unrelated field,no
+10.4007/annals.2009.169.903,0,,unrelated field,no
+10.1016/j.acha.2021.02.004,0,,unrelated field,no
+10.1007/jhep08(2014)145,0,,unrelated field,no
+10.4310/jdg/1231856263,0,,unrelated field,no
+10.22331/q-2019-08-05-168,2,R6,tight quantum speed limits via state angles,no
+10.1175/1520-0485(2002)032<1460:dotdtb>2.0.co;2,0,,unrelated field,no
+10.1116/1.5119961,1,,quantum information context; no projection-error bound,no
+10.1017/jfm.2023.687,0,,unrelated field,no
+10.1029/2017jb015223,0,,unrelated field,no
+largemarginmethodsforstructuredandinterdependentoutputvariables,0,,unrelated field,no
+10.1007/978-3-030-34489-4,1,R9,general tensor decomposition/network,no
+10.22331/q-2021-03-15-410,1,R9,general tensor decomposition/network,no
+10.1007/jhep07(2014)079,0,,unrelated field,no
+10.1214/aos/1016218223,0,,unrelated field,no
+10.1145/169627.169640,0,,unrelated field,no
+10.5194/bg-6-2001-2009,0,,unrelated field,no
+10.3389/fphy.2017.00063,0,,unrelated field,no
+10.1007/s00145-011-9105-2,0,,unrelated field,no
+10.1145/197938.197956,0,,unrelated field,no
+10.1093/gji/ggv326,0,,unrelated field,no
+10.1214/09-ss047,0,,unrelated field,no
+10.1016/j.nima.2010.04.042,0,,unrelated field,no
+10.1002/(issn)1097-0207,0,,unrelated field,no
+10.1214/19-ba1195,0,,unrelated field,no
+10.1007/s40484-019-0186-5,1,R9,general tensor decomposition/network,no
+microphysicalretrievalofnonsphericalaerosolparticlesusingregularizedinversionofmultiwavelengthlidardata,0,,unrelated field,no
+10.1103/revmodphys.89.015002,0,,unrelated field,no
+10.1090/s0002-9939-04-07245-4,1,,extremal-function symmetry; different inequality,no
+10.1103/physrevx.8.021014,0,,unrelated field,no
+10.1007/bf02404474,0,,unrelated field,no
+10.1215/s0012-7094-96-08310-6,0,,unrelated field,no
+10.1039/c9sm01221d,0,,unrelated field,no
+10.1111/ele.14215,0,,unrelated field,no
+10.3847/0004-637x/833/1/3,0,,unrelated field,no
+10.4230/lipics.itp.2022.9,1,R8,Lean formalization of unrelated content,no
+10.1145/781131.781153,0,,unrelated field,no
+10.21203/rs.3.rs-10784814/v1,1,R8,Lean formalization of unrelated content,no
+10.5281/zenodo.19154258,0,,unrelated field,no
+10.1017/s0140525x12000477,0,,unrelated field,no
+10.1523/jneurosci.1278-13.2013,0,,unrelated field,no
+10.1109/jstsp.2013.2247023,1,,projection algorithm application,no
+10.1007/s11075-015-0078-3,1,,projection algorithm application,no
+10.1016/s0140-6736(20)30677-2,0,,unrelated field,no
+10.1016/j.jat.2016.02.001,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1016/j.jat.2008.04.001,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1007/s11075-017-0310-4,3,R1a;R12,projection methods under perturbations; error accumulation,yes
+10.1155/s108533750321201x,1,,projection algorithm application,no
+10.48550/arxiv.0710.2387,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1007/s10013-018-0279-x,1,,broad numerical/operator analysis,no
+10.48550/arxiv.2003.10324,1,,projection algorithm application,no
+10.48550/arxiv.1402.5460,2,R1a,linear convergence of averaged operator compositions,no
+10.48550/arxiv.1407.5210,1,,broad numerical/operator analysis,no
+10.48550/arxiv.1205.0318,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.48550/arxiv.1407.0671,3,R1b;R6,optimal convergence rates of matrix iterations,yes
+10.1029/2006je002825,0,,unrelated field,no
+10.1103/revmodphys.95.045006,0,,unrelated field,no
+10.1103/physrevx.9.031009,1,,quantum Zeno physics/experiment,no
+10.1088/1367-2630/18/5/053031,1,,quantum Zeno physics/experiment,no
+10.1088/1367-2630/17/6/063035,1,,quantum Zeno physics/experiment,no
+10.1103/physrevb.102.035119,0,,unrelated field,no
+10.22331/q-2023-09-07-1100,1,,quantum Zeno physics/experiment,no
+10.1029/2021ms002621,0,,unrelated field,no
+10.48550/arxiv.2211.05988,1,,quantum Zeno physics/experiment,no
+10.1103/physreva.105.052426,0,,unrelated field,no
+10.1007/s10994-012-5316-5,0,,unrelated field,no
+10.1007/s00037-006-0212-7,1,,quantum adversary/hybrid-type lower bounds,no
+10.1007/11523468,0,,unrelated field,no
+10.22331/q-2025-02-18-1636,0,,unrelated field,no
+10.1002/ldr.3332,0,,unrelated field,no
+10.1103/physrevresearch.3.023153,0,,unrelated field,no
+10.48550/arxiv.2110.08973,0,,unrelated field,no
+10.1088/1367-2630/17/8/083040,1,,quantum information context; no projection-error bound,no
+10.1038/s41586-022-04725-x,0,,unrelated field,no
+10.1126/science.abg1919,0,,unrelated field,no
+10.1103/revmodphys.90.035006,0,,unrelated field,no
+10.1086/309175,0,,unrelated field,no
+10.1103/physrevb.91.165112,1,R9,tensor network method/application; no error theorem,no
+10.2969/jmsj/01330246,0,,unrelated field,no
+10.1090/s0273-0979-10-01278-4,1,,broad numerical/operator analysis,no
+10.1103/physrevb.88.045132,0,,unrelated field,no
+10.1103/prxlife.3.013003,0,,unrelated field,no
+10.48550/arxiv.2207.08243,0,,unrelated field,no
+10.53846/goediss-10292,0,,unrelated field,no
+10.5821/dissertation-2117-370853,0,,unrelated field,no
+10.48550/arxiv.2504.21786,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2609.02394,1,R9,tensor network method/application; no error theorem,no
+10.1088/1367-2630/12/5/055026,0,,unrelated field,no
+10.48550/arxiv.2306.03698,0,,unrelated field,no
+10.1090/s0002-9904-1977-14406-6,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1007/bf01027691,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1090/s0002-9947-1937-1501907-0,2,R6,origin of Friedrichs angle,no
+10.1007/978-94-015-8577-4_7,2,R6,angles between subspaces/projections,no
+10.1007/978-94-011-2634-2_5,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1007/978-3-0348-6253-0_7,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1137/s0036144593251710,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1093/imanum/22.3.329,1,,projection algorithm application,no
+10.1080/01630569808816813,1,,broad numerical/operator analysis,no
+projectionalgorithmsandmonotoneoperators,1,,projection algorithm application,no
+10.1080/01630569808816822,1,,broad numerical/operator analysis,no
+10.1007/s00041-012-9248-z,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1016/j.jmaa.2004.12.050,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1111/j.1475-3995.2008.00682.x,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1007/s00365-013-9213-3,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+anewprojectionmethodforfindingtheclosestpointintheintersectionofconvexsets,1,,projection algorithm application,no
+10.1007/s10589-017-9942-5,1,,projection algorithm application,no
+10.1007/s10107-019-01437-5,2,,sharp worst-case complexity of cyclic updates; different object,no
+10.1016/s1570-579x(01)80013-6,1,,projection algorithm application,no
+10.1090/mcom/3644,1,,projection algorithm application,no
+10.5642/tspmcos.2012.01,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1109/lsp.2014.2303153,1,,projection algorithm application,no
+10.1553/etna_vol54s610,0,,unrelated field,no
+10.1137/s0363012998338806,0,,unrelated field,no
+10.1007/s10107-016-1009-3,2,R1b,exact worst-case performance via extremal interpolation,no
+10.1287/moor.2016.0827,1,,broad numerical/operator analysis,no
+10.23919/ecc65951.2025.11187196,2,R6,phase/angle bounds for operator compositions,no
+10.1080/09500349414552351,0,,unrelated field,no
+10.7907/rzr7-dt72.,0,,unrelated field,no
+10.1103/physreva.51.1015,0,,unrelated field,no
+10.1145/502090.502097,0,,unrelated field,no
+10.4230/lipics.icalp.2019.8,0,,unrelated field,no
+10.1145/3297858.3304007,0,,unrelated field,no
+10.1103/physrevd.64.023501,0,,unrelated field,no
+10.1103/physrevb.99.224307,1,,quantum Zeno physics/experiment,no
+10.1088/0266-5611/25/8/085011,0,,unrelated field,no
+10.1088/0266-5611/25/11/115017,1,,broad numerical/operator analysis,no
+10.1073/pnas.2015851118,1,R9,general tensor decomposition/network,no
+10.1007/bf01436376,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1016/0022-247x(78)90214-7,2,R6,angles between subspaces/projections,no
+10.1137/1113049,1,,broad numerical/operator analysis,no
+10.1090/s0002-9947-1967-0214135-5,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1109/tit.2004.839492,1,,projection algorithm application,no
+10.1137/s1064827599361771,1,,broad numerical/operator analysis,no

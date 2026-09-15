@@ -63,6 +63,8 @@ every depth. Topology: no dependence through `k = 4` in PMT-A.
 | `RECURSION.md` | state recursion, Conjecture R, R′, dual recursion, DAG conjecture |
 | `certificates/` | 7 certificate JSONs, `verify_certificates.py` (stdlib), `generate_certificate.py` |
 | `experiments/` | scripts + `outputs/` (SDP scan, LP sweeps, constants table, field and k=5 searches) |
+| `heterogeneous/` | nodewise scalar evaluator, conservative certificate, and prototype error-budget allocator |
+| `HETEROGENEOUS_THEOREM_R.md` | frozen target, safe fallback, and proof checkpoints for the nodewise extension |
 | `../../papers/pmt_I_sharp_stability/` | Paper I LaTeX draft |
 
 ## Reproduce

@@ -1,0 +1,221 @@
+timestamp,database,family,query,request,status,results_total,records_saved,notes
+2026-09-14T13:17:06,openalex,A,"""hierarchical Tucker"" truncation error bound",https://api.openalex.org/works?search=%22hierarchical+Tucker%22+truncation+error+bound&per-page=25,OK,356,25,
+2026-09-14T13:17:36,openalex-citations,A,round1_seed backward of 10.1137/090764189,W2038198231,OK,25,23,
+2026-09-14T13:17:36,openalex-citations,A,round1_seed forward of 10.1137/090764189,W2038198231,OK,531,50,
+2026-09-14T13:17:39,openalex-citations,A,round1_seed backward of 10.1007/s40324-018-00184-5,W2797985097,OK,14,14,
+2026-09-14T13:17:39,openalex-citations,A,round1_seed forward of 10.1007/s40324-018-00184-5,W2797985097,OK,2,2,
+2026-09-14T13:17:43,openalex-citations,A,round1_seed backward of 10.1137/22M1473790,W4321481275,OK,33,25,
+2026-09-14T13:17:43,openalex-citations,A,round1_seed forward of 10.1137/22M1473790,W4321481275,OK,23,23,
+2026-09-14T13:17:47,openalex-citations,B,round1_seed backward of 10.48550/arXiv.2001.01191,W2996850940,OK,36,34,
+2026-09-14T13:17:47,openalex-citations,B,round1_seed forward of 10.48550/arXiv.2001.01191,W2996850940,OK,5,5,
+2026-09-14T13:17:50,openalex-citations,I,round1_seed backward of 10.1007/BF02551235,W2041871718,OK,20,20,
+2026-09-14T13:17:50,openalex-citations,I,round1_seed forward of 10.1007/BF02551235,W2041871718,OK,99,50,
+2026-09-14T13:17:54,openalex-citations,I,round1_seed backward of 10.1006/jmaa.1997.5216,W1972318367,OK,0,0,
+2026-09-14T13:17:54,openalex-citations,I,round1_seed forward of 10.1006/jmaa.1997.5216,W1972318367,OK,9,9,
+2026-09-14T13:17:56,openalex-citations,I,round1_seed backward of 10.48550/arXiv.1704.00308,W2951843740,OK,14,13,
+2026-09-14T13:17:56,openalex-citations,I,round1_seed forward of 10.48550/arXiv.1704.00308,W2951843740,OK,0,0,
+2026-09-14T13:17:59,openalex-citations,D,round1_seed backward of 10.48550/arXiv.1902.09788,W6948001508,OK,0,0,
+2026-09-14T13:17:59,openalex-citations,D,round1_seed forward of 10.48550/arXiv.1902.09788,W6948001508,OK,0,0,
+2026-09-14T13:18:01,openalex-citations,E,round1_seed backward of 10.1109/TIT.2010.2054130,W2166302514,OK,20,17,
+2026-09-14T13:18:01,openalex-citations,E,round1_seed forward of 10.1109/TIT.2010.2054130,W2166302514,OK,250,50,
+2026-09-14T13:18:05,openalex-citations,K,round1_seed backward of 10.1137/S0097539796300933,W2006290558,OK,18,18,
+2026-09-14T13:18:05,openalex-citations,K,round1_seed forward of 10.1137/S0097539796300933,W2006290558,OK,1505,50,
+2026-09-14T13:18:09,openalex-citations,K,round1_seed backward of 10.1109/18.796385,W2114473497,OK,20,19,
+2026-09-14T13:18:09,openalex-citations,K,round1_seed forward of 10.1109/18.796385,W2114473497,OK,486,50,
+2026-09-14T13:18:12,openalex-citations,J,round1_seed backward of 10.1063/1.523304,W2013879218,OK,6,6,
+2026-09-14T13:18:12,openalex-citations,J,round1_seed forward of 10.1063/1.523304,W2013879218,OK,2311,50,
+2026-09-14T13:18:16,openalex-citations,M,round1_seed backward of 10.1103/PhysRevB.73.094423,W2066972040,OK,38,36,
+2026-09-14T13:18:16,openalex-citations,M,round1_seed forward of 10.1103/PhysRevB.73.094423,W2066972040,OK,772,50,
+2026-09-14T13:18:23,arxiv,A,"""hierarchical Tucker"" truncation error bound",,ERROR,,0,HTTPError: HTTP Error 429: Too Many Requests
+2026-09-14T13:18:25,zbmath,A,"""hierarchical Tucker"" truncation error bound",https://api.zbmath.org/v1/document/_search?search_string=%22hierarchical+Tucker%22+truncation+error+bound&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:18:20,openalex-citations,H,round1_seed backward of 10.1145/3372885.3373824,W2981188613,OK,67,64,
+2026-09-14T13:18:20,openalex-citations,H,round1_seed forward of 10.1145/3372885.3373824,W2981188613,OK,153,50,
+2026-09-14T13:18:40,semanticscholar,A,"""hierarchical Tucker"" truncation error bound",,ERROR,,0,HTTPError: HTTP Error 429: 
+2026-09-14T13:18:42,openalex,A,"""tree tensor network"" truncation error",https://api.openalex.org/works?search=%22tree+tensor+network%22+truncation+error&per-page=25,OK,751,25,
+2026-09-14T13:18:42,arxiv,A,"""tree tensor network"" truncation error",,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:18:44,zbmath,A,"""tree tensor network"" truncation error",https://api.zbmath.org/v1/document/_search?search_string=%22tree+tensor+network%22+truncation+error&page=0&results_per_page=25,OK,1,1,
+2026-09-14T13:18:44,semanticscholar,A,"""tree tensor network"" truncation error",,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:18:46,openalex,A,hierarchical tensor format orthogonal projection error estimate,https://api.openalex.org/works?search=hierarchical+tensor+format+orthogonal+projection+error+estimate&per-page=25,OK,3300,25,
+2026-09-14T13:18:46,arxiv,A,hierarchical tensor format orthogonal projection error estimate,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:18:47,zbmath,A,hierarchical tensor format orthogonal projection error estimate,https://api.zbmath.org/v1/document/_search?search_string=hierarchical+tensor+format+orthogonal+projection+error+estimate&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:18:47,semanticscholar,A,hierarchical tensor format orthogonal projection error estimate,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:18:49,openalex,A,"""tensor train"" rounding quasi-optimal error bound",https://api.openalex.org/works?search=%22tensor+train%22+rounding+quasi-optimal+error+bound&per-page=25,OK,134,25,
+2026-09-14T13:18:49,arxiv,A,"""tensor train"" rounding quasi-optimal error bound",,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:18:51,zbmath,A,"""tensor train"" rounding quasi-optimal error bound",https://api.zbmath.org/v1/document/_search?search_string=%22tensor+train%22+rounding+quasi-optimal+error+bound&page=0&results_per_page=25,OK,1,1,
+2026-09-14T13:18:51,semanticscholar,A,"""tensor train"" rounding quasi-optimal error bound",,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:18:53,openalex,A,"""dimension tree"" hierarchical SVD approximation error",https://api.openalex.org/works?search=%22dimension+tree%22+hierarchical+SVD+approximation+error&per-page=25,OK,112,25,
+2026-09-14T13:18:53,arxiv,A,"""dimension tree"" hierarchical SVD approximation error",,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:18:55,zbmath,A,"""dimension tree"" hierarchical SVD approximation error",https://api.zbmath.org/v1/document/_search?search_string=%22dimension+tree%22+hierarchical+SVD+approximation+error&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:18:55,semanticscholar,A,"""dimension tree"" hierarchical SVD approximation error",,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:18:57,openalex,A,"""tree tensor network"" error accumulation",https://api.openalex.org/works?search=%22tree+tensor+network%22+error+accumulation&per-page=25,OK,88,25,
+2026-09-14T13:18:57,arxiv,A,"""tree tensor network"" error accumulation",,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:18:58,zbmath,A,"""tree tensor network"" error accumulation",https://api.zbmath.org/v1/document/_search?search_string=%22tree+tensor+network%22+error+accumulation&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:18:58,semanticscholar,A,"""tree tensor network"" error accumulation",,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:19:00,openalex,B,error propagation multilinear computation tree projection,https://api.openalex.org/works?search=error+propagation+multilinear+computation+tree+projection&per-page=25,OK,571,25,
+2026-09-14T13:19:00,arxiv,B,error propagation multilinear computation tree projection,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:19:02,zbmath,B,error propagation multilinear computation tree projection,https://api.zbmath.org/v1/document/_search?search_string=error+propagation+multilinear+computation+tree+projection&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:19:02,semanticscholar,B,error propagation multilinear computation tree projection,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:19:04,openalex,B,perturbation bound composition of multilinear maps,https://api.openalex.org/works?search=perturbation+bound+composition+of+multilinear+maps&per-page=25,OK,1313,25,
+2026-09-14T13:19:04,arxiv,B,perturbation bound composition of multilinear maps,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:19:06,zbmath,B,perturbation bound composition of multilinear maps,https://api.zbmath.org/v1/document/_search?search_string=perturbation+bound+composition+of+multilinear+maps&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:19:06,semanticscholar,B,perturbation bound composition of multilinear maps,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:19:08,openalex,B,stability of hierarchical multilinear computations,https://api.openalex.org/works?search=stability+of+hierarchical+multilinear+computations&per-page=25,OK,2518,25,
+2026-09-14T13:19:08,arxiv,B,stability of hierarchical multilinear computations,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:19:09,zbmath,B,stability of hierarchical multilinear computations,https://api.zbmath.org/v1/document/_search?search_string=stability+of+hierarchical+multilinear+computations&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:19:09,semanticscholar,B,stability of hierarchical multilinear computations,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:19:11,openalex,B,recursive multilinear approximation error accumulation,https://api.openalex.org/works?search=recursive+multilinear+approximation+error+accumulation&per-page=25,OK,195,25,
+2026-09-14T13:19:11,arxiv,B,recursive multilinear approximation error accumulation,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:19:13,zbmath,B,recursive multilinear approximation error accumulation,https://api.zbmath.org/v1/document/_search?search_string=recursive+multilinear+approximation+error+accumulation&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:19:13,semanticscholar,B,recursive multilinear approximation error accumulation,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:19:15,openalex,B,error amplification composition bounded multilinear maps,https://api.openalex.org/works?search=error+amplification+composition+bounded+multilinear+maps&per-page=25,OK,347,25,
+2026-09-14T13:19:15,arxiv,B,error amplification composition bounded multilinear maps,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:19:17,zbmath,B,error amplification composition bounded multilinear maps,https://api.zbmath.org/v1/document/_search?search_string=error+amplification+composition+bounded+multilinear+maps&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:19:17,semanticscholar,B,error amplification composition bounded multilinear maps,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:19:18,openalex,C,product of orthogonal projections sharp norm bound,https://api.openalex.org/works?search=product+of+orthogonal+projections+sharp+norm+bound&per-page=25,OK,23450,25,
+2026-09-14T13:19:18,arxiv,C,product of orthogonal projections sharp norm bound,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:19:20,zbmath,C,product of orthogonal projections sharp norm bound,https://api.zbmath.org/v1/document/_search?search_string=product+of+orthogonal+projections+sharp+norm+bound&page=0&results_per_page=25,OK,2,2,
+2026-09-14T13:19:20,semanticscholar,C,product of orthogonal projections sharp norm bound,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:19:22,openalex,C,Friedrichs angle product of projections,https://api.openalex.org/works?search=Friedrichs+angle+product+of+projections&per-page=25,OK,12803,25,
+2026-09-14T13:19:22,arxiv,C,Friedrichs angle product of projections,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:19:46,zbmath,C,Friedrichs angle product of projections,https://api.zbmath.org/v1/document/_search?search_string=Friedrichs+angle+product+of+projections&page=0&results_per_page=25,OK,5,5,fetched via PowerShell (certificate chain)
+2026-09-14T13:19:46,semanticscholar,C,Friedrichs angle product of projections,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:19:50,openalex,C,principal angles between subspaces sharp estimate projection,https://api.openalex.org/works?search=principal+angles+between+subspaces+sharp+estimate+projection&per-page=25,OK,5077,25,
+2026-09-14T13:19:50,arxiv,C,principal angles between subspaces sharp estimate projection,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:19:51,zbmath,C,principal angles between subspaces sharp estimate projection,https://api.zbmath.org/v1/document/_search?search_string=principal+angles+between+subspaces+sharp+estimate+projection&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:19:51,semanticscholar,C,principal angles between subspaces sharp estimate projection,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:19:54,openalex,C,norm of product of projections cosine of angle power,https://api.openalex.org/works?search=norm+of+product+of+projections+cosine+of+angle+power&per-page=25,OK,7138,25,
+2026-09-14T13:19:54,arxiv,C,norm of product of projections cosine of angle power,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:19:56,zbmath,C,norm of product of projections cosine of angle power,https://api.zbmath.org/v1/document/_search?search_string=norm+of+product+of+projections+cosine+of+angle+power&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:19:56,semanticscholar,C,norm of product of projections cosine of angle power,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:19:58,openalex,D,sharp inequality bounded multilinear map Hilbert space best constant,https://api.openalex.org/works?search=sharp+inequality+bounded+multilinear+map+Hilbert+space+best+constant&per-page=25,OK,550,25,
+2026-09-14T13:19:58,arxiv,D,sharp inequality bounded multilinear map Hilbert space best constant,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:00,zbmath,D,sharp inequality bounded multilinear map Hilbert space best constant,https://api.zbmath.org/v1/document/_search?search_string=sharp+inequality+bounded+multilinear+map+Hilbert+space+best+constant&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:00,semanticscholar,D,sharp inequality bounded multilinear map Hilbert space best constant,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:02,openalex,D,multilinear contraction angle inequality,https://api.openalex.org/works?search=multilinear+contraction+angle+inequality&per-page=25,OK,512,25,
+2026-09-14T13:20:02,arxiv,D,multilinear contraction angle inequality,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:04,zbmath,D,multilinear contraction angle inequality,https://api.zbmath.org/v1/document/_search?search_string=multilinear+contraction+angle+inequality&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:04,semanticscholar,D,multilinear contraction angle inequality,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:06,openalex,D,projective tensor norm inequality angle between vectors,https://api.openalex.org/works?search=projective+tensor+norm+inequality+angle+between+vectors&per-page=25,OK,9752,25,
+2026-09-14T13:20:06,arxiv,D,projective tensor norm inequality angle between vectors,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:08,zbmath,D,projective tensor norm inequality angle between vectors,https://api.zbmath.org/v1/document/_search?search_string=projective+tensor+norm+inequality+angle+between+vectors&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:08,semanticscholar,D,projective tensor norm inequality angle between vectors,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:10,openalex,D,extremizers multilinear inequality Hilbert space,https://api.openalex.org/works?search=extremizers+multilinear+inequality+Hilbert+space&per-page=25,OK,1368,25,
+2026-09-14T13:20:10,arxiv,D,extremizers multilinear inequality Hilbert space,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:12,zbmath,D,extremizers multilinear inequality Hilbert space,https://api.zbmath.org/v1/document/_search?search_string=extremizers+multilinear+inequality+Hilbert+space&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:12,semanticscholar,D,extremizers multilinear inequality Hilbert space,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:14,openalex,E,generalized fidelity subnormalized states purified distance,https://api.openalex.org/works?search=generalized+fidelity+subnormalized+states+purified+distance&per-page=25,OK,115,25,
+2026-09-14T13:20:14,arxiv,E,generalized fidelity subnormalized states purified distance,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:16,zbmath,E,generalized fidelity subnormalized states purified distance,https://api.zbmath.org/v1/document/_search?search_string=generalized+fidelity+subnormalized+states+purified+distance&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:16,semanticscholar,E,generalized fidelity subnormalized states purified distance,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:18,openalex,E,purified distance monotonicity,https://api.openalex.org/works?search=purified+distance+monotonicity&per-page=25,OK,10910,25,
+2026-09-14T13:20:18,arxiv,E,purified distance monotonicity,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:19,zbmath,E,purified distance monotonicity,https://api.zbmath.org/v1/document/_search?search_string=purified+distance+monotonicity&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:19,semanticscholar,E,purified distance monotonicity,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:22,openalex,E,angle metric closed unit ball Hilbert space contraction,https://api.openalex.org/works?search=angle+metric+closed+unit+ball+Hilbert+space+contraction&per-page=25,OK,1094,25,
+2026-09-14T13:20:22,arxiv,E,angle metric closed unit ball Hilbert space contraction,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:24,zbmath,E,angle metric closed unit ball Hilbert space contraction,https://api.zbmath.org/v1/document/_search?search_string=angle+metric+closed+unit+ball+Hilbert+space+contraction&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:24,semanticscholar,E,angle metric closed unit ball Hilbert space contraction,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:25,openalex,E,Bures angle monotonicity contraction,https://api.openalex.org/works?search=Bures+angle+monotonicity+contraction&per-page=25,OK,284,25,
+2026-09-14T13:20:25,arxiv,E,Bures angle monotonicity contraction,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:27,zbmath,E,Bures angle monotonicity contraction,https://api.zbmath.org/v1/document/_search?search_string=Bures+angle+monotonicity+contraction&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:27,semanticscholar,E,Bures angle monotonicity contraction,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:29,openalex,F,error bound independent of tree structure tensor network,https://api.openalex.org/works?search=error+bound+independent+of+tree+structure+tensor+network&per-page=25,OK,23901,25,
+2026-09-14T13:20:29,arxiv,F,error bound independent of tree structure tensor network,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:31,zbmath,F,error bound independent of tree structure tensor network,https://api.zbmath.org/v1/document/_search?search_string=error+bound+independent+of+tree+structure+tensor+network&page=0&results_per_page=25,OK,4,4,
+2026-09-14T13:20:31,semanticscholar,F,error bound independent of tree structure tensor network,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:35,openalex,F,truncation error independent of dimension tree,https://api.openalex.org/works?search=truncation+error+independent+of+dimension+tree&per-page=25,OK,49718,25,
+2026-09-14T13:20:35,arxiv,F,truncation error independent of dimension tree,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:36,zbmath,F,truncation error independent of dimension tree,https://api.zbmath.org/v1/document/_search?search_string=truncation+error+independent+of+dimension+tree&page=0&results_per_page=25,OK,1,1,
+2026-09-14T13:20:36,semanticscholar,F,truncation error independent of dimension tree,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:38,openalex,F,bound independent of parenthesization multilinear,https://api.openalex.org/works?search=bound+independent+of+parenthesization+multilinear&per-page=25,OK,64,25,
+2026-09-14T13:20:38,arxiv,F,bound independent of parenthesization multilinear,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:40,zbmath,F,bound independent of parenthesization multilinear,https://api.zbmath.org/v1/document/_search?search_string=bound+independent+of+parenthesization+multilinear&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:40,semanticscholar,F,bound independent of parenthesization multilinear,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:42,openalex,G,two-dimensional extremizer sharp inequality Hilbert space,https://api.openalex.org/works?search=two-dimensional+extremizer+sharp+inequality+Hilbert+space&per-page=25,OK,7994,25,
+2026-09-14T13:20:42,arxiv,G,two-dimensional extremizer sharp inequality Hilbert space,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:44,zbmath,G,two-dimensional extremizer sharp inequality Hilbert space,https://api.zbmath.org/v1/document/_search?search_string=two-dimensional+extremizer+sharp+inequality+Hilbert+space&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:44,semanticscholar,G,two-dimensional extremizer sharp inequality Hilbert space,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:46,openalex,G,extremal problem reduces to two-dimensional subspace operator norm,https://api.openalex.org/works?search=extremal+problem+reduces+to+two-dimensional+subspace+operator+norm&per-page=25,OK,21625,25,
+2026-09-14T13:20:46,arxiv,G,extremal problem reduces to two-dimensional subspace operator norm,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:43,openalex-citations,I,round1_fix backward of 10.1006/jmaa.1997.5202,W2052610157,OK,20,16,
+2026-09-14T13:20:43,openalex-citations,I,round1_fix forward of 10.1006/jmaa.1997.5202,W2052610157,OK,85,50,
+2026-09-14T13:20:48,zbmath,G,extremal problem reduces to two-dimensional subspace operator norm,https://api.zbmath.org/v1/document/_search?search_string=extremal+problem+reduces+to+two-dimensional+subspace+operator+norm&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:48,semanticscholar,G,extremal problem reduces to two-dimensional subspace operator norm,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:50,openalex,G,equal angles extremizer product of cosines maximization,https://api.openalex.org/works?search=equal+angles+extremizer+product+of+cosines+maximization&per-page=25,OK,7766,25,
+2026-09-14T13:20:50,arxiv,G,equal angles extremizer product of cosines maximization,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:47,openalex-citations,D,round1_fix backward of 10.1007/s10107-021-01639-w,W2916081703,OK,46,37,
+2026-09-14T13:20:47,openalex-citations,D,round1_fix forward of 10.1007/s10107-021-01639-w,W2916081703,OK,19,19,
+2026-09-14T13:20:52,zbmath,G,equal angles extremizer product of cosines maximization,https://api.zbmath.org/v1/document/_search?search_string=equal+angles+extremizer+product+of+cosines+maximization&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:20:52,semanticscholar,G,equal angles extremizer product of cosines maximization,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:54,openalex,H,Lean formalization functional analysis inequality,https://api.openalex.org/works?search=Lean+formalization+functional+analysis+inequality&per-page=25,OK,4409,25,
+2026-09-14T13:20:54,arxiv,H,Lean formalization functional analysis inequality,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:20:56,zbmath,H,Lean formalization functional analysis inequality,https://api.zbmath.org/v1/document/_search?search_string=Lean+formalization+functional+analysis+inequality&page=0&results_per_page=25,OK,1,1,
+2026-09-14T13:20:56,semanticscholar,H,Lean formalization functional analysis inequality,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:20:58,openalex,H,formal verification numerical analysis error bound proof assistant,https://api.openalex.org/works?search=formal+verification+numerical+analysis+error+bound+proof+assistant&per-page=25,OK,5815,25,
+2026-09-14T13:20:58,arxiv,H,formal verification numerical analysis error bound proof assistant,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:00,zbmath,H,formal verification numerical analysis error bound proof assistant,https://api.zbmath.org/v1/document/_search?search_string=formal+verification+numerical+analysis+error+bound+proof+assistant&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:21:00,semanticscholar,H,formal verification numerical analysis error bound proof assistant,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:02,openalex,H,Mathlib formalization Hilbert space,https://api.openalex.org/works?search=Mathlib+formalization+Hilbert+space&per-page=25,OK,190,25,
+2026-09-14T13:21:02,arxiv,H,Mathlib formalization Hilbert space,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:04,zbmath,H,Mathlib formalization Hilbert space,https://api.zbmath.org/v1/document/_search?search_string=Mathlib+formalization+Hilbert+space&page=0&results_per_page=25,OK,4,4,
+2026-09-14T13:21:04,semanticscholar,H,Mathlib formalization Hilbert space,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:07,openalex,I,alternating projections rate of convergence sharp constant,https://api.openalex.org/works?search=alternating+projections+rate+of+convergence+sharp+constant&per-page=25,OK,23998,25,
+2026-09-14T13:21:07,arxiv,I,alternating projections rate of convergence sharp constant,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:09,zbmath,I,alternating projections rate of convergence sharp constant,https://api.zbmath.org/v1/document/_search?search_string=alternating+projections+rate+of+convergence+sharp+constant&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:21:09,semanticscholar,I,alternating projections rate of convergence sharp constant,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:11,openalex,I,Kayalar Weinert alternating projections error,https://api.openalex.org/works?search=Kayalar+Weinert+alternating+projections+error&per-page=25,OK,65,25,
+2026-09-14T13:21:11,arxiv,I,Kayalar Weinert alternating projections error,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:13,zbmath,I,Kayalar Weinert alternating projections error,https://api.zbmath.org/v1/document/_search?search_string=Kayalar+Weinert+alternating+projections+error&page=0&results_per_page=25,OK,2,2,
+2026-09-14T13:21:13,semanticscholar,I,Kayalar Weinert alternating projections error,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:14,openalex,I,rate of convergence method of alternating projections cosine Friedrichs,https://api.openalex.org/works?search=rate+of+convergence+method+of+alternating+projections+cosine+Friedrichs&per-page=25,OK,416,25,
+2026-09-14T13:21:14,arxiv,I,rate of convergence method of alternating projections cosine Friedrichs,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:17,zbmath,I,rate of convergence method of alternating projections cosine Friedrichs,https://api.zbmath.org/v1/document/_search?search_string=rate+of+convergence+method+of+alternating+projections+cosine+Friedrichs&page=0&results_per_page=25,OK,4,4,
+2026-09-14T13:21:17,semanticscholar,I,rate of convergence method of alternating projections cosine Friedrichs,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:19,openalex,J,quantum Zeno effect repeated projective measurements bound,https://api.openalex.org/works?search=quantum+Zeno+effect+repeated+projective+measurements+bound&per-page=25,OK,913,25,
+2026-09-14T13:21:19,arxiv,J,quantum Zeno effect repeated projective measurements bound,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:21,zbmath,J,quantum Zeno effect repeated projective measurements bound,https://api.zbmath.org/v1/document/_search?search_string=quantum+Zeno+effect+repeated+projective+measurements+bound&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:21:21,semanticscholar,J,quantum Zeno effect repeated projective measurements bound,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:23,openalex,J,Zeno dragging error bound projections,https://api.openalex.org/works?search=Zeno+dragging+error+bound+projections&per-page=25,OK,120,25,
+2026-09-14T13:21:23,arxiv,J,Zeno dragging error bound projections,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:25,zbmath,J,Zeno dragging error bound projections,https://api.zbmath.org/v1/document/_search?search_string=Zeno+dragging+error+bound+projections&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:21:25,semanticscholar,J,Zeno dragging error bound projections,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:27,openalex,J,survival probability repeated measurements cosine power,https://api.openalex.org/works?search=survival+probability+repeated+measurements+cosine+power&per-page=25,OK,2324,25,
+2026-09-14T13:21:27,arxiv,J,survival probability repeated measurements cosine power,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:29,zbmath,J,survival probability repeated measurements cosine power,https://api.zbmath.org/v1/document/_search?search_string=survival+probability+repeated+measurements+cosine+power&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:21:29,semanticscholar,J,survival probability repeated measurements cosine power,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:31,openalex,K,hybrid argument quantum query lower bound,https://api.openalex.org/works?search=hybrid+argument+quantum+query+lower+bound&per-page=25,OK,3474,25,
+2026-09-14T13:21:31,arxiv,K,hybrid argument quantum query lower bound,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:33,zbmath,K,hybrid argument quantum query lower bound,https://api.zbmath.org/v1/document/_search?search_string=hybrid+argument+quantum+query+lower+bound&page=0&results_per_page=25,OK,1,1,
+2026-09-14T13:21:33,semanticscholar,K,hybrid argument quantum query lower bound,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:35,openalex,K,gentle measurement lemma sequential measurements,https://api.openalex.org/works?search=gentle+measurement+lemma+sequential+measurements&per-page=25,OK,804,25,
+2026-09-14T13:21:35,arxiv,K,gentle measurement lemma sequential measurements,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:37,zbmath,K,gentle measurement lemma sequential measurements,https://api.zbmath.org/v1/document/_search?search_string=gentle+measurement+lemma+sequential+measurements&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:21:37,semanticscholar,K,gentle measurement lemma sequential measurements,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:39,openalex,K,error accumulation sequence of quantum channels bound,https://api.openalex.org/works?search=error+accumulation+sequence+of+quantum+channels+bound&per-page=25,OK,11795,25,
+2026-09-14T13:21:39,arxiv,K,error accumulation sequence of quantum channels bound,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:41,zbmath,K,error accumulation sequence of quantum channels bound,https://api.zbmath.org/v1/document/_search?search_string=error+accumulation+sequence+of+quantum+channels+bound&page=0&results_per_page=25,OK,1,1,
+2026-09-14T13:21:41,semanticscholar,K,error accumulation sequence of quantum channels bound,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:43,openalex,L,numerical range products of contractions disk,https://api.openalex.org/works?search=numerical+range+products+of+contractions+disk&per-page=25,OK,11123,25,
+2026-09-14T13:21:43,arxiv,L,numerical range products of contractions disk,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:45,zbmath,L,numerical range products of contractions disk,https://api.zbmath.org/v1/document/_search?search_string=numerical+range+products+of+contractions+disk&page=0&results_per_page=25,OK,1,1,
+2026-09-14T13:21:45,semanticscholar,L,numerical range products of contractions disk,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:47,openalex,L,products of operators numerical range bound complex plane,https://api.openalex.org/works?search=products+of+operators+numerical+range+bound+complex+plane&per-page=25,OK,69702,25,
+2026-09-14T13:21:47,arxiv,L,products of operators numerical range bound complex plane,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:49,zbmath,L,products of operators numerical range bound complex plane,https://api.zbmath.org/v1/document/_search?search_string=products+of+operators+numerical+range+bound+complex+plane&page=0&results_per_page=25,OK,1,1,
+2026-09-14T13:21:49,semanticscholar,L,products of operators numerical range bound complex plane,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:51,openalex,M,DMRG truncation error accumulation discarded weight,https://api.openalex.org/works?search=DMRG+truncation+error+accumulation+discarded+weight&per-page=25,OK,55,25,
+2026-09-14T13:21:51,arxiv,M,DMRG truncation error accumulation discarded weight,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:53,zbmath,M,DMRG truncation error accumulation discarded weight,https://api.zbmath.org/v1/document/_search?search_string=DMRG+truncation+error+accumulation+discarded+weight&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:21:53,semanticscholar,M,DMRG truncation error accumulation discarded weight,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:55,openalex,M,matrix product state truncation error bound sequential SVD,https://api.openalex.org/works?search=matrix+product+state+truncation+error+bound+sequential+SVD&per-page=25,OK,2765,25,
+2026-09-14T13:21:55,arxiv,M,matrix product state truncation error bound sequential SVD,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:21:57,zbmath,M,matrix product state truncation error bound sequential SVD,https://api.zbmath.org/v1/document/_search?search_string=matrix+product+state+truncation+error+bound+sequential+SVD&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:21:57,semanticscholar,M,matrix product state truncation error bound sequential SVD,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:21:59,openalex,N,layerwise pruning error propagation bound deep network,https://api.openalex.org/works?search=layerwise+pruning+error+propagation+bound+deep+network&per-page=25,OK,468,25,
+2026-09-14T13:21:59,arxiv,N,layerwise pruning error propagation bound deep network,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:22:00,zbmath,N,layerwise pruning error propagation bound deep network,https://api.zbmath.org/v1/document/_search?search_string=layerwise+pruning+error+propagation+bound+deep+network&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:22:00,semanticscholar,N,layerwise pruning error propagation bound deep network,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T13:22:02,openalex,N,compounding approximation error layers Lipschitz quantization bound,https://api.openalex.org/works?search=compounding+approximation+error+layers+Lipschitz+quantization+bound&per-page=25,OK,215,25,
+2026-09-14T13:22:02,arxiv,N,compounding approximation error layers Lipschitz quantization bound,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T13:22:04,zbmath,N,compounding approximation error layers Lipschitz quantization bound,https://api.zbmath.org/v1/document/_search?search_string=compounding+approximation+error+layers+Lipschitz+quantization+bound&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T13:22:04,semanticscholar,N,compounding approximation error layers Lipschitz quantization bound,,SKIPPED,,0,rate limited earlier in this run
