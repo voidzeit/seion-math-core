@@ -6,3 +6,15 @@ import PMTFormal.NodeStep
 import PMTFormal.Tree
 import PMTFormal.WitnessAdm
 import PMTFormal.TheoremR
+import PMTFormal.Heterogeneous.BoxConstant
+import PMTFormal.Heterogeneous.Upper
+import PMTFormal.Heterogeneous.Witness
+import PMTFormal.Heterogeneous.Sharp
+import PMTFormal.Heterogeneous.Permutation
+import PMTFormal.Heterogeneous.Attainment
+import PMTFormal.Heterogeneous.Scaled
+import PMTFormal.Heterogeneous.ScaledZero
+import PMTFormal.Heterogeneous.SpecLemmas
+import PMTFormal.Heterogeneous.Baseline
+import PMTFormal.Heterogeneous.CommonSpace
+import PMTFormal.Heterogeneous.CappedDiagonal

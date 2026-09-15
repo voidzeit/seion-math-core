@@ -19,6 +19,49 @@ import PMTFormal
 #print axioms PMT.theorem_R_upper
 #print axioms PMT.theorem_R_lower
 #print axioms PMT.theorem_R_sSup
+#print axioms PMT.theorem_R_max_attained
+#print axioms PMT.box_capped
+#print axioms PMT.envelopeH
+#print axioms PMT.heterogeneous_upper
+#print axioms PMT.heterogeneous_le_gBox
+#print axioms PMT.heterogeneous_witness
+#print axioms PMT.heterogeneous_lower
+#print axioms PMT.heterogeneous_sSup
+#print axioms PMT.heterogeneous_sharp
+#print axioms PMT.uniform_gBox_eq
+#print axioms PMT.heterogeneous_uniform_recovery
+#print axioms PMT.gBox_perm
+#print axioms PMT.heterogeneous_placement_independent
+#print axioms PMT.gBox_attained
+#print axioms PMT.heterogeneous_max_attained
+#print axioms PMT.heterogeneous_scaled_upper
+#print axioms PMT.heterogeneous_scaled_sSup
+#print axioms PMT.heterogeneous_scaled_upper_nonneg
+#print axioms PMT.opNorm_le_iff_unit_ball
+#print axioms PMT.HPMTree.closure_iff_unit_ball
+#print axioms PMT.gBox_le_sum
+#print axioms PMT.MSTree.lift_err
+#print axioms PMT.MSTree.lift_rootAdmFull0
+#print axioms PMT.heterogeneous_multispace_upper
+#print axioms PMT.heterogeneous_multispace_sSup
+#check @PMT.heterogeneous_multispace_upper
+#check @PMT.heterogeneous_multispace_sSup
+#check @PMT.opNorm_le_iff_unit_ball
+#check @PMT.HPMTree.closure_iff_unit_ball
+#check @PMT.gBox_le_sum
+#print axioms PMT.sSup_capped_le_gBox
+#print axioms PMT.cappedEqualAngle_replicate
+#check @PMT.gBox
+#check @PMT.heterogeneous_upper
+#check @PMT.heterogeneous_witness
+#check @PMT.heterogeneous_lower
+#check @PMT.heterogeneous_sSup
+#check @PMT.gBox_perm
+#check @PMT.heterogeneous_placement_independent
+#check @PMT.uniform_gBox_eq
+#check @PMT.heterogeneous_scaled_upper
+#check @PMT.heterogeneous_scaled_sSup
+#check @PMT.CappedEqualAngle
 #check @PMT.diagonal_lemma
 #check @PMT.rootError_eq
 #check @PMT.phi_multilinear_le
