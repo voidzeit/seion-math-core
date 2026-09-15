@@ -1,5 +1,32 @@
 # Decisions
 
+## 2026-09-15 — Applications contract, H3 priority, two certificate families, SharpTensor V1 scope
+
+- **Decision:**
+  - Freeze `paper/APPLICATIONS_BOUNDARY.md` next to `STYLE_CONTRACT.md` (Levels A/B/C; revision
+    2026-09-15b in force).
+  - Formalize H3 before SharpTensor work. Done: `capped_equal_angle`. The Lean route is the log-cos
+    tangent inequality, not pairwise redistribution.
+  - Keep two certificate families separate:
+    - the sharp universal Theorem R, `Λ_T·gBox`;
+    - instance-wise a posteriori bounds (`ATree.err_le_abound`, `KTree.err_le_sbound`), which need no
+      projectors.
+
+    Report `min` of the valid bounds.
+  - SharpTensor V1 scope is contract-then-truncate only (tree networks, HT/TT arithmetic with
+    rounding, MPO→MPS). TT-SVD/HT-SVD of a given dense tensor is excluded. No quantisation, FP8,
+    approximate projectors or gradient compression in V1.
+  - Defect definitions: `ρ_v = d_v / ∏‖R_i‖` (relative), with `d_v` the Frobenius residual. Default
+    `M_v` is the spectral norm of the input→output flattening, with Frobenius as fallback.
+  - The planner never certifies. Only executed runs are certified.
+  - Benchmarks are preregistered with a hash freeze. The TRL4 criterion is S1 ∧ S2 ∧ S3 for B1a, B2,
+    B3. B1b is a negative control.
+  - The torch backend is validated on CPU only while B-0012 holds.
+- **Reason:** keep application claims within what is proved; `Λ_T` is sharp over the class but
+  vacuous on instances, which the benchmarks confirm.
+- **Status:** accepted. The TRL4 criterion is not met (B2), so the next step is a chain-aware
+  certificate and prereg v2.
+
 ## 2026-09-14 — Formalized route for Theorem R
 
 - **Decision:** The machine-checked lifted-angle proof is the load-bearing

@@ -97,3 +97,19 @@ only. The work is uncommitted and not reviewed by a human. What stays blocked:
   - The agent audit `lean/SPEC_AUDIT.md` exists.
   - Remaining resolution condition: an attributable human review of that
     audit.
+
+**SHARPTENSOR-TRL4 (2026-09-15, appended).**
+- **Status:** the preregistered TRL4 criterion (S1 memory ∧ S2 compute ∧ S3 non-vacuous for B1a, B2,
+  B3 at δ = 0.01) is **not met**.
+- **Cause:** B2 (MPO→MPS) admits no certified compression. The per-site slot amplification
+  ‖mat(W_k)‖₂ ≈ 1.4 compounds along the chain.
+- **Evidence:** `research/pmt_program/sharptensor/benchmarks/results/BENCHMARK_REPORT_v1.md`.
+- **Resolution condition:** a chain-aware certificate (right-environment operator norms in canonical
+  form, formalized or proven), then prereg v2 with new seeds meeting S1–S3 for all required
+  benchmarks.
+- **Related:** B1 compression beats only the factored baseline, not dense (post hoc). CUDA validation
+  is blocked by B-0012.
+
+**PMT-HETEROGENEOUS-R update 3 (2026-09-15, appended).** H3 (capped-equal-angle) is proved in Lean
+(`capped_equal_angle`). No open mathematical item remains in the heterogeneous core; what remains is
+human spec review and novelty.

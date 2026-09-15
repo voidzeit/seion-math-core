@@ -9,6 +9,13 @@ conjectures:
     evidence: [research/pmt_program/tn_benchmark/POSTHOC_HETEROGENEOUS_ANGLE.md, research/pmt_program/heterogeneous/adversarial_scan.py, tests/research_heterogeneous/test_scalar_extremization.py]
     proof_status: OPEN
     limitations: [heterogeneous upper bound not proved, sharpness not proved, numerical optimizer is not a global certificate, capped-equal-angle reduction is unproved]
+    status_update_20260915:
+      status: machine_checked_pending_human_spec_review
+      proof_status: LEAN_VERIFIED
+      lean: [PMT.heterogeneous_upper, PMT.heterogeneous_sSup, PMT.heterogeneous_placement_independent, PMT.heterogeneous_scaled_sSup, PMT.heterogeneous_multispace_sSup, PMT.gBox_attained]
+      build: "research/pmt_program/lean, 8732 jobs, no sorry/admit/axiom, 66 #print axioms within [propext, Classical.choice, Quot.sound]"
+      remaining: [human review of lean/SPEC_AUDIT.md, freeze of PMT-A^het, novelty (NOVELTY_NOT_ESTABLISHED)]
+      note: "Earlier fields are kept unchanged for provenance; they describe the 2026-09-14 state."
   - id: CONJ_PMT_HETEROGENEOUS_CAPPED_EQUAL_ANGLE_20260914
     title: Capped-equal-angle reduction
     status: conjecture
@@ -18,6 +25,12 @@ conjectures:
     implementation: research/pmt_program/heterogeneous/scalar_extremization.py
     proof_status: OPEN
     limitations: [interior stationarity does not exclude boundary or phase-wrap maxima]
+    status_update_20260915:
+      status: machine_checked_pending_human_spec_review
+      proof_status: LEAN_VERIFIED
+      lean: [PMT.capped_equal_angle, PMT.gBox_eq_capped, PMT.gBox_eq_capped_max, PMT.prod_cos_le_waterfill, PMT.log_cos_tangent]
+      proof_route: "log-cos tangent inequality (water-filling) + h_Theta(C) monotone for C >= cos Theta (Lemma 6.1) + Theta' = min(sum theta, pi); research/pmt_program/h3/H3_PROOF_DRAFT.md"
+      note: "No longer an open problem. Earlier fields kept unchanged for provenance."
   - id: PROPOSAL_PMT_K4_CHAIN_MIXED_FINITE_ETA_20260909
     statement: "For independent-law four-node chains and mixed binary trees, C(eta)=sqrt(9-15 eta^2+7 eta^4) up to sqrt(3/7), and 9/(7 eta) thereafter."
     status: CONJECTURE

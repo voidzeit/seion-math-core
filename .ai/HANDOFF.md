@@ -1,4 +1,43 @@
-## Latest postflight: heterogeneous Theorem R machine-checked
+## Latest postflight: H3 proved, a posteriori certificates, SharpTensor 0.1 benchmarks
+
+- **Timestamp:** 2026-09-15
+- **Outcome:** **H3_MACHINE_CHECKED · APOSTERIORI_SLOTWISE_CHECKED · SHARPTENSOR_0.1_PREREGISTERED_BENCHMARKS_RUN · TRL4_NOT_MET**
+- **Git:**
+  - PRs #8 and #9 are merged (`main` `1b7c05e`).
+  - Branch `research/applications-boundary` (worktree `seion-pmt-hetero`) is **uncommitted**. It holds:
+    - Lean: `Monotone`, `Trajectory`, `CappedDiagonalFull`, `Amplitude`, `AmplitudeSlots`;
+    - `paper/APPLICATIONS_BOUNDARY.md` (FROZEN + revision 2026-09-15b) and `STYLE_CONTRACT` R1 updates;
+    - `sharptensor/`, `h3/`, `theory/LEVEL_C_ROADMAP.md`, `tests/research_sharptensor`;
+    - `claims/conjecture_registry.yaml` status updates;
+    - `.ai`.
+- **Verification:**
+  - Lean: 8732 jobs, 66 `#print axioms` (standard only), 0 sorry.
+  - pytest: `tests/research_sharptensor` + `tests/research_heterogeneous` = 66 passed.
+  - gBox evaluator rounding audit: 47 cases against 40 digits, 0 violations.
+- **Benchmarks** (prereg sha256 84a4e039…):
+  - all sound;
+  - B3 HT arithmetic 3.2× memory / 2.0× FLOPs, bound/actual 2.4;
+  - B1a 1.27× vs factored but worse than dense (post hoc);
+  - B2 MPO→MPS no certified compression at δ = 1%;
+  - TRL4 not met.
+- **Resume from:**
+  - `research/pmt_program/sharptensor/benchmarks/results/BENCHMARK_REPORT_v1.md`;
+  - `sharptensor/CERTIFIED_ADAPTIVE_TENSOR_COMPRESSION.md` §10;
+  - `theory/LEVEL_C_ROADMAP.md`.
+- **Tooling notes:**
+  - Run Python with `py -3.12` (numpy 2.4.2, mpmath 1.3, torch 2.7.1).
+  - Torch is CPU only (B-0012).
+  - Benchmarks run with `py -3.12 -m research.pmt_program.sharptensor.benchmarks.run_benchmarks`;
+    the runner refuses to start if the config hash changed.
+- **Remaining boundary:**
+  - chain-aware slot constants and prereg v2 (TRL4 blocker);
+  - CUDA validation;
+  - certified floating-point local deviations;
+  - KGE lemmas;
+  - human spec review, prior art manual steps, the paper;
+  - commit on user request.
+
+## Previous postflight: heterogeneous Theorem R machine-checked
 
 - **Timestamp:** 2026-09-14 (later)
 - **Outcome:** **HETEROGENEOUS_H1_H2_H4_MACHINE_CHECKED · H3_OPEN_ISOLATED · SCALED_Mv_POS_CHECKED · ATTAINMENT_CHECKED**

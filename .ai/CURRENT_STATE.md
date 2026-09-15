@@ -1,5 +1,63 @@
 # Current state
 
+## 2026-09-15 (later) — H3 proved; a posteriori certificates; SharpTensor 0.1 with preregistered benchmarks
+
+Branch `research/applications-boundary`, uncommitted.
+
+- **Lean.** Build 8732 jobs; 66 axiom checks, all standard; no sorry.
+  - **H3 proved:** `CappedDiagonalFull.lean` (`capped_equal_angle`, `gBox_eq_capped`,
+    `gBox_eq_capped_max`), via the log-cos tangent inequality (water-filling) and
+    Θ' = min(Σθ, π). gBox is a 1-D maximisation.
+  - **Amplitude / slot bounds:** `Amplitude.lean` (`ATree.err_le_ebound`) and `AmplitudeSlots.lean`
+    (`KTree.err_le_sbound`, `norm_sub_le_slots`, `slot_const_general`, `slot_args_eq_update`,
+    `ATree.err_le_abound`, `sum_slot_prod_eq`). These are instance-wise certificates for any local
+    deviation d_v, with no projectors required.
+- **SharpTensor 0.1** (`research/pmt_program/sharptensor/`):
+  - `gbox.py`: certified 1-D enclosure; rounding audit against 40 digits (47 cases, 0 violations,
+    width ≤ 1e-10).
+  - `certificate.py`: three certificates (Theorem R trajectory, compact amplitude, slotwise) and
+    `verify`.
+  - `models.py`: B1 matrix-product tree, B2 MPO→MPS, B3 HT arithmetic.
+  - `planner.py`: DP, gBox refinement, a posteriori loop; certified search.
+  - `torch_backend.py`: CPU-validated; CUDA blocked by B-0012.
+  - `CERTIFIED_ADAPTIVE_TENSOR_COMPRESSION.md`.
+  - Tests: 58 in `tests/research_sharptensor`.
+- **Confirmatory benchmarks** (prereg sha256 84a4e039…, `benchmarks/results/`):
+  - all runs sound;
+  - B3 HT arithmetic: 3.2× memory, 2.0× FLOPs, non-vacuous, slotwise bound/actual 2.4;
+  - B1a: 1.27× vs the factored baseline, but worse than dense (post hoc);
+  - B2 MPO→MPS: no certified compression at δ = 0.01; per-site slot amplification ~1.4;
+  - **TRL4 criterion NOT met.**
+- **Documentation:**
+  - APPLICATIONS_BOUNDARY revision 2026-09-15b (H3 theorem; KTree route for quantisation);
+  - STYLE_CONTRACT R1 update (Theorem 1.5 water-filling);
+  - `theory/LEVEL_C_ROADMAP.md`;
+  - conjecture registry: H1/H4/H2/H3 set to machine_checked_pending_human_spec_review.
+
+## 2026-09-15 — Merged; applications contract; a posteriori certificate
+
+- **Merged PRs:** #8 (heterogeneous Lean) and #9 (prior art, heterogeneous scaffold, style contract).
+  `main` is at `1b7c05e`.
+  - CI fixes: `.gitleaksignore` for BibTeX `citation_key` false positives;
+    `spectral_v18` principal-angle test is flaky (≈√ε vs 1e-8).
+- **Branch `research/applications-boundary`** (from `1b7c05e`), uncommitted:
+  - `research/pmt_program/paper/APPLICATIONS_BOUNDARY.md` (FROZEN): the claim contract with
+    Levels A/B/C and SharpTensor staging (V1 is orthogonal truncation only).
+    - The a posteriori relative bound is `E/(‖R_r‖ − E)`.
+    - Stage acceptance uses certified upper enclosures only; the capped curve is a lower bound.
+    - KGE per-pair condition: `Δ > ε₊ + ε₋`.
+  - Lean `Monotone.lean`: `gBox_mono`, `gBox_le_replicate`, `gBox_le_uniform_fallback`.
+  - Lean `Trajectory.lean`: `heterogeneous_scaled_upper_of_admTC` (`M_v > 0`) and `_nonneg`
+    (`M_v ≥ 0`). Closure only along the realized trajectory; global `‖μ_v‖ ≤ M_v` still required;
+    one ambient space.
+  - Build: 8729 jobs, 52 axiom checks, all standard.
+- **Next (agreed):** `CERTIFIED_ADAPTIVE_TENSOR_COMPRESSION.md`, with three maps:
+  - TT/HT node → (μ_v, P_v, M_v, ρ_v);
+  - discarded singular values → ρ_v(r);
+  - ranks → (memory, FLOPs, η).
+
+  Then the SharpTensor 0.1 prototype.
+
 ## 2026-09-14 (later) — Heterogeneous Theorem R machine-checked (H1, H2, H4)
 
 Observed 2026-09-14 in worktree `seion-pmt-hetero`, branch

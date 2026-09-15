@@ -1529,3 +1529,39 @@ changed paths, and limitations. Historical artifact runs remain under
   - Novelty not established; the PRIOR-ART-R-HET mini-round was launched
     separately.
   - No commit, push or release.
+
+## 2026-09-15 — H3 in Lean, a posteriori certificates, SharpTensor 0.1, preregistered benchmarks v1
+
+- **Commands:**
+  - `lake build` and `lake env lean AxiomsCheck.lean` (research/pmt_program/lean);
+  - `py -3.12 -m pytest -q tests/research_sharptensor tests/research_heterogeneous`;
+  - `py -3.12 -m research.pmt_program.sharptensor.benchmarks.run_benchmarks`;
+  - exploratory: `research/pmt_program/h3/h3_numeric_check.py` (POST_HOC, seed 7, 400 trials).
+- **Branch/commit:** `research/applications-boundary` from `main` `1b7c05e`, uncommitted.
+- **Outcome:** **verified_formalization + preregistered_benchmark (criterion not met)**
+- **Summary:**
+  - **H3 proved:** `capped_equal_angle`, `gBox_eq_capped_max`.
+  - **Also proved:** `gBox_mono`, uniform fallback, the scaled trajectory bound, `ATree.err_le_abound`,
+    `KTree.err_le_sbound`.
+  - **SharpTensor 0.1:** certified 1-D gBox with rounding audit, 3 certificates, planner, torch CPU
+    backend.
+  - **Benchmarks:** all sound. B3 3.2× memory, bound/actual 2.4. B2 fails S1/S2 → TRL4 not met.
+- **Validation:**
+  - Lean 8732 jobs, 66 axiom checks standard, 0 sorry.
+  - 66 pytest tests pass.
+  - 40-digit audit: 47 cases, 0 violations.
+  - Benchmark soundness: actual ≤ every certificate in every run.
+- **Changed files:**
+  - Lean: `Heterogeneous/{Monotone,Trajectory,CappedDiagonalFull,Amplitude,AmplitudeSlots}.lean`,
+    `CappedDiagonal.lean` (docstring), `PMTFormal.lean`, `AxiomsCheck.lean`, `README.md`,
+    `BUILD_LOG.md`, `SPEC_AUDIT.md`;
+  - paper: `paper/APPLICATIONS_BOUNDARY.md`, `paper/STYLE_CONTRACT.md`;
+  - `research/pmt_program/sharptensor/` (code, spec, benchmarks, results), `h3/`, `theory/`;
+  - `tests/research_sharptensor/`, `claims/conjecture_registry.yaml`, `.ai/*`.
+- **Limitations:**
+  - Float64 is treated as exact; mpmath.iv is not formally verified.
+  - The B2/B3 instance families were adjusted during exploration (disclosed).
+  - B1 compression does not beat dense.
+  - CUDA is not validated (B-0012).
+  - No human review.
+  - No commit.

@@ -17,6 +17,28 @@
 - [ ] Human review of `SPEC_AUDIT.md` and freeze of the PMT-A^het class
   definition (author decision).
 - [x] PRIOR-ART-R-CY follow-up, completed 2026-09-14 (`followup_cy/CY_FOLLOWUP_REPORT.md`).
+- [x] Freeze `paper/APPLICATIONS_BOUNDARY.md` (2026-09-15).
+- [x] Lean: `gBox_mono`, uniform fallback, and scaled trajectory-closure bound (`Trajectory.lean`).
+- [x] Write `CERTIFIED_ADAPTIVE_TENSOR_COMPRESSION.md` (2026-09-15).
+- [x] H3 in Lean (`CappedDiagonalFull.lean`); certified 1-D gBox evaluator with rounding audit.
+- [x] A posteriori certificates in Lean (`ATree.err_le_abound`, `KTree.err_le_sbound`).
+- [x] SharpTensor 0.1: planner, certificates, torch CPU backend, 58 tests; preregistered benchmarks v1
+  run. TRL4 not met (B2).
+- [ ] Chain-aware slot constants for MPO→MPS (environment operator norms); new preregistration (v2).
+- [ ] Lean: permuted slot orders (`domDomCongr`) and robust slot constants (LEVEL_C_ROADMAP C1).
+- [ ] CUDA validation of the torch backend after B-0012 is cleared (CPU/GPU agreement canary first).
+- [ ] C2' certified local deviations under floating point; C4 KGE score/ranking lemmas.
+- [ ] Lean (optional): trajectory-closure bound with per-vertex spaces.
+- [x] H3 proved in Lean 2026-09-15 (superseding the proof draft below).
+- [ ] (superseded) H3 proof draft (2026-09-15, `research/pmt_program/h3/H3_PROOF_DRAFT.md`), argued in four steps:
+  1. Θ > π reduces by rescaling;
+  2. C ≥ cos Θ holds by Lemma 6.1;
+  3. h_Θ(C) is nondecreasing for C ≥ cos Θ;
+  4. water-filling maximizes ∏ cos by the log-cos tangent inequality.
+
+  Numeric check: 400 trials, gap 1.3e-8. Remaining work: independent check, Lean formalization,
+  and a decision on whether it enters the paper.
+- [ ] Theory (Level C): amplitude-aware certificate; approximate-projector robustness; range-constrained quantization.
 - [ ] Read Yang–Chen–Qiu 2026 (arXiv, phase-capped products) and
   Chaffey–Forni–Sepulchre 2023 Thm 5 in full.
 - [ ] Update the R7 attribution: the uncapped equal-angle product of D(½,½)
