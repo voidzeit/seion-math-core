@@ -33,6 +33,48 @@ Supporting declarations:
 | `PMT.cos_sum_le_prod_cos`, `PMT.prod_cos_le_cos_mean_pow`, `PMT.diagonal_capped`, `PMT.diagonal_lemma` | Lemmas 6.1–6.3 (Diagonal Lemma) |
 | `PMT.rootError_eq`, `PMT.rootError_equal_angles` | earlier skeleton-level witness evaluation (kept) |
 
+## Heterogeneous Theorem R (`PMTFormal/Heterogeneous/`, 2026-09-14)
+
+Each internal node `v` has its own defect `e_v` (paper: `η_v = ρ_v / M_v`). For a defect list `η`,
+
+`gBox η = sup { |1 − ∏ w(θ_i)| : θ_i ∈ [0, arcsin η_i] }`   (a maximum when all `η_i ≥ 0`).
+
+| File | Lean declaration | Content |
+|---|---|---|
+| `BoxConstant.lean` | `PMT.box`, `PMT.gBox`, `PMT.le_gBox` | box and box constant (PMT-free) |
+| | `PMT.box_capped` | root reduction inside the box by uniform angle scaling `π/Θ` (no Diagonal Lemma) |
+| `Upper.lean` | `PMT.HPMTree`, `PMT.DShape`, `HPMTree.AdmFull`, `HPMTree.RootAdmFull` | nodewise-defect trees and admissibility |
+| | `PMT.envelopeH` | heterogeneous envelope: `θ_u ≤ arcsin e_u` per node |
+| | **`PMT.heterogeneous_upper`** (H1) | `err ≤ ‖1 − ∏ w(θ_u)‖` for some `θ ∈ box(childDefects)`, any `G` |
+| | `PMT.heterogeneous_le_gBox` | `err ≤ gBox(childDefects)` |
+| `Witness.lean` | `PMT.AShape`, `AShape.exists_fill`, `PMT.witH`, `PMT.witRootH` | per-node-angle witness in `ℂ` |
+| | **`PMT.heterogeneous_witness`** (H4) | every box point is realised exactly by an admissible tree |
+| `Sharp.lean` | **`PMT.heterogeneous_lower`**, **`PMT.heterogeneous_sSup`** | `sup_{A(T,η)} err = gBox(childDefects T)` |
+| | `PMT.heterogeneous_sharp` | complex realisations are extremal over all `G` |
+| | **`PMT.uniform_gBox_eq`**, `PMT.heterogeneous_uniform_recovery` | equal defects recover Theorem R's constant |
+| `Permutation.lean` | **`PMT.gBox_perm`**, **`PMT.heterogeneous_placement_independent`** (H2) | the constant depends only on the multiset of non-root defects |
+| `Attainment.lean` | `PMT.theorem_R_max_attained`, `PMT.gBox_attained`, `PMT.heterogeneous_max_attained` | the suprema are maxima, attained by trees |
+| `Scaled.lean` | `PMT.SPMTree`, `SPMTree.normalize`, `SPMTree.err_eq` | scaled data `(M_v > 0, ρ_v)`, `Λ_T = ∏M_v ∏‖z_ℓ‖` |
+| | `PMT.heterogeneous_scaled_upper`, `PMT.heterogeneous_scaled_sSup` | `err ≤ Λ_T gBox(ρ/M)`; `sup err/Λ_T = gBox(ρ/M)` |
+| `ScaledZero.lean` | `SPMTree.AdmFull0`, `SPMTree.err_zero_of_hasZeroM`, `PMT.heterogeneous_scaled_upper_nonneg` | degenerate case `M_v = 0`: `err = 0`; scaled bound for all `M_v ≥ 0` |
+| `SpecLemmas.lean` | `PMT.opNorm_le_iff_unit_ball`, `PMT.HPMTree.closure_iff_unit_ball` | Lean norm and closure conditions ⇔ the unit-ball forms of A2 and A5 |
+| `Baseline.lean` | `PMT.gBox_le_sum` | additive baseline `gBox η ≤ Σ η_u` |
+| `CommonSpace.lean` | `PMT.Emb`, `PMT.MSTree`, `MSTree.lift`, **`PMT.heterogeneous_multispace_upper`**, **`PMT.heterogeneous_multispace_sSup`** | **common-ambient-space reduction**: an arbitrary real inner product space at every vertex |
+| `CappedDiagonal.lean` | `PMT.CappedEqualAngle` (a `Prop`), `PMT.sSup_capped_le_gBox`, `PMT.cappedEqualAngle_replicate` | **H3, kept separate and open.** Only the easy half and the equal-defect case are proved. No other module imports it; it is not an axiom. |
+
+Scope notes for the heterogeneous statements:
+
+* The root defect `e_r` enters admissibility (full closure at the root) but not the constant; the
+  sharp statements assume `e_r ≥ 0` (otherwise the class is empty).
+* Non-root defects are unrestricted reals. A negative defect empties both the class and the box,
+  and `arcsin` saturates above `1`.
+* `M_v = 0` is handled separately in `ScaledZero.lean` (upper bound only; the sharp sSup statement
+  uses `M_v > 0`).
+* One-space-per-node → one ambient space is machine-checked in `CommonSpace.lean` (2026-09-14).
+  The paper-class ↔ Lean audit is `SPEC_AUDIT.md`.
+* H1 and H4 do **not** use the Diagonal Lemma or H3. The Diagonal Lemma is used only in
+  `uniform_gBox_eq`.
+
 ## Modelling choices and the exact gap to the paper statement
 
 The formal objects are in `PMTFormal/Tree.lean` and `PMTFormal/WitnessAdm.lean`.
@@ -47,9 +89,10 @@ The formal objects are in `PMTFormal/Tree.lean` and `PMTFormal/WitnessAdm.lean`.
   * closure `‖μ_v x − P_v μ_v x‖ ≤ η ∏‖xᵢ‖` for all inputs whose internal-child slots satisfy
     `P_c xᵢ = xᵢ` (leaf slots arbitrary);
   * leaves `‖z‖ ≤ 1`.
-* **Not formalised: two elementary reductions, argued on paper.**
+* **Not formalised for `PMTree`: two elementary reductions, argued on paper.**
   1. **Scaling (N1).** General `M`, `ρ` and leaf norms reduce to `M = 1`, `ρ = η` and unit leaves
-     by `μ_v ↦ μ_v/M`, `z_ℓ ↦ z_ℓ/‖z_ℓ‖`.
+     by `μ_v ↦ μ_v/M`, `z_ℓ ↦ z_ℓ/‖z_ℓ‖`. For nodewise `M_v > 0` this reduction is now
+     machine-checked in `Heterogeneous/Scaled.lean`.
   2. **One space per node → one ambient space.** Embed every `H_w` isometrically into a common
      space `G` and set `μ'_v = ι_v ∘ μ_v ∘ (π_c)`, `P'_v = ι_v P_v π_v`. Operator norms,
      projectors, full closure and both evaluations transfer, and the error is unchanged.
