@@ -1,5 +1,191 @@
 # Current state
 
+## 2026-09-14 (later) — Heterogeneous Theorem R machine-checked (H1, H2, H4)
+
+Observed 2026-09-14 in worktree `seion-pmt-hetero`, branch
+`research/heterogeneous-theorem-r` (from `origin/main` `f219172`). All work is
+**uncommitted**.
+
+- **Location:** `research/pmt_program/lean/PMTFormal/Heterogeneous/`, 8 files:
+  - `BoxConstant`, `Upper`, `Witness`, `Sharp`, `Permutation`;
+  - `Attainment`, `Scaled`;
+  - `CappedDiagonal` (H3, isolated).
+- **Verification:**
+  - `lake build`: 8723 jobs.
+  - No `sorry`, `admit` or `axiom`.
+  - 39 `#print axioms` checks, all `[propext, Classical.choice, Quot.sound]`.
+- **Proved:**
+  - **H1** `heterogeneous_upper`: for any real inner product space,
+    `err ≤ |1 − ∏ w(θ_u)|` for some `θ_u ∈ [0, arcsin e_u]`.
+  - **H4** `heterogeneous_witness`, `heterogeneous_lower`,
+    `heterogeneous_sSup`: `sup_{A(T,η)} err = gBox(non-root defects)`,
+    realised in `ℂ` with per-node angles.
+  - **H2** `gBox_perm`, `heterogeneous_placement_independent`: the constant
+    depends only on the multiset of non-root defects.
+  - **Uniform recovery:** `uniform_gBox_eq`, `heterogeneous_uniform_recovery`.
+    This is the only place the Diagonal Lemma is used.
+  - **Attainment:** `theorem_R_max_attained`, `gBox_attained`,
+    `heterogeneous_max_attained`. This closes the STYLE_CONTRACT open item on
+    attainment.
+  - **Scaled form** for nodewise `M_v > 0`: `heterogeneous_scaled_upper`
+    (`err ≤ Λ_T gBox(ρ/M)`) and `heterogeneous_scaled_sSup`.
+- **Key proof idea for H1:**
+  - If `Θ = Σθ > π`, scale all angles by `π/Θ`. The angles stay in the box,
+    `∏cos` does not decrease, and `(1+R)² ≤ (1+R')²`.
+  - This needs neither the Diagonal Lemma nor H3.
+- **Open:**
+  - **H3** (`CappedEqualAngle`, a `Prop`) for unequal defects. Only the easy
+    half (capped sup ≤ gBox) and the equal-defect case are proved.
+  - The `M_v = 0` lemma.
+  - The per-node-space → ambient-space reduction.
+  - Human review of the specification.
+- **Prior art:** novelty stays `NOVELTY_NOT_ESTABLISHED`. A heterogeneous
+  prior-art mini-round (PRIOR-ART-R-HET, families O1–O6) was launched in
+  `seion-pmt-tn/research/pmt_program/prior_art/`.
+- **Other fixes this session:** Deutsch–Hundal DOI corrected in
+  `papers/paper_a/references.bib` (worktree `seion-pmt-tn`).
+- **Appended correction (same day):** the `M_v = 0` lemma is now proved in
+  `Heterogeneous/ScaledZero.lean`.
+  - If some `M_v = 0`, then `err = 0`.
+  - `heterogeneous_scaled_upper_nonneg` gives the bound for all `M_v ≥ 0`.
+  - Build 8724 jobs; 40 axiom checks, all standard.
+  - "Open: the `M_v = 0` lemma" above is superseded. The sharp sSup statement
+    still assumes `M_v > 0`.
+- **Appended: PRIOR-ART-R-HET completed** (`prior_art/*_HET*`, uncommitted).
+  - **Search:** 30 frozen queries, 1298 raw hits, pool of 1178 (193 already
+    seen in round 1).
+  - **Threats:** 720 at 0, 429 at 1, 33 at 2, 6 at 3 (4 distinct sources:
+    Combettes–Yamada 2015, Grasedyck 2010, Bachmayr–Nouy–Schneider 2021,
+    Huang–Ryu–Yin 2020). None at 4–5.
+  - **H1:** `CLOSE_PRIOR_ART` for non-sharp heterogeneous bounds;
+    `NO_EQUIVALENT_FOUND` for the sharp `gBox`.
+  - **H2:** `CLOSE_PRIOR_ART` for non-sharp or uniform versions;
+    `NO_EQUIVALENT_FOUND` for the sharp form.
+  - **H4:** `NO_EQUIVALENT_FOUND`. Components are close: Huang–Ryu–Yin sharp
+    for 2 factors, Oikhberg planar chain, Farouki–Pottmann heuristic.
+  - **H3:** `KNOWN_IN_SPECIAL_CASE` (all η = 1); otherwise not found.
+  - **Global:** `NOVELTY_NOT_ESTABLISHED`. Coverage is weak: arXiv blocked,
+    Semantic Scholar 1/30, zbMATH 0/30.
+  - **Banned wording:** "only uniform bounds were known".
+  - **Open threat check:** tightness of Combettes–Yamada for m ≥ 3.
+- **Appended: common ambient space and spec audit** (branch
+  `research/heterogeneous-theorem-r`, uncommitted).
+  - **`CommonSpace.lean`:** trees with an arbitrary real inner product space
+    at every vertex (`MSTree`). They lift isometrically into
+    `WithLp 2 (H_v × PiLp 2 children)`.
+    - `heterogeneous_multispace_upper` holds for `M_v ≥ 0`.
+    - `heterogeneous_multispace_sSup` gives `sup err/Λ = gBox`.
+    - The last structural Lean ↔ paper gap (A1) is closed.
+  - **`SpecLemmas.lean`:** the Lean norm and closure conditions are equivalent
+    to the unit-ball forms of A2 and A5.
+  - **`Baseline.lean`:** `gBox ≤ Σ η`.
+  - **Build:** 8727 jobs, 47 axiom checks, all standard.
+  - **Audit file:** `research/pmt_program/lean/SPEC_AUDIT.md`, comparing
+    against `ADMISSIBLE_CLASS_PMT_A.md` item by item.
+    - Remaining differences are harmless supersets: arity 0, infinite
+      dimensions, η > 1.
+    - It proposes the class definition PMT-A^het for the author to freeze.
+    - It is an agent audit, not a human review.
+  - **Follow-up PRIOR-ART-R-CY launched:** Combettes–Yamada/HRY forward and
+    co-citation search, six-criterion rubric.
+- **Appended: PRIOR-ART-R-CY completed** (`prior_art/followup_cy/`, uncommitted).
+  - **Search:**
+    - 22 frozen queries; OpenAlex 550 records; arXiv and Semantic Scholar
+      keyword searches blocked by 429.
+    - Forward citations: CY15 113, HRY20 12, RHY22 19, OY02 77, Pates 4, plus
+      Semantic Scholar citation lists.
+    - Co-citation sets: CY15+HRY20 = 3; HRY20+RHY22 = 11.
+    - 672 records at Level 1; 12 Level-3 sheets.
+  - **Priority question (sharp heterogeneous composition constant for m ≥ 3):**
+    not found. Nothing implies `gBox` or placement independence.
+  - **Threat 3 (none at 4–5):**
+    - **Chaffey–Forni–Sepulchre 2023 (TAC), Thm 5:** exact product of n SRG disks
+      D(½,½), boundary cos^n(θ/n)e^{iθ} via Jensen. This is the uncapped
+      (α = π/2, all η = 1) equal-angle case, proved rigorously for all n. R7(a)
+      attribution must cite it; it was scored 1 in round 1 from the title only.
+    - **Yang–Chen–Qiu 2026 (arXiv), Thm 5:** exact criterion for −1 lying in a
+      product of phase-capped regions (per-factor caps, different set shape).
+      They leave distance maximization open. **Must be read in full**, like
+      Zniyed–Boyer.
+    - Combettes–Yamada 2015: not tight.
+  - **Numeric heuristic:**
+    - The CY constant cannot see the caps (every arc point has averagedness ½).
+    - gBox ≤ 2m/(m+1) holds, but that bound ignores η.
+    - α = η/2 is not a bound.
+  - **Deviations:** logged as POST_HOC; new hashes in `FREEZE_CY.json`.
+  - **Manual:** Scholar "cited by" lists; paywalled or bot-checked PDFs
+    (Guthrie–Mallada, Bünger–Rump, Chaffey thesis, Ryu–Yin book).
+
+## 2026-09-14 — Theorem R machine-checked; prior-art review R; heterogeneous plan
+
+Observed 2026-09-14. Sources: worktree `seion-pmt-tn`, branch
+`research/prior-art-r` (from `origin/main` `f219172`, uncommitted additions),
+and `main` `f219172`, which merged PR #7.
+
+**Lean formalization of Theorem R** (merged in PR #7, `f219172`).
+- **What is checked:** `research/pmt_program/lean` (Lean 4.33.1, Mathlib
+  v4.33.1) builds 8715 jobs with no `sorry`, `admit` or `axiom`. `#print axioms`
+  shows only `propext`, `Classical.choice` and `Quot.sound` for 20
+  declarations.
+- **Main results:**
+  - `theorem_R_upper`: any real inner product space `G`, PMT-A trees.
+  - `theorem_R_lower`: witness in `ℂ` with full PMT-A admissibility.
+  - `theorem_R_sSup`: equality of suprema, the normalized form of
+    `C_T^P = C_k`.
+- **Proof route:** a new lifted-angle proof
+  (`research/pmt_program/lifted_angle/LIFTED_ANGLE_PROOF.md`), not the frozen
+  v2 dilation argument. v2 remains unreviewed but is no longer load-bearing.
+- **Not formalized:** the scaling reduction (N1), the reduction from per-node
+  spaces to one ambient space, and attainment of the max over θ (compactness).
+- **Remaining review target:** the specification, i.e. the Lean definitions
+  against `ADMISSIBLE_CLASS_PMT_A.md`.
+
+**Paper style contract.** `research/pmt_program/paper/STYLE_CONTRACT.md` is
+frozen: title, abstract, Theorem 1.1, Corollary 1.2, Theorem 1.3, terminology,
+and the rule of no novelty wording.
+
+**PRIOR-ART-R** (`research/pmt_program/prior_art/`, uncommitted). Protocol and
+47 queries frozen by SHA-256 before the first query.
+- **Search:**
+  - OpenAlex 47/47 and zbMATH 47/47. arXiv and Semantic Scholar hit HTTP 429
+    and were skipped, with each skip logged.
+  - Citation snowball from 14 anchors.
+  - 1745 candidates at Level 1, 58 at Level 2, 22 Level-3 comparisons.
+- **Outputs:** `PRIOR_ART_MATRIX.csv` (1763 rows), `CLAIM_NOVELTY_MATRIX.md`,
+  and `bibliography/references.bib` (36 entries, Crossref-validated).
+- **Result:** no source at threat 4–5, three at threat 3, none implying a
+  Theorem R claim.
+  - R6 technique is largely known: Tomamichel–Colbeck–Renner generalized
+    fidelity, the hybrid argument, scaled relative graphs.
+  - R7 equal-angle extremality is known for α = π/2 (Farouki–Pottmann 2002,
+    heuristic) and rigorously for n = 2 (Huang–Ryu–Yin 2020). The capped case
+    α < π/2 and `C_k(η)` were not found.
+  - The global label stays `NOVELTY_NOT_ESTABLISHED`: stop criterion not met,
+    manual MathSciNet/Scholar steps pending.
+- **Incidents** (logged as `POST_HOC` in the protocol, outputs quarantined):
+  - harvest attempt 1 aborted by two script bugs;
+  - two wrong anchor DOIs;
+  - `papers/paper_a/references.bib` carries a wrong Deutsch–Hundal DOI.
+
+**Heterogeneous Theorem R.**
+- **Prior state:** another session added `research/pmt_program/heterogeneous/`
+  and `HETEROGENEOUS_THEOREM_R.md`, registering H1, H4 and placement
+  independence as conjectures.
+- **Observation:** H1, H2 and H4 follow from the formalized architecture.
+  - `node_step` is per-node in η.
+  - The envelope gives θ_u ≤ arcsin η_u.
+  - The case Θ > π reduces by uniform angle scaling inside the box.
+  - The witness accepts per-node angles.
+- **Open:** only H3 (capped equal angles) is open, and it is only an
+  evaluation question.
+- **Status:** mathematical argument, not yet machine-checked. Formalization is
+  planned in the dedicated worktree `seion-pmt-hetero`, branch
+  `research/heterogeneous-theorem-r`.
+
+**Does not establish:** novelty, independent human review, or formal coverage
+of the N1 and ambient-space reductions. Nothing on this branch is committed
+or pushed.
+
 ## 2026-09-13 — Theorem R canonical source v2
 
 - Branch `research/pmt-sharp-program`. Lemma 3 campaign (`3d65272`): no

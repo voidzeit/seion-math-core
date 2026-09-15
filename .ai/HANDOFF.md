@@ -1,3 +1,71 @@
+## Latest postflight: heterogeneous Theorem R machine-checked
+
+- **Timestamp:** 2026-09-14 (later)
+- **Outcome:** **HETEROGENEOUS_H1_H2_H4_MACHINE_CHECKED · H3_OPEN_ISOLATED · SCALED_Mv_POS_CHECKED · ATTAINMENT_CHECKED**
+- **Where things are:**
+  - Worktree `seion-pmt-hetero`, branch `research/heterogeneous-theorem-r`,
+    **uncommitted**:
+    - `research/pmt_program/lean/PMTFormal/Heterogeneous/*.lean` (8 files);
+    - `PMTFormal.lean` imports;
+    - `AxiomsCheck.lean` (39 checks);
+    - `README.md` (heterogeneous table and scope notes);
+    - `BUILD_LOG.md` (elaborated statements).
+  - Worktree `seion-pmt-tn`:
+    - `.ai` memory updates;
+    - Deutsch–Hundal DOI fix;
+    - PRIOR-ART-R-HET mini-round outputs (`*_HET*` files under `prior_art/`),
+      if the background run finished.
+- **Resume from:**
+  - `research/pmt_program/lean/README.md` §Heterogeneous (in `seion-pmt-hetero`);
+  - `prior_art/CLAIM_NOVELTY_MATRIX_HET.md` (when present).
+- **Tooling notes:**
+  - Avoid unrestricted `simp [defs…]` on witness trees with
+    `ContinuousMultilinearMap` laws; one such call made `Scaled.lean` take
+    419 s. Use `simp only`.
+  - Pass `-D` options to `lake env lean` quoted in PowerShell
+    (`'-Dprofiler=true'`).
+- **Addendum:** `ScaledZero.lean` covers `M_v = 0` (upper bound). Totals are
+  now 9 files, 8724 jobs and 40 axiom checks.
+- **Remaining boundary:**
+  - H3 for unequal defects;
+  - the ambient-space reduction;
+  - human review of `Upper.lean`/`Witness.lean`/`Scaled.lean` definitions
+    against PMT-A;
+  - novelty.
+  - Nothing was committed or pushed.
+  - The other session's `claims/conjecture_registry.yaml` still lists H1/H4
+    as conjectures and needs reconciliation after review.
+
+## Previous postflight: Theorem R formalized, PRIOR-ART-R first pass, heterogeneous plan
+
+- **Timestamp:** 2026-09-14
+- **Outcome:** **THEOREM_R_NORMALIZED_MACHINE_CHECKED · PRIOR_ART_R_FIRST_PASS_NO_THREAT_4_5 · HETEROGENEOUS_FORMALIZATION_STARTED**
+- **Where things are:**
+  - `main` `f219172`: Lean Theorem R (`research/pmt_program/lean`) and the
+    lifted-angle proof.
+  - Worktree `seion-pmt-tn`, branch `research/prior-art-r`, **uncommitted**:
+    `research/pmt_program/prior_art/` and `research/pmt_program/paper/STYLE_CONTRACT.md`.
+    The same worktree also holds another session's uncommitted heterogeneous
+    tooling (`research/pmt_program/heterogeneous/`,
+    `HETEROGENEOUS_THEOREM_R.md`, `tests/research_heterogeneous/`,
+    `claims/conjecture_registry.yaml`, `.ai/*`). Separate the two when
+    committing.
+  - Worktree `seion-pmt-hetero`, branch `research/heterogeneous-theorem-r`:
+    dedicated to the Lean heterogeneous formalization.
+- **Resume from:**
+  - `research/pmt_program/prior_art/CLAIM_NOVELTY_MATRIX.md` §6 (manual actions);
+  - `research/pmt_program/lean/README.md` (formal scope and gaps);
+  - `.ai/DECISIONS.md` 2026-09-14 entries.
+- **Tooling notes:**
+  - Never edit Lean or other UTF-8 files with PowerShell
+    `Get-Content`/`Set-Content`; it corrupts Unicode.
+  - `lake exe cache get` then `lake build`; about 4 minutes on a fresh worktree.
+  - zbMATH API needs the Windows certificate store (PowerShell fallback).
+    arXiv and Semantic Scholar APIs rate-limit quickly.
+- **Remaining boundary:** novelty, independent human review, the N1 and
+  ambient-space reductions, and H3. No release was performed. PRs #7
+  (seion-math-core) and #1 (spectral-computational-mathematics) are merged.
+
 ## Latest postflight: global domain-certified allocator
 
 - Timestamp: 2026-08-09T20:54:20Z
