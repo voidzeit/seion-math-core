@@ -1,0 +1,64 @@
+openalex         O1 0 OK total=3 saved=3 
+arxiv            O1 0 ERROR total= saved=0 HTTPError: HTTP Error 429: Unknown Error
+zbmath           O1 0 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+semanticscholar  O1 0 OK total=15 saved=10 
+openalex         O1 1 OK total=108 saved=25 
+zbmath           O1 1 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+semanticscholar  O1 1 ERROR total= saved=0 HTTPError: HTTP Error 429: 
+openalex         O1 2 OK total=248 saved=25 
+zbmath           O1 2 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O1 3 OK total=84 saved=25 
+zbmath           O1 3 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O1 4 OK total=759 saved=25 
+zbmath           O1 4 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O2 0 OK total=31 saved=25 
+zbmath           O2 0 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O2 1 OK total=552 saved=25 
+zbmath           O2 1 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O2 2 OK total=2466 saved=25 
+zbmath           O2 2 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O2 3 OK total=3603 saved=25 
+zbmath           O2 3 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O2 4 OK total=1211 saved=25 
+zbmath           O2 4 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O3 0 OK total=17133 saved=25 
+zbmath           O3 0 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O3 1 OK total=1716 saved=25 
+zbmath           O3 1 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O3 2 OK total=30 saved=25 
+zbmath           O3 2 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O3 3 OK total=3567 saved=25 
+zbmath           O3 3 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O3 4 OK total=573 saved=25 
+zbmath           O3 4 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O4 0 OK total=25874 saved=25 
+zbmath           O4 0 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O4 1 OK total=37 saved=25 
+zbmath           O4 1 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O4 2 OK total=566 saved=25 
+zbmath           O4 2 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O4 3 OK total=19250 saved=25 
+zbmath           O4 3 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O4 4 OK total=17175 saved=25 
+zbmath           O4 4 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O5 0 OK total=671 saved=25 
+zbmath           O5 0 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O5 1 OK total=903 saved=25 
+zbmath           O5 1 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O5 2 OK total=2309 saved=25 
+zbmath           O5 2 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O5 3 OK total=103 saved=25 
+zbmath           O5 3 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O5 4 OK total=22224 saved=25 
+zbmath           O5 4 OK total=1 saved=1 
+openalex         O6 0 OK total=10 saved=10 
+zbmath           O6 0 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O6 1 OK total=232 saved=25 
+zbmath           O6 1 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O6 2 OK total=3 saved=3 
+zbmath           O6 2 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O6 3 OK total=1720 saved=25 
+zbmath           O6 3 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+openalex         O6 4 OK total=12467 saved=25 
+zbmath           O6 4 OK total=0 saved=0 no results (HTTP 404 from zbMATH)
+records=702 unique_candidates=639 red_flags=0

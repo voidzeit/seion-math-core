@@ -1,0 +1,8 @@
+timestamp,database,family,query,request,status,results_total,records_saved,notes
+2026-09-14T13:12:52,openalex,A,"""hierarchical Tucker"" truncation error bound",https://api.openalex.org/works?search=%22hierarchical+Tucker%22+truncation+error+bound&per-page=25,OK,356,25,
+2026-09-14T13:14:55,arxiv,A,"""hierarchical Tucker"" truncation error bound",,ERROR,,0,HTTPError: HTTP Error 503: Service Unavailable
+2026-09-14T13:14:57,zbmath,A,"""hierarchical Tucker"" truncation error bound",,ERROR,,0,"RuntimeError: Invoke-WebRequest : {""result"":null,""status"":{""execution"":""Entry not 
+found!..."",""execution_bool"":false,""internal_code"":""successful access. No results found."",""last_id"":null,""nr_total_resul
+ts"":null,"
+2026-09-14T13:15:02,semanticscholar,A,"""hierarchical Tucker"" truncation error bound",https://api.semanticscholar.org/graph/v1/paper/search?query=%22hierarchical+Tucker%22+truncation+error+bound&limit=10&fields=title%2Cyear%2Cvenue%2CexternalIds%2Cauthors%2Cabstract%2CcitationCount,OK,37,10,
+2026-09-14T13:15:04,openalex,A,"""tree tensor network"" truncation error",https://api.openalex.org/works?search=%22tree+tensor+network%22+truncation+error&per-page=25,OK,751,25,

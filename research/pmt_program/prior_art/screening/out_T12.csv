@@ -1,0 +1,64 @@
+key,threat,claims,reason,level2
+errortransportationinsvdbasedtensortrainapproximations,3,R1a;R3;R9,Algorithm-level transport of local truncation errors through general dimension trees with tree-dependent conditioning factors and sharp chain-case bounds; similar error-propagation result for TT/HT truncation under different assumptions,yes
+10.1006/jmaa.1997.5202,3,R1b;R6,Error bounds for alternating projections and proof that angle-only bounds cannot be sharp; sharpness question for products of projections is adjacent to R1b and the angle approach,yes
+10.1016/j.jat.2014.06.002,3,R6,Sharp linear rate for Douglas-Rachford on subspaces equal to cosine of Friedrichs angle; sharp angle-based rate for projection compositions but no multilinear tree setting,yes
+10.48550/arxiv.2608.16994,3,R9,First-order error bound for tree-tensor-network BUG transferred to canonical MPS sweeps; first-order stability of tensor networks under projections,yes
+10.1214/aop/1048516531,2,,Sharp Lp bounds with extremal distributions for sums of multilinear forms; sharp constants for multilinear objects but probabilistic and unrelated to projection defects,no
+10.1002/mrm.22365,0,,Diffusion MRI orientation distribution reconstruction; irrelevant,no
+onthetruncatedmultilinearsingularvaluedecomposition,3,R1a;R9,Exact error expressions and bounds for truncated and sequentially truncated MLSVD with orthogonal factors; truncation error bound for a Tucker (one-node tree) format,yes
+10.1137/21m1415911,2,R9,Tree tensor network learning via projections onto nested tensor subspaces with expectation error bound; shares tree projections but statistical and not a worst-case accumulation constant,no
+10.1016/j.jat.2021.105648,3,R6,Optimal error bound for simultaneous projection method via Friedrichs angle cosine in product space; sharp rate for projection methods under different assumptions,yes
+10.1007/s00025-017-0721-5,2,,Ordering of subspaces in alternating projections with sharp estimates on greedy suboptimality; projection-product geometry only,no
+10.1007/s00220-008-0418-4,1,,Tripartite Bell violations via operator spaces and trilinear forms; background tensor norm theory,no
+10.3150/21-bej1371,2,R9,Model selection for tree tensor networks viewed as multilinear sum-product networks; shares tree multilinear object without comparable bound,no
+10.48550/arxiv.1912.07913,2,R9,Learning densities in tree-based tensor formats with orthogonal-basis parametrization; shares object only,no
+10.48550/arxiv.1811.04455,2,R9,Tree-based tensor formats as multilinear deep networks with rank adaptation; shares object only,no
+10.48550/arxiv.2512.11967,1,,Holographic isometric tensor network states for many-body physics; broad field background,no
+10.1109/tnnls.2020.2967022,1,,TT-rank tensor-on-tensor regression algorithm; broad field background,no
+10.1353/ajm.2001.0035,1,,Sharp multilinear weighted L2 convolution estimates for dispersive PDE; different field,no
+10.1090/s0894-0347-03-00421-1,0,,Global well-posedness of KdV via multilinear harmonic analysis; irrelevant,no
+10.5802/aif.1125,0,,Calderon-Zygmund theory on product spaces; irrelevant,no
+10.2307/2155203,0,,Functional determinants and sharp conformal inequalities on manifolds; irrelevant,no
+10.4171/rmi/665,1,,Optimal constant for multilinear fractional integration forms; sharp multilinear constant in harmonic analysis unrelated to projections,no
+10.1088/1367-2630/ab31ef,2,,Unitary hierarchical tree tensor network classifiers studied via fidelity; shares tree network and fidelity objects without error bound,no
+10.1103/revmodphys.82.277,1,,Review of entanglement area laws; background for tensor network approximability,no
+10.1007/s00211-016-0819-9,2,R9,Joint feasibility of higher-order singular values with alternating projection heuristic; shares HOSVD truncation objects only,no
+10.1109/ipdps.2016.67,1,,Parallel Tucker compression implementation; background,no
+10.1007/jhep11%282019%29069,2,,Tree tensor networks built by iterative approximation in AdS/CFT with purification ideas; shares object loosely,no
+10.1007/jhep11(2019)069,2,,Tree tensor networks built by iterative approximation in AdS/CFT with purification ideas; shares object loosely,no
+10.1016/j.crma.2009.11.018,2,R6,Generalized Friedrichs angle for several subspaces to analyze alternating projection rates; angle technique without comparable sharp theorem,no
+10.1016/j.jmaa.2013.09.024,2,R6,Numerical range and spectrum of a product of two orthogonal projections with Friedrichs angle sector; shares projection-angle geometry,no
+10.48550/arxiv.1309.4709,3,R6,Sharp linear rate for Douglas-Rachford on subspaces equal to cosine of Friedrichs angle; sharp angle-based rate for projection compositions but no multilinear tree setting,yes
+10.1137/130918137,1,,Greedy low-rank approximate inverse preconditioner in HT format; background,no
+10.1103/physrevresearch.5.013031,2,R3,Optimizing tree tensor network structure to improve accuracy; tree-structure dependence of approximation contrasts with R3 but no theorem,no
+10.22331/q-2023-03-30-964,2,R9,Quantum circuit simulation on rooted tree tensor networks with SVD truncation through the tree; shares object without error constant,no
+10.1103/physreva.96.062322,1,,Tree tensor network simulation of Shor's algorithm; background,no
+10.1021/acs.jctc.9b00071,1,,Three-legged tree tensor networks with symmetries for chemistry; background,no
+10.1098/rspa.2023.0218,1,,Review of tensor networks for quantum machine learning; background,no
+10.1103/prxquantum.4.030333,1,,Measurement-induced transitions on tree-structured dynamics; broad background,no
+10.48550/arxiv.2206.01000,2,R9,Quantum circuit simulation on rooted tree tensor networks with SVD truncation through the tree; shares object without error constant,no
+10.1002/2015wr016967,0,,Review of groundwater surrogate models; irrelevant,no
+10.48550/arxiv.1707.08308,1,,Tensor contraction and regression layers in CNNs; background multilinear ML,no
+10.1103/physrevx.9.031041,1,,Differentiable programming of tensor network contractions; background,no
+10.1103/ycty-d5f9,1,,Tree tensor network impurity solver via Cayley-tree mapping; background,no
+10.3389/fcomp.2026.1879630,1,,Speculative quantum generative models with isometric tree tensor networks; background,no
+10.1038/s41598-023-46064-5,0,,Machine learning prediction of blasting ground vibration; irrelevant,no
+10.1090/s0002-9947-1995-1316845-2,0,,Functional determinants and sharp conformal inequalities on manifolds; irrelevant,no
+10.1016/j.aim.2022.108567,1,,Integrability of orthogonal projections of measures and Furstenberg sets; different sense of projection,no
+10.1090/s0002-9947-2012-05403-1,2,,Sharp lower bounds for norms of products of homogeneous polynomials in Hilbert space with orthonormal extremizers; sharp multilinear extremal problem unrelated to projection defects,no
+10.1088/1751-8113/42/50/504004,1,,Review of tensor product states including tree tensor states; background,no
+10.4310/jdg/1253804349,0,,Lp affine isoperimetric inequalities for projection bodies; irrelevant,no
+10.2140/pjm.1970.33.1,1,,Extremal simplex content via angle cosines; generic angle extremization only,no
+10.1090/s0894-0347-02-00398-3,3,R1b;R6,Identity giving the sharpest possible estimate for norms of products of nonexpansive operators and alternating projections; sharp product-of-projections bound under different assumptions,yes
+10.1090/s1061-0022-2012-01202-1,2,R6,Generalized Friedrichs angle parameter and dichotomy for cyclic projection convergence rates; angle technique without comparable sharp theorem,no
+admmforconvexquadraticprogramslinearconvergenceandinfeasibilitydetection,2,,ADMM rate for QPs expressed via Friedrichs angle cosine; shares angle-projection tool only,no
+10.48550/arxiv.1411.7288,2,,ADMM rate for QPs expressed via Friedrichs angle cosine; shares angle-projection tool only,no
+10.1145/301250.301349,0,,Quantum query complexity of approximate median; irrelevant,no
+10.1002/nla.1818,2,R9,Projected residual iteration with truncation in hierarchical Tucker format; shares HT truncation without accumulation constant,no
+10.1137/120885723,3,R1a;R9,Tangent-space projector analysis with curvature estimates and quasi-best approximation for HT/TT dynamical approximation; projection error bounds in tree formats under different assumptions,yes
+10.1080/01630569408816580,3,R1b;R6,Dykstra cyclic projections rate with best possible constant given by cosine of angle between half-spaces; sharp angle constant for projection compositions,yes
+10.1103/physreva.74.022320,1,,Efficient classical simulation of tree-structured quantum systems with low Schmidt rank; background,no
+renormalizationandtensorproductstatesinspinchainsandlattices,1,,Review of tensor product states including tree tensor states; background,no
+10.1103/physrevlett.103.070504,0,,Strong converse for classical capacity of quantum channels; irrelevant,no
+10.1137/15m1026791,3,R1a;R9,Error bounds for projector-splitting low-rank matrix and TT integrators robust to small singular values; projection error accumulation bounds in TT under different assumptions,yes
+10.1137/24m1714502,3,R1a;R3;R9,Parallel BUG integrator for general tree tensor networks with robust error bound; error bound for projected tree tensor network dynamics under different assumptions,yes

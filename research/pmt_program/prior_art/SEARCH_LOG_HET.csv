@@ -1,0 +1,194 @@
+timestamp,database,family,query,request,status,results_total,records_saved,notes
+2026-09-14T17:05:30,openalex,O1,"""hierarchical Tucker"" nodewise truncation error tolerance",https://api.openalex.org/works?search=%22hierarchical+Tucker%22+nodewise+truncation+error+tolerance&per-page=25,OK,3,3,
+2026-09-14T17:06:31,arxiv,O1,"""hierarchical Tucker"" nodewise truncation error tolerance",,ERROR,,0,HTTPError: HTTP Error 429: Unknown Error
+2026-09-14T17:06:33,zbmath,O1,"""hierarchical Tucker"" nodewise truncation error tolerance",https://api.zbmath.org/v1/document/_search?search_string=%22hierarchical+Tucker%22+nodewise+truncation+error+tolerance&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:06:54,semanticscholar,O1,"""hierarchical Tucker"" nodewise truncation error tolerance",https://api.semanticscholar.org/graph/v1/paper/search?query=%22hierarchical+Tucker%22+nodewise+truncation+error+tolerance&limit=10&fields=title%2Cyear%2Cvenue%2CexternalIds%2Cauthors%2Cabstract%2CcitationCount,OK,15,10,
+2026-09-14T17:06:56,openalex,O1,"""tensor train"" local truncation errors accumulation bound",https://api.openalex.org/works?search=%22tensor+train%22+local+truncation+errors+accumulation+bound&per-page=25,OK,108,25,
+2026-09-14T17:06:56,arxiv,O1,"""tensor train"" local truncation errors accumulation bound",,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:06:58,zbmath,O1,"""tensor train"" local truncation errors accumulation bound",https://api.zbmath.org/v1/document/_search?search_string=%22tensor+train%22+local+truncation+errors+accumulation+bound&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:13,semanticscholar,O1,"""tensor train"" local truncation errors accumulation bound",,ERROR,,0,HTTPError: HTTP Error 429: 
+2026-09-14T17:07:15,openalex,O1,"""tree tensor network"" local error propagation bound",https://api.openalex.org/works?search=%22tree+tensor+network%22+local+error+propagation+bound&per-page=25,OK,248,25,
+2026-09-14T17:07:15,arxiv,O1,"""tree tensor network"" local error propagation bound",,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:17,zbmath,O1,"""tree tensor network"" local error propagation bound",https://api.zbmath.org/v1/document/_search?search_string=%22tree+tensor+network%22+local+error+propagation+bound&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:17,semanticscholar,O1,"""tree tensor network"" local error propagation bound",,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:19,openalex,O1,"hierarchical tensor approximation node-dependent error estimate ""dimension tree""",https://api.openalex.org/works?search=hierarchical+tensor+approximation+node-dependent+error+estimate+%22dimension+tree%22&per-page=25,OK,84,25,
+2026-09-14T17:07:19,arxiv,O1,"hierarchical tensor approximation node-dependent error estimate ""dimension tree""",,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:21,zbmath,O1,"hierarchical tensor approximation node-dependent error estimate ""dimension tree""",https://api.zbmath.org/v1/document/_search?search_string=hierarchical+tensor+approximation+node-dependent+error+estimate+%22dimension+tree%22&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:21,semanticscholar,O1,"hierarchical tensor approximation node-dependent error estimate ""dimension tree""",,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:23,openalex,O1,nested compositions approximation error propagation tree tensor network,https://api.openalex.org/works?search=nested+compositions+approximation+error+propagation+tree+tensor+network&per-page=25,OK,759,25,
+2026-09-14T17:07:23,arxiv,O1,nested compositions approximation error propagation tree tensor network,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:25,zbmath,O1,nested compositions approximation error propagation tree tensor network,https://api.zbmath.org/v1/document/_search?search_string=nested+compositions+approximation+error+propagation+tree+tensor+network&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:25,semanticscholar,O1,nested compositions approximation error propagation tree tensor network,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:27,openalex,O2,"""TT-SVD"" prescribed accuracy truncation threshold distribution",https://api.openalex.org/works?search=%22TT-SVD%22+prescribed+accuracy+truncation+threshold+distribution&per-page=25,OK,31,25,
+2026-09-14T17:07:27,arxiv,O2,"""TT-SVD"" prescribed accuracy truncation threshold distribution",,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:29,zbmath,O2,"""TT-SVD"" prescribed accuracy truncation threshold distribution",https://api.zbmath.org/v1/document/_search?search_string=%22TT-SVD%22+prescribed+accuracy+truncation+threshold+distribution&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:29,semanticscholar,O2,"""TT-SVD"" prescribed accuracy truncation threshold distribution",,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:31,openalex,O2,adaptive rank truncation tolerance allocation tensor network,https://api.openalex.org/works?search=adaptive+rank+truncation+tolerance+allocation+tensor+network&per-page=25,OK,552,25,
+2026-09-14T17:07:31,arxiv,O2,adaptive rank truncation tolerance allocation tensor network,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:33,zbmath,O2,adaptive rank truncation tolerance allocation tensor network,https://api.zbmath.org/v1/document/_search?search_string=adaptive+rank+truncation+tolerance+allocation+tensor+network&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:33,semanticscholar,O2,adaptive rank truncation tolerance allocation tensor network,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:35,openalex,O2,optimal error budget allocation tensor decomposition cores,https://api.openalex.org/works?search=optimal+error+budget+allocation+tensor+decomposition+cores&per-page=25,OK,2466,25,
+2026-09-14T17:07:35,arxiv,O2,optimal error budget allocation tensor decomposition cores,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:36,zbmath,O2,optimal error budget allocation tensor decomposition cores,https://api.zbmath.org/v1/document/_search?search_string=optimal+error+budget+allocation+tensor+decomposition+cores&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:36,semanticscholar,O2,optimal error budget allocation tensor decomposition cores,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:39,openalex,O2,hierarchical tensor soft thresholding node-wise thresholds error,https://api.openalex.org/works?search=hierarchical+tensor+soft+thresholding+node-wise+thresholds+error&per-page=25,OK,3603,25,
+2026-09-14T17:07:39,arxiv,O2,hierarchical tensor soft thresholding node-wise thresholds error,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:41,zbmath,O2,hierarchical tensor soft thresholding node-wise thresholds error,https://api.zbmath.org/v1/document/_search?search_string=hierarchical+tensor+soft+thresholding+node-wise+thresholds+error&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:41,semanticscholar,O2,hierarchical tensor soft thresholding node-wise thresholds error,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:44,openalex,O2,rank allocation tensor train compression error budget,https://api.openalex.org/works?search=rank+allocation+tensor+train+compression+error+budget&per-page=25,OK,1211,25,
+2026-09-14T17:07:44,arxiv,O2,rank allocation tensor train compression error budget,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:45,zbmath,O2,rank allocation tensor train compression error budget,https://api.zbmath.org/v1/document/_search?search_string=rank+allocation+tensor+train+compression+error+budget&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:45,semanticscholar,O2,rank allocation tensor train compression error budget,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:47,openalex,O3,matrix product state truncation fidelity product of local fidelities,https://api.openalex.org/works?search=matrix+product+state+truncation+fidelity+product+of+local+fidelities&per-page=25,OK,17133,25,
+2026-09-14T17:07:47,arxiv,O3,matrix product state truncation fidelity product of local fidelities,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:49,zbmath,O3,matrix product state truncation fidelity product of local fidelities,https://api.zbmath.org/v1/document/_search?search_string=matrix+product+state+truncation+fidelity+product+of+local+fidelities&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:49,semanticscholar,O3,matrix product state truncation fidelity product of local fidelities,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:51,openalex,O3,quantum circuit simulation tensor network truncation fidelity estimate,https://api.openalex.org/works?search=quantum+circuit+simulation+tensor+network+truncation+fidelity+estimate&per-page=25,OK,1716,25,
+2026-09-14T17:07:51,arxiv,O3,quantum circuit simulation tensor network truncation fidelity estimate,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:53,zbmath,O3,quantum circuit simulation tensor network truncation fidelity estimate,https://api.zbmath.org/v1/document/_search?search_string=quantum+circuit+simulation+tensor+network+truncation+fidelity+estimate&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:53,semanticscholar,O3,quantum circuit simulation tensor network truncation fidelity estimate,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:55,openalex,O3,"""time-evolving block decimation"" truncation error accumulation bound",https://api.openalex.org/works?search=%22time-evolving+block+decimation%22+truncation+error+accumulation+bound&per-page=25,OK,30,25,
+2026-09-14T17:07:55,arxiv,O3,"""time-evolving block decimation"" truncation error accumulation bound",,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:07:57,zbmath,O3,"""time-evolving block decimation"" truncation error accumulation bound",https://api.zbmath.org/v1/document/_search?search_string=%22time-evolving+block+decimation%22+truncation+error+accumulation+bound&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:07:57,semanticscholar,O3,"""time-evolving block decimation"" truncation error accumulation bound",,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:07:59,openalex,O3,per-gate error budget quantum circuit total error bound,https://api.openalex.org/works?search=per-gate+error+budget+quantum+circuit+total+error+bound&per-page=25,OK,3567,25,
+2026-09-14T17:07:59,arxiv,O3,per-gate error budget quantum circuit total error bound,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:01,zbmath,O3,per-gate error budget quantum circuit total error bound,https://api.zbmath.org/v1/document/_search?search_string=per-gate+error+budget+quantum+circuit+total+error+bound&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:01,semanticscholar,O3,per-gate error budget quantum circuit total error bound,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:03,openalex,O3,fidelity multiplicativity truncation tensor network contraction,https://api.openalex.org/works?search=fidelity+multiplicativity+truncation+tensor+network+contraction&per-page=25,OK,573,25,
+2026-09-14T17:08:03,arxiv,O3,fidelity multiplicativity truncation tensor network contraction,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:05,zbmath,O3,fidelity multiplicativity truncation tensor network contraction,https://api.zbmath.org/v1/document/_search?search_string=fidelity+multiplicativity+truncation+tensor+network+contraction&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:05,semanticscholar,O3,fidelity multiplicativity truncation tensor network contraction,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:07,openalex,O4,product of orthogonal projections different angles norm estimate,https://api.openalex.org/works?search=product+of+orthogonal+projections+different+angles+norm+estimate&per-page=25,OK,25874,25,
+2026-09-14T17:08:07,arxiv,O4,product of orthogonal projections different angles norm estimate,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:09,zbmath,O4,product of orthogonal projections different angles norm estimate,https://api.zbmath.org/v1/document/_search?search_string=product+of+orthogonal+projections+different+angles+norm+estimate&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:09,semanticscholar,O4,product of orthogonal projections different angles norm estimate,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:11,openalex,O4,compositions of averaged operators tight averagedness constant,https://api.openalex.org/works?search=compositions+of+averaged+operators+tight+averagedness+constant&per-page=25,OK,37,25,
+2026-09-14T17:08:11,arxiv,O4,compositions of averaged operators tight averagedness constant,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:13,zbmath,O4,compositions of averaged operators tight averagedness constant,https://api.zbmath.org/v1/document/_search?search_string=compositions+of+averaged+operators+tight+averagedness+constant&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:13,semanticscholar,O4,compositions of averaged operators tight averagedness constant,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:14,openalex,O4,Friedrichs angles finite collection of subspaces product norm bound,https://api.openalex.org/works?search=Friedrichs+angles+finite+collection+of+subspaces+product+norm+bound&per-page=25,OK,566,25,
+2026-09-14T17:08:14,arxiv,O4,Friedrichs angles finite collection of subspaces product norm bound,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:16,zbmath,O4,Friedrichs angles finite collection of subspaces product norm bound,https://api.zbmath.org/v1/document/_search?search_string=Friedrichs+angles+finite+collection+of+subspaces+product+norm+bound&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:16,semanticscholar,O4,Friedrichs angles finite collection of subspaces product norm bound,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:18,openalex,O4,perturbation of products of almost orthogonal projections error bound,https://api.openalex.org/works?search=perturbation+of+products+of+almost+orthogonal+projections+error+bound&per-page=25,OK,19250,25,
+2026-09-14T17:08:18,arxiv,O4,perturbation of products of almost orthogonal projections error bound,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:20,zbmath,O4,perturbation of products of almost orthogonal projections error bound,https://api.zbmath.org/v1/document/_search?search_string=perturbation+of+products+of+almost+orthogonal+projections+error+bound&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:20,semanticscholar,O4,perturbation of products of almost orthogonal projections error bound,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:23,openalex,O4,sectorial matrices product numerical range angle sum,https://api.openalex.org/works?search=sectorial+matrices+product+numerical+range+angle+sum&per-page=25,OK,17175,25,
+2026-09-14T17:08:23,arxiv,O4,sectorial matrices product numerical range angle sum,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:24,zbmath,O4,sectorial matrices product numerical range angle sum,https://api.zbmath.org/v1/document/_search?search_string=sectorial+matrices+product+numerical+range+angle+sum&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:24,semanticscholar,O4,sectorial matrices product numerical range angle sum,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:26,openalex,O5,Minkowski product complex disks different radii boundary,https://api.openalex.org/works?search=Minkowski+product+complex+disks+different+radii+boundary&per-page=25,OK,671,25,
+2026-09-14T17:08:26,arxiv,O5,Minkowski product complex disks different radii boundary,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:28,zbmath,O5,Minkowski product complex disks different radii boundary,https://api.zbmath.org/v1/document/_search?search_string=Minkowski+product+complex+disks+different+radii+boundary&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:28,semanticscholar,O5,Minkowski product complex disks different radii boundary,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:30,openalex,O5,Minkowski product circular arcs complex plane,https://api.openalex.org/works?search=Minkowski+product+circular+arcs+complex+plane&per-page=25,OK,903,25,
+2026-09-14T17:08:30,arxiv,O5,Minkowski product circular arcs complex plane,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:32,zbmath,O5,Minkowski product circular arcs complex plane,https://api.zbmath.org/v1/document/_search?search_string=Minkowski+product+circular+arcs+complex+plane&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:32,semanticscholar,O5,Minkowski product circular arcs complex plane,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:34,openalex,O5,maximize modulus product complex numbers constrained arguments,https://api.openalex.org/works?search=maximize+modulus+product+complex+numbers+constrained+arguments&per-page=25,OK,2309,25,
+2026-09-14T17:08:34,arxiv,O5,maximize modulus product complex numbers constrained arguments,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:36,zbmath,O5,maximize modulus product complex numbers constrained arguments,https://api.zbmath.org/v1/document/_search?search_string=maximize+modulus+product+complex+numbers+constrained+arguments&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:36,semanticscholar,O5,maximize modulus product complex numbers constrained arguments,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:38,openalex,O5,water-filling box constraints separable concave maximization,https://api.openalex.org/works?search=water-filling+box+constraints+separable+concave+maximization&per-page=25,OK,103,25,
+2026-09-14T17:08:38,arxiv,O5,water-filling box constraints separable concave maximization,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:40,zbmath,O5,water-filling box constraints separable concave maximization,https://api.zbmath.org/v1/document/_search?search_string=water-filling+box+constraints+separable+concave+maximization&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:40,semanticscholar,O5,water-filling box constraints separable concave maximization,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:42,openalex,O5,scaled relative graph composition of operators tight,https://api.openalex.org/works?search=scaled+relative+graph+composition+of+operators+tight&per-page=25,OK,22224,25,
+2026-09-14T17:08:42,arxiv,O5,scaled relative graph composition of operators tight,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:44,zbmath,O5,scaled relative graph composition of operators tight,https://api.zbmath.org/v1/document/_search?search_string=scaled+relative+graph+composition+of+operators+tight&page=0&results_per_page=25,OK,1,1,
+2026-09-14T17:08:44,semanticscholar,O5,scaled relative graph composition of operators tight,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:46,openalex,O6,Bures angle triangle inequality sequence of quantum channels error accumulation,https://api.openalex.org/works?search=Bures+angle+triangle+inequality+sequence+of+quantum+channels+error+accumulation&per-page=25,OK,10,10,
+2026-09-14T17:08:46,arxiv,O6,Bures angle triangle inequality sequence of quantum channels error accumulation,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:48,zbmath,O6,Bures angle triangle inequality sequence of quantum channels error accumulation,https://api.zbmath.org/v1/document/_search?search_string=Bures+angle+triangle+inequality+sequence+of+quantum+channels+error+accumulation&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:48,semanticscholar,O6,Bures angle triangle inequality sequence of quantum channels error accumulation,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:50,openalex,O6,hybrid argument nonuniform query magnitudes bound,https://api.openalex.org/works?search=hybrid+argument+nonuniform+query+magnitudes+bound&per-page=25,OK,232,25,
+2026-09-14T17:08:50,arxiv,O6,hybrid argument nonuniform query magnitudes bound,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:52,zbmath,O6,hybrid argument nonuniform query magnitudes bound,https://api.zbmath.org/v1/document/_search?search_string=hybrid+argument+nonuniform+query+magnitudes+bound&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:52,semanticscholar,O6,hybrid argument nonuniform query magnitudes bound,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:53,openalex,O6,quantum Zeno dragging nonuniform measurement angles optimal,https://api.openalex.org/works?search=quantum+Zeno+dragging+nonuniform+measurement+angles+optimal&per-page=25,OK,3,3,
+2026-09-14T17:08:53,arxiv,O6,quantum Zeno dragging nonuniform measurement angles optimal,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:55,zbmath,O6,quantum Zeno dragging nonuniform measurement angles optimal,https://api.zbmath.org/v1/document/_search?search_string=quantum+Zeno+dragging+nonuniform+measurement+angles+optimal&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:55,semanticscholar,O6,quantum Zeno dragging nonuniform measurement angles optimal,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:08:57,openalex,O6,optimal allocation of approximation errors quantum circuit synthesis,https://api.openalex.org/works?search=optimal+allocation+of+approximation+errors+quantum+circuit+synthesis&per-page=25,OK,1720,25,
+2026-09-14T17:08:57,arxiv,O6,optimal allocation of approximation errors quantum circuit synthesis,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:08:59,zbmath,O6,optimal allocation of approximation errors quantum circuit synthesis,https://api.zbmath.org/v1/document/_search?search_string=optimal+allocation+of+approximation+errors+quantum+circuit+synthesis&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:08:59,semanticscholar,O6,optimal allocation of approximation errors quantum circuit synthesis,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:09:01,openalex,O6,product of cosines maximization sum of angles constraint,https://api.openalex.org/works?search=product+of+cosines+maximization+sum+of+angles+constraint&per-page=25,OK,12467,25,
+2026-09-14T17:09:01,arxiv,O6,product of cosines maximization sum of angles constraint,,SKIPPED,,0,arXiv API rate limited (HTTP 429) earlier in this run; preprints covered via OpenAlex
+2026-09-14T17:09:03,zbmath,O6,product of cosines maximization sum of angles constraint,https://api.zbmath.org/v1/document/_search?search_string=product+of+cosines+maximization+sum+of+angles+constraint&page=0&results_per_page=25,OK,0,0,no results (HTTP 404 from zbMATH)
+2026-09-14T17:09:03,semanticscholar,O6,product of cosines maximization sum of angles constraint,,SKIPPED,,0,rate limited earlier in this run
+2026-09-14T17:09:25,arxiv,O1,"""hierarchical Tucker"" nodewise truncation error tolerance",,ERROR,,0,retry pass: HTTPError: HTTP Error 503: Service Unavailable
+2026-09-14T17:15:34,arxiv,O1,"""tensor train"" local truncation errors accumulation bound",,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:15:34,semanticscholar,O1,"""tensor train"" local truncation errors accumulation bound",,ERROR,,0,retry pass: HTTPError: HTTP Error 429: 
+2026-09-14T17:19:11,arxiv,O1,"""tree tensor network"" local error propagation bound",,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O1,"""tree tensor network"" local error propagation bound",,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O1,"hierarchical tensor approximation node-dependent error estimate ""dimension tree""",,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O1,"hierarchical tensor approximation node-dependent error estimate ""dimension tree""",,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O1,nested compositions approximation error propagation tree tensor network,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O1,nested compositions approximation error propagation tree tensor network,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O2,"""TT-SVD"" prescribed accuracy truncation threshold distribution",,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O2,"""TT-SVD"" prescribed accuracy truncation threshold distribution",,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O2,adaptive rank truncation tolerance allocation tensor network,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O2,adaptive rank truncation tolerance allocation tensor network,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O2,optimal error budget allocation tensor decomposition cores,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O2,optimal error budget allocation tensor decomposition cores,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O2,hierarchical tensor soft thresholding node-wise thresholds error,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O2,hierarchical tensor soft thresholding node-wise thresholds error,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O2,rank allocation tensor train compression error budget,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O2,rank allocation tensor train compression error budget,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O3,matrix product state truncation fidelity product of local fidelities,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O3,matrix product state truncation fidelity product of local fidelities,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O3,quantum circuit simulation tensor network truncation fidelity estimate,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O3,quantum circuit simulation tensor network truncation fidelity estimate,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O3,"""time-evolving block decimation"" truncation error accumulation bound",,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O3,"""time-evolving block decimation"" truncation error accumulation bound",,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O3,per-gate error budget quantum circuit total error bound,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O3,per-gate error budget quantum circuit total error bound,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O3,fidelity multiplicativity truncation tensor network contraction,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O3,fidelity multiplicativity truncation tensor network contraction,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O4,product of orthogonal projections different angles norm estimate,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O4,product of orthogonal projections different angles norm estimate,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O4,compositions of averaged operators tight averagedness constant,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O4,compositions of averaged operators tight averagedness constant,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O4,Friedrichs angles finite collection of subspaces product norm bound,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O4,Friedrichs angles finite collection of subspaces product norm bound,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O4,perturbation of products of almost orthogonal projections error bound,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O4,perturbation of products of almost orthogonal projections error bound,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O4,sectorial matrices product numerical range angle sum,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O4,sectorial matrices product numerical range angle sum,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O5,Minkowski product complex disks different radii boundary,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O5,Minkowski product complex disks different radii boundary,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O5,Minkowski product circular arcs complex plane,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O5,Minkowski product circular arcs complex plane,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O5,maximize modulus product complex numbers constrained arguments,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O5,maximize modulus product complex numbers constrained arguments,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O5,water-filling box constraints separable concave maximization,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O5,water-filling box constraints separable concave maximization,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O5,scaled relative graph composition of operators tight,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O5,scaled relative graph composition of operators tight,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O6,Bures angle triangle inequality sequence of quantum channels error accumulation,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O6,Bures angle triangle inequality sequence of quantum channels error accumulation,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O6,hybrid argument nonuniform query magnitudes bound,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O6,hybrid argument nonuniform query magnitudes bound,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O6,quantum Zeno dragging nonuniform measurement angles optimal,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O6,quantum Zeno dragging nonuniform measurement angles optimal,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O6,optimal allocation of approximation errors quantum circuit synthesis,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O6,optimal allocation of approximation errors quantum circuit synthesis,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,arxiv,O6,product of cosines maximization sum of angles constraint,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:11,semanticscholar,O6,product of cosines maximization sum of angles constraint,,SKIPPED,,0,retry pass: still rate limited after backoff 30/60/120 s
+2026-09-14T17:19:39,openalex-citations,O4,het backward of 10.1016/j.jmaa.2014.11.044,W1998428773,OK,27,22,
+2026-09-14T17:19:39,openalex-citations,O4,het forward of 10.1016/j.jmaa.2014.11.044,W1998428773,OK,112,50,
+2026-09-14T17:19:43,openalex-citations,O4,het backward of 10.1186/s13663-021-00709-0,W2998099872,OK,33,24,
+2026-09-14T17:19:43,openalex-citations,O4,het forward of 10.1186/s13663-021-00709-0,W2998099872,OK,11,11,
+2026-09-14T17:19:47,openalex-citations,O5,het backward of 10.1023/A:1014737602641,W422477,OK,32,30,
+2026-09-14T17:19:47,openalex-citations,O5,het forward of 10.1023/A:1014737602641,W422477,OK,25,25,
+2026-09-14T17:19:50,openalex-citations,O5,het backward of 10.1109/TSP.2004.840816,W2102412823,OK,31,29,
+2026-09-14T17:19:50,openalex-citations,O5,het forward of 10.1109/TSP.2004.840816,W2102412823,OK,477,50,
+2026-09-14T17:19:55,openalex-citations,O3,het backward of 10.1103/PhysRevX.10.041038,W3006255022,OK,19,19,
+2026-09-14T17:19:55,openalex-citations,O3,het forward of 10.1103/PhysRevX.10.041038,W3006255022,OK,202,50,
+2026-09-14T17:19:59,openalex-citations,O6,het backward of 10.1103/PRXQuantum.4.020304,W4362737055,OK,39,31,
+2026-09-14T17:19:59,openalex-citations,O6,het forward of 10.1103/PRXQuantum.4.020304,W4362737055,OK,76,50,
+2026-09-14T17:20:04,openalex-citations,O1,het backward of 10.1007/s10208-016-9317-9,W2343408237,OK,167,155,
+2026-09-14T17:20:04,openalex-citations,O1,het forward of 10.1007/s10208-016-9317-9,W2343408237,OK,117,50,

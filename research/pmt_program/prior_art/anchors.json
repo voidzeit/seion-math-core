@@ -1,0 +1,16 @@
+[
+  {"id": "10.1137/090764189", "family": "A", "why": "SEED_FROM_REPO: Grasedyck 2010 hierarchical SVD, quasi-optimal HT truncation (read in full in PAA)"},
+  {"id": "10.1007/s40324-018-00184-5", "family": "A", "why": "SEED_FROM_REPO: Hackbusch 2021 truncation in hierarchical format (TTM/TA KNOWN_ADJACENT_RESULT)"},
+  {"id": "10.1137/22M1473790", "family": "A", "why": "SEED_FROM_REPO: Ceruti-Lubich-Sulz 2023 rank-adaptive TTN integration"},
+  {"id": "10.48550/arXiv.2001.01191", "family": "B", "why": "SEED_FROM_REPO: Zhang-Solomonik, stability of tensor networks; PAA 'closest precedent'"},
+  {"id": "10.1007/BF02551235", "family": "I", "why": "SEED_FROM_REPO: Kayalar-Weinert 1988 error bounds alternating projections (not yet read in original)"},
+  {"id": "10.1006/jmaa.1997.5202", "family": "I", "why": "SEED_FROM_REPO: Deutsch-Hundal 1997 rate of convergence MAP II (DOI corrected 2026-09-14; repo bib had 10.1006/jmaa.1997.5216 = a different paper)"},
+  {"id": "10.48550/arXiv.1704.00308", "family": "I", "why": "SEED_FROM_REPO: Reich-Zalas optimal error bound simultaneous projections"},
+  {"id": "10.1007/s10107-021-01639-w", "family": "D", "why": "SEED_FROM_REPO: Ryu-Hannah-Yin scaled relative graphs (published version; arXiv:1902.09788 record is empty in OpenAlex); CGR 'specific antecedent of the angle mechanism'"},
+  {"id": "10.1109/TIT.2010.2054130", "family": "E", "why": "SEED_CLASSIC: Tomamichel-Colbeck-Renner purified distance (generalized fidelity)"},
+  {"id": "10.1137/S0097539796300933", "family": "K", "why": "SEED_CLASSIC: Bennett-Bernstein-Brassard-Vazirani hybrid argument"},
+  {"id": "10.1109/18.796385", "family": "K", "why": "SEED_CLASSIC: Winter 1999 gentle measurement lemma"},
+  {"id": "10.1063/1.523304", "family": "J", "why": "SEED_CLASSIC: Misra-Sudarshan 1977 quantum Zeno paradox"},
+  {"id": "10.1103/PhysRevB.73.094423", "family": "M", "why": "SEED_CLASSIC: Verstraete-Cirac 2006 MPS truncation error / faithful representation"},
+  {"id": "10.1145/3372885.3373824", "family": "H", "why": "SEED_CLASSIC: The Lean mathematical library (CPP 2020)"}
+]

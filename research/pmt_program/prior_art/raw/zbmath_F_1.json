@@ -1,0 +1,23 @@
+{
+ "query": "truncation error independent of dimension tree",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=truncation+error+independent+of+dimension+tree&page=0&results_per_page=25",
+ "total": 1,
+ "records": [
+  {
+   "title": "Proceedings of the 34th annual ACM-SIAM symposium on discrete algorithms, SODA 2023, Florence, Italy, January 22--25, 2023",
+   "year": "2023",
+   "venue": "",
+   "doi": "10.1137/1.9781611977554",
+   "arxiv": "2203.11863",
+   "authors": "",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "7662701",
+   "msc": "68-06;68Wxx;00B25",
+   "source": "zbmath",
+   "family": "F",
+   "query": "truncation error independent of dimension tree"
+  }
+ ]
+}

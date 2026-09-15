@@ -1,0 +1,420 @@
+key,families,title,year,venue,doi
+10.1007/s10543-010-0265-5,I,Randomized Kaczmarz solver for noisy linear systems,2010,BIT Numerical Mathematics,10.1007/s10543-010-0265-5
+10.1109/tsg.2016.2580584,I,Dynamic State Estimation for Multi-Machine Power System by Unscented Kalman Filter With Enhanced Numerical Stability,2016,IEEE Transactions on Smart Grid,10.1109/tsg.2016.2580584
+10.1007/s11075-011-9451-z,I,Acceleration of randomized Kaczmarz method via the Johnson–Lindenstrauss Lemma,2011,Numerical Algorithms,10.1007/s11075-011-9451-z
+10.1016/j.csda.2013.03.024,I,OLS with multiple high dimensional category variables,2013,Computational Statistics & Data Analysis,10.1016/j.csda.2013.03.024
+10.1088/0266-5611/31/12/125008,I,Solving systems of phaseless equations via Kaczmarz methods: a proof of concept study,2015,Inverse Problems,10.1088/0266-5611/31/12/125008
+10.1007/s10107-017-1229-1,I,Linear convergence of the randomized sparse Kaczmarz method,2018,Mathematical Programming,10.1007/s10107-017-1229-1
+10.1016/j.laa.2006.07.014,I,The combination technique and some generalisations,2006,Linear Algebra and its Applications,10.1016/j.laa.2006.07.014
+efficientrankreductionofcorrelationmatrices1,I,Efficient Rank Reduction of Correlation Matrices 1,2003,,
+10.48550/arxiv.0905.4482,I,Topics in Compressed Sensing,2009,arXiv (Cornell University),10.48550/arxiv.0905.4482
+10.1007/11830924_45,I,A Randomized Solver for Linear Systems with Exponential Convergence,2006,Lecture notes in computer science,10.1007/11830924_45
+10.1007/s00211-012-0512-6,I,On the Meany inequality with applications to convergence analysis of several row-action iteration methods,2012,Numerische Mathematik,10.1007/s00211-012-0512-6
+10.1007/s10851-014-0539-7,I,Block Kaczmarz Method with Inequalities,2014,Journal of Mathematical Imaging and Vision,10.1007/s10851-014-0539-7
+10.1016/j.jfranklin.2022.09.028,I,Developing Kaczmarz method for solving Sylvester matrix equations,2022,Journal of the Franklin Institute,10.1016/j.jfranklin.2022.09.028
+10.1137/21m1450537,I,Linear Convergence of Randomized Kaczmarz Method for Solving Complex-Valued Phaseless Equations,2022,SIAM Journal on Imaging Sciences,10.1137/21m1450537
+10.1109/tac.2016.2605741,I,Variable Selection and Identification of High-Dimensional Nonparametric Additive Nonlinear Systems,2016,IEEE Transactions on Automatic Control,10.1109/tac.2016.2605741
+10.48550/arxiv.1612.07838,I,"Convergence Rates for Greedy Kaczmarz Algorithms, and Faster Randomized Kaczmarz Rules Using the Orthogonality Graph",2016,arXiv (Cornell University),10.48550/arxiv.1612.07838
+10.3929/ethz-a-010377352,I,Convex Optimization with Random Pursuit,2014,Repository for Publications and Research Data (ETH Zurich),10.3929/ethz-a-010377352
+10.1007/s00211-021-01207-6,I,On the method of reflections,2021,Numerische Mathematik,10.1007/s00211-021-01207-6
+10.14288/1.0367781,I,Greed is good : greedy optimization methods for large-scale structured problems,2018,cIRcle (University of British Columbia),10.14288/1.0367781
+10.1109/lcsys.2017.2698179,I,Eigenvalue Invariance of Inhomogeneous Matrix Products in Distributed Algorithms,2017,IEEE Control Systems Letters,10.1109/lcsys.2017.2698179
+10.1017/cbo9780511840371,D,Topics in Matrix Analysis,1991,Cambridge University Press eBooks,10.1017/cbo9780511840371
+10.4064/fm-3-1-133-181,D,Sur les opérations dans les ensembles abstraits et leur application aux équations intégrales,1922,Fundamenta Mathematicae,10.4064/fm-3-1-133-181
+10.1137/0314056,D,Monotone Operators and the Proximal Point Algorithm,1976,SIAM Journal on Control and Optimization,10.1137/0314056
+10.1007/978-3-319-48311-5,D,Convex Analysis and Monotone Operator Theory in Hilbert Spaces,2017,CMS books in mathematics,10.1007/978-3-319-48311-5
+10.1007/bf01581204,D,On the Douglas—Rachford splitting method and the proximal point algorithm for maximal monotone operators,1992,Mathematical Programming,10.1007/bf01581204
+10.1090/s0002-9939-1953-0054846-3,D,Mean value methods in iteration,1953,Proceedings of the American Mathematical Society,10.1090/s0002-9939-1953-0054846-3
+10.1137/0716071,D,Splitting Algorithms for the Sum of Two Nonlinear Operators,1979,SIAM Journal on Numerical Analysis,10.1137/0716071
+10.1090/s0002-9947-1956-0084194-4,D,On the numerical solution of heat conduction problems in two and three space variables,1956,Transactions of the American Mathematical Society,10.1090/s0002-9947-1956-0084194-4
+10.1137/1.9781611974997,D,First-Order Methods in Optimization,2017,Society for Industrial and Applied Mathematics eBooks,10.1137/1.9781611974997
+10.1515/9780691213101,D,Spectra and Pseudospectra,2005,Princeton University Press eBooks,10.1515/9780691213101
+10.1073/pnas.38.8.716,D,On the Theory of Dynamic Programming,1952,Proceedings of the National Academy of Sciences,10.1073/pnas.38.8.716
+10.1017/cbo9780511810763,D,Mathematical Methods for Physics and Engineering,2006,Cambridge University Press eBooks,10.1017/cbo9780511810763
+10.1007/978-3-319-46128-1_50,D,Linear Convergence of Gradient and Proximal-Gradient Methods Under the Polyak-Łojasiewicz Condition,2016,Lecture notes in computer science,10.1007/978-3-319-46128-1_50
+10.1007/s10915-015-0048-x,D,On the Global and Linear Convergence of the Generalized Alternating Direction Method of Multipliers,2015,Journal of Scientific Computing,10.1007/s10915-015-0048-x
+10.1007/978-1-4939-1037-3,D,Implicit Functions and Solution Mappings,2014,Springer series in operations research/Springer series in operations research and financial engineering,10.1007/978-1-4939-1037-3
+10.1007/bfb0120929,D,Some continuity properties of polyhedral multifunctions,1981,Mathematical programming studies,10.1007/bfb0120929
+10.1017/cbo9780511791246,D,Complex Variables,2003,Cambridge University Press eBooks,10.1017/cbo9780511791246
+10.1007/bf02761171,D,Produits infinis de resolvantes,1978,Israel Journal of Mathematics,10.1007/bf02761171
+10.1137/18m1207260,D,A Forward-Backward Splitting Method for Monotone Inclusions Without Cocoercivity,2020,SIAM Journal on Optimization,10.1137/18m1207260
+10.1002/zamm.19290090206,D,Praktische Verfahren der Gleichungsauflösung .,1929,ZAMM ‐ Journal of Applied Mathematics and Mechanics / Zeitschrift für Angewandte Mathematik und Mechanik,10.1002/zamm.19290090206
+10.1023/b:svan.0000023394.19482.30,D,Regularity and Conditioning of Solution Mappings in Variational Analysis,2004,Set-Valued Analysis,10.1023/b:svan.0000023394.19482.30
+10.1016/0022-247x(77)90152-4,D,On the weak convergence of an ergodic iteration for the solution of variational inequalities for monotone operators in Hilbert space,1977,Journal of Mathematical Analysis and Applications,10.1016/0022-247x(77)90152-4
+10.1016/j.jmaa.2014.11.044,D,Compositions and convex combinations of averaged nonexpansive operators,2014,Journal of Mathematical Analysis and Applications,10.1016/j.jmaa.2014.11.044
+10.1007/s10107-015-0964-4,D,Convergence rates with inexact non-expansive operators,2015,Mathematical Programming,10.1007/s10107-015-0964-4
+10.1137/17m1120099,D,Forward-Backward-Half Forward Algorithm for Solving Monotone Inclusions,2018,SIAM Journal on Optimization,10.1137/17m1120099
+10.1081/nfa-120003674,D,NON-STRICTLY CONVEX MINIMIZATION OVER THE FIXED POINT SET OF AN ASYMPTOTICALLY SHRINKING NONEXPANSIVE MAPPING,2002,Numerical Functional Analysis and Optimization,10.1081/nfa-120003674
+10.1016/j.jmaa.2009.07.012,D,Metric subregularity and the proximal point method,2009,Journal of Mathematical Analysis and Applications,10.1016/j.jmaa.2009.07.012
+10.1073/pnas.17.7.417,D,A Canonical Form for Real Matrices under Orthogonal Transformations,1931,Proceedings of the National Academy of Sciences,10.1073/pnas.17.7.417
+10.1109/tac.2018.2808442,D,Tight Global Linear Convergence Rate Bounds for Operator Splitting Methods,2018,IEEE Transactions on Automatic Control,10.1109/tac.2018.2808442
+10.1007/s10957-019-01517-8,D,Douglas–Rachford Splitting for the Sum of a Lipschitz Continuous and a Strongly Monotone Operator,2019,Journal of Optimization Theory and Applications,10.1007/s10957-019-01517-8
+10.1016/j.jmaa.2020.124211,D,Tight coefficients of averaged operators via scaled relative graph,2020,Journal of Mathematical Analysis and Applications,10.1016/j.jmaa.2020.124211
+10.1007/978-3-319-97478-1_1,D,Large-Scale and Distributed Optimization: An Introduction,2018,Lecture notes in mathematics,10.1007/978-3-319-97478-1_1
+10.1090/conm/513/10075,D,Firmly nonexpansive and Kirszbraun-Valentine extensions: a constructive approach via monotone operator theory,2010,Contemporary mathematics - American Mathematical Society,10.1090/conm/513/10075
+10.1109/tac.2023.3234016,D,Graphical Nonlinear System Analysis,2023,IEEE Transactions on Automatic Control,10.1109/tac.2023.3234016
+10.1016/j.ejcon.2024.101050,D,Scaled graphs for reset control system analysis,2024,European Journal of Control,10.1016/j.ejcon.2024.101050
+10.1007/s10107-024-02182-0,D,Convergence of the preconditioned proximal point method and Douglas–Rachford splitting in the absence of monotonicity,2025,Mathematical Programming,10.1007/s10107-024-02182-0
+10.23919/ecc65951.2025.11187068,D,Scaled Relative Graph Analysis of Lur’e Systems and the Generalized Circle Criterion,2025,,10.23919/ecc65951.2025.11187068
+10.1109/cdc45484.2021.9683092,D,Scaled relative graphs for system analysis,2021,2021 60th IEEE Conference on Decision and Control (CDC),10.1109/cdc45484.2021.9683092
+10.1109/tac.2025.3632433,D,A Homotopy Theorem for Incremental Stability,2025,IEEE Transactions on Automatic Control,10.1109/tac.2025.3632433
+10.1016/j.ejcon.2025.101335,D,Scaled relative graphs for nonmonotone operators with applications in circuit theory,2025,European Journal of Control,10.1016/j.ejcon.2025.101335
+10.1109/cdc51059.2022.9993357,D,Circuit Model Reduction with Scaled Relative Graphs,2022,2022 IEEE 61st Conference on Decision and Control (CDC),10.1109/cdc51059.2022.9993357
+10.1109/tpwrs.2026.3674752,D,Stability Analysis of Power-Electronics-Dominated Grids Using Scaled Relative Graphs,2026,IEEE Transactions on Power Systems,10.1109/tpwrs.2026.3674752
+10.1080/02331934.2025.2544700,D,Convergence analyses of Davis–Yin splitting via scaled relative graphs II: convex optimization problems,2025,Optimization,10.1080/02331934.2025.2544700
+10.1137/24m1656530,D,Short Communication: FISTA Iterates Converge Linearly for Denoiser-Driven Regularization,2025,SIAM Journal on Imaging Sciences,10.1137/24m1656530
+10.1016/j.sysconle.2022.105198,D,A rolled-off passivity theorem,2022,Systems & Control Letters,10.1016/j.sysconle.2022.105198
+10.1016/j.ejcon.2026.101576,D,Scaled relative graphs for pairs of operators beyond classical monotonicity,2026,European Journal of Control,10.1016/j.ejcon.2026.101576
+10.1109/lcsys.2026.3666550,D,Decomposition of Scaled Relative Graphs: A Mixed Systems Approach,2026,IEEE Control Systems Letters,10.1109/lcsys.2026.3666550
+10.1109/cdc57313.2025.11312491,D,Nonlinear Bandwidth and Bode Diagrams based on Scaled Relative Graphs,2025,,10.1109/cdc57313.2025.11312491
+10.33084/anterior.v23i2.5954,D,PEMAHAMAN KONSEP GEOMETRI DASAR MAHASISWA PENDIDIKAN MATEMATIKA,2024,Anterior Jurnal,10.33084/anterior.v23i2.5954
+10.1109/tac.2023.3274690,D,Monotone One-Port Circuits,2023,IEEE Transactions on Automatic Control,10.1109/tac.2023.3274690
+10.1145/237814.237866,K,A fast quantum mechanical algorithm for database search,1996,,10.1145/237814.237866
+10.1109/sfcs.1994.365700,K,Algorithms for quantum computation: discrete logarithms and factoring,2002,,10.1109/sfcs.1994.365700
+10.1007/bf02650179,K,Simulating physics with computers,1982,International Journal of Theoretical Physics,10.1007/bf02650179
+10.1098/rspa.1985.0070,K,"Quantum theory, the Church–Turing principle and the universal quantum computer",1985,Proceedings of the Royal Society of London A Mathematical and Physical Sciences,10.1098/rspa.1985.0070
+10.1147/rd.176.0525,K,Logical Reversibility of Computation,1973,IBM Journal of Research and Development,10.1147/rd.176.0525
+10.1098/rspa.1992.0167,K,Rapid solution of problems by quantum computation,1992,Proceedings of the Royal Society of London Series A Mathematical and Physical Sciences,10.1098/rspa.1992.0167
+10.1137/s0097539796300921,K,Quantum Complexity Theory,1997,SIAM Journal on Computing,10.1137/s0097539796300921
+10.1137/s0097539796298637,K,On the Power of Quantum Computation,1997,SIAM Journal on Computing,10.1137/s0097539796298637
+10.1145/167088.167097,K,Quantum complexity theory,1993,,10.1145/167088.167097
+10.1098/rspa.1989.0099,K,Quantum computational networks,1989,Proceedings of the Royal Society of London A Mathematical and Physical Sciences,10.1098/rspa.1989.0099
+tightboundsonquantumsearching,K,Tight Bounds on Quantum Searching,1996,,
+10.1109/sfcs.1993.366852,K,Quantum circuit complexity,2002,,10.1109/sfcs.1993.366852
+10.1016/0022-0000(88)90028-1,K,"Arthur-Merlin games: A randomized proof system, and a hierarchy of complexity classes",1988,Journal of Computer and System Sciences,10.1016/0022-0000(88)90028-1
+10.1109/sfcs.1994.365701,K,On the power of quantum computation,2002,,10.1109/sfcs.1994.365701
+10.1137/0210008,K,"Relative to a Random Oracle A , ${\bf P}^A \ne {\bf NP}^A \ne \text{co-}{\bf NP}^A $ with Probability 1",1981,SIAM Journal on Computing,10.1137/0210008
+10.1109/sct.1992.215388,K,The quantum challenge to structural complexity theory,2003,,10.1109/sct.1992.215388
+10.48550/arxiv.quant-ph/9805022,K,Phase Information in Quantum Oracle Computing,1998,arXiv (Cornell University),10.48550/arxiv.quant-ph/9805022
+10.22331/q-2018-08-06-79,K,Quantum Computing in the NISQ era and beyond,2018,Quantum,10.22331/q-2018-08-06-79
+10.1137/s0097539795293172,K,Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer,1997,SIAM Journal on Computing,10.1137/s0097539795293172
+10.1137/s0036144598347011,K,Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer,1999,SIAM Review,10.1137/s0036144598347011
+10.1126/science.1057726,K,A Quantum Adiabatic Evolution Algorithm Applied to Random Instances of an NP-Complete Problem,2001,Science,10.1126/science.1057726
+10.1103/revmodphys.90.015002,K,Adiabatic quantum computation,2018,Reviews of Modern Physics,10.1103/revmodphys.90.015002
+10.1103/physreva.67.052307,K,Quantum random-walk search algorithm,2003,Physical Review A,10.1103/physreva.67.052307
+10.1103/revmodphys.74.197,K,The role of relative entropy in quantum information theory,2002,Reviews of Modern Physics,10.1103/revmodphys.74.197
+10.1016/j.physrep.2022.08.003,K,The Variational Quantum Eigensolver: A review of methods and best practices,2022,Physics Reports,10.1016/j.physrep.2022.08.003
+10.6028/nist.ir.8105,K,Report on Post-Quantum Cryptography,2016,,10.6028/nist.ir.8105
+10.1103/physreva.70.022314,K,Spatial search by quantum walk,2004,Physical Review A,10.1103/physreva.70.022314
+10.1137/s0097539705447311,K,Quantum Walk Algorithm for Element Distinctness,2007,SIAM Journal on Computing,10.1137/s0097539705447311
+10.1016/j.iot.2022.100514,K,AI for next generation computing: Emerging trends and future directions,2022,Internet of Things,10.1016/j.iot.2022.100514
+10.1142/s0219749903000383,K,QUANTUM WALKS AND THEIR ALGORITHMIC APPLICATIONS,2003,International Journal of Quantum Information,10.1142/s0219749903000383
+10.1016/j.cosrev.2018.11.002,K,A Survey on quantum computing technology,2019,Computer Science Review,10.1016/j.cosrev.2018.11.002
+10.1103/physreva.60.2746,K,Grover’s quantum searching algorithm is optimal,1999,Physical Review A,10.1103/physreva.60.2746
+10.1103/physrevlett.80.4329,K,Quantum Computers Can Search Rapidly by Using Almost Any Transformation,1998,Physical Review Letters,10.1103/physrevlett.80.4329
+10.1126/science.1252319,K,Defining and detecting quantum speedup,2014,Science,10.1126/science.1252319
+10.48550/arxiv.quant-ph/0001106,K,Quantum Computation by Adiabatic Evolution,2000,arXiv (Cornell University),10.48550/arxiv.quant-ph/0001106
+10.1109/access.2020.2968985,K,Towards Post-Quantum Blockchain: A Review on Blockchain Cryptography Resistant to Quantum Computing Attacks,2020,IEEE Access,10.1109/access.2020.2968985
+10.1103/revmodphys.74.347,K,Information and computation: Classical and quantum aspects,2002,Reviews of Modern Physics,10.1103/revmodphys.74.347
+10.1038/s41578-022-00434-z,K,Dynamical memristors for higher-complexity neuromorphic computing,2022,Nature Reviews Materials,10.1038/s41578-022-00434-z
+10.1137/s0097539799359385,K,Fault-Tolerant Quantum Computation with Constant Error Rate,2008,SIAM Journal on Computing,10.1137/s0097539799359385
+10.1098/rspa.2017.0551,K,Quantum machine learning: a classical perspective,2018,Proceedings of the Royal Society A Mathematical Physical and Engineering Sciences,10.1098/rspa.2017.0551
+10.1007/978-3-642-25385-0_3,K,Random Oracles in a Quantum World,2011,Lecture notes in computer science,10.1007/978-3-642-25385-0_3
+10.1103/physrevlett.79.4709,K,Quantum Computers Can Search Arbitrarily Large Databases by a Single Query,1997,Physical Review Letters,10.1103/physrevlett.79.4709
+10.1038/nature10123,E;K,The thermodynamic meaning of negative entropy,2011,Nature,10.1038/nature10123
+10.1145/367701.367709,K,An introduction to quantum computing for non-physicists,2000,ACM Computing Surveys,10.1145/367701.367709
+10.1145/276698.276708,K,Quantum circuits with mixed states,1998,,10.1145/276698.276708
+10.1103/physreva.57.2403,K,Analog analogue of a digital quantum computation,1998,Physical Review A,10.1103/physreva.57.2403
+10.1103/revmodphys.82.1,K,Quantum algorithms for algebraic problems,2010,Reviews of Modern Physics,10.1103/revmodphys.82.1
+10.1098/rspa.2015.0301,K,Quantum speedup of Monte Carlo methods,2015,Proceedings of the Royal Society A Mathematical Physical and Engineering Sciences,10.1098/rspa.2015.0301
+10.1145/276698.276713,K,Quantum vs. classical communication and computation,1998,,10.1145/276698.276713
+10.1145/1008731.1008735,K,Quantum lower bounds for the collision and the element distinctness problems,2004,Journal of the ACM,10.1145/1008731.1008735
+quantummachinelearningwhatquantumcomputingmeanstodatamining,K,Quantum Machine Learning: What Quantum Computing Means to Data Mining,2014,,
+10.1109/jiot.2019.2958788,K,From Pre-Quantum to Post-Quantum IoT Security: A Survey on Quantum-Resistant Cryptosystems for the Internet of Things,2019,IEEE Internet of Things Journal,10.1109/jiot.2019.2958788
+10.1080/17445760500355678,K,Quantum computation and quantum information,2005,International Journal of Parallel Emergent and Distributed Systems,10.1080/17445760500355678
+10.1007/bf01491891,J,Die gegenw�rtige Situation in der Quantenmechanik,1935,Die Naturwissenschaften,10.1007/bf01491891
+10.1515/9783110625097-001,J,1. Foundations of quantum mechanics,2019,Vibrational Spectroscopy,10.1515/9783110625097-001
+10.1016/0003-4916(71)90133-3,J,On a reinterpretation of decay experiments,1971,Annals of Physics,10.1016/0003-4916(71)90133-3
+10.1216/rmj-1971-1-1-225,J,The decay-scattering system,1971,Rocky Mountain Journal of Mathematics,10.1216/rmj-1971-1-1-225
+10.1007/bf01645753,J,Difficulty with a kinematic concept of unstable particles: the SZ.-Nagy extension and the Matthews-Salam-Zwanziger representation,1971,Communications in Mathematical Physics,10.1007/bf01645753
+10.1512/iumj.1972.21.21080,J,,1972,Indiana University Mathematics Journal,10.1512/iumj.1972.21.21080
+10.1103/physrevd.24.1516,J,Pointer basis of quantum apparatus: Into what mixture does the wave packet collapse?,1981,"Physical review. D. Particles, fields, gravitation, and cosmology/Physical review. D. Particles and fields",10.1103/physrevd.24.1516
+10.1103/revmodphys.70.101,J,The quantum-jump approach to dissipative dynamics in quantum optics,1998,Reviews of Modern Physics,10.1103/revmodphys.70.101
+10.1007/bf01725541,J,The emergence of classical properties through interaction with the environment,1985,The European Physical Journal B,10.1007/bf01725541
+10.1364/josab.10.000524,J,Monte Carlo wave-function method in quantum optics,1993,Journal of the Optical Society of America B,10.1364/josab.10.000524
+10.1103/physreva.68.042319,J,Quantum computation with optical coherent states,2003,Physical Review A,10.1103/physreva.68.042319
+10.1103/revmodphys.64.339,J,Consistent interpretations of quantum mechanics,1992,Reviews of Modern Physics,10.1103/revmodphys.64.339
+10.1021/ct400934c,J,"Advanced Capabilities of the PYXAID Program: Integration Schemes, Decoherence Effects, Multiexcitonic States, and Field-Matter Interaction",2014,Journal of Chemical Theory and Computation,10.1021/ct400934c
+10.1103/physrevlett.74.4763,J,Interaction-Free Measurement,1995,Physical Review Letters,10.1103/physrevlett.74.4763
+10.1103/revmodphys.90.031002,J,Colloquium : Quantum matter built from nanoscopic lattices of atoms and photons,2018,Reviews of Modern Physics,10.1103/revmodphys.90.031002
+10.1038/35014537,J,Acceleration of quantum decay processes by frequent observations,2000,Nature,10.1038/35014537
+10.1103/physrevlett.65.976,J,Quantum nondemolition measurement of small photon numbers by Rydberg-atom phase-sensitive detection,1990,Physical Review Letters,10.1103/physrevlett.65.976
+10.1103/physrevlett.105.130401,J,How Small Can Thermal Machines Be? The Smallest Possible Refrigerator,2010,Physical Review Letters,10.1103/physrevlett.105.130401
+10.1126/science.1155309,J,Strong Dissipation Inhibits Losses and Induces Correlations in Cold Molecular Gases,2008,Science,10.1126/science.1155309
+10.1021/cr300092g,J,Ultracold Molecules under Control!,2012,Chemical Reviews,10.1021/cr300092g
+10.1038/s42254-019-0056-0,J,Imaging with quantum states of light,2019,Nature Reviews Physics,10.1038/s42254-019-0056-0
+10.1016/s0370-1573(00)00047-8,J,Arrival time in quantum mechanics,2000,Physics Reports,10.1016/s0370-1573(00)00047-8
+10.1002/lpor.201500227,J,Nonlinear switching and solitons in PT‐symmetric photonic systems,2016,Laser & Photonics Review,10.1002/lpor.201500227
+10.1038/nphys1641,J,Experimental violation of a Bell’s inequality in time with weak measurement,2010,Nature Physics,10.1038/nphys1641
+10.1103/revmodphys.88.041001,J,Colloquium: Protecting quantum information against environmental noise,2016,Reviews of Modern Physics,10.1103/revmodphys.88.041001
+10.1103/revmodphys.86.1203,J;K,Quantum channels and memory effects,2014,Reviews of Modern Physics,10.1103/revmodphys.86.1203
+10.1103/physreva.42.10,J,Non-Hermitian quantum dynamics,1990,Physical Review A,10.1103/physreva.42.10
+10.1088/2040-8978/18/12/123002,J,Nonlinear and quantum optics with whispering gallery resonators,2016,Journal of Optics,10.1088/2040-8978/18/12/123002
+10.1016/s0375-9601(99)00365-5,J,Symmetrizing evolutions,1999,Physics Letters A,10.1016/s0375-9601(99)00365-5
+10.1016/j.physrep.2012.07.001,J,Nonperturbative theory of weak pre- and post-selected measurements,2012,Physics Reports,10.1016/j.physrep.2012.07.001
+10.1103/physrevlett.87.270405,J,Universal Dynamical Control of Quantum Mechanical Decay: Modulation of the Coupling to the Continuum,2001,Physical Review Letters,10.1103/physrevlett.87.270405
+10.1098/rstb.2004.1598,J,Quantum physics in neuroscience and psychology: a neurophysical model of mind–brain interaction,2005,Philosophical Transactions of the Royal Society B Biological Sciences,10.1098/rstb.2004.1598
+10.1103/physreva.47.4616,J,Meaning of the wave function,1993,Physical Review A,10.1103/physreva.47.4616
+10.1007/bf02310791,A,Analysis of Individual Differences in Multidimensional Scaling Via an N-way Generalization of “Eckart-Young” Decomposition,1970,Psychometrika,10.1007/bf02310791
+10.1063/1.1580111,A,Multilayer formulation of the multiconfiguration time-dependent Hartree theory,2003,The Journal of Chemical Physics,10.1063/1.1580111
+10.1073/pnas.112329799,A,Numerical operator calculus in higher dimensions,2002,Proceedings of the National Academy of Sciences,10.1073/pnas.112329799
+10.1137/06065577,A,Enhanced Line Search: A Novel Method to Accelerate PARAFAC,2008,SIAM Journal on Matrix Analysis and Applications,10.1137/06065577
+10.1007/s00780-010-0134-8,A,Dual pricing of multi-exercise options under volume constraints,2010,Finance and Stochastics,10.1007/s00780-010-0134-8
+10.1137/080719248,A,The Easy Path Wavelet Transform: A New Adaptive Wavelet Transform for Sparse Representation of Two-Dimensional Data,2009,Multiscale Modeling and Simulation,10.1137/080719248
+10.1088/0266-5611/26/2/025007,A,Accelerated projected steepest descent method for nonlinear inverse problems with sparsity constraints,2010,Inverse Problems,10.1088/0266-5611/26/2/025007
+10.1088/0266-5611/24/6/065013,A,A compressive Landweber iteration for solving ill-posed inverse problems,2008,Inverse Problems,10.1088/0266-5611/24/6/065013
+10.1007/s10444-010-9147-2,A,Adaptive wavelet methods and sparsity reconstruction for inverse heat conduction problems,2010,Advances in Computational Mathematics,10.1007/s10444-010-9147-2
+10.1007/s00365-009-9069-8,A,Optimal Order of Convergence and (In)Tractability of Multivariate Approximation of Smooth Functions,2009,Constructive Approximation,10.1007/s00365-009-9069-8
+10.1016/j.jco.2009.10.002,A,Optimal approximation of elliptic problems by linear and nonlinear mappings IV: Errors in L2 and other norms,2009,Journal of Complexity,10.1016/j.jco.2009.10.002
+10.1021/acs.chemrev.9b00829,A,Quantum Algorithms for Quantum Chemistry and Quantum Materials Science,2020,Chemical Reviews,10.1021/acs.chemrev.9b00829
+10.1007/s11633-017-1054-2,A,Why and when can deep-but not shallow-networks avoid the curse of dimensionality: A review,2017,Machine Intelligence Research,10.1007/s11633-017-1054-2
+10.1021/acs.jpca.5b03256,A,Multilayer Multiconfiguration Time-Dependent Hartree Theory,2015,The Journal of Physical Chemistry A,10.1021/acs.jpca.5b03256
+10.1063/1.4871981,A,Calculating vibrational spectra with sum of product basis functions without storing full-dimensional vectors or matrices,2014,The Journal of Chemical Physics,10.1063/1.4871981
+10.1016/j.euromechsol.2017.11.007,A,Two-stage data-driven homogenization for nonlinear solids using a reduced order model,2017,European Journal of Mechanics - A/Solids,10.1016/j.euromechsol.2017.11.007
+10.1016/j.cpc.2019.106869,A,Parallel cross interpolation for high-precision calculation of high-dimensional integrals,2019,Computer Physics Communications,10.1016/j.cpc.2019.106869
+10.1103/physrevmaterials.4.113802,A,Short-range order in face-centered cubic VCoNi alloys,2020,Physical Review Materials,10.1103/physrevmaterials.4.113802
+10.2307/1968693,I,On Rings of Operators,1936,Annals of Mathematics,10.2307/1968693
+10.2307/1969463,I,On Rings of Operators. Reduction Theory,1949,Annals of Mathematics,10.2307/1969463
+10.1007/978-1-4612-5700-4,I,A Short Introduction to Perturbation Theory for Linear Operators,1982,,10.1007/978-1-4612-5700-4
+10.24033/bsmf.90,I,Essai sur la géométrie à $n$ dimensions,1875,Bulletin de la Société mathématique de France,10.24033/bsmf.90
+10.1109/proc.1983.12598,I,Finite series-expansion reconstruction methods,1983,Proceedings of the IEEE,10.1109/proc.1983.12598
+settheoryandlogic,I,Set theory and logic,1963,CERN Document Server (European Organization for Nuclear Research),
+10.1007/bf02564273,I,On the factorization of matrices,1955,Commentarii Mathematici Helvetici,10.1007/bf02564273
+10.18311/jims/1960/16934,I,Spectral Theory in Hilbert Space,1960,Journal of the Indian Mathematical Society,10.18311/jims/1960/16934
+10.1109/proc.1986.13459,I,Seismic borehole tomography—Theory and computational methods,1986,Proceedings of the IEEE,10.1109/proc.1986.13459
+10.1007/978-3-0348-6253-0,I,Parametric Optimization and Approximation,1985,International series of numerical mathematics,10.1007/978-3-0348-6253-0
+spectraltheoryinthehilbertspace,I,Spectral theory in the Hilbert space,1953,Medical Entomology and Zoology,
+10.1137/0322010,I,New Results on the Interpolation Problem for Continuous-Time Stationary Increments Processes,1984,SIAM Journal on Control and Optimization,10.1137/0322010
+10.1109/5.214546,I,The foundations of set theoretic estimation,1993,Proceedings of the IEEE,10.1109/5.214546
+10.1109/icassp.1991.151014,I,The foundations of set theoretic estimation,1991,,10.1109/icassp.1991.151014
+10.1007/s00041-009-9077-x,I,A Note on the Behavior of the Randomized Kaczmarz Algorithm of Strohmer and Vershynin,2009,Journal of Fourier Analysis and Applications,10.1007/s00041-009-9077-x
+10.1007/s11075-017-0399-5,I,Circumcentering the Douglas–Rachford method,2017,Numerical Algorithms,10.1007/s11075-017-0399-5
+10.1109/36.79426,I,Enhanced autoregressive moving average spectral estimation applied to the measurement of Doppler spectral width,1991,IEEE Transactions on Geoscience and Remote Sensing,10.1109/36.79426
+10.1016/j.jat.2009.12.007,I,Functions with prescribed best linear approximations,2009,Journal of Approximation Theory,10.1016/j.jat.2009.12.007
+10.1103/physrevlett.69.2863,B;M,Density matrix formulation for quantum renormalization groups,1992,Physical Review Letters,10.1103/physrevlett.69.2863
+10.1103/revmodphys.47.773,M,The renormalization group: Critical phenomena and the Kondo problem,1975,Reviews of Modern Physics,10.1103/revmodphys.47.773
+10.1103/physreva.40.4277,M,Quantum states with Einstein-Podolsky-Rosen correlations admitting a hidden-variable model,1989,Physical Review A,10.1103/physreva.40.4277
+10.1126/science.273.5278.1073,M,Universal Quantum Simulators,1996,Science,10.1126/science.273.5278.1073
+10.1007/bf02099178,M,Finitely correlated states on quantum spin chains,1992,Communications in Mathematical Physics,10.1007/bf02099178
+10.1103/physrevlett.93.207204,M,Matrix Product Density Operators: Simulation of Finite-Temperature and Dissipative Systems,2004,Physical Review Letters,10.1103/physrevlett.93.207204
+10.1103/physrevlett.75.3537,M,Thermodynamic Limit of Density Matrix Renormalization,1995,Physical Review Letters,10.1103/physrevlett.75.3537
+10.1103/physrev.150.321,M,One-Dimensional Chain of Anisotropic Spin-Spin Interactions. I. Proof of Bethe's Hypothesis for Ground State in a Finite System,1966,Physical Review,10.1103/physrev.150.321
+10.1103/physrev.150.327,M,One-Dimensional Chain of Anisotropic Spin-Spin Interactions. II. Properties of the Ground-State Energy Per Lattice Site for an Infinite System,1966,Physical Review,10.1103/physrev.150.327
+10.1023/b:joss.0000037230.37166.42,M,"Quantum Spin Chain, Toeplitz Determinants and the Fisher—Hartwig Conjecture",2004,Journal of Statistical Physics,10.1023/b:joss.0000037230.37166.42
+10.1007/s00220-004-1087-6,M,Randomizing Quantum States: Constructions and Applications,2004,Communications in Mathematical Physics,10.1007/s00220-004-1087-6
+10.1103/physrevlett.94.140601,M,Renormalization-Group Transformations on Quantum States,2005,Physical Review Letters,10.1103/physrevlett.94.140601
+10.1103/physrevlett.93.140402,M,Locality in Quantum and Markov Dynamics on Lattices and Networks,2004,Physical Review Letters,10.1103/physrevlett.93.140402
+10.1088/0305-4470/24/16/012,M,Equivalence and solution of anisotropic spin-1 models and generalized t-J fermion models in one dimension,1991,Journal of Physics A Mathematical and General,10.1088/0305-4470/24/16/012
+10.1209/epl/i1998-00381-x,M,Equivalence of the variational matrix product method and the density matrix renormalization group applied to spin chains,1998,Europhysics Letters (EPL),10.1209/epl/i1998-00381-x
+10.1002/(sici)1521-3889(199902)8:2<153::aid-andp153>3.0.co;2-n,M,Density-matrix spectra for integrable models,1999,Annalen der Physik,10.1002/(sici)1521-3889(199902)8:2<153::aid-andp153>3.0.co;2-n
+10.1007/bf00399761,M,An application of Bell's inequalities to a quantum state extension problem,1989,Letters in Mathematical Physics,10.1007/bf00399761
+10.1063/1.1712500,M,New Frontiers in Quantum Information With Atoms and Ions,2004,Physics Today,10.1063/1.1712500
+10.1016/j.physleta.2003.12.018,M,Concurrence in the two-dimensional XXZ- and transverse field Ising-models,2003,Physics Letters A,10.1016/j.physleta.2003.12.018
+10.1007/bf00406552,M,Abundance of translation invariant pure states on quantum spin chains,1992,Letters in Mathematical Physics,10.1007/bf00406552
+10.1103/physreva.69.042320,M,Adiabatic time evolution in spin systems,2004,Physical Review A,10.1103/physreva.69.042320
+10.1103/physrevb.64.214411,M,Exact diagonalization and quantum Monte Carlo study of the spin- 12 XXZ model on the square lattice,2001,"Physical review. B, Condensed matter",10.1103/physrevb.64.214411
+10.1007/978-3-540-73086-6_12,M,The On-Line Encyclopedia of Integer Sequences,2007,Lecture notes in computer science,10.1007/978-3-540-73086-6_12
+10.1016/j.aop.2010.09.012,A;M,The density-matrix renormalization group in the age of matrix product states,2010,Annals of Physics,10.1016/j.aop.2010.09.012
+10.1080/00018730701223200,M,Ultracold atomic gases in optical lattices: mimicking condensed matter physics and beyond,2007,Advances In Physics,10.1080/00018730701223200
+10.1103/revmodphys.89.025003,M,Quantum spin liquid states,2017,Reviews of Modern Physics,10.1103/revmodphys.89.025003
+10.1088/1367-2630/11/5/055049,M,"Cold and ultracold molecules: science, technology and applications",2009,New Journal of Physics,10.1088/1367-2630/11/5/055049
+10.1038/nphys1157,M,Measurement-based quantum computation,2009,Nature Physics,10.1038/nphys1157
+10.1088/1751-8113/40/46/r01,M,Nonequilibrium steady states of matrix-product form: a solver's guide,2007,Journal of Physics A Mathematical and Theoretical,10.1088/1751-8113/40/46/r01
+10.1126/science.aav9105,M,Observation of a symmetry-protected topological phase of interacting bosons with Rydberg atoms,2019,Science,10.1126/science.aav9105
+10.1103/physrevlett.100.030504,M,Entropy Scaling and Simulability by Matrix Product States,2008,Physical Review Letters,10.1103/physrevlett.100.030504
+10.1080/00018730600766432,M,New trends in density matrix renormalization,2006,Advances In Physics,10.1080/00018730600766432
+10.1103/physrevb.98.235155,M,Exact excited states of nonintegrable models,2018,Physical review. B./Physical review. B,10.1103/physrevb.98.235155
+10.1016/j.aop.2010.05.008,M,PEPS as ground states: Degeneracy and topology,2010,Annals of Physics,10.1016/j.aop.2010.05.008
+10.1103/physrevlett.104.190405,M,Continuous Matrix Product States for Quantum Fields,2010,Physical Review Letters,10.1103/physrevlett.104.190405
+10.1103/physrevlett.100.167202,M,String Order and Symmetries in Quantum Spin Lattices,2008,Physical Review Letters,10.1103/physrevlett.100.167202
+10.1103/physrevlett.98.110503,M,Quantum Computational Complexity of the N -Representability Problem: QMA Complete,2007,Physical Review Letters,10.1103/physrevlett.98.110503
+10.1103/physrevlett.116.150504,M,Distribution of Quantum Coherence in Multipartite Systems,2016,Physical Review Letters,10.1103/physrevlett.116.150504
+10.1016/j.nuclphysb.2017.10.012,M,What is an integrable quench?,2017,Nuclear Physics B,10.1016/j.nuclphysb.2017.10.012
+10.1103/physrevlett.114.220601,M,Variational Matrix Product Operators for the Steady State of Dissipative Quantum Systems,2015,Physical Review Letters,10.1103/physrevlett.114.220601
+quantumtheoryofopensystems,K,Quantum theory of open systems,1976,,
+10.1109/18.651037,K,The capacity of the quantum channel with general signal states,1998,IEEE Transactions on Information Theory,10.1109/18.651037
+10.1103/physreva.56.131,K,Sending classical information via noisy quantum channels,1997,Physical Review A,10.1103/physreva.56.131
+10.1007/978-1-4612-6371-5,K,An Invitation to C*-Algebras,1976,Graduate texts in mathematics,10.1007/978-1-4612-6371-5
+10.1103/physreva.54.1869,K,Classical information capacity of a quantum channel,1996,Physical Review A,10.1103/physreva.54.1869
+10.1007/978-3-642-66822-7,K,Coding Theorems of Information Theory,1978,,10.1007/978-3-642-66822-7
+10.1109/tit.1954.1057459,K,A new basic theorem of information theory,1954,Transactions of the IRE Professional Group on Information Theory,10.1109/tit.1954.1057459
+10.1109/18.796386,K,Strong converse to the quantum channel coding theorem,1999,IEEE Transactions on Information Theory,10.1109/18.796386
+10.1007/978-3-662-00237-7,K,Coding Theorems of Information Theory,1964,,10.1007/978-3-662-00237-7
+10.1016/0034-4877(77)90010-6,K,Problems in the mathematical theory of quantum communication channels,1977,Reports on Mathematical Physics,10.1016/0034-4877(77)90010-6
+10.1109/isit.1998.708669,K,Coding theorems for quantum communication channels,2002,,10.1109/isit.1998.708669
+10.1109/18.669165,K,Operational capacity and pseudoclassicality of a quantum channel,1998,IEEE Transactions on Information Theory,10.1109/18.669165
+10.48550/arxiv.quant-ph/9809023,K,Coding Theorems for Quantum Channels,1998,arXiv (Cornell University),10.48550/arxiv.quant-ph/9809023
+10.48550/arxiv.quant-ph/9907077,K,Coding Theorems of Quantum Information Theory,1999,arXiv (Cornell University),10.48550/arxiv.quant-ph/9907077
+10.48550/arxiv.quant-ph/9705054,K,On Quantum Communication Channels with Constrained Inputs,1997,arXiv (Cornell University),10.48550/arxiv.quant-ph/9705054
+10.48550/arxiv.quant-ph/9807008,K,Languages of Quantum Information Theory,1998,arXiv (Cornell University),10.48550/arxiv.quant-ph/9807008
+10.1007/978-3-662-04209-0,K,The Physics of Quantum Information,2000,,10.1007/978-3-662-04209-0
+10.1017/9781316848142,K,The Theory of Quantum Information,2018,Cambridge University Press eBooks,10.1017/9781316848142
+10.1103/physreva.72.032317,K,"Quantum, classical, and total amount of correlations in a quantum state",2005,Physical Review A,10.1103/physreva.72.032317
+10.1007/s00220-005-1317-6,K,The Capacity of a Quantum Channel for Simultaneous Transmission of Classical and Quantum Information,2005,Communications in Mathematical Physics,10.1007/s00220-005-1317-6
+10.1109/18.985947,K,Strong converse for identification via quantum channels,2002,IEEE Transactions on Information Theory,10.1109/18.985947
+10.1109/tit.2003.813556,E;K,General formulas for capacity of classical-quantum channels,2003,IEEE Transactions on Information Theory,10.1109/tit.2003.813556
+10.1088/1367-2630/18/2/023045,K,The extraction of work from quantum coherence,2016,New Journal of Physics,10.1088/1367-2630/18/2/023045
+10.3929/ethz-a-005115027,K,Security of quantum key distribution,2005,Repository for Publications and Research Data (ETH Zurich),10.3929/ethz-a-005115027
+10.1007/s00220-006-0118-x,K,Quantum State Merging and Negative Information,2006,Communications in Mathematical Physics,10.1007/s00220-006-0118-x
+10.1017/9781316809976.001,K,Preface to the Second Edition,2016,Cambridge University Press eBooks,10.1017/9781316809976.001
+10.1109/tit.2009.2039166,E;K,The Quantum Capacity of Channels With Arbitrarily Correlated Noise,2010,IEEE Transactions on Information Theory,10.1109/tit.2009.2039166
+10.1088/1367-2630/12/5/055020,K,A quantum central limit theorem for non-equilibrium systems: exact local relaxation of correlated states,2010,New Journal of Physics,10.1088/1367-2630/12/5/055020
+10.1007/s11122-005-0002-x,K,Quantum privacy and quantum wiretap channels,2004,Problems of Information Transmission,10.1007/s11122-005-0002-x
+10.1038/ncomms8908,K,Generic emergence of classical features in quantum Darwinism,2015,Nature Communications,10.1038/ncomms8908
+10.1109/tit.2008.924665,K,Capacity theorems for quantum multiple-access channels: classical-quantum and quantum-quantum capacity regions,2008,IEEE Transactions on Information Theory,10.1109/tit.2008.924665
+10.1103/physreva.68.042301,K,Classical data compression with quantum side information,2003,Physical Review A,10.1103/physreva.68.042301
+10.1103/physrevlett.110.080501,K,Fundamental Bound on the Reliability of Quantum Information Transmission,2013,Physical Review Letters,10.1103/physrevlett.110.080501
+10.1109/tit.2007.896874,K,Making Good Codes for Classical-Quantum Channel Coding via Quantum Hypothesis Testing,2007,IEEE Transactions on Information Theory,10.1109/tit.2007.896874
+10.1007/s00220-017-2928-4,K,Strong Converse Exponent for Classical-Quantum Channel Coding,2017,Communications in Mathematical Physics,10.1007/s00220-017-2928-4
+10.1119/1.1463744,E,Quantum Computation and Quantum Information,2002,American Journal of Physics,10.1119/1.1463744
+10.1145/505482.505499,E,Quantum computation and quantum information,2001,ACM SIGSOFT Software Engineering Notes,10.1145/505482.505499
+10.1007/978-3-662-12066-8,E,Information-Spectrum Methods in Information Theory,2003,Applications of mathematics,10.1007/978-3-662-12066-8
+10.1103/physreva.71.062310,E,Distance measures to compare real and ideal quantum processes,2005,Physical Review A,10.1103/physreva.71.062310
+informationspectrummethodsininformationtheory,E,Information-Spectrum Methods in Information Theory,2002,Medical Entomology and Zoology,
+10.1109/tit.2009.2032797,E,A Fully Quantum Asymptotic Equipartition Property,2009,IEEE Transactions on Information Theory,10.1109/tit.2009.2032797
+10.1109/tit.2006.889463,E,An Information-Spectrum Approach to Classical and Quantum Hypothesis Testing for Simple Hypotheses,2007,IEEE Transactions on Information Theory,10.1109/tit.2006.889463
+10.1109/tit.2009.2018340,E,Smooth Entropies and the Quantum Information Spectrum,2009,IEEE Transactions on Information Theory,10.1109/tit.2009.2018340
+10.1002/andp.19854970419,E,The Transition Probability for States of *‐Algebras,1985,Annalen der Physik,10.1002/andp.19854970419
+10.48550/arxiv.0912.4495,E,Single-shot Quantum State Merging,2009,arXiv (Cornell University),10.48550/arxiv.0912.4495
+10.48550/arxiv.quant-ph/0602112,E,Sine distance for quantum states,2006,arXiv (Cornell University),10.48550/arxiv.quant-ph/0602112
+10.1103/revmodphys.91.025001,E,Quantum resource theories,2019,Reviews of Modern Physics,10.1103/revmodphys.91.025001
+10.1080/00107514.2016.1201896,E,Quantum thermodynamics,2016,Contemporary Physics,10.1080/00107514.2016.1201896
+10.1038/nphys1734,E,The uncertainty principle in the presence of quantum memory,2010,Nature Physics,10.1038/nphys1734
+10.1103/physreva.85.010301,E,"One-sided device-independent quantum key distribution: Security, feasibility, and the connection with steering",2012,Physical Review A,10.1103/physreva.85.010301
+10.1038/ncomms1631,E,Tight finite-key analysis for quantum cryptography,2012,Nature Communications,10.1038/ncomms1631
+10.1103/physrevlett.106.110506,E,Uncertainty Relation for Smooth Entropies,2011,Physical Review Letters,10.1103/physrevlett.106.110506
+10.1038/ncomms4732,E,Finite-key analysis for measurement-device-independent quantum key distribution,2014,Nature Communications,10.1038/ncomms4732
+10.1007/978-3-319-21891-5,E,Quantum Information Processing with Finite Resources,2015,SpringerBriefs in mathematical physics,10.1007/978-3-319-21891-5
+10.1109/tit.2011.2158473,E,Leftover Hashing Against Quantum Side Information,2011,IEEE Transactions on Information Theory,10.1109/tit.2011.2158473
+10.1109/tit.2013.2276628,E,A Hierarchy of Information Quantities for Finite Block Length Analysis of Quantum Tasks,2013,IEEE Transactions on Information Theory,10.1109/tit.2013.2276628
+10.1103/physrevlett.110.010503,E,Memory Attacks on Device-Independent Quantum Cryptography,2013,Physical Review Letters,10.1103/physrevlett.110.010503
+ahierarchyofinformationquantitiesforfiniteblocklengthanalysisofquantumtasks,E,A hierarchy of information quantities for finite block length analysis of quantum tasks,2013,UTS ePRESS (University of Technology Sydney),
+10.1137/100813683,E,Trevisan's Extractor in the Presence of Quantum Side Information,2012,SIAM Journal on Computing,10.1137/100813683
+10.1038/s41567-020-01147-2,E,Device-independent randomness expansion against quantum side information,2021,Nature Physics,10.1038/s41567-020-01147-2
+10.1109/tit.2013.2238656,E,Chain Rules for Smooth Min- and Max-Entropies,2013,IEEE Transactions on Information Theory,10.1109/tit.2013.2238656
+10.1145/2885493,E,Robust Protocols for Securely Expanding Randomness and Distributing Keys Using Untrusted Quantum Devices,2016,Journal of the ACM,10.1145/2885493
+10.1103/physrevapplied.12.024061,E,Unconditional Security of Sending or Not Sending Twin-Field Quantum Key Distribution with Finite Pulses,2019,Physical Review Applied,10.1103/physrevapplied.12.024061
+10.1007/978-3-662-45608-8_22,E,Composable Security of Delegated Quantum Computation,2014,Lecture notes in computer science,10.1007/978-3-662-45608-8_22
+10.26421/qic12.5-6-4,E,An intuitive proof of the data processing inequality,2012,Quantum Information and Computation,10.26421/qic12.5-6-4
+10.1145/2591796.2591843,E,Robust protocols for securely expanding randomness and distributing keys using untrusted quantum devices,2014,,10.1145/2591796.2591843
+10.1103/physrevlett.126.050503,E,Experimental Realization of Device-Independent Quantum Randomness Expansion,2021,Physical Review Letters,10.1103/physrevlett.126.050503
+10.1103/physrevlett.117.260601,E,Axiomatic Relation between Thermodynamic and Information-Theoretic Entropies,2016,Physical Review Letters,10.1103/physrevlett.117.260601
+10.1007/bf02612715,I,Decomposition through formalization in a product space,1984,Mathematical Programming,10.1007/bf02612715
+10.1007/bf01697972,I,Generalization of the Trotter-Lie formula,1981,Integral Equations and Operator Theory,10.1007/bf01697972
+10.1016/j.jat.2010.05.002,I,Slow convergence of sequences of linear operators II: Arbitrarily slow convergence,2010,Journal of Approximation Theory,10.1016/j.jat.2010.05.002
+10.1007/3-540-45949-9,H,Isabelle/HOL: A Proof Assistant for Higher-Order Logic,2002,"Digital Access to Libraries (Université catholique de Louvain (UCL), l'Université de Namur (UNamur) and the Université Saint-Louis (USL-B))",10.1007/3-540-45949-9
+10.1007/3-540-55602-8_217,H,PVS: A prototype verification system,1992,Lecture notes in computer science,10.1007/3-540-55602-8_217
+10.1007/978-3-662-07964-5,H,Interactive Theorem Proving and Program Development,2004,Texts in theoretical computer science,10.1007/978-3-662-07964-5
+interactivetheoremprovingandprogramdevelopmentcoqartthecalculusofinductiveconstructions,H,Interactive theorem proving and program development. Coq'Art: The Calculus of inductive constructions.,2004,HAL (Le Centre pour la Communication Scientifique Directe),
+implementingmathematicswiththenuprlproofdevelopmentsystem,H,Implementing Mathematics with The Nuprl Proof Development System,1986,,
+10.1145/75277.75283,H,How to make ad-hoc polymorphism less ad hoc,1989,,10.1145/75277.75283
+10.1007/bfb0092872,H,A categorical approach to probability theory,1982,Lecture notes in mathematics,10.1007/bfb0092872
+10.1007/978-3-319-21401-6_26,H,The Lean Theorem Prover (System Description),2015,Lecture notes in computer science,10.1007/978-3-319-21401-6_26
+10.1007/978-3-540-71067-7_6,H,A Brief Overview of HOL4,2008,Lecture notes in computer science,10.1007/978-3-540-71067-7_6
+10.1007/978-3-540-73595-3_13,H,Efficient E-Matching for SMT Solvers,2007,Lecture notes in computer science,10.1007/978-3-540-73595-3_13
+10.1007/978-3-319-20615-8_17,H,Mizar: State-of-the-art and Beyond,2015,Lecture notes in computer science,10.1007/978-3-319-20615-8_17
+10.1007/978-3-642-03359-9_4,H,HOL Light: An Overview,2009,Lecture notes in computer science,10.1007/978-3-642-03359-9_4
+10.1007/s10817-013-9278-5,H,Extending Sledgehammer with SMT Solvers,2013,Journal of Automated Reasoning,10.1007/s10817-013-9278-5
+10.6092/issn.1972-5787/1980,H,Mizar in a Nutshell,2010,DOAJ (DOAJ: Directory of Open Access Journals),10.6092/issn.1972-5787/1980
+10.1007/bfb0028402,H,Type classes and overloading in higher-order logic,1997,Lecture notes in computer science,10.1007/bfb0028402
+10.1007/978-3-642-03359-9_23,H,Packaging Mathematical Structures,2009,Lecture notes in computer science,10.1007/978-3-642-03359-9_23
+10.1007/s10817-012-9250-9,H,The HOL Light Theory of Euclidean Space,2012,Journal of Automated Reasoning,10.1007/s10817-012-9250-9
+10.6092/issn.1972-5787/4593,H,Hammering towards QED,2014,Radboud Repository (Radboud University),10.6092/issn.1972-5787/4593
+10.1007/978-1-4757-3188-0,H,Computer-Aided Reasoning,2000,Advances in formal methods,10.1007/978-1-4757-3188-0
+10.1145/3110278,H,A metaprogramming framework for formal verification,2017,Proceedings of the ACM on Programming Languages,10.1145/3110278
+computeraidedreasoningacl2casestudies,H,Computer-aided reasoning : ACL2 case studies,2000,Medical Entomology and Zoology,
+10.1007/3-540-48256-3_11,H,Locales A Sectioning Concept for Isabelle,1999,Lecture notes in computer science,10.1007/3-540-48256-3_11
+10.1007/11541868_7,H,Proving Equalities in a Commutative Ring Done Right in Coq,2005,Lecture notes in computer science,10.1007/11541868_7
+10.1007/bfb0040259,H,Inductively defined types in the Calculus of Constructions,1990,Lecture notes in computer science,10.1007/bfb0040259
+10.1007/s11786-014-0181-1,H,Coquelicot: A User-Friendly Library of Real Analysis for Coq,2014,Mathematics in Computer Science,10.1007/s11786-014-0181-1
+10.6092/issn.1972-5787/1979,H,An introduction to small scale reflection in Coq,2010,,10.6092/issn.1972-5787/1979
+10.1080/00029890.1986.11971923,H,Fourier's Method of Linear Programming and its Dual,1986,American Mathematical Monthly,10.1080/00029890.1986.11971923
+10.1007/978-3-540-74464-1_11,H,Constructive Type Classes in Isabelle,2007,Lecture notes in computer science,10.1007/978-3-540-74464-1_11
+10.1007/978-3-540-24849-1_3,H,Locales and Locale Expressions in Isabelle/Isar,2004,Lecture notes in computer science,10.1007/978-3-540-24849-1_3
+10.1007/978-3-642-03359-9_8,H,Hints in Unification,2009,Lecture notes in computer science,10.1007/978-3-642-03359-9_8
+10.1007/978-3-319-20615-8_1,H,Mining the Archive of Formal Proofs,2015,Lecture notes in computer science,10.1007/978-3-319-20615-8_1
+10.15439/2016f520,H,On algebraic hierarchies in mathematical repository of Mizar,2016,Annals of Computer Science and Information Systems,10.15439/2016f520
+10.1007/978-3-642-22863-6_10,H,"Point-Free, Set-Free Concrete Linear Algebra",2011,Lecture notes in computer science,10.1007/978-3-642-22863-6_10
+10.1007/s11786-008-0053-7,H,"ATP-based Cross-Verification of Mizar Proofs: Method, Systems, and First Experiments",2008,Mathematics in Computer Science,10.1007/s11786-008-0053-7
+10.1145/2854065.2854070,H,Towards a Mizar environment for Isabelle: foundations and language,2016,,10.1145/2854065.2854070
+10.15439/2017f289,H,Progress in the Independent Certiﬁcation of Mizar Mathematical Library in Isabelle,2017,Annals of Computer Science and Information Systems,10.15439/2017f289
+10.6092/issn.1972-5787/8124,H,Formalization Techniques for Asymptotic Reasoning in Classical Analysis,2018,HAL (Le Centre pour la Communication Scientifique Directe),10.6092/issn.1972-5787/8124
+10.1007/978-3-319-40229-1_8,H,Congruence Closure in Intensional Type Theory,2016,Lecture notes in computer science,10.1007/978-3-319-40229-1_8
+10.1007/978-3-319-14125-1_1,H,Formalization and Execution of Linear Algebra: From Theorems to Algorithms,2014,Lecture notes in computer science,10.1007/978-3-319-14125-1_1
+10.1145/3293880.3294089,H,A formal proof of Hensel's lemma over the p-adic integers,2019,,10.1145/3293880.3294089
+ranknullitytheoreminlinearalgebra,H,Rank-Nullity Theorem in Linear Algebra.,2013,,
+10.1007/3-540-58156-1_17,H,A mechanically proof-checked encyclopedia of mathematics: Should we build one? Can we?,1994,Lecture notes in computer science,10.1007/3-540-58156-1_17
+10.4204/eptcs.290.6,H,"Technologies for ""Complete, Transparent & Interactive Models of Math"" in Education",2019,Electronic Proceedings in Theoretical Computer Science,10.4204/eptcs.290.6
+10.1145/3293880.3294093,H,Smooth manifolds and types to sets for linear algebra in Isabelle/HOL,2019,,10.1145/3293880.3294093
+topologicalfoundationsforaformaltheoryofmanifolds,H,Topological Foundations for a Formal Theory of Manifolds.,2016,Conference on Information and Knowledge Management,
+10.4007/annals.2017.185.1.8,H,On large subsets of $\mathbb{F}_q^n$ with no three-term arithmetic progression,2016,Annals of Mathematics,10.4007/annals.2017.185.1.8
+10.4007/annals.2019.190.3.6,H,Induced subgraphs of hypercubes and a proof of the Sensitivity Conjecture,2019,Annals of Mathematics,10.4007/annals.2019.190.3.6
+10.1145/3372885.3373830,H,Formalising perfectoid spaces,2020,,10.1145/3372885.3373830
+10.5281/zenodo.7118596,H,Mathematical Components,2022,Zenodo (CERN European Organization for Nuclear Research),10.5281/zenodo.7118596
+10.4230/lipics.itp.2019.31,H,Verified Decision Procedures for Modal Logics.,2019,DROPS (Schloss Dagstuhl – Leibniz Center for Informatics),10.4230/lipics.itp.2019.31
+10.2307/2322281,H,Fourier's Method of Linear Programming and Its Dual,1986,American Mathematical Monthly,10.2307/2322281
+10.1145/3412932.3412935,H,Counting immutable beans,2019,,10.1145/3412932.3412935
+10.4230/lipics.itp.2019.15,H,Formalizing the solution to the cap set problem,2019,DROPS (Schloss Dagstuhl – Leibniz Center for Informatics),10.4230/lipics.itp.2019.15
+10.1145/3372885.3373826,H,A formal proof of the independence of the continuum hypothesis,2020,,10.1145/3372885.3373826
+10.4230/lipics.itp.2019.19,H,A Formalization of Forcing and the Unprovability of the Continuum Hypothesis,2019,DROPS (Schloss Dagstuhl – Leibniz Center for Informatics),10.4230/lipics.itp.2019.19
+10.4230/lipics.itp.2019.12,H,Formalizing Computability Theory via Partial Recursive Functions,2019,DROPS (Schloss Dagstuhl – Leibniz Center for Informatics),10.4230/lipics.itp.2019.12
+10.4230/lipics.itcs.2020.56,H,Induced subgraphs of hypercubes and a proof of the Sensitivity Conjecture,2019,arXiv (Cornell University),10.4230/lipics.itcs.2020.56
+10.48550/arxiv.1908.05647,H,Counting Immutable Beans: Reference Counting Optimized for Purely Functional Programming,2019,arXiv (Cornell University),10.48550/arxiv.1908.05647
+10.1007/978-3-030-79876-5_37,H,The Lean 4 Theorem Prover and Programming Language,2021,Lecture notes in computer science,10.1007/978-3-030-79876-5_37
+10.48550/arxiv.2109.00110,H,MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics,2021,arXiv (Cornell University),10.48550/arxiv.2109.00110
+10.1007/978-3-030-51054-1_1,H,Competing Inheritance Paths in Dependent Type Theory: A Case Study in Functional Analysis,2020,Lecture notes in computer science,10.1007/978-3-030-51054-1_1
+10.1145/3437992.3439922,H,Formalizing category theory in Agda,2021,,10.1145/3437992.3439922
+10.1090/bull/1832,H,Mathematics and the formal turn,2024,Bulletin of the American Mathematical Society,10.1090/bull/1832
+10.1007/978-3-030-53518-6_16,H,Maintaining a Library of Formal Mathematics,2020,Lecture notes in computer science,10.1007/978-3-030-53518-6_16
+10.1007/978-3-031-57262-3_10,H,"Trocq: Proof Transfer for Free, With or Without Univalence",2024,Lecture notes in computer science,10.1007/978-3-031-57262-3_10
+10.1609/aaai.v38i16.29722,H,Beyond Attention: Breaking the Limits of Transformer Context Length with Recurrent Memory,2024,Proceedings of the AAAI Conference on Artificial Intelligence,10.1609/aaai.v38i16.29722
+10.1145/3437992.3439917,H,A formal proof of PAC learnability for decision stumps,2021,,10.1145/3437992.3439917
+10.1007/s10270-022-01063-4,H,The ForeMoSt approach to building valid model-based safety arguments,2022,Software & Systems Modeling,10.1007/s10270-022-01063-4
+10.1145/3497775.3503675,H,A verified algebraic representation of cairo program execution,2022,,10.1145/3497775.3503675
+10.1080/10586458.2021.1983489,H,Schemes in Lean,2021,Experimental Mathematics,10.1080/10586458.2021.1983489
+10.1090/bull/1839,H,Machine Learning and Information Theory Concepts towards an AI Mathematician,2024,Bulletin of the American Mathematical Society,10.1090/bull/1839
+10.1090/bull/1831,H,Abstraction boundaries and spec driven development in pure mathematics,2024,Bulletin of the American Mathematical Society,10.1090/bull/1831
+10.1145/3573105.3575688,H,Formalising the h-Principle and Sphere Eversion,2023,,10.1145/3573105.3575688
+10.1007/978-3-031-43513-3_10,H,Machine-Learned Premise Selection for Lean,2023,Lecture notes in computer science,10.1007/978-3-031-43513-3_10
+10.1145/3437992.3439919,H,Formalizing the ring of Witt vectors,2021,,10.1145/3437992.3439919
+10.1007/978-3-031-98682-6_10,H,Lean-Auto: An Interface Between Lean 4 and Automated Theorem Provers,2025,Lecture notes in computer science,10.1007/978-3-031-98682-6_10
+10.62056/angy4fe-3,H,Understanding binary-Goppa decoding,2024,IACR Communications in Cryptology,10.62056/angy4fe-3
+10.1145/3573105.3575682,H,Formalized Class Group Computations and Integral Points on Mordell Elliptic Curves,2023,,10.1145/3573105.3575682
+10.1007/s10817-022-09644-0,H,A Formalization of Dedekind Domains and Class Groups of Global Fields,2022,Journal of Automated Reasoning,10.1007/s10817-022-09644-0
+10.1109/models50736.2021.00028,H,A Lean Approach to Building Valid Model-Based Safety Arguments,2021,,10.1109/models50736.2021.00028
+10.1007/978-3-030-51054-1_8,H,Validating Mathematical Structures,2020,Lecture notes in computer science,10.1007/978-3-030-51054-1_8
+10.1007/s00778-025-00922-y,H,DBSP: automatic incremental view maintenance for rich query languages,2025,The VLDB Journal,10.1007/s00778-025-00922-y
+10.1109/icse55347.2025.00002,H,Towards Neural Synthesis for SMT-Assisted Proof-Oriented Programming,2025,,10.1109/icse55347.2025.00002
+10.1145/3658644.3670322,H,zkPi: Proving Lean Theorems in Zero-Knowledge,2024,,10.1145/3658644.3670322
+10.3233/com-220416,H,L2-Betti numbers and computability of reals,2023,Computability,10.3233/com-220416
+10.1007/s10817-021-09611-1,H,A Bi-Directional Extensible Interface Between Lean and Mathematica,2022,Journal of Automated Reasoning,10.1007/s10817-021-09611-1
+10.1007/978-3-031-16681-5_5,H,Formalising the Kruskal-Katona Theorem in Lean,2022,Lecture notes in computer science,10.1007/978-3-031-16681-5_5
+10.1007/978-3-031-16681-5_1,H,A Formalization of the Change of Variables Formula for Integrals in mathlib,2022,Lecture notes in computer science,10.1007/978-3-031-16681-5_1
+10.1007/978-3-031-17244-1_16,H,Theorem Proving for Maude Specifications Using Lean,2022,Lecture notes in computer science,10.1007/978-3-031-17244-1_16
+10.1007/s10817-021-09593-0,H,Formalization of Ring Theory in PVS,2021,Journal of Automated Reasoning,10.1007/s10817-021-09593-0
+10.1007/978-3-030-53518-6_4,H,Leveraging the Information Contained in Theory Presentations,2020,Lecture notes in computer science,10.1007/978-3-030-53518-6_4
+10.1145/3776719,H,Foundational Multi-Modal Program Verifiers,2026,Proceedings of the ACM on Programming Languages,10.1145/3776719
+10.1007/978-3-032-07021-0_4,H,Growing Mathlib: maintenance of a large scale mathematical library,2025,Lecture notes in computer science,10.1007/978-3-032-07021-0_4
+10.1145/3607844,H,"Modularity, Code Specialization, and Zero-Cost Abstractions for Program Verification",2023,Proceedings of the ACM on Programming Languages,10.1145/3607844
+10.1145/3573105.3575669,H,A Formalized Reduction of Keller’s Conjecture,2023,,10.1145/3573105.3575669
+10.1145/3573105.3575675,H,A Formalization of Doob’s Martingale Convergence Theorems in mathlib,2023,,10.1145/3573105.3575675
+10.1145/3497775.3503672,H,Formalising lie algebras,2022,,10.1145/3497775.3503672
+10.1007/978-3-030-99461-7_4,H,Program Logic for Higher-Order Probabilistic Programs in Isabelle/HOL,2022,Lecture notes in computer science,10.1007/978-3-030-99461-7_4
+10.1145/3807780,H,Vy ZX: Formal Verification of a Graphical Quantum Language,2026,ACM Transactions on Programming Languages and Systems,10.1145/3807780
+10.1145/3776651,H,"Probabilistic Concurrent Reasoning in Outcome Logic: Independence, Conditioning, and Invariants",2026,Proceedings of the ACM on Programming Languages,10.1145/3776651
+10.1145/3763167,H,Interactive Bitvector Reasoning using Verified Bit-Blasting,2025,Proceedings of the ACM on Programming Languages,10.1145/3763167
+10.1103/physrevb.48.10345,B,Density-matrix algorithms for quantum renormalization groups,1993,"Physical review. B, Condensed matter",10.1103/physrevb.48.10345
+10.1214/ecp.v18-2865,B,Hanson-Wright inequality and sub-gaussian concentration,2013,Electronic Communications in Probability,10.1214/ecp.v18-2865
+10.2478/cmam-2011-0021,B,DMRG Approach to Fast Linear Algebra in the TT-Format,2011,Computational Methods in Applied Mathematics,10.2478/cmam-2011-0021
+10.1016/0010-4655(89)90147-1,B,Super-matrix methods,1989,Computer Physics Communications,10.1016/0010-4655(89)90147-1
+10.1109/tnnls.2024.3443814,B,Orthogonal Capsule Networks With Positional Information Preservation and Lightweight Feature Learning,2024,IEEE Transactions on Neural Networks and Learning Systems,10.1109/tnnls.2024.3443814
+10.1016/j.aop.2019.167998,A,Time-evolution methods for matrix-product states,2019,Annals of Physics,10.1016/j.aop.2019.167998
+10.1007/3-540-10579-4,A,Geometry of the Time-Dependent Variational Principle in Quantum Mechanics,1981,Lecture notes in physics,10.1007/3-540-10579-4
+10.4171/067,A,From Quantum to Classical Molecular Dynamics: Reduced Models and Numerical Analysis,2008,Zurich lectures in advanced mathematics,10.4171/067
+10.1088/0022-3719/6/15/009,A,Ising model in a transverse field. I. Basic theory,1973,Journal of Physics C Solid State Physics,10.1088/0022-3719/6/15/009
+10.1016/j.jcp.2023.112060,A,A robust and conservative dynamical low-rank algorithm,2023,Journal of Computational Physics,10.1016/j.jcp.2023.112060
+10.1137/23m1547603,A,Asymptotic-Preserving and Energy Stable Dynamical Low-Rank Approximation,2024,SIAM Journal on Numerical Analysis,10.1137/23m1547603
+10.1016/j.jcp.2024.112827,A,A low-rank complexity reduction algorithm for the high-dimensional kinetic chemical master equation,2024,Journal of Computational Physics,10.1016/j.jcp.2024.112827
+10.1098/rspa.2024.0658,A,A cross algorithm for implicit time integration of random partial differential equations on low-rank matrix manifolds,2025,Proceedings of the Royal Society A Mathematical Physical and Engineering Sciences,10.1098/rspa.2024.0658
+10.1016/j.jcp.2025.114421,A,Randomized methods for dynamical low-rank approximation,2025,Journal of Computational Physics,10.1016/j.jcp.2025.114421
+10.1016/j.cpc.2026.110163,A,"A low-rank, high-order implicit-explicit integrator for three-dimensional convection-diffusion equations",2026,Computer Physics Communications,10.1016/j.cpc.2026.110163

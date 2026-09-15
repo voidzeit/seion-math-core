@@ -1,0 +1,127 @@
+{
+ "anchor": {
+  "id": "10.1006/jmaa.1997.5216",
+  "family": "I",
+  "why": "SEED_FROM_REPO: Deutsch-Hundal 1997 rate of convergence MAP II"
+ },
+ "direction": "forward",
+ "records": [
+  {
+   "title": "The Absolutely Continuous Spectrum of One-Dimensional Schrödinger Operators with Decaying Potentials",
+   "year": 1998,
+   "venue": "Communications in Mathematical Physics",
+   "doi": "10.1007/s002200050322",
+   "arxiv": "",
+   "authors": "Christian Remling",
+   "abstract": "",
+   "cited_by": 101,
+   "openalex": "https://openalex.org/W2032045083",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Dimensional Hausdorff Properties of Singular Continuous Spectra",
+   "year": 1996,
+   "venue": "Physical Review Letters",
+   "doi": "10.1103/physrevlett.76.1765",
+   "arxiv": "",
+   "authors": "Svetlana Jitomirskaya; Yoram Last",
+   "abstract": "We present an extension of the Gilbert-Pearson theory of subordinacy, which relates dimensional Hausdorff spectral properties of one-dimensional Schr\\\"odinger operators to the behavior of solutions of the corresponding Schr\\\"odinger equation. We use this theory to analyze these properties for several examples having the singular-continuous spectrum, including sparse barrier potentials, the almost Mathieu operator and the Fibonacci Hamiltonian.",
+   "cited_by": 53,
+   "openalex": "https://openalex.org/W1983142106",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "On the Application of Some of M. G. Krein's Results to the Spectral Analysis of Sturm–Liouville Operators",
+   "year": 2001,
+   "venue": "Journal of Mathematical Analysis and Applications",
+   "doi": "10.1006/jmaa.2001.7488",
+   "arxiv": "",
+   "authors": "Sergey A. Denisov",
+   "abstract": "",
+   "cited_by": 17,
+   "openalex": "https://openalex.org/W2069565239",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Embedded singular continuous spectrum for one-dimensional Schrödinger operators",
+   "year": 1999,
+   "venue": "Transactions of the American Mathematical Society",
+   "doi": "10.1090/s0002-9947-99-02495-2",
+   "arxiv": "",
+   "authors": "Christian Remling",
+   "abstract": "We investigate one-dimensional Schrödinger operators with sparse potentials (i.e. the potential consists of a sequence of bumps with rapidly growing barrier separations). These examples illuminate various phenomena related to embedded singular continuous spectrum.",
+   "cited_by": 16,
+   "openalex": "https://openalex.org/W2072001179",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Subordinate solutions and spectral measures of canonical systems",
+   "year": 2000,
+   "venue": "Integral Equations and Operator Theory",
+   "doi": "10.1007/bf01673622",
+   "arxiv": "",
+   "authors": "Seppo Hassi; Christian Remling; Henk de Snoo",
+   "abstract": "",
+   "cited_by": 15,
+   "openalex": "https://openalex.org/W2333077778",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Zeroes of the spectral density of the Schrödinger operator with the slowly decaying Wigner–von Neumann potential",
+   "year": 2016,
+   "venue": "Mathematische Zeitschrift",
+   "doi": "10.1007/s00209-016-1659-0",
+   "arxiv": "",
+   "authors": "Sergey Simonov",
+   "abstract": "",
+   "cited_by": 9,
+   "openalex": "https://openalex.org/W2963746955",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "On the eigenvalues of the dirac operator",
+   "year": 2000,
+   "venue": "Mathematical Notes",
+   "doi": "10.1007/bf02676676",
+   "arxiv": "",
+   "authors": "Denis Krutikov",
+   "abstract": "",
+   "cited_by": 2,
+   "openalex": "https://openalex.org/W2035745393",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Subordinacy theory for extended CMV matrices",
+   "year": 2021,
+   "venue": "Science China Mathematics",
+   "doi": "10.1007/s11425-020-1778-4",
+   "arxiv": "",
+   "authors": "Shuzheng Guo; David Damanik; Darren C. Ong",
+   "abstract": "",
+   "cited_by": 0,
+   "openalex": "https://openalex.org/W3022616630",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "О собственных значениях оператора Дирака",
+   "year": 2000,
+   "venue": "Математические заметки",
+   "doi": "10.4213/mzm859",
+   "arxiv": "",
+   "authors": "Denis Krutikov; Denis Krutikov",
+   "abstract": "",
+   "cited_by": 0,
+   "openalex": "https://openalex.org/W2328196307",
+   "zbmath": "",
+   "msc": ""
+  }
+ ]
+}

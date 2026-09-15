@@ -1,0 +1,39 @@
+{
+ "query": "Kayalar Weinert alternating projections error",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=Kayalar+Weinert+alternating+projections+error&page=0&results_per_page=25",
+ "total": 2,
+ "records": [
+  {
+   "title": "Error bounds for the method of alternating projections",
+   "year": "1988",
+   "venue": "MCSS. Mathematics of Control, Signals, and Systems",
+   "doi": "10.1007/BF02551235",
+   "arxiv": "",
+   "authors": "Kayalar, Selahattin; Weinert, Howard L.",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "4102399",
+   "msc": "65K10;93C25;65J10",
+   "source": "zbmath",
+   "family": "I",
+   "query": "Kayalar Weinert alternating projections error"
+  },
+  {
+   "title": "The rate of convergence for the method of alternating projections. II",
+   "year": "1997",
+   "venue": "Journal of Mathematical Analysis and Applications",
+   "doi": "10.1006/jmaa.1997.5202",
+   "arxiv": "",
+   "authors": "Deutsch, Frank; Hundal, Hein",
+   "abstract": "[For Part I see \\textit{F. Deutsch}, Parametric optimization and approximation, Conf. Oberwolfach 1983, ISNM 72, 96-107 (1985; Zbl 0575.65049).] The authors give a very useful, easily computable error bound for the method of alternating projections. They also show that any error bound, which only depends on the angles between the various subspaces involved, can never be sharp. A counter-example to a conjecture of \\textit{S. Kayalar} and \\textit{H. L. Weinert} [Math. Control Signals Syst. 1, No. 1, 43-59 (1988; Zbl 0673.65036)] is also given.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "1005662",
+   "msc": "65J10",
+   "source": "zbmath",
+   "family": "I",
+   "query": "Kayalar Weinert alternating projections error"
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "query": "Mathlib formalization Hilbert space",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=Mathlib+formalization+Hilbert+space&page=0&results_per_page=25",
+ "total": 4,
+ "records": [
+  {
+   "title": "Finishing Oltean's Completeness Proof in Lean 4 for Hybrid Logic $L(\\forall)$",
+   "year": "2026",
+   "venue": "",
+   "doi": "",
+   "arxiv": "2606.19761",
+   "authors": "Lars Warren Ericson",
+   "abstract": "Summary: We present a machine-checked completeness theorem, in Lean 4, for the hybrid logic $L(\\forall)$: propositional modal logic with nominals, the satisfaction-style binder $\\forall$, and the box modality. (Machine-checked completeness for basic hybrid logic, without binders, was pioneered by Asta Halkjær From in Isabelle/HOL.) We build on Alex Oltean's 2023 Lean 4 formalization, which mechanized the syntax, semantics, Hilbert-style proof system, and soundness following Blackburn's Hybrid Completeness (1998), but left completeness unfinished. Finishing it requires manufacturing fresh names at two structurally different points, and our central finding is that they call for two different tools. (1) The root witnessed maximal consistent set, built by an extended Lindenbaum construction, needs at each step a nominal fresh for the whole set; the right tool is structural freshness: extend the language so an infinite supply of nominals is reserved by construction. We survey the design space (Oltean's odd/even encoding inside $\\mathbb{N}$, the disjoint-sum $N \\oplus \\mathbb{N}$ parameterization suggested by Bud Mishra, and From's synthetic-completeness frameworks) and explain the encoding we adopt. (2) The witnessed $\\Diamond$-successor of a maximal consistent set cannot be obtained this way: its canonical box-reduct provably mentions every nominal, so no reserved name is fresh. Here the right tool is one Oltean chose but left incomplete: an existence-lemma Henkin construction drawing each witness from the predecessor's witnessedness through a fresh state variable; we complete it with a data-carrying witness accumulator and a compactness argument. The theorem $Γ\\models φ\\to Γ\\vdash φ$ is fully formalized: the development is sorry-free, and #print axioms reports only propext, Classical.choice, and Quot.sound. We port the development to Lean v4.30.0 / mathlib v4.30.0.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "903079041",
+   "msc": "03B45;68V20;68V15;03B70;03B35",
+   "source": "zbmath",
+   "family": "H",
+   "query": "Mathlib formalization Hilbert space"
+  },
+  {
+   "title": "Formalized functional analysis with semilinear maps",
+   "year": "2024",
+   "venue": "Journal of Automated Reasoning",
+   "doi": "10.1007/s10817-024-09696-4",
+   "arxiv": "2202.05360",
+   "authors": "Dupuis, Frédéric; Lewis, Robert Y.; Macbeth, Heather",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "7862269",
+   "msc": "68V20;46N10;47N10",
+   "source": "zbmath",
+   "family": "H",
+   "query": "Mathlib formalization Hilbert space"
+  },
+  {
+   "title": "Formalization of convergence rates of four first-order algorithms for convex optimization",
+   "year": "2025",
+   "venue": "Journal of Automated Reasoning",
+   "doi": "10.1007/s10817-025-09741-w",
+   "arxiv": "2403.11437",
+   "authors": "Li, Chenyi; Wang, Ziyu; He, Wanyi; Wu, Yuxuan; Xu, Shengyang; Wen, Zaiwen",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "8128171",
+   "msc": "68V20;65K10;90C25",
+   "source": "zbmath",
+   "family": "H",
+   "query": "Mathlib formalization Hilbert space"
+  },
+  {
+   "title": "A Machine-Checked Itô Calculus for Brownian Motion",
+   "year": "2026",
+   "venue": "",
+   "doi": "",
+   "arxiv": "2606.15089",
+   "authors": "Raphael Coelho",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "903074369",
+   "msc": "60H05;60H30;60J65;68V20;68V15",
+   "source": "zbmath",
+   "family": "H",
+   "query": "Mathlib formalization Hilbert space"
+  }
+ ]
+}

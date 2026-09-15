@@ -1,0 +1,33 @@
+{
+  "frozen_at": "2026-09-14T18:02:22",
+  "note": "PRIOR-ART-R-CY: hashes taken before the first logged request of this follow-up (no smoke tests run); ../harvest.py listed to prove it is imported unchanged (HET freeze hash dc455661...)",
+  "sha256": {
+    "PROTOCOL_CY.md": "1cddd7da5d3095be48c2c0b5402a58a90e2030cb554202e277495469d20071db",
+    "queries_cy.json": "0eb94224204aeec19f7442b7eba661f6e50707e997b86d7ebd46666e8bb86c70",
+    "anchors_cy_spec.json": "4afce7f6de7e16132da1e810779f900e81a51d6119c3208d17a7f6086882748c",
+    "cy_round.py": "83017410330f5938e31c18329f0ef4c64a6e47e297bd2fdcada5ac190a8b2361",
+    "../harvest.py": "dc455661de5d02c2a67921498c4a1b2621bcfd02f88407a74143004fedd4215d"
+  },
+  "post_hoc_changes": [
+    {
+      "at": "2026-09-14T19:21:51",
+      "file": "PROTOCOL_CY.md",
+      "reason": "POST_HOC deviation entries appended to section 9 (freeze time, anchor verification, preprint records, harvest scheduling, harvest outcome, S2 citations, L3 DOI check, web searches, access); sections 1-8 unchanged",
+      "sha256": "b5257f4cfe40c7beb33583a0d597d3f5bdac5baa92563267e9e6c897e9b7fb31",
+      "other_frozen_files_unchanged": [
+        "queries_cy.json",
+        "anchors_cy_spec.json",
+        "cy_round.py",
+        "../harvest.py"
+      ],
+      "post_hoc_scripts_added": {
+        "cy_harvest_v2.py": "6d62491bbb23024c92e9783ebdc701f75e63e1753b1e6c3e2d2dcf6152c7fc33",
+        "cy_supplement.py": "7b505e11cdc787b48d043aee583a86398af2038aeef4d77e3a1e5e693642ce86",
+        "cy_verify_l3.py": "c60f49930db9111c4b730a794a71892dbe17b5788b938a9427372ddef3c2f2d3",
+        "screening_cy_L1_build.py": "2d669f2617e60e81eb65d5f1df5b7f92d65ea6c6eb75481e6953481e97ddac46",
+        "cy_numeric_check.py": "1c8a4dc1336fae45ff9cee68350cd3b994f54b1ff72d1f821616b330f9eea54e"
+      },
+      "note": "anchors_cy.json was rewritten by cy_supplement.py oa_preprints (adds post_hoc_preprint_ids; HRY20 arXiv record W2994365220 appended to openalex_ids)"
+    }
+  ]
+}

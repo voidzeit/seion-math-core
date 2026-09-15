@@ -1,0 +1,37 @@
+PRIOR-ART-R-CY numerical heuristic check (not a proof). numpy 2.4.6
+[fact] amin(w(t)) over t in (0,pi/2]: min=0.499999999993 max=0.500000000019 (expect 1/2)
+[fact] max|1-w(t)| on [0,asin eta] = eta: eta=0.3 -> 0.300000000000
+
+eta | gBox | (A) 2*phi(1/2,..)=2m/(m+1) | A valid? | (B) 2*phi(eta/2) | B >= gBox? | ratio B/gBox | sum eta (first order)
+(1.0,) | 1.000000 | 1.000000 | True | 1.000000 | True | 1.0000 | 1.000   argmax theta=[1.5708] caps=[1.5708]
+(0.3,) | 0.300000 | 1.000000 | True | 0.300000 | True | 1.0000 | 0.300   argmax theta=[0.3047] caps=[0.3047]
+(1.0, 1.0) | 1.154701 | 1.333333 | True | 1.333333 | True | 1.1547 | 2.000   argmax theta=[0.9553, 0.9553] caps=[1.5708, 1.5708]
+(0.5, 0.5) | 0.901388 | 1.333333 | True | 0.800000 | False | 0.8875 | 1.000   argmax theta=[0.5236, 0.5236] caps=[0.5236, 0.5236]
+(0.2, 0.9) | 0.985571 | 1.333333 | True | 0.963351 | False | 0.9775 | 1.100   argmax theta=[0.2014, 1.1198] caps=[0.2014, 1.1198]
+(0.1, 0.1) | 0.199249 | 1.333333 | True | 0.190476 | False | 0.9560 | 0.200   argmax theta=[0.1002, 0.1002] caps=[0.1002, 0.1002]
+(1.0, 1.0, 1.0) | 1.285714 | 1.500000 | True | 1.500000 | True | 1.1667 | 3.000   argmax theta=[0.7137, 0.7137, 0.7137] caps=[1.5708, 1.5708, 1.5708]
+(0.3, 0.3, 0.3) | 0.832828 | 1.500000 | True | 0.692308 | False | 0.8313 | 0.900   argmax theta=[0.3047, 0.3047, 0.3047] caps=[0.3047, 0.3047, 0.3047]
+(0.1, 0.5, 0.9) | 1.128129 | 1.500000 | True | 1.092619 | False | 0.9685 | 1.500   argmax theta=[0.1002, 0.5236, 1.0743] caps=[0.1002, 0.5236, 1.1198]
+(0.05, 0.05, 0.05) | 0.149688 | 1.500000 | True | 0.142857 | False | 0.9544 | 0.150   argmax theta=[0.05, 0.05, 0.05] caps=[0.05, 0.05, 0.05]
+(0.9, 0.9, 0.2) | 1.208774 | 1.500000 | True | 1.272059 | True | 1.0524 | 2.000   argmax theta=[0.8754, 0.8754, 0.2014] caps=[1.1198, 1.1198, 0.2014]
+(1.0, 1.0, 1.0, 1.0) | 1.380901 | 1.600000 | True | 1.600000 | True | 1.1587 | 4.000   argmax theta=[0.5736, 0.5736, 0.5736, 0.5736] caps=[1.5708, 1.5708, 1.5708, 1.5708]
+(0.2, 0.4, 0.6, 0.8) | 1.311485 | 1.600000 | True | 1.185784 | False | 0.9042 | 2.000   argmax theta=[0.2014, 0.4115, 0.6435, 0.7592] caps=[0.2014, 0.4115, 0.6435, 0.9273]
+(0.1, 0.1, 0.1, 0.1) | 0.394517 | 1.600000 | True | 0.347826 | False | 0.8816 | 0.400   argmax theta=[0.1002, 0.1002, 0.1002, 0.1002] caps=[0.1002, 0.1002, 0.1002, 0.1002]
+
+[perm] gBox(0.1,0.5,0.9)=1.128129241  gBox(0.9,0.1,0.5)=1.128129241
+
+(T) planar scalar model: c_i = 1-a_i + a_i e^{i psi_i};  sup amin(prod c_i) vs phi(a)
+alpha=(0.5, 0.5, 0.5) phi=0.750000  global sup~0.749312  near-1 sup (s=.1,.01,.001)=[0.749913, 0.749993, 0.749981]  exceeds phi? False
+alpha=(0.2, 0.5, 0.8) phi=0.840000  global sup~0.838606  near-1 sup (s=.1,.01,.001)=[0.839929, 0.839985, 0.839982]  exceeds phi? False
+alpha=(0.1, 0.3, 0.6, 0.9) phi=0.916941  global sup~0.915341  near-1 sup (s=.1,.01,.001)=[0.916575, 0.916676, 0.916058]  exceeds phi? False
+alpha=(0.5, 0.5) phi=0.666667  global sup~0.666629  near-1 sup (s=.1,.01,.001)=[0.666662, 0.666666, 0.666667]  exceeds phi? False
+
+(D) max |1 - prod c_i| over product of disks D(1-a_i,a_i)  vs  2 phi(a)   [distance functional vs averagedness]
+alpha=(0.5, 0.5)  max|1-z|=1.154701  2phi=1.333333  sum 2a_i=2.000
+alpha=(0.5, 0.5, 0.5)  max|1-z|=1.285714  2phi=1.500000  sum 2a_i=3.000
+alpha=(0.2, 0.5, 0.8)  max|1-z|=1.600000  2phi=1.680000  sum 2a_i=3.000
+alpha=(0.05, 0.05, 0.05)  max|1-z|=0.271000  2phi=0.272727  sum 2a_i=0.300
+
+Interpretation guide: (A) is valid but independent of eta (cap-blind); (B) is not a containment and is recorded only
+as a heuristic comparison; (T) tests whether phi is the supremum in the planar scalar model (tightness heuristic);
+(D) shows whether a sharp averagedness constant also gives the sharp distance-from-1 functional.

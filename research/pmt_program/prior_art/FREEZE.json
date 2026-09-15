@@ -1,0 +1,19 @@
+{
+  "frozen_at": "2026-09-14T13:12:49",
+  "note": "hashes taken before the first logged query; commit pending user instruction",
+  "sha256": {
+    "SEARCH_PROTOCOL.md": "212af5edfaee808882226f946c9ac4c62a03a2d9394b7955f3229b99352c8015",
+    "queries.json": "1a5b8d34214832d647f190b91f3ccec70012bc122ffe3f78ad27c72707ca017a",
+    "harvest.py": "4269979735d772b682243f8c060ff698e63fbe4701a03ee4e8beb7f8563d1038",
+    "../paper/STYLE_CONTRACT.md": "28625455288f018925f435e318013d1b2b0f30126c8ea520df20ba0aa89ca05a"
+  },
+  "post_hoc_fixes": [
+    {
+      "at": "2026-09-14T13:17:03",
+      "file": "harvest.py",
+      "reason": "zbMATH 404-no-results handling; arXiv 503/timeout treated as rate limit",
+      "sha256": "dc455661de5d02c2a67921498c4a1b2621bcfd02f88407a74143004fedd4215d",
+      "queries_json_sha256_unchanged": true
+    }
+  ]
+}

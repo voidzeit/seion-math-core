@@ -1,0 +1,106 @@
+timestamp,database,family,query,request,status,results_total,records_saved,notes
+2026-09-14T18:04:01,openalex-verify,CY15,10.1016/j.jmaa.2014.11.044,,OK,3,3,OK
+2026-09-14T18:04:01,crossref-verify,CY15,10.1016/j.jmaa.2014.11.044,,OK,,,
+2026-09-14T18:04:02,crossref-verify,CY15,10.48550/arxiv.1407.5100,,HTTP404,,,
+2026-09-14T18:07:36,openalex-verify,HRY20,10.1016/j.jmaa.2020.124211,,ERROR,1,1,ERROR HTTPError: HTTP Error 429: Too Many Requests
+2026-09-14T18:07:36,crossref-verify,HRY20,10.1016/j.jmaa.2020.124211,,OK,,,
+2026-09-14T18:08:09,openalex-verify,RHY22,10.1007/s10107-021-01639-w,,OK,2,2,OK
+2026-09-14T18:08:10,crossref-verify,RHY22,10.1007/s10107-021-01639-w,,OK,,,
+2026-09-14T18:08:12,openalex-verify,OY02,10.1081/NFA-120003674,,OK,4,4,OK
+2026-09-14T18:08:13,crossref-verify,OY02,10.1081/NFA-120003674,,OK,,,
+2026-09-14T18:08:14,crossref-verify,OY02,10.1081/nfa-120003674,,OK,,,
+2026-09-14T18:09:47,openalex-verify,PAT21,title:The scaled relative graph of a linear operator,,OK,1,1,OK
+2026-09-14T18:09:48,crossref-verify,PAT21,10.48550/arxiv.2106.05650,,HTTP404,,,
+2026-09-14T18:09:58,openalex-cites,CY15,cites:W1998428773,pages=1,OK,112,112,
+2026-09-14T18:10:00,openalex-cites,CY15,cites:W2950378366,pages=1,OK,1,1,
+2026-09-14T18:10:01,openalex-cites,HRY20,cites:W3024233472,pages=1,OK,12,12,
+2026-09-14T18:10:03,openalex-cites,RHY22,cites:W2916081703,pages=1,OK,19,19,
+2026-09-14T18:10:06,openalex-cites,OY02,cites:W2093425777,pages=1,OK,77,77,
+2026-09-14T18:10:07,openalex-cites,OY02,cites:W7208263737,pages=1,OK,0,0,
+2026-09-14T18:10:09,openalex-cites,PAT21,cites:W3168792975,pages=1,OK,4,4,
+2026-09-14T18:10:46,openalex,CY1,tight averagedness constant composition of averaged operators,https://api.openalex.org/works?search=tight+averagedness+constant+composition+of+averaged+operators&per-page=25,OK,37,25,after backoff 30s
+2026-09-14T18:14:19,arxiv,CY1,tight averagedness constant composition of averaged operators,,BLOCKED,,0,still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: Unknown Error
+2026-09-14T18:17:54,semanticscholar,CY1,tight averagedness constant composition of averaged operators,,BLOCKED,,0,still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429:
+2026-09-14T18:18:01,openalex,CY1,composition of m averaged operators tight coefficient,https://api.openalex.org/works?search=composition+of+m+averaged+operators+tight+coefficient&per-page=25,OK,35069,25,
+2026-09-14T18:21:42,openalex,CY1,firmly nonexpansive composition contraction factor tight,https://api.openalex.org/works?search=firmly+nonexpansive+composition+contraction+factor+tight&per-page=25,OK,54,25,v2
+2026-09-14T18:21:44,openalex,CY1,conic operators composition sharp coefficient,https://api.openalex.org/works?search=conic+operators+composition+sharp+coefficient&per-page=25,OK,883,25,v2
+2026-09-14T18:21:46,openalex,CY1,averaged nonexpansive operators composition optimal constant,https://api.openalex.org/works?search=averaged+nonexpansive+operators+composition+optimal+constant&per-page=25,OK,707,25,v2
+2026-09-14T18:21:48,openalex,CY1,composition of finitely many averaged mappings averagedness constant,https://api.openalex.org/works?search=composition+of+finitely+many+averaged+mappings+averagedness+constant&per-page=25,OK,47,25,v2
+2026-09-14T18:21:51,openalex,CY2,scaled relative graph composition tight,https://api.openalex.org/works?search=scaled+relative+graph+composition+tight&per-page=25,OK,103244,25,v2
+2026-09-14T18:21:53,openalex,CY2,scaled relative graph Minkowski product,https://api.openalex.org/works?search=scaled+relative+graph+Minkowski+product&per-page=25,OK,7285,25,v2
+2026-09-14T18:21:55,openalex,CY2,scaled relative graph averaged operators,https://api.openalex.org/works?search=scaled+relative+graph+averaged+operators&per-page=25,OK,211143,25,v2
+2026-09-14T18:21:57,openalex,CY2,graphical analysis of operator compositions scaled relative graph,https://api.openalex.org/works?search=graphical+analysis+of+operator+compositions+scaled+relative+graph&per-page=25,OK,19632,25,v2
+2026-09-14T18:21:59,openalex,CY2,scaled relative graph product of several operators,https://api.openalex.org/works?search=scaled+relative+graph+product+of+several+operators&per-page=25,OK,147874,25,v2
+2026-09-14T18:22:01,openalex,CY3,Minkowski product of disks averaged operators,https://api.openalex.org/works?search=Minkowski+product+of+disks+averaged+operators&per-page=25,OK,1638,25,v2
+2026-09-14T18:22:03,openalex,CY3,Minkowski product of circular arcs,https://api.openalex.org/works?search=Minkowski+product+of+circular+arcs&per-page=25,OK,1601,25,v2
+2026-09-14T18:22:05,openalex,CY3,product of circular arcs maximum modulus,https://api.openalex.org/works?search=product+of+circular+arcs+maximum+modulus&per-page=25,OK,12501,25,v2
+2026-09-14T18:22:07,openalex,CY3,Minkowski products of complex disks Cartesian oval,https://api.openalex.org/works?search=Minkowski+products+of+complex+disks+Cartesian+oval&per-page=25,OK,30,25,v2
+2026-09-14T18:22:09,openalex,CY3,complex disk products exact region,https://api.openalex.org/works?search=complex+disk+products+exact+region&per-page=25,OK,64139,25,v2
+2026-09-14T18:22:13,openalex,CY3,maximum distance from one of a product of complex numbers on circles,https://api.openalex.org/works?search=maximum+distance+from+one+of+a+product+of+complex+numbers+on+circles&per-page=25,OK,186138,25,v2
+2026-09-14T18:22:16,openalex,CY4,composition of projections averagedness constant tight,https://api.openalex.org/works?search=composition+of+projections+averagedness+constant+tight&per-page=25,OK,30,25,v2
+2026-09-14T18:22:19,openalex,CY4,product of orthogonal projections worst case different angles sharp bound,https://api.openalex.org/works?search=product+of+orthogonal+projections+worst+case+different+angles+sharp+bound&per-page=25,OK,2971,25,v2
+2026-09-14T18:22:21,openalex,CY4,relaxed projections composition averaged operator constant,https://api.openalex.org/works?search=relaxed+projections+composition+averaged+operator+constant&per-page=25,OK,12528,25,v2
+2026-09-14T18:22:23,openalex,CY4,cyclic projections sharp rate heterogeneous angles,https://api.openalex.org/works?search=cyclic+projections+sharp+rate+heterogeneous+angles&per-page=25,OK,4172,25,v2
+2026-09-14T18:22:25,openalex,CY4,tight contraction factor composition of three operators,https://api.openalex.org/works?search=tight+contraction+factor+composition+of+three+operators&per-page=25,OK,9321,25,v2
+2026-09-14T18:22:58,openalex-verify,HRY20,10.48550/arxiv.1912.01593,W2994365220,OK,1,1,POST_HOC preprint record; title+first-author match=True; title='Tight Coefficients of Averaged Operators via Scaled Relative Graph'
+2026-09-14T18:23:00,openalex-cites,HRY20,cites:W2994365220,pages=1,OK,0,0,POST_HOC preprint record
+2026-09-14T18:23:00,openalex-verify,RHY22,10.48550/arxiv.1902.09788,W6948001508,OK,1,1,POST_HOC preprint record; title+first-author match=False; title='Scaled Relative Graph: Nonexpansive operators via 2D Euclidean Geometry'
+2026-09-14T18:25:57,semanticscholar,CY1,tight averagedness constant composition of averaged operators,,BLOCKED,,0,v2 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429:
+2026-09-14T18:29:34,semanticscholar,CY1,composition of m averaged operators tight coefficient,,BLOCKED,,0,v2 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429:
+2026-09-14T18:43:11,semanticscholar,CY1,firmly nonexpansive composition contraction factor tight,,BLOCKED,,0,v2 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429:
+2026-09-14T18:46:48,semanticscholar,CY1,conic operators composition sharp coefficient,,BLOCKED,,0,v2 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429:
+2026-09-14T18:46:54,semanticscholar,CY1,averaged nonexpansive operators composition optimal constant,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY1,composition of finitely many averaged mappings averagedness constant,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY2,scaled relative graph composition tight,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY2,scaled relative graph Minkowski product,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY2,scaled relative graph averaged operators,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY2,graphical analysis of operator compositions scaled relative graph,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY2,scaled relative graph product of several operators,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY3,Minkowski product of disks averaged operators,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY3,Minkowski product of circular arcs,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY3,product of circular arcs maximum modulus,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY3,Minkowski products of complex disks Cartesian oval,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY3,complex disk products exact region,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY3,maximum distance from one of a product of complex numbers on circles,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY4,composition of projections averagedness constant tight,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY4,product of orthogonal projections worst case different angles sharp bound,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY4,relaxed projections composition averaged operator constant,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY4,cyclic projections sharp rate heterogeneous angles,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:46:54,semanticscholar,CY4,tight contraction factor composition of three operators,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T18:50:41,arxiv,CY1,tight averagedness constant composition of averaged operators,,BLOCKED,,0,v2 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: Unknown Error
+2026-09-14T18:54:16,arxiv,CY1,composition of m averaged operators tight coefficient,,BLOCKED,,0,v2 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: Unknown Error
+2026-09-14T19:07:52,arxiv,CY1,firmly nonexpansive composition contraction factor tight,,BLOCKED,,0,v2 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: Unknown Error
+2026-09-14T19:13:12,arxiv,CY1,conic operators composition sharp coefficient,,BLOCKED,,0,v2 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: Unknown Error
+2026-09-14T19:13:16,arxiv,CY1,averaged nonexpansive operators composition optimal constant,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY1,composition of finitely many averaged mappings averagedness constant,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY2,scaled relative graph composition tight,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY2,scaled relative graph Minkowski product,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY2,scaled relative graph averaged operators,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY2,graphical analysis of operator compositions scaled relative graph,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY2,scaled relative graph product of several operators,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY3,Minkowski product of disks averaged operators,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY3,Minkowski product of circular arcs,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY3,product of circular arcs maximum modulus,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY3,Minkowski products of complex disks Cartesian oval,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY3,complex disk products exact region,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY3,maximum distance from one of a product of complex numbers on circles,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY4,composition of projections averagedness constant tight,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY4,product of orthogonal projections worst case different angles sharp bound,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY4,relaxed projections composition averaged operator constant,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY4,cyclic projections sharp rate heterogeneous angles,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:16,arxiv,CY4,tight contraction factor composition of three operators,,DEFERRED,,0,v2 circuit breaker: source still rate limited after 600 s cool-down; left for retry pass
+2026-09-14T19:13:40,semanticscholar-cites,CY15,DOI:10.1016/j.jmaa.2014.11.044,,OK,116,116,POST_HOC
+2026-09-14T19:13:48,semanticscholar-cites,HRY20,DOI:10.1016/j.jmaa.2020.124211,,OK,18,18,POST_HOC
+2026-09-14T19:13:57,semanticscholar-cites,RHY22,DOI:10.1007/s10107-021-01639-w,,OK,64,64,POST_HOC
+2026-09-14T19:14:05,semanticscholar-cites,OY02,DOI:10.1081/NFA-120003674,,OK,80,80,POST_HOC
+2026-09-14T19:14:14,semanticscholar-cites,PAT21,ARXIV:2106.05650,,OK,32,32,POST_HOC
+2026-09-14T19:18:38,crossref-verify,L3_CY_chaffey2023,10.1109/TAC.2023.3234016,,OK,,,L3 DOI check
+2026-09-14T19:18:39,crossref-verify,L3_CY_bauschke2023,10.1080/01630563.2023.2270308,,OK,,,L3 DOI check
+2026-09-14T19:18:41,crossref-verify,L3_CY_giselsson2021,10.1186/s13663-021-00709-0,,OK,,,L3 DOI check
+2026-09-14T19:18:42,crossref-verify,L3_CY_lee2025,10.1137/23M1621320,,OK,,,L3 DOI check
+2026-09-14T19:18:43,crossref-verify,L3_CY_lee2025 (companion),10.1080/02331934.2025.2544700,,OK,,,L3 DOI check
+2026-09-14T19:18:45,crossref-verify,L3_CY_combettes2020,10.1137/19M1272780,,OK,,,L3 DOI check
+2026-09-14T19:18:46,crossref-verify,L3_CY_bartz2022,10.1007/s10898-021-01057-4,,OK,,,L3 DOI check
+2026-09-14T19:18:47,crossref-verify,L3_CY_guthrie2021,10.23919/ACC50511.2021.9482940,,OK,,,L3 DOI check
+2026-09-14T19:18:49,crossref-verify,L3_CY_bunger2019,10.13001/1081-3810.3910,,OK,,,L3 DOI check
+2026-09-14T19:18:50,crossref-verify,L3_CY_bunger2019 (companion),10.1007/s00022-019-0502-2,,OK,,,L3 DOI check

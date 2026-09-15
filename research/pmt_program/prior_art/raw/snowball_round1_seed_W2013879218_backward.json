@@ -1,0 +1,88 @@
+{
+ "anchor": {
+  "id": "10.1063/1.523304",
+  "family": "J",
+  "why": "SEED_CLASSIC: Misra-Sudarshan 1977 quantum Zeno paradox"
+ },
+ "direction": "backward",
+ "records": [
+  {
+   "title": "Die gegenw�rtige Situation in der Quantenmechanik",
+   "year": 1935,
+   "venue": "Die Naturwissenschaften",
+   "doi": "10.1007/bf01491891",
+   "arxiv": "",
+   "authors": "E. Schr�dinger",
+   "abstract": "",
+   "cited_by": 3419,
+   "openalex": "https://openalex.org/W2073384645",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "1. Foundations of quantum mechanics",
+   "year": 2019,
+   "venue": "Vibrational Spectroscopy",
+   "doi": "10.1515/9783110625097-001",
+   "arxiv": "",
+   "authors": "Guozhen Wu",
+   "abstract": "",
+   "cited_by": 1694,
+   "openalex": "https://openalex.org/W1996686235",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "On a reinterpretation of decay experiments",
+   "year": 1971,
+   "venue": "Annals of Physics",
+   "doi": "10.1016/0003-4916(71)90133-3",
+   "arxiv": "",
+   "authors": "H. Ekstein; A. J. F. Siegert",
+   "abstract": "",
+   "cited_by": 87,
+   "openalex": "https://openalex.org/W1983341991",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "The decay-scattering system",
+   "year": 1971,
+   "venue": "Rocky Mountain Journal of Mathematics",
+   "doi": "10.1216/rmj-1971-1-1-225",
+   "arxiv": "",
+   "authors": "L. P. Horwitz; Jean-Paul Marchand",
+   "abstract": "A decay-scattering system is defined in order to unify the mathematical treatment of scattering resonances and unstable particles.The decay law of an unstable particle, the inverse decay problem, and the effect of the presence of unstable particles on the scattering process are discussed from this point of view.A characterization of phenomenological descriptions of decay and resonance is given in terms of the analytic structure of the reduced resolvent.Next, the concept of symmetry and symmetry breaking is introduced, and simplified, but rigorous, formulations of K -meson and % -particle decays are proposed as physical applications.In conclusion we make some global remarks about the physical interpretation of the decay-scattering systems.",
+   "cited_by": 114,
+   "openalex": "https://openalex.org/W2079790441",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Difficulty with a kinematic concept of unstable particles: the SZ.-Nagy extension and the Matthews-Salam-Zwanziger representation",
+   "year": 1971,
+   "venue": "Communications in Mathematical Physics",
+   "doi": "10.1007/bf01645753",
+   "arxiv": "",
+   "authors": "David N. Williams",
+   "abstract": "",
+   "cited_by": 84,
+   "openalex": "https://openalex.org/W1999775775",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "",
+   "year": 1972,
+   "venue": "Indiana University Mathematics Journal",
+   "doi": "10.1512/iumj.1972.21.21080",
+   "arxiv": "",
+   "authors": "Charles N. Friedman",
+   "abstract": "",
+   "cited_by": 50,
+   "openalex": "https://openalex.org/W4232488476",
+   "zbmath": "",
+   "msc": ""
+  }
+ ]
+}

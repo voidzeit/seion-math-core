@@ -1,0 +1,59 @@
+{
+ "anchor": "PAT21",
+ "work": "W3168792975",
+ "meta_count": 4,
+ "records": [
+  {
+   "title": "Graphical Nonlinear System Analysis",
+   "year": 2023,
+   "venue": "IEEE Transactions on Automatic Control",
+   "doi": "10.1109/tac.2023.3234016",
+   "arxiv": "2107.11272",
+   "authors": "Thomas Chaffey; Fulvio Forni; Rodolphe Sepulchre",
+   "abstract": "We use the recently introduced concept of a scaled relative graph (SRG) to develop a graphical analysis of input–output properties of feedback systems. The SRG of a nonlinear operator generalizes the Nyquist diagram of an LTI system. In the spirit of classical control theory, important robustness indicators of nonlinear feedback systems are measured as distances between SRGs.",
+   "cited_by": 36,
+   "openalex": "W3184506730",
+   "type": "article",
+   "oa_url": "https://arxiv.org/pdf/2107.11272"
+  },
+  {
+   "title": "A rolled-off passivity theorem",
+   "year": 2022,
+   "venue": "Systems & Control Letters",
+   "doi": "10.1016/j.sysconle.2022.105198",
+   "arxiv": "2108.07634",
+   "authors": "Thomas Chaffey",
+   "abstract": "Given two nonlinear systems which only violate incremental passivity when their incremental gains are sufficiently small, we give a condition for their negative feedback interconnection to have finite incremental gain, which generalizes the incremental small gain and incremental passivity theorems. The property may be determined graphically by plotting the Scaled Relative Graphs (SRGs) of the systems, which provides engineering significance to the mathematical result.",
+   "cited_by": 1,
+   "openalex": "W3194304051",
+   "type": "article",
+   "oa_url": "https://www.sciencedirect.com/science/article/pii/S0167691122000421/pdf"
+  },
+  {
+   "title": "The Singular Angle of Nonlinear Systems",
+   "year": 2021,
+   "venue": "arXiv (Cornell University)",
+   "doi": "10.48550/arxiv.2109.01629",
+   "arxiv": "2109.01629",
+   "authors": "Chao Chen; Zhao, Di; Khong, Sei Zhen",
+   "abstract": "In this paper, we introduce an angle notion called the singular angle for nonlinear systems from an input-output perspective. The proposed system singular angle, based on the angle between $L_2$-signals, describes an upper bound for the ''rotating effect'' from system input to output signals. It quantifies passivity and serves as a counterpart to system $L_2$-gain. It also provides an alternative to a recently defined notion of system phase which adopts complexification of real-valued signals via the Hilbert transform. A nonlinear small angle theorem is established for feedback stability analysis, which involves a comparison of the loop system angle with $π$. The theorem generalizes the classical passivity theorem via a tradeoff between the singular angles of open-loop systems.",
+   "cited_by": 4,
+   "openalex": "W3198312586",
+   "type": "preprint",
+   "oa_url": "https://arxiv.org/pdf/2109.01629"
+  },
+  {
+   "title": "Monotone One-Port Circuits",
+   "year": 2023,
+   "venue": "IEEE Transactions on Automatic Control",
+   "doi": "10.1109/tac.2023.3274690",
+   "arxiv": "2111.15407",
+   "authors": "Thomas Chaffey; Rodolphe Sepulchre",
+   "abstract": "Maximal monotonicity is explored as a generalization of the linear theory of passivity, aiming at an algorithmic input/output analysis of physical models. The theory is developed for maximal monotone one-port circuits, formed by the series and parallel interconnection of basic elements. These circuits generalize passive linear, time-invariant (LTI) transfer functions. Periodic input signals are shown to be mapped to periodic output signals, and these input–output behaviors can be efficiently computed using a maximal monotone splitting algorithm, which decomposes the computation according to the circuit topology. A new splitting algorithm is presented, which applies to any monotone one-port circuit defined as a port interconnection of monotone elements.",
+   "cited_by": 0,
+   "openalex": "W3216707186",
+   "type": "article",
+   "oa_url": "https://arxiv.org/pdf/2111.15407"
+  }
+ ]
+}

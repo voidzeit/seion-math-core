@@ -1,0 +1,1746 @@
+key,threat,claims,reason,level2
+errortransportationinsvdbasedtensortrainapproximations,3,R1a;R3;R9,Algorithm-level transport of local truncation errors through general dimension trees with tree-dependent conditioning factors and sharp chain-case bounds; similar error-propagation result for TT/HT truncation under different assumptions,yes
+10.1006/jmaa.1997.5202,3,R1b;R6,Error bounds for alternating projections and proof that angle-only bounds cannot be sharp; sharpness question for products of projections is adjacent to R1b and the angle approach,yes
+10.1016/j.jat.2014.06.002,3,R6,Sharp linear rate for Douglas-Rachford on subspaces equal to cosine of Friedrichs angle; sharp angle-based rate for projection compositions but no multilinear tree setting,yes
+10.48550/arxiv.2608.16994,3,R9,First-order error bound for tree-tensor-network BUG transferred to canonical MPS sweeps; first-order stability of tensor networks under projections,yes
+10.1214/aop/1048516531,2,,Sharp Lp bounds with extremal distributions for sums of multilinear forms; sharp constants for multilinear objects but probabilistic and unrelated to projection defects,no
+10.1002/mrm.22365,0,,Diffusion MRI orientation distribution reconstruction; irrelevant,no
+onthetruncatedmultilinearsingularvaluedecomposition,3,R1a;R9,Exact error expressions and bounds for truncated and sequentially truncated MLSVD with orthogonal factors; truncation error bound for a Tucker (one-node tree) format,yes
+10.1137/21m1415911,2,R9,Tree tensor network learning via projections onto nested tensor subspaces with expectation error bound; shares tree projections but statistical and not a worst-case accumulation constant,no
+10.1016/j.jat.2021.105648,3,R6,Optimal error bound for simultaneous projection method via Friedrichs angle cosine in product space; sharp rate for projection methods under different assumptions,yes
+10.1007/s00025-017-0721-5,2,,Ordering of subspaces in alternating projections with sharp estimates on greedy suboptimality; projection-product geometry only,no
+10.1007/s00220-008-0418-4,1,,Tripartite Bell violations via operator spaces and trilinear forms; background tensor norm theory,no
+10.3150/21-bej1371,2,R9,Model selection for tree tensor networks viewed as multilinear sum-product networks; shares tree multilinear object without comparable bound,no
+10.48550/arxiv.1912.07913,2,R9,Learning densities in tree-based tensor formats with orthogonal-basis parametrization; shares object only,no
+10.48550/arxiv.1811.04455,2,R9,Tree-based tensor formats as multilinear deep networks with rank adaptation; shares object only,no
+10.48550/arxiv.2512.11967,1,,Holographic isometric tensor network states for many-body physics; broad field background,no
+10.1109/tnnls.2020.2967022,1,,TT-rank tensor-on-tensor regression algorithm; broad field background,no
+10.1353/ajm.2001.0035,1,,Sharp multilinear weighted L2 convolution estimates for dispersive PDE; different field,no
+10.1090/s0894-0347-03-00421-1,0,,Global well-posedness of KdV via multilinear harmonic analysis; irrelevant,no
+10.5802/aif.1125,0,,Calderon-Zygmund theory on product spaces; irrelevant,no
+10.2307/2155203,0,,Functional determinants and sharp conformal inequalities on manifolds; irrelevant,no
+10.4171/rmi/665,1,,Optimal constant for multilinear fractional integration forms; sharp multilinear constant in harmonic analysis unrelated to projections,no
+10.1088/1367-2630/ab31ef,2,,Unitary hierarchical tree tensor network classifiers studied via fidelity; shares tree network and fidelity objects without error bound,no
+10.1103/revmodphys.82.277,1,,Review of entanglement area laws; background for tensor network approximability,no
+10.1007/s00211-016-0819-9,2,R9,Joint feasibility of higher-order singular values with alternating projection heuristic; shares HOSVD truncation objects only,no
+10.1109/ipdps.2016.67,1,,Parallel Tucker compression implementation; background,no
+10.1007/jhep11%282019%29069,2,,Tree tensor networks built by iterative approximation in AdS/CFT with purification ideas; shares object loosely,no
+10.1007/jhep11(2019)069,2,,Tree tensor networks built by iterative approximation in AdS/CFT with purification ideas; shares object loosely,no
+10.1016/j.crma.2009.11.018,2,R6,Generalized Friedrichs angle for several subspaces to analyze alternating projection rates; angle technique without comparable sharp theorem,no
+10.1016/j.jmaa.2013.09.024,2,R6,Numerical range and spectrum of a product of two orthogonal projections with Friedrichs angle sector; shares projection-angle geometry,no
+10.48550/arxiv.1309.4709,3,R6,Sharp linear rate for Douglas-Rachford on subspaces equal to cosine of Friedrichs angle; sharp angle-based rate for projection compositions but no multilinear tree setting,yes
+10.1137/130918137,1,,Greedy low-rank approximate inverse preconditioner in HT format; background,no
+10.1103/physrevresearch.5.013031,2,R3,Optimizing tree tensor network structure to improve accuracy; tree-structure dependence of approximation contrasts with R3 but no theorem,no
+10.22331/q-2023-03-30-964,2,R9,Quantum circuit simulation on rooted tree tensor networks with SVD truncation through the tree; shares object without error constant,no
+10.1103/physreva.96.062322,1,,Tree tensor network simulation of Shor's algorithm; background,no
+10.1021/acs.jctc.9b00071,1,,Three-legged tree tensor networks with symmetries for chemistry; background,no
+10.1098/rspa.2023.0218,1,,Review of tensor networks for quantum machine learning; background,no
+10.1103/prxquantum.4.030333,1,,Measurement-induced transitions on tree-structured dynamics; broad background,no
+10.48550/arxiv.2206.01000,2,R9,Quantum circuit simulation on rooted tree tensor networks with SVD truncation through the tree; shares object without error constant,no
+10.1002/2015wr016967,0,,Review of groundwater surrogate models; irrelevant,no
+10.48550/arxiv.1707.08308,1,,Tensor contraction and regression layers in CNNs; background multilinear ML,no
+10.1103/physrevx.9.031041,1,,Differentiable programming of tensor network contractions; background,no
+10.1103/ycty-d5f9,1,,Tree tensor network impurity solver via Cayley-tree mapping; background,no
+10.3389/fcomp.2026.1879630,1,,Speculative quantum generative models with isometric tree tensor networks; background,no
+10.1038/s41598-023-46064-5,0,,Machine learning prediction of blasting ground vibration; irrelevant,no
+10.1090/s0002-9947-1995-1316845-2,0,,Functional determinants and sharp conformal inequalities on manifolds; irrelevant,no
+10.1016/j.aim.2022.108567,1,,Integrability of orthogonal projections of measures and Furstenberg sets; different sense of projection,no
+10.1090/s0002-9947-2012-05403-1,2,,Sharp lower bounds for norms of products of homogeneous polynomials in Hilbert space with orthonormal extremizers; sharp multilinear extremal problem unrelated to projection defects,no
+10.1088/1751-8113/42/50/504004,1,,Review of tensor product states including tree tensor states; background,no
+10.4310/jdg/1253804349,0,,Lp affine isoperimetric inequalities for projection bodies; irrelevant,no
+10.2140/pjm.1970.33.1,1,,Extremal simplex content via angle cosines; generic angle extremization only,no
+10.1090/s0894-0347-02-00398-3,3,R1b;R6,Identity giving the sharpest possible estimate for norms of products of nonexpansive operators and alternating projections; sharp product-of-projections bound under different assumptions,yes
+10.1090/s1061-0022-2012-01202-1,2,R6,Generalized Friedrichs angle parameter and dichotomy for cyclic projection convergence rates; angle technique without comparable sharp theorem,no
+admmforconvexquadraticprogramslinearconvergenceandinfeasibilitydetection,2,,ADMM rate for QPs expressed via Friedrichs angle cosine; shares angle-projection tool only,no
+10.48550/arxiv.1411.7288,2,,ADMM rate for QPs expressed via Friedrichs angle cosine; shares angle-projection tool only,no
+10.1145/301250.301349,0,,Quantum query complexity of approximate median; irrelevant,no
+10.1002/nla.1818,2,R9,Projected residual iteration with truncation in hierarchical Tucker format; shares HT truncation without accumulation constant,no
+10.1137/120885723,3,R1a;R9,Tangent-space projector analysis with curvature estimates and quasi-best approximation for HT/TT dynamical approximation; projection error bounds in tree formats under different assumptions,yes
+10.1080/01630569408816580,3,R1b;R6,Dykstra cyclic projections rate with best possible constant given by cosine of angle between half-spaces; sharp angle constant for projection compositions,yes
+10.1103/physreva.74.022320,1,,Efficient classical simulation of tree-structured quantum systems with low Schmidt rank; background,no
+renormalizationandtensorproductstatesinspinchainsandlattices,1,,Review of tensor product states including tree tensor states; background,no
+10.1103/physrevlett.103.070504,0,,Strong converse for classical capacity of quantum channels; irrelevant,no
+10.1137/15m1026791,3,R1a;R9,Error bounds for projector-splitting low-rank matrix and TT integrators robust to small singular values; projection error accumulation bounds in TT under different assumptions,yes
+10.1137/24m1714502,3,R1a;R3;R9,Parallel BUG integrator for general tree tensor networks with robust error bound; error bound for projected tree tensor network dynamics under different assumptions,yes
+10.1109/tsp.2017.2690524,1,R9,general tensor decomposition/network,no
+10.48550/arxiv.1606.05535,1,R9,general tensor decomposition/network,no
+10.1137/110859063,1,R9,general tensor decomposition/network,no
+10.1016/j.jat.2006.02.005,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1109/msp.2013.2297439,1,R9,general tensor decomposition/network,no
+10.1016/j.laa.2020.05.023,3,R1a;R6,"angles, projections and iterations; possible rate results",yes
+10.1137/22m1473790,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.22331/q-2025-05-28-1755,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2210.03763,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevresearch.3.023236,1,R9,tensor network method/application; no error theorem,no
+10.1561/2200000067,1,R9,general tensor decomposition/network,no
+10.48550/arxiv.2105.13678,0,,unrelated field,no
+10.1090/s0025-5718-1991-1066830-3,1,,broad numerical/operator analysis,no
+10.1016/j.laa.2019.04.025,2,R6,angles between subspaces/projections,no
+10.1088/0031-9155/49/2/010,0,,unrelated field,no
+10.48550/arxiv.1506.05827,1,,multilinear harmonic analysis; different object,no
+introductiontovectorsandtensorsvol1linearandmultilinearalgebra,1,R9,general tensor decomposition/network,no
+10.1109/tsp.2015.2458785,1,R9,general tensor decomposition/network,no
+10.48550/arxiv.1702.06980,1,R9,general tensor decomposition/network,no
+10.1109/tgrs.2015.2503737,0,,unrelated field,no
+10.1007/jhep07(2018)157,0,,unrelated field,no
+10.48550/arxiv.2203.13522,1,,quantum information context; no projection-error bound,no
+10.4310/atmp.2000.v4.n1.a1,0,,unrelated field,no
+10.48550/arxiv.2010.12056,2,R9,dimension-tree CP with perturbation,no
+10.1007/jhep01(2015)073,0,,unrelated field,no
+10.48550/arxiv.1412.8690,0,,unrelated field,no
+10.1137/s0895479896305696,3,R1a;R9,HOSVD; known Tucker truncation error bound,yes
+10.1523/jneurosci.3481-07.2007,0,,unrelated field,no
+10.1215/ijm/1336568522,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1016/j.jat.2017.08.005,3,R1a;R1b,optimal error bound for projection method,yes
+10.1007/bf02551235,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1016/j.jfa.2010.05.018,3,R1a;R6,subspace angles with alternating projector error bounds,yes
+10.48550/arxiv.1501.06603,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1103/prxquantum.5.020366,3,R1b;R5;R7,optimal Zeno dragging schedule; possible equal-angle extremization,yes
+10.48550/arxiv.2311.01631,3,R1b;R5;R7,optimal Zeno dragging schedule; possible equal-angle extremization,yes
+10.1088/1751-8113/45/45/453001,1,,quantum information context; no projection-error bound,no
+10.1088/1367-2630/16/3/033014,2,R9,PEPS contraction schemes,no
+10.21468/scipostphyslectnotes.86,1,R9,tensor network method/application; no error theorem,no
+10.1109/tcs.1978.1084541,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.48550/arxiv.1604.07130,2,,sharp worst-case complexity of cyclic updates; different object,no
+10.1137/21m1463306,2,R1a,Kaczmarz-type products of projections,no
+10.1137/20m1358669,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1137/07070111x,1,R9,general tensor decomposition/network,no
+10.1007/s00041-009-9094-9,2,R9,tree/HT/TT format theory; no sharp accumulation result in title,no
+10.1137/070688316,1,R9,general tensor decomposition/network,no
+10.1002/gamm.201310004,2,R9,low-rank tensor survey incl. truncation,no
+10.1080/03081080600743338,2,R6,angles between subspaces/projections,no
+10.1007/bf02551360,3,R1a;R6,error bounds for oblique projection algorithms,yes
+10.1098/rspa.2009.0202,1,,quantum information context; no projection-error bound,no
+10.1109/tit.2010.2053903,1,,quantum information context; no projection-error bound,no
+10.1145/2432622.2432625,1,,quantum information context; no projection-error bound,no
+10.1103/physrevb.90.064425,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.1801.02662,1,R9,general tensor decomposition/network,no
+10.22331/q-2024-12-27-1580,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1137/090764189,3,R1a;R3;R9,hierarchical SVD; tree-format truncation error bound,yes
+10.1063/5.0153870,1,R9,tensor network method/application; no error theorem,no
+10.1137/23m1565103,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1002/qua.24898,1,R9,tensor network method/application; no error theorem,no
+10.1109/tcad.2014.2369505,1,R9,tensor network method/application; no error theorem,no
+10.2478/cmam-2011-0016,1,R9,general tensor decomposition/network,no
+10.1103/physrevx.9.041017,0,,unrelated field,no
+10.1016/j.laa.2011.08.010,2,R9,tree/HT/TT format theory; no sharp accumulation result in title,no
+10.1016/j.laa.2013.03.016,2,R9,tree/HT/TT format theory; no sharp accumulation result in title,no
+10.48550/arxiv.1509.05009,1,R9,general tensor decomposition/network,no
+10.1002/nla.2174,2,R9,tree/HT/TT format theory; no sharp accumulation result in title,no
+10.48550/arxiv.1402.5649,1,R9,tensor network method/application; no error theorem,no
+10.2478/cmam-2011-0015,1,R9,tensor network method/application; no error theorem,no
+10.1137/24m1687649,2,R9,stability of Gram low-rank approximation; single truncation,no
+tensorproductmethodsinnumericalsimulationofhighdimensionaldynamicalproblems,1,R9,tensor network method/application; no error theorem,no
+10.1002/nla.2158,1,R9,tensor network method/application; no error theorem,no
+10.1371/journal.pcbi.1003359,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.1901.10719,1,R9,tensor network method/application; no error theorem,no
+10.21468/scipostphys.8.2.024,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.21468/scipostphys.9.5.070,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevb.105.214201,1,R9,tensor network method/application; no error theorem,no
+10.1063/5.0218773,1,R9,tensor network method/application; no error theorem,no
+10.1103/physreva.109.022420,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevx.10.041040,0,,unrelated field,no
+10.1038/s41534-021-00443-w,0,,unrelated field,no
+10.1103/8993-8xn5,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2410.03572,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2407.13249,1,R9,tensor network method/application; no error theorem,no
+10.1016/j.jco.2013.10.001,2,R9,HT approximation rates,no
+10.1017/s0962492911000055,1,R9,tensor network method/application; no error theorem,no
+10.1137/21m1402170,1,R9,tensor network method/application; no error theorem,no
+10.1515/rnam-2013-0009,1,R9,tensor network method/application; no error theorem,no
+10.1137/17m1138881,1,R9,tensor network method/application; no error theorem,no
+10.2478/cmam-2011-0020,1,R9,tensor network method/application; no error theorem,no
+10.1093/imanum/drx052,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2501.04157,1,R9,tensor network method/application; no error theorem,no
+treetensornetworksinquantumchemistry,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2609.07319,1,R9,tensor network method/application; no error theorem,no
+10.3389/fams.2022.838601,1,R9,tensor network method/application; no error theorem,no
+10.1007/s10915-025-03078-7,1,R9,tensor network method/application; no error theorem,no
+simulatingnonmarkovianopenquantumdynamicsbyexploitingphysicsinformedneuralnetwork,0,,unrelated field,no
+10.21468/scipostphys.19.4.111,1,,multilinearity in network currents,no
+10.4007/annals.2003.158.635,0,,unrelated field,no
+10.48550/arxiv.1904.00808,1,,multilinear harmonic analysis; different object,no
+10.1186/s13677-023-00586-5,0,,unrelated field,no
+10.4208/cicp.oa-2017-0257,1,,broad numerical/operator analysis,no
+10.48550/arxiv.1706.05341,1,,broad numerical/operator analysis,no
+10.1214/14-aop919,1,,contraction method in probability,no
+10.48550/arxiv.1806.04553,0,,unrelated field,no
+10.1007/978-3-031-48621-0_14,0,,unrelated field,no
+10.48550/arxiv.1311.1616,0,,unrelated field,no
+10.5194/acp-19-11235-2019,0,,unrelated field,no
+10.1088/1475-7516/2004/08/009,0,,unrelated field,no
+10.1016/s0022-1236(03)00218-0,1,,multilinear harmonic analysis; different object,no
+10.1007/bf02392554,1,,multilinear harmonic analysis; different object,no
+10.1007/s00208-019-01816-5,1,,multilinear harmonic analysis; different object,no
+10.2989/16073606.2011.640459,1,,multilinear harmonic analysis; different object,no
+10.4171/jems/458,1,,operator spaces,no
+vectorvaluedbohnenblusthilleinequalities,2,R1b,optimal-constant multilinear inequality; different object,no
+10.48550/arxiv.1311.6747,1,,multilinear harmonic analysis; different object,no
+10.4171/jems/1229,1,,multilinear harmonic analysis; different object,no
+10.1215/20088752-2018-0026,1,,multilinear harmonic analysis; different object,no
+10.48550/arxiv.1809.02449,1,,multilinear harmonic analysis; different object,no
+10.1016/j.jfa.2015.07.001,1,,multilinear harmonic analysis; different object,no
+10.48550/arxiv.1311.3177,2,R1b,optimal-constant multilinear inequality; different object,no
+10.1137/120867172,0,,unrelated field,no
+10.48550/arxiv.1104.4879,0,,unrelated field,no
+10.1007/s11511-006-0006-4,1,,multilinear harmonic analysis; different object,no
+10.1016/j.jmaa.2009.04.021,1,,multilinear harmonic analysis; different object,no
+10.1090/s0002-9939-2010-10656-1,1,,multilinear harmonic analysis; different object,no
+10.1090/s0002-9939-04-07565-3,2,R1b,optimal-constant multilinear inequality; different object,no
+10.1007/s10240-003-0016-0,0,,unrelated field,no
+10.1103/prxquantum.5.010314,1,,quantum information context; no projection-error bound,no
+10.1007/s00023-023-01358-2,1,R9,general tensor decomposition/network,no
+10.1088/1367-2630/12/12/123004,1,R6,fidelity/purified-distance context,no
+10.1007/jhep04(2015)163,0,,unrelated field,no
+10.48550/arxiv.1710.03663,0,,unrelated field,no
+10.1016/j.cma.2019.112762,0,,unrelated field,no
+10.1088/2058-9565/aaea94,1,R9,tensor network method/application; no error theorem,no
+10.1007/jhep06(2015)149,0,,unrelated field,no
+10.48550/arxiv.2201.11729,1,R9,general tensor decomposition/network,no
+10.1214/aoap/1034968224,0,,unrelated field,no
+10.48550/arxiv.1510.00504,1,,broad numerical/operator analysis,no
+10.4007/annals.2013.177.1.1,0,,unrelated field,no
+10.1090/s0002-9947-03-03389-0,1,,best constants for Hardy inequalities; different object,no
+10.1109/access.2020.3002270,0,,unrelated field,no
+10.1002/hipo.22488,0,,unrelated field,no
+10.1523/jneurosci.15-01-00030.1995,0,,unrelated field,no
+10.1101/lm.73504,0,,unrelated field,no
+10.1107/s1600576716008074,0,,unrelated field,no
+10.48550/arxiv.1809.05858,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1103/physrevx.9.031045,0,,unrelated field,no
+10.1117/1.oe.61.8.081808,0,,unrelated field,no
+10.1103/physrevx.14.021022,0,,unrelated field,no
+10.1088/1402-4896/ae7c3f,2,R1a;R7,Zeno dynamics mathematics; possible error bounds,no
+10.1088/1367-2630/aa5cff,0,,unrelated field,no
+10.1088/0034-4885/61/2/002,0,,unrelated field,no
+10.1038/s41586-022-04891-y,0,,unrelated field,no
+10.1086/424914,0,,unrelated field,no
+10.1175/1520-0469(1999)056<1197:peaeca>2.0.co;2,0,,unrelated field,no
+10.1007/s11207-014-0516-8,0,,unrelated field,no
+10.1103/revmodphys.93.045003,1,R9,MPS/PEPS review,no
+overcomingthematrixproductstateencodingbarrierviadmrgguidedprobabilisticimaginarytimeevolution,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2308.12358,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevb.94.035133,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2007.09827,1,,multi-layer estimation,no
+randomizedkaczmarzsolverfornoisylinearsystems,2,R1a,Kaczmarz-type products of projections,no
+10.1088/1367-2630/11/3/033003,0,,unrelated field,no
+10.1103/physrevb.98.205136,1,,quantum Zeno physics/experiment,no
+10.1103/physrevb.100.134306,1,,quantum Zeno physics/experiment,no
+environmentassistedquantumtransport,0,,unrelated field,no
+10.1103/physrevlett.100.090503,1,,quantum Zeno physics/experiment,no
+10.1088/1751-8113/41/49/493001,2,R1a;R7,Zeno dynamics mathematics; possible error bounds,no
+quantumzenodynamicsmathematicalandphysicalaspects,2,R1a;R7,Zeno dynamics mathematics; possible error bounds,no
+10.1137/090748330,3,R1a;R9,TT-SVD; known TT truncation error bound,yes
+10.1137/100818893,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.1403.2048,1,R9,general tensor decomposition/network,no
+10.1038/s41467-019-09039-7,1,R9,tensor network method/application; no error theorem,no
+10.1007/s10208-016-9317-9,2,R9,hierarchical tensors survey for PDEs,no
+10.1007/s11425-012-4363-5,1,,broad numerical/operator analysis,no
+10.1007/s40314-023-02211-2,1,,projection algorithm application,no
+10.1080/00018732.2021.1876991,0,,unrelated field,no
+10.1088/1751-8121/aa6dc3,1,R9,general tensor decomposition/network,no
+10.1103/physrevb.82.205105,1,R9,tensor network method/application; no error theorem,no
+neuralnetworkquantumstatesstringbondstatesandchiraltopologicalstates,0,,unrelated field,no
+10.1103/physrevlett.102.240603,1,R9,tensor network method/application; no error theorem,no
+10.1103/physreva.51.2738,1,,quantum information context; no projection-error bound,no
+10.1103/physreva.63.032312,0,,unrelated field,no
+10.1109/tit.2014.2309968,0,,unrelated field,no
+10.1142/s1230161208000043,0,,unrelated field,no
+10.1109/tit.2004.838115,0,,unrelated field,no
+10.48550/arxiv.0912.5537,0,,unrelated field,no
+10.1109/tit.2009.2025545,1,R6,fidelity/purified-distance context,no
+10.22331/q-2017-07-14-14,1,R6,fidelity/purified-distance context,no
+alargelyselfcontainedandcompletesecurityproofforquantumkeydistribution,1,R6,fidelity/purified-distance context,no
+10.1109/tit.2013.2268533,0,,unrelated field,no
+10.1007/978-1-4613-9425-9,1,R9,general tensor decomposition/network,no
+10.1007/s40324-018-0177-x,2,R9,tree/HT/TT format theory; no sharp accumulation result in title,no
+10.1184/r1/6492902.v1,1,R8,Lean formalization of unrelated content,no
+10.1137/050644756,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevb.78.155117,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevlett.98.140506,1,R9,tensor network method/application; no error theorem,no
+10.1103/physrevb.86.245101,1,R9,tensor network method/application; no error theorem,no
+conversionofprojectedentangledpairstatesintoacanonicalform,1,R9,tensor network method/application; no error theorem,no
+10.1137/140976546,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1093/amrx/abv006,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1145/2538688,1,R9,tensor network method/application; no error theorem,no
+timeintegrationoftensortrains,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1080/00268976.2024.2306881,1,R9,tensor network method/application; no error theorem,no
+10.1016/j.cma.2024.117385,1,R9,tensor network method/application; no error theorem,no
+10.1063/5.0301775,1,R9,tensor network method/application; no error theorem,no
+10.1137/24m1661996,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2311.12103,1,R9,tensor network method/application; no error theorem,no
+10.1088/0953-8984/21/39/395502,0,,unrelated field,no
+10.1103/prxquantum.2.030305,0,,unrelated field,no
+10.48550/arxiv.1407.3124,1,R9,general tensor decomposition/network,no
+10.48550/arxiv.2208.10972,1,R9,tensor network method/application; no error theorem,no
+10.1214/009053604000000067,0,,unrelated field,no
+10.1016/j.laa.2015.06.027,2,R1a,Kaczmarz-type products of projections,no
+10.1090/s0002-9947-03-03136-2,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1109/tsp.2014.2339801,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1016/j.jat.2006.02.006,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1111/rssb.12228,0,,unrelated field,no
+10.25675/3.021826,0,,unrelated field,no
+10.1137/130916138,0,,unrelated field,no
+10.1007/s10444-020-09797-9,1,R9,tensor network method/application; no error theorem,no
+10.1109/dsn.2018.00039,0,,unrelated field,no
+10.1088/1361-648x/aa8f79,0,,unrelated field,no
+10.1002/nme.7423,0,,unrelated field,no
+10.1007/s00466-022-02261-z,0,,unrelated field,no
+10.48550/arxiv.2302.03568,1,R9,tensor network method/application; no error theorem,no
+10.3390/app10082808,0,,unrelated field,no
+10.48550/arxiv.2004.01571,1,,tree message-passing inference,no
+10.1007/s10915-022-01868-x,1,R9,tensor network method/application; no error theorem,no
+10.1088/1367-2630/12/2/025007,0,,unrelated field,no
+10.1103/physrevresearch.5.033141,0,,unrelated field,no
+10.48550/arxiv.1705.01598,0,,unrelated field,no
+10.31083/j.fbl2704128,0,,unrelated field,no
+10.1021/acs.chemrev.3c00189,0,,unrelated field,no
+10.1038/s41598-021-83269-y,0,,unrelated field,no
+10.3390/math13030451,0,,unrelated field,no
+10.5772/61471,0,,unrelated field,no
+10.7900/jot.2017dec22.2179,1,,broad numerical/operator analysis,no
+10.1371/journal.pcbi.1008971,0,,unrelated field,no
+10.2140/jomms.2007.2.1019,0,,unrelated field,no
+topicsinsparseapproximation,1,,broad numerical/operator analysis,no
+10.1186/s40323-016-0060-1,1,,broad numerical/operator analysis,no
+10.22028/d291-25990,0,,unrelated field,no
+10.1145/2491533.2491549,0,,unrelated field,no
+10.1007/978-1-4302-5990-9,0,,unrelated field,no
+10.1016/s0022-0000(03)00025-4,0,,unrelated field,no
+10.1090/s0894-0347-08-00600-0,0,,unrelated field,no
+10.1103/physrevb.94.165116,2,R9;R10,TN integrator/contraction with projection or truncation error,no
+10.1090/s0025-5718-10-02334-3,1,,broad numerical/operator analysis,no
+10.1016/j.laa.2010.11.033,2,R6,products of orthogonal projections; structural,no
+10.1214/ss/1009213727,0,,unrelated field,no
+10.1016/0021-9045(84)90018-2,2,,"broad numerical/operator analysis [audit: raised to 2, shared technique]",no
+10.1016/j.matpur.2004.09.017,1,,broad numerical/operator analysis,no
+10.1007/s00365-017-9377-3,0,,unrelated field,no
+10.1016/0021-9045(83)90039-4,1,,broad numerical/operator analysis,no
+10.1090/s0002-9947-1950-0051437-7,0,,unrelated field,no
+10.3390/rs10020180,0,,unrelated field,no
+10.5194/bg-10-1849-2013,0,,unrelated field,no
+10.3133/b1532,0,,unrelated field,no
+10.1016/j.ocemod.2017.12.003,0,,unrelated field,no
+10.2307/1990404,0,,unrelated field,no
+10.1002/jcc.23899,0,,unrelated field,no
+10.5281/zenodo.35392,0,,unrelated field,no
+10.1088/1367-2630/7/1/034,0,,unrelated field,no
+10.1016/j.jmaa.2021.125239,2,R6,angles between subspaces/projections,no
+10.1088/1741-2560/13/3/036007,0,,unrelated field,no
+10.7554/elife.49424,0,,unrelated field,no
+10.3389/neuro.01.1.1.016.2007,0,,unrelated field,no
+10.1016/j.aca.2018.03.044,0,,unrelated field,no
+10.1088/0266-5611/14/4/001,0,,unrelated field,no
+10.1016/j.jmva.2018.03.008,0,,unrelated field,no
+10.1021/ct400219n,0,,unrelated field,no
+10.48550/arxiv.1905.06549,0,,unrelated field,no
+10.1007/s11263-011-0468-5,0,,unrelated field,no
+10.2172/5005529,0,,unrelated field,no
+10.1016/j.ress.2015.05.025,0,,unrelated field,no
+10.4310/jdg/1460463562,0,,unrelated field,no
+10.2140/apde.2010.3.359,0,,unrelated field,no
+10.1090/s0894-0347-2014-00801-8,0,,unrelated field,no
+10.4310/acta.2023.v231.n1.a3,0,,unrelated field,no
+10.1016/0024-3795(88)90153-x,1,,broad numerical/operator analysis,no
+10.1007/s00220-011-1309-7,1,,quantum information context; no projection-error bound,no
+10.21468/scipostphys.12.5.157,0,,unrelated field,no
+10.1007/s00220-014-1990-4,1,,quantum information context; no projection-error bound,no
+10.1063/1.4903989,0,,unrelated field,no
+10.1002/bip.22372,0,,unrelated field,no
+10.1103/physrevlett.122.201601,0,,unrelated field,no
+10.1371/journal.pone.0105302,0,,unrelated field,no
+10.1371/journal.pbio.0030196,0,,unrelated field,no
+10.1103/revmodphys.84.1655,0,,unrelated field,no
+10.4007/annals.2009.169.903,0,,unrelated field,no
+10.1016/j.acha.2021.02.004,0,,unrelated field,no
+10.1007/jhep08(2014)145,0,,unrelated field,no
+10.4310/jdg/1231856263,0,,unrelated field,no
+10.22331/q-2019-08-05-168,2,R6,tight quantum speed limits via state angles,no
+10.1175/1520-0485(2002)032<1460:dotdtb>2.0.co;2,0,,unrelated field,no
+10.1116/1.5119961,1,,quantum information context; no projection-error bound,no
+10.1017/jfm.2023.687,0,,unrelated field,no
+10.1029/2017jb015223,0,,unrelated field,no
+largemarginmethodsforstructuredandinterdependentoutputvariables,0,,unrelated field,no
+10.1007/978-3-030-34489-4,1,R9,general tensor decomposition/network,no
+10.22331/q-2021-03-15-410,1,R9,general tensor decomposition/network,no
+10.1007/jhep07(2014)079,0,,unrelated field,no
+10.1214/aos/1016218223,0,,unrelated field,no
+10.1145/169627.169640,0,,unrelated field,no
+10.5194/bg-6-2001-2009,0,,unrelated field,no
+10.3389/fphy.2017.00063,0,,unrelated field,no
+10.1007/s00145-011-9105-2,0,,unrelated field,no
+10.1145/197938.197956,0,,unrelated field,no
+10.1093/gji/ggv326,0,,unrelated field,no
+10.1214/09-ss047,0,,unrelated field,no
+10.1016/j.nima.2010.04.042,0,,unrelated field,no
+10.1002/(issn)1097-0207,0,,unrelated field,no
+10.1214/19-ba1195,0,,unrelated field,no
+10.1007/s40484-019-0186-5,1,R9,general tensor decomposition/network,no
+microphysicalretrievalofnonsphericalaerosolparticlesusingregularizedinversionofmultiwavelengthlidardata,0,,unrelated field,no
+10.1103/revmodphys.89.015002,0,,unrelated field,no
+10.1090/s0002-9939-04-07245-4,1,,extremal-function symmetry; different inequality,no
+10.1103/physrevx.8.021014,0,,unrelated field,no
+10.1007/bf02404474,0,,unrelated field,no
+10.1215/s0012-7094-96-08310-6,0,,unrelated field,no
+10.1039/c9sm01221d,0,,unrelated field,no
+10.1111/ele.14215,0,,unrelated field,no
+10.3847/0004-637x/833/1/3,0,,unrelated field,no
+10.4230/lipics.itp.2022.9,1,R8,Lean formalization of unrelated content,no
+10.1145/781131.781153,0,,unrelated field,no
+10.21203/rs.3.rs-10784814/v1,1,R8,Lean formalization of unrelated content,no
+10.5281/zenodo.19154258,0,,unrelated field,no
+10.1017/s0140525x12000477,0,,unrelated field,no
+10.1523/jneurosci.1278-13.2013,0,,unrelated field,no
+10.1109/jstsp.2013.2247023,1,,projection algorithm application,no
+10.1007/s11075-015-0078-3,1,,projection algorithm application,no
+10.1016/s0140-6736(20)30677-2,0,,unrelated field,no
+10.1016/j.jat.2016.02.001,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1016/j.jat.2008.04.001,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1007/s11075-017-0310-4,3,R1a;R12,projection methods under perturbations; error accumulation,yes
+10.1155/s108533750321201x,1,,projection algorithm application,no
+10.48550/arxiv.0710.2387,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1007/s10013-018-0279-x,1,,broad numerical/operator analysis,no
+10.48550/arxiv.2003.10324,1,,projection algorithm application,no
+10.48550/arxiv.1402.5460,2,R1a,linear convergence of averaged operator compositions,no
+10.48550/arxiv.1407.5210,1,,broad numerical/operator analysis,no
+10.48550/arxiv.1205.0318,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.48550/arxiv.1407.0671,3,R1b;R6,optimal convergence rates of matrix iterations,yes
+10.1029/2006je002825,0,,unrelated field,no
+10.1103/revmodphys.95.045006,0,,unrelated field,no
+10.1103/physrevx.9.031009,1,,quantum Zeno physics/experiment,no
+10.1088/1367-2630/18/5/053031,1,,quantum Zeno physics/experiment,no
+10.1088/1367-2630/17/6/063035,1,,quantum Zeno physics/experiment,no
+10.1103/physrevb.102.035119,0,,unrelated field,no
+10.22331/q-2023-09-07-1100,1,,quantum Zeno physics/experiment,no
+10.1029/2021ms002621,0,,unrelated field,no
+10.48550/arxiv.2211.05988,1,,quantum Zeno physics/experiment,no
+10.1103/physreva.105.052426,0,,unrelated field,no
+10.1007/s10994-012-5316-5,0,,unrelated field,no
+10.1007/s00037-006-0212-7,1,,quantum adversary/hybrid-type lower bounds,no
+10.1007/11523468,0,,unrelated field,no
+10.22331/q-2025-02-18-1636,0,,unrelated field,no
+10.1002/ldr.3332,0,,unrelated field,no
+10.1103/physrevresearch.3.023153,0,,unrelated field,no
+10.48550/arxiv.2110.08973,0,,unrelated field,no
+10.1088/1367-2630/17/8/083040,1,,quantum information context; no projection-error bound,no
+10.1038/s41586-022-04725-x,0,,unrelated field,no
+10.1126/science.abg1919,0,,unrelated field,no
+10.1103/revmodphys.90.035006,0,,unrelated field,no
+10.1086/309175,0,,unrelated field,no
+10.1103/physrevb.91.165112,1,R9,tensor network method/application; no error theorem,no
+10.2969/jmsj/01330246,0,,unrelated field,no
+10.1090/s0273-0979-10-01278-4,1,,broad numerical/operator analysis,no
+10.1103/physrevb.88.045132,0,,unrelated field,no
+10.1103/prxlife.3.013003,0,,unrelated field,no
+10.48550/arxiv.2207.08243,0,,unrelated field,no
+10.53846/goediss-10292,0,,unrelated field,no
+10.5821/dissertation-2117-370853,0,,unrelated field,no
+10.48550/arxiv.2504.21786,1,R9,tensor network method/application; no error theorem,no
+10.48550/arxiv.2609.02394,1,R9,tensor network method/application; no error theorem,no
+10.1088/1367-2630/12/5/055026,0,,unrelated field,no
+10.48550/arxiv.2306.03698,0,,unrelated field,no
+10.1090/s0002-9904-1977-14406-6,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1007/bf01027691,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1090/s0002-9947-1937-1501907-0,2,R6,origin of Friedrichs angle,no
+10.1007/978-94-015-8577-4_7,2,R6,angles between subspaces/projections,no
+10.1007/978-94-011-2634-2_5,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1007/978-3-0348-6253-0_7,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1137/s0036144593251710,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1093/imanum/22.3.329,1,,projection algorithm application,no
+10.1080/01630569808816813,1,,broad numerical/operator analysis,no
+projectionalgorithmsandmonotoneoperators,1,,projection algorithm application,no
+10.1080/01630569808816822,1,,broad numerical/operator analysis,no
+10.1007/s00041-012-9248-z,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1016/j.jmaa.2004.12.050,3,R1a;R1b;R6,convergence rate/error bound for products of projections,yes
+10.1111/j.1475-3995.2008.00682.x,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1007/s00365-013-9213-3,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+anewprojectionmethodforfindingtheclosestpointintheintersectionofconvexsets,1,,projection algorithm application,no
+10.1007/s10589-017-9942-5,1,,projection algorithm application,no
+10.1007/s10107-019-01437-5,2,,sharp worst-case complexity of cyclic updates; different object,no
+10.1016/s1570-579x(01)80013-6,1,,projection algorithm application,no
+10.1090/mcom/3644,1,,projection algorithm application,no
+10.5642/tspmcos.2012.01,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1109/lsp.2014.2303153,1,,projection algorithm application,no
+10.1553/etna_vol54s610,0,,unrelated field,no
+10.1137/s0363012998338806,0,,unrelated field,no
+10.1007/s10107-016-1009-3,2,R1b,exact worst-case performance via extremal interpolation,no
+10.1287/moor.2016.0827,1,,broad numerical/operator analysis,no
+10.23919/ecc65951.2025.11187196,2,R6,phase/angle bounds for operator compositions,no
+10.1080/09500349414552351,0,,unrelated field,no
+10.7907/rzr7-dt72.,0,,unrelated field,no
+10.1103/physreva.51.1015,0,,unrelated field,no
+10.1145/502090.502097,0,,unrelated field,no
+10.4230/lipics.icalp.2019.8,0,,unrelated field,no
+10.1145/3297858.3304007,0,,unrelated field,no
+10.1103/physrevd.64.023501,0,,unrelated field,no
+10.1103/physrevb.99.224307,1,,quantum Zeno physics/experiment,no
+10.1088/0266-5611/25/8/085011,0,,unrelated field,no
+10.1088/0266-5611/25/11/115017,1,,broad numerical/operator analysis,no
+10.1073/pnas.2015851118,1,R9,general tensor decomposition/network,no
+10.1007/bf01436376,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1016/0022-247x(78)90214-7,2,R6,angles between subspaces/projections,no
+10.1137/1113049,1,,broad numerical/operator analysis,no
+10.1090/s0002-9947-1967-0214135-5,2,R1a;R6,alternating/cyclic projections; no sharp rate in title,no
+10.1109/tit.2004.839492,1,,projection algorithm application,no
+10.1137/s1064827599361771,1,,broad numerical/operator analysis,no
+10.1109/tsp.2013.2243442,1,,same broad field only,no
+10.1023/a:1022631928592,2,R6,"projection methods convergence, no sharp constant",no
+10.1080/00207169008803865,2,R6,block-iterative projection methods,no
+10.1007/s11075-015-0085-4,3,R1a;R1b;R6,"sharp linear rates for products of projections, two subspaces",yes
+10.1214/aos/1176348251,1,,same broad field only,no
+10.1080/01630569508816635,2,R6,projection methods convergence in Hilbert space,no
+10.1016/0377-0427(92)00123-q,2,R6,projection methods convergence in Hilbert space,no
+10.1137/19m1307329,1,,same broad field only,no
+10.1007/s10589-021-00275-6,3,R1a;R6,convergence rates of projection-type methods vs alternating projections,yes
+10.1103/physrevlett.90.227902,1,,same broad field only,no
+10.1103/physrevlett.91.147902,3,R1a;R9;R10,MPS truncation error accumulation (Vidal),yes
+10.1103/physrevlett.93.227205,1,,same broad field only,no
+10.1103/physreva.70.060302,1,,same broad field only,no
+10.1147/rd.481.0071,1,,same broad field only,no
+isentanglementmonogamous,1,,same broad field only,no
+10.1103/physreva.70.062113,1,,same broad field only,no
+10.1103/physrevlett.90.157903,1,,same broad field only,no
+10.1142/s021974990300036x,1,,same broad field only,no
+10.1103/physrevlett.92.087903,1,,same broad field only,no
+10.1080/14789940801912366,2,R9,MPS/PEPS methods review,no
+10.1088/1751-8113/42/50/504005,1,,same broad field only,no
+10.1088/1742-5468/2007/08/p08024,1,,same broad field only,no
+10.1103/physrevb.84.165139,1,,same broad field only,no
+measurementinducedphasetransitionsinthedynamicsofentanglement,1,,same broad field only,no
+10.1103/physrevlett.97.050401,1,,same broad field only,no
+10.1103/physrevlett.96.220601,1,,same broad field only,no
+10.1088/1742-5468/2013/09/p09005,1,,same broad field only,no
+10.1103/physrevb.101.104301,1,,same broad field only,no
+10.1103/physrevb.84.235128,1,,same broad field only,no
+10.1103/physrevx.7.021021,1,,same broad field only,no
+10.1103/physrevb.98.235156,1,,same broad field only,no
+10.1103/physrevb.83.245134,1,,same broad field only,no
+10.1103/physreva.74.052101,0,,irrelevant,no
+10.1103/physrevlett.109.267203,1,,same broad field only,no
+10.1103/physrevlett.110.100402,1,,same broad field only,no
+10.1103/physrevx.3.031015,1,,same broad field only,no
+10.1103/physrevlett.97.150404,1,,same broad field only,no
+informationtheorycodingtheoremsfordiscretememorylesssystems,0,,irrelevant,no
+10.1103/physreva.59.1070,0,,irrelevant,no
+10.1017/cbo9781139525343,1,,same broad field only,no
+10.1098/rspa.2004.1372,1,,same broad field only,no
+10.1109/tit.2004.839515,1,,same broad field only,no
+10.1007/s00220-014-2122-x,1,,same broad field only,no
+10.1109/tit.2009.2018325,2,,"same broad field only [audit: raised to 2, shared technique]",no
+10.1109/comst.2017.2786748,0,,irrelevant,no
+asurveyonquantumchannelcapacities,0,,irrelevant,no
+10.1103/physrevlett.117.020402,1,,same broad field only,no
+10.1007/s00220-011-1302-1,1,,same broad field only,no
+10.1088/0034-4885/75/4/046001,1,,same broad field only,no
+10.1103/physreva.72.052317,1,,same broad field only,no
+10.1109/tit.2004.839476,1,,same broad field only,no
+10.1103/physrevlett.93.230504,1,,same broad field only,no
+10.1109/tit.2008.924726,1,,same broad field only,no
+aremotepreparationofquantumstates,1,,same broad field only,no
+10.1145/3428218,2,R6,projection-based quantum assertions,no
+10.1109/tit.2012.2218792,1,,same broad field only,no
+continuityofquantummutualinformation,2,R6,continuity bound for quantum information quantity,no
+10.1103/physrevlett.109.120403,1,,same broad field only,no
+10.1038/s41534-023-00684-x,0,,irrelevant,no
+10.1038/nphys2747,1,,same broad field only,no
+10.48550/arxiv.1004.1641,2,R6,decoupling / purified distance techniques,no
+10.1103/physrevlett.119.120506,1,,same broad field only,no
+10.48550/arxiv.2011.04672,1,,same broad field only,no
+10.1007/s00211-013-0544-6,3,R1a;R9,error estimates for tensor truncations,yes
+10.1007/s10589-011-9401-7,2,R6,projection methods effectiveness,no
+10.1080/03081088308817526,3,R1a;R6,limit theorem for products of projections; possible rate content,yes
+10.1145/125826.125848,1,,"Lean/formalization, unrelated result",no
+10.1017/s0960129511000119,1,,"Lean/formalization, unrelated result",no
+10.1145/3573105.3575671,1,,"Lean/formalization, unrelated result",no
+10.1103/physrevlett.101.250602,1,,same broad field only,no
+10.1103/physrevlett.116.247204,1,,same broad field only,no
+10.1103/physrevlett.124.037201,2,R9,isometric tensor network states,no
+10.1103/physrevlett.118.017201,1,,same broad field only,no
+10.1103/physrevlett.123.190501,1,,same broad field only,no
+10.1103/physrevb.98.085155,3,R1a;R9,optimal truncations in tensor networks,yes
+10.48550/arxiv.cond-mat/0407066,1,,same broad field only,no
+10.48550/arxiv.1710.05867,2,R9,tensor contraction simulation,no
+10.3389/fams.2022.806549,2,R9,tensor network contractions and decompositions guide,no
+10.1109/sc41405.2020.00028,1,,same broad field only,no
+10.5555/3433701.3433732,1,,same broad field only,no
+10.1007/s10543-013-0454-0,2,R9,projector-splitting low-rank integrator,no
+10.1103/physrevb.102.094315,1,,same broad field only,no
+10.1007/s10543-024-01032-x,2,R9,robust low-rank integrator error,no
+10.1016/j.jcp.2024.112757,1,,same broad field only,no
+10.1007/s10543-025-01073-w,2,R9,robust low-rank integrators,no
+10.1021/acs.jctc.4c00751,1,,same broad field only,no
+10.1137/110836067,3,R1a;R9,HOSVD truncation strategy with likely error bound,yes
+10.1137/140953289,2,R9,TT alternating solvers,no
+10.1145/3278607,1,,same broad field only,no
+10.1088/1741-2552/aab2f2,1,,same broad field only,no
+10.5075/epfl-thesis-6958,2,R9,Riemannian low-rank tensor optimization,no
+10.48550/arxiv.1801.09414,0,,irrelevant,no
+10.5555/1046920.1088718,0,,irrelevant,no
+10.1103/revmodphys.77.259,2,R9,DMRG review,no
+10.1016/j.chemolab.2011.09.001,2,R9,tensor methods survey,no
+10.1109/tvcg.2019.2904063,1,,same broad field only,no
+10.1137/15m1036919,1,,same broad field only,no
+10.1109/access.2019.2949814,1,,same broad field only,no
+10.1109/access.2019.2908207,1,,same broad field only,no
+10.1103/physrevx.12.041018,1,,same broad field only,no
+10.1016/j.cam.2021.113972,1,,same broad field only,no
+10.48550/arxiv.1406.2816,1,,same broad field only,no
+10.1103/physrevresearch.7.023087,1,,same broad field only,no
+10.48550/arxiv.2207.06135,1,,same broad field only,no
+10.48550/arxiv.1908.02721,1,,same broad field only,no
+10.48436/1h3fh-q1142,1,,same broad field only,no
+10.21468/scipostphys.19.2.038,1,,same broad field only,no
+10.1137/19m1246080,1,,same broad field only,no
+10.1016/j.matcom.2017.10.009,1,,same broad field only,no
+10.1007/s10444-022-09925-7,2,R9,tensor rank bounds,no
+10.1002/nla.2289,2,R9,tensor ring decomposition,no
+10.1007/s10092-021-00439-0,1,,same broad field only,no
+10.1038/s41598-025-16905-6,0,,irrelevant,no
+10.1016/j.laa.2014.06.006,3,R1a;R9,quasioptimality error bound for tensor cross interpolation,yes
+10.1017/s0962492922000125,2,R9,low-rank tensor methods survey,no
+10.1007/s10208-013-9187-3,3,R1a;R9,near-optimal hierarchical tensor approximation with error control,yes
+10.1016/j.jcp.2018.08.057,1,,same broad field only,no
+sparselowrankapproximationofmultivariatefunctionsapplicationsinuncertaintyquantification,1,,same broad field only,no
+10.48550/arxiv.1711.10105,1,,same broad field only,no
+10.1103/prxquantum.4.010317,1,,same broad field only,no
+10.1103/physreva.104.052204,1,,same broad field only,no
+10.1016/j.apm.2017.07.012,0,,irrelevant,no
+10.1615/int.j.uncertaintyquantification.2014010147,1,,same broad field only,no
+10.1137/13091899x,1,,same broad field only,no
+10.1371/journal.pbio.1000595,0,,irrelevant,no
+10.1016/j.laa.2011.02.026,3,R1b;R7,perturbation bounds for antisymmetric tensor powers (multilinear),yes
+10.1109/tcad.2016.2618879,1,,same broad field only,no
+10.1111/j.1365-2966.2008.14244.x,0,,irrelevant,no
+10.1137/16m1074941,0,,irrelevant,no
+10.1109/ojcoms.2024.3390000,0,,irrelevant,no
+10.1186/1471-2148-3-3,0,,irrelevant,no
+10.1155/2008/823695,0,,irrelevant,no
+10.1088/1748-9326/abd1a0,0,,irrelevant,no
+10.5194/acp-24-10617-2024,0,,irrelevant,no
+10.1002/cem.1079,0,,irrelevant,no
+10.1002/mrm.21391,0,,irrelevant,no
+10.18653/v1/p19-2057,0,,irrelevant,no
+10.1109/78.890324,1,,same broad field only,no
+10.18653/v1/2022.acl-short.45,0,,irrelevant,no
+10.1090/s0002-9947-1991-0989572-5,2,R6,products of contractions convergence,no
+10.4230/lipics.mfcs.2016.19,1,,same broad field only,no
+10.1214/19-ejp342,1,,same broad field only,no
+10.1137/17m1112303,1,,same broad field only,no
+10.1002/hbm.20076,0,,irrelevant,no
+10.1002/mrm.21852,0,,irrelevant,no
+10.1175/jpo-d-11-048.1,0,,irrelevant,no
+10.1007/s00440-014-0579-3,1,,same broad field only,no
+10.48550/arxiv.2203.15993,2,R6,fidelity estimation (algorithmic),no
+10.1103/physreva.104.062602,0,,irrelevant,no
+10.1103/physrevlett.128.220502,1,,same broad field only,no
+10.1063/1.4936405,2,R6,"smooth entropy, purified distance",no
+10.1109/tit.2020.2981573,2,R6,"smoothed measures, purified distance",no
+10.4153/cjm-2011-007-5,1,,same broad field only,no
+10.1184/r1/6721193,0,,irrelevant,no
+10.48550/arxiv.hep-th/9607134,0,,irrelevant,no
+10.1016/j.exmath.2018.01.002,2,R6,Bures/fidelity distance,no
+10.1295/polymj.23.7,0,,irrelevant,no
+10.1029/1999tc001141,0,,irrelevant,no
+quantifyingtheinformativenessofsimilaritymeasurements,0,,irrelevant,no
+10.1214/aos/1031594728,0,,irrelevant,no
+10.3390/rs11040382,0,,irrelevant,no
+10.1007/bf02392585,1,,same broad field only,no
+10.1007/978-981-19-9722-8,0,,irrelevant,no
+10.48550/arxiv.1607.06520,0,,irrelevant,no
+10.3390/rs12030361,0,,irrelevant,no
+10.5281/zenodo.20920816,1,,"Lean/formalization, unrelated result",no
+10.5281/zenodo.20916427,1,,"Lean/formalization, unrelated result",no
+10.5281/zenodo.20925877,1,,"Lean/formalization, unrelated result",no
+10.5281/zenodo.20916426,1,,"Lean/formalization, unrelated result",no
+leanquantumtowardaiassistedformalizationofquantuminformation,1,,"Lean/formalization, unrelated result",no
+10.48550/arxiv.2607.05492,1,,"Lean/formalization, unrelated result",no
+arxiv:2606.19761,1,,"Lean/formalization, unrelated result",no
+10.1103/physrevlett.87.040402,1,,same broad field only,no
+10.1103/physrevlett.108.080501,2,R1a,Zeno effect in computation,no
+10.1088/1742-6596/196/1/012017,2,R1a,Zeno dynamics and subspaces,no
+10.1088/1475-7516/2007/03/012,0,,irrelevant,no
+10.1103/physrevlett.118.260603,1,,same broad field only,no
+10.1103/physrevresearch.2.013095,1,,same broad field only,no
+10.1140/epjd/e2020-100571-8,0,,irrelevant,no
+10.1038/s42005-023-01331-9,0,,irrelevant,no
+10.22331/q-2020-07-06-289,3,R1a;R7,Zeno limit for repeated operations; possible convergence bounds,yes
+10.1103/physrevx.8.021005,1,,same broad field only,no
+10.1088/0305-4470/30/4/031,1,,same broad field only,no
+10.1103/75x7-5ysv,0,,irrelevant,no
+ahybriddynamicalsystemstheoryforleggedlocomotion,0,,irrelevant,no
+10.22331/q-2026-07-20-2167,2,R7,Zeno dragging schedule optimization,no
+10.1103/glcd-gm3v,3,R1a;R7,higher-order Zeno sequences; error-rate scaling,yes
+10.3390/aerospace12090803,0,,irrelevant,no
+zenoassistedquantumheatengines,1,,same broad field only,no
+10.1038/s41467-026-74332-1,1,,same broad field only,no
+quantumtransportandcontrolofatomicmotionwithlight,0,,irrelevant,no
+10.1109/access.2021.3106233,0,,irrelevant,no
+10.1038/sj.neo.7900118,0,,irrelevant,no
+10.22331/q-2019-03-11-129,0,,irrelevant,no
+10.48550/arxiv.2305.13362,2,R6;R12,measurement collapse / gentle measurement,no
+explicitcapacityachievingreceiversforopticalcommunicationandquantumreading,0,,irrelevant,no
+10.1038/s41467-017-02307-4,1,,same broad field only,no
+10.1038/s41586-023-06481-y,0,,irrelevant,no
+10.1088/0004-6256/140/5/1168,0,,irrelevant,no
+10.1086/587542,0,,irrelevant,no
+10.1242/bio.20133830,0,,irrelevant,no
+10.1016/j.jmaa.2010.01.036,3,R2;R7,numerical range of quasi-sectorial contractions; possible product bounds,yes
+10.1016/j.aim.2012.02.016,1,,same broad field only,no
+10.1016/s0024-3795(02)00697-3,2,R2,Blaschke products of contractions,no
+10.1103/revmodphys.74.601,0,,irrelevant,no
+10.1017/9781009398671.002,0,,irrelevant,no
+10.1103/physrevresearch.5.013190,1,,same broad field only,no
+10.1103/x5xg-whh1,0,,irrelevant,no
+10.48550/arxiv.2402.06455,0,,irrelevant,no
+10.1109/tpami.2021.3072422,1,,same broad field only,no
+10.1038/s41534-024-00805-0,1,,same broad field only,no
+10.1103/physrevb.101.235123,1,,same broad field only,no
+10.1109/tii.2019.2916986,1,,same broad field only,no
+10.1137/15m1044680,1,,same broad field only,no
+10.1103/prxquantum.4.020304,3,R1a;R9;R10,truncation fidelity accumulation in circuit DMRG,yes
+10.3390/math10244730,0,,irrelevant,no
+10.1609/aaai.v34i04.5718,0,,irrelevant,no
+10.1137/23m1621320,2,R6,sharp rates operator splitting via relative graphs,no
+10.1109/sfcs.1996.548464,2,R10,error accumulation in quantum circuits,no
+10.1137/090745854,0,,irrelevant,no
+10.1103/physrevd.26.1862,1,,same broad field only,no
+10.1103/physreva.41.2295,1,,same broad field only,no
+10.1002/lpor.200810055,0,,irrelevant,no
+10.1016/j.physrep.2006.09.003,2,R6,fidelity decay,no
+10.1103/physrevlett.89.080401,2,R1a,Zeno subspaces,no
+10.1103/physrevlett.85.1762,1,,same broad field only,no
+10.1103/physrevb.56.15215,0,,irrelevant,no
+10.1103/physrevd.16.520,2,R1a,Zeno limit of repeated projections,no
+10.1103/physreva.69.032314,2,R1a,Zeno effect and decoupling,no
+10.1103/physrevlett.86.2699,1,,same broad field only,no
+10.1103/physrevlett.110.035302,0,,irrelevant,no
+10.1103/physrevb.60.5737,0,,irrelevant,no
+10.1016/s0370-1573(99)00047-2,1,,same broad field only,no
+10.1137/06066518x,2,R9,best low-rank tensor approximation ill-posedness,no
+10.1007/s00365-009-9076-9,1,,same broad field only,no
+10.1109/tsp.2009.2027740,1,,same broad field only,no
+compactmatrixformoftheddimensionaltensordecomposition,2,R9,TT decomposition format,no
+10.1137/090752286,3,R1a;R9,TT-SVD truncation error bound,yes
+10.1109/jproc.2020.2976475,0,,irrelevant,no
+10.1109/tsp.2016.2639466,1,,same broad field only,no
+10.1137/1.9781611974829,1,,same broad field only,no
+10.1145/2915921,0,,irrelevant,no
+10.1007/s00365-011-9131-1,1,,same broad field only,no
+10.1137/100799010,1,,same broad field only,no
+10.1137/110833142,1,,same broad field only,no
+10.1007/s00211-011-0419-7,2,R9,TT manifold geometry,no
+10.1137/100785715,1,,same broad field only,no
+10.1109/tbdata.2017.2757942,0,,irrelevant,no
+10.1007/s10444-018-9622-8,3,R1a;R9,randomized Tucker/TT approximation with error bounds,yes
+10.1137/09076578x,2,R9,dynamical tensor approximation,no
+10.1137/100820479,1,,same broad field only,no
+10.1016/j.cpc.2013.12.017,1,,same broad field only,no
+10.1137/110857520,2,R9,alternating schemes convergence in TT,no
+10.1109/nds.2011.6076873,1,,same broad field only,no
+10.1190/geo2014-0467.1,1,,same broad field only,no
+10.1137/19m1257718,1,,same broad field only,no
+10.1109/tpami.2023.3341688,1,,same broad field only,no
+10.1143/ptp.105.409,1,,same broad field only,no
+1twodimensionaltensorproductvariationalformulation,1,,same broad field only,no
+10.1103/physrevlett.107.210404,0,,irrelevant,no
+10.1103/physrevx.8.011006,1,,same broad field only,no
+10.1109/9780470544907.ch24,1,,same broad field only,no
+10.1007/978-3-540-30576-7_22,1,,same broad field only,no
+10.1007/11593447_11,1,,same broad field only,no
+10.1088/1751-8113/44/9/095305,1,,same broad field only,no
+10.3929/ethz-a-7356080,2,R6,"smooth entropies, purified distance",no
+10.1137/18m1174726,1,,same broad field only,no
+10.1007/s00220-020-03839-5,1,,same broad field only,no
+10.22331/q-2020-03-26-248,2,R6,fidelity estimation (algorithmic),no
+10.1109/tit.2011.2162226,1,,same broad field only,no
+10.1038/ncomms11419,1,,same broad field only,no
+10.1109/tit.2011.2177589,1,,same broad field only,no
+10.1109/tit.2019.2929564,1,,same broad field only,no
+10.1002/sapm192761164,1,,same broad field only,no
+10.1007/978-3-642-28027-6,3,R1a;R9,HT/tensor-format truncation error theory (monograph),yes
+10.1016/0196-6774(90)90014-6,1,,same broad field only,no
+10.1007/s10208-012-9136-6,2,R9,minimal subspaces in tensor representations,no
+10.1007/s00365-010-9125-4,2,R9,tensor product approximation regularity,no
+10.4171/zaa/1663,1,,same broad field only,no
+10.1007/s10817-017-9440-6,1,,"Lean/formalization, unrelated result",no
+10.1007/s00006-021-01164-1,1,,"Lean/formalization, unrelated result",no
+breakingthe49qubitbarrierinthesimulationofquantumcircuits,1,,same broad field only,no
+10.1016/j.laa.2011.12.019,2,R9,quantum tensor network computations,no
+10.48550/arxiv.quant-ph/0603163,1,,same broad field only,no
+10.3929/ethz-a-007587832,1,,same broad field only,no
+10.48550/arxiv.1908.08833,1,,same broad field only,no
+10.1007/978-3-030-35554-8,3,R1a;R9,HT/tensor-format truncation error theory (monograph),yes
+10.1016/j.jcp.2025.114191,1,,same broad field only,no
+10.1137/22m1519493,2,R9,adaptive low-rank error control,no
+10.1214/aos/1176347963,0,,irrelevant,no
+10.1090/s0002-9947-05-03742-6,0,,irrelevant,no
+10.1016/0029-5582(65)90598-5,0,,irrelevant,no
+10.1111/j.1467-9868.2011.00777.x,0,,irrelevant,no
+10.1016/j.jde.2004.12.003,0,,irrelevant,no
+10.1561/2200000071,0,,irrelevant,no
+10.48550/arxiv.1912.08957,0,,irrelevant,no
+10.1103/physreva.104.032422,0,,irrelevant,no
+10.1111/rssb.12016,0,,irrelevant,no
+10.1088/0953-8984/14/11/301,0,,irrelevant,no
+10.48550/arxiv.0904.3523,0,,irrelevant,no
+10.1007/s11831-008-9019-9,1,,same broad field only,no
+10.1107/s0021889807021206,0,,irrelevant,no
+10.1186/1743-0003-5-25,0,,irrelevant,no
+10.7551/mitpress/9780262033589.001.0001,0,,irrelevant,no
+10.14279/depositonce-2978,0,,irrelevant,no
+waveletsandsubbandcoding,0,,irrelevant,no
+10.1088/1751-8121/ac333c,1,,same broad field only,no
+10.1109/tnnls.2021.3084827,0,,irrelevant,no
+10.1088/0034-4885/76/7/076001,1,,same broad field only,no
+10.1103/physrev.108.1175,0,,irrelevant,no
+10.1080/00018732.2014.933502,1,,same broad field only,no
+10.1016/j.cpc.2021.108171,0,,irrelevant,no
+10.1016/j.peva.2017.08.002,1,,same broad field only,no
+10.1007/978-3-319-43425-4_18,1,,same broad field only,no
+10.1016/j.jcp.2014.01.029,1,,same broad field only,no
+10.1093/gji/ggw084,0,,irrelevant,no
+10.1038/s41467-020-20729-5,0,,irrelevant,no
+10.1103/physreve.106.035208,0,,irrelevant,no
+10.3390/e27090950,0,,irrelevant,no
+10.12942/lrr-2014-2,0,,irrelevant,no
+10.1016/j.pbiomolbio.2004.04.002,0,,irrelevant,no
+10.1002/wcms.1183,0,,irrelevant,no
+10.1016/j.plrev.2020.05.004,0,,irrelevant,no
+10.1007/s11831-016-9206-z,0,,irrelevant,no
+10.1145/3230633,0,,irrelevant,no
+10.1109/tpami.2018.2837742,0,,irrelevant,no
+10.3390/soilsystems3010011,0,,irrelevant,no
+10.48550/arxiv.1709.07604,0,,irrelevant,no
+10.48550/arxiv.1702.05374,0,,irrelevant,no
+10.1007/s43684-023-00060-8,0,,irrelevant,no
+10.12942/lrr-2006-4,0,,irrelevant,no
+10.1049/iet-cvi.2014.0084,0,,irrelevant,no
+10.1007/s11831-018-9301-4,0,,irrelevant,no
+10.2172/968212,0,,irrelevant,no
+10.1214/aos/1176325382,0,,irrelevant,no
+10.1016/j.jde.2005.10.005,0,,irrelevant,no
+10.1137/090769570,0,,irrelevant,no
+10.1214/aos/1176324636,0,,irrelevant,no
+10.1016/j.laa.2007.07.005,0,,irrelevant,no
+10.4064/sm218-2-1,0,,irrelevant,no
+10.48550/arxiv.1609.06349,1,,same broad field only,no
+10.4310/jdg/1214457234,0,,irrelevant,no
+10.4171/mems/1,0,,irrelevant,no
+10.1214/19-aihp987,0,,irrelevant,no
+10.1007/978-3-642-04458-8_2,1,,same broad field only,no
+10.2140/apde.2023.16.1133,0,,irrelevant,no
+10.1109/cvpr.2017.392,0,,irrelevant,no
+10.1371/journal.pone.0004525,0,,irrelevant,no
+10.1007/jhep01(2019)026,0,,irrelevant,no
+10.1016/j.neuroimage.2018.02.055,0,,irrelevant,no
+10.1371/journal.pcbi.1000029,0,,irrelevant,no
+10.1016/j.jrmge.2020.05.011,0,,irrelevant,no
+10.1007/s40072-015-0049-7,0,,irrelevant,no
+10.1017/s0962492924000023,0,,irrelevant,no
+10.1016/j.acha.2006.04.004,0,,irrelevant,no
+10.1137/1002004,1,,same broad field only,no
+10.1016/j.laa.2009.07.024,1,,same broad field only,no
+10.48550/arxiv.1707.08114,0,,irrelevant,no
+10.1016/j.laa.2003.04.001,0,,irrelevant,no
+10.1098/rsta.2019.0066,0,,irrelevant,no
+10.1016/s0166-218x(01)00341-9,0,,irrelevant,no
+10.1016/s0304-3932(03)00003-5,0,,irrelevant,no
+10.3389/fceng.2021.665415,0,,irrelevant,no
+10.1109/tcyb.2017.2771229,0,,irrelevant,no
+10.3390/app10072401,0,,irrelevant,no
+10.48550/arxiv.2004.10977,0,,irrelevant,no
+10.1093/rof/rfv018,0,,irrelevant,no
+10.1553/etna_vol53s113,0,,irrelevant,no
+10.1080/19942060.2021.1984992,0,,irrelevant,no
+10.1145/273865.273901,0,,irrelevant,no
+10.1016/j.neunet.2020.08.017,0,,irrelevant,no
+10.1038/s41593-018-0287-x,0,,irrelevant,no
+10.1007/978-3-662-49896-5_20,0,,irrelevant,no
+10.1145/3588433,0,,irrelevant,no
+10.5194/acp-19-6749-2019,0,,irrelevant,no
+10.4230/lipics.stacs.2010.2455,0,,irrelevant,no
+10.48550/arxiv.1107.0805,0,,irrelevant,no
+10.4230/lipics.icalp.2022.28,0,,irrelevant,no
+10.1016/j.neuroimage.2011.07.072,0,,irrelevant,no
+10.48550/arxiv.1907.09415,1,,same broad field only,no
+10.1016/j.camwa.2020.04.033,0,,irrelevant,no
+10.1007/s10208-009-9045-5,0,,irrelevant,no
+10.1063/1.869686,0,,irrelevant,no
+10.1007/s00440-010-0281-z,2,R1b,norm of matrix products,no
+10.1109/78.533723,0,,irrelevant,no
+10.1214/09-aos729,0,,irrelevant,no
+10.1143/ptps.62.11,0,,irrelevant,no
+10.1006/jcph.1996.0130,0,,irrelevant,no
+10.1002/minf.202000171,0,,irrelevant,no
+10.1103/revmodphys.75.543,0,,irrelevant,no
+10.1016/j.compind.2020.103308,0,,irrelevant,no
+10.1103/revmodphys.62.251,0,,irrelevant,no
+10.5194/hgss-5-11-2014,0,,irrelevant,no
+10.1103/physreve.69.066138,0,,irrelevant,no
+10.1184/r1/6586742.v1,1,,same broad field only,no
+10.1109/78.700968,0,,irrelevant,no
+10.1002/mrm.26701,0,,irrelevant,no
+10.1214/17-aos1541,2,R6,"sharp subspace-angle perturbation, not accumulation",no
+10.1109/tip.2015.2446191,0,,irrelevant,no
+10.1186/s40537-016-0043-6,0,,irrelevant,no
+10.1038/s41598-017-11873-y,0,,irrelevant,no
+10.1214/09-aos709,1,,same broad field only,no
+10.1214/18-aos1713,1,,same broad field only,no
+10.1109/tcomm.2020.2973976,0,,irrelevant,no
+10.1023/a:1007612920971,0,,irrelevant,no
+10.1613/jair.2934,0,,irrelevant,no
+10.1016/j.ijar.2011.07.006,0,,irrelevant,no
+10.1016/j.engstruct.2018.02.024,0,,irrelevant,no
+10.1016/0022-1236(67)90030-4,1,,same broad field only,no
+10.1016/j.jmaa.2004.06.031,2,R1b,sharp constants for products of linear forms,no
+10.1090/memo/0781,0,,irrelevant,no
+10.1103/physrevlett.74.2694,0,,irrelevant,no
+10.4064/-38-1-339-360,2,R1b,power-bounded matrix constants,no
+10.1090/s0894-0347-99-00309-4,1,,same broad field only,no
+10.1007/978-3-030-32353-0_7,1,,same broad field only,no
+10.4036/iis.2010.139,0,,irrelevant,no
+10.1186/s13660-023-03047-4,1,,same broad field only,no
+10.4171/jems/100,0,,irrelevant,no
+generalizeddescentmethodsforasymmetricsystemsofequationsandvariationalinequalities,0,,irrelevant,no
+10.57262/die/1356060724,0,,irrelevant,no
+10.1090/s0002-9947-1989-0983869-1,0,,irrelevant,no
+10.4310/jdg/1214456482,0,,unrelated field,no
+anopenstringanalogueofviterbofunctoriality,0,,unrelated field,no
+10.1017/fmp.2015.5,0,,unrelated field,no
+10.1090/s0894-0347-03-00445-4,0,,unrelated field,no
+10.1016/s0022-0396(02)00037-2,0,,unrelated field,no
+10.4310/jdg/1090349447,0,,unrelated field,no
+10.1063/5.0007045,0,,unrelated field,no
+10.1088/1126-6708/2008/05/012,0,,unrelated field,no
+10.1038/ncomms6757,0,,unrelated field,no
+10.1103/revmodphys.86.419,1,,same broad field only,no
+10.4007/annals.2008.167.867,0,,unrelated field,no
+10.1201/9780203755082,0,,unrelated field,no
+10.1103/revmodphys.94.015004,1,,same broad field only,no
+10.1090/s0002-9947-1969-0251664-4,0,,unrelated field,no
+10.1007/bf02392711,0,,unrelated field,no
+10.1016/0024-3795(94)90341-7,2,,majorization inequalities in matrix theory,no
+10.1017/s1446181112000077,1,,same broad field only,no
+10.1016/j.laa.2011.06.047,2,,idempotents/projections in Hilbert space; structural,no
+10.1016/0024-3795(95)00199-2,1,,same broad field only,no
+10.1090/memo/1270,1,,same broad field only,no
+10.1016/j.jmaa.2016.04.020,1,,same broad field only,no
+10.3150/07-bej5151,1,,same broad field only,no
+10.1007/s00220-014-2213-8,2,,area law via decay of correlations; MPS approximation,no
+10.3929/ethz-b-000038997,1,,same broad field only,no
+10.1109/tit.2023.3272904,1,,same broad field only,no
+10.1103/physrevresearch.3.023096,1,,same broad field only,no
+10.1088/1367-2630/15/5/053022,1,,same broad field only,no
+10.1109/isit.2010.5513652,1,,same broad field only,no
+10.1109/tit.2013.2295314,1,,same broad field only,no
+10.1007/s00220-021-04136-5,1,,same broad field only,no
+10.1103/prxquantum.2.020325,1,,same broad field only,no
+10.1103/physreva.86.042315,1,,same broad field only,no
+10.1371/journal.pgen.1003527,0,,unrelated field,no
+10.1073/pnas.96.7.3670,0,,unrelated field,no
+10.1101/gr.3577405,0,,unrelated field,no
+10.3386/w22367,0,,unrelated field,no
+10.1111/j.1574-6941.2006.00104.x,0,,unrelated field,no
+10.14288/1.0343418,0,,unrelated field,no
+10.1088/1361-6463/aac816,0,,unrelated field,no
+10.1074/jbc.m200827200,0,,unrelated field,no
+10.1038/s41565-020-0719-0,0,,unrelated field,no
+10.1038/ncomms6235,0,,unrelated field,no
+10.1126/science.add2187,0,,unrelated field,no
+10.1093/molbev/msu249,0,,unrelated field,no
+10.46328/ijonses.106,0,,unrelated field,no
+10.1093/nar/gkaa133,0,,unrelated field,no
+10.1073/pnas.1804015115,0,,unrelated field,no
+10.1038/nature10874,0,,unrelated field,no
+10.1007/s00248-016-0748-2,0,,unrelated field,no
+10.1038/nature09594,0,,unrelated field,no
+10.1038/s41467-018-04559-0,0,,unrelated field,no
+10.1007/s10240-006-0039-4,0,,unrelated field,no
+10.2140/apde.2011.4.499,1,,same broad field only,no
+10.4064/dm427-0-1,1,,same broad field only,no
+10.1090/s0894-0347-97-00238-5,0,,unrelated field,no
+10.1088/1126-6708/2007/12/006,0,,unrelated field,no
+10.1007/jhep10(2023)174,0,,unrelated field,no
+10.1017/s0962492919000059,1,,same broad field only,no
+10.4310/jdg/1214440436,1,,same broad field only,no
+10.48550/arxiv.1302.5555,0,,unrelated field,no
+10.1155/2010/723105,0,,unrelated field,no
+10.48550/arxiv.1409.2155,0,,unrelated field,no
+10.12942/lrr-1998-13,0,,unrelated field,no
+10.1088/0953-8984/17/15/r01,0,,unrelated field,no
+10.1088/0264-9381/26/6/063001,0,,unrelated field,no
+10.1007/s00706-009-0153-3,0,,unrelated field,no
+10.1088/0022-3727/44/47/475304,0,,unrelated field,no
+10.1007/bf02392694,0,,unrelated field,no
+10.1029/2000jb900094,0,,unrelated field,no
+10.1126/sciadv.adf0873,0,,unrelated field,no
+10.1090/s0002-9904-1975-13728-1,1,,same broad field only,no
+10.3109/02656736.2015.1009180,0,,unrelated field,no
+10.1145/3297858.3304018,0,,unrelated field,no
+10.1007/s00397-017-0999-y,0,,unrelated field,no
+neuralandmechanicalresponsestoelectricstimulationofthecatsinnerear,0,,unrelated field,no
+10.7907/z9bg2kx1,0,,unrelated field,no
+10.1090/s0894-0347-2012-00758-9,0,,unrelated field,no
+10.1111/jace.12110,0,,unrelated field,no
+10.1038/s41586-021-03819-2,0,,unrelated field,no
+10.1016/j.physrep.2020.05.004,1,,same broad field only,no
+10.1111/mice.12263,0,,unrelated field,no
+10.1016/j.media.2017.07.005,0,,unrelated field,no
+10.1109/jproc.2021.3060483,0,,unrelated field,no
+10.1186/s40537-021-00444-8,0,,unrelated field,no
+10.1145/1015330.1015341,0,,unrelated field,no
+10.1007/s12065-020-00540-3,0,,unrelated field,no
+10.1186/s13174-018-0087-2,0,,unrelated field,no
+10.1145/3313276,1,,same broad field only,no
+10.1109/focs52979.2022,1,,same broad field only,no
+10.1137/1.9781611975031,1,,same broad field only,no
+10.1137/1.9781611978971,1,,same broad field only,no
+10.1371/journal.pone.0061217,0,,unrelated field,no
+10.18637/jss.v080.i01,0,,unrelated field,no
+10.1107/s0907444909047337,0,,unrelated field,no
+10.1613/jair.301,0,,unrelated field,no
+10.1103/physrevx.11.011020,2,,error accumulation in operator products (Trotter); not projections,no
+10.1175/1520-0469(1998)055<0429:tshdom>2.0.co;2,0,,unrelated field,no
+10.1186/s13059-016-0997-x,0,,unrelated field,no
+10.1111/2041-210x.12865,0,,unrelated field,no
+10.1371/journal.pcbi.1006650,0,,unrelated field,no
+10.1137/1.9781611977554,1,,same broad field only,no
+10.1090/s0025-5718-2010-02378-6,1,,same broad field only,no
+10.18653/v1/n18-1135,0,,unrelated field,no
+10.1007/s00199-009-0447-z,0,,unrelated field,no
+10.1016/j.ejco.2021.100012,1,,same broad field only,no
+10.2140/gt.2008.12.1091,0,,unrelated field,no
+10.1016/j.jalgebra.2004.03.001,0,,unrelated field,no
+10.1007/s10107-019-01406-y,1,,same broad field only,no
+10.48550/arxiv.1601.04919,0,,unrelated field,no
+10.1002/cem.1231,1,,same broad field only,no
+10.2307/1996344,0,,unrelated field,no
+10.1007/s10994-018-5746-9,0,,unrelated field,no
+10.48550/arxiv.1804.05990,0,,unrelated field,no
+10.1007/s10472-021-09780-0,0,,unrelated field,no
+10.1093/imrn/rnaf121,0,,unrelated field,no
+10.1007/s10994-018-5764-7,0,,unrelated field,no
+10.48550/arxiv.math/0408171,0,,unrelated field,no
+10.1016/j.laa.2004.07.001,0,,unrelated field,no
+10.48550/arxiv.1512.01247,0,,unrelated field,no
+10.1007/978-981-19-5607-2,0,,unrelated field,no
+10.3390/math14081251,0,,unrelated field,no
+10.4310/jsg.250403021401,0,,unrelated field,no
+10.1215/s0012-7094-97-08601-4,1,,same broad field only,no
+10.1088/1126-6708/2007/06/060,0,,unrelated field,no
+10.1038/s41377-022-00897-3,0,,unrelated field,no
+inequalitiesinrearrangementinvariantfunctionspaces,1,,same broad field only,no
+10.2140/pjm.1961.11.1315,1,,same broad field only,no
+10.1103/physrevd.59.084006,0,,unrelated field,no
+10.15352/bjma/1240336213,2,,norm/numerical radius inequalities survey,no
+10.1016/j.aim.2012.11.018,0,,unrelated field,no
+10.1214/10-aos860,1,,same broad field only,no
+10.1137/16m1097638,1,,same broad field only,no
+10.1017/s0004972700038831,2,,numerical radius reverse inequalities,no
+10.4171/rmi/470,0,,unrelated field,no
+10.1016/j.jmva.2015.12.001,1,,same broad field only,no
+10.1016/j.jfa.2004.09.014,0,,unrelated field,no
+10.1016/j.aim.2011.12.001,0,,unrelated field,no
+10.1090/s0025-5718-1977-0431719-x,1,,same broad field only,no
+10.1371/journal.pone.0150171,1,,same broad field only,no
+10.1070/sm1971v015n01abeh001531,1,,same broad field only,no
+10.1016/0022-1236(74)90072-x,1,,same broad field only,no
+10.1137/040607277,1,,same broad field only,no
+10.1006/aima.1998.1728,1,,same broad field only,no
+10.1090/s0273-0979-99-00788-0,1,,same broad field only,no
+10.12681/eadd/3778,0,,unrelated field,no
+10.2140/pjm.1977.72.135,1,,same broad field only,no
+10.1016/j.neuroimage.2007.09.048,0,,unrelated field,no
+10.1007/978-3-030-36714-5,1,,same broad field only,no
+10.1371/journal.pgen.0020190,0,,unrelated field,no
+10.1088/0266-5611/28/7/075010,0,,unrelated field,no
+10.1007/978-0-8176-4596-0,1,,same broad field only,no
+10.1063/1.4811489,0,,unrelated field,no
+10.1103/revmodphys.81.163,0,,unrelated field,no
+10.1038/s41524-019-0221-0,0,,unrelated field,no
+10.1080/01431168608948944,0,,unrelated field,no
+10.1029/2000rg000092,0,,unrelated field,no
+10.5194/amt-12-169-2019,0,,unrelated field,no
+10.1046/j.1365-8711.2001.04902.x,0,,unrelated field,no
+10.1007/978-1-4612-1494-6,0,,unrelated field,no
+10.2172/921803,0,,unrelated field,no
+10.3847/2041-8213/ab481c,0,,unrelated field,no
+10.1088/0034-4885/78/10/104501,0,,unrelated field,no
+10.5194/tc-5-271-2011,0,,unrelated field,no
+10.1111/j.1475-6765.2004.00166.x,0,,unrelated field,no
+10.5195/jwsr.2011.423,0,,unrelated field,no
+10.3390/su6096362,0,,unrelated field,no
+ignoranceanduncertaintyregionsasinferentialtoolsinasensitivityanalysis,0,,unrelated field,no
+10.1111/j.1564-913x.2014.00014.x,0,,unrelated field,no
+10.1016/0305-750x(93)90048-e,0,,unrelated field,no
+10.1007/978-3-031-98682-6_11,1,,same broad field only,no
+10.1214/ss/1009212519,0,,unrelated field,no
+10.1007/s10817-021-09612-0,1,,same broad field only,no
+10.1007/s10696-023-09503-z,0,,unrelated field,no
+10.3386/w14825,0,,unrelated field,no
+10.48550/arxiv.2406.03847,1,,same broad field only,no
+10.1016/j.scico.2020.102471,1,,same broad field only,no
+10.3386/w2893,0,,unrelated field,no
+10.1007/s10640-021-00627-0,0,,unrelated field,no
+10.7275/1670203,0,,unrelated field,no
+10.1016/j.techsoc.2024.102471,0,,unrelated field,no
+10.1146/annurev-psych-010213-115208,0,,unrelated field,no
+10.1145/3636501.3636945,1,,same broad field only,no
+10.5465/annals.2014.0054,0,,unrelated field,no
+10.7146/sss.v11i1.121362,0,,unrelated field,no
+10.1007/s00550-020-00508-y,0,,unrelated field,no
+10.1080/19452820903481483,0,,unrelated field,no
+10.5465/annals.2016.0044,0,,unrelated field,no
+10.4230/lipics.itp.2022.0,1,,same broad field only,no
+10.1017/fmp.2017.1,1,,same broad field only,no
+10.1145/2676726.2676966,1,,same broad field only,no
+10.1145/1644001.1644003,2,R12,certified error bounds for rounded expressions,no
+10.1007/978-3-319-91908-9_18,1,,same broad field only,no
+10.1007/s10817-012-9255-4,1,,same broad field only,no
+10.1007/s00165-014-0326-7,0,,unrelated field,no
+10.1145/1353445.1353446,1,,same broad field only,no
+10.1007/s00165-012-0269-9,0,,unrelated field,no
+10.1007/978-3-662-46681-0_3,1,,same broad field only,no
+10.1145/2103621.2103709,0,,unrelated field,no
+10.1007/s00454-009-9148-4,1,,same broad field only,no
+10.1016/0743-1066(94)90035-3,0,,unrelated field,no
+10.1145/3230733,2,R12,round-off error propagation through computations; not sharp multilinear,no
+10.1007/978-3-319-96145-3_4,0,,unrelated field,no
+10.1007/978-3-642-14052-5_12,1,,same broad field only,no
+10.1145/3624483,1,,same broad field only,no
+verificationofsequentialimperativeprogramsinisabellehol,1,,same broad field only,no
+reachabilityanalysisanditsapplicationtothesafetyassessmentofautonomouscars,0,,unrelated field,no
+10.1561/2500000034,1,,same broad field only,no
+correctnessandavailabilitybuildingcomputeralgebraontopofproofassistantsandmakingproofassistantsavailableovertheweb,1,,same broad field only,no
+10.14722/ndss.2025.241357,0,,unrelated field,no
+10.1007/s10462-024-10824-0,0,,unrelated field,no
+10.4230/lipics.itp.2022.10,2,R8,Lean/Mathlib functional analysis formalization,no
+10.1007/s10817-025-09741-w,2,R8,formalized convergence rates of optimization algorithms,no
+10.1039/d3dd00077j,1,,same broad field only,no
+10.1007/978-3-031-27481-7_4,1,,same broad field only,no
+10.4230/lipics.itp.2021.8,1,,same broad field only,no
+10.5281/zenodo.19150956,1,,same broad field only,no
+10.5281/zenodo.19140523,1,,same broad field only,no
+10.5281/zenodo.19148304,1,,same broad field only,no
+10.48550/arxiv.2202.05360,2,R8,Lean/Mathlib functional analysis formalization,no
+10.48550/arxiv.2403.11437,2,R8,formalized convergence rates of optimization algorithms,no
+formalizationoftwofixedpointalgorithmsinhilbertspaces,2,R8,formalization of fixed-point algorithms in Hilbert spaces,no
+10.1007/s10817-024-09696-4,2,R8,Lean/Mathlib functional analysis formalization,no
+10.1038/s42254-024-00740-1,1,,same broad field only,no
+10.2139/ssrn.6439344,1,,same broad field only,no
+10.5281/zenodo.21894523,0,,unrelated field,no
+arxiv:2606.15089,1,,same broad field only,no
+10.1016/s0140-6736(20)32290-x,0,,unrelated field,no
+10.1101/gr.094052.109,0,,unrelated field,no
+10.1001/jama.1950.02910470083028,0,,unrelated field,no
+10.1103/revmodphys.81.109,0,,unrelated field,no
+10.1007/s40305-021-00368-3,1,,same broad field only,no
+10.1523/jneurosci.2059-10.2010,0,,unrelated field,no
+10.1109/78.324732,1,,same broad field only,no
+10.32614/rj-2013-031,0,,unrelated field,no
+10.1016/s0377-0427(00)00518-5,2,R6,subspace correction / alternating projection framework,no
+10.1109/tsp.2004.837400,2,R6,canonical coordinates/angles; not error propagation,no
+10.1002/adfm.202005137,0,,unrelated field,no
+10.1007/s11075-018-0608-x,3,R1a;R1b;R6,sharp linear rates for reflection/projection method on two subspaces,yes
+10.48550/arxiv.1406.6474,2,R6,alternating projections rate via subspace angles; no sharp tree bound,no
+10.1007/978-3-319-18461-6_51,2,R6,local linear convergence of DR/ADMM; angle-type rates,no
+10.1103/physreva.45.5193,1,,same broad field only,no
+10.1103/physrevx.10.041020,2,R5;R7,repeated measurements dynamics; not error bound,no
+10.1140/epjd/e2015-60464-1,0,,unrelated field,no
+10.1103/revmodphys.96.031001,0,,unrelated field,no
+10.1017/s0960129507006354,1,,same broad field only,no
+10.1038/s41534-023-00682-z,1,,same broad field only,no
+10.1103/prxquantum.2.030322,0,,unrelated field,no
+10.48550/arxiv.2111.08894,1,,same broad field only,no
+10.1093/mnras/stt1121,0,,unrelated field,no
+10.1088/0953-4075/49/15/152002,0,,unrelated field,no
+10.1007/s42064-022-0142-4,0,,unrelated field,no
+10.1561/2600000026,0,,unrelated field,no
+10.1016/j.ast.2025.110102,0,,unrelated field,no
+10.1007/s42064-024-0227-3,0,,unrelated field,no
+10.1186/1742-4682-11-16,0,,unrelated field,no
+10.1038/s41598-020-58634-y,0,,unrelated field,no
+10.1088/0031-9155/50/4/r01,0,,unrelated field,no
+10.1029/2005jd006687,0,,unrelated field,no
+10.1109/access.2021.3117004,0,,unrelated field,no
+10.3390/electronics8121480,0,,unrelated field,no
+10.1088/0031-9155/53/9/r01,0,,unrelated field,no
+10.1186/cc2948,0,,unrelated field,no
+10.1158/0008-5472.can-04-3953,0,,unrelated field,no
+10.1016/j.crmeth.2022.100243,0,,unrelated field,no
+10.4319/lo.2005.50.4.1025,0,,unrelated field,no
+10.3390/app12020587,0,,unrelated field,no
+10.1016/j.physrep.2018.01.001,0,,unrelated field,no
+10.1038/s41598-018-37423-8,0,,unrelated field,no
+10.1109/tr.2012.2194351,0,,unrelated field,no
+10.1371/journal.pone.0241364,0,,unrelated field,no
+10.3310/hta4240,0,,unrelated field,no
+10.1038/nature10942,0,,unrelated field,no
+10.1088/0031-9155/57/12/3759,0,,unrelated field,no
+10.3390/s23146325,0,,unrelated field,no
+10.1371/journal.pone.0062184,0,,unrelated field,no
+10.1006/jcss.2002.1826,2,R7,hybrid-argument quantum lower bounds; no sharp projection bound,no
+10.3390/a12020034,1,,same broad field only,no
+10.1145/335305.335394,2,R7,hybrid-argument quantum lower bounds; no sharp projection bound,no
+10.1088/1361-6633/aab406,0,,unrelated field,no
+10.1103/physrevphyseducres.13.010109,0,,unrelated field,no
+10.1103/physrevx.8.041015,1,,same broad field only,no
+10.1063/1.5020710,0,,unrelated field,no
+10.1103/physrevx.8.011044,1,,same broad field only,no
+10.6028/nist.ir.8413,0,,unrelated field,no
+10.1088/1361-6633/aa872f,1,,same broad field only,no
+10.1137/1.9781611975482.87,1,,same broad field only,no
+10.6028/nist.ir.8413-upd1,0,,unrelated field,no
+10.1145/3243734.3243805,0,,unrelated field,no
+10.1103/physrevresearch.2.033212,1,,same broad field only,no
+10.1103/revmodphys.95.035001,1,,same broad field only,no
+10.1109/comst.2018.2882385,0,,unrelated field,no
+10.1103/physreva.99.022339,1,,same broad field only,no
+10.1039/d2cs00203e,0,,unrelated field,no
+10.1007/s00224-018-9872-3,1,,same broad field only,no
+10.1016/j.jeconom.2019.04.009,0,,unrelated field,no
+10.1109/tip.2015.2508600,0,,unrelated field,no
+10.48550/arxiv.1908.08909,1,,same broad field only,no
+10.1088/1367-2630/18/10/103049,1,,same broad field only,no
+10.22331/q-2020-09-30-337,1,,same broad field only,no
+10.1111/j.1469-8137.2007.02288.x,0,,unrelated field,no
+10.1186/1471-2229-8-112,0,,unrelated field,no
+elementsofcausalinferencefoundationsandlearningalgorithms,0,,unrelated field,no
+10.1016/j.tcs.2010.12.059,0,,unrelated field,no
+newproceduresfordataminingandmeasurementerrormodelswithmedicalimagingapplications,0,,unrelated field,no
+10.1080/09515070.2021.1954881,0,,unrelated field,no
+10.1016/j.cja.2021.10.024,0,,unrelated field,no
+10.1364/aop.361502,0,,unrelated field,no
+advancesinquantumcryptography,0,,unrelated field,no
+10.1103/revmodphys.74.1283,0,,unrelated field,no
+10.1103/physrevx.7.021050,1,,same broad field only,no
+10.1090/psapm/068/2762145,1,,same broad field only,no
+10.1007/s00220-008-0417-5,1,,same broad field only,no
+10.1038/s41578-021-00306-y,0,,unrelated field,no
+10.1002/jcc.21287,0,,unrelated field,no
+10.1038/s41534-017-0038-y,0,,unrelated field,no
+10.1038/s41578-020-00262-z,0,,unrelated field,no
+highthresholdfaulttolerantquantumcomputationwithanalogquantumerrorcorrection,1,,same broad field only,no
+10.1103/physrevx.8.021054,1,,same broad field only,no
+10.1021/acs.chemrev.5b00700,0,,unrelated field,no
+10.1515/nanoph-2019-0209,0,,unrelated field,no
+10.1038/s41566-023-01166-4,0,,unrelated field,no
+10.1103/physrevx.11.041039,1,,same broad field only,no
+10.4230/lipics.itcs.2025,1,,same broad field only,no
+10.1086/376392,0,,unrelated field,no
+10.4007/annals.2004.159.1027,0,,unrelated field,no
+10.1088/0004-637x/691/2/1168,0,,unrelated field,no
+10.1086/308158,0,,unrelated field,no
+10.1051/0004-6361:20020173,0,,unrelated field,no
+10.1086/304897,0,,unrelated field,no
+10.1051/0004-6361:20020173/pdf,0,,unrelated field,no
+10.1086/306136,0,,unrelated field,no
+10.1146/annurev-astro-022823-040820,0,,unrelated field,no
+10.1103/physrevd.95.043541,0,,unrelated field,no
+10.1016/j.dark.2012.10.002,0,,unrelated field,no
+10.1088/0004-637x/695/2/1210,0,,unrelated field,no
+10.1088/0004-637x/690/1/69,0,,unrelated field,no
+10.1088/0004-637x/773/2/168,0,,unrelated field,no
+10.1088/0004-637x/804/1/35,0,,unrelated field,no
+10.1063/1.458452,0,,unrelated field,no
+10.1038/natrevmats.2016.48,0,,unrelated field,no
+10.1088/1126-6708/2008/12/031,0,,unrelated field,no
+10.4007/annals.2006.163.265,0,,unrelated field,no
+systemdynamicssystemsthinkingandmodelingforacomplexworld,0,,unrelated field,no
+10.2140/pjm.1961.11.679,1,,same broad field only,no
+10.1137/1.9780898717655,1,,same broad field only,no
+10.1088/0034-4885/70/6/r03,1,,same broad field only,no
+10.1103/revmodphys.91.015002,0,,unrelated field,no
+10.1007/978-3-642-61370-8,0,,unrelated field,no
+10.1103/physrevb.73.094423,3,R9,MPS approximation/truncation error bounds,yes
+10.1002/(sici)1097-0207(19990910)46:1<131::aid-nme726>3.0.co;2-j,0,,unrelated field,no
+10.2140/pjm.1970.32.647,2,,numerical range of operators; general,no
+10.1007/s00020-002-1188-6,2,,bounds for analytic functions of matrices,no
+10.1063/5.0050902,1,,same broad field only,no
+10.1063/1.2345196,1,,same broad field only,no
+10.48550/arxiv.2202.01244,1,,same broad field only,no
+10.1038/s41524-025-01813-0,0,,unrelated field,no
+10.53846/goediss-8867,0,,unrelated field,no
+nonequilibriumdynamicsofquantumisingchainsinthepresenceoftransverseandlongitudinalmagneticfields,0,,unrelated field,no
+10.1103/physrevb.97.045145,2,R9,MPS variational algorithms; no truncation bound,no
+10.1103/physrevx.8.031012,1,,same broad field only,no
+10.1145/3313276.3316366,2,R6,products of reflections/projector phases (QSVT),no
+10.1109/tsp.2014.2367460,1,,same broad field only,no
+10.26599/bdma.2018.9020008,1,,same broad field only,no
+10.1103/physrevlett.133.010601,1,,same broad field only,no
+10.1103/physreve.82.036702,1,,same broad field only,no
+10.5201/ipol.2012.llm-ksvd,0,,unrelated field,no
+10.1103/physrevx.7.041046,1,,same broad field only,no
+10.1016/j.automatica.2014.01.001,1,,same broad field only,no
+10.1109/lsp.2017.2687044,1,,same broad field only,no
+10.1016/j.neuroimage.2016.05.068,0,,unrelated field,no
+10.48550/arxiv.1510.00149,1,,same broad field only,no
+10.1016/j.inffus.2021.05.008,0,,unrelated field,no
+10.1201/9781003162810-13,1,,same broad field only,no
+10.48550/arxiv.2006.05467,0,,unrelated field,no
+10.1016/j.cosrev.2020.100270,1,,same broad field only,no
+10.1016/j.compbiomed.2023.106668,0,,unrelated field,no
+10.48550/arxiv.2101.09671,1,,same broad field only,no
+10.1109/tpami.2021.3079209,0,,unrelated field,no
+10.48550/arxiv.2004.02806,0,,unrelated field,no
+10.3389/fnins.2020.00653,0,,unrelated field,no
+10.3389/frobt.2015.00036,0,,unrelated field,no
+10.48550/arxiv.1812.11446,0,,unrelated field,no
+10.48550/arxiv.2308.06767,0,,unrelated field,no
+10.48550/arxiv.2307.02973,1,,same broad field only,no
+10.1109/cvpr.2019.00448,0,,unrelated field,no
+10.1145/3597428,0,,unrelated field,no
+10.1038/s43586-022-00125-7,0,,unrelated field,no
+10.1109/tnnls.2022.3176809,0,,unrelated field,no
+10.48550/arxiv.1812.08342,1,,same broad field only,no
+10.1007/s11749-016-0481-7,0,,unrelated field,no
+10.1017/s0962492921000052,1,,same broad field only,no
+10.48550/arxiv.2102.00554,1,,same broad field only,no
+10.48550/arxiv.2305.08842,0,,unrelated field,no
+10.5075/epfl-thesis-4461,0,,unrelated field,no
+10.48550/arxiv.1802.10399,0,,unrelated field,no
+10.1016/j.neucom.2023.02.040,0,,unrelated field,no
+10.3390/app16042113,0,,unrelated field,no
+10.1109/acssc.2015.7421170,0,,unrelated field,no
+10.1016/j.arcontrol.2015.03.001,0,,unrelated field,no
+10.48550/arxiv.2205.11693,0,,unrelated field,no
+mathematicalmodelingofquantumdotswithgeneralizedenvelopefunctionsapproximationsandcoupledpartialdifferentialequations,0,,unrelated field,no
+10.1007/s40747-021-00367-0,0,,unrelated field,no
+10.48550/arxiv.2305.17118,0,,unrelated field,no
+10.3390/ijfs6010026,0,,unrelated field,no
+10.1016/j.knosys.2023.110907,0,,unrelated field,no
+10.3390/electronics14163310,0,,unrelated field,no
+10.48550/arxiv.2210.06640,0,,unrelated field,no
+10.1109/access.2024.3383782,0,,unrelated field,no
+10.48550/arxiv.2210.10524,0,,unrelated field,no
+10.1007/s11063-024-11700-2,0,,unrelated field,no
+10.65112/tcmis.10028,0,,unrelated field,no
+gpubasedimplementationofrealtimesystemforspikingneuralnetworks,0,,unrelated field,no
+appliedfunctionalanalysis,1,,same broad field only,no
+10.1057/jors.1980.215,1,,same broad field only,no
+10.24033/bsmf.1403,2,,Julia operators/contractions; dilation theory,no
+10.1007/978-94-015-8577-4,1,,same broad field only,no
+10.1016/0022-247x(86)90085-5,3,R1a;R6,von Neumann alternating projections in Hilbert space; possible rate results,yes
+10.1007/978-94-011-2634-2,1,,same broad field only,no
+10.1016/0378-4754(92)90054-k,1,,same broad field only,no
+10.1007/s00041-008-9030-4,2,R6,projection-based iteration with exponential rate; randomized,no
+10.1016/s1570-579x(01)80028-8,2,,fixed points of nonexpansive maps; projections,no
+10.1007/s10543-010-0265-5,2,R1a;R6,Kaczmarz (products of projections) with noise; no sharp tree bound,no
+10.1109/tsg.2016.2580584,0,,power system Kalman filtering,no
+10.1007/s11075-011-9451-z,1,,Kaczmarz acceleration via JL; algorithmic,no
+10.1016/j.csda.2013.03.024,1,,OLS fixed effects computation,no
+10.1088/0266-5611/31/12/125008,1,,phaseless Kaczmarz application,no
+10.1007/s10107-017-1229-1,2,R1a,sparse Kaczmarz linear rate; projection iteration,no
+10.1016/j.laa.2006.07.014,2,R1a,sparse grid combination technique with projections,no
+efficientrankreductionofcorrelationmatrices1,1,,matrix rank reduction,no
+10.48550/arxiv.0905.4482,1,,compressed sensing survey,no
+10.1007/11830924_45,2,R1a,randomized Kaczmarz exponential convergence,no
+10.1007/s00211-012-0512-6,3,R1a;R1b;R6,Meany inequality bounds norm of products of projections,yes
+10.1007/s10851-014-0539-7,1,,block Kaczmarz with inequalities,no
+10.1016/j.jfranklin.2022.09.028,1,,Kaczmarz for Sylvester equations,no
+10.1137/21m1450537,1,,phaseless Kaczmarz convergence,no
+10.1109/tac.2016.2605741,0,,nonparametric system identification,no
+10.48550/arxiv.1612.07838,2,R1a,greedy Kaczmarz rates; projections,no
+10.3929/ethz-a-010377352,1,,random pursuit optimization,no
+10.1007/s00211-021-01207-6,2,R1a;R6,method of reflections convergence (projection-type iteration),no
+10.14288/1.0367781,1,,greedy optimization thesis,no
+10.1109/lcsys.2017.2698179,2,R7,inhomogeneous matrix products,no
+10.1017/cbo9780511840371,2,R7,matrix analysis text incl. numerical range,no
+10.4064/fm-3-1-133-181,1,,Banach thesis; fixed point,no
+10.1137/0314056,1,,proximal point algorithm,no
+10.1007/978-3-319-48311-5,1,,convex analysis monograph,no
+10.1007/bf01581204,1,,Douglas-Rachford splitting,no
+10.1090/s0002-9939-1953-0054846-3,1,,Mann iteration,no
+10.1137/0716071,1,,splitting algorithms,no
+10.1090/s0002-9947-1956-0084194-4,1,,ADI heat conduction,no
+10.1137/1.9781611974997,1,,first-order optimization text,no
+10.1515/9780691213101,1,,pseudospectra monograph,no
+10.1073/pnas.38.8.716,0,,dynamic programming,no
+10.1017/cbo9780511810763,0,,physics methods textbook,no
+10.1007/978-3-319-46128-1_50,1,,PL condition linear convergence,no
+10.1007/s10915-015-0048-x,1,,ADMM linear convergence,no
+10.1007/978-1-4939-1037-3,1,,implicit function theory,no
+10.1007/bfb0120929,1,,polyhedral multifunctions,no
+10.1017/cbo9780511791246,0,,complex variables textbook,no
+10.1007/bf02761171,2,R1a,infinite products of resolvents,no
+10.1137/18m1207260,1,,forward-backward splitting,no
+10.1002/zamm.19290090206,2,R1a,historical Kaczmarz/iterative solution methods,no
+10.1023/b:svan.0000023394.19482.30,1,,variational analysis conditioning,no
+10.1016/0022-247x(77)90152-4,1,,ergodic iteration monotone operators,no
+10.1016/j.jmaa.2014.11.044,3,R1a;R1b;R6,averagedness constants of compositions of operators,yes
+10.1007/s10107-015-0964-4,3,R1a;R12,error accumulation with inexact nonexpansive operators,yes
+10.1137/17m1120099,1,,monotone inclusion algorithm,no
+10.1081/nfa-120003674,1,,fixed point minimization,no
+10.1016/j.jmaa.2009.07.012,1,,metric subregularity proximal point,no
+10.1073/pnas.17.7.417,1,,orthogonal canonical form of matrices,no
+10.1109/tac.2018.2808442,3,R1b;R6,tight rate bounds for operator splitting (projection-type),yes
+10.1007/s10957-019-01517-8,1,,Douglas-Rachford variant,no
+10.1016/j.jmaa.2020.124211,3,R1b;R6;R7,tight coefficients of composed averaged operators via geometric graph,yes
+10.1007/978-3-319-97478-1_1,1,,distributed optimization intro,no
+10.1090/conm/513/10075,1,,firmly nonexpansive extensions,no
+10.1109/tac.2023.3234016,1,,graphical nonlinear system analysis,no
+10.1016/j.ejcon.2024.101050,1,,SRG reset control,no
+10.1007/s10107-024-02182-0,1,,preconditioned proximal point,no
+10.23919/ecc65951.2025.11187068,1,,SRG Lur'e systems,no
+10.1109/cdc45484.2021.9683092,2,R6,scaled relative graphs for interconnections; geometric angle tool,no
+10.1109/tac.2025.3632433,1,,incremental stability homotopy,no
+10.1016/j.ejcon.2025.101335,1,,SRG circuit theory,no
+10.1109/cdc51059.2022.9993357,1,,SRG model reduction,no
+10.1109/tpwrs.2026.3674752,0,,power grid stability,no
+10.1080/02331934.2025.2544700,1,,Davis-Yin SRG convergence,no
+10.1137/24m1656530,1,,FISTA denoiser convergence,no
+10.1016/j.sysconle.2022.105198,1,,passivity theorem,no
+10.1016/j.ejcon.2026.101576,1,,SRG pairs of operators,no
+10.1109/lcsys.2026.3666550,1,,SRG decomposition,no
+10.1109/cdc57313.2025.11312491,0,,SRG Bode diagrams,no
+10.33084/anterior.v23i2.5954,0,,geometry education,no
+10.1109/tac.2023.3274690,0,,monotone circuits,no
+10.1145/237814.237866,1,,Grover search,no
+10.1109/sfcs.1994.365700,0,,Shor factoring,no
+10.1007/bf02650179,0,,Feynman simulation,no
+10.1098/rspa.1985.0070,0,,universal quantum computer,no
+10.1147/rd.176.0525,0,,reversible computation,no
+10.1098/rspa.1992.0167,0,,Deutsch-Jozsa,no
+10.1137/s0097539796300921,2,R12,quantum complexity; includes error accumulation in unitary sequences,no
+10.1137/s0097539796298637,1,,power of quantum computation,no
+10.1145/167088.167097,1,,quantum complexity conference version,no
+10.1098/rspa.1989.0099,0,,quantum networks,no
+tightboundsonquantumsearching,2,R6,tight query bounds via hybrid/angle argument,no
+10.1109/sfcs.1993.366852,1,,quantum circuit complexity,no
+10.1016/0022-0000(88)90028-1,0,,Arthur-Merlin games,no
+10.1109/sfcs.1994.365701,1,,power of quantum computation,no
+10.1137/0210008,0,,random oracle separation,no
+10.1109/sct.1992.215388,0,,quantum structural complexity,no
+10.48550/arxiv.quant-ph/9805022,1,,quantum oracle phase,no
+10.22331/q-2018-08-06-79,0,,NISQ perspective,no
+10.1137/s0097539795293172,0,,Shor factoring,no
+10.1137/s0036144598347011,0,,Shor factoring reprint,no
+10.1126/science.1057726,0,,adiabatic algorithm NP-complete,no
+10.1103/revmodphys.90.015002,1,,adiabatic QC review,no
+10.1103/physreva.67.052307,0,,quantum walk search,no
+10.1103/revmodphys.74.197,1,,relative entropy review,no
+10.1016/j.physrep.2022.08.003,0,,VQE review,no
+10.6028/nist.ir.8105,0,,post-quantum crypto,no
+10.1103/physreva.70.022314,0,,quantum walk spatial search,no
+10.1137/s0097539705447311,0,,element distinctness walk,no
+10.1016/j.iot.2022.100514,0,,AI computing trends,no
+10.1142/s0219749903000383,0,,quantum walks review,no
+10.1016/j.cosrev.2018.11.002,0,,quantum computing survey,no
+10.1103/physreva.60.2746,2,R6,Grover optimality via hybrid/angle argument,no
+10.1103/physrevlett.80.4329,1,,generalized Grover search,no
+10.1126/science.1252319,0,,quantum speedup detection,no
+10.48550/arxiv.quant-ph/0001106,0,,adiabatic quantum computation,no
+10.1109/access.2020.2968985,0,,post-quantum blockchain,no
+10.1103/revmodphys.74.347,0,,information and computation review,no
+10.1038/s41578-022-00434-z,0,,memristors,no
+10.1137/s0097539799359385,1,,fault tolerance threshold,no
+10.1098/rspa.2017.0551,0,,quantum machine learning,no
+10.1007/978-3-642-25385-0_3,0,,quantum random oracles,no
+10.1103/physrevlett.79.4709,0,,single-query search,no
+10.1038/nature10123,0,,negative entropy thermodynamics,no
+10.1145/367701.367709,0,,QC introduction,no
+10.1145/276698.276708,2,R12,mixed-state circuits; diamond norm error composition,no
+10.1103/physreva.57.2403,1,,analog Grover,no
+10.1103/revmodphys.82.1,0,,algebraic quantum algorithms,no
+10.1098/rspa.2015.0301,1,,quantum Monte Carlo speedup,no
+10.1145/276698.276713,0,,quantum communication complexity,no
+10.1145/1008731.1008735,1,,collision lower bounds,no
+quantummachinelearningwhatquantumcomputingmeanstodatamining,0,,quantum ML book,no
+10.1109/jiot.2019.2958788,0,,IoT post-quantum security,no
+10.1080/17445760500355678,1,,quantum computation text review,no
+10.1007/bf01491891,0,,Schrodinger cat paper,no
+10.1515/9783110625097-001,0,,QM foundations chapter,no
+10.1016/0003-4916(71)90133-3,2,R5,decay experiments and repeated measurement (Zeno precursor),no
+10.1216/rmj-1971-1-1-225,1,,decay-scattering system,no
+10.1007/bf01645753,1,,Sz.-Nagy dilation unstable particles,no
+10.1512/iumj.1972.21.21080,3,R1a;R5,missing title; Zeno family 1972 IUMJ (possibly projection product formulas) - resolve,yes
+10.1103/physrevd.24.1516,0,,pointer basis decoherence,no
+10.1103/revmodphys.70.101,1,,quantum jump approach,no
+10.1007/bf01725541,0,,decoherence classicality,no
+10.1364/josab.10.000524,1,,Monte Carlo wave function,no
+10.1103/physreva.68.042319,0,,optical coherent state QC,no
+10.1103/revmodphys.64.339,2,R1a,consistent histories (chains of projectors),no
+10.1021/ct400934c,0,,PYXAID software,no
+10.1103/physrevlett.74.4763,2,R5,interaction-free measurement (Zeno-type projections),no
+10.1103/revmodphys.90.031002,0,,nanophotonic atom lattices,no
+10.1038/35014537,2,R5,anti-Zeno frequent observation,no
+10.1103/physrevlett.65.976,0,,QND photon counting,no
+10.1103/physrevlett.105.130401,0,,small thermal machines,no
+10.1126/science.1155309,1,,dissipation-induced Zeno in molecules,no
+10.1021/cr300092g,0,,ultracold molecules,no
+10.1038/s42254-019-0056-0,0,,quantum imaging,no
+10.1016/s0370-1573(00)00047-8,0,,arrival time QM,no
+10.1002/lpor.201500227,0,,PT-symmetric photonics,no
+10.1038/nphys1641,0,,Leggett-Garg weak measurement,no
+10.1103/revmodphys.88.041001,0,,noise protection review,no
+10.1103/revmodphys.86.1203,1,,quantum channels memory,no
+10.1103/physreva.42.10,0,,non-Hermitian dynamics,no
+10.1088/2040-8978/18/12/123002,0,,whispering gallery optics,no
+10.1016/s0375-9601(99)00365-5,1,,symmetrizing evolutions,no
+10.1016/j.physrep.2012.07.001,1,,weak pre/post-selected measurement,no
+10.1103/physrevlett.87.270405,1,,dynamical decay control,no
+10.1098/rstb.2004.1598,0,,quantum mind model,no
+10.1103/physreva.47.4616,0,,wave function meaning,no
+10.1007/bf02310791,2,R9,N-way Eckart-Young tensor decomposition,no
+10.1063/1.1580111,2,R9,multilayer MCTDH (tree tensor format),no
+10.1073/pnas.112329799,2,R9,separated representations operator calculus,no
+10.1137/06065577,1,,PARAFAC line search,no
+10.1007/s00780-010-0134-8,0,,option pricing,no
+10.1137/080719248,0,,wavelet transform,no
+10.1088/0266-5611/26/2/025007,1,,projected steepest descent inverse problems,no
+10.1088/0266-5611/24/6/065013,1,,compressive Landweber,no
+10.1007/s10444-010-9147-2,0,,adaptive wavelets heat inverse,no
+10.1007/s00365-009-9069-8,1,,multivariate approximation tractability,no
+10.1016/j.jco.2009.10.002,1,,optimal approximation elliptic problems,no
+10.1021/acs.chemrev.9b00829,0,,quantum chemistry algorithms,no
+10.1007/s11633-017-1054-2,2,R3,compositional/tree-structured function approximation,no
+10.1021/acs.jpca.5b03256,2,R9,multilayer MCTDH review (tree tensors),no
+10.1063/1.4871981,1,,sum-of-products vibrational spectra,no
+10.1016/j.euromechsol.2017.11.007,0,,homogenization ROM,no
+10.1016/j.cpc.2019.106869,2,R9,TT cross interpolation,no
+10.1103/physrevmaterials.4.113802,0,,alloy short-range order,no
+10.2307/1968693,1,,von Neumann operator rings,no
+10.2307/1969463,1,,operator rings reduction,no
+10.1007/978-1-4612-5700-4,2,R6,perturbation theory of linear operators (gaps/angles),no
+10.24033/bsmf.90,2,R6,Jordan principal angles between subspaces,no
+10.1109/proc.1983.12598,1,,series-expansion reconstruction,no
+settheoryandlogic,0,,set theory text,no
+10.1007/bf02564273,1,,matrix factorization,no
+10.18311/jims/1960/16934,1,,Hilbert space spectral theory,no
+10.1109/proc.1986.13459,0,,seismic tomography,no
+10.1007/978-3-0348-6253-0,1,,parametric optimization,no
+spectraltheoryinthehilbertspace,1,,Hilbert space spectral theory,no
+10.1137/0322010,1,,stationary process interpolation,no
+10.1109/5.214546,1,,set theoretic estimation (POCS),no
+10.1109/icassp.1991.151014,1,,set theoretic estimation,no
+10.1007/s00041-009-9077-x,2,R1a,randomized Kaczmarz behavior,no
+10.1007/s11075-017-0399-5,2,R6,circumcentered Douglas-Rachford (projections),no
+10.1109/36.79426,0,,Doppler spectral estimation,no
+10.1016/j.jat.2009.12.007,1,,best linear approximations,no
+10.1103/physrevlett.69.2863,2,R9;R10,DMRG density matrix truncation,no
+10.1103/revmodphys.47.773,1,,Wilson RG,no
+10.1103/physreva.40.4277,0,,Werner states,no
+10.1126/science.273.5278.1073,1,,universal quantum simulators (Trotter),no
+10.1007/bf02099178,2,R9,finitely correlated states (MPS),no
+10.1103/physrevlett.93.207204,2,R9,matrix product density operators simulation,no
+10.1103/physrevlett.75.3537,2,R9,DMRG thermodynamic limit,no
+10.1103/physrev.150.321,0,,Bethe ansatz XXZ,no
+10.1103/physrev.150.327,0,,Bethe ansatz XXZ,no
+10.1023/b:joss.0000037230.37166.42,0,,Toeplitz determinants spin chain,no
+10.1007/s00220-004-1087-6,1,,randomizing quantum states,no
+10.1103/physrevlett.94.140601,1,,RG on quantum states,no
+10.1103/physrevlett.93.140402,1,,Lieb-Robinson locality,no
+10.1088/0305-4470/24/16/012,0,,spin-1 models,no
+10.1209/epl/i1998-00381-x,2,R9,variational MPS vs DMRG,no
+10.1002/(sici)1521-3889(199902)8:2<153::aid-andp153>3.0.co;2-n,1,,density matrix spectra integrable,no
+10.1007/bf00399761,0,,Bell inequalities state extension,no
+10.1063/1.1712500,0,,atoms ions QI article,no
+10.1016/j.physleta.2003.12.018,0,,concurrence spin models,no
+10.1007/bf00406552,1,,translation invariant pure states,no
+10.1103/physreva.69.042320,0,,adiabatic spin evolution,no
+10.1103/physrevb.64.214411,0,,QMC XXZ,no
+10.1007/978-3-540-73086-6_12,0,,OEIS,no
+10.1016/j.aop.2010.09.012,2,R9;R10,DMRG/MPS review incl. truncation,no
+10.1080/00018730701223200,0,,optical lattices,no
+10.1103/revmodphys.89.025003,0,,spin liquids,no
+10.1088/1367-2630/11/5/055049,0,,ultracold molecules,no
+10.1038/nphys1157,1,,measurement-based QC,no
+10.1088/1751-8113/40/46/r01,1,,matrix product steady states,no
+10.1126/science.aav9105,0,,SPT Rydberg experiment,no
+10.1103/physrevlett.100.030504,3,R9;R10,MPS simulability vs entropy (truncation error bounds),yes
+10.1080/00018730600766432,2,R9,DMRG trends,no
+10.1103/physrevb.98.235155,0,,exact excited states,no
+10.1016/j.aop.2010.05.008,1,,PEPS ground states topology,no
+10.1103/physrevlett.104.190405,1,,continuous MPS,no
+10.1103/physrevlett.100.167202,1,,string order,no
+10.1103/physrevlett.98.110503,0,,N-representability QMA,no
+10.1103/physrevlett.116.150504,0,,quantum coherence,no
+10.1016/j.nuclphysb.2017.10.012,0,,integrable quench,no
+10.1103/physrevlett.114.220601,1,,variational MPO steady state,no
+quantumtheoryofopensystems,1,,open quantum systems,no
+10.1109/18.651037,0,,channel capacity,no
+10.1103/physreva.56.131,0,,classical capacity,no
+10.1007/978-1-4612-6371-5,1,,C*-algebras text,no
+10.1103/physreva.54.1869,0,,classical capacity,no
+10.1007/978-3-642-66822-7,0,,coding theorems,no
+10.1109/tit.1954.1057459,0,,information theory theorem,no
+10.1109/18.796386,1,,strong converse quantum coding,no
+10.1007/978-3-662-00237-7,0,,coding theorems,no
+10.1016/0034-4877(77)90010-6,0,,quantum channel problems,no
+10.1109/isit.1998.708669,0,,quantum coding theorems,no
+10.1109/18.669165,0,,channel pseudoclassicality,no
+10.48550/arxiv.quant-ph/9809023,0,,quantum coding theorems,no
+10.48550/arxiv.quant-ph/9907077,0,,quantum coding theorems,no
+10.48550/arxiv.quant-ph/9705054,0,,constrained quantum channels,no
+10.48550/arxiv.quant-ph/9807008,0,,QI languages,no
+10.1007/978-3-662-04209-0,0,,QI physics book,no
+10.1017/9781316848142,1,,quantum information theory text (fidelity),no
+10.1103/physreva.72.032317,0,,correlations in states,no
+10.1007/s00220-005-1317-6,0,,simultaneous capacity,no
+10.1109/18.985947,0,,identification strong converse,no
+10.1109/tit.2003.813556,0,,cq capacity formulas,no
+10.1088/1367-2630/18/2/023045,0,,work from coherence,no
+10.3929/ethz-a-005115027,1,,QKD security thesis (purified distance),no
+10.1007/s00220-006-0118-x,0,,state merging,no
+10.1017/9781316809976.001,0,,book preface,no
+10.1109/tit.2009.2039166,0,,correlated noise capacity,no
+10.1088/1367-2630/12/5/055020,0,,quantum CLT,no
+10.1007/s11122-005-0002-x,0,,wiretap channels,no
+10.1038/ncomms8908,0,,quantum Darwinism,no
+10.1109/tit.2008.924665,0,,multiple-access channels,no
+10.1103/physreva.68.042301,0,,data compression side info,no
+10.1103/physrevlett.110.080501,1,,reliability bound transmission,no
+10.1109/tit.2007.896874,1,,cq coding via hypothesis testing,no
+10.1007/s00220-017-2928-4,0,,strong converse exponent,no
+10.1119/1.1463744,1,,Nielsen-Chuang review,no
+10.1145/505482.505499,1,,Nielsen-Chuang review,no
+10.1007/978-3-662-12066-8,0,,information spectrum,no
+10.1103/physreva.71.062310,2,R6;R12,distance measures for processes; composition of errors,no
+informationspectrummethodsininformationtheory,0,,information spectrum,no
+10.1109/tit.2009.2032797,1,,quantum AEP,no
+10.1109/tit.2006.889463,0,,hypothesis testing,no
+10.1109/tit.2009.2018340,1,,smooth entropies,no
+10.1002/andp.19854970419,2,R6,Uhlmann transition probability (fidelity),no
+10.48550/arxiv.0912.4495,0,,one-shot state merging,no
+10.48550/arxiv.quant-ph/0602112,2,R6,sine distance (purified-distance-like),no
+10.1103/revmodphys.91.025001,0,,resource theories,no
+10.1080/00107514.2016.1201896,0,,quantum thermodynamics,no
+10.1038/nphys1734,0,,entropic uncertainty,no
+10.1103/physreva.85.010301,0,,1sDI QKD,no
+10.1038/ncomms1631,0,,finite-key QKD,no
+10.1103/physrevlett.106.110506,0,,smooth entropy uncertainty,no
+10.1038/ncomms4732,0,,MDI QKD,no
+10.1007/978-3-319-21891-5,1,,finite resource QI (purified distance),no
+10.1109/tit.2011.2158473,0,,leftover hashing,no
+10.1109/tit.2013.2276628,0,,finite blocklength quantities,no
+10.1103/physrevlett.110.010503,0,,DI memory attacks,no
+ahierarchyofinformationquantitiesforfiniteblocklengthanalysisofquantumtasks,0,,finite blocklength quantities,no
+10.1137/100813683,0,,Trevisan extractor,no
+10.1038/s41567-020-01147-2,0,,DI randomness,no
+10.1109/tit.2013.2238656,1,,smooth entropy chain rules,no
+10.1145/2885493,0,,randomness expansion,no
+10.1103/physrevapplied.12.024061,0,,twin-field QKD,no
+10.1007/978-3-662-45608-8_22,0,,delegated QC security,no
+10.26421/qic12.5-6-4,1,,data processing inequality,no
+10.1145/2591796.2591843,0,,randomness expansion,no
+10.1103/physrevlett.126.050503,0,,randomness expansion experiment,no
+10.1103/physrevlett.117.260601,0,,entropy axiomatics,no
+10.1007/bf02612715,2,R1a,Pierra product-space projection decomposition,no
+10.1007/bf01697972,2,R1a;R5,Trotter-Lie/Kato product formula with projections,no
+10.1016/j.jat.2010.05.002,3,R1a;R1b,rates/slow convergence of operator (projection) products,yes
+10.1007/3-540-45949-9,1,,Isabelle/HOL,no
+10.1007/3-540-55602-8_217,1,,PVS,no
+10.1007/978-3-662-07964-5,1,,Coq book,no
+interactivetheoremprovingandprogramdevelopmentcoqartthecalculusofinductiveconstructions,1,,Coq book,no
+implementingmathematicswiththenuprlproofdevelopmentsystem,1,,Nuprl,no
+10.1145/75277.75283,0,,type classes,no
+10.1007/bfb0092872,0,,categorical probability,no
+10.1007/978-3-319-21401-6_26,1,R8,Lean prover description,no
+10.1007/978-3-540-71067-7_6,1,,HOL4,no
+10.1007/978-3-540-73595-3_13,0,,SMT E-matching,no
+10.1007/978-3-319-20615-8_17,1,,Mizar,no
+10.1007/978-3-642-03359-9_4,1,,HOL Light,no
+10.1007/s10817-013-9278-5,0,,Sledgehammer SMT,no
+10.6092/issn.1972-5787/1980,1,,Mizar,no
+10.1007/bfb0028402,0,,type classes HOL,no
+10.1007/978-3-642-03359-9_23,1,,packaging structures,no
+10.1007/s10817-012-9250-9,1,,HOL Light Euclidean space,no
+10.6092/issn.1972-5787/4593,0,,hammers,no
+10.1007/978-1-4757-3188-0,0,,ACL2,no
+10.1145/3110278,1,R8,Lean metaprogramming,no
+computeraidedreasoningacl2casestudies,0,,ACL2,no
+10.1007/3-540-48256-3_11,0,,Isabelle locales,no
+10.1007/11541868_7,0,,Coq ring tactic,no
+10.1007/bfb0040259,0,,inductive types CoC,no
+10.1007/s11786-014-0181-1,1,,Coq real analysis library,no
+10.6092/issn.1972-5787/1979,0,,SSReflect,no
+10.1080/00029890.1986.11971923,0,,Fourier-Motzkin,no
+10.1007/978-3-540-74464-1_11,0,,Isabelle type classes,no
+10.1007/978-3-540-24849-1_3,0,,Isabelle locales,no
+10.1007/978-3-642-03359-9_8,0,,unification hints,no
+10.1007/978-3-319-20615-8_1,0,,AFP mining,no
+10.15439/2016f520,0,,Mizar hierarchies,no
+10.1007/978-3-642-22863-6_10,1,,formal linear algebra,no
+10.1007/s11786-008-0053-7,0,,Mizar ATP,no
+10.1145/2854065.2854070,0,,Mizar in Isabelle,no
+10.15439/2017f289,0,,Mizar certification,no
+10.6092/issn.1972-5787/8124,1,,formal asymptotic analysis,no
+10.1007/978-3-319-40229-1_8,0,,congruence closure,no
+10.1007/978-3-319-14125-1_1,1,,formal linear algebra,no
+10.1145/3293880.3294089,0,,Hensel lemma formal,no
+ranknullitytheoreminlinearalgebra,1,,formal rank-nullity,no
+10.1007/3-540-58156-1_17,0,,QED encyclopedia,no
+10.4204/eptcs.290.6,0,,math education models,no
+10.1145/3293880.3294093,1,,Isabelle manifolds linear algebra,no
+topologicalfoundationsforaformaltheoryofmanifolds,0,,formal manifolds,no
+10.4007/annals.2017.185.1.8,0,,cap set,no
+10.4007/annals.2019.190.3.6,0,,sensitivity conjecture,no
+10.1145/3372885.3373830,1,R8,Lean perfectoid spaces,no
+10.5281/zenodo.7118596,0,,Mathematical Components,no
+10.4230/lipics.itp.2019.31,0,,modal logic decision procedures,no
+10.2307/2322281,0,,Fourier-Motzkin,no
+10.1145/3412932.3412935,0,,Lean reference counting,no
+10.4230/lipics.itp.2019.15,1,R8,Lean cap set formalization,no
+10.1145/3372885.3373826,0,,Lean CH independence,no
+10.4230/lipics.itp.2019.19,0,,forcing formalization,no
+10.4230/lipics.itp.2019.12,0,,computability formalization,no
+10.4230/lipics.itcs.2020.56,0,,sensitivity conjecture,no
+10.48550/arxiv.1908.05647,0,,reference counting,no
+10.1007/978-3-030-79876-5_37,1,R8,Lean 4,no
+10.48550/arxiv.2109.00110,0,,MiniF2F benchmark,no
+10.1007/978-3-030-51054-1_1,1,R8,mathlib functional analysis design,no
+10.1145/3437992.3439922,0,,Agda category theory,no
+10.1090/bull/1832,0,,formal turn essay,no
+10.1007/978-3-030-53518-6_16,1,R8,mathlib maintenance,no
+10.1007/978-3-031-57262-3_10,0,,Coq proof transfer,no
+10.1609/aaai.v38i16.29722,0,,transformer memory,no
+10.1145/3437992.3439917,0,,PAC learnability formal,no
+10.1007/s10270-022-01063-4,0,,safety arguments,no
+10.1145/3497775.3503675,0,,Cairo verification,no
+10.1080/10586458.2021.1983489,0,,Lean schemes,no
+10.1090/bull/1839,0,,AI mathematician,no
+10.1090/bull/1831,0,,spec driven math,no
+10.1145/3573105.3575688,0,,sphere eversion formal,no
+10.1007/978-3-031-43513-3_10,0,,Lean premise selection,no
+10.1145/3437992.3439919,0,,Witt vectors,no
+10.1007/978-3-031-98682-6_10,0,,Lean-Auto,no
+10.62056/angy4fe-3,0,,Goppa decoding,no
+10.1145/3573105.3575682,0,,class groups formal,no
+10.1007/s10817-022-09644-0,0,,Dedekind domains formal,no
+10.1109/models50736.2021.00028,0,,Lean safety arguments,no
+10.1007/978-3-030-51054-1_8,0,,validating structures,no
+10.1007/s00778-025-00922-y,0,,DBSP view maintenance,no
+10.1109/icse55347.2025.00002,0,,proof-oriented programming synthesis,no
+10.1145/3658644.3670322,0,,zk Lean proofs,no
+10.3233/com-220416,0,,L2-Betti computability,no
+10.1007/s10817-021-09611-1,0,,Lean-Mathematica,no
+10.1007/978-3-031-16681-5_5,0,,Kruskal-Katona Lean,no
+10.1007/978-3-031-16681-5_1,1,R8,mathlib change of variables,no
+10.1007/978-3-031-17244-1_16,0,,Maude in Lean,no
+10.1007/s10817-021-09593-0,0,,PVS ring theory,no
+10.1007/978-3-030-53518-6_4,0,,theory presentations,no
+10.1145/3776719,0,,multi-modal verifiers,no
+10.1007/978-3-032-07021-0_4,1,R8,growing mathlib,no
+10.1145/3607844,0,,program verification abstractions,no
+10.1145/3573105.3575669,0,,Keller conjecture,no
+10.1145/3573105.3575675,0,,martingale mathlib,no
+10.1145/3497775.3503672,0,,Lie algebras formal,no
+10.1007/978-3-030-99461-7_4,0,,probabilistic program logic,no
+10.1145/3807780,0,,ZX verification,no
+10.1145/3776651,0,,outcome logic,no
+10.1145/3763167,0,,bitvector reasoning,no
+10.1103/physrevb.48.10345,2,R9;R10,DMRG algorithms (truncation),no
+10.1214/ecp.v18-2865,0,,Hanson-Wright concentration,no
+10.2478/cmam-2011-0021,2,R9,DMRG linear algebra in TT format,no
+10.1016/0010-4655(89)90147-1,1,,super-matrix methods,no
+10.1109/tnnls.2024.3443814,0,,capsule networks,no
+10.1016/j.aop.2019.167998,2,R9;R10,MPS time evolution methods (projection errors),no
+10.1007/3-540-10579-4,2,R6,TDVP geometry (projection onto manifold),no
+10.4171/067,2,R9,reduced models numerical analysis (MCTDH),no
+10.1088/0022-3719/6/15/009,0,,transverse Ising,no
+10.1016/j.jcp.2023.112060,1,,conservative DLRA,no
+10.1137/23m1547603,1,,AP energy stable DLRA,no
+10.1016/j.jcp.2024.112827,1,,low-rank chemical master equation,no
+10.1098/rspa.2024.0658,1,,low-rank cross time integration,no
+10.1016/j.jcp.2025.114421,2,R9,randomized DLRA (projection-based low rank),no
+10.1016/j.cpc.2026.110163,1,,low-rank IMEX integrator,no

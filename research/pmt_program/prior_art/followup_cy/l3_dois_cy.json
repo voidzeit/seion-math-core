@@ -1,0 +1,120 @@
+[
+ {
+  "sheet": "L3_CY_chaffey2023",
+  "doi": "10.1109/TAC.2023.3234016",
+  "crossref_title": "Graphical Nonlinear System Analysis",
+  "first_author": "Chaffey",
+  "year": 2023,
+  "container": "IEEE Transactions on Automatic Control",
+  "title_match": true,
+  "first_author_match": true
+ },
+ {
+  "sheet": "L3_CY_bauschke2023",
+  "doi": "10.1080/01630563.2023.2270308",
+  "crossref_title": "How Averaged is the Composition of Two Linear Projections?",
+  "first_author": "Bauschke",
+  "year": 2023,
+  "container": "Numerical Functional Analysis and Optimization",
+  "title_match": true,
+  "first_author_match": true
+ },
+ {
+  "sheet": "L3_CY_giselsson2021",
+  "doi": "10.1186/s13663-021-00709-0",
+  "crossref_title": "On compositions of special cases of Lipschitz continuous operators",
+  "first_author": "Giselsson",
+  "year": 2021,
+  "container": "Fixed Point Theory and Algorithms for Sciences and Engineering",
+  "title_match": true,
+  "first_author_match": true
+ },
+ {
+  "sheet": "L3_CY_lee2025",
+  "doi": "10.1137/23M1621320",
+  "crossref_title": "Convergence Analyses of Davis–Yin Splitting via Scaled Relative Graphs",
+  "first_author": "Lee",
+  "year": 2025,
+  "container": "SIAM Journal on Optimization",
+  "title_match": true,
+  "first_author_match": true
+ },
+ {
+  "sheet": "L3_CY_lee2025 (companion)",
+  "doi": "10.1080/02331934.2025.2544700",
+  "crossref_title": "Convergence analyses of Davis–Yin splitting via scaled relative graphs II: convex optimization problems",
+  "first_author": "Yi",
+  "year": 2025,
+  "container": "Optimization",
+  "title_match": true,
+  "first_author_match": true
+ },
+ {
+  "sheet": "L3_CY_combettes2020",
+  "doi": "10.1137/19M1272780",
+  "crossref_title": "Lipschitz Certificates for Layered Network Structures Driven by Averaged Activation Operators",
+  "first_author": "Combettes",
+  "year": 2020,
+  "container": "SIAM Journal on Mathematics of Data Science",
+  "title_match": true,
+  "first_author_match": true
+ },
+ {
+  "sheet": "L3_CY_bartz2022",
+  "doi": "10.1007/s10898-021-01057-4",
+  "crossref_title": "Conical averagedness and convergence analysis of fixed point algorithms",
+  "first_author": "Bartz",
+  "year": 2021,
+  "container": "Journal of Global Optimization",
+  "title_match": true,
+  "first_author_match": true
+ },
+ {
+  "sheet": "L3_CY_guthrie2021",
+  "doi": "10.23919/ACC50511.2021.9482940",
+  "crossref_title": "Outer Approximations of Minkowski Operations on Complex Sets via Sum-of-Squares Optimization",
+  "first_author": "Guthrie",
+  "year": 2021,
+  "container": "2021 American Control Conference (ACC)",
+  "title_match": true,
+  "first_author_match": true
+ },
+ {
+  "sheet": "L3_CY_bunger2019",
+  "doi": "10.13001/1081-3810.3910",
+  "crossref_title": "The determinant of a complex matrix and Gershgorin circles",
+  "first_author": "Bünger",
+  "year": 2019,
+  "container": "The Electronic Journal of Linear Algebra",
+  "title_match": true,
+  "first_author_match": true
+ },
+ {
+  "sheet": "L3_CY_bunger2019 (companion)",
+  "doi": "10.1007/s00022-019-0502-2",
+  "crossref_title": "Complex Disk Products and Cartesian Ovals",
+  "first_author": "Bünger",
+  "year": 2019,
+  "container": "Journal of Geometry",
+  "title_match": true,
+  "first_author_match": true
+ },
+ {
+  "sheet": "L3_CY_song2025",
+  "doi": null,
+  "identifier": "arXiv:2507.19533",
+  "note": "NO_DOI (arXiv only)"
+ },
+ {
+  "sheet": "L3_CY_yang2026",
+  "doi": null,
+  "identifier": "arXiv:2608.12591",
+  "note": "NO_DOI (arXiv only)"
+ },
+ {
+  "sheet": "L3_CY_yang2026 (companion)",
+  "doi": null,
+  "identifier": "arXiv:2510.06583",
+  "note": "NO_DOI (arXiv only)"
+ }
+]

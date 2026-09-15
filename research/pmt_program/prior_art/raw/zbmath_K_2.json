@@ -1,0 +1,23 @@
+{
+ "query": "error accumulation sequence of quantum channels bound",
+ "url": "https://api.zbmath.org/v1/document/_search?search_string=error+accumulation+sequence+of+quantum+channels+bound&page=0&results_per_page=25",
+ "total": 1,
+ "records": [
+  {
+   "title": "16th innovations in theoretical computer science conference, ITCS 2025, Columbia University, New York, NY, USA, January 7--10, 2025",
+   "year": "2025",
+   "venue": "LIPIcs -- Leibniz International Proceedings in Informatics",
+   "doi": "10.4230/LIPIcs.ITCS.2025",
+   "arxiv": "",
+   "authors": "",
+   "abstract": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+   "cited_by": "",
+   "openalex": "",
+   "zbmath": "7985635",
+   "msc": "68-06;68Qxx;00B25",
+   "source": "zbmath",
+   "family": "K",
+   "query": "error accumulation sequence of quantum channels bound"
+  }
+ ]
+}

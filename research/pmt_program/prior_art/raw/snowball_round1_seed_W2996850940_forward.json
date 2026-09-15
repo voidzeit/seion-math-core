@@ -1,0 +1,75 @@
+{
+ "anchor": {
+  "id": "10.48550/arXiv.2001.01191",
+  "family": "B",
+  "why": "SEED_FROM_REPO: Zhang-Solomonik, stability of tensor networks; PAA 'closest precedent'"
+ },
+ "direction": "forward",
+ "records": [
+  {
+   "title": "A Practical Guide to the Numerical Implementation of Tensor Networks I: Contractions, Decompositions, and Gauge Freedom",
+   "year": 2022,
+   "venue": "Frontiers in Applied Mathematics and Statistics",
+   "doi": "10.3389/fams.2022.806549",
+   "arxiv": "",
+   "authors": "Glen Evenbly",
+   "abstract": "We present an overview of the key ideas and skills necessary to begin implementing tensor network methods numerically, which is intended to facilitate the practical application of tensor network methods for researchers that are already versed with their theoretical foundations. These skills include an introduction to the contraction of tensor networks, to optimal tensor decompositions, and to the manipulation of gauge degrees of freedom in tensor networks. The topics presented are of key importance to many common tensor network algorithms such as DMRG, TEBD, TRG, PEPS, and MERA.",
+   "cited_by": 26,
+   "openalex": "https://openalex.org/W4293075156",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Distributed-Memory DMRG via Sparse and Dense Parallel Tensor Contractions",
+   "year": 2020,
+   "venue": "",
+   "doi": "10.1109/sc41405.2020.00028",
+   "arxiv": "",
+   "authors": "Ryan Levy; Edgar Solomonik; Bryan K. Clark",
+   "abstract": "The density matrix renormalization group (DMRG) algorithm is a powerful tool for solving eigenvalue problems to model quantum systems. DMRG relies on tensor contractions and dense linear algebra to compute properties of condensed matter physics systems. However, its efficient parallel implementation is challenging due to limited concurrency, large memory footprint, and tensor sparsity. We mitigate these problems by implementing two new parallel approaches that handle block sparsity arising in DMRG, via Cyclops, a distributed memory tensor contraction library. We benchmark their performance on two physical systems using the Blue Waters and Stampede2 supercomputers. Our DMRG performance is improved by up to 5.9X in runtime and 99X in processing rate over ITensor, at roughly comparable computational resource use. This enables higher accuracy calculations via larger tensors for quantum state approximation. We demonstrate that despite having limited concurrency, DMRG is weakly scalable with the use of efficient parallel tensor contraction mechanisms.",
+   "cited_by": 11,
+   "openalex": "https://openalex.org/W3132553051",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Distributed-Memory DMRG via Sparse and Dense Parallel Tensor Contractions",
+   "year": 2020,
+   "venue": "arXiv (Cornell University)",
+   "doi": "10.5555/3433701.3433732",
+   "arxiv": "",
+   "authors": "Ryan Levy; Edgar Solomonik; Bryan K. Clark",
+   "abstract": "The Density Matrix Renormalization Group (DMRG) algorithm is a powerful tool for solving eigenvalue problems to model quantum systems. DMRG relies on tensor contractions and dense linear algebra to compute properties of condensed matter physics systems. However, its efficient parallel implementation is challenging due to limited concurrency, large memory footprint, and tensor sparsity. We mitigate these problems by implementing two new parallel approaches that handle block sparsity arising in DMRG, via Cyclops, a distributed memory tensor contraction library. We benchmark their performance on two physical systems using the Blue Waters and Stampede2 supercomputers. Our DMRG performance is improved by up to 5.9X in runtime and 99X in processing rate over ITensor, at roughly comparable computational resource use. This enables higher accuracy calculations via larger tensors for quantum state approximation. We demonstrate that despite having limited concurrency, DMRG is weakly scalable with the use of efficient parallel tensor contraction mechanisms.",
+   "cited_by": 7,
+   "openalex": "https://openalex.org/W3042120061",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Orthogonal Capsule Networks With Positional Information Preservation and Lightweight Feature Learning",
+   "year": 2024,
+   "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+   "doi": "10.1109/tnnls.2024.3443814",
+   "arxiv": "",
+   "authors": "Yuerong Xue",
+   "abstract": "Both transformer and convolutional neural network (CNN) models require supplementary elements to acquire positional information. To address this issue, we propose a novel orthogonal capsule network (OthogonalCaps) that preserves location information during lightweight feature learning. The proposed network simplifies complex training processes and enables end-to-end training for object detection tasks. Specifically, there is no need to solve the regression problem of positions and the classification problem of objects separately, nor is there a need to encode the positional information as an additional token, as in transformer models. We generate the next capsule layer via orthogonality-based dynamic routing, which reduces the number of parameters and preserves positional information via its voting mechanism. Moreover, we propose Capsule ReLU as an activation function to avoid the problem of gradient vanishing and to facilitate capsule normalization across various scales, thus empowering OrthogonalCaps to better adapt to objects of diverse scales. The orthogonal capsule network (CapsNet) demonstrates an accuracy and run-time performance on a par with those of Faster R-CNN on the VOC dataset. Our network outperforms the baseline approach in detecting small-scale samples. The simulation results suggest that the proposed network surpasses other capsule network models in achieving a favorable balance between parameters and accuracy. Furthermore, an ablation experiment indicates that both Capsule ReLU and orthogonality-based dynamic routing play essential roles in enhancing the classification performance. The training code and pretrained models are available at https://github.com/l1ack/OrthogonalCaps.",
+   "cited_by": 3,
+   "openalex": "https://openalex.org/W4403061079",
+   "zbmath": "",
+   "msc": ""
+  },
+  {
+   "title": "Approximate Contraction of Arbitrary Tensor Networks with a Flexible and Efficient Density Matrix Algorithm",
+   "year": 2024,
+   "venue": "Quantum",
+   "doi": "10.22331/q-2024-12-27-1580",
+   "arxiv": "",
+   "authors": "Linjian Ma; Matthew Fishman; E. Miles Stoudenmire; Edgar Solomonik",
+   "abstract": "Tensor network contractions are widely used in statistical physics, quantum computing, and computer science. We introduce a method to efficiently approximate tensor network contractions using low-rank approximations, where each intermediate tensor generated during the contractions is approximated as a low-rank binary tree tensor network. The proposed algorithm has the flexibility to incorporate a large portion of the environment when performing low-rank approximations, which can lead to high accuracy for a given rank. Here, the environment refers to the remaining set of tensors in the network, and low-rank approximations with larger environments can generally provide higher accuracy. For contracting tensor networks defined on lattices, the proposed algorithm can be viewed as a generalization of the standard boundary-based algorithms. In addition, the algorithm includes a cost-efficient density matrix algorithm for approximating a tensor network with a general graph structure into a tree structure, whose computational cost is asymptotically upper-bounded by that of the standard algorithm that uses canonicalization. Experimental results indicate that the proposed technique outperforms previously proposed approximate tensor network contraction algorithms for multiple problems in terms of both accuracy and efficiency.",
+   "cited_by": 2,
+   "openalex": "https://openalex.org/W4405847480",
+   "zbmath": "",
+   "msc": ""
+  }
+ ]
+}

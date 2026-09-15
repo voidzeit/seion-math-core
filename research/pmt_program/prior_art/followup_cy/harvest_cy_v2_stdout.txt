@@ -1,0 +1,66 @@
+openalex CY1 2 OK 54 25 
+openalex CY1 3 OK 883 25 
+openalex CY1 4 OK 707 25 
+openalex CY1 5 OK 47 25 
+openalex CY2 0 OK 103244 25 
+openalex CY2 1 OK 7285 25 
+openalex CY2 2 OK 211143 25 
+openalex CY2 3 OK 19632 25 
+openalex CY2 4 OK 147874 25 
+openalex CY3 0 OK 1638 25 
+openalex CY3 1 OK 1601 25 
+openalex CY3 2 OK 12501 25 
+openalex CY3 3 OK 30 25 
+openalex CY3 4 OK 64139 25 
+openalex CY3 5 OK 186138 25 
+openalex CY4 0 OK 30 25 
+openalex CY4 1 OK 2971 25 
+openalex CY4 2 OK 12528 25 
+openalex CY4 3 OK 4172 25 
+openalex CY4 4 OK 9321 25 
+semanticscholar CY1 0 BLOCKED  0 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: 
+semanticscholar CY1 1 BLOCKED  0 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: 
+semanticscholar cool-down 600 s
+semanticscholar CY1 2 BLOCKED  0 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: 
+semanticscholar CY1 3 BLOCKED  0 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: 
+semanticscholar CY1 4 DEFERRED
+semanticscholar CY1 5 DEFERRED
+semanticscholar CY2 0 DEFERRED
+semanticscholar CY2 1 DEFERRED
+semanticscholar CY2 2 DEFERRED
+semanticscholar CY2 3 DEFERRED
+semanticscholar CY2 4 DEFERRED
+semanticscholar CY3 0 DEFERRED
+semanticscholar CY3 1 DEFERRED
+semanticscholar CY3 2 DEFERRED
+semanticscholar CY3 3 DEFERRED
+semanticscholar CY3 4 DEFERRED
+semanticscholar CY3 5 DEFERRED
+semanticscholar CY4 0 DEFERRED
+semanticscholar CY4 1 DEFERRED
+semanticscholar CY4 2 DEFERRED
+semanticscholar CY4 3 DEFERRED
+semanticscholar CY4 4 DEFERRED
+arxiv CY1 0 BLOCKED  0 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: Un
+arxiv CY1 1 BLOCKED  0 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: Un
+arxiv cool-down 600 s
+arxiv CY1 2 BLOCKED  0 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: Un
+arxiv CY1 3 BLOCKED  0 still failing after backoff 30/60/120 s: HTTPError: HTTP Error 429: Un
+arxiv CY1 4 DEFERRED
+arxiv CY1 5 DEFERRED
+arxiv CY2 0 DEFERRED
+arxiv CY2 1 DEFERRED
+arxiv CY2 2 DEFERRED
+arxiv CY2 3 DEFERRED
+arxiv CY2 4 DEFERRED
+arxiv CY3 0 DEFERRED
+arxiv CY3 1 DEFERRED
+arxiv CY3 2 DEFERRED
+arxiv CY3 3 DEFERRED
+arxiv CY3 4 DEFERRED
+arxiv CY3 5 DEFERRED
+arxiv CY4 0 DEFERRED
+arxiv CY4 1 DEFERRED
+arxiv CY4 2 DEFERRED
+arxiv CY4 3 DEFERRED
+arxiv CY4 4 DEFERRED
