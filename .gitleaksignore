@@ -1,5 +1,7 @@
-# gitleaks false positives: BibTeX citation keys (e.g. "citation_key": "kolda2009tensor")
-# in prior-art verdict files, flagged by the generic-api-key rule. Verified line by line 2026-09-15.
+# gitleaks false positives: BibTeX citation keys in prior-art verdict files,
+# flagged by the generic-api-key rule. Verified line by line 2026-09-15.
+# The last entry covers the first version of this file, whose header quoted an example key.
+133b79a0a2dc9dd54cd47dd6e3805accee5592bf:.gitleaksignore:generic-api-key:1
 a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:137
 a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:151
 a7deb91345fe3e9da5a2941fd7e11c8086ce91bd:research/pmt_program/prior_art/l3_verdicts.json:generic-api-key:168
