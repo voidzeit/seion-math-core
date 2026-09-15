@@ -2,6 +2,7 @@
 
 ```
 STATUS:  FROZEN 2026-09-14 (editorial contract; changes only by explicit revision entry)
+PAIR:    application, product and talk claims are governed by APPLICATIONS_BOUNDARY.md (frozen 2026-09-15)
 RULE:    if a new sentence does not fit this register, it probably should not enter the paper
 WORDS:   "exact" → the formula;  "sharp" → the inequality;  "attained" → the extremizer
 ```
@@ -227,7 +228,22 @@ argued on paper only (`w(θ) = 1 + iθ + O(θ²)`):
 the norm and closure conditions are also formalized (`CommonSpace.lean`, `SpecLemmas.lean`). The
 definition correspondence is documented in `../lean/SPEC_AUDIT.md`.
 
-**R1 limitation (must accompany any use).**
+**R1 update 2026-09-15 — H3 proved (supersedes the R1 limitation below).**
+
+Add as a main result:
+
+> **Theorem 1.5 (Water-filling formula).** For nonnegative defects,
+> $$G_{\rm box}(\boldsymbol\eta)=\max_{0\le\tau\le\pi/2}\Bigl|1-\prod_{v\ne r}w\bigl(\min(\arcsin\eta_v,\tau)\bigr)\Bigr|,$$
+> and the maximum is attained. Hence the sharp constant is a one-dimensional maximization, and an
+> extremal configuration raises all vertex angles together until each reaches its own cap.
+
+Lean: `PMT.capped_equal_angle`, `PMT.gBox_eq_capped_max`. Corollary 1.3 (uniform defects) follows
+directly. The Diagonal Lemma becomes the equal-cap case of the water-filling principle. The
+R1 limitation paragraph below ("left open") is withdrawn. Prior-art note: the uncapped case with all
+`η = 1` is known (Chaffey–Forni–Sepulchre 2023, Thm 5; Farouki–Pottmann 2002). Heterogeneous caps
+were not found (PRIOR-ART-R-HET, PRIOR-ART-R-CY), and novelty wording remains subject to §12.
+
+**R1 limitation (must accompany any use) — WITHDRAWN 2026-09-15, kept for provenance.**
 
 > Evaluating $G_{\rm box}$ is a finite-dimensional maximization over a box. Whether the maximum is
 > always attained on the capped equal-angle curve $\theta_v=\min(\arcsin\eta_v,\tau)$ is left open;
