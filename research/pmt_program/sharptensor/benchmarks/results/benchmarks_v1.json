@@ -1,0 +1,2148 @@
+{
+  "config_sha256": "84a4e039fd64727ee1a2b809ea913cf8d3a36df5841b458b35321d6e6c5c9b9e",
+  "code_sha256": {
+    "__init__.py": "3a0dc3d8bdf543fb96a2a5bff2be70d8fc452718ec5304fbcffc784733fc7e5f",
+    "certificate.py": "a8bc27ecc12e39f8f62459bf5d95e1cf6249b9f95ce5b58cbf460f74214bde02",
+    "gbox.py": "2d4321b3fa52aa94590740e23537067fa14cba2645da7ef89ff2cad3b76315ed",
+    "models.py": "8da7095ec79b031777680d2615475ad8c3d138516b62674e4677d41e1f974fc9",
+    "planner.py": "423e1d36f28687ab7cd07e35981a94387914720dd2bfefb3a6dd80fc28ba89ce"
+  },
+  "python": "3.12.5",
+  "numpy": "2.4.2",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "started": "2026-09-15T15:51:16",
+  "benchmarks": {
+    "B1a": {
+      "role": "positive",
+      "params": {
+        "depth": 4,
+        "d": 32,
+        "s": 1.0,
+        "decay": 3.0,
+        "noise": 0.001,
+        "seed": 101
+      },
+      "full": {
+        "ranks": {
+          "n0_0": 32,
+          "n0_1": 32,
+          "n0_2": 32,
+          "n0_3": 32,
+          "n0_4": 32,
+          "n0_5": 32,
+          "n0_6": 32,
+          "n0_7": 32,
+          "n1_0": 32,
+          "n1_1": 32,
+          "n1_2": 32,
+          "n1_3": 32,
+          "n2_0": 32,
+          "n2_1": 32,
+          "n3_0": 32
+        },
+        "stored_bytes": 245760,
+        "counted_flops": 7372800.0,
+        "wall_seconds": 0.007205900001281407,
+        "actual_error": 1.8382826144516294e-16,
+        "bounds": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "best": "theorem_r",
+        "best_bound": 0.0,
+        "relative_error_upper": 0.0,
+        "relative_by_certificate": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "tightness": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "sound": true,
+        "sound_each": {
+          "theorem_r": true,
+          "amplitude_compact": true,
+          "slotwise": true
+        },
+        "prod_M": 1.0,
+        "lambda_T": 82.21134319553285,
+        "R_root_norm": 0.04135166885598561,
+        "R_root_over_Lambda_T": 0.0005029922544585374,
+        "gbox": {
+          "gbox_lower": 0.0,
+          "gbox_upper": 0.0,
+          "sum_eta": 0.0
+        }
+      },
+      "M_tightness": {
+        "M_bound": 1.0,
+        "M_lower_estimate": 0.999999999985972,
+        "ratio": 1.0000000000140281
+      },
+      "sweep": {
+        "0.9": {
+          "ranks": {
+            "n0_0": 29,
+            "n0_1": 29,
+            "n0_2": 29,
+            "n0_3": 29,
+            "n0_4": 29,
+            "n0_5": 29,
+            "n0_6": 29,
+            "n0_7": 29,
+            "n1_0": 29,
+            "n1_1": 29,
+            "n1_2": 29,
+            "n1_3": 29,
+            "n2_0": 29,
+            "n2_1": 29,
+            "n3_0": 32
+          },
+          "stored_bytes": 224256,
+          "counted_flops": 7036800.0,
+          "wall_seconds": 0.006759399999282323,
+          "actual_error": 1.1641448312791337e-10,
+          "bounds": {
+            "theorem_r": 0.0014026633523185174,
+            "amplitude_compact": 2.6269235649453715e-06,
+            "slotwise": 2.1104986798747863e-06
+          },
+          "best": "slotwise",
+          "best_bound": 2.1104986798747863e-06,
+          "relative_error_upper": 5.104041648143076e-05,
+          "relative_by_certificate": {
+            "theorem_r": 0.03511134594310298,
+            "amplitude_compact": 6.3530457833711e-05,
+            "slotwise": 5.104041648143076e-05
+          },
+          "tightness": {
+            "theorem_r": 12048873.255549358,
+            "amplitude_compact": 22565.264169570484,
+            "slotwise": 18129.17622591531
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 82.21134319553285,
+          "R_root_norm": 0.04135166885588129,
+          "R_root_over_Lambda_T": 0.0005029922544572686,
+          "gbox": {
+            "gbox_lower": 1.706166293248197e-05,
+            "gbox_upper": 1.7061676622682093e-05,
+            "sum_eta": 1.706167662268209e-05
+          }
+        },
+        "0.75": {
+          "ranks": {
+            "n0_0": 24,
+            "n0_1": 24,
+            "n0_2": 24,
+            "n0_3": 24,
+            "n0_4": 24,
+            "n0_5": 24,
+            "n0_6": 24,
+            "n0_7": 24,
+            "n1_0": 24,
+            "n1_1": 24,
+            "n1_2": 24,
+            "n1_3": 24,
+            "n2_0": 24,
+            "n2_1": 24,
+            "n3_0": 32
+          },
+          "stored_bytes": 188416,
+          "counted_flops": 6512640.0,
+          "wall_seconds": 0.006434999995690305,
+          "actual_error": 5.674297974326377e-10,
+          "bounds": {
+            "theorem_r": 0.006386045836089653,
+            "amplitude_compact": 1.2140184441587765e-05,
+            "slotwise": 9.829996709333301e-06
+          },
+          "best": "slotwise",
+          "best_bound": 9.829996709333301e-06,
+          "relative_error_upper": 0.0002377735722544635,
+          "relative_by_certificate": {
+            "theorem_r": 0.18263783923730686,
+            "amplitude_compact": 0.0002936701223133165,
+            "slotwise": 0.0002377735722544635
+          },
+          "tightness": {
+            "theorem_r": 11254336.421850972,
+            "amplitude_compact": 21395.042164716393,
+            "slotwise": 17323.72313510777
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 82.21134319553285,
+          "R_root_norm": 0.04135166885680482,
+          "R_root_over_Lambda_T": 0.0005029922544685022,
+          "gbox": {
+            "gbox_lower": 7.767838810916916e-05,
+            "gbox_upper": 7.767840285617246e-05,
+            "sum_eta": 7.767840285617245e-05
+          }
+        },
+        "0.5": {
+          "ranks": {
+            "n0_0": 16,
+            "n0_1": 16,
+            "n0_2": 16,
+            "n0_3": 16,
+            "n0_4": 16,
+            "n0_5": 16,
+            "n0_6": 16,
+            "n0_7": 16,
+            "n1_0": 16,
+            "n1_1": 16,
+            "n1_2": 16,
+            "n1_3": 16,
+            "n2_0": 16,
+            "n2_1": 16,
+            "n3_0": 32
+          },
+          "stored_bytes": 131072,
+          "counted_flops": 5767168.0,
+          "wall_seconds": 0.005946900004346389,
+          "actual_error": 3.1248569101973206e-09,
+          "bounds": {
+            "theorem_r": 0.02644547226605539,
+            "amplitude_compact": 5.0400501734299e-05,
+            "slotwise": 4.081773049964102e-05
+          },
+          "best": "slotwise",
+          "best_bound": 4.081773049964102e-05,
+          "relative_error_upper": 0.0009880631692881618,
+          "relative_by_certificate": {
+            "theorem_r": 1.774126088266142,
+            "amplitude_compact": 0.0012203136545083147,
+            "slotwise": 0.0009880631692881618
+          },
+          "tightness": {
+            "theorem_r": 8462938.632407805,
+            "amplitude_compact": 16128.89907689131,
+            "slotwise": 13062.271864814305
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 82.21134319553285,
+          "R_root_norm": 0.04135166886671562,
+          "R_root_over_Lambda_T": 0.0005029922545890548,
+          "gbox": {
+            "gbox_lower": 0.00032167666605347037,
+            "gbox_upper": 0.0003216766839967209,
+            "sum_eta": 0.0003216766839967208
+          }
+        },
+        "0.25": {
+          "ranks": {
+            "n0_0": 8,
+            "n0_1": 8,
+            "n0_2": 8,
+            "n0_3": 8,
+            "n0_4": 8,
+            "n0_5": 8,
+            "n0_6": 8,
+            "n0_7": 8,
+            "n1_0": 8,
+            "n1_1": 8,
+            "n1_2": 8,
+            "n1_3": 8,
+            "n2_0": 8,
+            "n2_1": 8,
+            "n3_0": 16
+          },
+          "stored_bytes": 65536,
+          "counted_flops": 4227072.0,
+          "wall_seconds": 0.005071999999927357,
+          "actual_error": 3.328526120143702e-07,
+          "bounds": {
+            "theorem_r": 2.3258479971108366,
+            "amplitude_compact": 0.004680212985917032,
+            "slotwise": 0.0037681710086904367
+          },
+          "best": "slotwise",
+          "best_bound": 0.0037681710086904367,
+          "relative_error_upper": 0.10026131254140562,
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": 0.12762549617574537,
+            "slotwise": 0.10026131254140562
+          },
+          "tightness": {
+            "theorem_r": 6987621.286896866,
+            "amplitude_compact": 14060.917105601604,
+            "slotwise": 11320.839532807253
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 82.21134319553285,
+          "R_root_norm": 0.04135167069740904,
+          "R_root_over_Lambda_T": 0.0005029922768571914,
+          "gbox": {
+            "gbox_lower": 0.028291083173686577,
+            "gbox_upper": 0.02829108376904876,
+            "sum_eta": 0.028292676268164944
+          }
+        }
+      },
+      "planners": {
+        "0.1": {
+          "eps": 0.0041351668855985615,
+          "theorem_r": {
+            "met": true,
+            "iterations": 1,
+            "ranks": {
+              "n0_0": 29,
+              "n0_1": 29,
+              "n0_2": 28,
+              "n0_3": 25,
+              "n0_4": 26,
+              "n0_5": 28,
+              "n0_6": 25,
+              "n0_7": 25,
+              "n1_0": 13,
+              "n1_1": 10,
+              "n1_2": 11,
+              "n1_3": 12,
+              "n2_0": 7,
+              "n2_1": 6,
+              "n3_0": 13
+            },
+            "stored_bytes": 146944,
+            "counted_flops": 5821216.0,
+            "wall_seconds": 0.006048400005965959,
+            "actual_error": 3.4217510208230636e-10,
+            "bounds": {
+              "theorem_r": 0.004117617606049881,
+              "amplitude_compact": 6.778109669050569e-06,
+              "slotwise": 5.5160431153623505e-06
+            },
+            "best": "slotwise",
+            "best_bound": 5.5160431153623505e-06,
+            "relative_error_upper": 0.00013341127868010653,
+            "relative_by_certificate": {
+              "theorem_r": 0.11058741844479963,
+              "amplitude_compact": 0.00016394068400189498,
+              "slotwise": 0.00013341127868010653
+            },
+            "tightness": {
+              "theorem_r": 12033656.396950338,
+              "amplitude_compact": 19808.892078361012,
+              "slotwise": 16120.527419424949
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 82.21134319553285,
+            "R_root_norm": 0.04135166885669205,
+            "R_root_over_Lambda_T": 0.0005029922544671305,
+            "gbox": {
+              "gbox_lower": 5.008574428259577e-05,
+              "gbox_upper": 5.008576001801199e-05,
+              "sum_eta": 5.0085760018011984e-05
+            }
+          },
+          "certified_search": {
+            "met": true,
+            "steps": 403,
+            "ranks": {
+              "n0_0": 5,
+              "n0_1": 8,
+              "n0_2": 10,
+              "n0_3": 11,
+              "n0_4": 12,
+              "n0_5": 19,
+              "n0_6": 32,
+              "n0_7": 32,
+              "n1_0": 13,
+              "n1_1": 21,
+              "n1_2": 31,
+              "n1_3": 32,
+              "n2_0": 32,
+              "n2_1": 32,
+              "n3_0": 32
+            },
+            "stored_bytes": 164864,
+            "counted_flops": 6023296.0,
+            "wall_seconds": 0.006062299995392095,
+            "actual_error": 6.278981076973629e-07,
+            "bounds": {
+              "theorem_r": 2.6449803550060884,
+              "amplitude_compact": 0.005448388981424752,
+              "slotwise": 0.0041289921805059615
+            },
+            "best": "slotwise",
+            "best_bound": 0.0041289921805059615,
+            "relative_error_upper": 0.11092678665143746,
+            "relative_by_certificate": {
+              "theorem_r": "VACUOUS",
+              "amplitude_compact": 0.15175183537860346,
+              "slotwise": 0.11092678665143746
+            },
+            "tightness": {
+              "theorem_r": 4212435.620654757,
+              "amplitude_compact": 8677.186496715469,
+              "slotwise": 6575.895244608813
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 82.21134319553285,
+            "R_root_norm": 0.04135167125693493,
+            "R_root_over_Lambda_T": 0.0005029922836631366,
+            "gbox": {
+              "gbox_lower": 0.03217293627528115,
+              "gbox_upper": 0.032172936874601626,
+              "sum_eta": 0.032175274014667146
+            }
+          }
+        },
+        "0.01": {
+          "eps": 0.0004135166885598561,
+          "theorem_r": {
+            "met": true,
+            "iterations": 1,
+            "ranks": {
+              "n0_0": 31,
+              "n0_1": 32,
+              "n0_2": 32,
+              "n0_3": 31,
+              "n0_4": 32,
+              "n0_5": 32,
+              "n0_6": 30,
+              "n0_7": 31,
+              "n1_0": 15,
+              "n1_1": 13,
+              "n1_2": 13,
+              "n1_3": 15,
+              "n2_0": 8,
+              "n2_1": 8,
+              "n3_0": 16
+            },
+            "stored_bytes": 173568,
+            "counted_flops": 6273024.0,
+            "wall_seconds": 0.006527700003061909,
+            "actual_error": 3.5329904468867696e-11,
+            "bounds": {
+              "theorem_r": 0.0004053553241218141,
+              "amplitude_compact": 4.318217991100548e-07,
+              "slotwise": 3.774084546926604e-07
+            },
+            "best": "slotwise",
+            "best_bound": 3.774084546926604e-07,
+            "relative_error_upper": 9.126884348242258e-06,
+            "relative_by_certificate": {
+              "theorem_r": 0.009899678118904078,
+              "amplitude_compact": 1.0442778259629372e-05,
+              "slotwise": 9.126884348242258e-06
+            },
+            "tightness": {
+              "theorem_r": 11473433.914292311,
+              "amplitude_compact": 12222.557790683277,
+              "slotwise": 10682.408015714516
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 82.21134319553285,
+            "R_root_norm": 0.04135166885604987,
+            "R_root_over_Lambda_T": 0.0005029922544593191,
+            "gbox": {
+              "gbox_lower": 4.930637981947011e-06,
+              "gbox_upper": 4.930649571771503e-06,
+              "sum_eta": 4.930649571771502e-06
+            }
+          },
+          "certified_search": {
+            "met": true,
+            "steps": 408,
+            "ranks": {
+              "n0_0": 9,
+              "n0_1": 10,
+              "n0_2": 15,
+              "n0_3": 18,
+              "n0_4": 32,
+              "n0_5": 32,
+              "n0_6": 32,
+              "n0_7": 32,
+              "n1_0": 16,
+              "n1_1": 23,
+              "n1_2": 32,
+              "n1_3": 32,
+              "n2_0": 32,
+              "n2_1": 32,
+              "n3_0": 32
+            },
+            "stored_bytes": 194048,
+            "counted_flops": 6543840.0,
+            "wall_seconds": 0.00803740000264952,
+            "actual_error": 3.6544392320960926e-08,
+            "bounds": {
+              "theorem_r": 0.24691137019556772,
+              "amplitude_compact": 0.0005138472917950443,
+              "slotwise": 0.0004135131014086446
+            },
+            "best": "slotwise",
+            "best_bound": 0.0004135131014086446,
+            "relative_error_upper": 0.010100921621883157,
+            "relative_by_certificate": {
+              "theorem_r": "VACUOUS",
+              "amplitude_compact": 0.012582632315440982,
+              "slotwise": 0.010100921621883157
+            },
+            "tightness": {
+              "theorem_r": 6756477.656736015,
+              "amplitude_compact": 14060.906726319121,
+              "slotwise": 11315.364003780796
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 82.21134319553285,
+            "R_root_norm": 0.04135166873591912,
+            "R_root_over_Lambda_T": 0.0005029922529980761,
+            "gbox": {
+              "gbox_lower": 0.0030033725398996305,
+              "gbox_upper": 0.0030033735078176444,
+              "sum_eta": 0.003003375034197951
+            }
+          }
+        }
+      },
+      "dense_uncompressed": {
+        "stored_bytes": 122880,
+        "counted_flops": 983040.0
+      },
+      "success": {
+        "S1_memory": true,
+        "S2_compute": true,
+        "S3_non_vacuous": true,
+        "memory_ratio": 1.266490765171504,
+        "flops_ratio": 1.126677913885425
+      },
+      "all_runs_sound": true,
+      "seconds": 88.21741950000433
+    },
+    "B1b": {
+      "role": "negative_control_cancellation",
+      "params": {
+        "depth": 4,
+        "d": 32,
+        "s": -1.0,
+        "decay": 3.0,
+        "noise": 0.001,
+        "seed": 101
+      },
+      "full": {
+        "ranks": {
+          "n0_0": 32,
+          "n0_1": 32,
+          "n0_2": 32,
+          "n0_3": 32,
+          "n0_4": 32,
+          "n0_5": 32,
+          "n0_6": 32,
+          "n0_7": 32,
+          "n1_0": 32,
+          "n1_1": 32,
+          "n1_2": 32,
+          "n1_3": 32,
+          "n2_0": 32,
+          "n2_1": 32,
+          "n3_0": 32
+        },
+        "stored_bytes": 245760,
+        "counted_flops": 7372800.0,
+        "wall_seconds": 0.00950860000011744,
+        "actual_error": 3.956041229231364e-37,
+        "bounds": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "best": "theorem_r",
+        "best_bound": 0.0,
+        "relative_error_upper": 0.0,
+        "relative_by_certificate": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "tightness": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "sound": true,
+        "sound_each": {
+          "theorem_r": true,
+          "amplitude_compact": true,
+          "slotwise": true
+        },
+        "prod_M": 1.0,
+        "lambda_T": 82.21134319553285,
+        "R_root_norm": 4.500931848787441e-23,
+        "R_root_over_Lambda_T": 5.474830691042657e-25,
+        "gbox": {
+          "gbox_lower": 0.0,
+          "gbox_upper": 0.0,
+          "sum_eta": 0.0
+        }
+      },
+      "M_tightness": {
+        "M_bound": 1.0,
+        "M_lower_estimate": 0.7071067811749476,
+        "ratio": 1.4142135623962948
+      },
+      "sweep": {
+        "0.9": {
+          "ranks": {
+            "n0_0": 29,
+            "n0_1": 29,
+            "n0_2": 29,
+            "n0_3": 29,
+            "n0_4": 29,
+            "n0_5": 29,
+            "n0_6": 29,
+            "n0_7": 29,
+            "n1_0": 29,
+            "n1_1": 29,
+            "n1_2": 29,
+            "n1_3": 29,
+            "n2_0": 29,
+            "n2_1": 29,
+            "n3_0": 32
+          },
+          "stored_bytes": 224256,
+          "counted_flops": 7036800.0,
+          "wall_seconds": 0.007172899997385684,
+          "actual_error": 6.349703832451528e-26,
+          "bounds": {
+            "theorem_r": 0.015318369684640043,
+            "amplitude_compact": 9.344956295164676e-23,
+            "slotwise": 4.143072687203181e-23
+          },
+          "best": "slotwise",
+          "best_bound": 4.143072687203181e-23,
+          "relative_error_upper": 11.575107059677876,
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": "VACUOUS",
+            "slotwise": 11.575107059677876
+          },
+          "tightness": {
+            "theorem_r": 2.4124542008325202e+23,
+            "amplitude_compact": 1471.7153022799685,
+            "slotwise": 652.4828238490614
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 82.21134319553285,
+          "R_root_norm": 4.501002222182228e-23,
+          "R_root_over_Lambda_T": 5.474916291632613e-25,
+          "gbox": {
+            "gbox_lower": 0.0001863291338512008,
+            "gbox_upper": 0.00018632914983771247,
+            "sum_eta": 0.00018632914983771244
+          }
+        },
+        "0.75": {
+          "ranks": {
+            "n0_0": 24,
+            "n0_1": 24,
+            "n0_2": 24,
+            "n0_3": 24,
+            "n0_4": 24,
+            "n0_5": 24,
+            "n0_6": 24,
+            "n0_7": 24,
+            "n1_0": 24,
+            "n1_1": 24,
+            "n1_2": 24,
+            "n1_3": 24,
+            "n2_0": 24,
+            "n2_1": 24,
+            "n3_0": 32
+          },
+          "stored_bytes": 188416,
+          "counted_flops": 6512640.0,
+          "wall_seconds": 0.006670800001302268,
+          "actual_error": 4.0607540363455756e-25,
+          "bounds": {
+            "theorem_r": 0.13191804898341286,
+            "amplitude_compact": 7.537207819867587e-22,
+            "slotwise": 3.3538489770695137e-22
+          },
+          "best": "slotwise",
+          "best_bound": 3.3538489770695137e-22,
+          "relative_error_upper": "VACUOUS",
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": "VACUOUS",
+            "slotwise": "VACUOUS"
+          },
+          "tightness": {
+            "theorem_r": 3.248609686838626e+23,
+            "amplitude_compact": 1856.1104052119842,
+            "slotwise": 825.9177844929923
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 82.21134319553285,
+          "R_root_norm": 4.502883212652651e-23,
+          "R_root_over_Lambda_T": 5.477204285475446e-25,
+          "gbox": {
+            "gbox_lower": 0.0016046207053416089,
+            "gbox_upper": 0.0016046210152491577,
+            "sum_eta": 0.0016046210152491575
+          }
+        },
+        "0.5": {
+          "ranks": {
+            "n0_0": 16,
+            "n0_1": 16,
+            "n0_2": 16,
+            "n0_3": 16,
+            "n0_4": 16,
+            "n0_5": 16,
+            "n0_6": 16,
+            "n0_7": 16,
+            "n1_0": 16,
+            "n1_1": 16,
+            "n1_2": 16,
+            "n1_3": 16,
+            "n2_0": 16,
+            "n2_1": 16,
+            "n3_0": 32
+          },
+          "stored_bytes": 131072,
+          "counted_flops": 5767168.0,
+          "wall_seconds": 0.0064354999994975515,
+          "actual_error": 3.607337108208594e-24,
+          "bounds": {
+            "theorem_r": 1.527693983115545,
+            "amplitude_compact": 2.0864885648022543e-20,
+            "slotwise": 8.140568420007298e-21
+          },
+          "best": "slotwise",
+          "best_bound": 8.140568420007298e-21,
+          "relative_error_upper": "VACUOUS",
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": "VACUOUS",
+            "slotwise": "VACUOUS"
+          },
+          "tightness": {
+            "theorem_r": 4.234963180012302e+23,
+            "amplitude_compact": 5784.013254692478,
+            "slotwise": 2256.6697194679177
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 82.21134319553285,
+          "R_root_norm": 4.539217516177259e-23,
+          "R_root_over_Lambda_T": 5.521400502338354e-25,
+          "gbox": {
+            "gbox_lower": 0.0185825200999944,
+            "gbox_upper": 0.018582520656329038,
+            "sum_eta": 0.01858299033686301
+          }
+        },
+        "0.25": {
+          "ranks": {
+            "n0_0": 8,
+            "n0_1": 8,
+            "n0_2": 8,
+            "n0_3": 8,
+            "n0_4": 8,
+            "n0_5": 8,
+            "n0_6": 8,
+            "n0_7": 8,
+            "n1_0": 8,
+            "n1_1": 8,
+            "n1_2": 8,
+            "n1_3": 8,
+            "n2_0": 8,
+            "n2_1": 8,
+            "n3_0": 16
+          },
+          "stored_bytes": 65536,
+          "counted_flops": 4227072.0,
+          "wall_seconds": 0.005833800001710188,
+          "actual_error": 1.963421637024221e-23,
+          "bounds": {
+            "theorem_r": 9.077229156686876,
+            "amplitude_compact": 1.7759854284280527e-18,
+            "slotwise": 7.267566058554263e-19
+          },
+          "best": "slotwise",
+          "best_bound": 7.267566058554263e-19,
+          "relative_error_upper": "VACUOUS",
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": "VACUOUS",
+            "slotwise": "VACUOUS"
+          },
+          "tightness": {
+            "theorem_r": 4.623168546947666e+23,
+            "amplitude_compact": 90453.59361118948,
+            "slotwise": 37014.800700521206
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 82.21134319553285,
+          "R_root_norm": 4.137509167124443e-23,
+          "R_root_over_Lambda_T": 5.0327716423313035e-25,
+          "gbox": {
+            "gbox_lower": 0.11041334139099412,
+            "gbox_upper": 0.11041334205059077,
+            "sum_eta": 0.11051308200899698
+          }
+        }
+      },
+      "planners": {
+        "0.1": {
+          "eps": 4.500931848787441e-24,
+          "theorem_r": {
+            "met": true,
+            "iterations": 1,
+            "ranks": {
+              "n0_0": 32,
+              "n0_1": 32,
+              "n0_2": 32,
+              "n0_3": 32,
+              "n0_4": 32,
+              "n0_5": 32,
+              "n0_6": 32,
+              "n0_7": 32,
+              "n1_0": 32,
+              "n1_1": 32,
+              "n1_2": 32,
+              "n1_3": 32,
+              "n2_0": 32,
+              "n2_1": 32,
+              "n3_0": 32
+            },
+            "stored_bytes": 245760,
+            "counted_flops": 7372800.0,
+            "wall_seconds": 0.006678500001726206,
+            "actual_error": 3.956041229231364e-37,
+            "bounds": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "best": "theorem_r",
+            "best_bound": 0.0,
+            "relative_error_upper": 0.0,
+            "relative_by_certificate": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "tightness": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 82.21134319553285,
+            "R_root_norm": 4.500931848787441e-23,
+            "R_root_over_Lambda_T": 5.474830691042657e-25,
+            "gbox": {
+              "gbox_lower": 0.0,
+              "gbox_upper": 0.0,
+              "sum_eta": 0.0
+            }
+          },
+          "certified_search": {
+            "met": true,
+            "steps": 84,
+            "ranks": {
+              "n0_0": 28,
+              "n0_1": 32,
+              "n0_2": 32,
+              "n0_3": 31,
+              "n0_4": 32,
+              "n0_5": 31,
+              "n0_6": 32,
+              "n0_7": 32,
+              "n1_0": 31,
+              "n1_1": 31,
+              "n1_2": 31,
+              "n1_3": 32,
+              "n2_0": 30,
+              "n2_1": 32,
+              "n3_0": 32
+            },
+            "stored_bytes": 240128,
+            "counted_flops": 7282816.0,
+            "wall_seconds": 0.007387999998172745,
+            "actual_error": 2.9812519731437257e-26,
+            "bounds": {
+              "theorem_r": 0.002401538799798938,
+              "amplitude_compact": 2.0396871314835023e-23,
+              "slotwise": 4.499846654044932e-24
+            },
+            "best": "slotwise",
+            "best_bound": 4.499846654044932e-24,
+            "relative_error_upper": 0.11109352644591414,
+            "relative_by_certificate": {
+              "theorem_r": "VACUOUS",
+              "amplitude_compact": 0.8288713689239271,
+              "slotwise": 0.11109352644591414
+            },
+            "tightness": {
+              "theorem_r": 8.055470726503264e+22,
+              "amplitude_compact": 684.1713313258307,
+              "slotwise": 150.9381526479914
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 82.21134319553285,
+            "R_root_norm": 4.500487694701777e-23,
+            "R_root_over_Lambda_T": 5.474290432158177e-25,
+            "gbox": {
+              "gbox_lower": 2.9211760913072272e-05,
+              "gbox_upper": 2.921176940373152e-05,
+              "sum_eta": 2.9211769403731518e-05
+            }
+          }
+        },
+        "0.01": {
+          "eps": 4.500931848787441e-25,
+          "theorem_r": {
+            "met": true,
+            "iterations": 1,
+            "ranks": {
+              "n0_0": 32,
+              "n0_1": 32,
+              "n0_2": 32,
+              "n0_3": 32,
+              "n0_4": 32,
+              "n0_5": 32,
+              "n0_6": 32,
+              "n0_7": 32,
+              "n1_0": 32,
+              "n1_1": 32,
+              "n1_2": 32,
+              "n1_3": 32,
+              "n2_0": 32,
+              "n2_1": 32,
+              "n3_0": 32
+            },
+            "stored_bytes": 245760,
+            "counted_flops": 7372800.0,
+            "wall_seconds": 0.00685870000597788,
+            "actual_error": 3.956041229231364e-37,
+            "bounds": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "best": "theorem_r",
+            "best_bound": 0.0,
+            "relative_error_upper": 0.0,
+            "relative_by_certificate": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "tightness": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 82.21134319553285,
+            "R_root_norm": 4.500931848787441e-23,
+            "R_root_over_Lambda_T": 5.474830691042657e-25,
+            "gbox": {
+              "gbox_lower": 0.0,
+              "gbox_upper": 0.0,
+              "sum_eta": 0.0
+            }
+          },
+          "certified_search": {
+            "met": true,
+            "steps": 54,
+            "ranks": {
+              "n0_0": 30,
+              "n0_1": 32,
+              "n0_2": 32,
+              "n0_3": 32,
+              "n0_4": 32,
+              "n0_5": 32,
+              "n0_6": 32,
+              "n0_7": 32,
+              "n1_0": 32,
+              "n1_1": 31,
+              "n1_2": 32,
+              "n1_3": 32,
+              "n2_0": 32,
+              "n2_1": 30,
+              "n3_0": 32
+            },
+            "stored_bytes": 243200,
+            "counted_flops": 7331840.0,
+            "wall_seconds": 0.006797599999117665,
+            "actual_error": 3.2263087054540696e-27,
+            "bounds": {
+              "theorem_r": 0.00041562599626975553,
+              "amplitude_compact": 2.0766606121841864e-24,
+              "slotwise": 4.498201651825485e-25
+            },
+            "best": "slotwise",
+            "best_bound": 4.498201651825485e-25,
+            "relative_error_upper": 0.010094903487413405,
+            "relative_by_certificate": {
+              "theorem_r": "VACUOUS",
+              "amplitude_compact": 0.04837059476993731,
+              "slotwise": 0.010094903487413405
+            },
+            "tightness": {
+              "theorem_r": 1.288240011153119e+23,
+              "amplitude_compact": 643.6645720459406,
+              "slotwise": 139.42254329913573
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 82.21134319553285,
+            "R_root_norm": 4.5008954954672744e-23,
+            "R_root_over_Lambda_T": 5.474786471694385e-25,
+            "gbox": {
+              "gbox_lower": 5.055575591156567e-06,
+              "gbox_upper": 5.055579681762694e-06,
+              "sum_eta": 5.055579681762693e-06
+            }
+          }
+        }
+      },
+      "dense_uncompressed": {
+        "stored_bytes": 122880,
+        "counted_flops": 983040.0
+      },
+      "success": {
+        "S1_memory": true,
+        "S2_compute": true,
+        "S3_non_vacuous": true,
+        "memory_ratio": 1.0105263157894737,
+        "flops_ratio": 1.005586592178771
+      },
+      "all_runs_sound": true,
+      "seconds": 111.49447080000391
+    },
+    "B2": {
+      "role": "physical",
+      "params": {
+        "sites": 12,
+        "phys": 2,
+        "chi": 8,
+        "eps": 0.05,
+        "entangle": 0.3,
+        "seed": 102
+      },
+      "full": {
+        "ranks": {
+          "L1": 2,
+          "L2": 4,
+          "L3": 8,
+          "L4": 16,
+          "L5": 24,
+          "L6": 24,
+          "L7": 24,
+          "L8": 24,
+          "L9": 24,
+          "L10": 12,
+          "L11": 6,
+          "L12": 1
+        },
+        "stored_bytes": 81160,
+        "counted_flops": 735300.0,
+        "wall_seconds": 0.0029620000059367158,
+        "actual_error": 5.113449009635038e-15,
+        "bounds": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "best": "theorem_r",
+        "best_bound": 0.0,
+        "relative_error_upper": 0.0,
+        "relative_by_certificate": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "tightness": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "sound": true,
+        "sound_each": {
+          "theorem_r": true,
+          "amplitude_compact": true,
+          "slotwise": true
+        },
+        "prod_M": 1.0,
+        "lambda_T": 633541.8924277923,
+        "R_root_norm": 1.1572034946884842,
+        "R_root_over_Lambda_T": 1.8265619188242962e-06,
+        "gbox": {
+          "gbox_lower": 0.0,
+          "gbox_upper": 0.0,
+          "sum_eta": 0.0
+        }
+      },
+      "M_tightness": {
+        "M_bound": 1.0,
+        "M_lower_estimate": 1.0,
+        "ratio": 1.0,
+        "note": "contraction over one index attains 1 on rank-one unit inputs"
+      },
+      "sweep": {
+        "0.9": {
+          "ranks": {
+            "L1": 2,
+            "L2": 4,
+            "L3": 8,
+            "L4": 15,
+            "L5": 22,
+            "L6": 22,
+            "L7": 22,
+            "L8": 22,
+            "L9": 22,
+            "L10": 11,
+            "L11": 6,
+            "L12": 1
+          },
+          "stored_bytes": 71240,
+          "counted_flops": 679572.0,
+          "wall_seconds": 0.0029966000001877546,
+          "actual_error": 0.038503003928761236,
+          "bounds": {
+            "theorem_r": 17059.99920387973,
+            "amplitude_compact": 535.4622508889175,
+            "slotwise": 1.355977995257671
+          },
+          "best": "slotwise",
+          "best_bound": 1.355977995257671,
+          "relative_error_upper": "VACUOUS",
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": "VACUOUS",
+            "slotwise": "VACUOUS"
+          },
+          "tightness": {
+            "theorem_r": 443082.2913309405,
+            "amplitude_compact": 13907.025329235008,
+            "slotwise": 35.217459857587194
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 633541.8924277923,
+          "R_root_norm": 1.156562772532342,
+          "R_root_over_Lambda_T": 1.8255505852979734e-06,
+          "gbox": {
+            "gbox_lower": 0.026927972422089306,
+            "gbox_upper": 0.02692797336337808,
+            "sum_eta": 0.026929525632792096
+          }
+        },
+        "0.75": {
+          "ranks": {
+            "L1": 2,
+            "L2": 3,
+            "L3": 6,
+            "L4": 12,
+            "L5": 18,
+            "L6": 18,
+            "L7": 18,
+            "L8": 18,
+            "L9": 18,
+            "L10": 9,
+            "L11": 5,
+            "L12": 1
+          },
+          "stored_bytes": 51384,
+          "counted_flops": 546016.0,
+          "wall_seconds": 0.00294690000009723,
+          "actual_error": 0.7007639369321548,
+          "bounds": {
+            "theorem_r": 199098.9338588962,
+            "amplitude_compact": 154307.6238774564,
+            "slotwise": 25.01358014893541
+          },
+          "best": "slotwise",
+          "best_bound": 25.01358014893541,
+          "relative_error_upper": "VACUOUS",
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": "VACUOUS",
+            "slotwise": "VACUOUS"
+          },
+          "tightness": {
+            "theorem_r": 284116.98057768657,
+            "amplitude_compact": 220199.15087667515,
+            "slotwise": 35.69473089388892
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 633541.8924277923,
+          "R_root_norm": 0.9208962117495002,
+          "R_root_over_Lambda_T": 1.4535679846214101e-06,
+          "gbox": {
+            "gbox_lower": 0.3142632488759545,
+            "gbox_upper": 0.31426324957917195,
+            "sum_eta": 0.31654187960604924
+          }
+        },
+        "0.5": {
+          "ranks": {
+            "L1": 1,
+            "L2": 2,
+            "L3": 4,
+            "L4": 8,
+            "L5": 12,
+            "L6": 12,
+            "L7": 12,
+            "L8": 12,
+            "L9": 12,
+            "L10": 6,
+            "L11": 3,
+            "L12": 1
+          },
+          "stored_bytes": 27720,
+          "counted_flops": 347544.0,
+          "wall_seconds": 0.0026910000015050173,
+          "actual_error": 0.8240057778270099,
+          "bounds": {
+            "theorem_r": 502831.8178721808,
+            "amplitude_compact": 442842.2675648066,
+            "slotwise": 36.07733573593037
+          },
+          "best": "slotwise",
+          "best_bound": 36.07733573593037,
+          "relative_error_upper": "VACUOUS",
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": "VACUOUS",
+            "slotwise": "VACUOUS"
+          },
+          "tightness": {
+            "theorem_r": 610228.5098026877,
+            "amplitude_compact": 537426.1679725455,
+            "slotwise": 43.78286743458293
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 633541.8924277923,
+          "R_root_norm": 0.8124865575669165,
+          "R_root_over_Lambda_T": 1.282451195852876e-06,
+          "gbox": {
+            "gbox_lower": 0.7936836116154798,
+            "gbox_upper": 0.7936836125315752,
+            "sum_eta": 0.8320123674589248
+          }
+        },
+        "0.25": {
+          "ranks": {
+            "L1": 1,
+            "L2": 1,
+            "L3": 2,
+            "L4": 4,
+            "L5": 6,
+            "L6": 6,
+            "L7": 6,
+            "L8": 6,
+            "L9": 6,
+            "L10": 3,
+            "L11": 2,
+            "L12": 1
+          },
+          "stored_bytes": 10744,
+          "counted_flops": 110644.0,
+          "wall_seconds": 0.002380400001129601,
+          "actual_error": 1.0932485031516357,
+          "bounds": {
+            "theorem_r": 764176.5272356031,
+            "amplitude_compact": 597606.0374414291,
+            "slotwise": 63.75179856101419
+          },
+          "best": "slotwise",
+          "best_bound": 63.75179856101419,
+          "relative_error_upper": "VACUOUS",
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": "VACUOUS",
+            "slotwise": "VACUOUS"
+          },
+          "tightness": {
+            "theorem_r": 698996.1797639071,
+            "amplitude_compact": 546633.3004057541,
+            "slotwise": 58.31409636256478
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0,
+          "lambda_T": 633541.8924277923,
+          "R_root_norm": 0.3793779625596905,
+          "R_root_over_Lambda_T": 5.988206416877632e-07,
+          "gbox": {
+            "gbox_lower": 1.2061973107589736,
+            "gbox_upper": 1.2061973112894027,
+            "sum_eta": 1.5015192972486031
+          }
+        }
+      },
+      "planners": {
+        "0.1": {
+          "eps": 0.11572034946884842,
+          "theorem_r": {
+            "met": true,
+            "iterations": 1,
+            "ranks": {
+              "L1": 2,
+              "L2": 4,
+              "L3": 8,
+              "L4": 16,
+              "L5": 24,
+              "L6": 24,
+              "L7": 24,
+              "L8": 24,
+              "L9": 24,
+              "L10": 12,
+              "L11": 6,
+              "L12": 1
+            },
+            "stored_bytes": 81160,
+            "counted_flops": 735300.0,
+            "wall_seconds": 0.002877699997043237,
+            "actual_error": 5.113449009635038e-15,
+            "bounds": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "best": "theorem_r",
+            "best_bound": 0.0,
+            "relative_error_upper": 0.0,
+            "relative_by_certificate": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "tightness": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 633541.8924277923,
+            "R_root_norm": 1.1572034946884842,
+            "R_root_over_Lambda_T": 1.8265619188242962e-06,
+            "gbox": {
+              "gbox_lower": 0.0,
+              "gbox_upper": 0.0,
+              "sum_eta": 0.0
+            }
+          },
+          "certified_search": {
+            "met": true,
+            "steps": 14,
+            "ranks": {
+              "L1": 2,
+              "L2": 4,
+              "L3": 8,
+              "L4": 16,
+              "L5": 24,
+              "L6": 23,
+              "L7": 23,
+              "L8": 24,
+              "L9": 24,
+              "L10": 12,
+              "L11": 6,
+              "L12": 1
+            },
+            "stored_bytes": 79256,
+            "counted_flops": 723780.0,
+            "wall_seconds": 0.003128899996227119,
+            "actual_error": 0.0011454826864900798,
+            "bounds": {
+              "theorem_r": 1132.7661185207246,
+              "amplitude_compact": 4.177061005830511,
+              "slotwise": 0.09050783753054306
+            },
+            "best": "slotwise",
+            "best_bound": 0.09050783753054306,
+            "relative_error_upper": 0.08484883671123675,
+            "relative_by_certificate": {
+              "theorem_r": "VACUOUS",
+              "amplitude_compact": "VACUOUS",
+              "slotwise": 0.08484883671123675
+            },
+            "tightness": {
+              "theorem_r": 988898.5070491807,
+              "amplitude_compact": 3646.550973746809,
+              "slotwise": 79.01283764303048
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 633541.8924277923,
+            "R_root_norm": 1.1572029277480484,
+            "R_root_over_Lambda_T": 1.8265610239498727e-06,
+            "gbox": {
+              "gbox_lower": 0.0017879889855024916,
+              "gbox_upper": 0.0017879892901475826,
+              "sum_eta": 0.0017879892901475824
+            }
+          }
+        },
+        "0.01": {
+          "eps": 0.011572034946884842,
+          "theorem_r": {
+            "met": true,
+            "iterations": 1,
+            "ranks": {
+              "L1": 2,
+              "L2": 4,
+              "L3": 8,
+              "L4": 16,
+              "L5": 24,
+              "L6": 24,
+              "L7": 24,
+              "L8": 24,
+              "L9": 24,
+              "L10": 12,
+              "L11": 6,
+              "L12": 1
+            },
+            "stored_bytes": 81160,
+            "counted_flops": 735300.0,
+            "wall_seconds": 0.0030677999966428615,
+            "actual_error": 5.113449009635038e-15,
+            "bounds": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "best": "theorem_r",
+            "best_bound": 0.0,
+            "relative_error_upper": 0.0,
+            "relative_by_certificate": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "tightness": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 633541.8924277923,
+            "R_root_norm": 1.1572034946884842,
+            "R_root_over_Lambda_T": 1.8265619188242962e-06,
+            "gbox": {
+              "gbox_lower": 0.0,
+              "gbox_upper": 0.0,
+              "sum_eta": 0.0
+            }
+          },
+          "certified_search": {
+            "met": true,
+            "steps": 11,
+            "ranks": {
+              "L1": 2,
+              "L2": 4,
+              "L3": 8,
+              "L4": 16,
+              "L5": 24,
+              "L6": 24,
+              "L7": 24,
+              "L8": 24,
+              "L9": 24,
+              "L10": 12,
+              "L11": 6,
+              "L12": 1
+            },
+            "stored_bytes": 81160,
+            "counted_flops": 735300.0,
+            "wall_seconds": 0.0028427999932318926,
+            "actual_error": 5.113449009635038e-15,
+            "bounds": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "best": "theorem_r",
+            "best_bound": 0.0,
+            "relative_error_upper": 0.0,
+            "relative_by_certificate": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "tightness": {
+              "theorem_r": 0.0,
+              "amplitude_compact": 0.0,
+              "slotwise": 0.0
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0,
+            "lambda_T": 633541.8924277923,
+            "R_root_norm": 1.1572034946884842,
+            "R_root_over_Lambda_T": 1.8265619188242962e-06,
+            "gbox": {
+              "gbox_lower": 0.0,
+              "gbox_upper": 0.0,
+              "sum_eta": 0.0
+            }
+          }
+        }
+      },
+      "success": {
+        "S1_memory": false,
+        "S2_compute": false,
+        "S3_non_vacuous": true,
+        "memory_ratio": 1.0,
+        "flops_ratio": 1.0
+      },
+      "all_runs_sound": true,
+      "seconds": 2.281826700003876
+    },
+    "B3": {
+      "role": "ht_arithmetic",
+      "params": {
+        "depth": 3,
+        "n": 4,
+        "k_int": 4,
+        "alpha": 0.1,
+        "functions": true,
+        "seed": 103
+      },
+      "full": {
+        "ranks": {
+          "h0_0": 8,
+          "h0_1": 8,
+          "h0_2": 8,
+          "h0_3": 8,
+          "h1_0": 8,
+          "h1_1": 8,
+          "h2_0": 1
+        },
+        "stored_bytes": 15880,
+        "counted_flops": 168192.0,
+        "wall_seconds": 0.039169800002127886,
+        "actual_error": 2.5610733549755443e-15,
+        "bounds": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "best": "theorem_r",
+        "best_bound": 0.0,
+        "relative_error_upper": 0.0,
+        "relative_by_certificate": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "tightness": {
+          "theorem_r": 0.0,
+          "amplitude_compact": 0.0,
+          "slotwise": 0.0
+        },
+        "sound": true,
+        "sound_each": {
+          "theorem_r": true,
+          "amplitude_compact": true,
+          "slotwise": true
+        },
+        "prod_M": 1.0233525630225325e+30,
+        "lambda_T": 1.0649047807250523e+30,
+        "R_root_norm": 1.0868940524629778,
+        "R_root_over_Lambda_T": 1.020649049695273e-30,
+        "gbox": {
+          "gbox_lower": 0.0,
+          "gbox_upper": 0.0,
+          "sum_eta": 0.0
+        }
+      },
+      "M_tightness": {
+        "h0_0": {
+          "M_bound": 13956.094555929638,
+          "M_lower_estimate": 13941.726590322472,
+          "ratio": 1.0010305729002846
+        },
+        "h0_1": {
+          "M_bound": 13956.094555929638,
+          "M_lower_estimate": 13941.726590322472,
+          "ratio": 1.0010305729002846
+        },
+        "h0_2": {
+          "M_bound": 13956.094555929638,
+          "M_lower_estimate": 13941.726590322472,
+          "ratio": 1.0010305729002846
+        },
+        "h0_3": {
+          "M_bound": 13956.094555929638,
+          "M_lower_estimate": 13941.726590322472,
+          "ratio": 1.0010305729002846
+        },
+        "h1_0": {
+          "M_bound": 19677.379644710534,
+          "M_lower_estimate": 19654.662841225443,
+          "ratio": 1.0011557971596157
+        },
+        "h1_1": {
+          "M_bound": 19677.379644710534,
+          "M_lower_estimate": 19654.662841225443,
+          "ratio": 1.0011557971596157
+        },
+        "h2_0": {
+          "M_bound": 69668.28810900988,
+          "M_lower_estimate": 69630.74511362865,
+          "ratio": 1.0005391726789647
+        }
+      },
+      "sweep": {
+        "0.9": {
+          "ranks": {
+            "h0_0": 8,
+            "h0_1": 8,
+            "h0_2": 8,
+            "h0_3": 8,
+            "h1_0": 8,
+            "h1_1": 8,
+            "h2_0": 1
+          },
+          "stored_bytes": 15880,
+          "counted_flops": 168192.0,
+          "wall_seconds": 0.04106740000133868,
+          "actual_error": 2.5610733549755443e-15,
+          "bounds": {
+            "theorem_r": 0.0,
+            "amplitude_compact": 0.0,
+            "slotwise": 0.0
+          },
+          "best": "theorem_r",
+          "best_bound": 0.0,
+          "relative_error_upper": 0.0,
+          "relative_by_certificate": {
+            "theorem_r": 0.0,
+            "amplitude_compact": 0.0,
+            "slotwise": 0.0
+          },
+          "tightness": {
+            "theorem_r": 0.0,
+            "amplitude_compact": 0.0,
+            "slotwise": 0.0
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0233525630225325e+30,
+          "lambda_T": 1.0649047807250523e+30,
+          "R_root_norm": 1.0868940524629778,
+          "R_root_over_Lambda_T": 1.020649049695273e-30,
+          "gbox": {
+            "gbox_lower": 0.0,
+            "gbox_upper": 0.0,
+            "sum_eta": 0.0
+          }
+        },
+        "0.75": {
+          "ranks": {
+            "h0_0": 6,
+            "h0_1": 6,
+            "h0_2": 6,
+            "h0_3": 6,
+            "h1_0": 6,
+            "h1_1": 6,
+            "h2_0": 1
+          },
+          "stored_bytes": 9128,
+          "counted_flops": 117904.0,
+          "wall_seconds": 0.035504699997545686,
+          "actual_error": 2.5559810858439746e-15,
+          "bounds": {
+            "theorem_r": 246498449.2316068,
+            "amplitude_compact": 0.0,
+            "slotwise": 1.1294921010904952e-09
+          },
+          "best": "amplitude_compact",
+          "best_bound": 0.0,
+          "relative_error_upper": 0.0,
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": 0.0,
+            "slotwise": 1.039192458275714e-09
+          },
+          "tightness": {
+            "theorem_r": 9.643985653759798e+22,
+            "amplitude_compact": 0.0,
+            "slotwise": 441901.58814009436
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0233525630225325e+30,
+          "lambda_T": 1.0649047807250523e+30,
+          "R_root_norm": 1.0868940524629778,
+          "R_root_over_Lambda_T": 1.020649049695273e-30,
+          "gbox": {
+            "gbox_lower": 0.0,
+            "gbox_upper": 2.314746385716999e-22,
+            "sum_eta": 2.3147463857169985e-22
+          }
+        },
+        "0.5": {
+          "ranks": {
+            "h0_0": 4,
+            "h0_1": 4,
+            "h0_2": 4,
+            "h0_3": 4,
+            "h1_0": 4,
+            "h1_1": 4,
+            "h2_0": 1
+          },
+          "stored_bytes": 4744,
+          "counted_flops": 81984.0,
+          "wall_seconds": 0.029252100001031067,
+          "actual_error": 1.8881536067727196e-05,
+          "bounds": {
+            "theorem_r": 3.5832540462579523e+21,
+            "amplitude_compact": 45879.06336697596,
+            "slotwise": 11471.251937825175
+          },
+          "best": "slotwise",
+          "best_bound": 11471.251937825175,
+          "relative_error_upper": "VACUOUS",
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": "VACUOUS",
+            "slotwise": "VACUOUS"
+          },
+          "tightness": {
+            "theorem_r": 1.8977555816459983e+26,
+            "amplitude_compact": 2429837445.5558004,
+            "slotwise": 607538067.7016068
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0233525630225325e+30,
+          "lambda_T": 1.0649047807250523e+30,
+          "R_root_norm": 1.086894052298972,
+          "R_root_over_Lambda_T": 1.0206490495412633e-30,
+          "gbox": {
+            "gbox_lower": 3.3576334906671275e-09,
+            "gbox_upper": 3.3648586344201155e-09,
+            "sum_eta": 3.364858634420115e-09
+          }
+        },
+        "0.25": {
+          "ranks": {
+            "h0_0": 2,
+            "h0_1": 2,
+            "h0_2": 2,
+            "h0_3": 2,
+            "h1_0": 2,
+            "h1_1": 2,
+            "h2_0": 1
+          },
+          "stored_bytes": 1960,
+          "counted_flops": 59408.0,
+          "wall_seconds": 0.02465189999929862,
+          "actual_error": 0.005436038431569707,
+          "bounds": {
+            "theorem_r": 1.1282379742666477e+24,
+            "amplitude_compact": 1310673498.3792543,
+            "slotwise": 328816790.31783277
+          },
+          "best": "slotwise",
+          "best_bound": 328816790.31783277,
+          "relative_error_upper": "VACUOUS",
+          "relative_by_certificate": {
+            "theorem_r": "VACUOUS",
+            "amplitude_compact": "VACUOUS",
+            "slotwise": "VACUOUS"
+          },
+          "tightness": {
+            "theorem_r": 2.0754782889584142e+26,
+            "amplitude_compact": 241108210487.90582,
+            "slotwise": 60488312298.9408
+          },
+          "sound": true,
+          "sound_each": {
+            "theorem_r": true,
+            "amplitude_compact": true,
+            "slotwise": true
+          },
+          "prod_M": 1.0233525630225325e+30,
+          "lambda_T": 1.0649047807250523e+30,
+          "R_root_norm": 1.086880458360333,
+          "R_root_over_Lambda_T": 1.0206362841383043e-30,
+          "gbox": {
+            "gbox_lower": 1.059466945756137e-06,
+            "gbox_upper": 1.0594731047206627e-06,
+            "sum_eta": 1.0594731047206624e-06
+          }
+        }
+      },
+      "planners": {
+        "0.1": {
+          "eps": 0.10868940524629778,
+          "theorem_r": {
+            "met": true,
+            "iterations": 15,
+            "ranks": {
+              "h0_0": 7,
+              "h0_1": 7,
+              "h0_2": 7,
+              "h0_3": 7,
+              "h1_0": 5,
+              "h1_1": 5,
+              "h2_0": 1
+            },
+            "stored_bytes": 10144,
+            "counted_flops": 138084.0,
+            "wall_seconds": 0.03178230000048643,
+            "actual_error": 2.5452027833994923e-15,
+            "bounds": {
+              "theorem_r": 8.041174074520228e-08,
+              "amplitude_compact": 0.0,
+              "slotwise": 3.6845840730341834e-25
+            },
+            "best": "amplitude_compact",
+            "best_bound": 0.0,
+            "relative_error_upper": 0.0,
+            "relative_by_certificate": {
+              "theorem_r": 7.398305889344983e-08,
+              "amplitude_compact": 0.0,
+              "slotwise": 3.390012177069751e-25
+            },
+            "tightness": {
+              "theorem_r": 31593451.519725505,
+              "amplitude_compact": 0.0,
+              "slotwise": 1.447658354401483e-10
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0233525630225325e+30,
+            "lambda_T": 1.0649047807250523e+30,
+            "R_root_norm": 1.0868940524629778,
+            "R_root_over_Lambda_T": 1.020649049695273e-30,
+            "gbox": {
+              "gbox_lower": 0.0,
+              "gbox_upper": 7.551073316663396e-38,
+              "sum_eta": 7.551073316663395e-38
+            }
+          },
+          "certified_search": {
+            "met": true,
+            "steps": 55,
+            "ranks": {
+              "h0_0": 1,
+              "h0_1": 5,
+              "h0_2": 5,
+              "h0_3": 5,
+              "h1_0": 1,
+              "h1_1": 5,
+              "h2_0": 1
+            },
+            "stored_bytes": 4544,
+            "counted_flops": 78388.0,
+            "wall_seconds": 0.0227424000040628,
+            "actual_error": 0.04481706400927172,
+            "bounds": {
+              "theorem_r": 3.8385175646487206e+24,
+              "amplitude_compact": 42299860.20777613,
+              "slotwise": 0.08346154484338174
+            },
+            "best": "slotwise",
+            "best_bound": 0.08346154484338174,
+            "relative_error_upper": 0.08325273702336715,
+            "relative_by_certificate": {
+              "theorem_r": "VACUOUS",
+              "amplitude_compact": "VACUOUS",
+              "slotwise": 0.08325273702336715
+            },
+            "tightness": {
+              "theorem_r": 8.564857269219177e+25,
+              "amplitude_compact": 943833808.457983,
+              "slotwise": 1.8622715853522953
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0233525630225325e+30,
+            "lambda_T": 1.0649047807250523e+30,
+            "R_root_norm": 1.0859696644257564,
+            "R_root_over_Lambda_T": 1.0197810020970717e-30,
+            "gbox": {
+              "gbox_lower": 3.6045613232788773e-06,
+              "gbox_upper": 3.6045641207800975e-06,
+              "sum_eta": 3.604564120780097e-06
+            }
+          }
+        },
+        "0.01": {
+          "eps": 0.010868940524629778,
+          "theorem_r": {
+            "met": true,
+            "iterations": 15,
+            "ranks": {
+              "h0_0": 7,
+              "h0_1": 7,
+              "h0_2": 7,
+              "h0_3": 7,
+              "h1_0": 5,
+              "h1_1": 5,
+              "h2_0": 1
+            },
+            "stored_bytes": 10144,
+            "counted_flops": 138084.0,
+            "wall_seconds": 0.03133289999823319,
+            "actual_error": 2.5452027833994923e-15,
+            "bounds": {
+              "theorem_r": 8.041174074520228e-08,
+              "amplitude_compact": 0.0,
+              "slotwise": 3.6845840730341834e-25
+            },
+            "best": "amplitude_compact",
+            "best_bound": 0.0,
+            "relative_error_upper": 0.0,
+            "relative_by_certificate": {
+              "theorem_r": 7.398305889344983e-08,
+              "amplitude_compact": 0.0,
+              "slotwise": 3.390012177069751e-25
+            },
+            "tightness": {
+              "theorem_r": 31593451.519725505,
+              "amplitude_compact": 0.0,
+              "slotwise": 1.447658354401483e-10
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0233525630225325e+30,
+            "lambda_T": 1.0649047807250523e+30,
+            "R_root_norm": 1.0868940524629778,
+            "R_root_over_Lambda_T": 1.020649049695273e-30,
+            "gbox": {
+              "gbox_lower": 0.0,
+              "gbox_upper": 7.551073316663396e-38,
+              "sum_eta": 7.551073316663395e-38
+            }
+          },
+          "certified_search": {
+            "met": true,
+            "steps": 81,
+            "ranks": {
+              "h0_0": 2,
+              "h0_1": 5,
+              "h0_2": 5,
+              "h0_3": 5,
+              "h1_0": 2,
+              "h1_1": 5,
+              "h2_0": 1
+            },
+            "stored_bytes": 4960,
+            "counted_flops": 83688.0,
+            "wall_seconds": 0.024041999997280072,
+            "actual_error": 0.003785793086244101,
+            "bounds": {
+              "theorem_r": 4.232374505236189e+23,
+              "amplitude_compact": 4758728.291656188,
+              "slotwise": 0.009165174514237998
+            },
+            "best": "slotwise",
+            "best_bound": 0.009165174514237998,
+            "relative_error_upper": 0.008504208035915511,
+            "relative_by_certificate": {
+              "theorem_r": "VACUOUS",
+              "amplitude_compact": "VACUOUS",
+              "slotwise": 0.008504208035915511
+            },
+            "tightness": {
+              "theorem_r": 1.1179624477139988e+26,
+              "amplitude_compact": 1256996402.932665,
+              "slotwise": 2.420939101912408
+            },
+            "sound": true,
+            "sound_each": {
+              "theorem_r": true,
+              "amplitude_compact": true,
+              "slotwise": true
+            },
+            "prod_M": 1.0233525630225325e+30,
+            "lambda_T": 1.0649047807250523e+30,
+            "R_root_norm": 1.0868874592385829,
+            "R_root_over_Lambda_T": 1.020642858320688e-30,
+            "gbox": {
+              "gbox_lower": 3.9743881811416293e-07,
+              "gbox_upper": 3.9744159119602496e-07,
+              "sum_eta": 3.974415911960249e-07
+            }
+          }
+        }
+      },
+      "success": {
+        "S1_memory": true,
+        "S2_compute": true,
+        "S3_non_vacuous": true,
+        "memory_ratio": 3.2016129032258065,
+        "flops_ratio": 2.0097505018640667
+      },
+      "all_runs_sound": true,
+      "seconds": 10.558458599996811
+    }
+  },
+  "TRL4_criterion_met": false,
+  "finished": "2026-09-15T15:54:48"
+}

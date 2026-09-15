@@ -1,0 +1,29 @@
+{
+  "protocol": "SharpTensor 0.1 confirmatory benchmarks v1",
+  "date": "2026-09-15",
+  "exploratory_note": "Instance families were adjusted during exploratory smoke tests on other seeds (Gaussian cores -> left-canonical MPS with I+eps*H MPO; orthogonal random HT -> weighted-gauge HSVD of function tensors; MPO identity-term bug fixed). Confirmatory seeds below were not used before freezing.",
+  "tol_gbox": 1e-9,
+  "rank_fractions": [0.9, 0.75, 0.5, 0.25],
+  "planner_deltas": [0.1, 0.01],
+  "success_delta": 0.01,
+  "benchmarks": [
+    {"id": "B1a", "model": "MatProdTree", "role": "positive", "params": {"depth": 4, "d": 32, "s": 1.0, "decay": 3.0, "noise": 0.001, "seed": 101}},
+    {"id": "B1b", "model": "MatProdTree", "role": "negative_control_cancellation", "params": {"depth": 4, "d": 32, "s": -1.0, "decay": 3.0, "noise": 0.001, "seed": 101}},
+    {"id": "B2", "model": "MpoMpsChain", "role": "physical", "params": {"sites": 12, "phys": 2, "chi": 8, "eps": 0.05, "entangle": 0.3, "seed": 102}},
+    {"id": "B3", "model": "HTTree", "role": "ht_arithmetic", "params": {"depth": 3, "n": 4, "k_int": 4, "alpha": 0.1, "functions": true, "seed": 103}}
+  ],
+  "metrics": [
+    "stored_bytes", "counted_flops", "wall_seconds", "actual_error",
+    "bound_theorem_r", "bound_amplitude_compact", "bound_slotwise", "best_bound", "relative_error_upper",
+    "M_tightness", "prod_M = Lambda_T / prod_leaf_norms", "R_root_over_Lambda_T", "tightness E_cert/E_actual",
+    "soundness actual <= every bound"
+  ],
+  "success_criteria": {
+    "evaluated_on": "plan_certified_search(best certificate), eps = success_delta * ||R_root(full rank)||",
+    "S1_memory": "stored_bytes(plan) < stored_bytes(full rank factored run)",
+    "S2_compute": "counted_flops(plan) < counted_flops(full rank factored run)",
+    "S3_non_vacuous": "relative_error_upper(plan) is a finite number <= 1",
+    "TRL4_claim": "S1 and S2 and S3 for B1a, B2 and B3 (B1b is a negative control, not required)",
+    "soundness": "every run must satisfy actual_error <= each certificate; any violation is reported as a bug"
+  }
+}
