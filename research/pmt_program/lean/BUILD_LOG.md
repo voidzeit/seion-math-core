@@ -1,5 +1,42 @@
 # Build record
 
+## 2026-09-15 (later) — H3 proved; a posteriori amplitude and slotwise bounds
+
+* **Result:** `Build completed successfully (8732 jobs).`
+* **Axioms:** 66 `#print axioms` lines. Every line is `[propext, Classical.choice, Quot.sound]` or the
+  subset `[propext, Quot.sound]`. No `sorry`, `admit` or `axiom`.
+* **New files:** `Heterogeneous/CappedDiagonalFull.lean`, `Heterogeneous/Amplitude.lean`,
+  `Heterogeneous/AmplitudeSlots.lean`. `CappedDiagonal.lean` header updated (docstring only).
+
+```
+PMT.capped_equal_angle : (∀ e ∈ η, 0 ≤ e) → PMT.CappedEqualAngle η
+PMT.gBox_eq_capped_max : (∀ e ∈ η, 0 ≤ e) → ∃ τ ∈ Set.Icc 0 (π / 2),
+  PMT.gBox η = ‖1 - (List.map PMT.w (List.map (fun e => min (Real.arcsin e) τ) η)).prod‖
+PMT.ATree.err_le_ebound : t.NormOK → ‖t.F - t.R‖ ≤ t.ebound
+PMT.ATree.err_le_abound : t.NormOK → ‖t.F - t.R‖ ≤ t.abound
+PMT.KTree.err_le_sbound : t.SlotOK → ‖t.F - t.R‖ ≤ t.sbound
+PMT.sum_slot_prod_eq : ∑ i, a i * ∏ j, (if j < i then r j + a j else if i = j then 1 else r j)
+  = ∏ j, (r j + a j) - ∏ j, r j
+```
+
+## 2026-09-15 — monotonicity and a posteriori trajectory certificate
+
+* **Branch:** `research/applications-boundary` (from `main` `1b7c05e`).
+* **Result:** `Build completed successfully (8729 jobs).`
+* **Axioms:** 52 `#print axioms` lines, all `[propext, Classical.choice, Quot.sound]`. No `sorry`,
+  `admit` or `axiom`.
+* **New files:** `Heterogeneous/Monotone.lean`, `Heterogeneous/Trajectory.lean`.
+
+```
+PMT.gBox_mono : List.Forall₂ (fun x1 x2 => x1 ≤ x2) η ξ → PMT.gBox η ≤ PMT.gBox ξ
+PMT.gBox_le_uniform_fallback : 0 < c → (∀ e ∈ η, e ≤ c) →
+  PMT.gBox η ≤ sSup ((fun τ => ‖1 - PMT.w τ ^ η.length‖) '' Set.Icc 0 (Real.arcsin c))
+PMT.heterogeneous_scaled_upper_of_admTC : ∀ (t : PMT.SPMTree G), t.RootAdmTC →
+  t.err ≤ t.Λ * PMT.gBox t.dshape.childDefects
+PMT.heterogeneous_scaled_upper_of_admTC_nonneg : ∀ (t : PMT.SPMTree G), t.RootAdmTC0 →
+  t.err ≤ t.Λ * PMT.gBox t.dshape.childDefects
+```
+
 ## 2026-09-14 (later) — common ambient space, spec lemmas, additive baseline
 
 * **Result:** `Build completed successfully (8727 jobs).`

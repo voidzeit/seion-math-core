@@ -60,6 +60,11 @@ Each internal node `v` has its own defect `e_v` (paper: `η_v = ρ_v / M_v`). Fo
 | `SpecLemmas.lean` | `PMT.opNorm_le_iff_unit_ball`, `PMT.HPMTree.closure_iff_unit_ball` | Lean norm and closure conditions ⇔ the unit-ball forms of A2 and A5 |
 | `Baseline.lean` | `PMT.gBox_le_sum` | additive baseline `gBox η ≤ Σ η_u` |
 | `CommonSpace.lean` | `PMT.Emb`, `PMT.MSTree`, `MSTree.lift`, **`PMT.heterogeneous_multispace_upper`**, **`PMT.heterogeneous_multispace_sSup`** | **common-ambient-space reduction**: an arbitrary real inner product space at every vertex |
+| `Monotone.lean` | `PMT.gBox_mono`, `PMT.gBox_le_replicate`, `PMT.gBox_le_uniform_fallback` | `gBox` is monotone in each defect; uniform fallback at the largest defect |
+| `Trajectory.lean` | `SPMTree.AdmTC`, **`PMT.heterogeneous_scaled_upper_of_admTC`**, `PMT.heterogeneous_scaled_upper_of_admTC_nonneg` | a posteriori certificate: scaled bound with closure only along the realised reduced trajectory (global `‖μ_v‖ ≤ M_v` still required; one ambient space) |
+| `CappedDiagonalFull.lean` | **`PMT.capped_equal_angle`**, **`PMT.gBox_eq_capped`**, `PMT.gBox_eq_capped_max`, `PMT.prod_cos_le_waterfill`, `PMT.log_cos_tangent` | **H3 proved**: `gBox(η) = max_τ ‖1 − ∏ w(min(arcsin η_i, τ))‖` (water-filling) |
+| `Amplitude.lean` | `PMT.ATree.err_le_ebound`, `PMT.ATree.norm_F_ge` | a posteriori amplitude bound for arbitrary local deviations (max form) |
+| `AmplitudeSlots.lean` | **`PMT.KTree.err_le_sbound`**, `PMT.norm_sub_le_slots`, `PMT.slot_const_general`, `PMT.slot_args_eq_update`, **`PMT.ATree.err_le_abound`**, `PMT.sum_slot_prod_eq` | slotwise bound `e_v ≤ d_v + Σ K_i e_i`; compact bound `A_v = d_v + M_v(∏(r_i + A_i) − ∏ r_i)` |
 | `CappedDiagonal.lean` | `PMT.CappedEqualAngle` (a `Prop`), `PMT.sSup_capped_le_gBox`, `PMT.cappedEqualAngle_replicate` | **H3, kept separate and open.** Only the easy half and the equal-defect case are proved. No other module imports it; it is not an axiom. |
 
 Scope notes for the heterogeneous statements:

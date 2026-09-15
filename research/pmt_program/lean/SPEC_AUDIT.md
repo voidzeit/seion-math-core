@@ -57,7 +57,8 @@ The uniform class PMT-A is the special case `M_v = M`, `ρ_v = ρ`. There,
 | extra | attainment ("attained") | `gBox_attained`, `theorem_R_max_attained`, `heterogeneous_max_attained` | exact (Lean) |
 | extra | uniform case recovers `C_k` | `uniform_gBox_eq`, `heterogeneous_uniform_recovery` | exact (Lean), `0 < η` |
 | extra | additive baseline `Σ η_u` | `gBox_le_sum` | exact (Lean) |
-| extra | H3 (capped equal angles) | `CappedEqualAngle : List ℝ → Prop`; only the easy half and the equal-defect case are proved; nothing imports it | open, isolated |
+| extra | H3 (capped equal angles) | `CappedEqualAngle : List ℝ → Prop`, proved for all `η ≥ 0` by `capped_equal_angle` (`CappedDiagonalFull.lean`, 2026-09-15) | **exact (Lean)** |
+| extra | a posteriori certificates (not PMT-A statements) | `ATree.err_le_abound`, `KTree.err_le_sbound`: any computed values `R_v`, deviations `d_v = ‖μ_v(R_children) − R_v‖`, operator-norm hypothesis `‖μ_v‖ ≤ M_v` or slot hypotheses | exact (Lean); the audit item is that the application's recorded `d_v`, `M_v` and `K_op` are the stated quantities |
 
 ## 3. Residual items for a human reviewer
 

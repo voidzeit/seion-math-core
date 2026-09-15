@@ -17,4 +17,9 @@ import PMTFormal.Heterogeneous.ScaledZero
 import PMTFormal.Heterogeneous.SpecLemmas
 import PMTFormal.Heterogeneous.Baseline
 import PMTFormal.Heterogeneous.CommonSpace
+import PMTFormal.Heterogeneous.Monotone
+import PMTFormal.Heterogeneous.Trajectory
+import PMTFormal.Heterogeneous.CappedDiagonalFull
+import PMTFormal.Heterogeneous.Amplitude
+import PMTFormal.Heterogeneous.AmplitudeSlots
 import PMTFormal.Heterogeneous.CappedDiagonal

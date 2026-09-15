@@ -3,7 +3,11 @@ Heterogeneous Theorem R, H3 (kept separate): the capped-equal-angle reduction.
 
 H3 is an efficient-evaluation question about `gBox`; it is NOT used by the sharp heterogeneous
 theorem (`heterogeneous_upper`, `heterogeneous_lower`, `heterogeneous_sSup`, `gBox_perm`,
-`heterogeneous_placement_independent`). No other module imports this file except the library root.
+`heterogeneous_placement_independent`). This file only defines the statement; it is imported by
+`CappedDiagonalFull.lean`, which proves it, and by the library root.
+
+UPDATE 2026-09-15: H3 is PROVED for all `η_i ≥ 0` in `CappedDiagonalFull.lean`
+(`PMT.capped_equal_angle`, `PMT.gBox_eq_capped`, `PMT.gBox_eq_capped_max`).
 
 The hypothesis is recorded as a `Prop`, not as an axiom and not as a `sorry`:
 
@@ -15,7 +19,7 @@ Statements:
 * `PMT.sSup_capped_le_gBox`          the easy half: capped supremum `≤ gBox`
 * `PMT.cappedEqualAngle_iff`         H3 is equivalent to the hard half `gBox ≤ capped supremum`
 * `PMT.cappedEqualAngle_replicate`   H3 holds for equal defects (via the Diagonal Lemma)
-The general case is OPEN.
+The general case is proved in `CappedDiagonalFull.lean`.
 -/
 import PMTFormal.Heterogeneous.Sharp
 

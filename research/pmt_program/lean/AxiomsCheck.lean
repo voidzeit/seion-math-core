@@ -44,6 +44,35 @@ import PMTFormal
 #print axioms PMT.MSTree.lift_rootAdmFull0
 #print axioms PMT.heterogeneous_multispace_upper
 #print axioms PMT.heterogeneous_multispace_sSup
+#print axioms PMT.gBox_mono
+#print axioms PMT.gBox_le_replicate
+#print axioms PMT.gBox_le_uniform_fallback
+#print axioms PMT.heterogeneous_scaled_upper_of_admTC
+#print axioms PMT.heterogeneous_scaled_upper_of_admTC_nonneg
+#print axioms PMT.log_cos_tangent
+#print axioms PMT.prod_cos_le_waterfill
+#print axioms PMT.box_value_le_capped
+#print axioms PMT.capped_equal_angle
+#print axioms PMT.gBox_eq_capped
+#print axioms PMT.gBox_eq_capped_max
+#print axioms PMT.ATree.err_le_ebound
+#print axioms PMT.ATree.norm_F_ge
+#print axioms PMT.norm_sub_le_slots
+#print axioms PMT.slot_const_general
+#print axioms PMT.slot_args_eq_update
+#print axioms PMT.KTree.err_le_sbound
+#print axioms PMT.sum_slot_prod_eq
+#print axioms PMT.ATree.err_le_abound
+#check @PMT.KTree.err_le_sbound
+#check @PMT.ATree.err_le_abound
+#check @PMT.sum_slot_prod_eq
+#check @PMT.capped_equal_angle
+#check @PMT.gBox_eq_capped_max
+#check @PMT.ATree.err_le_ebound
+#check @PMT.gBox_mono
+#check @PMT.gBox_le_uniform_fallback
+#check @PMT.heterogeneous_scaled_upper_of_admTC
+#check @PMT.heterogeneous_scaled_upper_of_admTC_nonneg
 #check @PMT.heterogeneous_multispace_upper
 #check @PMT.heterogeneous_multispace_sSup
 #check @PMT.opNorm_le_iff_unit_ball
