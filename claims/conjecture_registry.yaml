@@ -1,4 +1,23 @@
 conjectures:
+  - id: CONJ_PMT_HETEROGENEOUS_BOX_THEOREM_R_20260914
+    title: Heterogeneous scalar box reduction for projected multilinear trees
+    status: conjecture
+    statement: "For nodewise operator bounds M_v and local defects rho_v, the sharp projected-output worst-case constant is the box maximum G_box(eta)=max_{0<=theta_v<=asin(eta_v)} |1-product_v(cos(theta_v) exp(i theta_v))|, with eta_v=rho_v/M_v, and is independent of tree placement at fixed nodewise defect multiset."
+    assumptions: [finite projected multilinear tree, finite-dimensional real Hilbert spaces, orthogonal projectors, nodewise operator bounds, nodewise projected-input closure bounds, admissible independent node laws]
+    proof: research/pmt_program/HETEROGENEOUS_THEOREM_R.md
+    implementation: research/pmt_program/heterogeneous/
+    evidence: [research/pmt_program/tn_benchmark/POSTHOC_HETEROGENEOUS_ANGLE.md, research/pmt_program/heterogeneous/adversarial_scan.py, tests/research_heterogeneous/test_scalar_extremization.py]
+    proof_status: OPEN
+    limitations: [heterogeneous upper bound not proved, sharpness not proved, numerical optimizer is not a global certificate, capped-equal-angle reduction is unproved]
+  - id: CONJ_PMT_HETEROGENEOUS_CAPPED_EQUAL_ANGLE_20260914
+    title: Capped-equal-angle reduction
+    status: conjecture
+    statement: "The heterogeneous scalar box maximum has an optimizer of the form theta_i=min(alpha_i,tau) for a common tau after sorting the angular caps alpha_i."
+    assumptions: [same scalar box as CONJ_PMT_HETEROGENEOUS_BOX_THEOREM_R_20260914]
+    proof: research/pmt_program/HETEROGENEOUS_THEOREM_R.md
+    implementation: research/pmt_program/heterogeneous/scalar_extremization.py
+    proof_status: OPEN
+    limitations: [interior stationarity does not exclude boundary or phase-wrap maxima]
   - id: PROPOSAL_PMT_K4_CHAIN_MIXED_FINITE_ETA_20260909
     statement: "For independent-law four-node chains and mixed binary trees, C(eta)=sqrt(9-15 eta^2+7 eta^4) up to sqrt(3/7), and 9/(7 eta) thereafter."
     status: CONJECTURE
